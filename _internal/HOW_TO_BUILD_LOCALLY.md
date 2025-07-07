@@ -10,7 +10,7 @@
   - `uv venv .venv`
   - `source .venv/bin/activate` (on Mac/Linux) or `.venv\Scripts\activate` (on Windows)
 - Install the requirements:
-  - `uv sync` (this will create a virtual environment and install all dependencies from `pyproject.toml`)
+  - `uv pip install .`
   - `NOTE`: if to use one of your notebook you require a specific package, add it to the `dependencies` section in the `pyproject.toml` file, or run `uv add package-name` to add it automatically.
   - I added the `pre-commit` package to the dependencies that also checks for typing errors using `typos` and formatting issues, so after installing the dependencies, run `pre-commit install` in the terminal to set it up. I recommend running `uv run pre-commit run --all-files` in the terminal after you stage the changes in VSCode to see what it will do before committing them (it should automatically run when you click on `commit` in VSCode anyway).
   - `NOTE`: if `typos` tries to change words that are not supposed to be changed (e.g. `nd2` -> `and2`), add the word to the `[tool.typos.default.extend-words]` section in the `pyproject.toml` file in the root directory of the repository.

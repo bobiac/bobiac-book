@@ -1,3 +1,7 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
 [project]
 name = "bobiac"
 version = "1.0.0"
@@ -6,14 +10,13 @@ authors = [
     {name = "BoBiAC Contributors"},
 ]
 readme = "README.md"
-license = {text = "MIT"}
+license = "MIT"
 requires-python = ">=3.9"
 keywords = ["bioimage", "analysis", "course", "education", "microscopy"]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Education",
     "Intended Audience :: Science/Research",
-    "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.10",
@@ -33,6 +36,35 @@ dependencies = [
     "imagecodecs",
     "pre-commit",
     "tqdm",
+]
+
+[tool.hatch.build.targets.wheel]
+# This is a Jupyter Book project - we only want to install dependencies
+# Include minimal files to create a valid wheel
+include = [
+    "README.md",
+    "pyproject.toml",
+]
+exclude = [
+    "content/",
+    "data/", 
+    "student_group_work/",
+    "_build/",
+    "_static/",
+    "__pycache__/",
+    "*.pyc",
+]
+
+[tool.hatch.build.targets.sdist]
+# Exclude content directories from source distribution
+exclude = [
+    "content/",
+    "data/",
+    "student_group_work/",
+    "_build/",
+    "_static/",
+    "__pycache__/",
+    "*.pyc",
 ]
 
 [project.optional-dependencies]
