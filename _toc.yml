@@ -43,7 +43,7 @@ parts:
 
   - file: content/07_measurement_and_quantification/measurement_and_quantification_intro.md
     sections:
-      - file: content/07_measurement_and_quantification/measurements
+      - file: content/07_measurement_and_quantification/measurement_and_quantification_notebook
 
   - file: content/08_colocalization/colocalization_intro.md
     sections:

@@ -36,6 +36,14 @@ dependencies = [
     "imagecodecs",
     "pre-commit",
     "tqdm",
+    "pandas",
+    "scipy",
+]
+
+[project.optional-dependencies]
+dev = [
+    "black",
+    "ruff",
 ]
 
 [tool.hatch.build.targets.wheel]
@@ -67,11 +75,6 @@ exclude = [
     "*.pyc",
 ]
 
-[project.optional-dependencies]
-dev = [
-    "black",
-    "ruff",
-]
 
 [project.urls]
 Homepage = "https://iac.hms.harvard.edu/bobiac/2025/"
