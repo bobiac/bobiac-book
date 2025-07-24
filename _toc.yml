@@ -54,7 +54,7 @@ parts:
       - file: content/08_colocalization/pixel_intensity_based_colocalization_manders
       - file: content/08_colocalization/object_based_colocalization
 
-  - file: content/09_reproducibility_and_image_ethics/reproducibility_and_image_ethics.md
+  # - file: content/09_reproducibility_and_image_ethics/reproducibility_and_image_ethics.md
 
 
 # STUDENT WORKING GROUPS
