@@ -43,8 +43,10 @@ html_theme_options = {
     "use_issues_button": False,
     "logo": {
         # "text": "BoBiAC Book",
-        "image_light": "_static/logo/bobiac_logos_svgexport-03.svg",
-        "image_dark": "_static/logo/bobiac_logos_svgexport-04.svg",
+        # "image_light": "_static/logo/bobiac_logos_svgexport-03.svg",
+        # "image_dark": "_static/logo/bobiac_logos_svgexport-04.svg",
+        "image_light": "_static/logo/bobiac-landing-black.png",
+        "image_dark": "_static/logo/bobiac-landing-white.png",
     },
 }
 
@@ -64,7 +66,8 @@ myst_url_schemes = ["mailto", "http", "https"]
 
 nb_execution_allow_errors = False
 nb_execution_in_temp = False
-nb_execution_mode = "force"
+# nb_execution_mode = "force"
+nb_execution_mode = "cache"
 nb_execution_timeout = 30
 nb_output_stderr = "show"
 
@@ -98,5 +101,4 @@ exclude_patterns = [
     # "content/06_object_classification/**",
     # "content/07_measurement_and_quantification/**",
     # "content/08_colocalization/**",
-    # "content/09_reproducibility_and_image_ethics/**",
 ]
