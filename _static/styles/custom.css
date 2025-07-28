@@ -21,9 +21,9 @@ html[data-theme="dark"] {
 
 /* Shared styling for all logos */
 .landing-logo {
-  width: 80%;
+  width: 85%;
   background: transparent !important;
-  /* margin: 0 auto; */
+  margin: 0 auto;
 }
 
 /* Hide both by default */
