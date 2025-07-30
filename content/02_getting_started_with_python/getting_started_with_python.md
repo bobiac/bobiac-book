@@ -20,7 +20,7 @@ create virtual environments, and install packages.
 </a>
 
 <div align="center">
-  <iframe class="custom-pdf-frame" src="../../pdfs/02_getting_started_with_python/getting_started_python_uv.pdf"> </iframe>
+  <iframe class="custom-pdf-frame-34" src="../../pdfs/02_getting_started_with_python/getting_started_python_uv.pdf"> </iframe>
 </div>
 
 ## Notes

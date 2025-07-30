@@ -11,7 +11,7 @@ In this lesson, we will explore the concept of colocalization in microscopy imag
 </a>
 
 <div align="center">
-  <iframe class="custom-pdf-frame" src="../../pdfs/08_colocalization/bobiac_coloc.pdf"> </iframe>
+  <iframe class="custom-pdf-frame-169" src="../../pdfs/08_colocalization/bobiac_coloc.pdf"> </iframe>
 </div>
 
 ## Pixel intensity-based colocalization
@@ -44,5 +44,5 @@ Although points are the simplest type of object, many of the learned concepts ar
 </a>
 
 <div align="center">
-  <iframe class="custom-pdf-frame" src="../../pdfs/08_colocalization/practical_object_based_coloc.pdf"> </iframe>
+  <iframe class="custom-pdf-frame-169" src="../../pdfs/08_colocalization/practical_object_based_coloc.pdf"> </iframe>
 </div>

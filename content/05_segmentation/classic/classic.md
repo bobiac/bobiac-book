@@ -31,7 +31,7 @@ In **Act 2**, we will finish the lesson with the following section:
 </a>
 
 <div align="center">
-  <iframe class="custom-pdf-frame" src="../../../pdfs/05_segmentation/classic/classic_segmentation.pdf"> </iframe>
+  <iframe class="custom-pdf-frame-34" src="../../../pdfs/05_segmentation/classic/classic_segmentation.pdf"> </iframe>
 </div>
 
 Let's get ready to code!

@@ -22,7 +22,7 @@ We will use python in practice to:
 </a>
 
 <div align="center">
-  <iframe class="custom-pdf-frame" src="../../pdfs/04_digital_images_intro/digital_images_intro.pdf"> </iframe>
+  <iframe class="custom-pdf-frame-169" src="../../pdfs/04_digital_images_intro/digital_images_intro.pdf"> </iframe>
 </div>
 
 ### Python for Bioimage Analysis
@@ -32,5 +32,5 @@ We will use python in practice to:
 </a>
 
 <div align="center">
-  <iframe class="custom-pdf-frame" src="../../pdfs/04_digital_images_intro/python_for_bioimage_analysis_beginners.pdf"> </iframe>
+  <iframe class="custom-pdf-frame-169" src="../../pdfs/04_digital_images_intro/python_for_bioimage_analysis_beginners.pdf"> </iframe>
 </div>

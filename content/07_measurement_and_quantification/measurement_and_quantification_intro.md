@@ -13,7 +13,7 @@ In this lesson, we will begin by introducing the limitations of optical microsco
 </a>
 
 <div align="center">
-  <iframe class="custom-pdf-frame" src="../../pdfs/07_measurement_and_quantification/introtoquantitativefluorescencemicroscopy.pdf"> </iframe>
+  <iframe class="custom-pdf-frame-169" src="../../pdfs/07_measurement_and_quantification/introtoquantitativefluorescencemicroscopy.pdf"> </iframe>
 </div>
 
 ## Introduction to Measurements and Quantification

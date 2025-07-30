@@ -5,5 +5,5 @@
 </a>
 
 <div align="center">
-  <iframe class="custom-pdf-frame" src="../../pdfs/01_intro_to_bobiac/bobiac_intro.pdf"> </iframe>
+  <iframe class="custom-pdf-frame-169" src="../../pdfs/01_intro_to_bobiac/bobiac_intro.pdf"> </iframe>
 </div>
