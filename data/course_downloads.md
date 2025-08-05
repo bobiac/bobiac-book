@@ -4,7 +4,7 @@
 
 <strong> 04 - <i class="fas fa-table-cells"></i> Introduction to Digital Images</strong>
 
-- <i>Python for Bioimage Analysis</i>: <a href="../_static/data/04_python_for_bioimage_analysis.zip" download> <i class="fas fa-download"></i> Python for Bioimage Analysis Dataset</a>
+- Python for Bioimage Analysis: <a href="../_static/data/04_python_for_bioimage_analysis.zip" download> <i class="fas fa-download"></i> Python for Bioimage Analysis Dataset</a>
 
 <strong> 05 - <i class="fa-solid fa-disease"></i> Image Segmentation</strong>
 
