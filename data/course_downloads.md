@@ -18,7 +18,7 @@
 
 <strong> 08 - <i class="fa-solid fa-location-crosshairs"></i> Colocalization</strong>
 
-- Pixel Intensity Based: <a href="../_static/data/08_pixel_intensity_based_coloc.zip" download> <i class="fas fa-download"></i> Mander's & Pearson's Colocalization Dataset</a>
+- Pixel Intensity Based: <a href="../_static/data/08_pixel_intensity_based_coloc.zip" download> <i class="fas fa-download"></i> Manders & Pearson's Colocalization Dataset</a>
 - Object Based: <a href="../_static/data/08_object_based_colocalization.zip" download> <i class="fas fa-download"></i> Object Based Colocalization Dataset</a>
 
 <strong> Student Group Work</strong>
