@@ -16,7 +16,7 @@ In this lesson, we will explore the concept of colocalization in microscopy imag
 
 ## Pixel intensity-based colocalization
 
-Pixel intensity-based colocalization methods analyze the correlation between the intensities of different channels at the pixel level. In this section we will explore how to use Python to implement the Pearson's correlation coefficient and the Manders' correlation coefficient, two common methods for measuring colocalization as well as some statistical validation methods to assess the significance of the observed colocalization.
+Pixel intensity-based colocalization methods analyze the correlation between the intensities of different channels at the pixel level. In this section we will explore how to use Python to implement the Pearson's correlation coefficient and the Manders' colocalization coefficient, two common methods for measuring colocalization as well as some statistical validation methods to assess the significance of the observed colocalization.
 
 ## Object-based colocalization
 
