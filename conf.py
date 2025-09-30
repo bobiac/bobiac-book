@@ -43,8 +43,6 @@ html_theme_options = {
     "use_issues_button": False,
     "logo": {
         # "text": "BoBiAC Book",
-        # "image_light": "_static/logo/bobiac_logos_svgexport-03.svg",
-        # "image_dark": "_static/logo/bobiac_logos_svgexport-04.svg",
         "image_light": "_static/logo/bobiac-landing-black.png",
         "image_dark": "_static/logo/bobiac-landing-white.png",
     },
