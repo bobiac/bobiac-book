@@ -73,7 +73,7 @@ parts:
 # LINKS/EXTRA
 - caption: Links
   chapters:
-  - url: https://iac.hms.harvard.edu/bobiac/2025
+  - url: https://bobiac.github.io
     title: BoBiAC
   - url: https://docs.astral.sh/uv/
     title: uv

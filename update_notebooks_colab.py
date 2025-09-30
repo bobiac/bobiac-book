@@ -92,7 +92,7 @@ def convert_to_colab_notebook(input_path: str | Path, output_path: str | Path) -
                         path = match.group(1)
                         # URL encode spaces in the path
                         encoded_path = path.replace(" ", "%20")
-                        return f"https://raw.githubusercontent.com/HMS-IAC/bobiac/main/{encoded_path}"
+                        return f"https://raw.githubusercontent.com/bobiac/bobiac-book/main/{encoded_path}"
 
                     updated_line = re.sub(
                         r'(\.\./.*?_static/[^"\')\]]*)',
@@ -101,8 +101,8 @@ def convert_to_colab_notebook(input_path: str | Path, output_path: str | Path) -
                     )
                     # Clean up any ../ at the beginning of the GitHub URL
                     updated_line = re.sub(
-                        r"https://raw\.githubusercontent\.com/HMS-IAC/bobiac/main/(\.\./)*",
-                        "https://raw.githubusercontent.com/HMS-IAC/bobiac/main/",
+                        r"https://raw\.githubusercontent\.com/bobiac/bobiac-book/main/(\.\./)*",
+                        "https://raw.githubusercontent.com/bobiac/bobiac-book/main/",
                         updated_line,
                     )
                     if updated_line != line:
