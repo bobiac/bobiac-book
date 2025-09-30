@@ -87,9 +87,9 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://iac.hms.harvard.edu/bobiac/2025/"
+Homepage = "https://bobiac.github.io"
 Repository = "https://github.com/fdrgsp/bobiac"
-Documentation = "https://iac.hms.harvard.edu/bobiac/2025/"
+Documentation = "https://bobiac.github.io"
 "Bug Tracker" = "https://github.com/fdrgsp/bobiac/issues"
 
 [tool.ruff]
