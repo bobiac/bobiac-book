@@ -34,7 +34,7 @@ html_theme_options = {
         # not using directly colab because we want to customise the notebook for colab
         # "colab_url": "https://colab.research.google.com",
     },
-    "repository_url": "https://github.com/HMS-IAC/bobiac/",
+    "repository_url": "https://github.com/bobiac/bobiac-book",
     "repository_branch": "main",
     "extra_footer": '<p>\nAll content is licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC-BY 4.0</a>, except where noted otherwise.\n</p>\n',
     "home_page_in_toc": True,
