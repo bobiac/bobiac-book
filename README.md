@@ -3,4 +3,4 @@
 <!-- add bobiac_logos_svgexport-04.svg logo centered in the page -->
 <img src="_static/logo/bobiac_logo.png" alt="BoBiAC Logo" width="70%"/>
 
-[BoBiAC Book](bobiac.github.io/bobiac-book/) -> Teaching materials for [Boston Bioimage Analysis Course (BoBIAC)](https://bobiac.github.io).
+Teaching materials for the <a href="https://bobiac.github.io" target="_blank" rel="noopener noreferrer">Boston Bioimage Analysis Course (BoBIAC)</a> -> <a href="https://bobiac.github.io/bobiac-book/" target="_blank" rel="noopener noreferrer">BoBiAC Book</a>.
