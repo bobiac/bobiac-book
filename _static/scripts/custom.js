@@ -152,7 +152,13 @@ async function downloadPdfs() {
                   continue;
                 }
 
-                const fullPath = path + href;
+                // Skip absolute URLs (external links)
+                if (href.startsWith('http://') || href.startsWith('https://')) {
+                    continue;
+                }
+
+                // Properly resolve relative URLs
+                const fullPath = new URL(href, path).href;
 
                 if (href.endsWith('/')) {
                     // It's a directory, scan recursively
@@ -252,7 +258,13 @@ async function downloadNotebooks() {
                   continue;
                 }
 
-                const fullPath = path + href;
+                // Skip absolute URLs (external links)
+                if (href.startsWith('http://') || href.startsWith('https://')) {
+                    continue;
+                }
+
+                // Properly resolve relative URLs
+                const fullPath = new URL(href, path).href;
 
                 if (href.endsWith('/')) {
                     // It's a directory, scan recursively
@@ -352,7 +364,13 @@ async function downloadNotebooksTeacher() {
                   continue;
                 }
 
-                const fullPath = path + href;
+                // Skip absolute URLs (external links)
+                if (href.startsWith('http://') || href.startsWith('https://')) {
+                    continue;
+                }
+
+                // Properly resolve relative URLs
+                const fullPath = new URL(href, path).href;
 
                 if (href.endsWith('/')) {
                     // It's a directory, scan recursively
