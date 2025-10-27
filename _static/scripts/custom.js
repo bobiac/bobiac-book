@@ -178,7 +178,10 @@ async function downloadPdfs() {
     }
 
     // Start scanning from the pdfs directory
-    await scanDirectory('../pdfs/', pdfFolder);
+    // Use absolute path from site root to work on GitHub Pages
+    const siteRoot = window.location.origin + window.location.pathname.split('/').slice(0, window.location.pathname.split('/').indexOf('bobiac-book') + 2).join('/');
+    const pdfsPath = siteRoot.endsWith('/') ? siteRoot + 'pdfs/' : siteRoot + '/pdfs/';
+    await scanDirectory(pdfsPath, pdfFolder);
 
     // Check if any files were added
     const hasFiles = Object.keys(pdfFolder.files).length > 0;
@@ -276,7 +279,10 @@ async function downloadNotebooks() {
     }
 
     // Start scanning from the notebooks directory
-    await scanDirectory('../notebooks/', notebookFolder);
+    // Use absolute path from site root to work on GitHub Pages
+    const siteRoot = window.location.origin + window.location.pathname.split('/').slice(0, window.location.pathname.split('/').indexOf('bobiac-book') + 2).join('/');
+    const notebooksPath = siteRoot.endsWith('/') ? siteRoot + 'notebooks/' : siteRoot + '/notebooks/';
+    await scanDirectory(notebooksPath, notebookFolder);
 
     // Check if any files were added
     const hasFiles = Object.keys(notebookFolder.files).length > 0;
@@ -374,7 +380,10 @@ async function downloadNotebooksTeacher() {
     }
 
     // Start scanning from the notebooks_teacher directory
-    await scanDirectory('../notebooks_teacher/', notebookFolder);
+    // Use absolute path from site root to work on GitHub Pages
+    const siteRoot = window.location.origin + window.location.pathname.split('/').slice(0, window.location.pathname.split('/').indexOf('bobiac-book') + 2).join('/');
+    const notebooksTeacherPath = siteRoot.endsWith('/') ? siteRoot + 'notebooks_teacher/' : siteRoot + '/notebooks_teacher/';
+    await scanDirectory(notebooksTeacherPath, notebookFolder);
 
     // Check if any files were added
     const hasFiles = Object.keys(notebookFolder.files).length > 0;

@@ -54,5 +54,3 @@
         <i class="fas fa-download"></i> Download All Course Data (No DAPI dataset, download it above)
     </a>
 </div>
-
-
