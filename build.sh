@@ -14,14 +14,14 @@ fi
 echo "🔧 Building Jupyter Book with Sphinx..."
 # DISPLAY is set in github workflows in deploy-book.yml. This is needed
 # to visualize glfw, vispy, or napari-based notebooks without errors.
-DISPLAY=${DISPLAY:-:99} python3 -m sphinx -a . -b html _build/html
+DISPLAY=${DISPLAY:-:99} python -m sphinx -a . -b html _build/html
 echo "📘 Book built successfully at _build/html/"
 
 # update notebook html styles
 echo "🎨 Applying HTML styles to headers..."
-python3 "$(dirname "$0")/update_html_styles.py" _build/html/content
-python3 "$(dirname "$0")/update_html_styles.py" _build/html/student_group_work
-python3 "$(dirname "$0")/update_html_styles.py" _build/html/landing-page.html
+python "$(dirname "$0")/update_html_styles.py" _build/html/content
+python "$(dirname "$0")/update_html_styles.py" _build/html/student_group_work
+python "$(dirname "$0")/update_html_styles.py" _build/html/landing-page.html
 echo "✅ HTML styles applied successfully."
 
 # Prepare built notebook downloads in _build/html/notebooks/ and 
@@ -44,9 +44,9 @@ for folder in "${folders[@]}"; do
     mkdir -p "$colab_dir"
 
     echo "📓 Processing $folder/$rel_path..."
-    python3 "$(dirname "$0")/update_notebooks.py" "$notebook" "$notebook_teacher_path" true
-    python3 "$(dirname "$0")/update_notebooks.py" "$notebook" "$notebook_path" false
-    python3 "$(dirname "$0")/update_notebooks_colab.py" "$notebook" "$colab_path" true
+    python "$(dirname "$0")/update_notebooks.py" "$notebook" "$notebook_teacher_path" true
+    python "$(dirname "$0")/update_notebooks.py" "$notebook" "$notebook_path" false
+    python "$(dirname "$0")/update_notebooks_colab.py" "$notebook" "$colab_path" true
   done
 done
 

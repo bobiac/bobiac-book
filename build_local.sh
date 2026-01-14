@@ -41,7 +41,7 @@ echo "📘 Book built successfully at _build/html/"
 echo "🎨 Applying HTML styles to headers..."
 python "$(dirname "$0")/update_html_styles.py" _build/html/content
 python "$(dirname "$0")/update_html_styles.py" _build/html/student_group_work
-python3 "$(dirname "$0")/update_html_styles.py" _build/html/landing-page.html
+python "$(dirname "$0")/update_html_styles.py" _build/html/landing-page.html
 echo "✅ HTML styles applied successfully."
 
 # Prepare built notebook downloads in _build/html/notebooks/ and 
@@ -65,9 +65,9 @@ for folder in "${folders[@]}"; do
     mkdir -p "$colab_dir"
 
     echo "📓 Processing $folder/$rel_path..."
-    python3 "$(dirname "$0")/update_notebooks.py" "$notebook" "$notebook_teacher_path" true
-    python3 "$(dirname "$0")/update_notebooks.py" "$notebook" "$notebook_path" false
-    python3 "$(dirname "$0")/update_notebooks_colab.py" "$notebook" "$colab_path" true
+    python "$(dirname "$0")/update_notebooks.py" "$notebook" "$notebook_teacher_path" true
+    python "$(dirname "$0")/update_notebooks.py" "$notebook" "$notebook_path" false
+    python "$(dirname "$0")/update_notebooks_colab.py" "$notebook" "$colab_path" true
   done
 done
 
@@ -94,7 +94,7 @@ if [ "$LAUNCH" = true ]; then
 
   # Use Python subprocess with timeout to avoid hanging
   echo "🔍 Checking port status..."
-  PID=$(python3 -c "
+  PID=$(python -c "
 import subprocess
 try:
     p = subprocess.run(['lsof', '-ti', 'tcp:8000'], stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, timeout=3)
