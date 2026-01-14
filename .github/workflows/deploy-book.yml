@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - "2025"
 
   workflow_dispatch:
 
@@ -48,11 +49,22 @@ jobs:
           uv run ./build.sh
           touch ./_build/.nojekyll
 
-      # Deploy the book
-      - name: Deploy the book
+      # Deploy main branch to root
+      - name: Deploy main to root
+        if: github.ref == 'refs/heads/main'
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./_build/html
-          keep_files: false
-          force_orphan: true
+          keep_files: true
+          destination_dir: .
+
+      # Deploy 2025 branch to /2025/ subfolder
+      - name: Deploy 2025 to subfolder
+        if: github.ref == 'refs/heads/2025'
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_build/html
+          keep_files: true
+          destination_dir: 2025
