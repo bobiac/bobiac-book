@@ -30,7 +30,7 @@ classifiers = [
 ]
 
 dependencies = [
-    "jupyter-book",
+    "jupyter-book<2.0.0",
     "ndv[jupyter,vispy]",
     "tifffile",
     "scikit-image",
