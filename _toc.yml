@@ -70,6 +70,12 @@ parts:
   - file: data/course_downloads.md
 
 
+# PAST EDITIONS
+- caption: Past Editions
+  chapters:
+  - url: https://bobiac.github.io/bobiac-book/2025/
+    title: 2025 Edition
+
 # LINKS/EXTRA
 - caption: Links
   chapters:
