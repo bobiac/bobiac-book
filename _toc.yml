@@ -69,13 +69,6 @@ parts:
   chapters:
   - file: data/course_downloads.md
 
-
-# PAST EDITIONS
-- caption: Past Editions
-  chapters:
-  - url: https://bobiac.github.io/bobiac-book/2025/
-    title: 2025 Edition
-
 # LINKS/EXTRA
 - caption: Links
   chapters:
@@ -89,3 +82,21 @@ parts:
     title: Image Analysis Collaboratory (IAC)
   - url: https://cite.hms.harvard.edu
     title: Core for Imaging Technology & Education (CITE)
+
+# PAST EDITIONS
+- caption: Past Editions
+  chapters:
+  - url: https://bobiac.github.io/bobiac-book/2025/
+    title: 2025 Edition
+
+# CONTRIBUTORS
+- caption: Contributors
+  chapters:
+  - url: https://www.linkedin.com/in/federicogasparoli
+    title: Federico Gasparoli, PhD
+  - url: https://www.linkedin.com/in/eva-de-la-serna-b1a69664
+    title: Eva de la Serna, PhD, PhD
+  - url: https://orcid.org/0000-0001-6194-9568
+    title: Max Brambach, PhD
+  # - url: https://www.linkedin.com/in/rkarmaka/
+  #   title: Ranit Karmakar, PhD
