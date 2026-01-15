@@ -174,6 +174,16 @@
 <li class="toctree-l1"><a class="reference external" href="https://iac.hms.harvard.edu">Image Analysis Collaboratory (IAC)</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://cite.hms.harvard.edu">Core for Imaging Technology &amp; Education (CITE)</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Contributors</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://www.linkedin.com/in/federicogasparoli">Federico Gasparoli, PhD</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.linkedin.com/in/eva-de-la-serna-b1a69664">Eva de la Serna, PhD, PhD</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.linkedin.com/in/rkarmaka/">Ranit Karmakar, PhD</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.linkedin.com/in/maria-theiss">Maria Theiss, PhD</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.linkedin.com/in/antoineruzette/">Antoine Ruzette, MSc</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://orcid.org/0000-0001-6194-9568">Max Brambach, PhD</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.linkedin.com/in/simon-nørrelykke-b709589">Simon Nørrelykke, PhD</a></li>
+</ul>
 </div>
 </nav></div>
 </div>
@@ -622,7 +632,7 @@ Learn Monte Carlo based validation.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fd8a631f140&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f1ebf179220&gt;
 </pre></div>
 </div>
 <img alt="../../_images/45683cb7cbb07d71335d41f060bb54d1ab4143d1468a3390726900563d9c9848.png" src="../../_images/45683cb7cbb07d71335d41f060bb54d1ab4143d1468a3390726900563d9c9848.png"/>
@@ -676,7 +686,7 @@ Learn Monte Carlo based validation.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fd8a6244fb0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f1ebf0caae0&gt;
 </pre></div>
 </div>
 <img alt="../../_images/dd0523237c9b088dcdd53a2eea77c0caf74915dfaade723a8ae2048aeb24411e.png" src="../../_images/dd0523237c9b088dcdd53a2eea77c0caf74915dfaade723a8ae2048aeb24411e.png"/>
@@ -741,7 +751,7 @@ Do the same for <code class="docutils literal notranslate"><span class="pre">win
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fd8a61e0a70&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f1ebf17b6b0&gt;
 </pre></div>
 </div>
 <img alt="../../_images/c49bff1d7e4b63a4d420a1dc07179d59c457af6aa3ec6d765dd50e2bdcf88947.png" src="../../_images/c49bff1d7e4b63a4d420a1dc07179d59c457af6aa3ec6d765dd50e2bdcf88947.png"/>
@@ -1206,12 +1216,12 @@ If no, why not?</p>
 <span class="g g-Whitespace">      </span><span class="mi">9</span>     <span class="n">fall_cold_iac</span><span class="p">,</span> <span class="n">fall_cold_bob</span><span class="p">,</span> <span class="n">radii</span><span class="o">=</span><span class="n">k_radii</span><span class="p">,</span> <span class="n">area</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">edge_correction</span><span class="o">=</span><span class="kc">True</span>
 <span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="p">)</span>
 
-<span class="nn">Cell In[27], line 48,</span> in <span class="ni">ripleys_k_function</span><span class="nt">(points1, points2, radii, area, edge_correction)</span>
-<span class="g g-Whitespace">     </span><span class="mi">46</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n1</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">47</span>     <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n2</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">48</span>         <span class="n">circle</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="n">points1</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="n">dists</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">])</span>
-<span class="g g-Whitespace">     </span><span class="mi">49</span>         <span class="k">if</span> <span class="n">circle</span><span class="o">.</span><span class="n">area</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">circle</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">square</span><span class="p">)</span><span class="o">.</span><span class="n">area</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">50</span>             <span class="k">continue</span>  <span class="c1"># Avoid division by zero</span>
+<span class="nn">Cell In[27], line 49,</span> in <span class="ni">ripleys_k_function</span><span class="nt">(points1, points2, radii, area, edge_correction)</span>
+<span class="g g-Whitespace">     </span><span class="mi">47</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n2</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">48</span>     <span class="n">circle</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="n">points1</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="n">dists</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">])</span>
+<span class="ne">---&gt; </span><span class="mi">49</span>     <span class="k">if</span> <span class="n">circle</span><span class="o">.</span><span class="n">area</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">circle</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">square</span><span class="p">)</span><span class="o">.</span><span class="n">area</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">50</span>         <span class="k">continue</span>  <span class="c1"># Avoid division by zero</span>
+<span class="g g-Whitespace">     </span><span class="mi">51</span>     <span class="n">area_correction</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">circle</span><span class="o">.</span><span class="n">area</span> <span class="o">/</span> <span class="n">circle</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">square</span><span class="p">)</span><span class="o">.</span><span class="n">area</span>
 
 <span class="nn">File ~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/shapely/decorators.py:173,</span> in <span class="ni">deprecate_positional.&lt;locals&gt;.decorator.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwargs)</span>
 <span class="g g-Whitespace">    </span><span class="mi">171</span> <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
@@ -1220,18 +1230,14 @@ If no, why not?</p>
 <span class="g g-Whitespace">    </span><span class="mi">175</span>     <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">176</span>     <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="n">warn_from</span><span class="p">:</span>
 
-<span class="nn">File ~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/shapely/geometry/base.py:595,</span> in <span class="ni">BaseGeometry.buffer</span><span class="nt">(self, distance, quad_segs, cap_style, join_style, mitre_limit, single_sided, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">592</span> <span class="k">elif</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">distance</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
-<span class="g g-Whitespace">    </span><span class="mi">593</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"buffer distance must be finite"</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">595</span> <span class="k">return</span> <span class="n">shapely</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">596</span>     <span class="bp">self</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">597</span>     <span class="n">distance</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">598</span>     <span class="n">quad_segs</span><span class="o">=</span><span class="n">quad_segs</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">599</span>     <span class="n">cap_style</span><span class="o">=</span><span class="n">cap_style</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">600</span>     <span class="n">join_style</span><span class="o">=</span><span class="n">join_style</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">601</span>     <span class="n">mitre_limit</span><span class="o">=</span><span class="n">mitre_limit</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">602</span>     <span class="n">single_sided</span><span class="o">=</span><span class="n">single_sided</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">603</span> <span class="p">)</span>
+<span class="nn">File ~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/shapely/geometry/base.py:674,</span> in <span class="ni">BaseGeometry.intersection</span><span class="nt">(self, other, grid_size)</span>
+<span class="g g-Whitespace">    </span><span class="mi">668</span> <span class="nd">@deprecate_positional</span><span class="p">([</span><span class="s2">"grid_size"</span><span class="p">],</span> <span class="n">category</span><span class="o">=</span><span class="ne">DeprecationWarning</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">669</span> <span class="k">def</span><span class="w"> </span><span class="nf">intersection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">grid_size</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">670</span><span class="w">     </span><span class="sd">"""Return the intersection of the geometries.</span>
+<span class="g g-Whitespace">    </span><span class="mi">671</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">672</span><span class="sd">     Refer to `shapely.intersection` for full documentation.</span>
+<span class="g g-Whitespace">    </span><span class="mi">673</span><span class="sd">     """</span>
+<span class="ne">--&gt; </span><span class="mi">674</span>     <span class="k">return</span> <span class="n">shapely</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">grid_size</span><span class="o">=</span><span class="n">grid_size</span><span class="p">)</span>
 
 <span class="nn">File ~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/shapely/decorators.py:173,</span> in <span class="ni">deprecate_positional.&lt;locals&gt;.decorator.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwargs)</span>
 <span class="g g-Whitespace">    </span><span class="mi">171</span> <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
@@ -1247,19 +1253,10 @@ If no, why not?</p>
 <span class="g g-Whitespace">     </span><span class="mi">89</span> <span class="k">finally</span><span class="p">:</span>
 <span class="g g-Whitespace">     </span><span class="mi">90</span>     <span class="k">for</span> <span class="n">arr</span><span class="p">,</span> <span class="n">old_flag</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">array_args</span><span class="p">,</span> <span class="n">old_flags</span><span class="p">):</span>
 
-<span class="nn">File ~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/shapely/constructive.py:246,</span> in <span class="ni">buffer</span><span class="nt">(geometry, distance, quad_segs, cap_style, join_style, mitre_limit, single_sided, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">244</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">isscalar</span><span class="p">(</span><span class="n">single_sided</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">245</span>     <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">"single_sided only accepts scalar values"</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">246</span> <span class="k">return</span> <span class="n">lib</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">247</span>     <span class="n">geometry</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">248</span>     <span class="n">distance</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">249</span>     <span class="n">np</span><span class="o">.</span><span class="n">intc</span><span class="p">(</span><span class="n">quad_segs</span><span class="p">),</span>
-<span class="g g-Whitespace">    </span><span class="mi">250</span>     <span class="n">np</span><span class="o">.</span><span class="n">intc</span><span class="p">(</span><span class="n">cap_style</span><span class="p">),</span>
-<span class="g g-Whitespace">    </span><span class="mi">251</span>     <span class="n">np</span><span class="o">.</span><span class="n">intc</span><span class="p">(</span><span class="n">join_style</span><span class="p">),</span>
-<span class="g g-Whitespace">    </span><span class="mi">252</span>     <span class="n">mitre_limit</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">253</span>     <span class="n">np</span><span class="o">.</span><span class="n">bool_</span><span class="p">(</span><span class="n">single_sided</span><span class="p">),</span>
-<span class="g g-Whitespace">    </span><span class="mi">254</span>     <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">255</span> <span class="p">)</span>
+<span class="nn">File ~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/shapely/set_operations.py:168,</span> in <span class="ni">intersection</span><span class="nt">(a, b, grid_size, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">164</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"grid_size parameter only accepts scalar values"</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">166</span>     <span class="k">return</span> <span class="n">lib</span><span class="o">.</span><span class="n">intersection_prec</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">grid_size</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">168</span> <span class="k">return</span> <span class="n">lib</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
