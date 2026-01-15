@@ -632,7 +632,7 @@ Learn Monte Carlo based validation.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f3fd820bb60&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fd8246f32f0&gt;
 </pre></div>
 </div>
 <img alt="../../_images/45683cb7cbb07d71335d41f060bb54d1ab4143d1468a3390726900563d9c9848.png" src="../../_images/45683cb7cbb07d71335d41f060bb54d1ab4143d1468a3390726900563d9c9848.png"/>
@@ -686,7 +686,7 @@ Learn Monte Carlo based validation.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f3fd8101d90&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fd8245a9520&gt;
 </pre></div>
 </div>
 <img alt="../../_images/dd0523237c9b088dcdd53a2eea77c0caf74915dfaade723a8ae2048aeb24411e.png" src="../../_images/dd0523237c9b088dcdd53a2eea77c0caf74915dfaade723a8ae2048aeb24411e.png"/>
@@ -751,7 +751,7 @@ Do the same for <code class="docutils literal notranslate"><span class="pre">win
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f3fd81118b0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fd8248812b0&gt;
 </pre></div>
 </div>
 <img alt="../../_images/c49bff1d7e4b63a4d420a1dc07179d59c457af6aa3ec6d765dd50e2bdcf88947.png" src="../../_images/c49bff1d7e4b63a4d420a1dc07179d59c457af6aa3ec6d765dd50e2bdcf88947.png"/>
@@ -1216,12 +1216,12 @@ If no, why not?</p>
 <span class="g g-Whitespace">      </span><span class="mi">9</span>     <span class="n">fall_cold_iac</span><span class="p">,</span> <span class="n">fall_cold_bob</span><span class="p">,</span> <span class="n">radii</span><span class="o">=</span><span class="n">k_radii</span><span class="p">,</span> <span class="n">area</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">edge_correction</span><span class="o">=</span><span class="kc">True</span>
 <span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="p">)</span>
 
-<span class="nn">Cell In[27], line 49,</span> in <span class="ni">ripleys_k_function</span><span class="nt">(points1, points2, radii, area, edge_correction)</span>
-<span class="g g-Whitespace">     </span><span class="mi">47</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n2</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">48</span>     <span class="n">circle</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="n">points1</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="n">dists</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">])</span>
-<span class="ne">---&gt; </span><span class="mi">49</span>     <span class="k">if</span> <span class="n">circle</span><span class="o">.</span><span class="n">area</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">circle</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">square</span><span class="p">)</span><span class="o">.</span><span class="n">area</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">50</span>         <span class="k">continue</span>  <span class="c1"># Avoid division by zero</span>
-<span class="g g-Whitespace">     </span><span class="mi">51</span>     <span class="n">area_correction</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">circle</span><span class="o">.</span><span class="n">area</span> <span class="o">/</span> <span class="n">circle</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">square</span><span class="p">)</span><span class="o">.</span><span class="n">area</span>
+<span class="nn">Cell In[27], line 51,</span> in <span class="ni">ripleys_k_function</span><span class="nt">(points1, points2, radii, area, edge_correction)</span>
+<span class="g g-Whitespace">     </span><span class="mi">49</span>             <span class="k">if</span> <span class="n">circle</span><span class="o">.</span><span class="n">area</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">circle</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">square</span><span class="p">)</span><span class="o">.</span><span class="n">area</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">50</span>                 <span class="k">continue</span>  <span class="c1"># Avoid division by zero</span>
+<span class="ne">---&gt; </span><span class="mi">51</span>             <span class="n">area_correction</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">circle</span><span class="o">.</span><span class="n">area</span> <span class="o">/</span> <span class="n">circle</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">square</span><span class="p">)</span><span class="o">.</span><span class="n">area</span>
+<span class="g g-Whitespace">     </span><span class="mi">53</span> <span class="k">if</span> <span class="n">points1</span> <span class="ow">is</span> <span class="n">points2</span> <span class="ow">or</span> <span class="n">np</span><span class="o">.</span><span class="n">shares_memory</span><span class="p">(</span><span class="n">points1</span><span class="p">,</span> <span class="n">points2</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">54</span>     <span class="n">np</span><span class="o">.</span><span class="n">fill_diagonal</span><span class="p">(</span><span class="n">dists</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)</span>
 
 <span class="nn">File ~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/shapely/decorators.py:173,</span> in <span class="ni">deprecate_positional.&lt;locals&gt;.decorator.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwargs)</span>
 <span class="g g-Whitespace">    </span><span class="mi">171</span> <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
