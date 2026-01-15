@@ -83,3 +83,21 @@ parts:
     title: Image Analysis Collaboratory (IAC)
   - url: https://cite.hms.harvard.edu
     title: Core for Imaging Technology & Education (CITE)
+
+# CONTRIBUTORS
+- caption: Contributors
+  chapters:
+  - url: https://www.linkedin.com/in/federicogasparoli
+    title: Federico Gasparoli, PhD
+  - url: https://www.linkedin.com/in/eva-de-la-serna-b1a69664
+    title: Eva de la Serna, PhD, PhD
+  - url: https://www.linkedin.com/in/rkarmaka/
+    title: Ranit Karmakar, PhD
+  - url: https://www.linkedin.com/in/maria-theiss
+    title: Maria Theiss, PhD
+  - url: https://www.linkedin.com/in/antoineruzette/
+    title: Antoine Ruzette, MSc
+  - url: https://orcid.org/0000-0001-6194-9568
+    title: Max Brambach, PhD
+  - url: https://www.linkedin.com/in/simon-nørrelykke-b709589
+    title: Simon Nørrelykke, PhD
