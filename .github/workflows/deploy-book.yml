@@ -7,6 +7,11 @@ on:
 
   workflow_dispatch:
 
+# Prevent concurrent deploys to gh-pages
+concurrency:
+  group: deploy-gh-pages
+  cancel-in-progress: false
+
 jobs:
   deploy-book:
     runs-on: ubuntu-latest
