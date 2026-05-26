@@ -27,7 +27,7 @@ a[1] = 5
 [31mTypeError[39m                                 Traceback (most recent call last)
 [36mCell[39m[36m [39m[32mIn[34][39m[32m, line 2[39m
 [32m      1[39m a = ([32m1[39m, [32m2[39m, [32m3[39m)
-[32m----> [39m[32m2[39m [43ma[49m[43m[[49m[32;43m1[39;49m[43m][49m = [32m5[39m
+[32m----> [39m[32m2[39m a[[32m1[39m] = [32m5[39m
 
 [31mTypeError[39m: 'tuple' object does not support item assignment
 

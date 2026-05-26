@@ -10,36 +10,41 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+<!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+<noscript>
+<style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+</noscript>
 <!-- Loaded before other Sphinx assets -->
-<link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet"/>
-<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet"/>
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet"/>
-<link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet"/>
-<link as="font" crossorigin="" href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" rel="preload" type="font/woff2"/>
-<link as="font" crossorigin="" href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" rel="preload" type="font/woff2"/>
-<link as="font" crossorigin="" href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" rel="preload" type="font/woff2"/>
+<link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet"/>
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet"/>
 <link href="../../_static/pygments.css?v=03e43079" rel="stylesheet" type="text/css"/>
-<link href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" rel="stylesheet" type="text/css"/>
+<link href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" rel="stylesheet" type="text/css"/>
 <link href="../../_static/togglebutton.css?v=9c3e77be" rel="stylesheet" type="text/css"/>
 <link href="../../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
-<link href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" rel="stylesheet" type="text/css"/>
 <link href="../../_static/sphinx-thebe.css?v=4fa983c6" rel="stylesheet" type="text/css"/>
 <link href="../../_static/sphinx-design.min.css?v=95c83b7e" rel="stylesheet" type="text/css"/>
 <link href="../../_static/styles/custom.css?v=ca608692" rel="stylesheet" type="text/css"/>
+<!-- So that users can add custom icons -->
+<script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
 <!-- Pre-loaded scripts that we'll load fully later -->
-<link as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" rel="preload"/>
-<link as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" rel="preload"/>
-<script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+<link as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" rel="preload"/>
+<link as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" rel="preload"/>
 <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
 <script src="../../_static/doctools.js?v=9a2dae69"></script>
 <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
 <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
 <script src="../../_static/copybutton.js?v=f281be69"></script>
-<script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+<script src="../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
 <script>let toggleHintShow = 'Click to show';</script>
 <script>let toggleHintHide = 'Click to hide';</script>
 <script>let toggleOpenOnPrint = 'true';</script>
-<script src="../../_static/togglebutton.js?v=1ae7504c"></script>
+<script src="../../_static/togglebutton.js?v=b8b12719"></script>
 <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
 <script src="../../_static/design-tabs.js?v=f930bc37"></script>
 <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
@@ -54,25 +59,20 @@
 <link href="pixel_intensity_based_colocalization_manders.html" rel="prev" title="Manders’ Colocalization Coefficients"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="en" name="docsearch:language"/>
+<meta content="" name="docsearch:version"/>
 </head>
 <body data-bs-root-margin="0px 0px -60%" data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-default-mode="" data-offset="180">
 <div class="skip-link d-print-none" id="pst-skip-link"><a href="#main-content">Skip to main content</a></div>
 <div id="pst-scroll-pixel-helper"></div>
 <button class="btn rounded-pill" id="pst-back-to-top" type="button">
 <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-<input class="sidebar-toggle" id="pst-primary-sidebar-checkbox" type="checkbox"/>
-<label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-<input class="sidebar-toggle" id="pst-secondary-sidebar-checkbox" type="checkbox"/>
-<label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-<div class="search-button__wrapper">
-<div class="search-button__overlay"></div>
-<div class="search-button__search-container">
+<dialog id="pst-search-dialog">
 <form action="../../search.html" class="bd-search d-flex align-items-center" method="get">
 <i class="fa-solid fa-magnifying-glass"></i>
-<input aria-label="Search this book..." autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" id="search-input" name="q" placeholder="Search this book..." spellcheck="false" type="search"/>
+<input aria-label="Search this book..." autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" name="q" placeholder="Search this book..." spellcheck="false" type="search"/>
 <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-</div>
+</form>
+</dialog>
 <div class="pst-async-banner-revealer d-none">
 <aside aria-label="Version warning" class="d-none d-print-none" id="bd-header-version-warning"></aside>
 </div>
@@ -80,25 +80,22 @@
 </header>
 <div class="bd-container">
 <div class="bd-container__inner bd-page-width">
-<div class="bd-sidebar-primary bd-sidebar">
+<dialog id="pst-primary-sidebar-modal"></dialog>
+<div class="bd-sidebar-primary bd-sidebar" id="pst-primary-sidebar">
 <div class="sidebar-header-items sidebar-primary__section">
 </div>
 <div class="sidebar-primary-items__start sidebar-primary__section">
 <div class="sidebar-primary-item">
 <a class="navbar-brand logo" href="../../landing-page.html">
 <img alt="BoBiAC Book - Home" class="logo__image only-light" src="../../_static/bobiac-landing-black.png"/>
-<script>document.write(`<img src="../../_static/bobiac-landing-white.png" class="logo__image only-dark" alt="BoBiAC Book - Home"/>`);</script>
+<img alt="BoBiAC Book - Home" class="logo__image only-dark pst-js-only" src="../../_static/bobiac-landing-white.png"/>
 </a></div>
 <div class="sidebar-primary-item">
-<script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button aria-label="Search" class="btn search-button-field search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Search">
+<i class="fa-solid fa-magnifying-glass"></i>
+<span class="search-button__default-text">Search</span>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
 <div class="sidebar-primary-item"><nav aria-label="Main" class="bd-links bd-docs-nav">
 <div class="bd-toc-item navbar-nav active">
 <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -181,15 +178,17 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contributors</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference external" href="https://www.linkedin.com/in/federicogasparoli">Federico Gasparoli, PhD</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://www.linkedin.com/in/eva-de-la-serna-b1a69664">Eva de la Serna, PhD, PhD</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.linkedin.com/in/eva-de-la-serna-b1a69664">Eva de la Serna, PhD</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://orcid.org/0000-0001-6194-9568">Max Brambach, PhD</a></li>
 </ul>
 </div>
 </nav></div>
 </div>
 <div class="sidebar-primary-items__end sidebar-primary__section">
+<div class="sidebar-primary-item">
+<div class="flat" data-ea-manual="true" data-ea-publisher="readthedocs" data-ea-type="readthedocs-sidebar" id="ethical-ad-placement">
+</div></div>
 </div>
-<div id="rtd-footer-container"></div>
 </div>
 <main class="bd-main" id="main-content" role="main">
 <div class="sbt-scroll-pixel-helper"></div>
@@ -210,28 +209,20 @@
 <i class="fab fa-github"></i>
 </span>
 </a>
-<button class="btn btn-sm btn-fullscreen-button" data-bs-placement="bottom" data-bs-toggle="tooltip" onclick="toggleFullScreen()" title="Fullscreen mode">
+<button class="btn btn-sm btn-fullscreen-button pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" onclick="toggleFullScreen()" title="Fullscreen mode">
 <span class="btn__icon-container">
 <i class="fas fa-expand"></i>
 </span>
 </button>
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Toggle secondary sidebar">
+<button aria-label="Color mode" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Light"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Dark"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="System Settings"></i>
+</button>
+<button aria-label="Search" class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Search">
+<i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Toggle secondary sidebar">
 <span class="fa-solid fa-list"></span>
 </button>
 </div></div>
@@ -477,7 +468,7 @@ Learn Monte Carlo based validation.</p>
 <div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold">(</span><span style="color: #008080; text-decoration-color: #008080; font-weight: bold">400</span>, <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">2</span><span style="font-weight: bold">)</span>
 <span style="font-weight: bold">(</span><span style="color: #008080; text-decoration-color: #008080; font-weight: bold">400</span>, <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">2</span><span style="font-weight: bold">)</span>
 </pre>
-</div><img alt="../../_images/ac2300f52c4852623dff5e6411420ec742177179b56ccc78896e8faa697f012e.png" src="../../_images/ac2300f52c4852623dff5e6411420ec742177179b56ccc78896e8faa697f012e.png">
+</div><img alt="../../_images/1105aabab5961afa2b38bda6e8c526ab49d6fa6565854e601b2c966aa2c1ccf5.png" src="../../_images/1105aabab5961afa2b38bda6e8c526ab49d6fa6565854e601b2c966aa2c1ccf5.png">
 </img></div>
 </div>
 <div class="cell docutils container">
@@ -491,7 +482,7 @@ Learn Monte Carlo based validation.</p>
 <div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold">(</span><span style="color: #008080; text-decoration-color: #008080; font-weight: bold">400</span>, <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">2</span><span style="font-weight: bold">)</span>
 <span style="font-weight: bold">(</span><span style="color: #008080; text-decoration-color: #008080; font-weight: bold">400</span>, <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">2</span><span style="font-weight: bold">)</span>
 </pre>
-</div><img alt="../../_images/8f7a19f28cc004a11804ef356799129c362e2ffc4f1d148bbdf64627f7000ff9.png" src="../../_images/8f7a19f28cc004a11804ef356799129c362e2ffc4f1d148bbdf64627f7000ff9.png"/>
+</div><img alt="../../_images/b3ac8b75fada2ab6647f847ced3601aa1c7d55428055b9925b3c087da0be5f81.png" src="../../_images/b3ac8b75fada2ab6647f847ced3601aa1c7d55428055b9925b3c087da0be5f81.png"/>
 </div>
 </div>
 <div class="cell docutils container">
@@ -505,7 +496,7 @@ Learn Monte Carlo based validation.</p>
 <div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold">(</span><span style="color: #008080; text-decoration-color: #008080; font-weight: bold">400</span>, <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">2</span><span style="font-weight: bold">)</span>
 <span style="font-weight: bold">(</span><span style="color: #008080; text-decoration-color: #008080; font-weight: bold">400</span>, <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">2</span><span style="font-weight: bold">)</span>
 </pre>
-</div><img alt="../../_images/3af80ec6ce40712507d30e8371a3404b81e50bb231af7f3084416f035ded6fe1.png" src="../../_images/3af80ec6ce40712507d30e8371a3404b81e50bb231af7f3084416f035ded6fe1.png"/>
+</div><img alt="../../_images/46b0bb0739a685fea3f894d6d3cb86aef8d21cfa648dd25ebb39ff81e952f034.png" src="../../_images/46b0bb0739a685fea3f894d6d3cb86aef8d21cfa648dd25ebb39ff81e952f034.png"/>
 </div>
 </div>
 <div class="cell docutils container">
@@ -519,7 +510,7 @@ Learn Monte Carlo based validation.</p>
 <div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold">(</span><span style="color: #008080; text-decoration-color: #008080; font-weight: bold">400</span>, <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">2</span><span style="font-weight: bold">)</span>
 <span style="font-weight: bold">(</span><span style="color: #008080; text-decoration-color: #008080; font-weight: bold">400</span>, <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">2</span><span style="font-weight: bold">)</span>
 </pre>
-</div><img alt="../../_images/ec54d179d8020dfa41cd478731eb6c5652d4ca859576291e78a98cd2dd0f1143.png" src="../../_images/ec54d179d8020dfa41cd478731eb6c5652d4ca859576291e78a98cd2dd0f1143.png"/>
+</div><img alt="../../_images/ac2578de67dfdad29a71dd9f62bce57541d240fdbe42e45b79b2bdc6a088b388.png" src="../../_images/ac2578de67dfdad29a71dd9f62bce57541d240fdbe42e45b79b2bdc6a088b388.png"/>
 </div>
 </div>
 <div class="cell docutils container">
@@ -533,7 +524,7 @@ Learn Monte Carlo based validation.</p>
 <div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold">(</span><span style="color: #008080; text-decoration-color: #008080; font-weight: bold">400</span>, <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">2</span><span style="font-weight: bold">)</span>
 <span style="font-weight: bold">(</span><span style="color: #008080; text-decoration-color: #008080; font-weight: bold">200</span>, <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">2</span><span style="font-weight: bold">)</span>
 </pre>
-</div><img alt="../../_images/529b209d62d227a19001f694f22b1ff8a85aee69749d34fe74ba2fddc6b06177.png" src="../../_images/529b209d62d227a19001f694f22b1ff8a85aee69749d34fe74ba2fddc6b06177.png"/>
+</div><img alt="../../_images/25e6dd8d9990009b70ee83cf543122b15c3f465e7dd2c912c620f489a2c526df.png" src="../../_images/25e6dd8d9990009b70ee83cf543122b15c3f465e7dd2c912c620f489a2c526df.png"/>
 </div>
 </div>
 <div class="cell docutils container">
@@ -547,7 +538,7 @@ Learn Monte Carlo based validation.</p>
 <div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold">(</span><span style="color: #008080; text-decoration-color: #008080; font-weight: bold">400</span>, <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">2</span><span style="font-weight: bold">)</span>
 <span style="font-weight: bold">(</span><span style="color: #008080; text-decoration-color: #008080; font-weight: bold">400</span>, <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">2</span><span style="font-weight: bold">)</span>
 </pre>
-</div><img alt="../../_images/7c27436a356d3f3272637f777bd10d56ff37585f09b9c079d1520674e2371f9d.png" src="../../_images/7c27436a356d3f3272637f777bd10d56ff37585f09b9c079d1520674e2371f9d.png"/>
+</div><img alt="../../_images/63f5e537a6abbfc9cc9a7b64f40ece02d2f071c6175363be80b7773a5f8dec2f.png" src="../../_images/63f5e537a6abbfc9cc9a7b64f40ece02d2f071c6175363be80b7773a5f8dec2f.png"/>
 </div>
 </div>
 </section>
@@ -632,10 +623,10 @@ Learn Monte Carlo based validation.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f46af29bec0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f6c90c84fb0&gt;
 </pre></div>
 </div>
-<img alt="../../_images/45683cb7cbb07d71335d41f060bb54d1ab4143d1468a3390726900563d9c9848.png" src="../../_images/45683cb7cbb07d71335d41f060bb54d1ab4143d1468a3390726900563d9c9848.png"/>
+<img alt="../../_images/2fde368f8d85e2c6413ac2fa5d4123e3f34c7874950a4f0955646b3f58388875.png" src="../../_images/2fde368f8d85e2c6413ac2fa5d4123e3f34c7874950a4f0955646b3f58388875.png"/>
 </div>
 </div>
 </section>
@@ -686,10 +677,10 @@ Learn Monte Carlo based validation.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f46af489340&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f6c8e979520&gt;
 </pre></div>
 </div>
-<img alt="../../_images/dd0523237c9b088dcdd53a2eea77c0caf74915dfaade723a8ae2048aeb24411e.png" src="../../_images/dd0523237c9b088dcdd53a2eea77c0caf74915dfaade723a8ae2048aeb24411e.png"/>
+<img alt="../../_images/f413bec14116401265f4be4607a7a954a3ed02aa2c766741583a7025997c8eff.png" src="../../_images/f413bec14116401265f4be4607a7a954a3ed02aa2c766741583a7025997c8eff.png"/>
 </div>
 </div>
 </section>
@@ -751,10 +742,10 @@ Do the same for <code class="docutils literal notranslate"><span class="pre">win
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f46af161be0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f6c8c874410&gt;
 </pre></div>
 </div>
-<img alt="../../_images/c49bff1d7e4b63a4d420a1dc07179d59c457af6aa3ec6d765dd50e2bdcf88947.png" src="../../_images/c49bff1d7e4b63a4d420a1dc07179d59c457af6aa3ec6d765dd50e2bdcf88947.png"/>
+<img alt="../../_images/a9c9ff5224bb05f786de3ccb5e747e2bdb3b78f0728d2fa28e9cdc8507697b93.png" src="../../_images/a9c9ff5224bb05f786de3ccb5e747e2bdb3b78f0728d2fa28e9cdc8507697b93.png"/>
 </div>
 </div>
 </section>
@@ -876,7 +867,7 @@ Do the same for <code class="docutils literal notranslate"><span class="pre">win
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/2352a09b84942a7029e2bdbb8f3c9827d7c4ce147294679f2115d3a542ef5ce4.png" src="../../_images/2352a09b84942a7029e2bdbb8f3c9827d7c4ce147294679f2115d3a542ef5ce4.png"/>
+<img alt="../../_images/c7abe6d790a56cdc18158078a7683d90d4f4bd7015d8bbc49113d7d591b266de.png" src="../../_images/c7abe6d790a56cdc18158078a7683d90d4f4bd7015d8bbc49113d7d591b266de.png"/>
 </div>
 </div>
 </section>
@@ -911,7 +902,7 @@ Do the same for <code class="docutils literal notranslate"><span class="pre">win
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/8c5479825d5fcf037c71739cef825d61a819fa6fae271c157100723e1732e770.png" src="../../_images/8c5479825d5fcf037c71739cef825d61a819fa6fae271c157100723e1732e770.png"/>
+<img alt="../../_images/57aeec4ed5d8e01d3c3866169fa16c1526c1636778b3e4c21fb70ba695863fca.png" src="../../_images/57aeec4ed5d8e01d3c3866169fa16c1526c1636778b3e4c21fb70ba695863fca.png"/>
 </div>
 </div>
 <div class="cell docutils container">
@@ -929,7 +920,7 @@ Do the same for <code class="docutils literal notranslate"><span class="pre">win
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/30c245261cf335ed2ae00ba5e8283849d99db2088a4d9499694c897c3246e3b5.png" src="../../_images/30c245261cf335ed2ae00ba5e8283849d99db2088a4d9499694c897c3246e3b5.png"/>
+<img alt="../../_images/600016ffef486181dba21d696ff6d12c6143253054ea48e0aa73533992ba1ca8.png" src="../../_images/600016ffef486181dba21d696ff6d12c6143253054ea48e0aa73533992ba1ca8.png"/>
 </div>
 </div>
 </section>
@@ -1120,7 +1111,7 @@ If no, why not?</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/8abff76c60d6aad08c2a4b0b07039b75d6237c421fc44367128cc8ba01036b92.png" src="../../_images/8abff76c60d6aad08c2a4b0b07039b75d6237c421fc44367128cc8ba01036b92.png"/>
+<img alt="../../_images/ab1982c45244fe3e8c9e8f3c5c366972d0d0054228658cd791455f3046d5560e.png" src="../../_images/ab1982c45244fe3e8c9e8f3c5c366972d0d0054228658cd791455f3046d5560e.png"/>
 </div>
 </div>
 </section>
@@ -1135,7 +1126,7 @@ If no, why not?</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/9385f96bfa0792458b1f7fc730de671a9f554156f91a2f5cc78c712b8bc8659d.png" src="../../_images/9385f96bfa0792458b1f7fc730de671a9f554156f91a2f5cc78c712b8bc8659d.png"/>
+<img alt="../../_images/7cd29fbd34b94f026c86961b099481d4827956bdc805508249e3efaa2d2b2f85.png" src="../../_images/7cd29fbd34b94f026c86961b099481d4827956bdc805508249e3efaa2d2b2f85.png"/>
 </div>
 </div>
 </section>
@@ -1212,16 +1203,17 @@ If no, why not?</p>
 <span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">k_fall_warm_ec</span> <span class="o">=</span> <span class="n">ripleys_k_function</span><span class="p">(</span>
 <span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="n">fall_warm_iac</span><span class="p">,</span> <span class="n">fall_warm_bob</span><span class="p">,</span> <span class="n">radii</span><span class="o">=</span><span class="n">k_radii</span><span class="p">,</span> <span class="n">area</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">edge_correction</span><span class="o">=</span><span class="kc">True</span>
 <span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">k_fall_cold_ec</span> <span class="o">=</span> <span class="n">ripleys_k_function</span><span class="p">(</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span>     <span class="n">fall_cold_iac</span><span class="p">,</span> <span class="n">fall_cold_bob</span><span class="p">,</span> <span class="n">radii</span><span class="o">=</span><span class="n">k_radii</span><span class="p">,</span> <span class="n">area</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">edge_correction</span><span class="o">=</span><span class="kc">True</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> 
 
 <span class="nn">Cell In[27], line 49,</span> in <span class="ni">ripleys_k_function</span><span class="nt">(points1, points2, radii, area, edge_correction)</span>
-<span class="g g-Whitespace">     </span><span class="mi">47</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n2</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">48</span>     <span class="n">circle</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="n">points1</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="n">dists</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">])</span>
-<span class="ne">---&gt; </span><span class="mi">49</span>     <span class="k">if</span> <span class="n">circle</span><span class="o">.</span><span class="n">area</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">circle</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">square</span><span class="p">)</span><span class="o">.</span><span class="n">area</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">50</span>         <span class="k">continue</span>  <span class="c1"># Avoid division by zero</span>
-<span class="g g-Whitespace">     </span><span class="mi">51</span>     <span class="n">area_correction</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">circle</span><span class="o">.</span><span class="n">area</span> <span class="o">/</span> <span class="n">circle</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">square</span><span class="p">)</span><span class="o">.</span><span class="n">area</span>
+<span class="g g-Whitespace">     </span><span class="mi">45</span> 
+<span class="g g-Whitespace">     </span><span class="mi">46</span>         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n1</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">47</span>             <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n2</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">48</span>                 <span class="n">circle</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="n">points1</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="n">dists</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">])</span>
+<span class="ne">---&gt; </span><span class="mi">49</span>                 <span class="k">if</span> <span class="n">circle</span><span class="o">.</span><span class="n">area</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">circle</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">square</span><span class="p">)</span><span class="o">.</span><span class="n">area</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">50</span>                     <span class="k">continue</span>  <span class="c1"># Avoid division by zero</span>
+<span class="g g-Whitespace">     </span><span class="mi">51</span>                 <span class="n">area_correction</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">circle</span><span class="o">.</span><span class="n">area</span> <span class="o">/</span> <span class="n">circle</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">square</span><span class="p">)</span><span class="o">.</span><span class="n">area</span>
+<span class="g g-Whitespace">     </span><span class="mi">52</span> 
 
 <span class="nn">File ~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/shapely/decorators.py:173,</span> in <span class="ni">deprecate_positional.&lt;locals&gt;.decorator.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwargs)</span>
 <span class="g g-Whitespace">    </span><span class="mi">171</span> <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
@@ -1869,12 +1861,12 @@ Think what would be the correct values for the <strong>fall samples</strong>!</p
 </div>
 </footer>
 </div>
-<div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-<div class="sidebar-secondary-item">
-<div class="page-toc tocsection onthispage">
+<dialog id="pst-secondary-sidebar-modal"></dialog>
+<div class="bd-sidebar-secondary bd-toc" id="pst-secondary-sidebar"><div class="sidebar-secondary-items sidebar-secondary__inner">
+<div class="sidebar-secondary-item"><div class="page-toc tocsection onthispage" id="pst-page-navigation-heading-2">
 <i class="fa-solid fa-list"></i> Contents
   </div>
-<nav class="bd-toc-nav page-toc">
+<nav aria-labelledby="pst-page-navigation-heading-2" class="page-toc" id="pst-page-toc-nav">
 <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Object-based colocalization analysis</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#description">Description</a><ul class="visible nav section-nav flex-column">
@@ -1994,8 +1986,8 @@ All content is licensed under <a href="https://creativecommons.org/licenses/by/4
 </div>
 </div>
 <!-- Scripts loaded after <body> so the DOM is not blocked -->
-<script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script defer="" src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer="" src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 <footer class="bd-footer">
 </footer>
 </body>
