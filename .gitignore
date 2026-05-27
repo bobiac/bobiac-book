@@ -3,5 +3,6 @@
 .ipynb_checkpoints
 # prevent from adding the _build directory
 _build
+.jupyter_cache
 uv.lock
 __pycache__/
