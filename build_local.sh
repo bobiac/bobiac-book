@@ -34,7 +34,7 @@ fi
 
 # Build the book
 echo "🔧 Building Jupyter Book with Sphinx..."
-python -m sphinx -a . -b html _build/html
+python -m sphinx . -b html _build/html
 echo "📘 Book built successfully at _build/html/"
 
 # update notebook html styles
@@ -53,23 +53,22 @@ for folder in "${folders[@]}"; do
   for notebook in $(find "$folder" -name "*.ipynb"); do
     rel_path="${notebook#$folder/}"  # remove folder prefix dynamically
     notebook_teacher_path="_build/html/notebooks_teacher/$rel_path"
-    notebook_path="_build/html/notebooks/$rel_path" 
+    notebook_path="_build/html/notebooks/$rel_path"
     colab_path="_build/html/colab_notebooks/$rel_path"
 
-    notebook_teacher_dir=$(dirname "$notebook_teacher_path")
-    notebook_dir=$(dirname "$notebook_path")
-    colab_dir=$(dirname "$colab_path")
-
-    mkdir -p "$notebook_teacher_dir"
-    mkdir -p "$notebook_dir"
-    mkdir -p "$colab_dir"
+    mkdir -p "$(dirname "$notebook_teacher_path")"
+    mkdir -p "$(dirname "$notebook_path")"
+    mkdir -p "$(dirname "$colab_path")"
 
     echo "📓 Processing $folder/$rel_path..."
-    python "$(dirname "$0")/update_notebooks.py" "$notebook" "$notebook_teacher_path" true
-    python "$(dirname "$0")/update_notebooks.py" "$notebook" "$notebook_path" false
-    python "$(dirname "$0")/update_notebooks_colab.py" "$notebook" "$colab_path" true
+    (
+      python "$(dirname "$0")/update_notebooks.py" "$notebook" "$notebook_teacher_path" true
+      python "$(dirname "$0")/update_notebooks.py" "$notebook" "$notebook_path" false
+      python "$(dirname "$0")/update_notebooks_colab.py" "$notebook" "$colab_path" true
+    ) &
   done
 done
+wait
 
 echo "✅ Updated notebooks copied to _build/html/notebooks_teacher/"
 echo "✅ Updated notebooks copied to _build/html/notebooks/"

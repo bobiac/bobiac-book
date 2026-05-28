@@ -63,10 +63,11 @@ myst_enable_extensions = [
 myst_url_schemes = ["mailto", "http", "https"]
 
 nb_execution_allow_errors = False
+nb_execution_cache_path = ".jupyter_cache"
 nb_execution_in_temp = False
-nb_execution_mode = "force"
-# nb_execution_mode = "cache"
-nb_execution_timeout = 30
+# nb_execution_mode = "force"
+nb_execution_mode = "cache"
+nb_execution_timeout = 120
 nb_output_stderr = "show"
 
 numfig = True
