@@ -393,217 +393,95 @@
 <section id="run-cellpose">
 <h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Run Cellpose<a class="headerlink" href="#run-cellpose" title="Link to this heading">#</a></h2>
 <p>After initializing the model, we can run it on the image using the <code class="docutils literal notranslate"><span class="pre">model.eval()</span></code> method (see dropdown below for parameters details).</p>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">CellposeSam <code class="docutils literal notranslate"><span class="pre">model.eval()</span></code> Parameters</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg aria-hidden="true" class="sd-octicon sd-octicon-chevron-right" height="1.5em" version="1.1" viewbox="0 0 24 24" width="1.5em"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span>
-    <span class="n">x</span><span class="p">,</span>
-    <span class="n">channel_axis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">invert</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-    <span class="n">diameter</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">flow_threshold</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span>
-    <span class="n">cellprob_threshold</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
-    <span class="n">min_size</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span>
-    <span class="n">max_size_fraction</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span>
-    <span class="n">niter</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">compute_masks</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">batch_size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
-    <span class="n">resample</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">bsize</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span>
-    <span class="n">tile_overlap</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
-    <span class="n">augment</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-    <span class="n">do_3D</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-    <span class="n">z_axis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">anisotropy</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">flow3D_smooth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-    <span class="n">stitch_threshold</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-<p class="sd-card-text"><strong>Input</strong></p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p class="sd-card-text">Parameter</p></th>
-<th class="head"><p class="sd-card-text">Default</p></th>
-<th class="head"><p class="sd-card-text">Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">x</span></code></p></td>
-<td><p class="sd-card-text">—</p></td>
-<td><p class="sd-card-text">A single image or list of images (2D/3D/4D). For <code class="docutils literal notranslate"><span class="pre">cpsam</span></code>, up to 3 channels are used.</p></td>
-</tr>
-<tr class="row-odd"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">channel_axis</span></code></p></td>
-<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
-<td><p class="sd-card-text">Which axis of <code class="docutils literal notranslate"><span class="pre">x</span></code> is the channel axis. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, Cellpose auto-detects it.</p></td>
-</tr>
-</tbody>
+<details>
+<summary><b>CellposeSam <code>model.eval()</code> Parameters</b></summary>
+<br/>
+<pre><code>model.eval(
+    x,
+    channel_axis=None,
+    normalize=True,
+    invert=False,
+    diameter=None,
+    flow_threshold=0.4,
+    cellprob_threshold=0.0,
+    min_size=15,
+    max_size_fraction=0.4,
+    niter=None,
+    compute_masks=True,
+    batch_size=8,
+    resample=True,
+    bsize=256,
+    tile_overlap=0.1,
+    augment=False,
+    do_3D=False,
+    z_axis=None,
+    anisotropy=None,
+    flow3D_smooth=0,
+    stitch_threshold=0.0,
+)</code></pre>
+<p><b>Input</b></p>
+<table>
+<tr><th>Parameter</th><th>Default</th><th>Description</th></tr>
+<tr><td><code>x</code></td><td>—</td><td>A single image or list of images (2D/3D/4D). For <code>cpsam</code>, up to 3 channels are used.</td></tr>
+<tr><td><code>channel_axis</code></td><td><code>None</code></td><td>Which axis of <code>x</code> is the channel axis. If <code>None</code>, Cellpose auto-detects it.</td></tr>
 </table>
-</div>
-<p class="sd-card-text"><strong>Preprocessing</strong></p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p class="sd-card-text">Parameter</p></th>
-<th class="head"><p class="sd-card-text">Default</p></th>
-<th class="head"><p class="sd-card-text">Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">normalize</span></code></p></td>
-<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
-<td><p class="sd-card-text">Normalize intensities to 0–1 using 1st/99th percentile. Pass <code class="docutils literal notranslate"><span class="pre">False</span></code> to skip, or a dict for fine-grained control (see below).</p></td>
-</tr>
-<tr class="row-odd"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">invert</span></code></p></td>
-<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
-<td><p class="sd-card-text">Invert pixel intensities before running the network. Useful for brightfield images where cells are dark on a bright background.</p></td>
-</tr>
-<tr class="row-even"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">diameter</span></code></p></td>
-<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
-<td><p class="sd-card-text">Expected cell diameter in pixels. Used to rescale the image so cells appear ~30 px wide to the model. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, no rescaling is applied.</p></td>
-</tr>
-</tbody>
+<p><b>Preprocessing</b></p>
+<table>
+<tr><th>Parameter</th><th>Default</th><th>Description</th></tr>
+<tr><td><code>normalize</code></td><td><code>True</code></td><td>Normalize intensities to 0–1 using 1st/99th percentile. Pass <code>False</code> to skip, or a dict for fine-grained control (see below).</td></tr>
+<tr><td><code>invert</code></td><td><code>False</code></td><td>Invert pixel intensities before running the network. Useful for brightfield images where cells are dark on a bright background.</td></tr>
+<tr><td><code>diameter</code></td><td><code>None</code></td><td>Expected cell diameter in pixels. Used to rescale the image so cells appear ~30 px wide to the model. If <code>None</code>, no rescaling is applied.</td></tr>
 </table>
-</div>
-<p class="sd-card-text">When passing <code class="docutils literal notranslate"><span class="pre">normalize</span></code> as a dict, all keys are optional and can be combined:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Tile-based normalization: useful when illumination is uneven across the image.</span>
-<span class="c1"># The image is split into blocks of ~100 px and each block is normalized independently.</span>
-<span class="n">normalize</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"tile_norm_blocksize"</span><span class="p">:</span> <span class="mi">100</span><span class="p">}</span>
+<p>When passing <code>normalize</code> as a dict, all keys are optional and can be combined:</p>
+<pre><code># Tile-based normalization: useful when illumination is uneven across the image.
+normalize = {"tile_norm_blocksize": 100}
 
-<span class="c1"># Fixed intensity range: skip percentile computation and clamp to known values.</span>
-<span class="n">normalize</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"lowhigh"</span><span class="p">:</span> <span class="p">[</span><span class="mi">200</span><span class="p">,</span> <span class="mi">4000</span><span class="p">]}</span>
+# Fixed intensity range: skip percentile computation and clamp to known values.
+normalize = {"lowhigh": [200, 4000]}
 
-<span class="c1"># Custom percentiles instead of the default 1st/99th.</span>
-<span class="n">normalize</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"percentile"</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">95</span><span class="p">]}</span>
+# Custom percentiles instead of the default 1st/99th.
+normalize = {"percentile": [5, 95]}
 
-<span class="c1"># Sharpen before segmenting (value ≈ 1/4 to 1/8 of cell diameter in px).</span>
-<span class="n">normalize</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"sharpen"</span><span class="p">:</span> <span class="mi">5</span><span class="p">}</span>
+# Sharpen before segmenting (value ≈ 1/4 to 1/8 of cell diameter in px).
+normalize = {"sharpen": 5}
 
-<span class="c1"># Keys can be combined — e.g. tile normalization + custom percentiles:</span>
-<span class="n">normalize</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"tile_norm_blocksize"</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="s2">"percentile"</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">98</span><span class="p">]}</span>
-</pre></div>
-</div>
-<p class="sd-card-text"><strong>Segmentation quality</strong></p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p class="sd-card-text">Parameter</p></th>
-<th class="head"><p class="sd-card-text">Default</p></th>
-<th class="head"><p class="sd-card-text">Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">flow_threshold</span></code></p></td>
-<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">0.4</span></code></p></td>
-<td><p class="sd-card-text">Maximum allowed flow error for a mask to be kept. <strong>Increase</strong> to recover more masks (or set to <code class="docutils literal notranslate"><span class="pre">0.0</span></code> to keep all); <strong>decrease</strong> to discard ill-shaped masks. Not used in 3D.</p></td>
-</tr>
-<tr class="row-odd"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">cellprob_threshold</span></code></p></td>
-<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></td>
-<td><p class="sd-card-text">Minimum cell probability for a pixel to be included in a mask. <strong>Decrease</strong> to find more/larger masks; <strong>increase</strong> to suppress dim or spurious detections.</p></td>
-</tr>
-<tr class="row-even"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">min_size</span></code></p></td>
-<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">15</span></code></p></td>
-<td><p class="sd-card-text">Minimum mask area in pixels. Smaller objects are discarded.</p></td>
-</tr>
-<tr class="row-odd"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">max_size_fraction</span></code></p></td>
-<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">0.4</span></code></p></td>
-<td><p class="sd-card-text">Masks larger than this fraction of the total image area are removed.</p></td>
-</tr>
-<tr class="row-even"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">niter</span></code></p></td>
-<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
-<td><p class="sd-card-text">Number of iterations for the flow integration step. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, set automatically proportional to <code class="docutils literal notranslate"><span class="pre">diameter</span></code>.</p></td>
-</tr>
-<tr class="row-odd"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">compute_masks</span></code></p></td>
-<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
-<td><p class="sd-card-text">If <code class="docutils literal notranslate"><span class="pre">False</span></code>, skips flow integration and returns empty masks (useful to get flows/styles only).</p></td>
-</tr>
-</tbody>
+# Keys can be combined:
+normalize = {"tile_norm_blocksize": 100, "percentile": [2, 98]}</code></pre>
+<p><b>Segmentation quality</b></p>
+<table>
+<tr><th>Parameter</th><th>Default</th><th>Description</th></tr>
+<tr><td><code>flow_threshold</code></td><td><code>0.4</code></td><td>Maximum allowed flow error for a mask to be kept. <b>Increase</b> to recover more masks (or set to <code>0.0</code> to keep all); <b>decrease</b> to discard ill-shaped masks. Not used in 3D.</td></tr>
+<tr><td><code>cellprob_threshold</code></td><td><code>0.0</code></td><td>Minimum cell probability for a pixel to be included in a mask. <b>Decrease</b> to find more/larger masks; <b>increase</b> to suppress dim or spurious detections.</td></tr>
+<tr><td><code>min_size</code></td><td><code>15</code></td><td>Minimum mask area in pixels. Smaller objects are discarded.</td></tr>
+<tr><td><code>max_size_fraction</code></td><td><code>0.4</code></td><td>Masks larger than this fraction of the total image area are removed.</td></tr>
+<tr><td><code>niter</code></td><td><code>None</code></td><td>Number of iterations for the flow integration step. If <code>None</code>, set automatically proportional to <code>diameter</code>.</td></tr>
+<tr><td><code>compute_masks</code></td><td><code>True</code></td><td>If <code>False</code>, skips flow integration and returns empty masks (useful to get flows/styles only).</td></tr>
 </table>
-</div>
-<p class="sd-card-text"><strong>Performance</strong></p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p class="sd-card-text">Parameter</p></th>
-<th class="head"><p class="sd-card-text">Default</p></th>
-<th class="head"><p class="sd-card-text">Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">batch_size</span></code></p></td>
-<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">8</span></code></p></td>
-<td><p class="sd-card-text">Number of tiles processed per GPU forward pass. Increase for faster throughput (uses more GPU memory); decrease if you hit out-of-memory errors. Tile size is defined by <code class="docutils literal notranslate"><span class="pre">bsize</span></code>.</p></td>
-</tr>
-<tr class="row-odd"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">resample</span></code></p></td>
-<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
-<td><p class="sd-card-text">After the network runs on rescaled tiles, upsample the flow fields back to the original image resolution before tracing cell boundaries. Gives sharper, more precise outlines — especially when <code class="docutils literal notranslate"><span class="pre">diameter</span></code> causes strong downscaling. Disable to speed up processing at the cost of boundary accuracy.</p></td>
-</tr>
-<tr class="row-even"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">bsize</span></code></p></td>
-<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">256</span></code></p></td>
-<td><p class="sd-card-text">Size of each tile in pixels (<code class="docutils literal notranslate"><span class="pre">bsize</span> <span class="pre">×</span> <span class="pre">bsize</span></code>). The model was trained on 256×256 tiles — changing this degrades results. Leave at default unless you have a specific reason.</p></td>
-</tr>
-<tr class="row-odd"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">tile_overlap</span></code></p></td>
-<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">0.1</span></code></p></td>
-<td><p class="sd-card-text">Each tile overlaps its neighbors by this fraction. Overlapping regions are averaged, which smooths discontinuities at tile edges. Increase if you see artifacts along grid lines (e.g. for very large cells that span multiple tiles).</p></td>
-</tr>
-<tr class="row-even"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">augment</span></code></p></td>
-<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
-<td><p class="sd-card-text">Run each tile also with horizontal and vertical flips, then average the results. Slightly more robust at tile boundaries but roughly doubles computation time.</p></td>
-</tr>
-</tbody>
+<p><b>Performance</b></p>
+<table>
+<tr><th>Parameter</th><th>Default</th><th>Description</th></tr>
+<tr><td><code>batch_size</code></td><td><code>8</code></td><td>Number of tiles processed per GPU forward pass. Increase for faster throughput (uses more GPU memory); decrease if you hit out-of-memory errors. Tile size is defined by <code>bsize</code>.</td></tr>
+<tr><td><code>resample</code></td><td><code>True</code></td><td>After the network runs on rescaled tiles, upsample the flow fields back to the original image resolution before tracing cell boundaries. Gives sharper, more precise outlines — especially when <code>diameter</code> causes strong downscaling. Disable to speed up processing at the cost of boundary accuracy.</td></tr>
+<tr><td><code>bsize</code></td><td><code>256</code></td><td>Size of each tile in pixels (<code>bsize × bsize</code>). The model was trained on 256×256 tiles — changing this degrades results. Leave at default unless you have a specific reason.</td></tr>
+<tr><td><code>tile_overlap</code></td><td><code>0.1</code></td><td>Each tile overlaps its neighbors by this fraction. Overlapping regions are averaged, which smooths discontinuities at tile edges. Increase if you see artifacts along grid lines (e.g. for very large cells that span multiple tiles).</td></tr>
+<tr><td><code>augment</code></td><td><code>False</code></td><td>Run each tile also with horizontal and vertical flips, then average the results. Slightly more robust at tile boundaries but roughly doubles computation time.</td></tr>
 </table>
-</div>
-<p class="sd-card-text"><strong>3D segmentation</strong></p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p class="sd-card-text">Parameter</p></th>
-<th class="head"><p class="sd-card-text">Default</p></th>
-<th class="head"><p class="sd-card-text">Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">do_3D</span></code></p></td>
-<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
-<td><p class="sd-card-text">Set to <code class="docutils literal notranslate"><span class="pre">True</span></code> to run full 3D segmentation on a Z-stack.</p></td>
-</tr>
-<tr class="row-odd"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">z_axis</span></code></p></td>
-<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
-<td><p class="sd-card-text">Which axis is the Z axis (for 3D images). If <code class="docutils literal notranslate"><span class="pre">None</span></code>, auto-detected.</p></td>
-</tr>
-<tr class="row-even"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">anisotropy</span></code></p></td>
-<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
-<td><p class="sd-card-text">Ratio of the Z pixel size to the XY pixel size (<code class="docutils literal notranslate"><span class="pre">Z_pixel_size</span> <span class="pre">/</span> <span class="pre">XY_pixel_size</span></code>). Used to rescale the Z axis so voxels appear isotropic to the model. For example, if your Z step is 2 µm and your XY pixel size is 0.5 µm, set <code class="docutils literal notranslate"><span class="pre">anisotropy=4.0</span></code>. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, voxels are assumed to be isotropic.</p></td>
-</tr>
-<tr class="row-odd"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">flow3D_smooth</span></code></p></td>
-<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-<td><p class="sd-card-text">Smooth 3D flows with a Gaussian filter of this stddev. Helps reduce Z-fragmentation and ring artifacts. Can be a list <code class="docutils literal notranslate"><span class="pre">[z,</span> <span class="pre">y,</span> <span class="pre">x]</span></code> for axis-independent smoothing.</p></td>
-</tr>
-<tr class="row-even"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">stitch_threshold</span></code></p></td>
-<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></td>
-<td><p class="sd-card-text">If <code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">do_3D=False</span></code>, stitch 2D masks across Z slices into a 3D volume.</p></td>
-</tr>
-</tbody>
+<p><b>3D segmentation</b></p>
+<table>
+<tr><th>Parameter</th><th>Default</th><th>Description</th></tr>
+<tr><td><code>do_3D</code></td><td><code>False</code></td><td>Set to <code>True</code> to run full 3D segmentation on a Z-stack.</td></tr>
+<tr><td><code>z_axis</code></td><td><code>None</code></td><td>Which axis is the Z axis (for 3D images). If <code>None</code>, auto-detected.</td></tr>
+<tr><td><code>anisotropy</code></td><td><code>None</code></td><td>Ratio of the Z pixel size to the XY pixel size (<code>Z_pixel_size / XY_pixel_size</code>). Used to rescale the Z axis so voxels appear isotropic to the model. For example, if your Z step is 2 µm and your XY pixel size is 0.5 µm, set <code>anisotropy=4.0</code>. If <code>None</code>, voxels are assumed to be isotropic.</td></tr>
+<tr><td><code>flow3D_smooth</code></td><td><code>0</code></td><td>Smooth 3D flows with a Gaussian filter of this stddev. Helps reduce Z-fragmentation and ring artifacts. Can be a list <code>[z, y, x]</code> for axis-independent smoothing.</td></tr>
+<tr><td><code>stitch_threshold</code></td><td><code>0.0</code></td><td>If <code>&gt; 0</code> and <code>do_3D=False</code>, stitch 2D masks across Z slices into a 3D volume.</td></tr>
 </table>
-</div>
-<p class="sd-card-text"><strong>Returns</strong></p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p class="sd-card-text">Output</p></th>
-<th class="head"><p class="sd-card-text">Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">masks</span></code></p></td>
-<td><p class="sd-card-text">2D label array (or list of them). <code class="docutils literal notranslate"><span class="pre">0</span></code> = background; <code class="docutils literal notranslate"><span class="pre">1,</span> <span class="pre">2,</span> <span class="pre">…</span></code> = individual cell IDs.</p></td>
-</tr>
-<tr class="row-odd"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">flows</span></code></p></td>
-<td><p class="sd-card-text">List of flow outputs per image: <code class="docutils literal notranslate"><span class="pre">flows[0]</span></code> = RGB flow visualization; <code class="docutils literal notranslate"><span class="pre">flows[1]</span></code> = XY flow vectors; <code class="docutils literal notranslate"><span class="pre">flows[2]</span></code> = cell probability map.</p></td>
-</tr>
-<tr class="row-even"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">styles</span></code></p></td>
-<td><p class="sd-card-text">Style vectors (legacy, all zeros for <code class="docutils literal notranslate"><span class="pre">cpsam</span></code>).</p></td>
-</tr>
-</tbody>
+<p><b>Returns</b></p>
+<table>
+<tr><th>Output</th><th>Description</th></tr>
+<tr><td><code>masks</code></td><td>2D label array (or list of them). <code>0</code> = background; <code>1, 2, …</code> = individual cell IDs.</td></tr>
+<tr><td><code>flows</code></td><td>List of flow outputs per image: <code>flows[0]</code> = RGB flow visualization; <code>flows[1]</code> = XY flow vectors; <code>flows[2]</code> = cell probability map.</td></tr>
+<tr><td><code>styles</code></td><td>Style vectors (legacy, all zeros for <code>cpsam</code>).</td></tr>
 </table>
-</div>
-</div>
 </details><div class="cell tag_skip-execution tag_teacher docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">masks</span><span class="p">,</span> <span class="n">flows</span><span class="p">,</span> <span class="n">styles</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
