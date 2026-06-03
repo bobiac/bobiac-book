@@ -65,12 +65,14 @@ def convert_to_colab_notebook(input_path: str | Path, output_path: str | Path) -
                     if "matplotlib" not in cell.source:
                         cell.source += "\n%pip install matplotlib"
 
-        # comment out any cell that uses ndv
-        if cell.cell_type == "code" and "ndv" in cell.source:
+        # comment out any line that uses ndv or jupyter-rfb (not supported in Colab)
+        if cell.cell_type == "code" and (
+            "ndv" in cell.source or "jupyter-rfb" in cell.source
+        ):
             lines = cell.source.splitlines()
             updated_lines = []
             for line in lines:
-                if "ndv" in line:
+                if "ndv" in line or "jupyter-rfb" in line:
                     updated_lines.append(f"# {line}")
                 else:
                     updated_lines.append(line)
