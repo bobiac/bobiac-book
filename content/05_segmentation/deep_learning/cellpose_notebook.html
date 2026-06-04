@@ -289,8 +289,43 @@
 <p>In this section, we’ll learn how to use <strong>Cellpose</strong>, a powerful deep learning tool for cell segmentation, works on a wide variety of microscopy images and doesn’t require retraining for many common use cases.</p>
 <p>In this notebook, we’ll see how to run Cellpose on single images or on a folder of images, and how to visualize and save the results.</p>
 <p class="alert alert alert-info">
-<strong>💡 Tip:</strong> If you're not using a GPU (or are on a Mac with Apple Silicon), we recommend running this notebook on <a href="https://colab.research.google.com/github/bobiac/bobiac-book/blob/gh-pages/colab_notebooks/05_segmentation/deep_learning/cellpose_notebook_colab.ipynb" target="_blank"> Google Colab</a> for faster performance.
-</p></section>
+<strong>💡 Tip:</strong> Cellpose runs significantly faster on a GPU. It supports both NVIDIA GPUs (CUDA) and Apple Silicon (MPS). If you don't have either, we recommend running this notebook on <a href="https://colab.research.google.com/github/bobiac/bobiac-book/blob/gh-pages/colab_notebooks/05_segmentation/deep_learning/cellpose_notebook_colab.ipynb" target="_blank"> Google Colab</a> for faster performance.
+</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">NVIDIA GPU (CUDA)</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg aria-hidden="true" class="sd-octicon sd-octicon-chevron-right" height="1.5em" version="1.1" viewbox="0 0 24 24" width="1.5em"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">In order to use Cellpose with an NVIDIA GPU:</p>
+<ol class="arabic simple">
+<li><p class="sd-card-text">you need to have the <a class="reference external" href="https://www.nvidia.com/en-us/drivers/">NVIDIA drivers</a> installed on your system.</p></li>
+<li><p class="sd-card-text">you can run <code class="docutils literal notranslate"><span class="pre">nvidia-smi</span></code> in the terminal to check your CUDA version (shown in the top-right of the output, e.g. <code class="docutils literal notranslate"><span class="pre">CUDA</span> <span class="pre">Version:</span> <span class="pre">13.0.0</span></code>).</p></li>
+<li><p class="sd-card-text">update the <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">///</span> <span class="pre">script</span></code> block at the top of this notebook to install the appropriate version of <a class="reference external" href="https://pytorch.org/get-started/locally/">PyTorch with CUDA support</a> (replace <code class="docutils literal notranslate"><span class="pre">cu130</span></code> with your CUDA version):</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="c1"># /// script</span>
+    <span class="c1"># requires-python = "&gt;=3.12"</span>
+    <span class="c1"># dependencies = [</span>
+    <span class="c1">#     "matplotlib",</span>
+    <span class="c1">#     "cellpose",</span>
+    <span class="c1">#     "tqdm",</span>
+    <span class="c1">#     "torch",</span>
+    <span class="c1">#     "torchvision",</span>
+    <span class="c1"># ]</span>
+    <span class="c1">#</span>
+    <span class="c1"># [tool.uv.sources]</span>
+    <span class="c1"># torch = { index = "pytorch-cu130" }</span>
+    <span class="c1"># torchvision = { index = "pytorch-cu130" }</span>
+    <span class="c1">#</span>
+    <span class="c1"># [[tool.uv.index]]</span>
+    <span class="c1"># name = "pytorch-cu130"</span>
+    <span class="c1"># url = "https://download.pytorch.org/whl/cu130"</span>
+    <span class="c1"># explicit = true</span>
+    <span class="c1"># ///</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p class="sd-card-text">re-run the notebook using <code class="docutils literal notranslate"><span class="pre">juv</span> <span class="pre">run</span></code> (or <code class="docutils literal notranslate"><span class="pre">uvx</span> <span class="pre">juv</span> <span class="pre">run</span></code>).</p></li>
+</ol>
+</div>
+</details></section>
 <section id="import-libraries">
 <h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Import Libraries<a class="headerlink" href="#import-libraries" title="Link to this heading">#</a></h2>
 <div class="cell tag_teacher docutils container">
