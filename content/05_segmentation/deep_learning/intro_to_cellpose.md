@@ -4,12 +4,6 @@
 
 At its core, **Cellpose** uses a **pretrained deep neural network** to segment cells based on learned features. It supports both **2D** and **3D datasets**, and can handle a variety of **morphologies**, including nuclei, cytoplasm, whole cells, and irregular structures. Users can also **train custom models** using their own data if the pretrained model doesn't fit their needs.
 
-<div align="center">
-    <img src="https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41592-020-01018-x/MediaObjects/41592_2020_1018_Fig1_HTML.png?as=webp" alt="Cellpose Flow Fields" width="600">
-</div>
-
-<br>
-
 The project is well-supported with **documentation, tutorials, and example datasets**, all available on the [official website](https://www.cellpose.org) and [GitHub repository](https://github.com/MouseLand/cellpose).
 
 ## Download and Install Cellpose
@@ -93,4 +87,4 @@ uvx juv run path/to/cellpose_notebook.ipynb # (or simply juv run cellpose_notebo
 
 ## What's Next?
 
-In the next sections, we will briefly demonstrate how to use Cellpose through the GUI] and then focus more on how to use [Cellpose in scripts and pipelines](cellpose_notebook.ipynb) to automate the segmentation process on multiple images. We will also show how to [train a Cellpose custom models](cellpose_retraining_colab.ipynb) if the pretrained model does not fit your specific needs.
+In the next sections, we will briefly demonstrate how to use Cellpose through the GUI and then focus more on how to use [Cellpose in scripts and pipelines](cellpose_notebook.ipynb) to automate the segmentation process on multiple images. We will also show how to [train a Cellpose custom models](cellpose_retraining_colab.ipynb) if the pretrained model does not fit your specific needs.

@@ -92,10 +92,10 @@ these are only relevant in the context of using `uv` for project management.
 If you are already familiar with `conda`, here is a quick translation table to
 help you understand how `uv` commands map to `conda` commands:
 
-| <span style="display: inline-block; width:235px;">`uv` command</span> | <span style="display: inline-block; width:140px;">`conda` equivalent</span>  | Description |
+| <span style="display: inline-block; width:245px;">`uv` command</span> | <span style="display: inline-block; width:140px;">`conda` equivalent</span>  | Description |
 | -------- | ------------------ | ----------- |
 | **`uv venv`** | **`conda create`** | Create a new env |
-| **`source .venv/bin/activate`**<br>**`.venv\Scripts\activate`** | **`conda activate`** | Activate the virtual environment in the path `.venv` |
+| **<i class="fab fa-apple"></i> `source .venv/bin/activate`**<br> <i class="fab fa-windows"></i> **`.venv\Scripts\activate`** | **`conda activate`** | Activate the virtual environment in the path `.venv` |
 | **`uv pip install`** | **`conda install`** | Install a package into the env |
 | **`uv pip uninstall`** | **`conda remove`** | Remove a package from the env |
 | **`uv pip list`** | **`conda list`** | List all packages in the env |

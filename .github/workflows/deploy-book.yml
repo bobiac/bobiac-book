@@ -43,6 +43,24 @@ jobs:
           export DISPLAY=:99
           glxinfo | grep "OpenGL version"
 
+      # Cache uv dependencies to avoid re-downloading on every push
+      - name: Cache uv dependencies
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/uv
+            .venv
+          key: uv-${{ runner.os }}-${{ hashFiles('uv.lock') }}
+          restore-keys: uv-${{ runner.os }}-
+
+      # Cache Jupyter execution outputs to skip re-running unchanged notebooks
+      - name: Cache Jupyter execution cache
+        uses: actions/cache@v4
+        with:
+          path: .jupyter_cache
+          key: jupyter-cache-${{ runner.os }}-${{ github.sha }}
+          restore-keys: jupyter-cache-${{ runner.os }}-
+
       # Install Python dependencies with uv
       - name: Install dependencies
         run: uv sync
