@@ -19,15 +19,15 @@ The project is well-supported with **documentation, tutorials, and example datas
 
 Below are the instructions to install Cellpose using [`uv`](https://docs.astral.sh/uv/).
 
-<p class="alert alert-warning">
-    <strong>Note:</strong> If you want to use latest CellposeSAM model, make sure to run it using GPU or it will be very slow. If you have an Apple Silicon Mac, you can take advantage of the built-in GPU.
-</p>
-
 You can use `uv` to use/install Cellpose in three ways:
 
 1. **Direct execution**: Use `uv` to automatically handle environment creation and run the GUI directly
 2. **Manual environment setup**: Create a virtual environment first, then install Cellpose within that environment
 3. **Jupyter Notebook Integration**: Use `uvx juv` with the Jupyter notebooks from this course to run the Cellpose notebooks directly in the browser
+
+<p class="alert alert-warning">
+    <strong>⚠️ Note:</strong> If you want to use latest CellposeSAM model, make sure to run it using GPU or it will be very slow. If you have an Apple Silicon Mac, you can take advantage of the built-in GPU. See the instructions below for more details on how to run Cellpose with GPU support.
+</p>
 
 ### 1. Direct Execution with uv
 
@@ -36,6 +36,20 @@ By simply running the command below, `uv` will create a virtual environment, ins
 ```bash
 uvx "cellpose[gui]"
 ```
+
+:::{dropdown} NVIDIA GPU (CUDA - Windows/Linux)
+
+To run Cellpose with an NVIDIA GPU:
+
+1. you need to have the [NVIDIA drivers](https://www.nvidia.com/en-us/drivers/) installed on your system.
+2. you can run `nvidia-smi` in the terminal to check your CUDA version (shown in the top-right of the output, e.g. `CUDA Version: 13.0.0`).
+3. run the following command, replacing `cu130` with your CUDA version. The `--index-strategy unsafe-best-match` flag is needed so that `uv` resolves `cellpose` itself from PyPI rather than from the PyTorch index:
+
+```bash
+uvx --index-strategy unsafe-best-match --with torch --with torchvision --index https://download.pytorch.org/whl/cu130 "cellpose[gui]"
+```
+
+:::
 
 ### 2. Manual Environment Setup
 
@@ -76,6 +90,20 @@ And then, to launch the GUI:
 python -m cellpose # (or simply cellpose)
 ```
 
+:::{dropdown} NVIDIA GPU (CUDA - Windows/Linux)
+
+To use Cellpose with an NVIDIA GPU in your virtual environment:
+
+1. you need to have the [NVIDIA drivers](https://www.nvidia.com/en-us/drivers/) installed on your system.
+2. you can run `nvidia-smi` in the terminal to check your CUDA version (shown in the top-right of the output, e.g. `CUDA Version: 13.0.0`).
+3. after installing cellpose as described above, install `torch` and `torchvision` with CUDA support, replacing `cu130` with your CUDA version:
+
+```bash
+uv pip install torch torchvision --index-url https://download.pytorch.org/whl/cu130
+```
+
+:::
+
 ### 3. Jupyter Notebook Integration
 
 To run for example the [Cellpose Notebook](cellpose_notebook.ipynb) locally in your browser, you can use the following command:
@@ -84,6 +112,39 @@ To run for example the [Cellpose Notebook](cellpose_notebook.ipynb) locally in y
 # for the cellpose notebook
 uvx juv run path/to/cellpose_notebook.ipynb # (or simply juv run cellpose_notebook.ipynb if you have the tool)
 ```
+
+:::{dropdown} NVIDIA GPU (CUDA - Windows/Linux)
+
+In order to use Cellpose in the notebooks with an NVIDIA GPU:
+
+1. you need to have the [NVIDIA drivers](https://www.nvidia.com/en-us/drivers/) installed on your system.
+2. you can run `nvidia-smi` in the terminal to check your CUDA version (shown in the top-right of the output, e.g. `CUDA Version: 13.0.0`).
+3. update the `# /// script` block at the top of the `cellpose_notebook.ipynb` to install the appropriate version of [PyTorch with CUDA support](https://pytorch.org/get-started/locally/) (replace `cu130` with your CUDA version):
+
+   ```python
+   # /// script
+   # requires-python = ">=3.12"
+   # dependencies = [
+   #     "matplotlib",
+   #     "cellpose",
+   #     "torch",
+   #     "torchvision",
+   # ]
+   #
+   # [tool.uv.sources]
+   # torch = { index = "pytorch-cu130" }
+   # torchvision = { index = "pytorch-cu130" }
+   #
+   # [[tool.uv.index]]
+   # name = "pytorch-cu130"
+   # url = "https://download.pytorch.org/whl/cu130"
+   # explicit = true
+   # ///
+   ```
+
+4. re-run the notebook using `uvx juv run`.
+
+:::
 
 ## What's Next?
 
