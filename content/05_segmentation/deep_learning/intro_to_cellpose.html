@@ -132,7 +132,7 @@
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="deep_learning.html">Deep Learning Methods</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">Introduction to Cellpose</a></li>
 <li class="toctree-l3"><a class="reference internal" href="cellpose_notebook.html">Cellpose in Python</a></li>
-<li class="toctree-l3"><a class="reference internal" href="cellpose_retraining_colab.html">Retraining Cellpose on Custom Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cellpose_retraining.html">Retraining Cellpose on Custom Data</a></li>
 </ul>
 </details></li>
 </ul>
@@ -269,22 +269,35 @@
 <img alt="Cellpose GUI" src="../../../_static/images/cellpose/starting_window.png" width="600"/>
 </div>
 <p>Below are the instructions to install Cellpose using <a class="reference external" href="https://docs.astral.sh/uv/"><code class="docutils literal notranslate"><span class="pre">uv</span></code></a>.</p>
-<p class="alert alert-warning">
-<strong>Note:</strong> If you want to use latest CellposeSAM model, make sure to run it using GPU or it will be very slow. If you have an Apple Silicon Mac, you can take advantage of the built-in GPU.
-</p>
 <p>You can use <code class="docutils literal notranslate"><span class="pre">uv</span></code> to use/install Cellpose in three ways:</p>
 <ol class="arabic simple">
 <li><p><strong>Direct execution</strong>: Use <code class="docutils literal notranslate"><span class="pre">uv</span></code> to automatically handle environment creation and run the GUI directly</p></li>
 <li><p><strong>Manual environment setup</strong>: Create a virtual environment first, then install Cellpose within that environment</p></li>
 <li><p><strong>Jupyter Notebook Integration</strong>: Use <code class="docutils literal notranslate"><span class="pre">uvx</span> <span class="pre">juv</span></code> with the Jupyter notebooks from this course to run the Cellpose notebooks directly in the browser</p></li>
 </ol>
+<p class="alert alert-warning">
+<strong>⚠️ Note:</strong> If you want to use latest CellposeSAM model, make sure to run it using GPU or it will be very slow. If you have an Apple Silicon Mac, you can take advantage of the built-in GPU. See the instructions below for more details on how to run Cellpose with GPU support.
+</p>
 <section id="direct-execution-with-uv">
 <h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">1. Direct Execution with uv<a class="headerlink" href="#direct-execution-with-uv" title="Link to this heading">#</a></h3>
 <p>By simply running the command below, <code class="docutils literal notranslate"><span class="pre">uv</span></code> will create a virtual environment, install Cellpose, and launch the GUI (it might take a little while the first time you run this command but after that it will be very quick).</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uvx<span class="w"> </span><span class="s2">"cellpose[gui]"</span>
 </pre></div>
 </div>
-</section>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">NVIDIA GPU (CUDA - Windows/Linux)</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg aria-hidden="true" class="sd-octicon sd-octicon-chevron-right" height="1.5em" version="1.1" viewbox="0 0 24 24" width="1.5em"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">To run Cellpose with an NVIDIA GPU:</p>
+<ol class="arabic simple">
+<li><p class="sd-card-text">you need to have the <a class="reference external" href="https://www.nvidia.com/en-us/drivers/">NVIDIA drivers</a> installed on your system.</p></li>
+<li><p class="sd-card-text">you can run <code class="docutils literal notranslate"><span class="pre">nvidia-smi</span></code> in the terminal to check your CUDA version (shown in the top-right of the output, e.g. <code class="docutils literal notranslate"><span class="pre">CUDA</span> <span class="pre">Version:</span> <span class="pre">13.0.0</span></code>).</p></li>
+<li><p class="sd-card-text">run the following command, replacing <code class="docutils literal notranslate"><span class="pre">cu130</span></code> with your CUDA version. The <code class="docutils literal notranslate"><span class="pre">--index-strategy</span> <span class="pre">unsafe-best-match</span></code> flag is needed so that <code class="docutils literal notranslate"><span class="pre">uv</span></code> resolves <code class="docutils literal notranslate"><span class="pre">cellpose</span></code> itself from PyPI rather than from the PyTorch index:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uvx<span class="w"> </span>--index-strategy<span class="w"> </span>unsafe-best-match<span class="w"> </span>--with<span class="w"> </span>torch<span class="w"> </span>--with<span class="w"> </span>torchvision<span class="w"> </span>--index<span class="w"> </span>https://download.pytorch.org/whl/cu130<span class="w"> </span><span class="s2">"cellpose[gui]"</span>
+</pre></div>
+</div>
+</div>
+</details></section>
 <section id="manual-environment-setup">
 <h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">2. Manual Environment Setup<a class="headerlink" href="#manual-environment-setup" title="Link to this heading">#</a></h3>
 <p>If you need to use Cellpose for scripting and integration into pipelines, it is then useful to set up a virtual environment manually. Here are the steps:</p>
@@ -312,7 +325,20 @@ cellpose-env<span class="se">\S</span>cripts<span class="se">\a</span>ctivate
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>cellpose<span class="w"> </span><span class="c1"># (or simply cellpose)</span>
 </pre></div>
 </div>
-</section>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">NVIDIA GPU (CUDA - Windows/Linux)</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg aria-hidden="true" class="sd-octicon sd-octicon-chevron-right" height="1.5em" version="1.1" viewbox="0 0 24 24" width="1.5em"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">To use Cellpose with an NVIDIA GPU in your virtual environment:</p>
+<ol class="arabic simple">
+<li><p class="sd-card-text">you need to have the <a class="reference external" href="https://www.nvidia.com/en-us/drivers/">NVIDIA drivers</a> installed on your system.</p></li>
+<li><p class="sd-card-text">you can run <code class="docutils literal notranslate"><span class="pre">nvidia-smi</span></code> in the terminal to check your CUDA version (shown in the top-right of the output, e.g. <code class="docutils literal notranslate"><span class="pre">CUDA</span> <span class="pre">Version:</span> <span class="pre">13.0.0</span></code>).</p></li>
+<li><p class="sd-card-text">after installing cellpose as described above, install <code class="docutils literal notranslate"><span class="pre">torch</span></code> and <code class="docutils literal notranslate"><span class="pre">torchvision</span></code> with CUDA support, replacing <code class="docutils literal notranslate"><span class="pre">cu130</span></code> with your CUDA version:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>torch<span class="w"> </span>torchvision<span class="w"> </span>--index-url<span class="w"> </span>https://download.pytorch.org/whl/cu130
+</pre></div>
+</div>
+</div>
+</details></section>
 <section id="jupyter-notebook-integration">
 <h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">3. Jupyter Notebook Integration<a class="headerlink" href="#jupyter-notebook-integration" title="Link to this heading">#</a></h3>
 <p>To run for example the <a class="reference internal" href="cellpose_notebook.html"><span class="std std-doc">Cellpose Notebook</span></a> locally in your browser, you can use the following command:</p>
@@ -320,7 +346,39 @@ cellpose-env<span class="se">\S</span>cripts<span class="se">\a</span>ctivate
 uvx<span class="w"> </span>juv<span class="w"> </span>run<span class="w"> </span>path/to/cellpose_notebook.ipynb<span class="w"> </span><span class="c1"># (or simply juv run cellpose_notebook.ipynb if you have the tool)</span>
 </pre></div>
 </div>
-</section>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">NVIDIA GPU (CUDA - Windows/Linux)</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg aria-hidden="true" class="sd-octicon sd-octicon-chevron-right" height="1.5em" version="1.1" viewbox="0 0 24 24" width="1.5em"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">In order to use Cellpose in the notebooks with an NVIDIA GPU:</p>
+<ol class="arabic">
+<li><p class="sd-card-text">you need to have the <a class="reference external" href="https://www.nvidia.com/en-us/drivers/">NVIDIA drivers</a> installed on your system.</p></li>
+<li><p class="sd-card-text">you can run <code class="docutils literal notranslate"><span class="pre">nvidia-smi</span></code> in the terminal to check your CUDA version (shown in the top-right of the output, e.g. <code class="docutils literal notranslate"><span class="pre">CUDA</span> <span class="pre">Version:</span> <span class="pre">13.0.0</span></code>).</p></li>
+<li><p class="sd-card-text">update the <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">///</span> <span class="pre">script</span></code> block at the top of the <code class="docutils literal notranslate"><span class="pre">cellpose_notebook.ipynb</span></code> to install the appropriate version of <a class="reference external" href="https://pytorch.org/get-started/locally/">PyTorch with CUDA support</a> (replace <code class="docutils literal notranslate"><span class="pre">cu130</span></code> with your CUDA version):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># /// script</span>
+<span class="c1"># requires-python = "&gt;=3.12"</span>
+<span class="c1"># dependencies = [</span>
+<span class="c1">#     "matplotlib",</span>
+<span class="c1">#     "cellpose",</span>
+<span class="c1">#     "torch",</span>
+<span class="c1">#     "torchvision",</span>
+<span class="c1"># ]</span>
+<span class="c1">#</span>
+<span class="c1"># [tool.uv.sources]</span>
+<span class="c1"># torch = { index = "pytorch-cu130" }</span>
+<span class="c1"># torchvision = { index = "pytorch-cu130" }</span>
+<span class="c1">#</span>
+<span class="c1"># [[tool.uv.index]]</span>
+<span class="c1"># name = "pytorch-cu130"</span>
+<span class="c1"># url = "https://download.pytorch.org/whl/cu130"</span>
+<span class="c1"># explicit = true</span>
+<span class="c1"># ///</span>
+</pre></div>
+</div>
+</li>
+<li><p class="sd-card-text">re-run the notebook using <code class="docutils literal notranslate"><span class="pre">uvx</span> <span class="pre">juv</span> <span class="pre">run</span></code>.</p></li>
+</ol>
+</div>
+</details></section>
 </section>
 <section id="what-s-next">
 <h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">What’s Next?<a class="headerlink" href="#what-s-next" title="Link to this heading">#</a></h2>

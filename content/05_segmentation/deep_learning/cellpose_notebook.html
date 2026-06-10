@@ -55,7 +55,7 @@
 <script src="../../../_static/scripts/custom.js?v=abd1ef31"></script>
 <link href="../../../genindex.html" rel="index" title="Index"/>
 <link href="../../../search.html" rel="search" title="Search"/>
-<link href="cellpose_retraining_colab.html" rel="next" title="Retraining Cellpose on Custom Data"/>
+<link href="cellpose_retraining.html" rel="next" title="Retraining Cellpose on Custom Data"/>
 <link href="intro_to_cellpose.html" rel="prev" title="Introduction to Cellpose"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="en" name="docsearch:language"/>
@@ -132,7 +132,7 @@
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="deep_learning.html">Deep Learning Methods</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="intro_to_cellpose.html">Introduction to Cellpose</a></li>
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">Cellpose in Python</a></li>
-<li class="toctree-l3"><a class="reference internal" href="cellpose_retraining_colab.html">Retraining Cellpose on Custom Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cellpose_retraining.html">Retraining Cellpose on Custom Data</a></li>
 </ul>
 </details></li>
 </ul>
@@ -285,7 +285,7 @@
 </div>
 <section id="overview">
 <h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
-<p><a class="reference external" href="https://www.cellpose.org">Website</a> | <a class="reference external" href="https://github.com/mouseland/cellpose">GitHub</a> | <a class="reference external" href="https://www.biorxiv.org/content/10.1101/2025.04.28.651001v1">Paper</a> | <a class="reference external" href="https://cellpose.readthedocs.io/en/latest/api.html#">Cellpose API</a></p>
+<p><a class="reference external" href="https://www.cellpose.org">Website</a> | <a class="reference external" href="https://github.com/mouseland/cellpose">GitHub</a> | <a class="reference external" href="https://www.biorxiv.org/content/10.1101/2025.04.28.651001v1">Paper</a> | <a class="reference external" href="https://cellpose.readthedocs.io/en/latest/index.html">Cellpose Documentation</a> | <a class="reference external" href="https://cellpose.readthedocs.io/en/latest/api.html#">Cellpose API</a></p>
 <p>In this section, we’ll learn how to use <strong>Cellpose</strong>, a powerful deep learning tool for cell segmentation, works on a wide variety of microscopy images and doesn’t require retraining for many common use cases.</p>
 <p>In this notebook, we’ll see how to run Cellpose on single images or on a folder of images, and how to visualize and save the results.</p>
 <p class="alert alert alert-info">
@@ -293,8 +293,8 @@
 </p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">NVIDIA GPU (CUDA)</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg aria-hidden="true" class="sd-octicon sd-octicon-chevron-right" height="1.5em" version="1.1" viewbox="0 0 24 24" width="1.5em"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">In order to use Cellpose with an NVIDIA GPU:</p>
+<span class="sd-summary-text">NVIDIA GPU (CUDA - Windows/Linux)</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg aria-hidden="true" class="sd-octicon sd-octicon-chevron-right" height="1.5em" version="1.1" viewbox="0 0 24 24" width="1.5em"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">In order to use Cellpose in this notebook with an NVIDIA GPU:</p>
 <ol class="arabic simple">
 <li><p class="sd-card-text">you need to have the <a class="reference external" href="https://www.nvidia.com/en-us/drivers/">NVIDIA drivers</a> installed on your system.</p></li>
 <li><p class="sd-card-text">you can run <code class="docutils literal notranslate"><span class="pre">nvidia-smi</span></code> in the terminal to check your CUDA version (shown in the top-right of the output, e.g. <code class="docutils literal notranslate"><span class="pre">CUDA</span> <span class="pre">Version:</span> <span class="pre">13.0.0</span></code>).</p></li>
@@ -548,7 +548,7 @@ torch version:  	2.12.0+cu130
 <tbody>
 <tr class="row-even"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">batch_size</span></code></p></td>
 <td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">8</span></code></p></td>
-<td><p class="sd-card-text">Number of tiles processed per GPU forward pass. Increase for faster throughput (uses more GPU memory); decrease if you hit out-of-memory errors. Tile size is defined by <code class="docutils literal notranslate"><span class="pre">bsize</span></code>.</p></td>
+<td><p class="sd-card-text">Number of image tiles (the image is split into tiles before being processed, see <code class="docutils literal notranslate"><span class="pre">bsize</span></code> below) sent to the GPU together in a single forward pass. Increase for faster throughput (uses more GPU memory); decrease if you hit out-of-memory errors.</p></td>
 </tr>
 <tr class="row-odd"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">resample</span></code></p></td>
 <td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
@@ -556,7 +556,7 @@ torch version:  	2.12.0+cu130
 </tr>
 <tr class="row-even"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">bsize</span></code></p></td>
 <td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">256</span></code></p></td>
-<td><p class="sd-card-text">Size of each tile in pixels (<code class="docutils literal notranslate"><span class="pre">bsize</span> <span class="pre">×</span> <span class="pre">bsize</span></code>). The model was trained on 256×256 tiles — changing this degrades results. Leave at default unless you have a specific reason.</p></td>
+<td><p class="sd-card-text">Size of each tile in pixels (<code class="docutils literal notranslate"><span class="pre">bsize</span> <span class="pre">×</span> <span class="pre">bsize</span></code>). The <code class="docutils literal notranslate"><span class="pre">cpsam</span></code> network’s positional embeddings are fixed for 256×256 tiles at model-creation time, so changing <code class="docutils literal notranslate"><span class="pre">bsize</span></code> raises a shape-mismatch error. Leave at the default (see <code class="docutils literal notranslate"><span class="pre">batch_size</span></code>).</p></td>
 </tr>
 <tr class="row-odd"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">tile_overlap</span></code></p></td>
 <td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">0.1</span></code></p></td>
@@ -706,7 +706,7 @@ torch version:  	2.12.0+cu130
 </section>
 <section id="bonus-1-gpu-optimization-with-batch-size">
 <h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Bonus 1: GPU Optimization with <code class="docutils literal notranslate"><span class="pre">batch_size</span></code><a class="headerlink" href="#bonus-1-gpu-optimization-with-batch-size" title="Link to this heading">#</a></h2>
-<p>The simple loop above uses the default <code class="docutils literal notranslate"><span class="pre">batch_size=8</span></code>. This controls how many <strong>256×256 tiles</strong> (default) are sent to the GPU per forward pass.</p>
+<p>The simple loop above uses the default <code class="docutils literal notranslate"><span class="pre">batch_size=8</span></code>. This controls how many <strong>256×256 tiles</strong> are sent to the GPU per forward pass.</p>
 <p>For each image, Cellpose splits it into overlapping tiles (10% overlap by default) and runs the network on them in groups of <code class="docutils literal notranslate"><span class="pre">batch_size</span></code>. Increasing <code class="docutils literal notranslate"><span class="pre">batch_size</span></code> reduces the number of GPU passes per image, which is faster, at the cost of more GPU memory.</p>
 <p><strong>How many tiles does an image produce?</strong></p>
 <p>The image is divided into 256×256 tiles with a 10% overlap between neighbors, and tiles are added to ensure the edges are fully covered. The total number of tiles grows with image size.</p>
@@ -735,7 +735,7 @@ torch version:  	2.12.0+cu130
 </div>
 <p>Increase <code class="docutils literal notranslate"><span class="pre">batch_size</span></code> until you hit out-of-memory errors, then back off one step.</p>
 <p class="alert alert alert-info">
-<strong>Note:</strong> The tile size and overlap can be adjusted using the <i>bsize</i> and <i>tile_overlap</i> parameters in <i>model.eval()</i>. The defaults are 256x256 pixels tiles and 0.1 (10%) overlap which are the values used during training, so it is recommended to keep them as default unless you have specific reasons to change them.
+<strong>Note:</strong> The tile overlap can be adjusted using the <i>tile_overlap</i> parameters in <i>model.eval()</i>. The default is 0.1 (10%) overlap which is the value used during training, so it is recommended to keep it as default unless you have specific reasons to change it.
 </p><div class="cell tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Path to the folder containing the images to segment</span>
@@ -811,7 +811,7 @@ torch version:  	2.12.0+cu130
 <p class="prev-next-title">Introduction to Cellpose</p>
 </div>
 </a>
-<a class="right-next" href="cellpose_retraining_colab.html" title="next page">
+<a class="right-next" href="cellpose_retraining.html" title="next page">
 <div class="prev-next-info">
 <p class="prev-next-subtitle">next</p>
 <p class="prev-next-title">Retraining Cellpose on Custom Data</p>

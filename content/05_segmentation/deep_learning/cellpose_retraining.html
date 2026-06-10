@@ -53,10 +53,12 @@
 <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
 <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
 <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-<script>DOCUMENTATION_OPTIONS.pagename = 'content/05_segmentation/deep_learning/cellpose_retraining_colab';</script>
+<script>DOCUMENTATION_OPTIONS.pagename = 'content/05_segmentation/deep_learning/cellpose_retraining';</script>
 <script src="../../../_static/scripts/custom.js?v=abd1ef31"></script>
 <link href="../../../genindex.html" rel="index" title="Index"/>
 <link href="../../../search.html" rel="search" title="Search"/>
+<link href="../../06_object_classification/object_classification.html" rel="next" title="06 - Object Classification"/>
+<link href="cellpose_notebook.html" rel="prev" title="Cellpose in Python"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="en" name="docsearch:language"/>
 <meta content="" name="docsearch:version"/>
@@ -106,7 +108,7 @@
 </li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Course Material</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../01_intro_to_bobiac/bobiac_intro.html">01 - <i class="fas fa-image"></i> Introduction to BoBiAC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../02_getting_started_with_python/getting_started_with_python.html">02 - <i class="fab fa-python"></i> Getting Started with Python and <code class="docutils literal notranslate"><span class="pre">uv</span></code></a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../03_python_basics/python_basics.html">03 - <i class="fab fa-python"></i> Python Basics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -118,7 +120,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../04_digital_images_intro/python_for_bioimage_analysis.html">Python for bioimage analysis</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../segmentation_intro.html">05 - <i class="fa-solid fa-disease"></i> Image Segmentation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../segmentation_intro.html">05 - <i class="fa-solid fa-disease"></i> Image Segmentation</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 has-children"><a class="reference internal" href="../classic/classic.html">Classical Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="../classic/classic_segmentation.html">Classical Segmentation</a></li>
 </ul>
@@ -129,10 +131,10 @@
 <li class="toctree-l3"><a class="reference internal" href="../machine_learning/from_ilastik_masks_to_labels.html">From Ilastik Masks to Labels</a></li>
 </ul>
 </details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="deep_learning.html">Deep Learning Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="deep_learning.html">Deep Learning Methods</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="intro_to_cellpose.html">Introduction to Cellpose</a></li>
 <li class="toctree-l3"><a class="reference internal" href="cellpose_notebook.html">Cellpose in Python</a></li>
-<li class="toctree-l3"><a class="reference internal" href="cellpose_retraining.html">Retraining Cellpose on Custom Data</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Retraining Cellpose on Custom Data</a></li>
 </ul>
 </details></li>
 </ul>
@@ -240,10 +242,6 @@
 <nav aria-label="Page">
 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-sure-you-have-gpu-access">Make sure you have GPU access</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mount-your-google-drive">Mount your google drive</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-the-data">Download the Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-cellpose-other-dependencies">Install Cellpose &amp; other dependencies</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-retrain-cellpose">How to Retrain Cellpose</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-label-masks">Creating Label Masks</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retraining-pipeline">Retraining Pipeline</a></li>
@@ -263,77 +261,80 @@
 <article class="bd-article">
 <section class="tex2jax_ignore mathjax_ignore" id="retraining-cellpose-on-custom-data">
 <h1>Retraining Cellpose on Custom Data<a class="headerlink" href="#retraining-cellpose-on-custom-data" title="Link to this heading">#</a></h1>
+<div class="custom-button-row">
+<a class="custom-button custom-download-button" download="" href="../../../notebooks/05_segmentation/deep_learning/cellpose_retraining_colab.ipynb">
+<i class="fas fa-download"></i> Download this Notebook
+    </a>
+<a class="custom-button custom-download-button" href="https://colab.research.google.com/github/bobiac/bobiac-book/blob/gh-pages/colab_notebooks/05_segmentation/deep_learning/cellpose_retraining_colab.ipynb" target="_blank">
+<img alt="Open in Colab" class="button-icon" src="../../../_static/logo/icon-google-colab.svg"/>
+        Open in Colab
+    </a>
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># /// script</span>
+<span class="c1"># requires-python = "&gt;=3.12"</span>
+<span class="c1"># dependencies = [</span>
+<span class="c1">#     "matplotlib",</span>
+<span class="c1">#     "cellpose",</span>
+<span class="c1"># ]</span>
+<span class="c1"># ///</span>
+</pre></div>
+</div>
+</div>
+</div>
 <section id="overview">
 <h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
 <p><a class="reference external" href="https://www.cellpose.org">Website</a> | <a class="reference external" href="https://github.com/mouseland/cellpose">GitHub</a> | <a class="reference external" href="https://www.biorxiv.org/content/10.1101/2025.04.28.651001v1">Paper</a> | <a class="reference external" href="https://cellpose.readthedocs.io/en/latest/index.html">Cellpose Documentation</a> | <a class="reference external" href="https://cellpose.readthedocs.io/en/latest/api.html#">Cellpose API</a></p>
 <p>In this section, we will walk through how to <strong>retrain Cellpose on your own data</strong>. This is useful when the default models don’t perform well on your specific cell type, staining method, or imaging modality.</p>
 <p>Retraining allows Cellpose to learn directly from your examples, leading to better segmentation accuracy and more relevant masks for your experiments.</p>
 <p>To go through the training process, you need <strong>pairs of raw microscopy images and their corresponding label masks</strong>. The raw images are what you want to segment, and the label masks are the ground truth segmentations that the model will learn from.</p>
-</section>
-<section id="make-sure-you-have-gpu-access">
-<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Make sure you have GPU access<a class="headerlink" href="#make-sure-you-have-gpu-access" title="Link to this heading">#</a></h2>
-<p>To Enable GPU:</p>
-<p>1 - Navigate to <code class="docutils literal notranslate"><span class="pre">Runtime</span> <span class="pre">-&gt;</span> <span class="pre">Change</span> <span class="pre">Runtime</span> <span class="pre">Type</span></code></p>
-<p>2 - Select <code class="docutils literal notranslate"><span class="pre">Python</span> <span class="pre">3</span></code> as <code class="docutils literal notranslate"><span class="pre">Runtime</span> <span class="pre">Type</span></code></p>
-<p>3 - Select one available GPU (e.g. <code class="docutils literal notranslate"><span class="pre">T4</span> <span class="pre">GPU</span></code>) as <code class="docutils literal notranslate"><span class="pre">Hardware</span> <span class="pre">accelerator</span></code>.</p>
-<br/>
-<div align="left"> <img alt="Ilastik Logo" src="https://raw.githubusercontent.com/bobiac/bobiac-book/main/_static/images/cellpose/colab_runtime.png" width="400"/></div></section>
-<section id="mount-your-google-drive">
-<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Mount your google drive<a class="headerlink" href="#mount-your-google-drive" title="Link to this heading">#</a></h2>
-<p>To access the data for the course you first need to mount your Google Drive.</p>
-<p>Run the cell below to connect your Google Drive to colab and follow the instructions to authenticate your Google account.</p>
-<p>You will need to allow access to your Google Drive so that the notebook can read and write files.</p>
-<div class="cell tag_skip-execution docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">google.colab</span><span class="w"> </span><span class="kn">import</span> <span class="n">drive</span>
-
-<span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s2">"/content/drive"</span><span class="p">)</span>
+<p class="alert alert-warning">
+<strong>⚠️ Note:</strong> Cellpose runs significantly faster on a GPU. It supports both NVIDIA GPUs (CUDA) and Apple Silicon (MPS). If you don't have either, we recommend running this notebook on <a href="https://colab.research.google.com/github/bobiac/bobiac-book/blob/gh-pages/colab_notebooks/05_segmentation/deep_learning/cellpose_retraining_colab.ipynb" target="_blank"> Google Colab</a> for faster performance.
+</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">NVIDIA GPU (CUDA - Windows/Linux)</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg aria-hidden="true" class="sd-octicon sd-octicon-chevron-right" height="1.5em" version="1.1" viewbox="0 0 24 24" width="1.5em"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">In order to use Cellpose in this notebook with an NVIDIA GPU:</p>
+<ol class="arabic simple">
+<li><p class="sd-card-text">you need to have the <a class="reference external" href="https://www.nvidia.com/en-us/drivers/">NVIDIA drivers</a> installed on your system.</p></li>
+<li><p class="sd-card-text">you can run <code class="docutils literal notranslate"><span class="pre">nvidia-smi</span></code> in the terminal to check your CUDA version (shown in the top-right of the output, e.g. <code class="docutils literal notranslate"><span class="pre">CUDA</span> <span class="pre">Version:</span> <span class="pre">13.0.0</span></code>).</p></li>
+<li><p class="sd-card-text">update the <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">///</span> <span class="pre">script</span></code> block at the top of this notebook to install the appropriate version of <a class="reference external" href="https://pytorch.org/get-started/locally/">PyTorch with CUDA support</a> (replace <code class="docutils literal notranslate"><span class="pre">cu130</span></code> with your CUDA version):</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="c1"># /// script</span>
+    <span class="c1"># requires-python = "&gt;=3.12"</span>
+    <span class="c1"># dependencies = [</span>
+    <span class="c1">#     "matplotlib",</span>
+    <span class="c1">#     "cellpose",</span>
+    <span class="c1">#     "torch",</span>
+    <span class="c1">#     "torchvision",</span>
+    <span class="c1"># ]</span>
+    <span class="c1">#</span>
+    <span class="c1"># [tool.uv.sources]</span>
+    <span class="c1"># torch = { index = "pytorch-cu130" }</span>
+    <span class="c1"># torchvision = { index = "pytorch-cu130" }</span>
+    <span class="c1">#</span>
+    <span class="c1"># [[tool.uv.index]]</span>
+    <span class="c1"># name = "pytorch-cu130"</span>
+    <span class="c1"># url = "https://download.pytorch.org/whl/cu130"</span>
+    <span class="c1"># explicit = true</span>
+    <span class="c1"># ///</span>
 </pre></div>
 </div>
+<ol class="arabic simple" start="4">
+<li><p class="sd-card-text">re-run the notebook using <code class="docutils literal notranslate"><span class="pre">uvx</span> <span class="pre">juv</span> <span class="pre">run</span></code>.</p></li>
+</ol>
 </div>
-</div>
-<p>Then click on <code class="docutils literal notranslate"><span class="pre">folder</span> <span class="pre">icon</span></code> on the left bar, press the <code class="docutils literal notranslate"><span class="pre">refresh</span> <span class="pre">button</span></code>. Your Google Drive folder should now be available here (e.g. MyDrive).</p>
-<div align="left"> <img alt="Ilastik Logo" src="https://raw.githubusercontent.com/bobiac/bobiac-book/main/_static/images/cellpose/colab_folder.png" width="300"/></div></section>
-<section id="download-the-data">
-<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Download the Data<a class="headerlink" href="#download-the-data" title="Link to this heading">#</a></h2>
-<p>Run the cell below to download the data for this exercise and save it in you Google Drive. A new folder called <code class="docutils literal notranslate"><span class="pre">bobiac_data_cellpose</span></code> will be created in your Google Drive.</p>
-<div class="cell tag_skip-execution docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create directory</span>
-<span class="o">!</span>mkdir<span class="w"> </span>-p<span class="w"> </span>/content/bobiac_data_cellpose
-<span class="c1"># Download the data</span>
-<span class="o">!</span>wget<span class="w"> </span>https://raw.githubusercontent.com/bobiac/bobiac-book/main/_static/data/05_segmentation_cellpose_training.zip<span class="w"> </span>-O<span class="w"> </span>/content/bobiac_data_cellpose/05_segmentation_cellpose_training.zip
-<span class="c1"># Unzip the data, remove zip file and macOS metadata files (if any)</span>
-<span class="o">!</span><span class="nb">cd</span><span class="w"> </span>/content/bobiac_data_cellpose<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>unzip<span class="w"> </span>05_segmentation_cellpose_training.zip<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span>05_segmentation_cellpose_training.zip<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>__MACOSX
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="install-cellpose-other-dependencies">
-<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Install Cellpose &amp; other dependencies<a class="headerlink" href="#install-cellpose-other-dependencies" title="Link to this heading">#</a></h2>
-<div class="cell tag_skip-execution docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>cellpose
-<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>matplotlib
-</pre></div>
-</div>
-</div>
-</div>
-</section>
+</details></section>
 <section id="how-to-retrain-cellpose">
 <h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">How to Retrain Cellpose<a class="headerlink" href="#how-to-retrain-cellpose" title="Link to this heading">#</a></h2>
 <p>The retraining process can be performed using the <a class="reference external" href="https://cellpose.readthedocs.io/en/latest/gui.html#training-your-own-cellpose-model">Cellpose GUI</a>, which lets you train a model interactively, or using the code-based approach shown in this tutorial.</p>
-<details>
-<summary><b>Run the Cellpose GUI</b></summary>
-<br/>
-<p>The Cellpose GUI needs a local display, so it can’t be run on Colab. To use it, run this notebook locally instead and follow the instructions below.</p>
+<div class="Dropdown docutils">
 <p>If using <code class="docutils literal notranslate"><span class="pre">uv</span></code>, you can simply start <code class="docutils literal notranslate"><span class="pre">Cellpose</span></code> by running in your terminal:</p>
 <p><code class="docutils literal notranslate"><span class="pre">uvx</span> <span class="pre">"cellpose[gui]"</span></code></p>
 <p>This will open the Cellpose GUI.</p>
 <p>If you have an NVIDIA GPU and want to run the GUI with CUDA support, you can install <code class="docutils literal notranslate"><span class="pre">torch</span></code> with CUDA from the appropriate index (replace <code class="docutils literal notranslate"><span class="pre">cu130</span></code> with your CUDA version). Note the <code class="docutils literal notranslate"><span class="pre">--index-strategy</span> <span class="pre">unsafe-best-match</span></code> flag, which is needed so that <code class="docutils literal notranslate"><span class="pre">uv</span></code> resolves <code class="docutils literal notranslate"><span class="pre">cellpose</span></code> itself from PyPI rather than from the PyTorch index:</p>
 <p><code class="docutils literal notranslate"><span class="pre">uvx</span> <span class="pre">--index-strategy</span> <span class="pre">unsafe-best-match</span> <span class="pre">--with</span> <span class="pre">torch</span> <span class="pre">--with</span> <span class="pre">torchvision</span> <span class="pre">--index</span> <span class="pre">https://download.pytorch.org/whl/cu130</span> <span class="pre">"cellpose[gui]"</span></code></p>
-</details>
+</div>
 <p>For this tutorial, we will use the sample dataset provided by Cellpose, which includes both training and test images pairs. You can download the dataset here:
 <a download="" href="../../../_static/data/05_segmentation_cellpose_training.zip">
 <i class="fas fa-download"></i> Cellpose Training Dataset</a>.</p>
@@ -468,7 +469,7 @@
 AP = \frac{TP}{TP + FP + FN}
 \]</div>
 <p>By default, <code class="docutils literal notranslate"><span class="pre">metrics.average_precision</span></code> computes this at IoU thresholds of <strong>0.5</strong>, <strong>0.75</strong>, and <strong>0.9</strong>. A higher threshold requires a tighter overlap between predicted and ground truth masks, so AP typically decreases as the threshold increases. Comparing these values before and after retraining gives us a quantitative measure of how much the model improves on our data.</p>
-<div class="cell tag_skip-execution tag_teacher docutils container">
+<div class="cell tag_teacher tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># check performance using ground truth labels</span>
 <span class="c1"># average_precision returns AP at IoU thresholds [0.5, 0.75, 0.9] by default</span>
@@ -483,7 +484,7 @@ AP = \frac{TP}{TP + FP + FN}
 </div>
 </div>
 <p>Let’s now visualize the results for the test images.</p>
-<div class="cell tag_skip-execution tag_teacher docutils container">
+<div class="cell tag_teacher tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># test image index to visualize</span>
 <span class="n">cyto_ch</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># channel index for cytoplasm (0=nucleus, 1=cytoplasm in this dataset)</span>
@@ -519,192 +520,193 @@ AP = \frac{TP}{TP + FP + FN}
 <h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Train New Model<a class="headerlink" href="#train-new-model" title="Link to this heading">#</a></h2>
 <p>Now we’re ready to retrain Cellpose using the <code class="docutils literal notranslate"><span class="pre">train_seg</span></code> method from the <code class="docutils literal notranslate"><span class="pre">train</span></code> module.</p>
 <p>Here we will change few training parameters but you can find the full parameters description for the <code class="docutils literal notranslate"><span class="pre">train.train_seg</span></code> method in the dropdown below or in the <a class="reference external" href="https://cellpose.readthedocs.io/en/latest/api.html#module-cellpose.train">Cellpose API documentation</a></p>
-<details>
-<summary><b>CellposeSam <code>train.train_seg()</code> Parameters</b></summary>
-<br/>
-<p><strong>Input Data</strong></p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">CellposeSam train.train_seg() Parameters</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg aria-hidden="true" class="sd-octicon sd-octicon-chevron-right" height="1.5em" version="1.1" viewbox="0 0 24 24" width="1.5em"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><strong>Input Data</strong></p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
-<tr class="row-odd"><th class="head"><p>Parameter</p></th>
-<th class="head"><p>Default</p></th>
-<th class="head"><p>What it does</p></th>
+<tr class="row-odd"><th class="head"><p class="sd-card-text">Parameter</p></th>
+<th class="head"><p class="sd-card-text">Default</p></th>
+<th class="head"><p class="sd-card-text">What it does</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">train_data</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
-<td><p>List of numpy arrays (2D or 3D images). Mutually exclusive with <code class="docutils literal notranslate"><span class="pre">train_files</span></code>, use one or the other.</p></td>
+<tr class="row-even"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">train_data</span></code></p></td>
+<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
+<td><p class="sd-card-text">List of numpy arrays (2D or 3D images). Mutually exclusive with <code class="docutils literal notranslate"><span class="pre">train_files</span></code>, use one or the other.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">train_labels</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
-<td><p>List of integer label arrays matching <code class="docutils literal notranslate"><span class="pre">train_data</span></code>. <code class="docutils literal notranslate"><span class="pre">0</span></code> = bzackground, <code class="docutils literal notranslate"><span class="pre">1,</span> <span class="pre">2,</span> <span class="pre">...</span></code> = individual masks.</p></td>
+<tr class="row-odd"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">train_labels</span></code></p></td>
+<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
+<td><p class="sd-card-text">List of integer label arrays matching <code class="docutils literal notranslate"><span class="pre">train_data</span></code>. <code class="docutils literal notranslate"><span class="pre">0</span></code> = bzackground, <code class="docutils literal notranslate"><span class="pre">1,</span> <span class="pre">2,</span> <span class="pre">...</span></code> = individual masks.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">train_files</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
-<td><p>File paths to training images. Used instead of <code class="docutils literal notranslate"><span class="pre">train_data</span></code> when loading from disk. Use together with <code class="docutils literal notranslate"><span class="pre">load_files=True</span></code> (the default), this is the standard path when working from disk.</p></td>
+<tr class="row-even"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">train_files</span></code></p></td>
+<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
+<td><p class="sd-card-text">File paths to training images. Used instead of <code class="docutils literal notranslate"><span class="pre">train_data</span></code> when loading from disk. Use together with <code class="docutils literal notranslate"><span class="pre">load_files=True</span></code> (the default), this is the standard path when working from disk.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">train_labels_files</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
-<td><p>File paths to the corresponding label files.</p></td>
+<tr class="row-odd"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">train_labels_files</span></code></p></td>
+<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
+<td><p class="sd-card-text">File paths to the corresponding label files.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">test_data</span></code> / <code class="docutils literal notranslate"><span class="pre">test_labels</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
-<td><p>Same as above but for validation. Used only to report test loss, does not affect gradient updates.</p></td>
+<tr class="row-even"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">test_data</span></code> / <code class="docutils literal notranslate"><span class="pre">test_labels</span></code></p></td>
+<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
+<td><p class="sd-card-text">Same as above but for validation. Used only to report test loss, does not affect gradient updates.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">test_files</span></code> / <code class="docutils literal notranslate"><span class="pre">test_labels_files</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
-<td><p>Same as above, file-based version.</p></td>
+<tr class="row-odd"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">test_files</span></code> / <code class="docutils literal notranslate"><span class="pre">test_labels_files</span></code></p></td>
+<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
+<td><p class="sd-card-text">Same as above, file-based version.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">load_files</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
-<td><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, loads images/labels from the <code class="docutils literal notranslate"><span class="pre">*_files</span></code> paths at the start of training. Set to <code class="docutils literal notranslate"><span class="pre">False</span></code> if you’ve already loaded them into arrays and don’t want redundant I/O.</p></td>
+<tr class="row-even"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">load_files</span></code></p></td>
+<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
+<td><p class="sd-card-text">If <code class="docutils literal notranslate"><span class="pre">True</span></code>, loads images/labels from the <code class="docutils literal notranslate"><span class="pre">*_files</span></code> paths at the start of training. Set to <code class="docutils literal notranslate"><span class="pre">False</span></code> if you’ve already loaded them into arrays and don’t want redundant I/O.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">channel_axis</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
-<td><p>Which axis in the arrays is the channel axis. <code class="docutils literal notranslate"><span class="pre">None</span></code> = infer automatically.</p></td>
+<tr class="row-odd"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">channel_axis</span></code></p></td>
+<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
+<td><p class="sd-card-text">Which axis in the arrays is the channel axis. <code class="docutils literal notranslate"><span class="pre">None</span></code> = infer automatically.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p><strong>Sampling &amp; Epoch Control</strong></p>
+<p class="sd-card-text"><strong>Sampling &amp; Epoch Control</strong></p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
-<tr class="row-odd"><th class="head"><p>Parameter</p></th>
-<th class="head"><p>Default</p></th>
-<th class="head"><p>What it does</p></th>
+<tr class="row-odd"><th class="head"><p class="sd-card-text">Parameter</p></th>
+<th class="head"><p class="sd-card-text">Default</p></th>
+<th class="head"><p class="sd-card-text">What it does</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">train_probs</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
-<td><p>Per-image sampling probability for each epoch. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, all images get equal weight (<code class="docutils literal notranslate"><span class="pre">1/n</span></code>). The right lever if you want to hard-mine difficult images or balance an uneven dataset. Must sum to 1 after normalization.</p></td>
+<tr class="row-even"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">train_probs</span></code></p></td>
+<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
+<td><p class="sd-card-text">Per-image sampling probability for each epoch. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, all images get equal weight (<code class="docutils literal notranslate"><span class="pre">1/n</span></code>). The right lever if you want to hard-mine difficult images or balance an uneven dataset. Must sum to 1 after normalization.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">test_probs</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
-<td><p>Same for test images.</p></td>
+<tr class="row-odd"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">test_probs</span></code></p></td>
+<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
+<td><p class="sd-card-text">Same for test images.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">nimg_per_epoch</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
-<td><p>How many images (with random augmentation each time) Cellpose samples per epoch, doing one gradient update per image. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, defaults to <code class="docutils literal notranslate"><span class="pre">len(train_data)</span></code>. For a large dataset (50/100+ images), leave as <code class="docutils literal notranslate"><span class="pre">None</span></code>, one pass per epoch is already enough gradient steps. For a small dataset (5-10 images), set it higher than your dataset size (e.g. <code class="docutils literal notranslate"><span class="pre">50</span></code> or <code class="docutils literal notranslate"><span class="pre">100</span></code> for 5 images): each image gets sampled multiple times per epoch with different random augmentations (crop, rotation, flip, scale), and more updates/epoch help the linear LR warmup over the first 10 epochs actually move the weights.</p></td>
+<tr class="row-even"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">nimg_per_epoch</span></code></p></td>
+<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
+<td><p class="sd-card-text">How many images (with random augmentation each time) Cellpose samples per epoch, doing one gradient update per image. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, defaults to <code class="docutils literal notranslate"><span class="pre">len(train_data)</span></code>. For a large dataset (50/100+ images), leave as <code class="docutils literal notranslate"><span class="pre">None</span></code>, one pass per epoch is already enough gradient steps. For a small dataset (5-10 images), set it higher than your dataset size (e.g. <code class="docutils literal notranslate"><span class="pre">50</span></code> or <code class="docutils literal notranslate"><span class="pre">100</span></code> for 5 images): each image gets sampled multiple times per epoch with different random augmentations (crop, rotation, flip, scale), and more updates/epoch help the linear LR warmup over the first 10 epochs actually move the weights.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">nimg_test_per_epoch</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
-<td><p>Same as <code class="docutils literal notranslate"><span class="pre">nimg_per_epoch</span></code> but for test loss reporting only, it does not affect training. For a small test set (2-5 images), leave as <code class="docutils literal notranslate"><span class="pre">None</span></code> (uses all) for a stable loss estimate, subsampling a tiny test set gives noisy numbers. For a large test set (100+ images), set it lower (e.g. <code class="docutils literal notranslate"><span class="pre">20</span></code>) to speed up per-epoch evaluation at the cost of noisier test loss curves.</p></td>
+<tr class="row-odd"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">nimg_test_per_epoch</span></code></p></td>
+<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
+<td><p class="sd-card-text">Same as <code class="docutils literal notranslate"><span class="pre">nimg_per_epoch</span></code> but for test loss reporting only, it does not affect training. For a small test set (2-5 images), leave as <code class="docutils literal notranslate"><span class="pre">None</span></code> (uses all) for a stable loss estimate, subsampling a tiny test set gives noisy numbers. For a large test set (100+ images), set it lower (e.g. <code class="docutils literal notranslate"><span class="pre">20</span></code>) to speed up per-epoch evaluation at the cost of noisier test loss curves.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">min_train_masks</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">5</span></code></p></td>
-<td><p>Images with fewer than this many mask instances are silently dropped before training starts, guarding against nearly-empty label images corrupting training. If your dataset is small, check how many images actually survive this filter.</p></td>
+<tr class="row-even"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">min_train_masks</span></code></p></td>
+<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">5</span></code></p></td>
+<td><p class="sd-card-text">Images with fewer than this many mask instances are silently dropped before training starts, guarding against nearly-empty label images corrupting training. If your dataset is small, check how many images actually survive this filter.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p><strong>Optimizer</strong></p>
+<p class="sd-card-text"><strong>Optimizer</strong></p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
-<tr class="row-odd"><th class="head"><p>Parameter</p></th>
-<th class="head"><p>Default</p></th>
-<th class="head"><p>What it does</p></th>
+<tr class="row-odd"><th class="head"><p class="sd-card-text">Parameter</p></th>
+<th class="head"><p class="sd-card-text">Default</p></th>
+<th class="head"><p class="sd-card-text">What it does</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">learning_rate</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">1e-5</span></code></p></td>
-<td><p>learning rate (LR) for the AdamW algorithm used by Cellpose. Controls how large each weight update is. Too high → the model overshoots and training becomes unstable (loss oscillates). Too low → the model learns very slowly or gets stuck. For fine-tuning a pre-trained model like Cellpose, a small value is preferred to avoid erasing what the model already knows (e.g. <code class="docutils literal notranslate"><span class="pre">1e-5</span></code> or 0.00001). Note that <code class="docutils literal notranslate"><span class="pre">learning_rate</span></code> is also ramped up linearly from 0 to its target value over the first 10 epochs (regardless of <code class="docutils literal notranslate"><span class="pre">n_epochs</span></code>), so with very few epochs the target learning rate may never be reached.</p></td>
+<tr class="row-even"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">learning_rate</span></code></p></td>
+<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">1e-5</span></code></p></td>
+<td><p class="sd-card-text">learning rate (LR) for the AdamW algorithm used by Cellpose. Controls how large each weight update is. Too high → the model overshoots and training becomes unstable (loss oscillates). Too low → the model learns very slowly or gets stuck. For fine-tuning a pre-trained model like Cellpose, a small value is preferred to avoid erasing what the model already knows (e.g. <code class="docutils literal notranslate"><span class="pre">1e-5</span></code> or 0.00001). Note that <code class="docutils literal notranslate"><span class="pre">learning_rate</span></code> is also ramped up linearly from 0 to its target value over the first 10 epochs (regardless of <code class="docutils literal notranslate"><span class="pre">n_epochs</span></code>), so with very few epochs the target learning rate may never be reached.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">weight_decay</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0.1</span></code></p></td>
-<td><p>AdamW algorithm weight decay (L2 regularization). <code class="docutils literal notranslate"><span class="pre">0.1</span></code> is the modern default from the AdamW paper.</p></td>
+<tr class="row-odd"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">weight_decay</span></code></p></td>
+<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">0.1</span></code></p></td>
+<td><p class="sd-card-text">AdamW algorithm weight decay (L2 regularization). <code class="docutils literal notranslate"><span class="pre">0.1</span></code> is the modern default from the AdamW paper.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">SGD</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
-<td><p>Deprecated as of v4.0.1. AdamW is always used regardless of this value.</p></td>
+<tr class="row-even"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">SGD</span></code></p></td>
+<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
+<td><p class="sd-card-text">Deprecated as of v4.0.1. AdamW is always used regardless of this value.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">n_epochs</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">100</span></code></p></td>
-<td><p>one epoch = one full pass through all training images. More epochs give the model more time to learn, but too many can lead to <em>overfitting</em>: the model memorizes the training data and performs worse on new images. Watch the test loss, if it starts rising while the train loss keeps falling, you’ve trained too long.</p></td>
+<tr class="row-odd"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">n_epochs</span></code></p></td>
+<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">100</span></code></p></td>
+<td><p class="sd-card-text">one epoch = one full pass through all training images. More epochs give the model more time to learn, but too many can lead to <em>overfitting</em>: the model memorizes the training data and performs worse on new images. Watch the test loss, if it starts rising while the train loss keeps falling, you’ve trained too long.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">batch_size</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
-<td><p>number of <code class="docutils literal notranslate"><span class="pre">bsize</span></code>x<code class="docutils literal notranslate"><span class="pre">bsize</span></code> pixels image tiles processed simultaneously on the GPU before the model updates its weights (the image is split into tiles before being processed). Larger batches give more stable gradient estimates but require more memory. Smaller batches are noisier but work well for small datasets and use less GPU memory. See the <a class="reference internal" href="cellpose_notebook.html"><span class="std std-doc">cellpose_notebook</span></a> for more details on batch size and GPU performance.</p></td>
+<tr class="row-even"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">batch_size</span></code></p></td>
+<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+<td><p class="sd-card-text">number of <code class="docutils literal notranslate"><span class="pre">bsize</span></code>x<code class="docutils literal notranslate"><span class="pre">bsize</span></code> pixels image tiles processed simultaneously on the GPU before the model updates its weights (the image is split into tiles before being processed). Larger batches give more stable gradient estimates but require more memory. Smaller batches are noisier but work well for small datasets and use less GPU memory. See the <a class="reference internal" href="cellpose_notebook.html"><span class="std std-doc">cellpose_notebook</span></a> for more details on batch size and GPU performance.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">bsize</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">256</span></code></p></td>
-<td><p>Size of each tile in pixels (<code class="docutils literal notranslate"><span class="pre">bsize</span> <span class="pre">×</span> <span class="pre">bsize</span></code>). Fixed to 256x256 pixels for the SAM backbone (<code class="docutils literal notranslate"><span class="pre">cpsam</span></code>), don’t override it.</p></td>
+<tr class="row-odd"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">bsize</span></code></p></td>
+<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">256</span></code></p></td>
+<td><p class="sd-card-text">Size of each tile in pixels (<code class="docutils literal notranslate"><span class="pre">bsize</span> <span class="pre">×</span> <span class="pre">bsize</span></code>). Fixed to 256x256 pixels for the SAM backbone (<code class="docutils literal notranslate"><span class="pre">cpsam</span></code>), don’t override it.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p><strong>Augmentation &amp; Preprocessing</strong></p>
+<p class="sd-card-text"><strong>Augmentation &amp; Preprocessing</strong></p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
-<tr class="row-odd"><th class="head"><p>Parameter</p></th>
-<th class="head"><p>Default</p></th>
-<th class="head"><p>What it does</p></th>
+<tr class="row-odd"><th class="head"><p class="sd-card-text">Parameter</p></th>
+<th class="head"><p class="sd-card-text">Default</p></th>
+<th class="head"><p class="sd-card-text">What it does</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">normalize</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
-<td><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, applies default percentile normalization per image. If a dict, merges with default normalize params (e.g. <code class="docutils literal notranslate"><span class="pre">{"tile_norm_blocksize":</span> <span class="pre">128}</span></code> for tile-based normalization on large images).</p></td>
+<tr class="row-even"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">normalize</span></code></p></td>
+<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
+<td><p class="sd-card-text">If <code class="docutils literal notranslate"><span class="pre">True</span></code>, applies default percentile normalization per image. If a dict, merges with default normalize params (e.g. <code class="docutils literal notranslate"><span class="pre">{"tile_norm_blocksize":</span> <span class="pre">128}</span></code> for tile-based normalization on large images).</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">compute_flows</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
-<td><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, recomputes flow fields from label masks during training rather than using cached flows. Slower but ensures flows match labels exactly if labels were recently edited.</p></td>
+<tr class="row-odd"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">compute_flows</span></code></p></td>
+<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
+<td><p class="sd-card-text">If <code class="docutils literal notranslate"><span class="pre">True</span></code>, recomputes flow fields from label masks during training rather than using cached flows. Slower but ensures flows match labels exactly if labels were recently edited.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">rescale</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
-<td><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, rescales each image during training based on its object diameter relative to the model’s expected diameter (<code class="docutils literal notranslate"><span class="pre">net.diam_mean</span></code>). Helps when objects in your data differ significantly in size from the training distribution.</p></td>
+<tr class="row-even"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">rescale</span></code></p></td>
+<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
+<td><p class="sd-card-text">If <code class="docutils literal notranslate"><span class="pre">True</span></code>, rescales each image during training based on its object diameter relative to the model’s expected diameter (<code class="docutils literal notranslate"><span class="pre">net.diam_mean</span></code>). Helps when objects in your data differ significantly in size from the training distribution.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">scale_range</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
-<td><p>Range of random scale augmentation passed to <code class="docutils literal notranslate"><span class="pre">random_rotate_and_resize()</span></code>. Default resolves to <code class="docutils literal notranslate"><span class="pre">0.5</span></code>, meaning scale is sampled in <code class="docutils literal notranslate"><span class="pre">[1-0.5,</span> <span class="pre">1+0.5]</span></code>. Larger values = more aggressive scale augmentation.</p></td>
+<tr class="row-odd"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">scale_range</span></code></p></td>
+<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
+<td><p class="sd-card-text">Range of random scale augmentation passed to <code class="docutils literal notranslate"><span class="pre">random_rotate_and_resize()</span></code>. Default resolves to <code class="docutils literal notranslate"><span class="pre">0.5</span></code>, meaning scale is sampled in <code class="docutils literal notranslate"><span class="pre">[1-0.5,</span> <span class="pre">1+0.5]</span></code>. Larger values = more aggressive scale augmentation.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p><strong>Loss</strong></p>
+<p class="sd-card-text"><strong>Loss</strong></p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
-<tr class="row-odd"><th class="head"><p>Parameter</p></th>
-<th class="head"><p>Default</p></th>
-<th class="head"><p>What it does</p></th>
+<tr class="row-odd"><th class="head"><p class="sd-card-text">Parameter</p></th>
+<th class="head"><p class="sd-card-text">Default</p></th>
+<th class="head"><p class="sd-card-text">What it does</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">class_weights</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
-<td><p>Array of per-class weights passed to <code class="docutils literal notranslate"><span class="pre">nn.CrossEntropyLoss(weight=...)</span></code>. Use this to up-weight underrepresented mask classes. Converted to a float32 CUDA tensor internally.</p></td>
+<tr class="row-even"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">class_weights</span></code></p></td>
+<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
+<td><p class="sd-card-text">Array of per-class weights passed to <code class="docutils literal notranslate"><span class="pre">nn.CrossEntropyLoss(weight=...)</span></code>. Use this to up-weight underrepresented mask classes. Converted to a float32 CUDA tensor internally.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p><strong>Saving</strong></p>
+<p class="sd-card-text"><strong>Saving</strong></p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
-<tr class="row-odd"><th class="head"><p>Parameter</p></th>
-<th class="head"><p>Default</p></th>
-<th class="head"><p>What it does</p></th>
+<tr class="row-odd"><th class="head"><p class="sd-card-text">Parameter</p></th>
+<th class="head"><p class="sd-card-text">Default</p></th>
+<th class="head"><p class="sd-card-text">What it does</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">save_path</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
-<td><p>Directory where the trained model is written. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, no model is saved to disk.</p></td>
+<tr class="row-even"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">save_path</span></code></p></td>
+<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
+<td><p class="sd-card-text">Directory where the trained model is written. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, no model is saved to disk.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">save_every</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">100</span></code></p></td>
-<td><p>Save a checkpoint every N epochs.</p></td>
+<tr class="row-odd"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">save_every</span></code></p></td>
+<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">100</span></code></p></td>
+<td><p class="sd-card-text">Save a checkpoint every N epochs.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">save_each</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
-<td><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, each checkpoint gets a unique filename (epoch-stamped). If <code class="docutils literal notranslate"><span class="pre">False</span></code>, each save overwrites the previous checkpoint.</p></td>
+<tr class="row-even"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">save_each</span></code></p></td>
+<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
+<td><p class="sd-card-text">If <code class="docutils literal notranslate"><span class="pre">True</span></code>, each checkpoint gets a unique filename (epoch-stamped). If <code class="docutils literal notranslate"><span class="pre">False</span></code>, each save overwrites the previous checkpoint.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">model_name</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
-<td><p>The filename stem for the saved model. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, an automatic name is generated.</p></td>
+<tr class="row-odd"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">model_name</span></code></p></td>
+<td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
+<td><p class="sd-card-text">The filename stem for the saved model. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, an automatic name is generated.</p></td>
 </tr>
 </tbody>
 </table>
+</div>
 </div>
 </details><div class="cell tag_skip-execution tag_teacher docutils container">
 <div class="cell_input docutils container">
@@ -802,6 +804,20 @@ AP = \frac{TP}{TP + FP + FN}
 </article>
 <footer class="prev-next-footer d-print-none">
 <div class="prev-next-area">
+<a class="left-prev" href="cellpose_notebook.html" title="previous page">
+<i class="fa-solid fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">previous</p>
+<p class="prev-next-title">Cellpose in Python</p>
+</div>
+</a>
+<a class="right-next" href="../../06_object_classification/object_classification.html" title="next page">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">next</p>
+<p class="prev-next-title">06 - <i class="fa-solid fa-shapes"></i> Object Classification</p>
+</div>
+<i class="fa-solid fa-angle-right"></i>
+</a>
 </div>
 </footer>
 </div>
@@ -813,10 +829,6 @@ AP = \frac{TP}{TP + FP + FN}
 <nav aria-labelledby="pst-page-navigation-heading-2" class="page-toc" id="pst-page-toc-nav">
 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-sure-you-have-gpu-access">Make sure you have GPU access</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mount-your-google-drive">Mount your google drive</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-the-data">Download the Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-cellpose-other-dependencies">Install Cellpose &amp; other dependencies</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-retrain-cellpose">How to Retrain Cellpose</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-label-masks">Creating Label Masks</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retraining-pipeline">Retraining Pipeline</a></li>
