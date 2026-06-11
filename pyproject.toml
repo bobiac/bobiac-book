@@ -42,13 +42,11 @@ dependencies = [
     "tqdm",
     "pandas",
     "cellpose",
-    "bioio>=3.0.0",
-    "bioio_tifffile",
-    "bioio-nd2", 
+    "bffile",
     "rich",
     "shapely",
     "coloc_tools @ git+https://github.com/fdrgsp/coloc-tools.git",
-    "evaluatesegmask @ git+https://github.com/antoineruzette/evaluatesegmask.git"
+    "evaluatesegmask @ git+https://github.com/antoineruzette/evaluatesegmask.git",
 ]
 
 
