@@ -1,4 +1,6 @@
-author = "Federico Gasparoli - Image Analysis Collaboratory @ Harvard Medical School - federico.gasparoli@gmail.com"
+author = (
+    "Federico Gasparoli - CITE @ Harvard Medical School - federico.gasparoli@gmail.com"
+)
 comments_config = {"hypothesis": False, "utterances": False}
 copyright = "2025"
 
