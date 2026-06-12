@@ -14,7 +14,12 @@ fi
 echo "🔧 Building Jupyter Book with Sphinx..."
 # DISPLAY is set in github workflows in deploy-book.yml. This is needed
 # to visualize glfw, vispy, or napari-based notebooks without errors.
-DISPLAY=${DISPLAY:-:99} python -m sphinx -a . -b html _build/html
+# NDV_CANVAS_BACKEND is set to vispy because the pygfx (wgpu) backend fails
+# to find a GPU adapter that supports FLOAT32_FILTERABLE on the headless
+# Mesa/llvmpipe software renderer used in CI. This only affects notebook
+# execution during the build; the notebook source still uses ndv's default
+# (pygfx) backend for students running it locally.
+NDV_CANVAS_BACKEND=vispy DISPLAY=${DISPLAY:-:99} python -m sphinx -a . -b html _build/html
 echo "📘 Book built successfully at _build/html/"
 
 # update notebook html styles
