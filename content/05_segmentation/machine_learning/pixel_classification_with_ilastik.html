@@ -273,10 +273,24 @@
 <p>For a detailed workflow instruction, you can refer to the <a class="reference external" href="https://www.ilastik.org/documentation/pixelclassification/pixelclassification">Ilastik Pixel Classification Documentation</a>.</p>
 <section id="select-the-workflow">
 <h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">1. Select the Workflow<a class="headerlink" href="#select-the-workflow" title="Link to this heading">#</a></h3>
-<p>When you open <strong>Ilastik</strong>, you will see the <a class="reference external" href="https://www.ilastik.org/documentation/basics/startup">Startup Screen</a> with various workflows. Select the <em><strong>Pixel Classification</strong></em> workflow by clicking on it. You will be automatically brought to the <strong>Input Data</strong> step.</p>
+<p>When you open <strong>Ilastik</strong>, you will see the <a class="reference external" href="https://www.ilastik.org/documentation/basics/startup">Startup Screen</a> with various workflows. Select the <em><strong>Pixel Classification</strong></em> workflow by clicking on it. You will asked to first save the <strong>.<code class="docutils literal notranslate"><span class="pre">ipl</span></code> project file</strong> to disk and, once saved, you will be automatically brought to the <strong>Input Data</strong> step.</p>
 <div align="center"> <img alt="Ilastik" src="../../../_static/images/ilastik/1a.png" width="800"/> </div>
-<div class="alert alert-info">
-<strong>NOTE:</strong> Remember to save your project regularly using <strong>Cmd+S</strong> (macOS) or <strong>Ctrl+S</strong> (Windows), or via <strong>Project → Save Project</strong>.
+<div class="alert alert-warning">
+<strong>⚠️ NOTE:</strong> We recommend saving the <strong>.ilp</strong> project file in the <strong>same folder as your input images</strong>, or at least in the same folder tree, to make it easier for Ilastik to find the images and to share the project with others (see dropdown below for more details on sharing).
+</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">❓How do I distribute and share my model❓</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg aria-hidden="true" class="sd-octicon sd-octicon-chevron-right" height="1.5em" version="1.1" viewbox="0 0 24 24" width="1.5em"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">By default, the <strong>.ilp</strong> project file only stores a <strong>path (link)</strong> to your raw images on disk, together with your labels, selected features and trained classifier, <strong>not the image data itself</strong>. This means that simply sending someone your <strong>.ilp</strong> file is usually not enough, since on their computer ilastik will not be able to find the images at the recorded path.</p>
+<p class="sd-card-text">For each dataset, you can check (and change) how the data is stored by going to the <em><strong>Input Data</strong></em> step, <strong>right-clicking</strong> on the dataset in the <em><strong>Raw Data</strong></em> table and selecting <em><strong>Edit properties…</strong></em>. In the dialog that opens, the <em><strong>Storage</strong></em> field offers three options:</p>
+<ul class="simple">
+<li><p class="sd-card-text"><strong>Absolute Link</strong>: stores the full path to the image on disk. If you move or rename the image, or share the project with someone else, ilastik will not be able to find the file anymore.</p></li>
+<li><p class="sd-card-text"><strong>Relative Link</strong> <em>(default when the image is in the same folder tree as the project)</em>: stores the path <strong>relative to the .ilp file</strong>. As long as you move/copy the <strong>.ilp</strong> file and the data folder together, keeping their relative positions unchanged, ilastik will still find the images. This is the recommended option for sharing: put the <strong>.ilp</strong> file and the folder containing the training images together (e.g. the <strong>.ilp</strong> file directly inside, or next to, the data folder), zip everything up, and share that.</p></li>
+<li><p class="sd-card-text"><strong>Copied to Project File</strong>: embeds the raw image data directly inside the <strong>.ilp</strong> file as <strong>HDF5</strong> datasets the next time you save the project. The <strong>.ilp</strong> file (itself an HDF5 file) becomes fully self-contained, you can share that single file and it will always work, but its file size will grow substantially since it now also contains all the raw images.</p></li>
+</ul>
+</div>
+</details><div class="alert alert-info">
+<strong>💡 TIP:</strong> Remember to save your project regularly using <strong>Cmd+S</strong> (macOS) or <strong>Ctrl+S</strong> (Windows), or via <strong>Project → Save Project</strong>.
 </div>
 </section>
 <section id="load-the-image-data">
@@ -312,7 +326,7 @@
 <p>In the <em><strong>Training</strong></em> step (on the left side of the GUI) you can <strong>add</strong>, <strong>remove</strong> or <strong>edit</strong> the classes (labels) that you want to use for the classification. For this exercise, we will use two classes: <em><strong>nuclei</strong></em> and <em><strong>background</strong></em>. To rename the default classes, <em>Label 1</em> and <em>Label 2</em>, double-click on each class and type the new name (You can also change the class color by double-clicking on the color box next to the class name).</p>
 <p>Now you can start by choosing few pixels in the image that correspond to the <em><strong>nuclei</strong></em> class; select the <em><strong>nuclei</strong></em> class, select the <em>Brush</em> tool (should be the default) and draw a short line over some pixel inside one nucleus. Next repeat the process for the <em><strong>background</strong></em> class, selecting some pixels that correspond to the background.</p>
 <div class="alert alert-info">
-<strong>TIPS:</strong>
+<strong>💡 TIPS:</strong>
 <ul>
 <li>Use <strong>Cmd+Z</strong> (macOS) or <strong>Ctrl+Z</strong> (Windows) to <strong>undo</strong> the last action.</li>
 <li>Use the <strong>Erase</strong> tool to <strong>remove</strong> the annotations.</li>

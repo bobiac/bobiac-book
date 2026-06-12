@@ -18,12 +18,28 @@ For a detailed workflow instruction, you can refer to the [Ilastik Pixel Classif
 
 ### 1. Select the Workflow
 
-When you open **Ilastik**, you will see the [Startup Screen](https://www.ilastik.org/documentation/basics/startup) with various workflows. Select the ***Pixel Classification*** workflow by clicking on it. You will be automatically brought to the **Input Data** step.
+When you open **Ilastik**, you will see the [Startup Screen](https://www.ilastik.org/documentation/basics/startup) with various workflows. Select the ***Pixel Classification*** workflow by clicking on it. You will asked to first save the **.`ipl` project file** to disk and, once saved, you will be automatically brought to the **Input Data** step.
 
 <div align="center"> <img src="../../../_static/images/ilastik/1a.png" alt="Ilastik" width="800"> </div>
 
+<div class="alert alert-warning">
+    <strong>⚠️ NOTE:</strong> We recommend saving the <strong>.ilp</strong> project file in the <strong>same folder as your input images</strong>, or at least in the same folder tree, to make it easier for Ilastik to find the images and to share the project with others (see dropdown below for more details on sharing).
+</div>
+
+:::{dropdown} ❓How do I distribute and share my model❓
+
+By default, the **.ilp** project file only stores a **path (link)** to your raw images on disk, together with your labels, selected features and trained classifier, **not the image data itself**. This means that simply sending someone your **.ilp** file is usually not enough, since on their computer ilastik will not be able to find the images at the recorded path.
+
+For each dataset, you can check (and change) how the data is stored by going to the ***Input Data*** step, **right-clicking** on the dataset in the ***Raw Data*** table and selecting ***Edit properties...***. In the dialog that opens, the ***Storage*** field offers three options:
+
+- **Absolute Link**: stores the full path to the image on disk. If you move or rename the image, or share the project with someone else, ilastik will not be able to find the file anymore.
+- **Relative Link** *(default when the image is in the same folder tree as the project)*: stores the path **relative to the .ilp file**. As long as you move/copy the **.ilp** file and the data folder together, keeping their relative positions unchanged, ilastik will still find the images. This is the recommended option for sharing: put the **.ilp** file and the folder containing the training images together (e.g. the **.ilp** file directly inside, or next to, the data folder), zip everything up, and share that.
+- **Copied to Project File**: embeds the raw image data directly inside the **.ilp** file as **HDF5** datasets the next time you save the project. The **.ilp** file (itself an HDF5 file) becomes fully self-contained, you can share that single file and it will always work, but its file size will grow substantially since it now also contains all the raw images.
+
+:::
+
 <div class="alert alert-info">
-    <strong>NOTE:</strong> Remember to save your project regularly using <strong>Cmd+S</strong> (macOS) or <strong>Ctrl+S</strong> (Windows), or via <strong>Project → Save Project</strong>.
+    <strong>💡 TIP:</strong> Remember to save your project regularly using <strong>Cmd+S</strong> (macOS) or <strong>Ctrl+S</strong> (Windows), or via <strong>Project → Save Project</strong>.
 </div>
 
 ### 2. Load the Image Data
@@ -73,7 +89,7 @@ In the ***Training*** step (on the left side of the GUI) you can **add**, **remo
 Now you can start by choosing few pixels in the image that correspond to the ***nuclei*** class; select the ***nuclei*** class, select the *Brush* tool (should be the default) and draw a short line over some pixel inside one nucleus. Next repeat the process for the ***background*** class, selecting some pixels that correspond to the background.
 
 <div class="alert alert-info">
-    <strong>TIPS:</strong>
+    <strong>💡 TIPS:</strong>
     <ul>
         <li>Use <strong>Cmd+Z</strong> (macOS) or <strong>Ctrl+Z</strong> (Windows) to <strong>undo</strong> the last action.</li>
         <li>Use the <strong>Erase</strong> tool to <strong>remove</strong> the annotations.</li>

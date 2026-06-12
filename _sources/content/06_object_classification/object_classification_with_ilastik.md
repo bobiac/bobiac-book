@@ -69,7 +69,7 @@ To **toggle the visibility on and off** of **the segmentation image**, thus visu
 Next, repeat the process for the ***non-mitotic*** class, selecting some objects that correspond to the *non-mitotic* state.
 
 <div class="alert alert-info">
-    <strong>TIPS:</strong>
+    <strong>💡 TIPS:</strong>
     <ul>
         <li>Use <strong>Cmd+Z</strong> (macOS) or <strong>Ctrl+Z</strong> (Windows) to <strong>undo</strong> the last action.</li>
         <li>Use the <strong>Erase</strong> tool to <strong>remove</strong> annotations.</li>
