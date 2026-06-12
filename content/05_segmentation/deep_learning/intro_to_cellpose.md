@@ -37,6 +37,16 @@ By simply running the command below, `uv` will create a virtual environment, ins
 uvx "cellpose[gui]"
 ```
 
+If you are working with 3D datasets, you should also add the flag `--Zstack`:
+
+```bash
+uvx "cellpose[gui]" --Zstack
+```
+
+<p class="alert alert-warning">
+    <strong>⚠️ Note:</strong> If you have a multi-channel z-stack, Cellpose expects the dimension order to be <i>ZCYX</i>.
+</p>
+
 :::{dropdown} NVIDIA GPU (CUDA - Windows/Linux)
 
 To run Cellpose with an NVIDIA GPU:
@@ -48,6 +58,16 @@ To run Cellpose with an NVIDIA GPU:
 ```bash
 uvx --index-strategy unsafe-best-match --with torch --with torchvision --index https://download.pytorch.org/whl/cu130 "cellpose[gui]"
 ```
+
+Add `--Zstack` flag if you are working with 3D datasets:
+
+```bash
+uvx --index-strategy unsafe-best-match --with torch --with torchvision --index https://download.pytorch.org/whl/cu130 "cellpose[gui]" --Zstack
+```
+
+<p class="alert alert-warning">
+    <strong>⚠️ Note:</strong> If you have a multi-channel z-stack, Cellpose expects the dimension order to be <i>ZCYX</i>.
+</p>
 
 :::
 
@@ -89,6 +109,16 @@ And then, to launch the GUI:
 ```bash
 python -m cellpose # (or simply cellpose)
 ```
+
+If you are working with 3D datasets, add the `--Zstack` flag:
+
+```bash
+python -m cellpose --Zstack # (or simply cellpose --Zstack)
+```
+
+<p class="alert alert-warning">
+    <strong>⚠️ Note:</strong> If you have a multi-channel z-stack, Cellpose expects the dimension order to be <i>ZCYX</i>.
+</p>
 
 :::{dropdown} NVIDIA GPU (CUDA - Windows/Linux)
 
