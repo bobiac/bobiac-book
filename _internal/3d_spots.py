@@ -10,11 +10,7 @@
 
 import ndv
 import numpy as np
-from scipy.ndimage import distance_transform_edt
-from skimage.feature import peak_local_max
-from skimage.filters import gaussian, threshold_otsu
-from skimage.measure import label
-from skimage.segmentation import watershed
+from skimage.filters import gaussian
 
 
 def generate_gaussian_spots(
@@ -97,29 +93,34 @@ def generate_gaussian_spots(
 # generate 3d spots
 scale = (0.5, 0.1, 0.1)
 spots = generate_gaussian_spots(seed=0, scale=scale)
+
+# scale float volume to the full uint16 range before saving
+# spots_uint16 = (np.clip(spots, 0, 1) * 65535).astype(np.uint16)
+# import tifffile
+# tifffile.imwrite("/Users/fdrgsp/Desktop/ilsk/3d_spots.tif", spots_uint16)
 ndv.imshow(spots)
 
-# generate binary mask with Otsu thresholding
-filtered_spots = gaussian(spots, sigma=1)
-mask = (filtered_spots > threshold_otsu(filtered_spots)).astype(np.uint8)
+# # generate binary mask with Otsu thresholding
+# filtered_spots = gaussian(spots, sigma=1)
+# mask = (filtered_spots > threshold_otsu(filtered_spots)).astype(np.uint8)
 
-# compute the distance transform (sampling accounts for anisotropic voxel size)
-distance_transform = distance_transform_edt(mask, sampling=scale)
+# # compute the distance transform (sampling accounts for anisotropic voxel size)
+# distance_transform = distance_transform_edt(mask, sampling=scale)
 
-# find local maxima coordinates in the distance transform
-local_maxima_coords = peak_local_max(
-    distance_transform, footprint=np.ones((10, 10, 10)), min_distance=5
-)
+# # find local maxima coordinates in the distance transform
+# local_maxima_coords = peak_local_max(
+#     distance_transform, footprint=np.ones((10, 10, 10)), min_distance=5
+# )
 
-# create image that's the same size and dtype as mask
-local_maxima_image = np.zeros_like(mask, dtype=bool)
+# # create image that's the same size and dtype as mask
+# local_maxima_image = np.zeros_like(mask, dtype=bool)
 
-# add the local_maxima_coords to the created local_maxima image
-local_maxima_image[tuple(local_maxima_coords.T)] = True
+# # add the local_maxima_coords to the created local_maxima image
+# local_maxima_image[tuple(local_maxima_coords.T)] = True
 
-# label the local_maxima image to create seeds for the watershed function
-seeds = label(local_maxima_image)
+# # label the local_maxima image to create seeds for the watershed function
+# seeds = label(local_maxima_image)
 
-# apply the watershed algorithm to segment the image and get labels
-labels_3d = watershed(-distance_transform, seeds, mask=mask)
-ndv.imshow(labels_3d, default_lut={"cmap": "glasbey"})
+# # apply the watershed algorithm to segment the image and get labels
+# labels_3d = watershed(-distance_transform, seeds, mask=mask)
+# ndv.imshow(labels_3d, default_lut={"cmap": "glasbey"})
