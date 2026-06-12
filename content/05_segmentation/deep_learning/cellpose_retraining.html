@@ -243,6 +243,7 @@
 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-retrain-cellpose">How to Retrain Cellpose</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-label-masks">Creating Label Masks</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retraining-pipeline">Retraining Pipeline</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">Import Libraries</a></li>
@@ -330,8 +331,11 @@
 </details></section>
 <section id="how-to-retrain-cellpose">
 <h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">How to Retrain Cellpose<a class="headerlink" href="#how-to-retrain-cellpose" title="Link to this heading">#</a></h2>
-<p>The retraining process can be performed using the <code class="docutils literal notranslate"><span class="pre">Cellpose</span> <span class="pre">GUI</span></code>, which lets you train a model interactively, or using the code-based approach shown in this tutorial.</p>
-<p>To launch the <code class="docutils literal notranslate"><span class="pre">Cellpose</span> <span class="pre">GUI</span></code>, you can follow the instruction in the <a class="reference internal" href="intro_to_cellpose.html"><span class="std std-doc">Introduction to Cellpose</span></a> section. For more information you can also check the <a class="reference external" href="https://cellpose.readthedocs.io/en/latest/gui.html#training-your-own-cellpose-model">Cellpose GUI documentation</a>.</p>
+<p>In this tutorial we will cover the retraining process using the <strong>code-based approach</strong>.</p>
+<p>However, the retraining process can also be performed interactively using the <code class="docutils literal notranslate"><span class="pre">Cellpose</span> <span class="pre">GUI</span></code>. To launch the <code class="docutils literal notranslate"><span class="pre">Cellpose</span> <span class="pre">GUI</span></code>, you can follow the instruction in the <a class="reference internal" href="intro_to_cellpose.html"><span class="std std-doc">Introduction to Cellpose</span></a> section. For more information you can also check the <a class="reference external" href="https://cellpose.readthedocs.io/en/latest/gui.html#training-your-own-cellpose-model">Cellpose documentation</a>.</p>
+</section>
+<section id="data">
+<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Data<a class="headerlink" href="#data" title="Link to this heading">#</a></h2>
 <p>For this tutorial, we will use the sample dataset provided by Cellpose, which includes both training and test images pairs. You can download the dataset here:
 <a download="" href="https://bobiac.github.io/bobiac-book/_static/data/05_segmentation_cellpose_training.zip">
 <i class="fas fa-download"></i> Cellpose Training Dataset</a>.</p>
@@ -1263,6 +1267,7 @@ AP = \frac{TP}{TP + FP + FN}
 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-retrain-cellpose">How to Retrain Cellpose</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-label-masks">Creating Label Masks</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retraining-pipeline">Retraining Pipeline</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">Import Libraries</a></li>
