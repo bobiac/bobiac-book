@@ -106,3 +106,33 @@ html[data-theme="dark"] .logo-dark {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   margin-bottom: 0.5em;
 }
+
+/* Parameter reference tables inside collapsible <details> dropdowns.
+   table-layout: fixed + matching <colgroup> widths keep the columns aligned
+   across all the separate tables in a dropdown. */
+.param-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  margin: 0.4em 0 1.2em 0;
+  font-size: 0.9em;
+}
+
+.param-table th,
+.param-table td {
+  border: 1px solid var(--pst-color-border, #d0d0d0);
+  padding: 0.45em 0.7em;
+  text-align: left;
+  vertical-align: top;
+  overflow-wrap: anywhere;
+}
+
+.param-table thead th {
+  background-color: var(--bobiac-green);
+  color: var(--bobiac-darkgrey);
+  font-weight: 600;
+}
+
+.param-table tbody tr:nth-child(even) {
+  background-color: rgba(116, 184, 104, 0.1);
+}

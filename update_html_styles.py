@@ -56,6 +56,54 @@ def apply_header_styles(html_content):
     return str(soup), modified
 
 
+def apply_param_table_styles(html_content):
+    """
+    Add the `param-table` class and a matching <colgroup> to tables rendered
+    from markdown inside <details> dropdowns, so columns line up across the
+    several tables in a single dropdown.
+    """
+    soup = BeautifulSoup(html_content, "html.parser")
+    modified = False
+
+    # widths (in %) for the first N-1 columns, keyed by total column count.
+    # the last column takes the remainder.
+    widths_by_ncols = {2: [20], 3: [20, 13]}
+
+    for table in soup.find_all("table"):
+        if not isinstance(table, Tag):
+            continue
+        if table.find_parent("details") is None:
+            continue
+
+        header_row = table.find("tr")
+        if header_row is None:
+            continue
+        ncols = len(header_row.find_all(["th", "td"]))
+
+        existing_classes = table.get("class", [])
+        if "param-table" not in existing_classes:
+            table["class"] = [*existing_classes, "param-table"]
+
+        if table.find("colgroup") is None:
+            col_widths = widths_by_ncols.get(ncols)
+            if col_widths is not None:
+                col_widths = [*col_widths, 100 - sum(col_widths)]
+            else:
+                col_widths = [round(100 / ncols)] * ncols
+
+            colgroup = soup.new_tag("colgroup")
+            for w in col_widths:
+                col = soup.new_tag("col")
+                col["style"] = f"width: {w}%"
+                colgroup.append(col)
+            table.insert(0, colgroup)
+
+        modified = True
+        print(f"    ✅ Applied param-table styling to a {ncols}-column table")
+
+    return str(soup), modified
+
+
 def process_html_file(file_path):
     """Process a single HTML file and apply header styles."""
     # Check if this file should be excluded from styling
@@ -67,6 +115,10 @@ def process_html_file(file_path):
             content = f.read()
 
         modified_content, was_modified = apply_header_styles(content)
+        modified_content, table_modified = apply_param_table_styles(
+            modified_content
+        )
+        was_modified = was_modified or table_modified
 
         if was_modified:
             with open(file_path, "w", encoding="utf-8") as f:
