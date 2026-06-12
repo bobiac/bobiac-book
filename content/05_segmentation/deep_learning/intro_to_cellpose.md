@@ -26,7 +26,7 @@ You can use `uv` to use/install Cellpose in three ways:
 3. **Jupyter Notebook Integration**: Use `uvx juv` with the Jupyter notebooks from this course to run the Cellpose notebooks directly in the browser
 
 <p class="alert alert-warning">
-    <strong>⚠️ Note:</strong> If you want to use latest CellposeSAM model, make sure to run it using GPU or it will be very slow. If you have an Apple Silicon Mac, you can take advantage of the built-in GPU. See the instructions below for more details on how to run Cellpose with GPU support.
+    <strong>⚠️ Note:</strong> If you want to use Cellpose efficiently, make sure to run it using GPU or it will be very slow. If you have an Apple Silicon Mac, you can take advantage of the built-in GPU (no need of a particular installation). See the instructions below for more details on how to run Cellpose with GPU support on Windows/Linux.
 </p>
 
 ### 1. Direct Execution with uv
@@ -178,4 +178,4 @@ In order to use Cellpose in the notebooks with an NVIDIA GPU:
 
 ## What's Next?
 
-In the next sections, we will briefly demonstrate how to use Cellpose through the GUI and then focus more on how to use [Cellpose in scripts and pipelines](cellpose_notebook.ipynb) to automate the segmentation process on multiple images. We will also show how to [train a Cellpose custom models](cellpose_retraining_colab.ipynb) if the pretrained model does not fit your specific needs.
+In the next sections, we will briefly demonstrate how to use Cellpose through the GUI and then focus more on how to use [Cellpose in scripts and pipelines](cellpose_notebook.ipynb) to automate the segmentation process on multiple images. We will also show how to [train a Cellpose custom models](cellpose_retraining.ipynb) if the pretrained model does not fit your specific needs.
