@@ -29,7 +29,7 @@
 <link href="../../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" rel="stylesheet" type="text/css"/>
 <link href="../../../_static/sphinx-thebe.css?v=4fa983c6" rel="stylesheet" type="text/css"/>
 <link href="../../../_static/sphinx-design.min.css?v=95c83b7e" rel="stylesheet" type="text/css"/>
-<link href="../../../_static/styles/custom.css?v=ca608692" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/styles/custom.css?v=fa4d4bd4" rel="stylesheet" type="text/css"/>
 <!-- So that users can add custom icons -->
 <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
 <!-- Pre-loaded scripts that we'll load fully later -->
@@ -276,7 +276,7 @@
 <li><p><strong>Jupyter Notebook Integration</strong>: Use <code class="docutils literal notranslate"><span class="pre">uvx</span> <span class="pre">juv</span></code> with the Jupyter notebooks from this course to run the Cellpose notebooks directly in the browser</p></li>
 </ol>
 <p class="alert alert-warning">
-<strong>⚠️ Note:</strong> If you want to use latest CellposeSAM model, make sure to run it using GPU or it will be very slow. If you have an Apple Silicon Mac, you can take advantage of the built-in GPU. See the instructions below for more details on how to run Cellpose with GPU support.
+<strong>⚠️ Note:</strong> If you want to use Cellpose efficiently, make sure to run it using GPU or it will be very slow. If you have an Apple Silicon Mac, you can take advantage of the built-in GPU (no need of a particular installation). See the instructions below for more details on how to run Cellpose with GPU support on Windows/Linux.
 </p>
 <section id="direct-execution-with-uv">
 <h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">1. Direct Execution with uv<a class="headerlink" href="#direct-execution-with-uv" title="Link to this heading">#</a></h3>
@@ -284,6 +284,13 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uvx<span class="w"> </span><span class="s2">"cellpose[gui]"</span>
 </pre></div>
 </div>
+<p>If you are working with 3D datasets, you should also add the flag <code class="docutils literal notranslate"><span class="pre">--Zstack</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uvx<span class="w"> </span><span class="s2">"cellpose[gui]"</span><span class="w"> </span>--Zstack
+</pre></div>
+</div>
+<p class="alert alert-warning">
+<strong>⚠️ Note:</strong> If you have a multi-channel z-stack, Cellpose expects the dimension order to be <i>ZCYX</i>.
+</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">NVIDIA GPU (CUDA - Windows/Linux)</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg aria-hidden="true" class="sd-octicon sd-octicon-chevron-right" height="1.5em" version="1.1" viewbox="0 0 24 24" width="1.5em"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
@@ -296,6 +303,13 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uvx<span class="w"> </span>--index-strategy<span class="w"> </span>unsafe-best-match<span class="w"> </span>--with<span class="w"> </span>torch<span class="w"> </span>--with<span class="w"> </span>torchvision<span class="w"> </span>--index<span class="w"> </span>https://download.pytorch.org/whl/cu130<span class="w"> </span><span class="s2">"cellpose[gui]"</span>
 </pre></div>
 </div>
+<p class="sd-card-text">Add <code class="docutils literal notranslate"><span class="pre">--Zstack</span></code> flag if you are working with 3D datasets:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uvx<span class="w"> </span>--index-strategy<span class="w"> </span>unsafe-best-match<span class="w"> </span>--with<span class="w"> </span>torch<span class="w"> </span>--with<span class="w"> </span>torchvision<span class="w"> </span>--index<span class="w"> </span>https://download.pytorch.org/whl/cu130<span class="w"> </span><span class="s2">"cellpose[gui]"</span><span class="w"> </span>--Zstack
+</pre></div>
+</div>
+<p class="alert alert-warning">
+<strong>⚠️ Note:</strong> If you have a multi-channel z-stack, Cellpose expects the dimension order to be <i>ZCYX</i>.
+</p>
 </div>
 </details></section>
 <section id="manual-environment-setup">
@@ -325,6 +339,13 @@ cellpose-env<span class="se">\S</span>cripts<span class="se">\a</span>ctivate
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>cellpose<span class="w"> </span><span class="c1"># (or simply cellpose)</span>
 </pre></div>
 </div>
+<p>If you are working with 3D datasets, add the <code class="docutils literal notranslate"><span class="pre">--Zstack</span></code> flag:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>cellpose<span class="w"> </span>--Zstack<span class="w"> </span><span class="c1"># (or simply cellpose --Zstack)</span>
+</pre></div>
+</div>
+<p class="alert alert-warning">
+<strong>⚠️ Note:</strong> If you have a multi-channel z-stack, Cellpose expects the dimension order to be <i>ZCYX</i>.
+</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">NVIDIA GPU (CUDA - Windows/Linux)</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg aria-hidden="true" class="sd-octicon sd-octicon-chevron-right" height="1.5em" version="1.1" viewbox="0 0 24 24" width="1.5em"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
@@ -382,7 +403,7 @@ uvx<span class="w"> </span>juv<span class="w"> </span>run<span class="w"> </span
 </section>
 <section id="what-s-next">
 <h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">What’s Next?<a class="headerlink" href="#what-s-next" title="Link to this heading">#</a></h2>
-<p>In the next sections, we will briefly demonstrate how to use Cellpose through the GUI and then focus more on how to use <a class="reference internal" href="cellpose_notebook.html"><span class="std std-doc">Cellpose in scripts and pipelines</span></a> to automate the segmentation process on multiple images. We will also show how to <a class="reference internal" href="cellpose_retraining_colab.html"><span class="std std-doc">train a Cellpose custom models</span></a> if the pretrained model does not fit your specific needs.</p>
+<p>In the next sections, we will briefly demonstrate how to use Cellpose through the GUI and then focus more on how to use <a class="reference internal" href="cellpose_notebook.html"><span class="std std-doc">Cellpose in scripts and pipelines</span></a> to automate the segmentation process on multiple images. We will also show how to <a class="reference internal" href="cellpose_retraining.html"><span class="std std-doc">train a Cellpose custom models</span></a> if the pretrained model does not fit your specific needs.</p>
 </section>
 </section>
 <script type="text/x-thebe-config">
@@ -446,7 +467,7 @@ uvx<span class="w"> </span>juv<span class="w"> </span>run<span class="w"> </span
 <div class="bd-footer-content__inner container">
 <div class="footer-item">
 <p class="component-author">
-By Federico Gasparoli - Image Analysis Collaboratory @ Harvard Medical School - federico.gasparoli@gmail.com
+By Federico Gasparoli - CITE @ Harvard Medical School - federico.gasparoli@gmail.com
 </p>
 </div>
 <div class="footer-item">

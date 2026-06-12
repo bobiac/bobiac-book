@@ -29,7 +29,7 @@
 <link href="../../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" rel="stylesheet" type="text/css"/>
 <link href="../../../_static/sphinx-thebe.css?v=4fa983c6" rel="stylesheet" type="text/css"/>
 <link href="../../../_static/sphinx-design.min.css?v=95c83b7e" rel="stylesheet" type="text/css"/>
-<link href="../../../_static/styles/custom.css?v=ca608692" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/styles/custom.css?v=fa4d4bd4" rel="stylesheet" type="text/css"/>
 <!-- So that users can add custom icons -->
 <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
 <!-- Pre-loaded scripts that we'll load fully later -->
@@ -244,14 +244,16 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mount-your-google-drive">Mount your google drive</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-the-data">Download the Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-cellpose-other-dependencies">Install Cellpose &amp; other dependencies</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-retrain-cellpose">How to Retrain Cellpose</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-label-masks">Creating Label Masks</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retraining-pipeline">Retraining Pipeline</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">Import Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">Setup</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-handling">Data Handling</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#init-the-model">Init the Model</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-does-the-standard-model-perform-on-the-test-data-optional">How does the standard model perform on the test data? (Optional)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-the-model">Initialize the Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-the-other-pretrained-models">Downloading the Other Pretrained Models</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-does-a-model-perform-on-the-test-data">How does a model perform on the test data?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#train-new-model">Train New Model</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-on-test-data">Evaluate on test data</a></li>
 </ul>
@@ -296,8 +298,11 @@
 <div align="left"> <img alt="Ilastik Logo" src="https://raw.githubusercontent.com/bobiac/bobiac-book/main/_static/images/cellpose/colab_folder.png" width="300"/></div></section>
 <section id="download-the-data">
 <h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Download the Data<a class="headerlink" href="#download-the-data" title="Link to this heading">#</a></h2>
+<p>For this tutorial, we will use the sample dataset provided by Cellpose, which includes both training and test images pairs.</p>
 <p>Run the cell below to download the data for this exercise and save it in you Google Drive. A new folder called <code class="docutils literal notranslate"><span class="pre">bobiac_data_cellpose</span></code> will be created in your Google Drive.</p>
-<div class="cell tag_skip-execution docutils container">
+<p class="alert alert-info">
+<strong>🚧 Note:</strong> We will use only the sample dataset provided by Cellpose to demonstrate the retraining pipeline. If you want to retrain Cellpose on your own data, you will probably need more image pairs for training and for testing, as well as some validation data.
+</p><div class="cell tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create directory</span>
 <span class="o">!</span>mkdir<span class="w"> </span>-p<span class="w"> </span>/content/bobiac_data_cellpose
@@ -321,25 +326,6 @@
 </div>
 </div>
 </section>
-<section id="how-to-retrain-cellpose">
-<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">How to Retrain Cellpose<a class="headerlink" href="#how-to-retrain-cellpose" title="Link to this heading">#</a></h2>
-<p>The retraining process can be performed using the <a class="reference external" href="https://cellpose.readthedocs.io/en/latest/gui.html#training-your-own-cellpose-model">Cellpose GUI</a>, which lets you train a model interactively, or using the code-based approach shown in this tutorial.</p>
-<details>
-<summary><b>Run the Cellpose GUI</b></summary>
-<br/>
-<p>The Cellpose GUI needs a local display, so it can’t be run on Colab. To use it, run this notebook locally instead and follow the instructions below.</p>
-<p>If using <code class="docutils literal notranslate"><span class="pre">uv</span></code>, you can simply start <code class="docutils literal notranslate"><span class="pre">Cellpose</span></code> by running in your terminal:</p>
-<p><code class="docutils literal notranslate"><span class="pre">uvx</span> <span class="pre">"cellpose[gui]"</span></code></p>
-<p>This will open the Cellpose GUI.</p>
-<p>If you have an NVIDIA GPU and want to run the GUI with CUDA support, you can install <code class="docutils literal notranslate"><span class="pre">torch</span></code> with CUDA from the appropriate index (replace <code class="docutils literal notranslate"><span class="pre">cu130</span></code> with your CUDA version). Note the <code class="docutils literal notranslate"><span class="pre">--index-strategy</span> <span class="pre">unsafe-best-match</span></code> flag, which is needed so that <code class="docutils literal notranslate"><span class="pre">uv</span></code> resolves <code class="docutils literal notranslate"><span class="pre">cellpose</span></code> itself from PyPI rather than from the PyTorch index:</p>
-<p><code class="docutils literal notranslate"><span class="pre">uvx</span> <span class="pre">--index-strategy</span> <span class="pre">unsafe-best-match</span> <span class="pre">--with</span> <span class="pre">torch</span> <span class="pre">--with</span> <span class="pre">torchvision</span> <span class="pre">--index</span> <span class="pre">https://download.pytorch.org/whl/cu130</span> <span class="pre">"cellpose[gui]"</span></code></p>
-</details>
-<p>For this tutorial, we will use the sample dataset provided by Cellpose, which includes both training and test images pairs. You can download the dataset here:
-<a download="" href="../../../_static/data/05_segmentation_cellpose_training.zip">
-<i class="fas fa-download"></i> Cellpose Training Dataset</a>.</p>
-<p class="alert alert-info">
-<strong>🚧 Note:</strong> We will use only the sample dataset provided by Cellpose to demonstrate the retraining pipeline. If you want to retrain Cellpose on your own data, you will probably need more image pairs for training and for testing, as well as some validation data.
-</p></section>
 <section id="creating-label-masks">
 <h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Creating Label Masks<a class="headerlink" href="#creating-label-masks" title="Link to this heading">#</a></h2>
 <p>As mentioned above, the dataset we will use already includes label masks, but if you want to retrain Cellpose on your own data, you will need to create these masks yourself.</p>
@@ -358,7 +344,26 @@
 <li><p><strong>Train the Model</strong>: Use the prepared data to train a new Cellpose model.</p></li>
 <li><p><strong>Evaluate the Model</strong>: After training, evaluate the performance of the new model on the test data and compare it to the performance of the standard model.</p></li>
 </ol>
-</section>
+<br/>
+<details>
+<summary><b>Retraining for 3D Data</b></summary>
+<br/>
+<p><code class="docutils literal notranslate"><span class="pre">train.train_seg</span></code> always trains a <strong>2D</strong> network, even for 3D segmentation. When you run inference with <code class="docutils literal notranslate"><span class="pre">do_3D=True</span></code>, Cellpose applies this 2D network to the <strong>XY, XZ and YZ</strong> slices of the volume and combines the resulting flows (see the <a class="reference external" href="https://cellpose.readthedocs.io/en/latest/do3d.html">3D segmentation documentation</a>).</p>
+<p>This means that if your data is 3D and the default/pretrained model doesn’t perform well in <code class="docutils literal notranslate"><span class="pre">do_3D</span></code> mode, your training set should <strong>not</strong> consist only of XY slices. To get a model that segments well in all three orientations, you should provide labelled 2D image/mask pairs sampled from all three orthogonal planes of your annotated volumes:</p>
+<ul class="simple">
+<li><p><strong>XY</strong> slices (the standard top-down view)</p></li>
+<li><p><strong>XZ</strong> slices (a vertical “side” view)</p></li>
+<li><p><strong>YZ</strong> slices (the other vertical “side” view)</p></li>
+</ul>
+<p>Mixing slices from the three planes into your <code class="docutils literal notranslate"><span class="pre">train</span></code> (and <code class="docutils literal notranslate"><span class="pre">test</span></code>) folders teaches the network what objects look like from every orientation, so that the flows it predicts on XZ/YZ slices during 3D inference are as accurate as the ones it predicts on XY slices.</p>
+<p><strong>Generating multi-plane training crops</strong></p>
+<p>Cellpose provides a helper script, <a class="reference external" href="https://github.com/MouseLand/cellpose/blob/main/cellpose/gui/make_train.py"><code class="docutils literal notranslate"><span class="pre">make_train.py</span></code></a>, that extracts random XY, XZ and YZ crops from a 3D image (and its label volume, if available) and saves them as 2D <code class="docutils literal notranslate"><span class="pre">.tif</span></code> files ready to be labelled (and/or corrected). Note that this script needs a local display, so it can’t be run on Colab; run it locally instead.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>cellpose.gui.make_train<span class="w"> </span>--dir<span class="w"> </span>/path/to/3d/data<span class="w"> </span>--anisotropy<span class="w"> </span><span class="m">5</span>
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">--anisotropy</span></code> (the ratio of the Z pixel size to the XY pixel size, the same value you would pass to <code class="docutils literal notranslate"><span class="pre">model.eval(...,</span> <span class="pre">anisotropy=...)</span></code>) so that the XZ/YZ crops are rescaled to look isotropic, matching the appearance of the XY crops.</p>
+<p>Once you have a folder of labelled 2D image/mask pairs covering all three planes, you can use them with <code class="docutils literal notranslate"><span class="pre">train.train_seg</span></code> exactly as shown below: no extra 3D-specific parameters are needed, since the network itself only ever sees 2D slices.</p>
+</details></section>
 <section id="import-libraries">
 <h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Import Libraries<a class="headerlink" href="#import-libraries" title="Link to this heading">#</a></h2>
 <div class="cell tag_skip-execution tag_teacher docutils container">
@@ -436,21 +441,51 @@
 </div>
 </div>
 </section>
-<section id="init-the-model">
-<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Init the Model<a class="headerlink" href="#init-the-model" title="Link to this heading">#</a></h2>
-<p>The next step after organizing and loading your data is to initialize the Cellpose model you want to retrain.</p>
+<section id="initialize-the-model">
+<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Initialize the Model<a class="headerlink" href="#initialize-the-model" title="Link to this heading">#</a></h2>
+<p>To initialize Cellpose model we can use the <code class="docutils literal notranslate"><span class="pre">models.CellposeModel()</span></code> class.</p>
+<p>There are other parameters we can set when initializing the model, here we will only use <code class="docutils literal notranslate"><span class="pre">pretrained_model</span></code> to specify which pretrained model to use and <code class="docutils literal notranslate"><span class="pre">gpu</span></code> to specify whether to use GPU (if available) for faster inference.</p>
+<p>Currently, the available pretrained models are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">cpsam</span></code>: this is the original CellposeSAM model released in April 2025 using the SAM-ViTL backbone (default model)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cpsam_v2</span></code>: this is the CellposeSAM model released in June 2026 using the SAM-ViTL backbone, it includes a fix in the training for low contrast regions</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cpdino</span></code>: this is the CellposeDINO model released in June 2026 using the DINOv3-ViTL backbone</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cpdino-vitb</span></code>: this is the CellposeDINO model released in June 2026 using the DINOv3-ViTB backbone (smaller model)</p></li>
+</ul>
+<p class="alert alert alert-info">
+<strong>Note:</strong> Only the default <code>cpsam</code> model is downloaded automatically the first time you run this notebook (this may take a while). The other models (<code>cpsam_v2</code>, <code>cpdino</code>, <code>cpdino-vitb</code>) must be downloaded manually, see below.
+</p><section id="downloading-the-other-pretrained-models">
+<h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">Downloading the Other Pretrained Models<a class="headerlink" href="#downloading-the-other-pretrained-models" title="Link to this heading">#</a></h3>
+<p>These models are hosted on the <a class="reference external" href="https://huggingface.co/mouseland/cellpose-sam">Cellpose-SAM Hugging Face repository</a>. We need to download the model weights and place them in the <code class="docutils literal notranslate"><span class="pre">~/.cellpose/models</span></code> directory (the <code class="docutils literal notranslate"><span class="pre">MODEL_DIR</span></code> variable from the <code class="docutils literal notranslate"><span class="pre">cellpose.models</span></code> module).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">cellpose.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">MODEL_DIR</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cellpose.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">download_url_to_file</span>
+
+<span class="n">model_name</span> <span class="o">=</span> <span class="s2">"cpsam_v2"</span>  <span class="c1"># or "cpdino" / "cpdino-vitb"</span>
+
+<span class="n">MODEL_DIR</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">model_path</span> <span class="o">=</span> <span class="n">MODEL_DIR</span> <span class="o">/</span> <span class="n">model_name</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">model_path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"https://huggingface.co/mouseland/cellpose-sam/resolve/main/</span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s2">"</span>
+    <span class="n">download_url_to_file</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">model_path</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell tag_skip-execution tag_teacher docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialize the Cellpose model</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CellposeModel</span><span class="p">(</span><span class="n">pretrained_model</span><span class="o">=</span><span class="s2">"cpsam"</span><span class="p">,</span> <span class="n">gpu</span><span class="o">=</span><span class="n">use_gpu</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_path</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">MODEL_DIR</span> <span class="o">/</span> <span class="s2">"cpsam_v2"</span><span class="p">)</span>  <span class="c1"># or "cpdino" / "cpdino-vitb" or "cpsam"</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CellposeModel</span><span class="p">(</span><span class="n">pretrained_model</span><span class="o">=</span><span class="n">model_path</span><span class="p">,</span> <span class="n">gpu</span><span class="o">=</span><span class="n">use_gpu</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="how-does-the-standard-model-perform-on-the-test-data-optional">
-<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">How does the standard model perform on the test data? (Optional)<a class="headerlink" href="#how-does-the-standard-model-perform-on-the-test-data-optional" title="Link to this heading">#</a></h2>
-<p>Before training a new model, let’s see how the standard Cellpose model performs on the test data.</p>
+</section>
+<section id="how-does-a-model-perform-on-the-test-data">
+<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">How does a model perform on the test data?<a class="headerlink" href="#how-does-a-model-perform-on-the-test-data" title="Link to this heading">#</a></h2>
+<p>Before training a new model, let’s see how the pre-trained Cellpose model we chose performs on the test data.</p>
 <div class="cell tag_skip-execution tag_teacher docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># run model on test images</span>
@@ -520,10 +555,10 @@ AP = \frac{TP}{TP + FP + FN}
 <p>Now we’re ready to retrain Cellpose using the <code class="docutils literal notranslate"><span class="pre">train_seg</span></code> method from the <code class="docutils literal notranslate"><span class="pre">train</span></code> module.</p>
 <p>Here we will change few training parameters but you can find the full parameters description for the <code class="docutils literal notranslate"><span class="pre">train.train_seg</span></code> method in the dropdown below or in the <a class="reference external" href="https://cellpose.readthedocs.io/en/latest/api.html#module-cellpose.train">Cellpose API documentation</a></p>
 <details>
-<summary><b>CellposeSam <code>train.train_seg()</code> Parameters</b></summary>
+<summary><b>Cellpose <code>train.train_seg()</code> Parameters</b></summary>
 <br/>
 <p><strong>Input Data</strong></p>
-<div class="pst-scrollable-table-container"><table class="table">
+<div class="pst-scrollable-table-container"><table class="table param-table"><colgroup><col style="width: 20%"/><col style="width: 13%"/><col style="width: 67%"/></colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Parameter</p></th>
 <th class="head"><p>Default</p></th>
@@ -567,7 +602,7 @@ AP = \frac{TP}{TP + FP + FN}
 </table>
 </div>
 <p><strong>Sampling &amp; Epoch Control</strong></p>
-<div class="pst-scrollable-table-container"><table class="table">
+<div class="pst-scrollable-table-container"><table class="table param-table"><colgroup><col style="width: 20%"/><col style="width: 13%"/><col style="width: 67%"/></colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Parameter</p></th>
 <th class="head"><p>Default</p></th>
@@ -599,7 +634,7 @@ AP = \frac{TP}{TP + FP + FN}
 </table>
 </div>
 <p><strong>Optimizer</strong></p>
-<div class="pst-scrollable-table-container"><table class="table">
+<div class="pst-scrollable-table-container"><table class="table param-table"><colgroup><col style="width: 20%"/><col style="width: 13%"/><col style="width: 67%"/></colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Parameter</p></th>
 <th class="head"><p>Default</p></th>
@@ -629,13 +664,13 @@ AP = \frac{TP}{TP + FP + FN}
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">bsize</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">256</span></code></p></td>
-<td><p>Size of each tile in pixels (<code class="docutils literal notranslate"><span class="pre">bsize</span> <span class="pre">×</span> <span class="pre">bsize</span></code>). Fixed to 256x256 pixels for the SAM backbone (<code class="docutils literal notranslate"><span class="pre">cpsam</span></code>), don’t override it.</p></td>
+<td><p>Size of each tile in pixels (<code class="docutils literal notranslate"><span class="pre">bsize</span> <span class="pre">×</span> <span class="pre">bsize</span></code>). For the SAM-based models (<code class="docutils literal notranslate"><span class="pre">cpsam</span></code>, <code class="docutils literal notranslate"><span class="pre">cpsam_v2</span></code>) this is fixed to 256x256, don’t override it. For the DINO-based models (<code class="docutils literal notranslate"><span class="pre">cpdino</span></code>, <code class="docutils literal notranslate"><span class="pre">cpdino-vitb</span></code>) the default is 384 and can be adjusted.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <p><strong>Augmentation &amp; Preprocessing</strong></p>
-<div class="pst-scrollable-table-container"><table class="table">
+<div class="pst-scrollable-table-container"><table class="table param-table"><colgroup><col style="width: 20%"/><col style="width: 13%"/><col style="width: 67%"/></colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Parameter</p></th>
 <th class="head"><p>Default</p></th>
@@ -663,7 +698,7 @@ AP = \frac{TP}{TP + FP + FN}
 </table>
 </div>
 <p><strong>Loss</strong></p>
-<div class="pst-scrollable-table-container"><table class="table">
+<div class="pst-scrollable-table-container"><table class="table param-table"><colgroup><col style="width: 20%"/><col style="width: 13%"/><col style="width: 67%"/></colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Parameter</p></th>
 <th class="head"><p>Default</p></th>
@@ -679,7 +714,7 @@ AP = \frac{TP}{TP + FP + FN}
 </table>
 </div>
 <p><strong>Saving</strong></p>
-<div class="pst-scrollable-table-container"><table class="table">
+<div class="pst-scrollable-table-container"><table class="table param-table"><colgroup><col style="width: 20%"/><col style="width: 13%"/><col style="width: 67%"/></colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Parameter</p></th>
 <th class="head"><p>Default</p></th>
@@ -817,14 +852,16 @@ AP = \frac{TP}{TP + FP + FN}
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mount-your-google-drive">Mount your google drive</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-the-data">Download the Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-cellpose-other-dependencies">Install Cellpose &amp; other dependencies</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-retrain-cellpose">How to Retrain Cellpose</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-label-masks">Creating Label Masks</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retraining-pipeline">Retraining Pipeline</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">Import Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">Setup</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-handling">Data Handling</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#init-the-model">Init the Model</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-does-the-standard-model-perform-on-the-test-data-optional">How does the standard model perform on the test data? (Optional)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-the-model">Initialize the Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-the-other-pretrained-models">Downloading the Other Pretrained Models</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-does-a-model-perform-on-the-test-data">How does a model perform on the test data?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#train-new-model">Train New Model</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-on-test-data">Evaluate on test data</a></li>
 </ul>
@@ -835,7 +872,7 @@ AP = \frac{TP}{TP + FP + FN}
 <div class="bd-footer-content__inner container">
 <div class="footer-item">
 <p class="component-author">
-By Federico Gasparoli - Image Analysis Collaboratory @ Harvard Medical School - federico.gasparoli@gmail.com
+By Federico Gasparoli - CITE @ Harvard Medical School - federico.gasparoli@gmail.com
 </p>
 </div>
 <div class="footer-item">

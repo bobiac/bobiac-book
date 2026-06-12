@@ -16,4 +16,4 @@ In **image segmentation**, deep learning models assign a class to each pixel (e.
 
 Because deep learning learns directly from data and can model very complex relationships, it often outperforms classical and machine learning methods for robustness, however, this performance comes at a higher cost of training and data requirement.
 
-In the following chapters, we will explore how to perform image segmentation using **CellposeSAM**.
+In the following chapters, we will explore how to perform image segmentation using **Cellpose4**.
