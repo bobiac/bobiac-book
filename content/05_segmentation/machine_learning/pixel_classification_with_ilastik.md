@@ -154,3 +154,13 @@ From this **Ilastik** pipeline we managed to extract the **semantic segmentation
 <div class="alert alert-info">
     <strong>NOTE:</strong> For teaching purposes, in this exercise we exported the <strong>Simple Segmentation</strong> masks and will use the <a href="./from_ilastik_masks_to_labels.ipynb"><strong>from_ilastik_masks_to_labels</strong></a> notebook to convert them from <strong>semantic</strong> to <strong>instance segmentation</strong>. However, as mentioned above, you could instead export the <strong>Probabilities</strong> from the <strong>Prediction Export</strong> step. If you do so, in the <strong>Object Classification</strong> section you can load the probability maps and use the <a href="https://www.ilastik.org/documentation/objects/objects#from-probabilities-to-a-segmentation---threshold-and-size-filter-applet" target="_blank">Thresholding and Size Filter</a> applet to go directly from probability maps to an <strong>instance segmentation</strong>.
 </div>
+
+### Bonus: Multi-Dimensional Datasets
+
+**Ilastik** also supports multi-dimensional datasets (e.g. **z-stacks**, **time-series**, **multi-channel** images, or any combination of these).
+
+If **Ilastik** does not read the dimension order of your data correctly, you can fix this by **right-clicking** on the dataset in the ***Raw Data*** table, selecting ***Edit properties...***, and **transposing the dimensions** as needed in the ***Interpret axes as*** field (e.g. *tyx* -> *zyx*).
+
+For **z-stacks**, the workflow is the same as for 2D images, but you can also train the classifier by drawing annotations in the **z** dimension, as shown in the image below.
+
+<div align="center"> <img src="../../../_static/images/ilastik/8a.png" alt="Ilastik" width="700"> </div>
