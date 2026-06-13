@@ -1,5 +1,9 @@
 author = (
-    "Federico Gasparoli - CITE @ Harvard Medical School - federico.gasparoli@gmail.com"
+    "Federico Gasparoli, PhD - federico@hms.harvard.edu (federico.gasparoli@gmail.com)<br><br>"
+    "Materials:<br>"
+    "- Federico Gasparoli, PhD - federico@hms.harvard.edu (federico.gasparoli@gmail.com)<br>"
+    "- Eva de la Serna, PhD - eva_delaserna@hms.harvard.edu<br>"
+    "- Max Brambach, PhD - max_brambach@hms.harvard.edu"
 )
 comments_config = {"hypothesis": False, "utterances": False}
 copyright = "2025"
