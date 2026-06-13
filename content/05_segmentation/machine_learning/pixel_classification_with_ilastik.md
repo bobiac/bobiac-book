@@ -36,6 +36,8 @@ For each dataset, you can check (and change) how the data is stored by going to 
 - **Relative Link** *(default when the image is in the same folder tree as the project)*: stores the path **relative to the .ilp file**. As long as you move/copy the **.ilp** file and the data folder together, keeping their relative positions unchanged, ilastik will still find the images. This is the recommended option for sharing: put the **.ilp** file and the folder containing the training images together (e.g. the **.ilp** file directly inside, or next to, the data folder), zip everything up, and share that.
 - **Copied to Project File**: embeds the raw image data directly inside the **.ilp** file as **HDF5** datasets the next time you save the project. The **.ilp** file (itself an HDF5 file) becomes fully self-contained, you can share that single file and it will always work, but its file size will grow substantially since it now also contains all the raw images.
 
+<div align="center"> <img src="../../../_static/images/ilastik/8a.png" alt="Ilastik" width="600"> </div>
+
 :::
 
 <div class="alert alert-info">
@@ -161,6 +163,8 @@ From this **Ilastik** pipeline we managed to extract the **semantic segmentation
 
 If **Ilastik** does not read the dimension order of your data correctly, you can fix this by **right-clicking** on the dataset in the ***Raw Data*** table, selecting ***Edit properties...***, and **transposing the dimensions** as needed in the ***Interpret axes as*** field (e.g. *tyx* -> *zyx*).
 
+<div align="center"> <img src="../../../_static/images/ilastik/8a.png" alt="Ilastik" width="600"> </div>
+
 For **z-stacks**, the workflow is the same as for 2D images, but you can also train the classifier by drawing annotations in the **z** dimension, as shown in the image below.
 
-<div align="center"> <img src="../../../_static/images/ilastik/8a.png" alt="Ilastik" width="700"> </div>
+<div align="center"> <img src="../../../_static/images/ilastik/8b.png" alt="Ilastik" width="700"> </div>
