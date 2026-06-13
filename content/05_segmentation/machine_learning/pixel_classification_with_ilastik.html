@@ -248,6 +248,7 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#export-the-results">5. Export the Results</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#batch-processing">6. Batch Processing</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-s-next">7. What’s Next?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-multi-dimensional-datasets">Bonus: Multi-Dimensional Datasets</a></li>
 </ul>
 </li>
 </ul>
@@ -288,6 +289,7 @@
 <li><p class="sd-card-text"><strong>Relative Link</strong> <em>(default when the image is in the same folder tree as the project)</em>: stores the path <strong>relative to the .ilp file</strong>. As long as you move/copy the <strong>.ilp</strong> file and the data folder together, keeping their relative positions unchanged, ilastik will still find the images. This is the recommended option for sharing: put the <strong>.ilp</strong> file and the folder containing the training images together (e.g. the <strong>.ilp</strong> file directly inside, or next to, the data folder), zip everything up, and share that.</p></li>
 <li><p class="sd-card-text"><strong>Copied to Project File</strong>: embeds the raw image data directly inside the <strong>.ilp</strong> file as <strong>HDF5</strong> datasets the next time you save the project. The <strong>.ilp</strong> file (itself an HDF5 file) becomes fully self-contained, you can share that single file and it will always work, but its file size will grow substantially since it now also contains all the raw images.</p></li>
 </ul>
+<div align="center"> <img alt="Ilastik" src="../../../_static/images/ilastik/8a.png" width="600"/> </div>
 </div>
 </details><div class="alert alert-info">
 <strong>💡 TIP:</strong> Remember to save your project regularly using <strong>Cmd+S</strong> (macOS) or <strong>Ctrl+S</strong> (Windows), or via <strong>Project → Save Project</strong>.
@@ -374,6 +376,14 @@ Depending on the option you select in the previous <em><strong>Prediction Export
 <strong>NOTE:</strong> For teaching purposes, in this exercise we exported the <strong>Simple Segmentation</strong> masks and will use the <a href="./from_ilastik_masks_to_labels.ipynb"><strong>from_ilastik_masks_to_labels</strong></a> notebook to convert them from <strong>semantic</strong> to <strong>instance segmentation</strong>. However, as mentioned above, you could instead export the <strong>Probabilities</strong> from the <strong>Prediction Export</strong> step. If you do so, in the <strong>Object Classification</strong> section you can load the probability maps and use the <a href="https://www.ilastik.org/documentation/objects/objects#from-probabilities-to-a-segmentation---threshold-and-size-filter-applet" target="_blank">Thresholding and Size Filter</a> applet to go directly from probability maps to an <strong>instance segmentation</strong>.
 </div>
 </section>
+<section id="bonus-multi-dimensional-datasets">
+<h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">Bonus: Multi-Dimensional Datasets<a class="headerlink" href="#bonus-multi-dimensional-datasets" title="Link to this heading">#</a></h3>
+<p><strong>Ilastik</strong> also supports multi-dimensional datasets (e.g. <strong>z-stacks</strong>, <strong>time-series</strong>, <strong>multi-channel</strong> images, or any combination of these).</p>
+<p>If <strong>Ilastik</strong> does not read the dimension order of your data correctly, you can fix this by <strong>right-clicking</strong> on the dataset in the <em><strong>Raw Data</strong></em> table, selecting <em><strong>Edit properties…</strong></em>, and <strong>transposing the dimensions</strong> as needed in the <em><strong>Interpret axes as</strong></em> field (e.g. <em>tyx</em> -&gt; <em>zyx</em>).</p>
+<div align="center"> <img alt="Ilastik" src="../../../_static/images/ilastik/8a.png" width="600"/> </div>
+<p>For <strong>z-stacks</strong>, the workflow is the same as for 2D images, but you can also train the classifier by drawing annotations in the <strong>z</strong> dimension, as shown in the image below.</p>
+<div align="center"> <img alt="Ilastik" src="../../../_static/images/ilastik/8b.png" width="700"/> </div>
+</section>
 </section>
 </section>
 <script type="text/x-thebe-config">
@@ -431,6 +441,7 @@ Depending on the option you select in the previous <em><strong>Prediction Export
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#export-the-results">5. Export the Results</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#batch-processing">6. Batch Processing</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-s-next">7. What’s Next?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-multi-dimensional-datasets">Bonus: Multi-Dimensional Datasets</a></li>
 </ul>
 </li>
 </ul>
@@ -441,7 +452,7 @@ Depending on the option you select in the previous <em><strong>Prediction Export
 <div class="bd-footer-content__inner container">
 <div class="footer-item">
 <p class="component-author">
-By Federico Gasparoli - CITE @ Harvard Medical School - federico.gasparoli@gmail.com
+By Federico Gasparoli, PhD - federico@hms.harvard.edu (federico.gasparoli@gmail.com)<br/><br/>Materials:<br/>- Federico Gasparoli, PhD - federico@hms.harvard.edu (federico.gasparoli@gmail.com)<br/>- Eva de la Serna, PhD - eva_delaserna@hms.harvard.edu<br/>- Max Brambach, PhD - max_brambach@hms.harvard.edu
 </p>
 </div>
 <div class="footer-item">
