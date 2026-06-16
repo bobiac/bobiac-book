@@ -29,9 +29,9 @@ We will use python in practice to:
 
 Download this Python for Bioimage Analysis Cheat Sheet for quick reference of concepts covered in this lesson.
 <a
-    class="custom-button custom-download-button" href="../../pdfs/04_digital_images_intro/python_for_bioimage_analysis_beginners.pdf" download> <i class="fas fa-download"></i> Download the Slides
+    class="custom-button custom-download-button" href="../../pdfs/04_digital_images_intro/python_bioimages_cheat_sheet.pdf" download> <i class="fas fa-download"></i> Download the Slides
 </a>
 
 <div align="center">
-  <iframe class="custom-pdf-frame-169" src="../../pdfs/04_digital_images_intro/python_for_bioimage_analysis_beginners.pdf"> </iframe>
+  <iframe class="custom-pdf-frame-169" src="../../pdfs/04_digital_images_intro/python_bioimages_cheat_sheet.pdf"> </iframe>
 </div>
