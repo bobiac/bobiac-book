@@ -91,19 +91,19 @@ def generate_gaussian_spots(
 
 
 # generate 3d spots
-scale = (0.3, 0.1, 0.1)
-spots = generate_gaussian_spots(
-    seed=2,
-    scale=scale,
-    na=1.4,
-    ri=1.52,  # immersion medium refractive index
-    em_wvl_um=0.520,  # emission wavelength in µm (GFP)
-    sigma_scale_range=(1, 3),  # per-spot size jitter
-    background=0.09,  # autofluorescence (fraction of max)
-    noise=0.04,  # read-noise std (fraction of max)
-)
+# scale = (0.3, 0.1, 0.1)
+# spots = generate_gaussian_spots(
+#     seed=2,
+#     scale=scale,
+#     na=1.4,
+#     ri=1.52,  # immersion medium refractive index
+#     em_wvl_um=0.520,  # emission wavelength in µm (GFP)
+#     sigma_scale_range=(1, 3),  # per-spot size jitter
+#     background=0.09,  # autofluorescence (fraction of max)
+#     noise=0.04,  # read-noise std (fraction of max)
+# )
 
-ndv.imshow(spots)
+# ndv.imshow(spots)
 
 # scale float volume to the full uint16 range before saving
 # import tifffile
@@ -135,3 +135,22 @@ ndv.imshow(spots)
 # # apply the watershed algorithm to segment the image and get labels
 # labels_3d = watershed(-distance_transform, seeds, mask=mask)
 # ndv.imshow(labels_3d, default_lut={"cmap": "glasbey"})
+
+
+scale = (0.9, 0.325, 0.325)
+spots = generate_gaussian_spots(
+    seed=2,
+    scale=scale,
+    na=0.75,
+    ri=1,  # immersion medium refractive index
+    em_wvl_um=0.520,  # emission wavelength in µm (GFP)
+    sigma_scale_range=(2, 8),  # per-spot size jitter
+    background=0.09,  # autofluorescence (fraction of max)
+    noise=0.04,  # read-noise std (fraction of max)
+)
+
+ndv.imshow(spots)
+# import tifffile
+
+# spots_uint16 = (np.clip(spots, 0, 1) * 65535).astype(np.uint16)
+# tifffile.imwrite("_static/images/ilastik/3d_spots_ilastik.tif", spots_uint16)
