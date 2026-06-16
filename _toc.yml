@@ -36,11 +36,12 @@ parts:
           - file: content/05_segmentation/deep_learning/intro_to_cellpose.md
           - file: content/05_segmentation/deep_learning/cellpose_notebook
           - file: content/05_segmentation/deep_learning/cellpose_retraining
-      - file: content/05_segmentation/spot_detection/spot_detection.md
-        sections:
-          - file: content/05_segmentation/spot_detection/intro_to_spotiflow.md
-          - file: content/05_segmentation/spot_detection/spotiflow_notebook
-          - file: content/05_segmentation/spot_detection/spotiflow_retraining_notebook
+
+  - file: content/00_spot_detection/spot_detection_intro.md
+    sections:
+      - file: content/00_spot_detection/intro_to_spotiflow.md
+      - file: content/00_spot_detection/spotiflow_notebook
+      - file: content/00_spot_detection/spotiflow_retraining_notebook
 
   - file: content/06_object_classification/object_classification.md
     sections:
