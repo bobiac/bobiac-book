@@ -437,7 +437,7 @@ This notebook is written <strong>like a small interactive book</strong> to compl
 <p>Python is powerful in part because of its wide array of <em>external libraries</em>. An <strong>external Python library (also called a Python package)</strong> is a publicly available code base containing functions and other tools not already included internally in Python. While you could write your own Python code to conduct tasks, you can save significant time and effort by using other developers’ libraries.</p>
 <p>We are going to be using a few external Python libraries in this lesson, so we will start by learning how to specify them in our code. This practice is called specifying or importing our <strong>dependencies</strong>. It’s standard practice to import all dependencies at the very beginning of your code.</p>
 <p class="alert alert-info">
-<strong>Note:</strong> Something about installing vs importing dependencies
+<strong>Note:</strong> In Python, there is an important distinction between <i><b>installing</b></i> a library and <i><b>importing</b></i> a library. Installing a library means downloading it onto your computer so that it is available for use. Importing a library means telling Python to make that library's functionality available in your current code. In this lesson setup, uv has installed all necessary libraries already for you, so you only need to worry about importing!
 </p></section>
 <section id="how-to-import-a-library">
 <h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">How to import a library<a class="headerlink" href="#how-to-import-a-library" title="Link to this heading">#</a></h3>
@@ -674,7 +674,7 @@ This notebook is written <strong>like a small interactive book</strong> to compl
 <h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">Viewing an image’s type<a class="headerlink" href="#viewing-an-image-s-type" title="Link to this heading">#</a></h3>
 <p>In the last notebook, we learned about Python’s standard data types and structures. We used the built-in function <code class="docutils literal notranslate"><span class="pre">type()</span></code> to check what type of data an object is. We can again apply this <code class="docutils literal notranslate"><span class="pre">type()</span></code> function to our image to check its type.</p>
 <p class="alert alert-info">
-<strong>Note:</strong> Notice the syntax when accessing an image's shape dtype. The syntax is <b>.shape</b> and <b>.dytpe</b> instead of <b>.shape()</b> and <b>.dtype()</b>. The parentheses are used when there are required or optional inputs. <b>.shape</b> and <b>.dytpe</b> do not have any inputs so they do not have any parentheses. 
+<strong>Note:</strong> Notice the syntax when accessing an image's shape dtype. The syntax is <b>.shape</b> and <b>.dtype</b> instead of <b>.shape()</b> and <b>.dtype()</b>. The parentheses are used when there are required or optional inputs. <b>.shape</b> and <b>.dtype</b> do not have any inputs so they do not have any parentheses. 
 </p></section>
 <section id="print-your-image-s-shape-dtype-and-type">
 <h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">✍️ Print your image’s shape, dtype, and type<a class="headerlink" href="#print-your-image-s-shape-dtype-and-type" title="Link to this heading">#</a></h3>
