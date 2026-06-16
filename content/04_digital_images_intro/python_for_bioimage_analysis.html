@@ -289,7 +289,7 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#print-the-minimum-maximum-and-mean-intensity-value-of-raw-image">✍️ Print the minimum, maximum, and mean intensity value of <code class="docutils literal notranslate"><span class="pre">raw_image</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multidimensional-images">Multidimensional Images</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multidimensional-images">3. Multidimensional Images</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Concept</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-a-3d-image-set-is-organized-in-a-numpy-array">How a 3D image set is organized in a <code class="docutils literal notranslate"><span class="pre">numpy</span></code> array</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-print-the-shape-of-the-multichannel-tif-image-to-determine-how-many-fluorescence-channels-it-has">✍️ Exercise: Print the shape of the “multichannel.tif” image to determine how many fluorescence channels it has</a></li>
@@ -301,13 +301,13 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-use-matplotlib-to-display-the-maximum-intensity-projection-of-the-zstack-tif-image-file">✍️ Exercise: Use <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> to display the maximum intensity projection of the “zstack.tif” image file</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-images">5. Saving Images</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-images">4. Saving Images</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Concept</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-output-files">Saving Output Files</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-save-the-maximum-intensity-projection-of-the-z-stack-using-tifffile">✍️ Exercise: Save the maximum intensity projection of the z-stack using <code class="docutils literal notranslate"><span class="pre">tifffile</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-multiple-images">4. Plotting Multiple Images</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-multiple-images">5. Plotting Multiple Images</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Concept</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-matplotlib-pyplot-organizes-figures">How <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code> organizes figures</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-figure-with-subplots">Creating a figure with subplots</a></li>
@@ -1058,7 +1058,7 @@ float32
 </section>
 <hr class="docutils"/>
 <section id="multidimensional-images">
-<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Multidimensional Images<a class="headerlink" href="#multidimensional-images" title="Link to this heading">#</a></h2>
+<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">3. Multidimensional Images<a class="headerlink" href="#multidimensional-images" title="Link to this heading">#</a></h2>
 <section id="id5">
 <h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">Concept<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <p>So far we have been discussing <code class="docutils literal notranslate"><span class="pre">numpy</span></code> arrays in the context of individual 2D images. However, <code class="docutils literal notranslate"><span class="pre">numpy</span></code> arrays can also be applied to <em>multidimensional images</em>. Common examples of multidimensional fluorescence images include z-stacks, time lapses, multiple fluorescence channels, etc. In each of these examples, an additional dimension is created to individual 2D images with x and y dimensions.</p>
@@ -1074,7 +1074,9 @@ float32
              <span class="p">[[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
              <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">]],</span>
              <span class="p">[[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
-             <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">]])</span>
+             <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">]],</span>
+             <span class="p">[[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+             <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">]]])</span>
 </pre></div>
 </div>
 </section>
@@ -1217,7 +1219,7 @@ float32
 </section>
 <hr class="docutils"/>
 <section id="saving-images">
-<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">5. Saving Images<a class="headerlink" href="#saving-images" title="Link to this heading">#</a></h2>
+<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">4. Saving Images<a class="headerlink" href="#saving-images" title="Link to this heading">#</a></h2>
 <section id="id6">
 <h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">Concept<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
 <p>With <code class="docutils literal notranslate"><span class="pre">tifffile</span></code>, we can also save output files using the function <code class="docutils literal notranslate"><span class="pre">imwrite()</span></code>.</p>
@@ -1258,7 +1260,7 @@ float32
 </section>
 <hr class="docutils"/>
 <section id="plotting-multiple-images">
-<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">4. Plotting Multiple Images<a class="headerlink" href="#plotting-multiple-images" title="Link to this heading">#</a></h2>
+<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">5. Plotting Multiple Images<a class="headerlink" href="#plotting-multiple-images" title="Link to this heading">#</a></h2>
 <section id="id7">
 <h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">Concept<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
 <p>So far we have been using <code class="docutils literal notranslate"><span class="pre">ndv</span></code> to view multidimensional images. We can also use <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code>, but doing so would involve plotting multiple images. In practice, this is done by creating multiple <strong>subplots</strong> (1 for each image) within an overall <strong>figure</strong>.</p>
@@ -1733,7 +1735,7 @@ X = Columns in an Image</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#print-the-minimum-maximum-and-mean-intensity-value-of-raw-image">✍️ Print the minimum, maximum, and mean intensity value of <code class="docutils literal notranslate"><span class="pre">raw_image</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multidimensional-images">Multidimensional Images</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multidimensional-images">3. Multidimensional Images</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Concept</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-a-3d-image-set-is-organized-in-a-numpy-array">How a 3D image set is organized in a <code class="docutils literal notranslate"><span class="pre">numpy</span></code> array</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-print-the-shape-of-the-multichannel-tif-image-to-determine-how-many-fluorescence-channels-it-has">✍️ Exercise: Print the shape of the “multichannel.tif” image to determine how many fluorescence channels it has</a></li>
@@ -1745,13 +1747,13 @@ X = Columns in an Image</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-use-matplotlib-to-display-the-maximum-intensity-projection-of-the-zstack-tif-image-file">✍️ Exercise: Use <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> to display the maximum intensity projection of the “zstack.tif” image file</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-images">5. Saving Images</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-images">4. Saving Images</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Concept</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-output-files">Saving Output Files</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-save-the-maximum-intensity-projection-of-the-z-stack-using-tifffile">✍️ Exercise: Save the maximum intensity projection of the z-stack using <code class="docutils literal notranslate"><span class="pre">tifffile</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-multiple-images">4. Plotting Multiple Images</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-multiple-images">5. Plotting Multiple Images</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Concept</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-matplotlib-pyplot-organizes-figures">How <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code> organizes figures</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-figure-with-subplots">Creating a figure with subplots</a></li>
