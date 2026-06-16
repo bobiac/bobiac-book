@@ -91,22 +91,25 @@ def generate_gaussian_spots(
 
 
 # generate 3d spots
-scale = (0.5, 0.1, 0.1)
+scale = (0.3, 0.1, 0.1)
 spots = generate_gaussian_spots(
-    seed=0,
+    seed=2,
     scale=scale,
     na=1.4,
     ri=1.52,  # immersion medium refractive index
     em_wvl_um=0.520,  # emission wavelength in µm (GFP)
-    sigma_scale_range=(1, 1.5),  # per-spot size jitter
+    sigma_scale_range=(1, 3),  # per-spot size jitter
+    background=0.09,  # autofluorescence (fraction of max)
+    noise=0.04,  # read-noise std (fraction of max)
 )
 
 ndv.imshow(spots)
 
 # scale float volume to the full uint16 range before saving
 # import tifffile
+
 # spots_uint16 = (np.clip(spots, 0, 1) * 65535).astype(np.uint16)
-# tifffile.imwrite("/Users/fdrgsp/Desktop/3d_spots.tif", spots_uint16)
+# tifffile.imwrite("_static/images/spots/3d_spots.tif", spots_uint16)
 
 # # generate binary mask with Otsu thresholding
 # filtered_spots = gaussian(spots, sigma=1)
