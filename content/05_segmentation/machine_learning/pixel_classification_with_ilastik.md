@@ -2,7 +2,7 @@
 
 In this section, we will explore how to use **Ilastik** for **semantic segmentation** through [**pixel classification**](https://www.ilastik.org/documentation/pixelclassification/pixelclassification). This process involves training a machine learning model to classify pixels in an image based on user-defined labels.
 
-In this exercise, we will use the <a href="../../../_static/data/05_segmentation_ilastik.zip" download> <i class="fas fa-download"></i> pixel classification dataset</a> of nuclei images, and the goal is to train a classifier to distinguish between **nuclei** and **background**.
+In this exercise, we will use the <a href="../../../_static/data/05_segmentation_ilastik.zip" download> <i class="fas fa-download"></i> Ilastik Pixel Classification Dataset</a> of nuclei images, and the goal is to train a classifier to distinguish between **nuclei** and **background**.
 
 <div class="alert alert-info">
     <strong>NOTE:</strong> Ilastik supports a variety of <a href="https://www.ilastik.org/documentation/basics/dataselection#formats" target="_blank">data formats</a>. For simplicity and ease of use during this course, we will use images saved as <strong>.tif</strong> files. However, Ilastik recommends using files saved as <strong>.h5</strong> for [optimal performance](https://www.ilastik.org/documentation/basics/performance_tips). If you wish to use your own dataset and need to convert your files to <strong>.h5</strong>, Ilastik provides tools such as a <a href="https://www.ilastik.org/documentation/fiji_export/plugin" target="_blank">Fiji plugin</a> or a <a href="https://github.com/ilastik/ilastik/tree/main/notebooks/h5convert" target="_blank">Jupyter Notebook</a> with instructions.
@@ -18,12 +18,30 @@ For a detailed workflow instruction, you can refer to the [Ilastik Pixel Classif
 
 ### 1. Select the Workflow
 
-When you open **Ilastik**, you will see the [Startup Screen](https://www.ilastik.org/documentation/basics/startup) with various workflows. Select the ***Pixel Classification*** workflow by clicking on it. You will be automatically brought to the **Input Data** step.
+When you open **Ilastik**, you will see the [Startup Screen](https://www.ilastik.org/documentation/basics/startup) with various workflows. Select the ***Pixel Classification*** workflow by clicking on it. You will asked to first save the **.`ipl` project file** to disk and, once saved, you will be automatically brought to the **Input Data** step.
 
 <div align="center"> <img src="../../../_static/images/ilastik/1a.png" alt="Ilastik" width="800"> </div>
 
+<div class="alert alert-warning">
+    <strong>⚠️ NOTE:</strong> We recommend saving the <strong>.ilp</strong> project file in the <strong>same folder as your input images</strong>, or at least in the same folder tree, to make it easier for Ilastik to find the images and to share the project with others (see dropdown below for more details on sharing).
+</div>
+
+:::{dropdown} ❓How do I distribute and share my model❓
+
+By default, the **.ilp** project file only stores a **path (link)** to your raw images on disk, together with your labels, selected features and trained classifier, **not the image data itself**. This means that simply sending someone your **.ilp** file is usually not enough, since on their computer ilastik will not be able to find the images at the recorded path.
+
+For each dataset, you can check (and change) how the data is stored by going to the ***Input Data*** step, **right-clicking** on the dataset in the ***Raw Data*** table and selecting ***Edit properties...***. In the dialog that opens, the ***Storage*** field offers three options:
+
+- **Absolute Link**: stores the full path to the image on disk. If you move or rename the image, or share the project with someone else, ilastik will not be able to find the file anymore.
+- **Relative Link** *(default when the image is in the same folder tree as the project)*: stores the path **relative to the .ilp file**. As long as you move/copy the **.ilp** file and the data folder together, keeping their relative positions unchanged, ilastik will still find the images. This is the recommended option for sharing: put the **.ilp** file and the folder containing the training images together (e.g. the **.ilp** file directly inside, or next to, the data folder), zip everything up, and share that.
+- **Copied to Project File**: embeds the raw image data directly inside the **.ilp** file as **HDF5** datasets the next time you save the project. The **.ilp** file (itself an HDF5 file) becomes fully self-contained, you can share that single file and it will always work, but its file size will grow substantially since it now also contains all the raw images.
+
+<div align="center"> <img src="../../../_static/images/ilastik/8a.png" alt="Ilastik" width="600"> </div>
+
+:::
+
 <div class="alert alert-info">
-    <strong>NOTE:</strong> Remember to save your project regularly using <strong>Cmd+S</strong> (macOS) or <strong>Ctrl+S</strong> (Windows), or via <strong>Project → Save Project</strong>.
+    <strong>💡 TIP:</strong> Remember to save your project regularly using <strong>Cmd+S</strong> (macOS) or <strong>Ctrl+S</strong> (Windows), or via <strong>Project → Save Project</strong>.
 </div>
 
 ### 2. Load the Image Data
@@ -73,7 +91,7 @@ In the ***Training*** step (on the left side of the GUI) you can **add**, **remo
 Now you can start by choosing few pixels in the image that correspond to the ***nuclei*** class; select the ***nuclei*** class, select the *Brush* tool (should be the default) and draw a short line over some pixel inside one nucleus. Next repeat the process for the ***background*** class, selecting some pixels that correspond to the background.
 
 <div class="alert alert-info">
-    <strong>TIPS:</strong>
+    <strong>💡 TIPS:</strong>
     <ul>
         <li>Use <strong>Cmd+Z</strong> (macOS) or <strong>Ctrl+Z</strong> (Windows) to <strong>undo</strong> the last action.</li>
         <li>Use the <strong>Erase</strong> tool to <strong>remove</strong> the annotations.</li>
@@ -133,4 +151,20 @@ Depending on the option you select in the previous ***Prediction Export***, the 
 
 ### 7. What's Next?
 
-From this **Ilastik** pipeline we managed to extract the **semantic segmentation** of the nuclei in all the images. In the next section of this lesson, we will use the **semantic segmentation** and [convert it into **instance segmentation**](./from_ilastik_masks_to_labels.ipynb) (as in the [classic segmentation methods](../classic/classic.md) section. Then, we will classify nuclei in these labeled images into different cell cycle stage classes using the **Ilastik** [**Object Classification** workflow](../../06_object_classification/object_classification_with_ilastik.md).
+From this **Ilastik** pipeline we managed to extract the **semantic segmentation** of the nuclei in all the images. In the next section of this lesson, we will use the **semantic segmentation** and [convert it into **instance segmentation**](./from_ilastik_masks_to_labels.ipynb) (as in the [classic segmentation methods](../classic/classic.md) section). Then, we will classify nuclei in these labeled images into different cell cycle stage classes using the **Ilastik** [**Object Classification** workflow](../../06_object_classification/object_classification_with_ilastik.md).
+
+<div class="alert alert-info">
+    <strong>NOTE:</strong> For teaching purposes, in this exercise we exported the <strong>Simple Segmentation</strong> masks and will use the <a href="./from_ilastik_masks_to_labels.ipynb"><strong>from_ilastik_masks_to_labels</strong></a> notebook to convert them from <strong>semantic</strong> to <strong>instance segmentation</strong>. However, as mentioned above, you could instead export the <strong>Probabilities</strong> from the <strong>Prediction Export</strong> step. If you do so, in the <strong>Object Classification</strong> section you can load the probability maps and use the <a href="https://www.ilastik.org/documentation/objects/objects#from-probabilities-to-a-segmentation---threshold-and-size-filter-applet" target="_blank">Thresholding and Size Filter</a> applet to go directly from probability maps to an <strong>instance segmentation</strong>.
+</div>
+
+### Bonus: Multi-Dimensional Datasets
+
+**Ilastik** also supports multi-dimensional datasets (e.g. **z-stacks**, **time-series**, **multi-channel** images, or any combination of these).
+
+If **Ilastik** does not read the dimension order of your data correctly, you can fix this by **right-clicking** on the dataset in the ***Raw Data*** table, selecting ***Edit properties...***, and **transposing the dimensions** as needed in the ***Interpret axes as*** field (e.g. *tyx* -> *zyx*).
+
+<div align="center"> <img src="../../../_static/images/ilastik/8a.png" alt="Ilastik" width="600"> </div>
+
+For **z-stacks**, the workflow is the same as for 2D images, but you can also train the classifier by drawing annotations in the **z** dimension, as shown in the image below.
+
+<div align="center"> <img src="../../../_static/images/ilastik/8b.png" alt="Ilastik" width="700"> </div>

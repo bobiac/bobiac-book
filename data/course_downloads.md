@@ -10,7 +10,10 @@
 
 - Classical Methods: <a href="https://drive.google.com/uc?export=download&id=1Svlnr2R5CYf5NvRzx3FxghrrxdfnPdiY"> <i class="fas fa-download"></i> DAPI dataset</a>
 - Machine Learning Methods: <a href="../_static/data/05_segmentation_ilastik.zip" download> <i class="fas fa-download"></i> Ilastik Pixel Classification Dataset </a> (from Ilastik Data Mitocheck 2D+t)
-- Deep Learning Methods: <a href="../_static/data/05_segmentation_cellpose.zip" download> <i class="fas fa-download"></i>Cellpose Dataset </a>   <a href="../_static/data/05_segmentation_cellpose_training.zip" download> <i class="fas fa-download"></i>Cellpose Training Dataset </a>
+- Deep Learning Methods:
+    - <a href="../_static/data/05_segmentation_cellpose.zip" download> <i class="fas fa-download"></i>Cellpose Dataset </a> (from <a href="https://www.cellimagelibrary.org/images/CCDB_6843" target="_blank">CCDB_6843</a>)
+    - <a href="../_static/data/05_segmentation_cellpose_3d.zip" download> <i class="fas fa-download"></i>Cellpose 3D Dataset </a> (from <a href="https://bbbc.broadinstitute.org/BBBC033" target="_blank">BBBC033</a>)
+    - <a href="../_static/data/05_segmentation_cellpose_training.zip" download> <i class="fas fa-download"></i>Cellpose Training Dataset </a> (from Cellpose Github Repository)
 
 <strong> 07 - <i class="fa-solid fa-chart-simple"></i> Measurement & Quantification</strong>
 
