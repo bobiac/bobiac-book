@@ -17,13 +17,13 @@ The project is well-supported with **documentation, tutorials, and example datas
     <img src="../../../_static/images/cellpose/starting_window.png" alt="Cellpose GUI" width="600">
 </div>
 
-Below are the instructions to install Cellpose using [`uv`](https://docs.astral.sh/uv/).
+Below are the instructions to install **Cellpose** using [`uv`](https://docs.astral.sh/uv/).
 
-You can use `uv` to use/install Cellpose in three ways:
+You can use `uv` to use/install **Cellpose** in three ways:
 
 1. **Direct execution**: Use `uv` to automatically handle environment creation and run the GUI directly
-2. **Manual environment setup**: Create a virtual environment first, then install Cellpose within that environment
-3. **Jupyter Notebook Integration**: Use `uvx juv` with the Jupyter notebooks from this course to run the Cellpose notebooks directly in the browser
+2. **Manual environment setup**: Create a virtual environment first, then install **Cellpose** within that environment
+3. **Jupyter Notebook Integration**: Use `uvx juv` with the Jupyter notebooks from this course to run the **Cellpose** notebooks directly in the browser
 
 <p class="alert alert-warning">
     <strong>⚠️ Note:</strong> If you want to use <code>Cellpose</code> efficiently, make sure to run it using GPU or it will be very slow. If you have an Apple Silicon Mac, you can take advantage of the built-in GPU (no need of a particular installation). See the instructions below for more details on how to run <code>Cellpose</code> with GPU support on Windows/Linux.
@@ -31,7 +31,7 @@ You can use `uv` to use/install Cellpose in three ways:
 
 ### 1. Direct Execution with uv
 
-By simply running the command below, `uv` will create a virtual environment, install `Cellpose`, and launch the GUI (it might take a little while the first time you run this command but after that it will be very quick).
+By simply running the command below, `uv` will create a virtual environment, install **Cellpose**, and launch the GUI (it might take a little while the first time you run this command but after that it will be very quick).
 
 ```bash
 uvx "cellpose[gui]"

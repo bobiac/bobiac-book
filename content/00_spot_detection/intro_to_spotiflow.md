@@ -6,12 +6,12 @@ At its core, **Spotiflow** uses a **pretrained deep neural network** to detect s
 
 ## How does it work?
 
-Instead of thresholding the raw image, Spotiflow reframes spot detection as two complementary regression tasks solved by a single neural network (a U-Net-style architecture):
+Instead of thresholding the raw image, **Spotiflow** reframes spot detection as two complementary regression tasks solved by a single neural network (a U-Net-style architecture):
 
 * **Heatmap regression** — the network predicts a smooth **probability heatmap** in which every spot appears as a small **Gaussian blob**. Spot candidates are then found simply as the **local maxima** of this heatmap. Because the heatmap is learned (rather than computed from raw intensities), detection is **robust** and **threshold-agnostic**: the same model works across very different signal levels without manual tuning.
-* **Stereographic flow** — to go beyond integer pixel positions, the network also predicts a **vector field** (the *stereographic flow*) in which every pixel points toward the **center of its nearest spot**. Following these vectors lets Spotiflow refine each detected peak to a **subpixel-accurate** location, which is essential for densely packed spots such as individual transcripts in FISH/smFISH images.
+* **Stereographic flow** — to go beyond integer pixel positions, the network also predicts a **vector field** (the *stereographic flow*) in which every pixel points toward the **center of its nearest spot**. Following these vectors lets **Spotiflow** refine each detected peak to a **subpixel-accurate** location, which is essential for densely packed spots such as individual transcripts in FISH/smFISH images.
 
-When you run a prediction you get back the **spot coordinates** together with these intermediate outputs (the predicted `heatmap` and `flow`, accessible via `details.heatmap` and `details.flow`), plus the measured per-spot intensities — which we will visualize in the notebook.
+When you run a prediction you get back the **spot coordinates** together with these intermediate outputs (the predicted `heatmap` and `flow`, plus the measured per-spot intensities — which we will visualize in the notebook.
 
 The project has **documentation, tutorials, and example datasets** available on the [official documentation](https://weigertlab.org/spotiflow/index.html), the [GitHub repository](https://github.com/weigertlab/spotiflow), and the [paper](https://www.nature.com/articles/s41592-025-02662-x).
 
@@ -20,24 +20,24 @@ The project has **documentation, tutorials, and example datasets** available on 
 **Spotiflow** is available via:
 
 * A **Python package** (recommended for scripting and integration into pipelines)
-* A **Command-Line Interface (CLI)** (`spotiflow-predict`) for quick inference
+* A **Command-Line Interface (CLI)** (`spotiflow-predict`) for quick inference ([see the documentation](https://weigertlab.org/spotiflow/cli.html))
 * A **napari plugin** for interactive use
 
-Below are the instructions to install Spotiflow using [`uv`](https://docs.astral.sh/uv/).
+Below are the instructions to install **Spotiflow** using [`uv`](https://docs.astral.sh/uv/).
 
-You can use `uv` to use/install Spotiflow in three ways:
+You can use `uv` to use/install **Spotiflow** in three ways:
 
-1. **Direct execution (napari plugin)**: Use `uv` to automatically handle environment creation and launch the napari GUI with the Spotiflow plugin
-2. **Manual environment setup**: Create a virtual environment first, then install Spotiflow within that environment
-3. **Jupyter Notebook Integration**: Use `uvx juv` with the Jupyter notebooks from this course to run the Spotiflow notebooks directly in the browser
+1. **Direct execution (napari plugin)**: Use `uv` to automatically handle environment creation and launch the napari GUI with the **Spotiflow** plugin
+2. **Manual environment setup**: Create a virtual environment first, then install **Spotiflow** within that environment
+3. **Jupyter Notebook Integration**: Use `uvx juv` with the Jupyter notebooks from this course to run the **Spotiflow** notebooks directly in the browser
 
 <p class="alert alert-warning">
-    <strong>⚠️ Note:</strong> If you want to use Spotiflow efficiently, make sure to run it using GPU or it will be very slow. If you have an Apple Silicon Mac, you can take advantage of the built-in GPU (no need of a particular installation). See the instructions below for more details on how to run Spotiflow with GPU support on Windows/Linux.
+    <strong>⚠️ Note:</strong> If you want to use <code>Spotiflow</code> efficiently, make sure to run it using GPU or it will be very slow. If you have an Apple Silicon Mac, you can take advantage of the built-in GPU (no need of a particular installation). See the instructions below for more details on how to run <code>Spotiflow</code> with GPU support on Windows/Linux.
 </p>
 
 ### 1. Direct Execution with uv (napari plugin)
 
-Spotiflow ships a [napari](https://napari.org) plugin ([`napari-spotiflow`](https://github.com/weigertlab/napari-spotiflow)) that lets you run spot detection interactively inside the napari viewer. Similarly to how you can launch napari with `uvx "napari[all]"`, you can launch napari **together with** the Spotiflow plugin in a single command (it might take a little while the first time you run this command, but after that it will be very quick):
+**Spotiflow** ships a [napari](https://napari.org) plugin ([`napari-spotiflow`](https://github.com/weigertlab/napari-spotiflow)) that lets you run spot detection interactively inside the napari viewer. Similarly to how you can launch napari with `uvx "napari[all]"`, you can launch napari **together with** the **Spotiflow** plugin in a single command (it might take a little while the first time you run this command, but after that it will be very quick):
 
 ```bash
 uvx --with "napari-spotiflow" "napari[all]"
@@ -61,7 +61,7 @@ uvx --index-strategy unsafe-best-match --with torch --with torchvision --with "n
 
 ### 2. Manual Environment Setup
 
-If you need to use Spotiflow for scripting and integration into pipelines, it is useful to set up a virtual environment manually. Here are the steps:
+If you need to use **Spotiflow** for scripting and integration into pipelines, it is useful to set up a virtual environment manually. Here are the steps:
 
 **1.1. Create a new virtual environment:**
 
@@ -140,26 +140,27 @@ In order to use Spotiflow in the notebooks with an NVIDIA GPU:
 3. update the `# /// script` block at the top of the `spotiflow_notebook.ipynb` to install the appropriate version of [PyTorch with CUDA support](https://pytorch.org/get-started/locally/) (replace `cu130` with your CUDA version):
 
    ```python
-   # /// script
-   # requires-python = ">=3.12"
-   # dependencies = [
-   #     "matplotlib",
-   #     "spotiflow",
-   #     "ndv[jupyter,pygfx]",
-   #     "jupyter-rfb<=0.5.4",
-   #     "torch",
-   #     "torchvision",
-   # ]
-   #
-   # [tool.uv.sources]
-   # torch = { index = "pytorch-cu130" }
-   # torchvision = { index = "pytorch-cu130" }
-   #
-   # [[tool.uv.index]]
-   # name = "pytorch-cu130"
-   # url = "https://download.pytorch.org/whl/cu130"
-   # explicit = true
-   # ///
+    # /// script
+    # requires-python = ">=3.12"
+    # dependencies = [
+    #     "matplotlib",
+    #     "tifffile",
+    #     "spotiflow",
+    #     "ndv[jupyter,pygfx]",
+    #     "jupyter-rfb<=0.5.4",
+    #     "torch",
+    #     "torchvision",
+    # ]
+    #
+    # [tool.uv.sources]
+    # torch = { index = "pytorch-cu130" }
+    # torchvision = { index = "pytorch-cu130" }
+    #
+    # [[tool.uv.index]]
+    # name = "pytorch-cu130"
+    # url = "https://download.pytorch.org/whl/cu130"
+    # explicit = true
+    # ///
    ```
 
 4. re-run the notebook using `uvx juv run`.
@@ -168,4 +169,4 @@ In order to use Spotiflow in the notebooks with an NVIDIA GPU:
 
 ## What's Next?
 
-In the next sections, we will focus on how to use [Spotiflow in scripts and pipelines](spotiflow_notebook.ipynb) to automatically detect spots in both 2D and 3D images using the pretrained models. We will also show how to [train a Spotiflow custom model](spotiflow_retraining_notebook.ipynb) on your own annotated data if the pretrained models do not fit your specific needs.
+In the next sections, we will focus on how to use [Spotiflow in scripts and pipelines](spotiflow_notebook.ipynb) to automatically detect spots in both 2D and 3D images using the pretrained models. We will also show how to [train a Spotiflow custom model](spotiflow_retraining_notebook.ipynb) on annotated data if the pretrained models do not fit your specific needs.
