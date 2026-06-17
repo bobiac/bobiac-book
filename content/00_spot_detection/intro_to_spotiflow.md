@@ -2,16 +2,9 @@
 
 [**Spotiflow**](https://weigertlab.org/spotiflow/index.html) is a **free**, **open-source**, **deep learning**-based tool for **spot detection** in **fluorescence microscopy** images. It is designed to accurately and robustly localize **spot-like structures** (such as individual transcripts in FISH and smFISH experiments, or any diffraction-limited puncta) without the manual threshold tuning required by classical methods.
 
-At its core, **Spotiflow** uses a **pretrained deep neural network** to detect spots and return their **subpixel-accurate coordinates**. It is **threshold-agnostic** and works on both **2D** and **3D datasets**. Several **pretrained models** are available for different imaging modalities (e.g. `general`, `hybiss`, `synth_complex`, `fluo_live`, `synth_3d`, `smfish_3d`), and users can also **fine-tune or train custom models** on their own data when the pretrained models do not fit their needs.
+At its core, **Spotiflow** uses a **pretrained U-Net** that jointly predicts a **probability heatmap** (spots appear as Gaussian blobs; candidates are found as local maxima) and a **stereographic flow field** (each pixel points toward the nearest spot center) for **subpixel refinement**. It is **threshold-agnostic** and works on both **2D** and **3D datasets**. Several **pretrained models** are available for different imaging modalities (e.g. `general`, `hybiss`, `synth_complex`, `fluo_live`, `synth_3d`, `smfish_3d`), and users can also **fine-tune or train custom models** on their own data when the pretrained models do not fit their needs.
 
-## How does it work?
-
-Instead of thresholding the raw image, **Spotiflow** reframes spot detection as two complementary regression tasks solved by a single neural network (a U-Net-style architecture):
-
-* **Heatmap regression** — the network predicts a smooth **probability heatmap** in which every spot appears as a small **Gaussian blob**. Spot candidates are then found simply as the **local maxima** of this heatmap. Because the heatmap is learned (rather than computed from raw intensities), detection is **robust** and **threshold-agnostic**: the same model works across very different signal levels without manual tuning.
-* **Stereographic flow** — to go beyond integer pixel positions, the network also predicts a **vector field** (the *stereographic flow*) in which every pixel points toward the **center of its nearest spot**. Following these vectors lets **Spotiflow** refine each detected peak to a **subpixel-accurate** location, which is essential for densely packed spots such as individual transcripts in FISH/smFISH images.
-
-When you run a prediction you get back the **spot coordinates** together with these intermediate outputs (the predicted `heatmap` and `flow`, plus the measured per-spot intensities — which we will visualize in the notebook.
+A prediction returns the **spot coordinates** together with intermediate outputs (`heatmap`, `flow`, per-spot intensities) that we will visualize in the notebook.
 
 The project has **documentation, tutorials, and example datasets** available on the [official documentation](https://weigertlab.org/spotiflow/index.html), the [GitHub repository](https://github.com/weigertlab/spotiflow), and the [paper](https://www.nature.com/articles/s41592-025-02662-x).
 
