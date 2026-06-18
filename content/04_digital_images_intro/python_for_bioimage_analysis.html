@@ -307,7 +307,7 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-save-the-maximum-intensity-projection-of-the-z-stack-using-tifffile">✍️ Exercise: Save the maximum intensity projection of the z-stack using <code class="docutils literal notranslate"><span class="pre">tifffile</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-multiple-images">5. Plotting Multiple Images</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-multiple-images">5. Visualizing Multiple Images</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Concept</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-matplotlib-pyplot-organizes-figures">How <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code> organizes figures</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-figure-with-subplots">Creating a figure with subplots</a></li>
@@ -322,6 +322,7 @@
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-edit-your-multichannel-tif-plot-above-to-display-each-image-with-a-different-colormap-adjusted-to-the-min-and-max-of-the-image-hide-the-axis-labels-and-use-constrained-layout">✍️ Exercise: Edit your “multichannel.tif” plot above to display each image with a different colormap, adjusted to the min and max of the image. Hide the axis labels, and use constrained layout.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-multiple-images-with-ndv">Visualizing multiple images with <code class="docutils literal notranslate"><span class="pre">ndv</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-proprietary-file-types">6. Reading Proprietary File Types</a><ul class="nav section-nav flex-column">
@@ -364,7 +365,7 @@
 <span class="c1"># requires-python = "&gt;=3.12"</span>
 <span class="c1"># dependencies = [</span>
 <span class="c1">#     "matplotlib",</span>
-<span class="c1">#     "ndv[jupyter,vispy]",</span>
+<span class="c1">#     "ndv[jupyter,pygfx]",</span>
 <span class="c1">#     "jupyter-rfb&lt;=0.5.4",</span>
 <span class="c1">#     "numpy",</span>
 <span class="c1">#     "tifffile",</span>
@@ -389,35 +390,35 @@ This notebook is written <strong>like a small interactive book</strong> to compl
 </thead>
 <tbody>
 <tr class="row-even"><td><p>0</p></td>
-<td><p><a class="reference internal" href="#0.-Importing-Libraries"><span class="xref myst">Importing Libraries</span></a></p></td>
+<td><p><a class="reference internal" href="#Importing-Libraries"><span class="xref myst">Importing Libraries</span></a></p></td>
 <td><p>Learn how to use published Python packages</p></td>
 </tr>
 <tr class="row-odd"><td><p>1</p></td>
-<td><p><a class="reference internal" href="#1.-Reading-an-Image"><span class="xref myst">Reading an Image</span></a></p></td>
+<td><p><a class="reference internal" href="#Reading-an-Image"><span class="xref myst">Reading an Image</span></a></p></td>
 <td><p>Load images with Python</p></td>
 </tr>
 <tr class="row-even"><td><p>2</p></td>
-<td><p><a class="reference internal" href="#2.-Introduction-to-Numpy-Arrays"><span class="xref myst">Introduction to Numpy Arrays</span></a></p></td>
+<td><p><a class="reference internal" href="#Introduction-to-Numpy-Arrays"><span class="xref myst">Introduction to Numpy Arrays</span></a></p></td>
 <td><p>A data structure for storing and manipulating images</p></td>
 </tr>
 <tr class="row-odd"><td><p>3</p></td>
-<td><p><a class="reference internal" href="#3.-Multidimensional-Images"><span class="xref myst">Multidimensional Images</span></a></p></td>
+<td><p><a class="reference internal" href="#Multidimensional-Images"><span class="xref myst">Multidimensional Images</span></a></p></td>
 <td><p>How to work with multichannel, time series, and z-stack images</p></td>
 </tr>
 <tr class="row-even"><td><p>4</p></td>
-<td><p><a class="reference internal" href="#4.-Saving-Images"><span class="xref myst">Saving Images</span></a></p></td>
+<td><p><a class="reference internal" href="#Saving-Images"><span class="xref myst">Saving Images</span></a></p></td>
 <td><p>Automate repetitive tasks across many images</p></td>
 </tr>
 <tr class="row-odd"><td><p>5</p></td>
-<td><p><a class="reference internal" href="#5.-Plotting-Multiple-Images"><span class="xref myst">Plotting Multiple Images</span></a></p></td>
-<td><p>Learn how to plot more than 1 image at a time</p></td>
+<td><p><a class="reference internal" href="#Visualizing-Multiple-Images"><span class="xref myst">Visualizing Multiple Images</span></a></p></td>
+<td><p>Learn how to visualize more than 1 image at a time</p></td>
 </tr>
 <tr class="row-even"><td><p>6</p></td>
-<td><p><a class="reference internal" href="#6.-Reading-Proprietary-File-Types"><span class="xref myst">Reading Proprietary File Types</span></a></p></td>
+<td><p><a class="reference internal" href="#Reading-Proprietary-File-Types"><span class="xref myst">Reading Proprietary File Types</span></a></p></td>
 <td><p>Load images acquired from commercial acquisition software with Python</p></td>
 </tr>
 <tr class="row-odd"><td><p>7</p></td>
-<td><p><a class="reference internal" href="#7.-Final-Challenge"><span class="xref myst">Final Challenge</span></a></p></td>
+<td><p><a class="reference internal" href="#Final-Challenge"><span class="xref myst">Final Challenge</span></a></p></td>
 <td><p>Apply what you have learned to a real problem!</p></td>
 </tr>
 </tbody>
@@ -512,9 +513,10 @@ This notebook is written <strong>like a small interactive book</strong> to compl
 <section id="specifying-your-file-s-path">
 <h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">Specifying your file’s path<a class="headerlink" href="#specifying-your-file-s-path" title="Link to this heading">#</a></h3>
 <p>To read an image file, you need to provide the location, or <strong>path</strong> of the file. Once you have found your file’s path, you should assign it to a variable to make it easy to work with. Here’s an example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">image_path</span> <span class="o">=</span> <span class="s1">'/Desktop/projects/bobiac/python_bioimages/img.tif'</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">image_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">'/Desktop/projects/bobiac/python_bioimages/img.tif'</span>
 </pre></div>
 </div>
+<p>Adding <code class="docutils literal notranslate"><span class="pre">r</span></code> in front of the file path tells Python to treat the string exactly as written. Without it, Python can get confused by backslashes <code class="docutils literal notranslate"><span class="pre">\</span></code> in a path, leading to a broken path. Adding r avoids this issue, so it’s best practice to always include it when writing a file path.</p>
 <p class="alert alert-warning">
 <strong>Caution:</strong> Be wary of spaces in folder names, as they sometimes cause terminal to add <b>\</b> or <b>/</b> to file directories where they should not be. It is best practice to always use <b>_</b> in folder names whenever you would have wanted to have a space.
 </p>
@@ -555,7 +557,7 @@ This notebook is written <strong>like a small interactive book</strong> to compl
 <div class="cell tag_teacher docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">tifffile</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tiff</span>
-<span class="n">image_path</span> <span class="o">=</span> <span class="s2">"../../_static/images/python4bia/2D_image.tif"</span>
+<span class="n">image_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">"../../_static/images/python4bia/2D_image.tif"</span>
 <span class="n">raw_image</span> <span class="o">=</span> <span class="n">tiff</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -882,7 +884,7 @@ float32
 </section>
 <section id="exercise-print-the-intensity-value-of-the-pixel-in-the-top-left-corner-of-raw-image">
 <h3 style="color: black; background-color: rgb(252,185,118); padding: 3px; border-radius: 5px;">✍️ Exercise: Print the intensity value of the pixel in the <strong>top left</strong> corner of <code class="docutils literal notranslate"><span class="pre">raw_image</span></code><a class="headerlink" href="#exercise-print-the-intensity-value-of-the-pixel-in-the-top-left-corner-of-raw-image" title="Link to this heading">#</a></h3>
-<div class="cell tag_teacher docutils container">
+<img align="center" alt="top_left_corner" src="https://raw.githubusercontent.com/bobiac/bobiac-book/main/_static/images/python4bia/figures/top_left_corner.png" width="500px"/><div class="cell tag_teacher docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">raw_image</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
 </pre></div>
@@ -897,7 +899,7 @@ float32
 </section>
 <section id="exercise-print-the-intensity-value-of-the-pixel-in-the-top-right-corner-of-raw-image">
 <h3 style="color: black; background-color: rgb(252,185,118); padding: 3px; border-radius: 5px;">✍️ Exercise: Print the intensity value of the pixel in the <strong>top right</strong> corner of <code class="docutils literal notranslate"><span class="pre">raw_image</span></code><a class="headerlink" href="#exercise-print-the-intensity-value-of-the-pixel-in-the-top-right-corner-of-raw-image" title="Link to this heading">#</a></h3>
-<div class="cell tag_teacher docutils container">
+<img align="center" alt="top_right_corner" src="https://raw.githubusercontent.com/bobiac/bobiac-book/main/_static/images/python4bia/figures/top_right_corner.png" width="500px"/><div class="cell tag_teacher docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Determine how many total columns are in the image</span>
 <span class="n">tot_columns</span> <span class="o">=</span> <span class="n">raw_image</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
@@ -914,7 +916,7 @@ float32
 </section>
 <section id="exercise-print-the-intensity-value-of-the-pixel-in-the-bottom-right-corner-of-raw-image">
 <h3 style="color: black; background-color: rgb(252,185,118); padding: 3px; border-radius: 5px;">✍️ Exercise: Print the intensity value of the pixel in the <strong>bottom right</strong> corner of <code class="docutils literal notranslate"><span class="pre">raw_image</span></code><a class="headerlink" href="#exercise-print-the-intensity-value-of-the-pixel-in-the-bottom-right-corner-of-raw-image" title="Link to this heading">#</a></h3>
-<div class="cell tag_teacher docutils container">
+<img align="center" alt="bottom_right_corner" src="https://raw.githubusercontent.com/bobiac/bobiac-book/main/_static/images/python4bia/figures/bottom_right_corner.png" width="500px"/><div class="cell tag_teacher docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Determine how many total rows &amp; columns are in the image</span>
 <span class="n">tot_rows</span> <span class="o">=</span> <span class="n">raw_image</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -958,7 +960,7 @@ float32
 </section>
 <section id="exercise-print-the-first-row-of-pixel-values-in-raw-image">
 <h3 style="color: black; background-color: rgb(252,185,118); padding: 3px; border-radius: 5px;">✍️ Exercise: Print the <strong>first row</strong> of pixel values in <code class="docutils literal notranslate"><span class="pre">raw_image</span></code><a class="headerlink" href="#exercise-print-the-first-row-of-pixel-values-in-raw-image" title="Link to this heading">#</a></h3>
-<div class="cell tag_teacher docutils container">
+<img align="center" alt="first_row" src="https://raw.githubusercontent.com/bobiac/bobiac-book/main/_static/images/python4bia/figures/first_row.png" width="500px"/><div class="cell tag_teacher docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># option 1</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">raw_image</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:])</span>
@@ -980,7 +982,7 @@ float32
 </section>
 <section id="exercise-print-the-first-column-of-pixel-values-in-raw-image">
 <h3 style="color: black; background-color: rgb(252,185,118); padding: 3px; border-radius: 5px;">✍️ Exercise: Print the <strong>first column</strong> of pixel values in <code class="docutils literal notranslate"><span class="pre">raw_image</span></code><a class="headerlink" href="#exercise-print-the-first-column-of-pixel-values-in-raw-image" title="Link to this heading">#</a></h3>
-<div class="cell tag_teacher docutils container">
+<img align="center" alt="first_column" src="https://raw.githubusercontent.com/bobiac/bobiac-book/main/_static/images/python4bia/figures/first_column.png" width="500px"/><div class="cell tag_teacher docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">raw_image</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span>
 </pre></div>
@@ -990,7 +992,7 @@ float32
 </section>
 <section id="exercise-print-the-middle-row-of-pixel-values-in-raw-image">
 <h3 style="color: black; background-color: rgb(252,185,118); padding: 3px; border-radius: 5px;">✍️ Exercise: Print the <strong>middle row</strong> of pixel values in <code class="docutils literal notranslate"><span class="pre">raw_image</span></code><a class="headerlink" href="#exercise-print-the-middle-row-of-pixel-values-in-raw-image" title="Link to this heading">#</a></h3>
-<div class="cell tag_teacher docutils container">
+<img align="center" alt="middle_row" src="https://raw.githubusercontent.com/bobiac/bobiac-book/main/_static/images/python4bia/figures/middle_row.png" width="500px"/><div class="cell tag_teacher docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Determine how many total rows are in the image</span>
 <span class="n">tot_rows</span> <span class="o">=</span> <span class="n">raw_image</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -1085,7 +1087,7 @@ float32
 <p>Don’t forget to read the image!</p>
 <div class="cell tag_teacher docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">image_path</span> <span class="o">=</span> <span class="s2">"../../_static/images/python4bia/multichannel.tif"</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">image_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">"../../_static/images/python4bia/multichannel.tif"</span>
 <span class="n">multichannel</span> <span class="o">=</span> <span class="n">tiff</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">multichannel</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> 
 </pre></div>
@@ -1201,7 +1203,7 @@ float32
 <p>Don’t forget to read the image file!</p>
 <div class="cell tag_teacher docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">image_path</span> <span class="o">=</span> <span class="s2">"../../_static/images/python4bia/zstack.tif"</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">image_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">"../../_static/images/python4bia/zstack.tif"</span>
 <span class="n">z_stack</span> <span class="o">=</span> <span class="n">tiff</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span>
 <span class="n">mip</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">z_stack</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">mip</span><span class="p">)</span>
@@ -1259,8 +1261,8 @@ float32
 </section>
 </section>
 <hr class="docutils"/>
-<section id="plotting-multiple-images">
-<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">5. Plotting Multiple Images<a class="headerlink" href="#plotting-multiple-images" title="Link to this heading">#</a></h2>
+<section id="visualizing-multiple-images">
+<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">5. Visualizing Multiple Images<a class="headerlink" href="#visualizing-multiple-images" title="Link to this heading">#</a></h2>
 <section id="id7">
 <h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">Concept<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
 <p>So far we have been using <code class="docutils literal notranslate"><span class="pre">ndv</span></code> to view multidimensional images. We can also use <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code>, but doing so would involve plotting multiple images. In practice, this is done by creating multiple <strong>subplots</strong> (1 for each image) within an overall <strong>figure</strong>.</p>
@@ -1301,7 +1303,7 @@ float32
 <div class="cell tag_teacher docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># read the multichannel image</span>
-<span class="n">image_path</span> <span class="o">=</span> <span class="s2">"../../_static/images/python4bia/multichannel.tif"</span>
+<span class="n">image_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">"../../_static/images/python4bia/multichannel.tif"</span>
 <span class="n">multichannel</span> <span class="o">=</span> <span class="n">tiff</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span>
 
 <span class="c1"># check the shape of the multichannel image</span>
@@ -1391,6 +1393,10 @@ float32
 </div>
 </div>
 </section>
+<section id="visualizing-multiple-images-with-ndv">
+<h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">Visualizing multiple images with <code class="docutils literal notranslate"><span class="pre">ndv</span></code><a class="headerlink" href="#visualizing-multiple-images-with-ndv" title="Link to this heading">#</a></h3>
+<p>overview of how to open images and specify channel LUTs</p>
+</section>
 </section>
 <hr class="docutils"/>
 <section id="reading-proprietary-file-types">
@@ -1419,7 +1425,7 @@ float32
 </div>
 <p>In order to read an image with <code class="docutils literal notranslate"><span class="pre">bffile</span></code>, we will need to import it, and then provide it with the image’s path.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">bffile</span>
-<span class="n">image_path</span> <span class="o">=</span> <span class="s2">"path/to/file"</span>
+<span class="n">image_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">"path/to/file"</span>
 <span class="n">image</span> <span class="o">=</span> <span class="n">bffile</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1431,7 +1437,7 @@ float32
 <div class="cell tag_teacher docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">bffile</span>
-<span class="n">image_path</span> <span class="o">=</span> <span class="s2">"../../_static/images/python4bia/2D_image.nd2"</span>
+<span class="n">image_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">"../../_static/images/python4bia/2D_image.nd2"</span>
 <span class="n">nd2_image</span> <span class="o">=</span> <span class="n">bffile</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">nd2_image</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
@@ -1538,7 +1544,7 @@ X = Columns in an Image</p>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="c1"># read the .czi image file with bffile</span>
-<span class="n">image_path</span> <span class="o">=</span> <span class="s2">"../../_static/images/python4bia/final_challenge.czi"</span>
+<span class="n">image_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">"../../_static/images/python4bia/final_challenge.czi"</span>
 <span class="n">image</span> <span class="o">=</span> <span class="n">bffile</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span>
 
 <span class="c1"># drop T axis since it is 1</span>
@@ -1753,7 +1759,7 @@ X = Columns in an Image</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-save-the-maximum-intensity-projection-of-the-z-stack-using-tifffile">✍️ Exercise: Save the maximum intensity projection of the z-stack using <code class="docutils literal notranslate"><span class="pre">tifffile</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-multiple-images">5. Plotting Multiple Images</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-multiple-images">5. Visualizing Multiple Images</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Concept</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-matplotlib-pyplot-organizes-figures">How <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code> organizes figures</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-figure-with-subplots">Creating a figure with subplots</a></li>
@@ -1768,6 +1774,7 @@ X = Columns in an Image</p>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-edit-your-multichannel-tif-plot-above-to-display-each-image-with-a-different-colormap-adjusted-to-the-min-and-max-of-the-image-hide-the-axis-labels-and-use-constrained-layout">✍️ Exercise: Edit your “multichannel.tif” plot above to display each image with a different colormap, adjusted to the min and max of the image. Hide the axis labels, and use constrained layout.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-multiple-images-with-ndv">Visualizing multiple images with <code class="docutils literal notranslate"><span class="pre">ndv</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-proprietary-file-types">6. Reading Proprietary File Types</a><ul class="nav section-nav flex-column">
