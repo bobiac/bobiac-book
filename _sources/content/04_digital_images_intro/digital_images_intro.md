@@ -33,5 +33,5 @@ Download this Python for Bioimage Analysis Cheat Sheet for quick reference of co
 </a>
 
 <div align="center">
-  <iframe class="custom-pdf-frame-169" src="../../pdfs/04_digital_images_intro/python_bioimages_cheat_sheet.pdf"> </iframe>
+  <iframe class="custom-pdf-frame-long" src="../../pdfs/04_digital_images_intro/python_bioimages_cheat_sheet.pdf"> </iframe>
 </div>
