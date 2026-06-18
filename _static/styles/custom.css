@@ -84,6 +84,15 @@ html[data-theme="dark"] .logo-dark {
   margin-bottom: 0.5em;
 }
 
+.custom-pdf-frame-long {
+  width: 100%;
+  height: 800px;
+  border: 2px solid var(--bobiac-green);
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 0.5em;
+}
+
 .custom-pdf-frame-34 {
   width: 100%;
   height: 555px;
