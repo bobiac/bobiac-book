@@ -48,6 +48,7 @@ dependencies = [
     "coloc_tools @ git+https://github.com/fdrgsp/coloc-tools.git",
     "evaluatesegmask @ git+https://github.com/antoineruzette/evaluatesegmask.git",
     "spotiflow",
+    "napari[all]",
 ]
 
 
