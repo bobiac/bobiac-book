@@ -4,7 +4,7 @@
 
 At its core, **Spotiflow** uses a **pretrained U-Net** that jointly predicts a **probability heatmap** (spots appear as Gaussian blobs; candidates are found as local maxima) and a **stereographic flow field** (each pixel points toward the nearest spot center) for **subpixel refinement**. It is **threshold-agnostic** and works on both **2D** and **3D datasets**. Several **pretrained models** are available for different imaging modalities (e.g. `general`, `hybiss`, `synth_complex`, `fluo_live`, `synth_3d`, `smfish_3d`), and users can also **fine-tune or train custom models** on their own data when the pretrained models do not fit their needs.
 
-A prediction returns the **spot coordinates** together with intermediate outputs (`heatmap`, `flow`, per-spot intensities) that we will visualize in the notebook.
+A prediction returns the **spot coordinates** together with intermediate outputs (e.g. `heatmap`).
 
 The project has **documentation, tutorials, and example datasets** available on the [official documentation](https://weigertlab.org/spotiflow/index.html), the [GitHub repository](https://github.com/weigertlab/spotiflow), and the [paper](https://www.nature.com/articles/s41592-025-02662-x).
 
@@ -162,4 +162,4 @@ In order to use Spotiflow in the notebooks with an NVIDIA GPU:
 
 ## What's Next?
 
-In the next sections, we will focus on how to use [Spotiflow in scripts and pipelines](spotiflow_notebook.ipynb) to automatically detect spots in both 2D and 3D images using the pretrained models. We will also show how to [train a Spotiflow custom model](spotiflow_retraining_notebook.ipynb) on annotated data if the pretrained models do not fit your specific needs.
+In the next sections, we will focus on how to use [Spotiflow in scripts and pipelines](spotiflow_notebook.ipynb) to automatically detect spots in both 2D and 3D images using the pretrained models. We will also show how to [train a Spotiflow custom model](spotiflow_retraining.ipynb) on annotated data if the pretrained models do not fit your specific needs.
