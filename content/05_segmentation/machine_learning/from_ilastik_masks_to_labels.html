@@ -299,7 +299,9 @@
 <div align="center"> <img alt="Ilastik Logo" src="https://raw.githubusercontent.com/bobiac/bobiac-book/main/_static/images/ilastik/sem_to_inst.png" width="600"/></div>
 <br/>
 <p>We first explore the type of data that we generated with Ilastik in the previous section (<a class="reference internal" href="pixel_classification_with_ilastik.html"><span class="std std-doc">Ilastik for Pixel Classification</span></a>) and we then use them to generate labels, which can be used for instance segmentation (as we did in the <a class="reference internal" href="../classic/classic.html"><span class="std std-doc">classical segmentation methods</span></a>) section.</p>
-<section id="import-libraries">
+<p class="alert alert-warning">
+<strong>Note:</strong> This approach works well for roundish object types, such as nuclei, or any object type that is well separated in the semantic segmentation. For more complex or different object types (e.g. elongated or branching structures), a different approach than the distance transform and watershed we use here might be needed.
+</p><section id="import-libraries">
 <h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">Import libraries<a class="headerlink" href="#import-libraries" title="Link to this heading">#</a></h3>
 <div class="cell tag_teacher docutils container">
 <div class="cell_input docutils container">
