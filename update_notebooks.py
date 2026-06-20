@@ -8,7 +8,9 @@ from update_styles_data import EXAMPLE_STYLE, EXERCISE_STYLE, H2_STYLE, H3_STYLE
 
 HTML_TYPE = "mark"
 
-EXCLUDE = ["cellpose_notebook_colab.ipynb"]
+# Files to skip entirely. Note: all "*_colab.ipynb" notebooks are also skipped
+# (handled separately by update_notebooks_colab.py).
+EXCLUDE: list[str] = []
 
 # When building the Jupyter Book, the links in the python_basics notebook
 # need to be updated when converting to a Jupyter Notebook or they will not work.
@@ -35,7 +37,7 @@ def update_notebooks(
 ) -> None:
     # Check if the file should be excluded
     input_filename = Path(input_path).name
-    if input_filename in EXCLUDE:
+    if input_filename in EXCLUDE or input_filename.endswith("_colab.ipynb"):
         print(f"Skipping excluded file: {input_filename}")
         return
 
