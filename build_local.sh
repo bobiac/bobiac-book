@@ -128,4 +128,9 @@ except subprocess.TimeoutExpired:
   echo "🌐 Opening browser to http://localhost:8000/index.html ..."
   python -m webbrowser http://localhost:8000/index.html
   wait $SERVER_PID
+else
+  # No server launched: print a clickable link to open the built book in a browser
+  BOOK_INDEX="$(cd _build/html && pwd)/index.html"
+  echo "🌐 Build ready — open the book in your browser (Cmd+click the link):"
+  echo "   file://$BOOK_INDEX"
 fi
