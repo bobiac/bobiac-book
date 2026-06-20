@@ -46,7 +46,6 @@ dependencies = [
     "rich",
     "shapely",
     "coloc_tools @ git+https://github.com/fdrgsp/coloc-tools.git",
-    "evaluatesegmask @ git+https://github.com/antoineruzette/evaluatesegmask.git",
     "spotiflow",
     "napari[all]",
 ]
@@ -61,8 +60,7 @@ include = [
 ]
 exclude = [
     "content/",
-    "data/", 
-    "student_group_work/",
+    "data/",
     "_build/",
     "_static/",
     "__pycache__/",
@@ -74,7 +72,6 @@ exclude = [
 exclude = [
     "content/",
     "data/",
-    "student_group_work/",
     "_build/",
     "_static/",
     "__pycache__/",
