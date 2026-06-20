@@ -1,6 +1,6 @@
-# Python Environments, `uv` and `juv`
+# `uv` and `juv`
 
-To go through these exercises, you need to create a new folder on your `Desktop` called `bobiac_uv` (unless specified otherwise).
+To go through these exercises, you need to create a new folder on your `Desktop` called `bobiac_uv`.
 
 ## Exercise 1
 

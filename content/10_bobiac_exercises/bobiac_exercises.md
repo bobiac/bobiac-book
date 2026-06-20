@@ -2,4 +2,4 @@
 
 Here is a list of exercises that you can do to practice the concepts covered in the book.
 
-1. [Python Environment and `uv`](uv_and_environment.md)
+1. [`uv` and `juv`](uv_and_juv.md)
