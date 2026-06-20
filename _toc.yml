@@ -37,6 +37,12 @@ parts:
           - file: content/05_segmentation/deep_learning/cellpose_notebook
           - file: content/05_segmentation/deep_learning/cellpose_retraining
 
+  - file: content/00_spot_detection/spot_detection_intro.md
+    sections:
+      - file: content/00_spot_detection/intro_to_spotiflow.md
+      - file: content/00_spot_detection/spotiflow_notebook
+      - file: content/00_spot_detection/spotiflow_retraining
+
   - file: content/06_object_classification/object_classification.md
     sections:
     - file: content/06_object_classification/object_classification_with_ilastik.md

@@ -91,14 +91,27 @@ def generate_gaussian_spots(
 
 
 # generate 3d spots
-scale = (0.5, 0.1, 0.1)
-spots = generate_gaussian_spots(seed=0, scale=scale)
+scale = (0.2, 0.1, 0.1)
+spots = generate_gaussian_spots(
+    shape=(128, 256, 256),
+    n_spots=75,
+    seed=2,
+    scale=scale,
+    na=1.4,
+    ri=1.52,  # immersion medium refractive index
+    em_wvl_um=0.520,  # emission wavelength in µm (GFP)
+    sigma_scale_range=(1, 3),  # per-spot size jitter
+    background=0.09,  # autofluorescence (fraction of max)
+    noise=0.04,  # read-noise std (fraction of max)
+)
+
+ndv.imshow(spots, scales={0: scale[0], 1: scale[1], 2: scale[2]})
 
 # scale float volume to the full uint16 range before saving
-# spots_uint16 = (np.clip(spots, 0, 1) * 65535).astype(np.uint16)
 # import tifffile
-# tifffile.imwrite("/Users/fdrgsp/Desktop/ilsk/3d_spots.tif", spots_uint16)
-ndv.imshow(spots)
+
+# spots_uint16 = (np.clip(spots, 0, 1) * 65535).astype(np.uint16)
+# tifffile.imwrite("_static/images/spot_detection/3d_spots.tif", spots_uint16)
 
 # # generate binary mask with Otsu thresholding
 # filtered_spots = gaussian(spots, sigma=1)
@@ -124,3 +137,22 @@ ndv.imshow(spots)
 # # apply the watershed algorithm to segment the image and get labels
 # labels_3d = watershed(-distance_transform, seeds, mask=mask)
 # ndv.imshow(labels_3d, default_lut={"cmap": "glasbey"})
+
+
+# scale = (0.9, 0.325, 0.325)
+# spots = generate_gaussian_spots(
+#     seed=2,
+#     scale=scale,
+#     na=0.75,
+#     ri=1,  # immersion medium refractive index
+#     em_wvl_um=0.520,  # emission wavelength in µm (GFP)
+#     sigma_scale_range=(2, 8),  # per-spot size jitter
+#     background=0.09,  # autofluorescence (fraction of max)
+#     noise=0.04,  # read-noise std (fraction of max)
+# )
+
+# ndv.imshow(spots)
+# import tifffile
+
+# spots_uint16 = (np.clip(spots, 0, 1) * 65535).astype(np.uint16)
+# tifffile.imwrite("_static/images/ilastik/3d_spots_ilastik.tif", spots_uint16)

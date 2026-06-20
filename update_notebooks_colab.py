@@ -7,6 +7,8 @@ import nbformat
 EXCLUDE = [
     "cellpose_notebook.ipynb",
     "cellpose_retraining_notebook.ipynb",
+    "spotiflow_notebook.ipynb",
+    "spotiflow_retraining_notebook.ipynb",
 ]
 
 

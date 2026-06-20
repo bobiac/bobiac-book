@@ -31,7 +31,7 @@ classifiers = [
 
 dependencies = [
     "jupyter-book<2.0.0",
-    "ndv[jupyter,pygfx,vispy]",
+    "ndv[jupyter,pygfx,vispy,pyqt]",
     "jupyter-rfb<=0.5.4",
     "tifffile",
     "scikit-image",
@@ -47,6 +47,8 @@ dependencies = [
     "shapely",
     "coloc_tools @ git+https://github.com/fdrgsp/coloc-tools.git",
     "evaluatesegmask @ git+https://github.com/antoineruzette/evaluatesegmask.git",
+    "spotiflow",
+    "napari[all]",
 ]
 
 

@@ -2,6 +2,11 @@
 
 ## Course Data
 
+<strong> 00 - <i class="fa-solid fa-crosshairs"></i> Spot Detection</strong>
+
+- Spotiflow Dataset: <a href="../_static/data/00_spot_detection_spotiflow.zip" download> <i class="fas fa-download"></i> Spotiflow Dataset</a>
+- Spotiflow Finetuning Dataset: <a href="../_static/data/00_spot_detection_spotiflow_finetuning.zip" download> <i class="fas fa-download"></i> Spotiflow Finetuning Dataset</a>
+
 <strong> 04 - <i class="fas fa-table-cells"></i> Introduction to Digital Images</strong>
 
 - Python for Bioimage Analysis: <a href="../_static/data/04_python_for_bioimage_analysis.zip" download> <i class="fas fa-download"></i> Python for Bioimage Analysis Dataset</a>
