@@ -32,13 +32,14 @@ map_03_python_basics_book_to_notebook = {
 }
 
 map_04_python_for_bioimage_analysis_book_to_notebook = {
-    "#reading-images": "#0.-Reading-an-Image",
-    "#numpy-arrays": "#1.-Introduction-to-NumPy-Arrays",
+    "#reading-an-image": "#0.-Reading-an-Image",
+    "#introduction-to-numpy-arrays": "#1.-Introduction-to-NumPy-Arrays",
     "#multidimensional-images": "#2.-Multidimensional-Images",
     "#saving-images": "#3.-Saving-Images",
-    "#visualizing-images": "#4.-Visualizing-Multiple-Images",
-    "#reading-proprietary-file-types": "#5.-BONUS:-Reading-Proprietary-File-Types",
+    "#visualizing-multiple-images": "#4.-Visualizing-Multiple-Images",
+    "#bonus-reading-proprietary-file-types": "#5.-BONUS:-Reading-Proprietary-File-Types",
 }
+
 
 
 def update_notebooks(
