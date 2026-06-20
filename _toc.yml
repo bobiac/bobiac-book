@@ -82,8 +82,8 @@ parts:
     title: uv
   - url: https://github.com/manzt/juv
     title: juv
-  - url: https://iac.hms.harvard.edu
-    title: Image Analysis Collaboratory (IAC)
+  - url: https://github.com/fdrgsp/pyrunner
+    title: pyrunner
   - url: https://cite.hms.harvard.edu
     title: Core for Imaging Technology & Education (CITE)
 
