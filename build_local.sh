@@ -40,14 +40,13 @@ echo "📘 Book built successfully at _build/html/"
 # update notebook html styles
 echo "🎨 Applying HTML styles to headers..."
 python "$(dirname "$0")/update_html_styles.py" _build/html/content
-python "$(dirname "$0")/update_html_styles.py" _build/html/student_group_work
 python "$(dirname "$0")/update_html_styles.py" _build/html/landing-page.html
 echo "✅ HTML styles applied successfully."
 
 # Prepare built notebook downloads in _build/html/notebooks/ and 
 # prepare built colab notebook in _build/html/colab_notebooks/
 
-folders=("content" "student_group_work")
+folders=("content")
 echo "📁 Preparing notebooks for download and colab..."
 for folder in "${folders[@]}"; do
   for notebook in $(find "$folder" -name "*.ipynb"); do

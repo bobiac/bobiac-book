@@ -29,9 +29,9 @@
 - Pixel Intensity Based: <a href="../_static/data/08_pixel_intensity_based_coloc.zip" download> <i class="fas fa-download"></i> Manders & Pearson's Colocalization Dataset</a>
 - Object Based: <a href="../_static/data/08_object_based_colocalization.zip" download> <i class="fas fa-download"></i> Object Based Colocalization Dataset</a>
 
-<strong> Student Group Work</strong>
+<strong> Exercises</strong>
 
-- <a href="../_static/data/student_group_work.zip" download> <i class="fas fa-download"></i> Student Group Work Dataset</a>
+- <a href="../_static/data/bobiac_exercises.zip" download> <i class="fas fa-download"></i> Student Group Work Dataset</a>
 
 ## Download All Course Materials
 

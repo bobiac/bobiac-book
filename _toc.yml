@@ -58,15 +58,13 @@ parts:
       - file: content/08_colocalization/pixel_intensity_based_colocalization_manders
       - file: content/08_colocalization/object_based_colocalization
 
-  # - file: content/09_reproducibility_and_image_ethics/reproducibility_and_image_ethics.md
 
-
-# STUDENT WORKING GROUPS
-- caption: Student Working Groups
+# BoBiAC EXERCISES
+- caption: BoBiAC Exercises
   chapters:
-  - file: student_group_work/student_group_work.md
+  - file: content/10_bobiac_exercises/bobiac_exercises.md
     sections:
-      - file: student_group_work/evaluation-notebook.ipynb
+      - file: content/10_bobiac_exercises/uv_and_environment.md
 
 # COURSE DATA
 - caption: Course Materials Downloads
