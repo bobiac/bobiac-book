@@ -137,6 +137,12 @@
 </details></li>
 </ul>
 </details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../00_spot_detection/spot_detection_intro.html">00 - <i class="fa-solid fa-crosshairs"></i> Spot Detection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../00_spot_detection/intro_to_spotiflow.html">Introduction to Spotiflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../00_spot_detection/spotiflow_notebook.html">Spotiflow in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../00_spot_detection/spotiflow_retraining.html">Finetuning or Training Spotiflow on Custom Data</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../06_object_classification/object_classification.html">06 - <i class="fa-solid fa-shapes"></i> Object Classification</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../06_object_classification/object_classification_with_ilastik.html">Ilastik for Object Classification</a></li>
 </ul>
@@ -268,19 +274,19 @@
 <div align="center">
 <img alt="Cellpose GUI" src="../../../_static/images/cellpose/starting_window.png" width="600"/>
 </div>
-<p>Below are the instructions to install Cellpose using <a class="reference external" href="https://docs.astral.sh/uv/"><code class="docutils literal notranslate"><span class="pre">uv</span></code></a>.</p>
-<p>You can use <code class="docutils literal notranslate"><span class="pre">uv</span></code> to use/install Cellpose in three ways:</p>
+<p>Below are the instructions to install <strong>Cellpose</strong> using <a class="reference external" href="https://docs.astral.sh/uv/"><code class="docutils literal notranslate"><span class="pre">uv</span></code></a>.</p>
+<p>You can use <code class="docutils literal notranslate"><span class="pre">uv</span></code> to use/install <strong>Cellpose</strong> in three ways:</p>
 <ol class="arabic simple">
 <li><p><strong>Direct execution</strong>: Use <code class="docutils literal notranslate"><span class="pre">uv</span></code> to automatically handle environment creation and run the GUI directly</p></li>
-<li><p><strong>Manual environment setup</strong>: Create a virtual environment first, then install Cellpose within that environment</p></li>
-<li><p><strong>Jupyter Notebook Integration</strong>: Use <code class="docutils literal notranslate"><span class="pre">uvx</span> <span class="pre">juv</span></code> with the Jupyter notebooks from this course to run the Cellpose notebooks directly in the browser</p></li>
+<li><p><strong>Manual environment setup</strong>: Create a virtual environment first, then install <strong>Cellpose</strong> within that environment</p></li>
+<li><p><strong>Jupyter Notebook Integration</strong>: Use <code class="docutils literal notranslate"><span class="pre">uvx</span> <span class="pre">juv</span></code> with the Jupyter notebooks from this course to run the <strong>Cellpose</strong> notebooks directly in the browser</p></li>
 </ol>
 <p class="alert alert-warning">
-<strong>⚠️ Note:</strong> If you want to use Cellpose efficiently, make sure to run it using GPU or it will be very slow. If you have an Apple Silicon Mac, you can take advantage of the built-in GPU (no need of a particular installation). See the instructions below for more details on how to run Cellpose with GPU support on Windows/Linux.
+<strong>⚠️ Note:</strong> If you want to use <code>Cellpose</code> efficiently, make sure to run it using GPU or it will be very slow. If you have an Apple Silicon Mac, you can take advantage of the built-in GPU (no need of a particular installation). See the instructions below for more details on how to run <code>Cellpose</code> with GPU support on Windows/Linux.
 </p>
 <section id="direct-execution-with-uv">
 <h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">1. Direct Execution with uv<a class="headerlink" href="#direct-execution-with-uv" title="Link to this heading">#</a></h3>
-<p>By simply running the command below, <code class="docutils literal notranslate"><span class="pre">uv</span></code> will create a virtual environment, install Cellpose, and launch the GUI (it might take a little while the first time you run this command but after that it will be very quick).</p>
+<p>By simply running the command below, <code class="docutils literal notranslate"><span class="pre">uv</span></code> will create a virtual environment, install <strong>Cellpose</strong>, and launch the GUI (it might take a little while the first time you run this command but after that it will be very quick).</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uvx<span class="w"> </span><span class="s2">"cellpose[gui]"</span>
 </pre></div>
 </div>
@@ -289,12 +295,12 @@
 </pre></div>
 </div>
 <p class="alert alert-warning">
-<strong>⚠️ Note:</strong> If you have a multi-channel z-stack, Cellpose expects the dimension order to be <i>ZCYX</i>.
+<strong>⚠️ Note:</strong> If you have a multi-channel z-stack, `Cellpose` expects the dimension order to be <i>ZCYX</i>.
 </p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">NVIDIA GPU (CUDA - Windows/Linux)</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg aria-hidden="true" class="sd-octicon sd-octicon-chevron-right" height="1.5em" version="1.1" viewbox="0 0 24 24" width="1.5em"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">To run Cellpose with an NVIDIA GPU:</p>
+<p class="sd-card-text">To run <code class="docutils literal notranslate"><span class="pre">Cellpose</span></code> with an NVIDIA GPU:</p>
 <ol class="arabic simple">
 <li><p class="sd-card-text">you need to have the <a class="reference external" href="https://www.nvidia.com/en-us/drivers/">NVIDIA drivers</a> installed on your system.</p></li>
 <li><p class="sd-card-text">you can run <code class="docutils literal notranslate"><span class="pre">nvidia-smi</span></code> in the terminal to check your CUDA version (shown in the top-right of the output, e.g. <code class="docutils literal notranslate"><span class="pre">CUDA</span> <span class="pre">Version:</span> <span class="pre">13.0.0</span></code>).</p></li>
@@ -308,13 +314,13 @@
 </pre></div>
 </div>
 <p class="alert alert-warning">
-<strong>⚠️ Note:</strong> If you have a multi-channel z-stack, Cellpose expects the dimension order to be <i>ZCYX</i>.
+<strong>⚠️ Note:</strong> If you have a multi-channel z-stack, <code>Cellpose</code> expects the dimension order to be <i>ZCYX</i>.
 </p>
 </div>
 </details></section>
 <section id="manual-environment-setup">
 <h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">2. Manual Environment Setup<a class="headerlink" href="#manual-environment-setup" title="Link to this heading">#</a></h3>
-<p>If you need to use Cellpose for scripting and integration into pipelines, it is then useful to set up a virtual environment manually. Here are the steps:</p>
+<p>If you need to use <code class="docutils literal notranslate"><span class="pre">Cellpose</span></code> for scripting and integration into pipelines, it is then useful to set up a virtual environment manually. Here are the steps:</p>
 <p><strong>2.1. Create a new virtual environment:</strong></p>
 <p>When using <code class="docutils literal notranslate"><span class="pre">uv</span></code>, you can create a virtual environment with the following command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>venv<span class="w"> </span>cellpose-env
@@ -331,7 +337,7 @@ cellpose-env<span class="se">\S</span>cripts<span class="se">\a</span>ctivate
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>cellpose
 </pre></div>
 </div>
-<p>If you will also need to run the Cellpose through the GUI, you should install it with GUI support:</p>
+<p>If you will also need to run the <code class="docutils literal notranslate"><span class="pre">Cellpose</span></code> through the GUI, you should install it with GUI support:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"cellpose[gui]"</span>
 </pre></div>
 </div>
@@ -344,16 +350,16 @@ cellpose-env<span class="se">\S</span>cripts<span class="se">\a</span>ctivate
 </pre></div>
 </div>
 <p class="alert alert-warning">
-<strong>⚠️ Note:</strong> If you have a multi-channel z-stack, Cellpose expects the dimension order to be <i>ZCYX</i>.
+<strong>⚠️ Note:</strong> If you have a multi-channel z-stack, <code>Cellpose</code> expects the dimension order to be <i>ZCYX</i>.
 </p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">NVIDIA GPU (CUDA - Windows/Linux)</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg aria-hidden="true" class="sd-octicon sd-octicon-chevron-right" height="1.5em" version="1.1" viewbox="0 0 24 24" width="1.5em"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">To use Cellpose with an NVIDIA GPU in your virtual environment:</p>
+<p class="sd-card-text">To use <code class="docutils literal notranslate"><span class="pre">Cellpose</span></code> with an NVIDIA GPU in your virtual environment:</p>
 <ol class="arabic simple">
 <li><p class="sd-card-text">you need to have the <a class="reference external" href="https://www.nvidia.com/en-us/drivers/">NVIDIA drivers</a> installed on your system.</p></li>
 <li><p class="sd-card-text">you can run <code class="docutils literal notranslate"><span class="pre">nvidia-smi</span></code> in the terminal to check your CUDA version (shown in the top-right of the output, e.g. <code class="docutils literal notranslate"><span class="pre">CUDA</span> <span class="pre">Version:</span> <span class="pre">13.0.0</span></code>).</p></li>
-<li><p class="sd-card-text">after installing cellpose as described above, install <code class="docutils literal notranslate"><span class="pre">torch</span></code> and <code class="docutils literal notranslate"><span class="pre">torchvision</span></code> with CUDA support, replacing <code class="docutils literal notranslate"><span class="pre">cu130</span></code> with your CUDA version:</p></li>
+<li><p class="sd-card-text">after installing <code class="docutils literal notranslate"><span class="pre">Cellpose</span></code> as described above, install <code class="docutils literal notranslate"><span class="pre">torch</span></code> and <code class="docutils literal notranslate"><span class="pre">torchvision</span></code> with CUDA support, replacing <code class="docutils literal notranslate"><span class="pre">cu130</span></code> with your CUDA version:</p></li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>torch<span class="w"> </span>torchvision<span class="w"> </span>--index-url<span class="w"> </span>https://download.pytorch.org/whl/cu130
 </pre></div>
@@ -467,7 +473,7 @@ uvx<span class="w"> </span>juv<span class="w"> </span>run<span class="w"> </span
 <div class="bd-footer-content__inner container">
 <div class="footer-item">
 <p class="component-author">
-By Federico Gasparoli, PhD - federico@hms.harvard.edu (federico.gasparoli@gmail.com)<br/><br/>Materials:<br/>- Federico Gasparoli, PhD - federico@hms.harvard.edu (federico.gasparoli@gmail.com)<br/>- Eva de la Serna, PhD - eva_delaserna@hms.harvard.edu<br/>- Max Brambach, PhD - max_brambach@hms.harvard.edu
+By Federico Gasparoli, PhD - federico@hms.harvard.edu (federico.gasparoli@gmail.com)<br/>Materials:<br/>- Federico Gasparoli, PhD - federico@hms.harvard.edu (federico.gasparoli@gmail.com)<br/>- Eva de la Serna, PhD - eva_delaserna@hms.harvard.edu<br/>- Max Brambach, PhD - max_brambach@hms.harvard.edu
 </p>
 </div>
 <div class="footer-item">

@@ -135,6 +135,12 @@
 </details></li>
 </ul>
 </details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../00_spot_detection/spot_detection_intro.html">00 - <i class="fa-solid fa-crosshairs"></i> Spot Detection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../00_spot_detection/intro_to_spotiflow.html">Introduction to Spotiflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../00_spot_detection/spotiflow_notebook.html">Spotiflow in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../00_spot_detection/spotiflow_retraining.html">Finetuning or Training Spotiflow on Custom Data</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../06_object_classification/object_classification.html">06 - <i class="fa-solid fa-shapes"></i> Object Classification</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../06_object_classification/object_classification_with_ilastik.html">Ilastik for Object Classification</a></li>
 </ul>
@@ -246,11 +252,10 @@
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">Setup</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#run-cellpose-on-a-single-image">Run Cellpose on a Single Image</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-image">Load the Image</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-the-model">Initialize the Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-the-other-pretrained-models">Downloading the Other Pretrained Models</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-the-model">Initialize the Model</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-the-other-pretrained-models">Downloading the Other Pretrained Models</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Downloading the Other Pretrained Models</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-cellpose">Run Cellpose</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#display-the-results">Display the Results</a></li>
 </ul>
@@ -262,7 +267,7 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-the-3d-sample-image">Download the 3D Sample Image</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-3d-image">Load the 3D Image</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-3d-image">Visualize the 3D Image</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Initialize the model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Initialize the model</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-cellpose-in-3d">Run Cellpose in 3D</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-results">Visualize the results</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-the-results">Save the results</a></li>
@@ -278,8 +283,8 @@
 <section id="overview">
 <h1>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h1>
 <p><a class="reference external" href="https://www.cellpose.org">Website</a> | <a class="reference external" href="https://github.com/mouseland/cellpose">GitHub</a> | <a class="reference external" href="https://www.biorxiv.org/content/10.1101/2025.04.28.651001v1">Paper</a> | <a class="reference external" href="https://cellpose.readthedocs.io/en/latest/index.html">Cellpose Documentation</a> | <a class="reference external" href="https://cellpose.readthedocs.io/en/latest/api.html#">Cellpose API</a></p>
-<p>In this section, we’ll learn how to use <strong>Cellpose</strong>, a powerful deep learning tool for cell segmentation, works on a wide variety of microscopy images and doesn’t require retraining for many common use cases.</p>
-<p>In this notebook, we’ll see how to run Cellpose on single images or on a folder of images, and how to visualize and save the results.</p>
+<p>In this section, we’ll learn how to use <code class="docutils literal notranslate"><span class="pre">Cellpose</span></code>, a powerful deep learning tool for cell segmentation, works on a wide variety of microscopy images and doesn’t require retraining for many common use cases.</p>
+<p>In this notebook, we’ll see how to run <code class="docutils literal notranslate"><span class="pre">Cellpose</span></code> on single images or on a folder of images, and how to visualize and save the results.</p>
 </section>
 <section id="make-sure-you-have-gpu-access">
 <h1>Make sure you have GPU access<a class="headerlink" href="#make-sure-you-have-gpu-access" title="Link to this heading">#</a></h1>
@@ -311,7 +316,7 @@
 <span class="g g-Whitespace">      </span><span class="mi">2</span> 
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s2">"/content/drive"</span><span class="p">)</span>
 
-<span class="ne">ModuleNotFoundError</span>: No module named 'google'
+<span class="ne">ModuleNotFoundError</span>: No module named 'google.colab'
 </pre></div>
 </div>
 </div>
@@ -376,13 +381,13 @@
 </section>
 <section id="run-cellpose-on-a-single-image">
 <h1>Run Cellpose on a Single Image<a class="headerlink" href="#run-cellpose-on-a-single-image" title="Link to this heading">#</a></h1>
-<p>In this section, we’ll apply Cellpose to a single image and visualize the segmentation result.</p>
+<p>In this section, we’ll apply <code class="docutils literal notranslate"><span class="pre">Cellpose</span></code> to a single image and visualize the segmentation result.</p>
 <section id="load-the-image">
 <h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Load the Image<a class="headerlink" href="#load-the-image" title="Link to this heading">#</a></h2>
-<p>To load the image, we can use the <code class="docutils literal notranslate"><span class="pre">imread</span></code> method from the Cellpose <code class="docutils literal notranslate"><span class="pre">io</span></code> module (or the <code class="docutils literal notranslate"><span class="pre">tifffile</span></code> library if you add it to the dependencies):</p>
+<p>To load the image, we can use the <code class="docutils literal notranslate"><span class="pre">imread</span></code> method from the <code class="docutils literal notranslate"><span class="pre">Cellpose</span></code> <code class="docutils literal notranslate"><span class="pre">io</span></code> module (or the <code class="docutils literal notranslate"><span class="pre">tifffile</span></code> library if you add it to the dependencies):</p>
 <div class="cell tag_teacher docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">image_path</span> <span class="o">=</span> <span class="s2">"/content/bobiac_data_cellpose/05_segmentation_cellpose/cell_cellpose.tif"</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">image_path</span> <span class="o">=</span> <span class="s2">"content/bobiac_data_cellpose/05_segmentation_cellpose/cell_cellpose.tif"</span>
 <span class="n">image</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
@@ -390,11 +395,23 @@
 </div>
 </div>
 </div>
-</section>
+<p>We can use the <code class="docutils literal notranslate"><span class="pre">imshow</span></code> method from the <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code> library to visualize the image.</p>
+<p class="alert alert-info">
+<strong>💡 Note:</strong> Since this is a 2 channel image, you will need to specify which channel to visualize (e.g. <code>plt.imshow(image[0])</code> for the first channel).
+</p><div class="cell tag_teacher docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ch</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">[</span><span class="n">ch</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">"gray"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">"off"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="initialize-the-model">
-<h1>Initialize the Model<a class="headerlink" href="#initialize-the-model" title="Link to this heading">#</a></h1>
-<p>To initialize Cellpose model we can use the <code class="docutils literal notranslate"><span class="pre">models.CellposeModel()</span></code> class.</p>
+<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Initialize the Model<a class="headerlink" href="#initialize-the-model" title="Link to this heading">#</a></h2>
+<p>To initialize <code class="docutils literal notranslate"><span class="pre">Cellpose</span></code> model we can use the <code class="docutils literal notranslate"><span class="pre">models.CellposeModel()</span></code> class.</p>
 <p>There are other parameters we can set when initializing the model, here we will only use <code class="docutils literal notranslate"><span class="pre">pretrained_model</span></code> to specify which pretrained model to use and <code class="docutils literal notranslate"><span class="pre">gpu</span></code> to specify whether to use GPU (if available) for faster inference.</p>
 <p>Currently, the available pretrained models are:</p>
 <ul class="simple">
@@ -406,7 +423,7 @@
 <p class="alert alert alert-info">
 <strong>Note:</strong> Only the default <code>cpsam</code> model is downloaded automatically the first time you run this notebook (this may take a while). The other models (<code>cpsam_v2</code>, <code>cpdino</code>, <code>cpdino-vitb</code>) must be downloaded manually, see below.
 </p><section id="downloading-the-other-pretrained-models">
-<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Downloading the Other Pretrained Models<a class="headerlink" href="#downloading-the-other-pretrained-models" title="Link to this heading">#</a></h2>
+<h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">Downloading the Other Pretrained Models<a class="headerlink" href="#downloading-the-other-pretrained-models" title="Link to this heading">#</a></h3>
 <p>These models are hosted on the <a class="reference external" href="https://huggingface.co/mouseland/cellpose-sam">Cellpose-SAM Hugging Face repository</a>. We need to download the model weights and place them in the <code class="docutils literal notranslate"><span class="pre">~/.cellpose/models</span></code> directory (the <code class="docutils literal notranslate"><span class="pre">MODEL_DIR</span></code> variable from the <code class="docutils literal notranslate"><span class="pre">cellpose.models</span></code> module).</p>
 <div class="cell tag_skip-execution docutils container">
 <div class="cell_input docutils container">
@@ -424,6 +441,7 @@
 </div>
 </div>
 </div>
+<p>Now we can initialize the model with the different pretrained models by setting the <code class="docutils literal notranslate"><span class="pre">pretrained_model</span></code> parameter.</p>
 <div class="cell tag_skip-execution tag_teacher docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_path</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">MODEL_DIR</span> <span class="o">/</span> <span class="s2">"cpsam_v2"</span><span class="p">)</span>  <span class="c1"># or "cpdino" / "cpdino-vitb" or "cpsam"</span>
@@ -433,9 +451,6 @@
 </div>
 </div>
 </section>
-<section id="id1">
-<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Downloading the Other Pretrained Models<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-<p>These models are hosted on the <a class="reference external" href="https://huggingface.co/mouseland/cellpose-sam">Cellpose-SAM Hugging Face repository</a>. We need to download the model weights and place them in the <code class="docutils literal notranslate"><span class="pre">~/.cellpose/models</span></code> directory (<code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">cellpose.models</span> <span class="pre">import</span> <span class="pre">MODEL_DIR</span></code>).</p>
 </section>
 <section id="run-cellpose">
 <h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Run Cellpose<a class="headerlink" href="#run-cellpose" title="Link to this heading">#</a></h2>
@@ -659,7 +674,7 @@
 </section>
 <section id="display-the-results">
 <h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Display the Results<a class="headerlink" href="#display-the-results" title="Link to this heading">#</a></h2>
-<p>To display the results, we can use the <code class="docutils literal notranslate"><span class="pre">show_segmentation</span></code> method from the Cellpose <code class="docutils literal notranslate"><span class="pre">plot</span></code> module that will show the original image, predicted masks, outlines, and flow fields in a single figure (alternatively, you can use other libraries like <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> to directly visualize the outputs).</p>
+<p>To display the results, we can use the <code class="docutils literal notranslate"><span class="pre">show_segmentation</span></code> method from the <code class="docutils literal notranslate"><span class="pre">Cellpose</span></code> <code class="docutils literal notranslate"><span class="pre">plot</span></code> module that will show the original image, predicted masks, outlines, and flow fields in a single figure (alternatively, you can use other libraries like <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> to directly visualize the outputs).</p>
 <div class="cell tag_skip-execution tag_teacher docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
@@ -672,7 +687,7 @@
 </div>
 </div>
 </div>
-<p>To save the labelled masks as a .tif file, you can use the Cellpose <code class="docutils literal notranslate"><span class="pre">imsave</span></code> method from the <code class="docutils literal notranslate"><span class="pre">io</span></code> module (or e.g. the <code class="docutils literal notranslate"><span class="pre">tifffile</span></code> library if you add it to the dependencies):</p>
+<p>To save the labelled masks as a .tif file, you can use the <code class="docutils literal notranslate"><span class="pre">Cellpose</span></code> <code class="docutils literal notranslate"><span class="pre">imsave</span></code> method from the <code class="docutils literal notranslate"><span class="pre">io</span></code> module (or e.g. the <code class="docutils literal notranslate"><span class="pre">tifffile</span></code> library if you add it to the dependencies):</p>
 <div class="cell tag_teacher tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"path/to/output/</span><span class="si">{</span><span class="n">Path</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span><span class="o">.</span><span class="n">stem</span><span class="si">}</span><span class="s2">_labels.tif"</span>
@@ -703,17 +718,21 @@
 </section>
 <section id="run-cellpose-on-a-folder-of-images">
 <h1>Run Cellpose on a Folder of Images<a class="headerlink" href="#run-cellpose-on-a-folder-of-images" title="Link to this heading">#</a></h1>
-<p>Now that we’ve seen how to run Cellpose on a single image, let’s scale up and apply it to a <strong>folder of images</strong>. This is useful when you have an entire experiment or dataset that you want to segment automatically.</p>
-<p>The simplest way to do this is to just <strong>loop through the images in the folder</strong> and run <code class="docutils literal notranslate"><span class="pre">model.eval()</span></code> on each one. During each iteration, we can save the predicted masks to an output folder using the <code class="docutils literal notranslate"><span class="pre">imsave</span></code> method from the Cellpose <code class="docutils literal notranslate"><span class="pre">io</span></code> module (or the <code class="docutils literal notranslate"><span class="pre">tifffile</span></code> library if you add it to the dependencies).</p>
+<p>Now that we’ve seen how to run <code class="docutils literal notranslate"><span class="pre">Cellpose</span></code> on a single image, let’s scale up and apply it to a <strong>folder of images</strong>. This is useful when you have an entire experiment or dataset that you want to segment automatically.</p>
+<p>The simplest way to do this is to just <strong>loop through the images in the folder</strong> and run <code class="docutils literal notranslate"><span class="pre">model.eval()</span></code> on each one. During each iteration, we can save the predicted masks to an output folder using the <code class="docutils literal notranslate"><span class="pre">imsave</span></code> method from the <code class="docutils literal notranslate"><span class="pre">Cellpose</span></code> <code class="docutils literal notranslate"><span class="pre">io</span></code> module (or the <code class="docutils literal notranslate"><span class="pre">tifffile</span></code> library if you add it to the dependencies).</p>
 <p class="alert alert alert-info">
-<strong>Note:</strong> If you work with small size images, you can also load them all at once (or in batches) into RAM and pass them as a list to `model.eval()`.
+<strong>Note:</strong> If you work with small size images, you can also load them all at once (or in batches) into RAM and pass them as a list to <code>model.eval()</code>.
 </p><div class="cell tag_teacher tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Path to the folder containing the images to segment</span>
-<span class="n">folder_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"data/05_segmentation_cellpose"</span><span class="p">)</span>
+<span class="n">folder_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"content/bobiac_data_cellpose/05_segmentation_cellpose"</span><span class="p">)</span>
 
 <span class="c1"># Get the sorted list of all .tif images in the folder</span>
 <span class="n">images_path</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">folder_path</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">"*.tif"</span><span class="p">))</span>
+
+<span class="c1"># Initialize the model once before the loop</span>
+<span class="n">model_path</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">MODEL_DIR</span> <span class="o">/</span> <span class="s2">"cpsam_v2"</span><span class="p">)</span>  <span class="c1"># or "cpdino" / "cpdino-vitb" or "cpsam"</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CellposeModel</span><span class="p">(</span><span class="n">pretrained_model</span><span class="o">=</span><span class="n">model_path</span><span class="p">,</span> <span class="n">gpu</span><span class="o">=</span><span class="n">use_gpu</span><span class="p">)</span>
 
 <span class="c1"># Run Cellpose on each image one by one</span>
 <span class="c1"># NOTE: tqdm is used to show a progress bar, but you can remove it if you don't want it</span>
@@ -733,7 +752,7 @@
 <section id="bonus-1-gpu-optimization-with-batch-size">
 <h1>Bonus 1: GPU Optimization with <code class="docutils literal notranslate"><span class="pre">batch_size</span></code><a class="headerlink" href="#bonus-1-gpu-optimization-with-batch-size" title="Link to this heading">#</a></h1>
 <p>The simple loop above uses the default <code class="docutils literal notranslate"><span class="pre">batch_size=8</span></code>. This controls how many <strong>256×256 tiles</strong> are sent to the GPU per forward pass.</p>
-<p>For each image, Cellpose splits it into overlapping tiles (10% overlap by default) and runs the network on them in groups of <code class="docutils literal notranslate"><span class="pre">batch_size</span></code>. Increasing <code class="docutils literal notranslate"><span class="pre">batch_size</span></code> reduces the number of GPU passes per image, which is faster, at the cost of more GPU memory.</p>
+<p>For each image, <code class="docutils literal notranslate"><span class="pre">Cellpose</span></code> splits it into overlapping tiles (10% overlap by default) and runs the network on them in groups of <code class="docutils literal notranslate"><span class="pre">batch_size</span></code>. Increasing <code class="docutils literal notranslate"><span class="pre">batch_size</span></code> reduces the number of GPU passes per image, which is faster, at the cost of more GPU memory.</p>
 <p><strong>How many tiles does an image produce?</strong></p>
 <p>The image is divided into 256×256 tiles with a 10% overlap between neighbors, and tiles are added to ensure the edges are fully covered. The total number of tiles grows with image size.</p>
 <p>For example, a <strong>1392×1040</strong> image produces <strong>5×7 = 35 tiles</strong>:</p>
@@ -761,11 +780,11 @@
 </div>
 <p>Increase <code class="docutils literal notranslate"><span class="pre">batch_size</span></code> until you hit out-of-memory errors, then back off one step.</p>
 <p class="alert alert alert-info">
-<strong>Note:</strong> The tile overlap can be adjusted using the <i>tile_overlap</i> parameters in <i>model.eval()</i>. The default is 0.1 (10%) overlap which is the value used during training, so it is recommended to keep it as default unless you have specific reasons to change it.
+<strong>Note:</strong> The tile overlap can be adjusted using the <code>tile_overlap</code> parameters in <code>model.eval()</code>. The default is 0.1 (10%) overlap which is the value used during training, so it is recommended to keep it as default unless you have specific reasons to change it.
 </p><div class="cell tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Path to the folder containing the images to segment</span>
-<span class="n">folder_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"data/05_segmentation_cellpose"</span><span class="p">)</span>
+<span class="n">folder_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"content/bobiac_data_cellpose/05_segmentation_cellpose"</span><span class="p">)</span>
 
 <span class="c1"># Get the sorted list of all .tif images in the folder</span>
 <span class="n">images_path</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">folder_path</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">"*.tif"</span><span class="p">))</span>
@@ -784,7 +803,7 @@
 </section>
 <section id="bonus-2-timelapse-batch-processing">
 <h1>Bonus 2: Timelapse Batch Processing<a class="headerlink" href="#bonus-2-timelapse-batch-processing" title="Link to this heading">#</a></h1>
-<p>When working with a timelapse, you cannot pass the raw stack array directly to <code class="docutils literal notranslate"><span class="pre">model.eval()</span></code>, Cellpose has no concept of timepoints and would misinterpret the time axis as channels or a z-stack.</p>
+<p>When working with a timelapse, you cannot pass the raw stack array directly to <code class="docutils literal notranslate"><span class="pre">model.eval()</span></code>, <code class="docutils literal notranslate"><span class="pre">Cellpose</span></code> has no concept of timepoints and would misinterpret the time axis as channels or a z-stack.</p>
 <p>The solution is to convert the stack into a <strong>list of frames</strong> using <code class="docutils literal notranslate"><span class="pre">list(stack)</span></code>, which slices along axis 0. The result depends on your axis order:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># TCYX — axis 0 is time → list gives T frames of shape (C, Y, X)</span>
 <span class="n">stack</span><span class="o">.</span><span class="n">shape</span>  <span class="c1"># (10, 2, 512, 512)</span>
@@ -827,7 +846,7 @@
 <h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Load the 3D Image<a class="headerlink" href="#load-the-3d-image" title="Link to this heading">#</a></h2>
 <div class="cell tag_skip-execution docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">image_path</span> <span class="o">=</span> <span class="s2">"/content/bobiac_data_cellpose/05_segmentation_cellpose/cell_cellpose.tif"</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">image_path</span> <span class="o">=</span> <span class="s2">"/content/bobiac_data_cellpose/05_segmentation_cellpose/cell_cellpose_3d_crop.tif"</span>
 <span class="n">image</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span>  <span class="c1"># or image = tifffile.imread(image_path)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
@@ -875,8 +894,8 @@ Z step size = 0.5 µm</p>
 </div>
 </div>
 </section>
-<section id="id2">
-<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Initialize the model<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<section id="id1">
+<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Initialize the model<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <div class="cell tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_path</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">MODEL_DIR</span> <span class="o">/</span> <span class="s2">"cpsam_v2"</span><span class="p">)</span>  <span class="c1"># or "cpdino" / "cpdino-vitb" or "cpsam"</span>
@@ -891,11 +910,7 @@ Z step size = 0.5 µm</p>
 <div class="cell tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">masks</span><span class="p">,</span> <span class="n">flows</span><span class="p">,</span> <span class="n">styles</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span>
-    <span class="n">image</span><span class="p">,</span>
-    <span class="n">do_3D</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">z_axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-    <span class="n">anisotropy</span><span class="o">=</span><span class="n">anisotropy</span><span class="p">,</span>
-    <span class="n">flow3D_smooth</span><span class="o">=</span><span class="mi">1</span>
+    <span class="n">image</span><span class="p">,</span> <span class="n">do_3D</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">z_axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">anisotropy</span><span class="o">=</span><span class="n">anisotropy</span><span class="p">,</span> <span class="n">flow3D_smooth</span><span class="o">=</span><span class="mi">1</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -971,11 +986,10 @@ Z step size = 0.5 µm</p>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">Setup</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#run-cellpose-on-a-single-image">Run Cellpose on a Single Image</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-image">Load the Image</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-the-model">Initialize the Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-the-other-pretrained-models">Downloading the Other Pretrained Models</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-the-model">Initialize the Model</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-the-other-pretrained-models">Downloading the Other Pretrained Models</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Downloading the Other Pretrained Models</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-cellpose">Run Cellpose</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#display-the-results">Display the Results</a></li>
 </ul>
@@ -987,7 +1001,7 @@ Z step size = 0.5 µm</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-the-3d-sample-image">Download the 3D Sample Image</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-3d-image">Load the 3D Image</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-3d-image">Visualize the 3D Image</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Initialize the model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Initialize the model</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-cellpose-in-3d">Run Cellpose in 3D</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-results">Visualize the results</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-the-results">Save the results</a></li>
@@ -1001,7 +1015,7 @@ Z step size = 0.5 µm</p>
 <div class="bd-footer-content__inner container">
 <div class="footer-item">
 <p class="component-author">
-By Federico Gasparoli, PhD - federico@hms.harvard.edu (federico.gasparoli@gmail.com)<br/><br/>Materials:<br/>- Federico Gasparoli, PhD - federico@hms.harvard.edu (federico.gasparoli@gmail.com)<br/>- Eva de la Serna, PhD - eva_delaserna@hms.harvard.edu<br/>- Max Brambach, PhD - max_brambach@hms.harvard.edu
+By Federico Gasparoli, PhD - federico@hms.harvard.edu (federico.gasparoli@gmail.com)<br/>Materials:<br/>- Federico Gasparoli, PhD - federico@hms.harvard.edu (federico.gasparoli@gmail.com)<br/>- Eva de la Serna, PhD - eva_delaserna@hms.harvard.edu<br/>- Max Brambach, PhD - max_brambach@hms.harvard.edu
 </p>
 </div>
 <div class="footer-item">

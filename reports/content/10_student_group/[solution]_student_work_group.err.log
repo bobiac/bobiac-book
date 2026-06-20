@@ -31,5 +31,5 @@ drive.mount('/content/drive')
 [32m----> [39m[32m2[39m [38;5;28;01mfrom[39;00m google.colab [38;5;28;01mimport[39;00m drive
 [32m      3[39m drive.mount([33m'/content/drive'[39m)
 
-[31mModuleNotFoundError[39m: No module named 'google'
+[31mModuleNotFoundError[39m: No module named 'google.colab'
 
