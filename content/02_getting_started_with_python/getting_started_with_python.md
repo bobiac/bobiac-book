@@ -179,3 +179,53 @@ It is built on the following concepts:
 | **`uvx juv run <name.ipynb>`** | Launch a Jupyter notebook server and run the notebook `<name.ipynb>`. |
 
 <small>_... For complete docs, see the [`juv` repository](https://github.com/manzt/juv)._</small>
+
+## FROM PYTHON FOR BIOIMAGE ANALYSIS NOTEBOOK
+## 0. Importing Libraries
+### Concept
+
+Python is powerful in part because of its wide array of *external libraries*. An **external Python library (also called a Python package)** is a publicly available code base containing functions and other tools not already included internally in Python. While you could write your own Python code to conduct tasks, you can save significant time and effort by using other developers' libraries. 
+
+We are going to be using a few external Python libraries in this lesson, so we will start by learning how to specify them in our code. This practice is called specifying or importing our **dependencies**. It's standard practice to import all dependencies at the very beginning of your code.
+
+<p class="alert alert-info">
+    <strong>Note:</strong> In Python, there is an important distinction between <i><b>installing</b></i> a library and <i><b>importing</b></i> a library. Installing a library means downloading it onto your computer so that it is available for use. Importing a library means telling Python to make that library's functionality available in your current code. In this lesson setup, uv has installed all necessary libraries already for you, so you only need to worry about importing!
+</p>
+
+### How to import a library
+First, it's important to review a library's information to learn how to import and use it correctly. The website [pypi.org](https://pypi.org) allows you to easily search external Python libraries and learn how to install them. This webpage will also give a brief description of the library, and typically will contain a link to access its documentation. The documentation will then contain detailed information about how to use the library. 
+
+Below is an example of an external library, its PyPi page, and its documentation. 
+
+| Library Name | PyPi Link | Documentation Link | 
+|---------|----------------|----------------|
+| `ndv` | [ndv](https://pypi.org/project/ndv/) | [ndv](https://pyapp-kit.github.io/ndv/latest/) |
+
+In reviewing this pypi page, we see that `ndv` is an n-dimensional array viewer that can be used to view images. We can import it to use in our code with the line:
+```python
+import ndv
+```
+### Importing with an alias
+Sometimes libraries will have long names that can be prone to typos. To simplify code, you can create an alias for a library when you import them.
+
+```python
+# importing a library without alias
+import tifffile
+
+# importing a library with alias
+import tifffile as tiff
+```
+### Only importing a portion of a library
+Sometimes, you will only need to use a small portion of a large library. You can import only certain modules from a library in two different ways: 
+
+```python
+from matplotlib import pyplot # option 1
+import matplotlib.pyplot # option 2
+```
+
+Here, `pyplot` is a module within the library `matplotlib`. 
+
+### Combining approaches: importing a portion of a library with an alias
+```python
+import matplotlib.pyplot as plt
+```
