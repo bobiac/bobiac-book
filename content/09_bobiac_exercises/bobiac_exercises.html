@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>00 - Spot Detection &#8212; BoBiAC Book</title>
+    <title>BoBiAC Exercises &#8212; BoBiAC Book</title>
   
   
   
@@ -61,12 +61,12 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'content/00_spot_detection/spot_detection_intro';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/09_bobiac_exercises/bobiac_exercises';</script>
     <script src="../../_static/scripts/custom.js?v=abd1ef31"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Introduction to Spotiflow" href="intro_to_spotiflow.html" />
-    <link rel="prev" title="Retraining Cellpose on Custom Data" href="../05_segmentation/deep_learning/cellpose_retraining.html" />
+    <link rel="next" title="Downloads" href="../../data/course_downloads.html" />
+    <link rel="prev" title="Object-based colocalization analysis" href="../08_colocalization/object_based_colocalization.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -171,7 +171,7 @@
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Course Material</span></p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../01_intro_to_bobiac/bobiac_intro.html">01 - <i class="fas fa-image"></i> Introduction to BoBiAC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../02_getting_started_with_python/getting_started_with_python.html">02 - <i class="fab fa-python"></i> Getting Started with Python and <code class="docutils literal notranslate"><span class="pre">uv</span></code></a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../03_python_basics/python_basics.html">03 - <i class="fab fa-python"></i> Python Basics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -202,10 +202,10 @@
 </details></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">00 - <i class="fa-solid fa-crosshairs"></i> Spot Detection</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="intro_to_spotiflow.html">Introduction to Spotiflow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="spotiflow_notebook.html">Spotiflow in Python</a></li>
-<li class="toctree-l2"><a class="reference internal" href="spotiflow_retraining.html">Finetuning or Training Spotiflow on Custom Data</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../00_spot_detection/spot_detection_intro.html">00 - <i class="fa-solid fa-crosshairs"></i> Spot Detection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../00_spot_detection/intro_to_spotiflow.html">Introduction to Spotiflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_spot_detection/spotiflow_notebook.html">Spotiflow in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00_spot_detection/spotiflow_retraining.html">Finetuning or Training Spotiflow on Custom Data</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../06_object_classification/object_classification.html">06 - <i class="fa-solid fa-shapes"></i> Object Classification</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -226,8 +226,8 @@
 </details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">BoBiAC Exercises</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../09_bobiac_exercises/bobiac_exercises.html">BoBiAC Exercises</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">BoBiAC Exercises</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
 </ul>
 </details></li>
 </ul>
@@ -352,7 +352,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>00 - <i class="fa-solid fa-crosshairs"></i> Spot Detection</h1>
+    <h1>BoBiAC Exercises</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -366,17 +366,12 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="spot-detection">
-<h1>00 - <i class="fa-solid fa-crosshairs"></i> Spot Detection<a class="headerlink" href="#spot-detection" title="Link to this heading">#</a></h1>
-<p>Many image analysis tasks require detecting small, <strong>spot-like structures</strong> in an image such as fluorescent beads, foci, or any other punctate signal like in fluorescence in situ hybridization (FISH).</p>
-<p>There are <strong>different ways to detect spots</strong>, and how well they work depends a lot on the <strong>quality of the data</strong> (signal-to-noise ratio, background, spot density, variability in intensity and size, etc.). Classical approaches are based on simple image-processing operations, for example:</p>
-<ul class="simple">
-<li><p><strong>Local maxima detection</strong> (e.g. <a class="reference external" href="https://scikit-image.org/docs/stable/api/skimage.feature.html#skimage.feature.peak_local_max"><code class="docutils literal notranslate"><span class="pre">peak_local_max</span></code></a> from <code class="docutils literal notranslate"><span class="pre">scikit-image</span></code>), which finds the brightest local peaks in the image, very similar to ImageJ’s <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">Maxima</span></code>. It is fast and simple, but sensitive to noise and usually requires manual threshold tuning.</p></li>
-<li><p><strong>Laplacian of Gaussian (LoG) blob detection</strong> (e.g. <a class="reference external" href="https://scikit-image.org/docs/stable/api/skimage.feature.html#skimage.feature.blob_log"><code class="docutils literal notranslate"><span class="pre">blob_log</span></code></a> from <code class="docutils literal notranslate"><span class="pre">scikit-image</span></code>), which detects blobs across a range of scales and can therefore handle spots of different sizes.</p></li>
-</ul>
-<p>These classical methods work well on <strong>clean, high-contrast data</strong>, but they often struggle when the signal is weak, the background is uneven, or the spots are densely packed, and they typically need careful parameter tuning for each new dataset.</p>
-<p>To overcome these limitations, <strong>deep learning-based methods</strong> have been developed that learn to detect spots directly from the data, making them more <strong>robust</strong> and <strong>threshold-agnostic</strong> across different imaging conditions.</p>
-<p>In this tutorial, we will use <a class="reference external" href="https://weigertlab.org/spotiflow/index.html"><strong>Spotiflow</strong></a>, a deep learning-based spot detection tool, to detect spots in 2D and 3D images.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="bobiac-exercises">
+<h1>BoBiAC Exercises<a class="headerlink" href="#bobiac-exercises" title="Link to this heading">#</a></h1>
+<p>Here is a list of exercises that you can do to practice the concepts covered in the book.</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="uv_and_juv.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">uv</span></code> and <code class="docutils literal notranslate"><span class="pre">juv</span></code></span></a></p></li>
+</ol>
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -394,7 +389,7 @@
         },
         kernelOptions: {
             name: "python3",
-            path: "./content/00_spot_detection"
+            path: "./content/09_bobiac_exercises"
         },
         predefinedOutput: true
     }
@@ -412,20 +407,20 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../05_segmentation/deep_learning/cellpose_retraining.html"
+       href="../08_colocalization/object_based_colocalization.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Retraining Cellpose on Custom Data</p>
+        <p class="prev-next-title">Object-based colocalization analysis</p>
       </div>
     </a>
     <a class="right-next"
-       href="intro_to_spotiflow.html"
+       href="../../data/course_downloads.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Introduction to Spotiflow</p>
+        <p class="prev-next-title"><i class="fa-solid fa-folder"></i> Downloads</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
