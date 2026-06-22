@@ -246,6 +246,7 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">Exercise 1</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">Exercise 2</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3">Exercise 3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4">Exercise 4</a></li>
 </ul>
 </nav>
 </div>
@@ -261,20 +262,23 @@
 <p><strong>Create a Python Environment with <code class="docutils literal notranslate"><span class="pre">uv</span></code> and Install <code class="docutils literal notranslate"><span class="pre">numpy</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code></strong></p>
 <ol class="arabic simple">
 <li><p>Open the Terminal or PowerShell and navigate to the <code class="docutils literal notranslate"><span class="pre">bobiac_uv</span></code> folder.</p></li>
-<li><p>Create a new virtual environment with <code class="docutils literal notranslate"><span class="pre">uv</span></code> in the <code class="docutils literal notranslate"><span class="pre">bobiac_uv</span></code> folder named <code class="docutils literal notranslate"><span class="pre">my-env</span></code>.</p></li>
+<li><p>Create a new virtual environment with <code class="docutils literal notranslate"><span class="pre">uv</span></code> in the <code class="docutils literal notranslate"><span class="pre">bobiac_uv_env</span></code> folder named <code class="docutils literal notranslate"><span class="pre">my-env</span></code>.</p></li>
 <li><p>Activate the newly created <code class="docutils literal notranslate"><span class="pre">my-env</span></code> virtual environment.</p></li>
 <li><p>Install <code class="docutils literal notranslate"><span class="pre">numpy</span></code> and <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> in the <code class="docutils literal notranslate"><span class="pre">my-env</span></code> virtual environment.</p></li>
 <li><p>List the installed packages in the <code class="docutils literal notranslate"><span class="pre">my-env</span></code> virtual environment to confirm that <code class="docutils literal notranslate"><span class="pre">numpy</span></code> and <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> are installed.</p></li>
+<li><p>Deactivate the <code class="docutils literal notranslate"><span class="pre">my-env</span></code> virtual environment.</p></li>
 </ol>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg aria-hidden="true" class="sd-octicon sd-octicon-chevron-right" height="1.5em" version="1.1" viewbox="0 0 24 24" width="1.5em"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <ol class="arabic simple">
+<li><p class="sd-card-text">open the Terminal or PowerShell.</p></li>
 <li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">.../Desktop/bobiac_uv</span></code></p></li>
 <li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">venv</span> <span class="pre">my-env</span></code></p></li>
 <li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">my-env/bin/activate</span></code> (Linux/macOS) or <code class="docutils literal notranslate"><span class="pre">my-env\Scripts\activate</span></code> (Windows)</p></li>
 <li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">numpy</span> <span class="pre">matplotlib</span></code></p></li>
 <li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">pip</span> <span class="pre">list</span></code></p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">deactivate</span></code></p></li>
 </ol>
 </div>
 </details></section>
@@ -282,14 +286,19 @@
 <h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Exercise 2<a class="headerlink" href="#exercise-2" title="Link to this heading">#</a></h2>
 <p><strong>Create a new <code class="docutils literal notranslate"><span class="pre">Jupyter</span> <span class="pre">Notebook</span></code> with <code class="docutils literal notranslate"><span class="pre">uv</span></code>’s <code class="docutils literal notranslate"><span class="pre">juv</span></code> tool</strong></p>
 <ol class="arabic simple">
-<li><p>In the<code class="docutils literal notranslate"><span class="pre">bobiac_uv</span></code> folder, create a new Jupyter Notebook named <code class="docutils literal notranslate"><span class="pre">my-first-nb.ipynb</span></code> using ``uv<code class="docutils literal notranslate"><span class="pre">'s</span></code>juv` tool.</p></li>
+<li><p>Open the Terminal or PowerShell and navigate to the <code class="docutils literal notranslate"><span class="pre">bobiac_uv</span></code> folder.</p></li>
+<li><p>Inside the <code class="docutils literal notranslate"><span class="pre">bobiac_uv</span></code> folder, create a new folder named <code class="docutils literal notranslate"><span class="pre">nb_folder</span></code> and navigate into it.</p></li>
+<li><p>Inside the <code class="docutils literal notranslate"><span class="pre">nb_folder</span></code>, create a new Jupyter Notebook named <code class="docutils literal notranslate"><span class="pre">my-first-nb.ipynb</span></code> using <code class="docutils literal notranslate"><span class="pre">uv</span></code>’s <code class="docutils literal notranslate"><span class="pre">juv</span></code> tool.</p></li>
 <li><p>Run the <code class="docutils literal notranslate"><span class="pre">my-first-nb.ipynb</span></code> notebook in your browser using <code class="docutils literal notranslate"><span class="pre">juv</span></code>.</p></li>
 </ol>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg aria-hidden="true" class="sd-octicon sd-octicon-chevron-right" height="1.5em" version="1.1" viewbox="0 0 24 24" width="1.5em"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <ol class="arabic simple">
+<li><p class="sd-card-text">open the Terminal or PowerShell.</p></li>
 <li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">.../Desktop/bobiac_uv</span></code></p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">nb_folder</span></code></p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">.../Desktop/nb_folder</span></code></p></li>
 <li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">uvx</span> <span class="pre">juv</span> <span class="pre">init</span> <span class="pre">my-first-nb.ipynb</span></code></p></li>
 <li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">uvx</span> <span class="pre">juv</span> <span class="pre">run</span> <span class="pre">my-first-nb.ipynb</span></code></p></li>
 </ol>
@@ -311,8 +320,8 @@
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg aria-hidden="true" class="sd-octicon sd-octicon-chevron-right" height="1.5em" version="1.1" viewbox="0 0 24 24" width="1.5em"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <ol class="arabic">
-<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">.../Desktop/bobiac_uv</span></code></p></li>
-<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">uvx</span> <span class="pre">juv</span> <span class="pre">add</span> <span class="pre">matplotlib</span> <span class="pre">numpy</span> <span class="pre">pandas</span> <span class="pre">-n</span> <span class="pre">my-first-nb.ipynb</span></code></p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">.../Desktop/nb_folder</span></code> (the folder created in <a class="reference internal" href="#exercise-2"><span class="xref myst">Exercise 2</span></a>)</p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">uvx</span> <span class="pre">juv</span> <span class="pre">add</span> <span class="pre">my-first-nb.ipynb</span> <span class="pre">numpy</span> <span class="pre">pandas</span> <span class="pre">matplotlib</span></code></p></li>
 <li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">uvx</span> <span class="pre">juv</span> <span class="pre">run</span> <span class="pre">my-first-nb.ipynb</span></code></p></li>
 <li><p class="sd-card-text">add a new <code class="docutils literal notranslate"><span class="pre">code</span></code> cell in the notebook (<code class="docutils literal notranslate"><span class="pre">+</span></code> button)</p></li>
 <li><p class="sd-card-text">within this cell, import the three libraries:</p>
@@ -323,6 +332,34 @@
 </div>
 </li>
 <li><p class="sd-card-text">Run the cell to confirm that the libraries are imported without errors.</p></li>
+</ol>
+</div>
+</details></section>
+<section id="exercise-4">
+<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Exercise 4<a class="headerlink" href="#exercise-4" title="Link to this heading">#</a></h2>
+<p><strong>Create a <code class="docutils literal notranslate"><span class="pre">.py</span></code> file with the PEP723 <code class="docutils literal notranslate"><span class="pre">///script</span></code> header using <code class="docutils literal notranslate"><span class="pre">uv</span></code></strong></p>
+<ol class="arabic simple">
+<li><p>Open the Terminal or PowerShell and navigate to the <code class="docutils literal notranslate"><span class="pre">bobiac_uv</span></code> folder.</p></li>
+<li><p>Inside the <code class="docutils literal notranslate"><span class="pre">bobiac_uv</span></code> folder, create a new folder named <code class="docutils literal notranslate"><span class="pre">py_folder</span></code> and navigate into it.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">uv</span></code> to create a new Python file named <code class="docutils literal notranslate"><span class="pre">my_script.py</span></code> with the PEP723 <code class="docutils literal notranslate"><span class="pre">///script</span></code> header and Python <code class="docutils literal notranslate"><span class="pre">3.13</span></code>.</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">numpy</span></code> and <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> as dependencies to the <code class="docutils literal notranslate"><span class="pre">my_script.py</span></code> file using <code class="docutils literal notranslate"><span class="pre">uv</span></code>.</p></li>
+<li><p>Run the <code class="docutils literal notranslate"><span class="pre">my_script.py</span></code> file using <code class="docutils literal notranslate"><span class="pre">uv</span></code> to verify that the dependencies are installed and the script runs without errors.</p></li>
+<li><p>Optional: show the dependencies of the <code class="docutils literal notranslate"><span class="pre">my_script.py</span></code> file using <code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">tree</span></code>.</p></li>
+<li><p>Optional: show the python version used for the <code class="docutils literal notranslate"><span class="pre">my_script.py</span></code> file using <code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">python</span></code>.</p></li>
+</ol>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg aria-hidden="true" class="sd-octicon sd-octicon-chevron-right" height="1.5em" version="1.1" viewbox="0 0 24 24" width="1.5em"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<ol class="arabic simple">
+<li><p class="sd-card-text">open the Terminal or PowerShell.</p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">.../Desktop/bobiac_uv</span></code></p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">py_folder</span></code></p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">.../Desktop/bobiac_uv/py_folder</span></code></p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">init</span> <span class="pre">--script</span> <span class="pre">my_script.py</span> <span class="pre">-p</span> <span class="pre">3.13</span></code></p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">add</span> <span class="pre">--script</span> <span class="pre">my_script.py</span> <span class="pre">numpy</span> <span class="pre">matplotlib</span></code></p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">run</span> <span class="pre">my_script.py</span></code></p></li>
+<li><p class="sd-card-text">Optional: <code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">tree</span> <span class="pre">--script</span> <span class="pre">my_script.py</span></code></p></li>
+<li><p class="sd-card-text">Optional: <code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">python</span> <span class="pre">find</span> <span class="pre">--script</span> <span class="pre">my_script.py</span> <span class="pre">--show-version</span></code></p></li>
 </ol>
 </div>
 </details></section>
@@ -362,6 +399,7 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">Exercise 1</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">Exercise 2</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3">Exercise 3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4">Exercise 4</a></li>
 </ul>
 </nav></div>
 </div></div>
