@@ -10,6 +10,7 @@
 4. Activate the newly created `my-env` virtual environment.
 5. Install `numpy` and `matplotlib` in the `my-env` virtual environment.
 6. List the installed packages in the `my-env` virtual environment to confirm that `numpy` and `matplotlib` are installed.
+7. Deactivate the `my-env` virtual environment.
 
 :::{dropdown} Solution
 
@@ -20,6 +21,7 @@
 5. `source my-env/bin/activate` (Linux/macOS) or `my-env\Scripts\activate` (Windows)
 6. `uv pip install numpy matplotlib`
 7. `uv pip list`
+8. `deactivate`
 
 :::
 
