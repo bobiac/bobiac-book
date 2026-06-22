@@ -26,14 +26,16 @@ To go through these exercises, you need to create a new folder on your `Desktop`
 
 **Create a new `Jupyter Notebook` with `uv`'s `juv` tool**
 
-1. In the`bobiac_uv` folder, create a new Jupyter Notebook named `my-first-nb.ipynb` using ``uv`'s`juv` tool.
-2. Run the `my-first-nb.ipynb` notebook in your browser using `juv`.
+1. In the `bobiac_uv` folder, create a new folder named `bobiac_uv_nb` and navigate into it.
+2. In the`bobiac_uv_nb` folder, create a new Jupyter Notebook named `my-first-nb.ipynb` using `uv`'s `juv` tool.
+3. Run the `my-first-nb.ipynb` notebook in your browser using `juv`.
 
 :::{dropdown} Solution
 
-1. `cd .../Desktop/bobiac_uv`
-2. `uvx juv init my-first-nb.ipynb`
-3. `uvx juv run my-first-nb.ipynb`
+1. create a new folder in `bobiac_uv` called `bobiac_uv_nb` (e.g. `cd` to `bobiac_uv` and `mkdir bobiac_uv_nb`)
+2. `cd .../Desktop/bobiac_uv/bobiac_uv_nb`
+3. `uvx juv init my-first-nb.ipynb`
+4. `uvx juv run my-first-nb.ipynb`
 
 :::
 
@@ -50,7 +52,7 @@ To go through these exercises, you need to create a new folder on your `Desktop`
 
 :::{dropdown} Solution
 
-1. `cd .../Desktop/bobiac_uv`
+1. `cd .../Desktop/bobiac_uv/bobiac_uv_nb`
 2. `uvx juv add my-first-nb.ipynb numpy pandas matplotlib`
 3. `uvx juv run my-first-nb.ipynb`  
 4. add a new `code` cell in the notebook (`+` button)
@@ -70,19 +72,21 @@ To go through these exercises, you need to create a new folder on your `Desktop`
 
 **Create a `.py` file with the PEP723 `///script` header using `uv`**
 
-1. In the `bobiac_uv` folder, use `uv` to create a new Python file named `my_script.py` with the PEP723 `///script` header and Python `3.13`.
-2. Add `numpy` and `matplotlib` as dependencies to the `my_script.py` file using `uv`.
-3. Run the `my_script.py` file using `uv` to verify that the dependencies are installed and the script runs without errors.
-4. Optional: show the dependencies of the `my_script.py` file using `uv tree`.
-5. Optional: show the python version used for the `my_script.py` file using `uv python`.
+1. In the `bobiac_uv` folder, create a new folder named `bobiac_uv_py` and navigate into it.
+2. In the `bobiac_uv_py` folder, use `uv` to create a new Python file named `my_script.py` with the PEP723 `///script` header and Python `3.13`.
+3. Add `numpy` and `matplotlib` as dependencies to the `my_script.py` file using `uv`.
+4. Run the `my_script.py` file using `uv` to verify that the dependencies are installed and the script runs without errors.
+5. Optional: show the dependencies of the `my_script.py` file using `uv tree`.
+6. Optional: show the python version used for the `my_script.py` file using `uv python`.
 
 :::{dropdown} Solution
 
-1. `cd .../Desktop/bobiac_uv`
-2. `uv init --script myscript.py -p 3.13`
-3. `uv add --script myscript.py numpy matplotlib`
-4. `uv run myscript.py`
-5. `uv tree --script myscript.py`
-6. `uv python find --script myscript.py --show-version`
+1. create a new folder in `bobiac_uv` called `bobiac_uv_py` (e.g. `cd` to `bobiac_uv` and `mkdir bobiac_uv_py`)
+2. `cd .../Desktop/bobiac_uv/bobiac_uv_py`
+3. `uv init --script my_script.py -p 3.13`
+4. `uv add --script my_script.py numpy matplotlib`
+5. `uv run my_script.py`
+6. Optional: `uv tree --script my_script.py`
+7. Optional: `uv python find --script my_script.py --show-version`
 
 :::
