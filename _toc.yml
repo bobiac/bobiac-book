@@ -64,7 +64,7 @@ parts:
   chapters:
   - file: content/09_bobiac_exercises/bobiac_exercises.md
     sections:
-      - file: content/09_bobiac_exercises/uv_and_environment.md
+      - file: content/09_bobiac_exercises/uv_and_juv.md
 
 # COURSE DATA
 - caption: Course Materials Downloads
