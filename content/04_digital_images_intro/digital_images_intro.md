@@ -25,11 +25,11 @@ We will use python in practice to:
   <iframe class="custom-pdf-frame-169" src="../../pdfs/04_digital_images_intro/digital_images_intro.pdf"> </iframe>
 </div>
 
-### Python for Bioimage Analysis
+### Working with Bioimages in Python
 
-Download this Python for Bioimage Analysis Cheat Sheet for quick reference of concepts covered in this lesson.
+Download this Working with Bioimages Cheat Sheet for quick reference of concepts covered in this lesson.
 <a
-    class="custom-button custom-download-button" href="../../pdfs/04_digital_images_intro/python_bioimages_cheat_sheet.pdf" download> <i class="fas fa-download"></i> Download the Slides
+    class="custom-button custom-download-button" href="../../pdfs/04_digital_images_intro/python_bioimages_cheat_sheet.pdf" download> <i class="fas fa-download"></i> Download the Cheat Sheet
 </a>
 
 <div align="center">
