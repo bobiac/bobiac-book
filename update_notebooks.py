@@ -40,6 +40,16 @@ map_04_python_for_bioimage_analysis_book_to_notebook = {
     "#bonus-reading-proprietary-file-types": "#5.-BONUS:-Reading-Proprietary-File-Types",
 }
 
+map_05_classic_segmentation_book_to_notebook = {
+    "#setup": "#0.-Setup",
+    "#loading-an-image": "#1.-Loading-an-Image",
+    "#filtering": "#2.-Filtering",
+    "#thresholding": "#3.-Thresholding",
+    "#mask-labeling": "#4.-Mask-Labeling",
+    "#mask-refinement": "#5.-Mask-Refinement",
+    "#processing-many-images": "#6.-Processing-Many-Images",
+}
+
 
 
 def update_notebooks(
