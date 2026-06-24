@@ -81,7 +81,7 @@ be painful, like writing an essay with no spell-check, no formatting, and no
 help at all.
 
 Instead, programmers use an **IDE**: an **I**ntegrated **D**evelopment
-**E*\nvironment. That's a fancy name for *one program that bundles together
+**E**environment. That's a fancy name for *one program that bundles together
 everything you need to write, run, and fix code*:
 
 - A smart **code editor** with **syntax highlighting** (colors that make code
