@@ -1,0 +1,47 @@
+Traceback (most recent call last):
+  File "/home/runner/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/home/runner/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/nbclient/client.py", line 1323, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/home/runner/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "/home/runner/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/runner/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+seg_summary = label2rgb(labeled_image, image=raw_image)
+------------------
+
+
+[31m---------------------------------------------------------------------------[39m
+[31mValueError[39m                                Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[15][39m[32m, line 1[39m
+[32m----> [39m[32m1[39m seg_summary = label2rgb(labeled_image, image=raw_image)
+
+[36mFile [39m[32m~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/skimage/color/colorlabel.py:149[39m, in [36mlabel2rgb[39m[34m(label, image, colors, alpha, bg_label, bg_color, image_alpha, kind, saturation, channel_axis)[39m
+[32m    147[39m     image = np.moveaxis(image, source=channel_axis, destination=-[32m1[39m)
+[32m    148[39m [38;5;28;01mif[39;00m kind == [33m'[39m[33moverlay[39m[33m'[39m:
+[32m--> [39m[32m149[39m     rgb = [30;43m_label2rgb_overlay[39;49m[30;43m([39;49m
+[32m    150[39m [30;43m        [39;49m[30;43mlabel[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mimage[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mcolors[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43malpha[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mbg_label[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mbg_color[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mimage_alpha[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43msaturation[39;49m
+[32m    151[39m [30;43m    [39;49m[30;43m)[39;49m
+[32m    152[39m [38;5;28;01melif[39;00m kind == [33m'[39m[33mavg[39m[33m'[39m:
+[32m    153[39m     rgb = _label2rgb_avg(label, image, bg_label, bg_color)
+
+[36mFile [39m[32m~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/skimage/color/colorlabel.py:216[39m, in [36m_label2rgb_overlay[39m[34m(label, image, colors, alpha, bg_label, bg_color, image_alpha, saturation)[39m
+[32m    214[39m [38;5;28;01melse[39;00m:
+[32m    215[39m     [38;5;28;01mif[39;00m image.shape[: label.ndim] != label.shape [38;5;129;01mor[39;00m image.ndim > label.ndim + [32m1[39m:
+[32m--> [39m[32m216[39m         [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m([33m"[39m[33m`image` and `label` must be the same shape[39m[33m"[39m)
+[32m    218[39m     [38;5;28;01mif[39;00m image.ndim == label.ndim + [32m1[39m [38;5;129;01mand[39;00m image.shape[-[32m1[39m] != [32m3[39m:
+[32m    219[39m         [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m([33m"[39m[33m`image` must be RGB (image.shape[-1] must be 3).[39m[33m"[39m)
+
+[31mValueError[39m: `image` and `label` must be the same shape
+
