@@ -79,7 +79,7 @@ To go through these exercises, you need to create a new folder on your `Desktop`
 
 ## Exercise 4
 
-**Add code that segments many images using Cellpose and saves the segmentation result as a tif file**
+**Add code that segments the first two channels of many image files using Cellpose and saves the segmentation result as a tif file**
 1. For each step, create a new `code` cell in the notebook (`+` button).
 2. Within the cell, add the necessary code.
 
@@ -107,8 +107,10 @@ model = models.CellposeModel(pretrained_model=model_path, gpu=use_gpu)
 for image_path in tqdm(images_path, desc="Processing images"):
     # Load the image
     image = io.imread(image_path)
+    # select the channels to segement from the multichannel image
+    cp_image = image[[0, 1]]
     # Run Cellpose on the image
-    masks, flows, styles = model.eval(image)
+    masks, flows, styles = model.eval(cp_image)
     # Save the segmentation results as a TIFF file
     output_path = folder_path / f"{image_path.stem}_labels.tif"
     io.imsave(output_path, masks)  # or tifffile.imwrite(output_path, masks)
