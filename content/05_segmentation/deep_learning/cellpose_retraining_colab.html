@@ -755,43 +755,52 @@ AP = \frac{TP}{TP + FP + FN}
 <summary><b>Cellpose <code>train.train_seg()</code> Parameters</b></summary>
 <br/>
 <p><strong>Input Data</strong></p>
-<div class="pst-scrollable-table-container"><table class="table param-table"><colgroup><col style="width: 20%"/><col style="width: 13%"/><col style="width: 67%"/></colgroup>
+<div class="pst-scrollable-table-container"><table class="table param-table"><colgroup><col style="width: 25%"/><col style="width: 25%"/><col style="width: 25%"/><col style="width: 25%"/></colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Type</p></th>
 <th class="head"><p>Default</p></th>
 <th class="head"><p>What it does</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">train_data</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">list[np.ndarray]</span> <span class="pre">|</span> <span class="pre">None</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
 <td><p>List of numpy arrays (2D or 3D images). Mutually exclusive with <code class="docutils literal notranslate"><span class="pre">train_files</span></code>, use one or the other.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">train_labels</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">list[np.ndarray]</span> <span class="pre">|</span> <span class="pre">None</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
 <td><p>List of integer label arrays matching <code class="docutils literal notranslate"><span class="pre">train_data</span></code>. <code class="docutils literal notranslate"><span class="pre">0</span></code> = bzackground, <code class="docutils literal notranslate"><span class="pre">1,</span> <span class="pre">2,</span> <span class="pre">...</span></code> = individual masks.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">train_files</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">list[str]</span> <span class="pre">|</span> <span class="pre">None</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
 <td><p>File paths to training images. Used instead of <code class="docutils literal notranslate"><span class="pre">train_data</span></code> when loading from disk. Use together with <code class="docutils literal notranslate"><span class="pre">load_files=True</span></code> (the default), this is the standard path when working from disk.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">train_labels_files</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">list[str]</span> <span class="pre">|</span> <span class="pre">None</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
 <td><p>File paths to the corresponding label files.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">test_data</span></code> / <code class="docutils literal notranslate"><span class="pre">test_labels</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">list[np.ndarray]</span> <span class="pre">|</span> <span class="pre">None</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
 <td><p>Same as above but for validation. Used only to report test loss, does not affect gradient updates.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">test_files</span></code> / <code class="docutils literal notranslate"><span class="pre">test_labels_files</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">list[str]</span> <span class="pre">|</span> <span class="pre">None</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
 <td><p>Same as above, file-based version.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">load_files</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
 <td><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, loads images/labels from the <code class="docutils literal notranslate"><span class="pre">*_files</span></code> paths at the start of training. Set to <code class="docutils literal notranslate"><span class="pre">False</span></code> if you’ve already loaded them into arrays and don’t want redundant I/O.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">channel_axis</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">|</span> <span class="pre">None</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
 <td><p>Which axis in the arrays is the channel axis. <code class="docutils literal notranslate"><span class="pre">None</span></code> = infer automatically.</p></td>
 </tr>
@@ -799,31 +808,37 @@ AP = \frac{TP}{TP + FP + FN}
 </table>
 </div>
 <p><strong>Sampling &amp; Epoch Control</strong></p>
-<div class="pst-scrollable-table-container"><table class="table param-table"><colgroup><col style="width: 20%"/><col style="width: 13%"/><col style="width: 67%"/></colgroup>
+<div class="pst-scrollable-table-container"><table class="table param-table"><colgroup><col style="width: 25%"/><col style="width: 25%"/><col style="width: 25%"/><col style="width: 25%"/></colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Type</p></th>
 <th class="head"><p>Default</p></th>
 <th class="head"><p>What it does</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">train_probs</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">np.ndarray</span> <span class="pre">|</span> <span class="pre">None</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
 <td><p>Per-image sampling probability for each epoch. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, all images get equal weight (<code class="docutils literal notranslate"><span class="pre">1/n</span></code>). The right lever if you want to hard-mine difficult images or balance an uneven dataset. Must sum to 1 after normalization.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">test_probs</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">np.ndarray</span> <span class="pre">|</span> <span class="pre">None</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
 <td><p>Same for test images.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">nimg_per_epoch</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">|</span> <span class="pre">None</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
 <td><p>How many images (with random augmentation each time) Cellpose samples per epoch, doing one gradient update per image. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, defaults to <code class="docutils literal notranslate"><span class="pre">len(train_data)</span></code>. For a large dataset (50/100+ images), leave as <code class="docutils literal notranslate"><span class="pre">None</span></code>, one pass per epoch is already enough gradient steps. For a small dataset (5-10 images), set it higher than your dataset size (e.g. <code class="docutils literal notranslate"><span class="pre">50</span></code> or <code class="docutils literal notranslate"><span class="pre">100</span></code> for 5 images): each image gets sampled multiple times per epoch with different random augmentations (crop, rotation, flip, scale), and more updates/epoch help the linear LR warmup over the first 10 epochs actually move the weights.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">nimg_test_per_epoch</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">|</span> <span class="pre">None</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
 <td><p>Same as <code class="docutils literal notranslate"><span class="pre">nimg_per_epoch</span></code> but for test loss reporting only, it does not affect training. For a small test set (2-5 images), leave as <code class="docutils literal notranslate"><span class="pre">None</span></code> (uses all) for a stable loss estimate, subsampling a tiny test set gives noisy numbers. For a large test set (100+ images), set it lower (e.g. <code class="docutils literal notranslate"><span class="pre">20</span></code>) to speed up per-epoch evaluation at the cost of noisier test loss curves.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">min_train_masks</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">5</span></code></p></td>
 <td><p>Images with fewer than this many mask instances are silently dropped before training starts, guarding against nearly-empty label images corrupting training. If your dataset is small, check how many images actually survive this filter.</p></td>
 </tr>
@@ -831,35 +846,42 @@ AP = \frac{TP}{TP + FP + FN}
 </table>
 </div>
 <p><strong>Optimizer</strong></p>
-<div class="pst-scrollable-table-container"><table class="table param-table"><colgroup><col style="width: 20%"/><col style="width: 13%"/><col style="width: 67%"/></colgroup>
+<div class="pst-scrollable-table-container"><table class="table param-table"><colgroup><col style="width: 25%"/><col style="width: 25%"/><col style="width: 25%"/><col style="width: 25%"/></colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Type</p></th>
 <th class="head"><p>Default</p></th>
 <th class="head"><p>What it does</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">learning_rate</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">1e-5</span></code></p></td>
 <td><p>learning rate (LR) for the AdamW algorithm used by Cellpose. Controls how large each weight update is. Too high → the model overshoots and training becomes unstable (loss oscillates). Too low → the model learns very slowly or gets stuck. For fine-tuning a pre-trained model like Cellpose, a small value is preferred to avoid erasing what the model already knows (e.g. <code class="docutils literal notranslate"><span class="pre">1e-5</span></code> or 0.00001). Note that <code class="docutils literal notranslate"><span class="pre">learning_rate</span></code> is also ramped up linearly from 0 to its target value over the first 10 epochs (regardless of <code class="docutils literal notranslate"><span class="pre">n_epochs</span></code>), so with very few epochs the target learning rate may never be reached.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">weight_decay</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0.1</span></code></p></td>
 <td><p>AdamW algorithm weight decay (L2 regularization). <code class="docutils literal notranslate"><span class="pre">0.1</span></code> is the modern default from the AdamW paper.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">SGD</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
 <td><p>Deprecated as of v4.0.1. AdamW is always used regardless of this value.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">n_epochs</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">100</span></code></p></td>
 <td><p>one epoch = one full pass through all training images. More epochs give the model more time to learn, but too many can lead to <em>overfitting</em>: the model memorizes the training data and performs worse on new images. Watch the test loss, if it starts rising while the train loss keeps falling, you’ve trained too long.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">batch_size</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
 <td><p>number of <code class="docutils literal notranslate"><span class="pre">bsize</span></code>x<code class="docutils literal notranslate"><span class="pre">bsize</span></code> pixels image tiles processed simultaneously on the GPU before the model updates its weights (the image is split into tiles before being processed). Larger batches give more stable gradient estimates but require more memory. Smaller batches are noisier but work well for small datasets and use less GPU memory. See the <a class="reference internal" href="cellpose_notebook.html"><span class="std std-doc">cellpose_notebook</span></a> for more details on batch size and GPU performance.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">bsize</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">256</span></code></p></td>
 <td><p>Size of each tile in pixels (<code class="docutils literal notranslate"><span class="pre">bsize</span> <span class="pre">×</span> <span class="pre">bsize</span></code>). For the SAM-based models (<code class="docutils literal notranslate"><span class="pre">cpsam</span></code>, <code class="docutils literal notranslate"><span class="pre">cpsam_v2</span></code>) this is fixed to 256x256, don’t override it. For the DINO-based models (<code class="docutils literal notranslate"><span class="pre">cpdino</span></code>, <code class="docutils literal notranslate"><span class="pre">cpdino-vitb</span></code>) the default is 384 and can be adjusted.</p></td>
 </tr>
@@ -867,27 +889,32 @@ AP = \frac{TP}{TP + FP + FN}
 </table>
 </div>
 <p><strong>Augmentation &amp; Preprocessing</strong></p>
-<div class="pst-scrollable-table-container"><table class="table param-table"><colgroup><col style="width: 20%"/><col style="width: 13%"/><col style="width: 67%"/></colgroup>
+<div class="pst-scrollable-table-container"><table class="table param-table"><colgroup><col style="width: 25%"/><col style="width: 25%"/><col style="width: 25%"/><col style="width: 25%"/></colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Type</p></th>
 <th class="head"><p>Default</p></th>
 <th class="head"><p>What it does</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">normalize</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bool</span> <span class="pre">|</span> <span class="pre">dict</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
 <td><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, applies default percentile normalization per image. If a dict, merges with default normalize params (e.g. <code class="docutils literal notranslate"><span class="pre">{"tile_norm_blocksize":</span> <span class="pre">128}</span></code> for tile-based normalization on large images).</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">compute_flows</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
 <td><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, recomputes flow fields from label masks during training rather than using cached flows. Slower but ensures flows match labels exactly if labels were recently edited.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">rescale</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
 <td><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, rescales each image during training based on its object diameter relative to the model’s expected diameter (<code class="docutils literal notranslate"><span class="pre">net.diam_mean</span></code>). Helps when objects in your data differ significantly in size from the training distribution.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">scale_range</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span> <span class="pre">|</span> <span class="pre">None</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
 <td><p>Range of random scale augmentation passed to <code class="docutils literal notranslate"><span class="pre">random_rotate_and_resize()</span></code>. Default resolves to <code class="docutils literal notranslate"><span class="pre">0.5</span></code>, meaning scale is sampled in <code class="docutils literal notranslate"><span class="pre">[1-0.5,</span> <span class="pre">1+0.5]</span></code>. Larger values = more aggressive scale augmentation.</p></td>
 </tr>
@@ -895,15 +922,17 @@ AP = \frac{TP}{TP + FP + FN}
 </table>
 </div>
 <p><strong>Loss</strong></p>
-<div class="pst-scrollable-table-container"><table class="table param-table"><colgroup><col style="width: 20%"/><col style="width: 13%"/><col style="width: 67%"/></colgroup>
+<div class="pst-scrollable-table-container"><table class="table param-table"><colgroup><col style="width: 25%"/><col style="width: 25%"/><col style="width: 25%"/><col style="width: 25%"/></colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Type</p></th>
 <th class="head"><p>Default</p></th>
 <th class="head"><p>What it does</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">class_weights</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">np.ndarray</span> <span class="pre">|</span> <span class="pre">None</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
 <td><p>Array of per-class weights passed to <code class="docutils literal notranslate"><span class="pre">nn.CrossEntropyLoss(weight=...)</span></code>. Use this to up-weight underrepresented mask classes. Converted to a float32 CUDA tensor internally.</p></td>
 </tr>
@@ -911,27 +940,32 @@ AP = \frac{TP}{TP + FP + FN}
 </table>
 </div>
 <p><strong>Saving</strong></p>
-<div class="pst-scrollable-table-container"><table class="table param-table"><colgroup><col style="width: 20%"/><col style="width: 13%"/><col style="width: 67%"/></colgroup>
+<div class="pst-scrollable-table-container"><table class="table param-table"><colgroup><col style="width: 25%"/><col style="width: 25%"/><col style="width: 25%"/><col style="width: 25%"/></colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Type</p></th>
 <th class="head"><p>Default</p></th>
 <th class="head"><p>What it does</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">save_path</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span> <span class="pre">|</span> <span class="pre">Path</span> <span class="pre">|</span> <span class="pre">None</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
 <td><p>Directory where the trained model is written. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, no model is saved to disk.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">save_every</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">100</span></code></p></td>
 <td><p>Save a checkpoint every N epochs.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">save_each</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
 <td><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, each checkpoint gets a unique filename (epoch-stamped). If <code class="docutils literal notranslate"><span class="pre">False</span></code>, each save overwrites the previous checkpoint.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">model_name</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span> <span class="pre">|</span> <span class="pre">None</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
 <td><p>The filename stem for the saved model. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, an automatic name is generated.</p></td>
 </tr>
