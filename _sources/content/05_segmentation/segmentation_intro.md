@@ -28,4 +28,4 @@ This evolution reflects a step towards more general and robust methods which red
 
 - [Classical Segmentation](./classic/classic.md)
 - [Machine Learning: Ilastik](./machine_learning/intro_to_ilastik.md)
-- [Deep Learning: Cellpose](./deep_learning/intro_to_cellpose.md.md)
+- [Deep Learning: Cellpose](./deep_learning/intro_to_cellpose.md)
