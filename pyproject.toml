@@ -48,6 +48,7 @@ dependencies = [
     "bobiac_tools @ git+https://github.com/bobiac/bobiac-tools.git",
     "spotiflow",
     "napari[all]",
+    "seaborn",
 ]
 
 
