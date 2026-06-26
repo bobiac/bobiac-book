@@ -286,6 +286,7 @@
 <span class="c1">#     "imagecodecs",</span>
 <span class="c1">#     "pandas",</span>
 <span class="c1">#     "seaborn",</span>
+<span class="c1">#     "bobiac_tools @ git+https://github.com/bobiac/bobiac-tools.git"</span>
 <span class="c1"># ]</span>
 <span class="c1"># ///</span>
 </pre></div>
@@ -319,201 +320,13 @@ Our question is: <strong>Do cells that are in the nuclear <em>on</em> state exhi
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 
-
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.colors</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mcolors</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.cm</span><span class="w"> </span><span class="kn">import</span> <span class="n">ScalarMappable</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
-
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">skimage</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">tifffile</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">7</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> 
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.colors</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mcolors</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.cm</span><span class="w"> </span><span class="kn">import</span> <span class="n">ScalarMappable</span>
-<span class="ne">----&gt; </span><span class="mi">7</span> <span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> 
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named 'seaborn'
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">overlay</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">label_mask</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">id_col</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">measurement_col</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-            <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">vmin</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">coordinates</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""</span>
-<span class="sd">    Overlay a segmentation mask on an image, color-coded by a measurement.</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    image : 2D/3D numpy array, list of arrays, or None</span>
-<span class="sd">        Single image, or list of 1-3 images composited as colored channels:</span>
-<span class="sd">        1 image: grey | 2: red + cyan | 3: magenta + cyan + yellow.</span>
-<span class="sd">    label_mask : 2D numpy array, list of arrays, or None</span>
-<span class="sd">        Single mask (integer IDs, background=0), or list of binary/label masks</span>
-<span class="sd">        each shown in a distinct color. If None, only the image is shown.</span>
-<span class="sd">    df : pd.DataFrame, optional</span>
-<span class="sd">        Table with cell IDs and measurements. If None and label_mask is a single</span>
-<span class="sd">        array, cells are shown with random colors and labeled by ID.</span>
-<span class="sd">    id_col : str, optional</span>
-<span class="sd">        Column in df with cell IDs matching label_mask values.</span>
-<span class="sd">    measurement_col : str or None</span>
-<span class="sd">        Column to color cells by (categorical or continuous).</span>
-<span class="sd">    alpha : float</span>
-<span class="sd">        Overlay opacity (0 = transparent, 1 = opaque).</span>
-<span class="sd">    cmap : str or None</span>
-<span class="sd">        Colormap. Defaults: categorical='tab10', continuous='viridis'.</span>
-<span class="sd">    figsize : tuple</span>
-<span class="sd">        Figure size in inches.</span>
-<span class="sd">    vmin, vmax : float or None</span>
-<span class="sd">        Continuous colormap range. Defaults to data min/max.</span>
-<span class="sd">    coordinates : (N, 2) array or None</span>
-<span class="sd">        Dot locations in (row, col) / (y, x) order to plot on top of the image.</span>
-
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    fig, ax : matplotlib Figure and Axes</span>
-<span class="sd">    """</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">_normalize</span><span class="p">(</span><span class="n">img</span><span class="p">):</span>
-        <span class="n">img</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
-        <span class="n">img</span> <span class="o">=</span> <span class="p">(</span><span class="n">img</span> <span class="o">-</span> <span class="n">img</span><span class="o">.</span><span class="n">min</span><span class="p">())</span> <span class="o">/</span> <span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">img</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">+</span> <span class="mf">1e-8</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">img</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-            <span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">img</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">img</span>
-
-    <span class="c1"># --- multiple images: composite colored channels ---</span>
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
-        <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"At most 3 images can be composited. Got </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span>
-        <span class="n">channel_colors</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="mi">1</span><span class="p">:</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span>
-            <span class="mi">2</span><span class="p">:</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span>
-            <span class="mi">3</span><span class="p">:</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)],</span>
-        <span class="p">}[</span><span class="n">n</span><span class="p">]</span>
-        <span class="n">imgs</span> <span class="o">=</span> <span class="p">[</span><span class="n">_normalize</span><span class="p">(</span><span class="n">img</span><span class="p">)[:,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">img</span> <span class="ow">in</span> <span class="n">image</span><span class="p">]</span>
-        <span class="n">h</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="n">imgs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
-        <span class="n">composite</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
-        <span class="k">for</span> <span class="n">img</span><span class="p">,</span> <span class="n">color</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">imgs</span><span class="p">,</span> <span class="n">channel_colors</span><span class="p">):</span>
-            <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
-                <span class="n">composite</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">c</span><span class="p">]</span> <span class="o">+=</span> <span class="n">img</span> <span class="o">*</span> <span class="n">color</span><span class="p">[</span><span class="n">c</span><span class="p">]</span>
-        <span class="n">img_display</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">composite</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-
-    <span class="k">elif</span> <span class="n">image</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">img_display</span> <span class="o">=</span> <span class="n">_normalize</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">img_display</span> <span class="o">=</span> <span class="kc">None</span>
-
-    <span class="c1"># --- multiple masks: one color per mask ---</span>
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">label_mask</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
-        <span class="n">mask_colors</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="p">(</span><span class="mf">0.89</span><span class="p">,</span> <span class="mf">0.10</span><span class="p">,</span> <span class="mf">0.11</span><span class="p">),</span>  <span class="c1"># red</span>
-            <span class="p">(</span><span class="mf">0.12</span><span class="p">,</span> <span class="mf">0.47</span><span class="p">,</span> <span class="mf">0.71</span><span class="p">),</span>  <span class="c1"># blue</span>
-            <span class="p">(</span><span class="mf">0.20</span><span class="p">,</span> <span class="mf">0.63</span><span class="p">,</span> <span class="mf">0.17</span><span class="p">),</span>  <span class="c1"># green</span>
-            <span class="p">(</span><span class="mf">0.60</span><span class="p">,</span> <span class="mf">0.31</span><span class="p">,</span> <span class="mf">0.64</span><span class="p">),</span>  <span class="c1"># purple</span>
-            <span class="p">(</span><span class="mf">1.00</span><span class="p">,</span> <span class="mf">0.50</span><span class="p">,</span> <span class="mf">0.00</span><span class="p">),</span>  <span class="c1"># orange</span>
-        <span class="p">]</span>
-        <span class="n">h</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="n">label_mask</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
-        <span class="n">multi_overlay</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-        <span class="k">for</span> <span class="n">mask</span><span class="p">,</span> <span class="n">color</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">label_mask</span><span class="p">,</span> <span class="n">mask_colors</span><span class="p">):</span>
-            <span class="n">region</span> <span class="o">=</span> <span class="n">mask</span> <span class="o">&gt;</span> <span class="mi">0</span>
-            <span class="n">multi_overlay</span><span class="p">[</span><span class="n">region</span><span class="p">,</span> <span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">color</span>
-            <span class="n">multi_overlay</span><span class="p">[</span><span class="n">region</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">alpha</span>
-
-        <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">)</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_display</span> <span class="k">if</span> <span class="n">img_display</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="mi">3</span><span class="p">)))</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">multi_overlay</span><span class="p">)</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">'off'</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">coordinates</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">coords</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">coordinates</span><span class="p">)</span>
-            <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">coords</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">coords</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">'yellow'</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s1">'black'</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span>
-
-    <span class="c1"># --- no mask: show image only ---</span>
-    <span class="k">if</span> <span class="n">label_mask</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">)</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_display</span><span class="p">)</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">'off'</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">coordinates</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">coords</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">coordinates</span><span class="p">)</span>
-            <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">coords</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">coords</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">'yellow'</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s1">'black'</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span>
-
-    <span class="c1"># --- single mask + measurement overlay ---</span>
-    <span class="n">h</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="n">label_mask</span><span class="o">.</span><span class="n">shape</span>
-    <span class="n">overlay_rgba</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="n">df</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="c1"># segmentation validation: random colors + cell ID labels</span>
-        <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
-        <span class="n">cell_ids</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">label_mask</span><span class="p">[</span><span class="n">label_mask</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">])</span>
-        <span class="n">colors</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">cell_ids</span><span class="p">),</span> <span class="mi">3</span><span class="p">))</span>
-        <span class="n">centroids</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="k">for</span> <span class="n">cell_id</span><span class="p">,</span> <span class="n">color</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">cell_ids</span><span class="p">,</span> <span class="n">colors</span><span class="p">):</span>
-            <span class="n">overlay_rgba</span><span class="p">[</span><span class="n">label_mask</span> <span class="o">==</span> <span class="n">cell_id</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="n">color</span><span class="p">,</span> <span class="n">alpha</span><span class="p">]</span>
-            <span class="n">centroids</span><span class="p">[</span><span class="n">cell_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argwhere</span><span class="p">(</span><span class="n">label_mask</span> <span class="o">==</span> <span class="n">cell_id</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-
-    <span class="k">elif</span> <span class="n">pd</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">is_categorical_dtype</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">measurement_col</span><span class="p">])</span> <span class="ow">or</span> <span class="n">pd</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">is_object_dtype</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">measurement_col</span><span class="p">]):</span>
-        <span class="k">if</span> <span class="n">cmap</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">cmap</span> <span class="o">=</span> <span class="s1">'tab10'</span>
-        <span class="n">categories</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">measurement_col</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
-        <span class="n">color_map</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">categories</span><span class="p">,</span> <span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="n">cmap</span><span class="p">)</span><span class="o">.</span><span class="n">colors</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">categories</span><span class="p">)]))</span>
-        <span class="n">id_to_color</span> <span class="o">=</span> <span class="p">{</span><span class="n">cell_id</span><span class="p">:</span> <span class="n">color_map</span><span class="p">[</span><span class="n">val</span><span class="p">]</span> <span class="k">for</span> <span class="n">cell_id</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">id_col</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="n">measurement_col</span><span class="p">])}</span>
-        <span class="k">for</span> <span class="n">cell_id</span><span class="p">,</span> <span class="n">color</span> <span class="ow">in</span> <span class="n">id_to_color</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-            <span class="n">overlay_rgba</span><span class="p">[</span><span class="n">label_mask</span> <span class="o">==</span> <span class="n">cell_id</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="n">mcolors</span><span class="o">.</span><span class="n">to_rgb</span><span class="p">(</span><span class="n">color</span><span class="p">),</span> <span class="n">alpha</span><span class="p">]</span>
-
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">cmap</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">cmap</span> <span class="o">=</span> <span class="s1">'viridis'</span>
-        <span class="n">values</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">measurement_col</span><span class="p">]</span>
-        <span class="n">norm</span> <span class="o">=</span> <span class="n">mcolors</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span>
-            <span class="n">vmin</span><span class="o">=</span><span class="n">vmin</span> <span class="k">if</span> <span class="n">vmin</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">values</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span>
-            <span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span> <span class="k">if</span> <span class="n">vmax</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">values</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
-        <span class="p">)</span>
-        <span class="n">colormap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="n">cmap</span><span class="p">)</span>
-        <span class="n">id_to_value</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">id_col</span><span class="p">],</span> <span class="n">values</span><span class="p">))</span>
-        <span class="k">for</span> <span class="n">cell_id</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">id_to_value</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-            <span class="n">overlay_rgba</span><span class="p">[</span><span class="n">label_mask</span> <span class="o">==</span> <span class="n">cell_id</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="n">colormap</span><span class="p">(</span><span class="n">norm</span><span class="p">(</span><span class="n">value</span><span class="p">))[:</span><span class="mi">3</span><span class="p">],</span> <span class="n">alpha</span><span class="p">]</span>
-
-    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_display</span> <span class="k">if</span> <span class="n">img_display</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="mi">3</span><span class="p">)))</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">overlay_rgba</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">'off'</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="n">df</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">cell_id</span><span class="p">,</span> <span class="n">yx</span> <span class="ow">in</span> <span class="n">centroids</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-            <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">yx</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">yx</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">str</span><span class="p">(</span><span class="n">cell_id</span><span class="p">),</span> <span class="n">ha</span><span class="o">=</span><span class="s1">'center'</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">'center'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'white'</span><span class="p">)</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'Segmentation overlay'</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">pd</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">is_categorical_dtype</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">measurement_col</span><span class="p">])</span> <span class="ow">or</span> <span class="n">pd</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">is_object_dtype</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">measurement_col</span><span class="p">]):</span>
-        <span class="n">legend_handles</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="n">plt</span><span class="o">.</span><span class="n">Line2D</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s1">'o'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'w'</span><span class="p">,</span> <span class="n">markerfacecolor</span><span class="o">=</span><span class="n">color_map</span><span class="p">[</span><span class="n">cat</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="n">cat</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-            <span class="k">for</span> <span class="n">cat</span> <span class="ow">in</span> <span class="n">categories</span>
-        <span class="p">]</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">handles</span><span class="o">=</span><span class="n">legend_handles</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.01</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">'upper left'</span><span class="p">)</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">measurement_col</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">ScalarMappable</span><span class="p">(</span><span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">),</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">measurement_col</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">measurement_col</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="n">coordinates</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">coords</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">coordinates</span><span class="p">)</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">coords</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">coords</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">'yellow'</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s1">'black'</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">bobiac_tools</span><span class="w"> </span><span class="kn">import</span> <span class="n">overlay_labels</span>
 </pre></div>
 </div>
 </div>
@@ -521,19 +334,30 @@ Our question is: <strong>Do cells that are in the nuclear <em>on</em> state exhi
 </section>
 <section id="load-one-image-and-masks">
 <h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Load one image and masks<a class="headerlink" href="#load-one-image-and-masks" title="Link to this heading">#</a></h2>
-<p>First, we load one image and the corresponding label masks of the cells, nuclei, and spots. As before, we run through the whole analysis pipeline on this small dataset before we set up batch processing in the end.</p>
+<p>First, we load one image and the corresponding label masks of the cells, nuclei, and spots.</p>
+<p>Note that the image is a multi-channel image, therefore we will need to extract the channels that we are interested in. In this case, we are interested in the nuclear channel and the spots channel.</p>
+<p>As before, we run through the whole analysis pipeline on this small dataset before we set up batch processing in the end.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># define file paths</span>
-<span class="n">image_nuclear_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"../../_static/images/quant/02_nested_measurements/images/F01_837_ch0_nuclear.tif"</span><span class="p">)</span>
-<span class="n">image_spots_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"../../_static/images/quant/02_nested_measurements/images/F01_837_ch1_cyto.tif"</span><span class="p">)</span>
-<span class="n">mask_cell_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"../../_static/images/quant/02_nested_measurements/masks/F01_837w1.TIF"</span><span class="p">)</span>
-<span class="n">mask_nucleus_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"../../_static/images/quant/02_nested_measurements/masks/F01_837w2.TIF"</span><span class="p">)</span>
-<span class="n">segmentation_spots_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"../../_static/images/quant/02_nested_measurements/spot_lists/F01_837_spots.csv"</span><span class="p">)</span>
+<span class="n">image_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span>
+    <span class="s2">"../../_static/images/quant/02_nested_measurements/images/F01_837.tif"</span>
+<span class="p">)</span>
+<span class="n">mask_cell_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span>
+    <span class="s2">"../../_static/images/quant/02_nested_measurements/masks/F01_837w1.TIF"</span>
+<span class="p">)</span>
+<span class="n">mask_nucleus_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span>
+    <span class="s2">"../../_static/images/quant/02_nested_measurements/masks/F01_837w2.TIF"</span>
+<span class="p">)</span>
+<span class="n">segmentation_spots_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span>
+    <span class="s2">"../../_static/images/quant/02_nested_measurements/spot_lists/F01_837_spots.csv"</span>
+<span class="p">)</span>
 
 <span class="c1"># load images and masks</span>
-<span class="n">image_nuclear</span> <span class="o">=</span> <span class="n">tifffile</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">image_nuclear_path</span><span class="p">)</span>
-<span class="n">image_spots</span> <span class="o">=</span> <span class="n">tifffile</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">image_spots_path</span><span class="p">)</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">tifffile</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span>
+<span class="n">image_nuclear</span> <span class="o">=</span> <span class="n">image</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">image_spots</span> <span class="o">=</span> <span class="n">image</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+
 <span class="n">mask_cell</span> <span class="o">=</span> <span class="n">tifffile</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">mask_cell_path</span><span class="p">)</span>
 <span class="n">mask_nucleus</span> <span class="o">=</span> <span class="n">tifffile</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">mask_nucleus_path</span><span class="p">)</span>
 
@@ -549,20 +373,20 @@ Our question is: <strong>Do cells that are in the nuclear <em>on</em> state exhi
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">overlay</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="p">[</span><span class="n">image_nuclear</span><span class="p">,</span> <span class="n">image_spots</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">overlay_labels</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="p">[</span><span class="n">image_nuclear</span><span class="p">,</span> <span class="n">image_spots</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
+<img alt="../../_images/6a31603cdc9c3aebc8eafd7ae3d734322a78ad001defc40cd9c8ae1c92b07e02.png" src="../../_images/6a31603cdc9c3aebc8eafd7ae3d734322a78ad001defc40cd9c8ae1c92b07e02.png"/>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 800x800 with 1 Axes&gt;, &lt;Axes: &gt;)
 </pre></div>
 </div>
-<img alt="../../_images/b8b9fd66947d11b71e4a8586dd2f8870842dbc26bd283a64ffbada654d42a898.png" src="../../_images/b8b9fd66947d11b71e4a8586dd2f8870842dbc26bd283a64ffbada654d42a898.png"/>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df_spots</span><span class="p">[[</span><span class="s1">'y'</span><span class="p">,</span> <span class="s1">'x'</span><span class="p">]])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df_spots</span><span class="p">[[</span><span class="s2">"y"</span><span class="p">,</span> <span class="s2">"x"</span><span class="p">]])</span>
 </pre></div>
 </div>
 </div>
@@ -587,60 +411,55 @@ Our question is: <strong>Do cells that are in the nuclear <em>on</em> state exhi
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">overlay</span><span class="p">(</span><span class="n">label_mask</span><span class="o">=</span><span class="p">[</span><span class="n">mask_cell</span><span class="p">,</span> <span class="n">mask_nucleus</span><span class="p">],</span> <span class="n">coordinates</span><span class="o">=</span><span class="n">df_spots</span><span class="p">[[</span><span class="s1">'y'</span><span class="p">,</span> <span class="s1">'x'</span><span class="p">]]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">())</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">overlay_labels</span><span class="p">(</span>
+    <span class="n">label_mask</span><span class="o">=</span><span class="p">[</span><span class="n">mask_cell</span><span class="p">,</span> <span class="n">mask_nucleus</span><span class="p">],</span> <span class="n">coordinates</span><span class="o">=</span><span class="n">df_spots</span><span class="p">[[</span><span class="s2">"y"</span><span class="p">,</span> <span class="s2">"x"</span><span class="p">]]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
+<img alt="../../_images/2a0966e1b435868b3202d25de8729897f7e0ae008223294257bbdd56710e0ba8.png" src="../../_images/2a0966e1b435868b3202d25de8729897f7e0ae008223294257bbdd56710e0ba8.png"/>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 800x800 with 1 Axes&gt;, &lt;Axes: &gt;)
 </pre></div>
 </div>
-<img alt="../../_images/52603b9100c89a71abe435fda554083732ca7657ec2cbdf960c4d01775d571f2.png" src="../../_images/52603b9100c89a71abe435fda554083732ca7657ec2cbdf960c4d01775d571f2.png"/>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">overlay</span><span class="p">(</span><span class="n">label_mask</span><span class="o">=</span><span class="n">mask_cell</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">overlay_labels</span><span class="p">(</span><span class="n">label_mask</span><span class="o">=</span><span class="n">mask_cell</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
+<img alt="../../_images/702cbfa7d323b3465ba7fb0130bf66ee1aff876708210093c06f82c1c43ac56c.png" src="../../_images/702cbfa7d323b3465ba7fb0130bf66ee1aff876708210093c06f82c1c43ac56c.png"/>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 800x800 with 1 Axes&gt;,
  &lt;Axes: title={'center': 'Segmentation overlay'}&gt;)
 </pre></div>
 </div>
-<img alt="../../_images/3c6f0d9a74c163e0358bd3c8292029a715ff4efa69fb8654c7ba51982c058d7b.png" src="../../_images/3c6f0d9a74c163e0358bd3c8292029a715ff4efa69fb8654c7ba51982c058d7b.png"/>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">overlay</span><span class="p">(</span><span class="n">label_mask</span><span class="o">=</span><span class="n">mask_nucleus</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">overlay_labels</span><span class="p">(</span><span class="n">label_mask</span><span class="o">=</span><span class="n">mask_nucleus</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
+<img alt="../../_images/778b46db191d833408c986fd2b5f35a085aafd2b6d1221400b84d6503baff958.png" src="../../_images/778b46db191d833408c986fd2b5f35a085aafd2b6d1221400b84d6503baff958.png"/>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 800x800 with 1 Axes&gt;,
  &lt;Axes: title={'center': 'Segmentation overlay'}&gt;)
 </pre></div>
 </div>
-<img alt="../../_images/26920a98b823f222d7d8aad59493fe4c66ff4fc0322a7132f68e52b88361f0a0.png" src="../../_images/26920a98b823f222d7d8aad59493fe4c66ff4fc0322a7132f68e52b88361f0a0.png"/>
 </div>
 </div>
 </section>
 <section id="create-dataframe-for-cells">
 <h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Create DataFrame for cells<a class="headerlink" href="#create-dataframe-for-cells" title="Link to this heading">#</a></h2>
-<p>First, we generate a dataframe that contains all cells. We do this using the <code class="docutils literal notranslate"><span class="pre">regionprops_table</span></code> fucntion.</p>
+<p>First, we generate a dataframe that contains all cells. We do this using the <code class="docutils literal notranslate"><span class="pre">regionprops_table</span></code> function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">properties</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s2">"area"</span><span class="p">,</span>
-    <span class="s2">"label"</span>
-
-<span class="p">]</span>
-<span class="n">props</span> <span class="o">=</span> <span class="n">skimage</span><span class="o">.</span><span class="n">measure</span><span class="o">.</span><span class="n">regionprops_table</span><span class="p">(</span>
-    <span class="n">mask_cell</span><span class="p">,</span>  
-    <span class="n">properties</span><span class="o">=</span><span class="n">properties</span>
-<span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">properties</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"area"</span><span class="p">,</span> <span class="s2">"label"</span><span class="p">]</span>
+<span class="n">props</span> <span class="o">=</span> <span class="n">skimage</span><span class="o">.</span><span class="n">measure</span><span class="o">.</span><span class="n">regionprops_table</span><span class="p">(</span><span class="n">mask_cell</span><span class="p">,</span> <span class="n">properties</span><span class="o">=</span><span class="n">properties</span><span class="p">)</span>
 
 <span class="n">df_cell</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">props</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df_cell</span><span class="p">)</span>
@@ -676,11 +495,7 @@ For that we use the label mask of the nuclei, the nuclear expression image and t
 <h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">Measure properties<a class="headerlink" href="#measure-properties" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">properties</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s2">"area"</span><span class="p">,</span>
-    <span class="s2">"intensity_mean"</span><span class="p">,</span>
-    <span class="s2">"label"</span>
-<span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">properties</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"area"</span><span class="p">,</span> <span class="s2">"intensity_mean"</span><span class="p">,</span> <span class="s2">"label"</span><span class="p">]</span>
 <span class="n">props</span> <span class="o">=</span> <span class="n">skimage</span><span class="o">.</span><span class="n">measure</span><span class="o">.</span><span class="n">regionprops_table</span><span class="p">(</span>
     <span class="n">mask_nucleus</span><span class="p">,</span> <span class="n">intensity_image</span><span class="o">=</span><span class="n">image_nuclear</span><span class="p">,</span> <span class="n">properties</span><span class="o">=</span><span class="n">properties</span>
 <span class="p">)</span>
@@ -692,17 +507,17 @@ For that we use the label mask of the nuclei, the nuclear expression image and t
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      area  intensity_mean  label
-0   1377.0     6591.146696      6
-1    796.0    30661.822864      8
-2    744.0    25821.069892      9
-3    643.0     6733.486781     10
-4   1222.0     5673.916530     11
+0   1377.0     1190.348584      6
+1    796.0     1762.503769      8
+2    744.0     2053.278226      9
+3    643.0     2353.867807     10
+4   1222.0     1984.824877     11
 ..     ...             ...    ...
-72  1372.0     6305.796647     83
-73  1219.0     6472.525021     84
-74  1872.0    25275.821047     85
-75   868.0     6763.014977     86
-76  1472.0    29915.608696     87
+72  1372.0     2598.682945     83
+73  1219.0     1351.519278     84
+74  1872.0     1978.978098     85
+75   868.0     2060.660138     86
+76  1472.0     1160.914402     87
 
 [77 rows x 3 columns]
 </pre></div>
@@ -712,24 +527,24 @@ For that we use the label mask of the nuclei, the nuclear expression image and t
 <p>Let’s add an <code class="docutils literal notranslate"><span class="pre">image_id</span></code> for book keeping.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_nuc</span><span class="p">[</span><span class="s1">'image_id'</span><span class="p">]</span> <span class="o">=</span> <span class="n">image_nuclear_path</span><span class="o">.</span><span class="n">stem</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'_ch'</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_nuc</span><span class="p">[</span><span class="s2">"image_id"</span><span class="p">]</span> <span class="o">=</span> <span class="n">image_path</span><span class="o">.</span><span class="n">stem</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"_ch"</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df_nuc</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      area  intensity_mean  label image_id
-0   1377.0     6591.146696      6  F01_837
-1    796.0    30661.822864      8  F01_837
-2    744.0    25821.069892      9  F01_837
-3    643.0     6733.486781     10  F01_837
-4   1222.0     5673.916530     11  F01_837
+0   1377.0     1190.348584      6  F01_837
+1    796.0     1762.503769      8  F01_837
+2    744.0     2053.278226      9  F01_837
+3    643.0     2353.867807     10  F01_837
+4   1222.0     1984.824877     11  F01_837
 ..     ...             ...    ...      ...
-72  1372.0     6305.796647     83  F01_837
-73  1219.0     6472.525021     84  F01_837
-74  1872.0    25275.821047     85  F01_837
-75   868.0     6763.014977     86  F01_837
-76  1472.0    29915.608696     87  F01_837
+72  1372.0     2598.682945     83  F01_837
+73  1219.0     1351.519278     84  F01_837
+74  1872.0     1978.978098     85  F01_837
+75   868.0     2060.660138     86  F01_837
+76  1472.0     1160.914402     87  F01_837
 
 [77 rows x 4 columns]
 </pre></div>
@@ -744,7 +559,7 @@ For that we use the label mask of the nuclei, the nuclear expression image and t
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span>
     <span class="n">data</span><span class="o">=</span><span class="n">df_nuc</span><span class="p">,</span>
-    <span class="n">x</span><span class="o">=</span><span class="s1">'intensity_mean'</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">"intensity_mean"</span><span class="p">,</span>
     <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
@@ -754,42 +569,44 @@ For that we use the label mask of the nuclei, the nuclear expression image and t
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel='intensity_mean', ylabel='Count'&gt;
 </pre></div>
 </div>
-<img alt="../../_images/667aeeeb77457a88245ffa94e1741b4963ba6c219494246f95b5cf6974e33034.png" src="../../_images/667aeeeb77457a88245ffa94e1741b4963ba6c219494246f95b5cf6974e33034.png"/>
+<img alt="../../_images/6a476daeadaa6c2a3372b45e7e8af7b72201e7d9a7c4f14c0adb6bf4c042dd29.png" src="../../_images/6a476daeadaa6c2a3372b45e7e8af7b72201e7d9a7c4f14c0adb6bf4c042dd29.png"/>
 </div>
 </div>
 <p>It seems like the expression is truly bimodal and 15,000 would be a good threshold.</p>
-<p>Now, we classify the intesity of nuclei using the <code class="docutils literal notranslate"><span class="pre">cut</span></code> function as before.</p>
+<p>Now, we classify the intensity of nuclei using the <code class="docutils literal notranslate"><span class="pre">cut</span></code> function as before.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_nuc</span><span class="p">[</span><span class="s1">'expression'</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">df_nuc</span><span class="p">[</span><span class="s1">'intensity_mean'</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">15000</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">'off'</span><span class="p">,</span> <span class="s1">'on'</span><span class="p">])</span> 
-<span class="nb">print</span><span class="p">(</span><span class="n">df_nuc</span><span class="p">[</span><span class="s1">'expression'</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_nuc</span><span class="p">[</span><span class="s2">"expression"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span>
+    <span class="n">df_nuc</span><span class="p">[</span><span class="s2">"intensity_mean"</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">15000</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">"off"</span><span class="p">,</span> <span class="s2">"on"</span><span class="p">]</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_nuc</span><span class="p">[</span><span class="s2">"expression"</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>['off', 'on']
-Categories (2, object): ['off' &lt; 'on']
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>['off']
+Categories (2, str): ['off' &lt; 'on']
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">overlay</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">image_nuclear</span><span class="p">,</span> <span class="n">label_mask</span><span class="o">=</span><span class="n">mask_nucleus</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="n">df_nuc</span><span class="p">,</span> <span class="n">id_col</span><span class="o">=</span><span class="s1">'label'</span><span class="p">,</span> <span class="n">measurement_col</span><span class="o">=</span><span class="s1">'expression'</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">overlay_labels</span><span class="p">(</span>
+    <span class="n">image</span><span class="o">=</span><span class="n">image_nuclear</span><span class="p">,</span>
+    <span class="n">label_mask</span><span class="o">=</span><span class="n">mask_nucleus</span><span class="p">,</span>
+    <span class="n">df</span><span class="o">=</span><span class="n">df_nuc</span><span class="p">,</span>
+    <span class="n">id_col</span><span class="o">=</span><span class="s2">"label"</span><span class="p">,</span>
+    <span class="n">measurement_col</span><span class="o">=</span><span class="s2">"expression"</span><span class="p">,</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/nj/7mmlcz5x01z_gtm4ncvyj1cc0000gq/T/ipykernel_97289/452572658.py:115: DeprecationWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, pd.CategoricalDtype) instead
-  elif pd.api.types.is_categorical_dtype(df[measurement_col]) or pd.api.types.is_object_dtype(df[measurement_col]):
-/var/folders/nj/7mmlcz5x01z_gtm4ncvyj1cc0000gq/T/ipykernel_97289/452572658.py:146: DeprecationWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, pd.CategoricalDtype) instead
-  elif pd.api.types.is_categorical_dtype(df[measurement_col]) or pd.api.types.is_object_dtype(df[measurement_col]):
-</pre></div>
-</div>
+<img alt="../../_images/fddfb7accd2f11aaaa45d52dda85778daefbf7207f6fa24f3ae3e0516548466d.png" src="../../_images/fddfb7accd2f11aaaa45d52dda85778daefbf7207f6fa24f3ae3e0516548466d.png"/>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 800x800 with 1 Axes&gt;, &lt;Axes: title={'center': 'expression'}&gt;)
 </pre></div>
 </div>
-<img alt="../../_images/ec36185328d2e0e948ec11de0192fe4ba8e30b39de63ce7ecebc510a1fecccc8.png" src="../../_images/ec36185328d2e0e948ec11de0192fe4ba8e30b39de63ce7ecebc510a1fecccc8.png"/>
 </div>
 </div>
 <div class="cell docutils container">
@@ -800,17 +617,17 @@ Categories (2, object): ['off' &lt; 'on']
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      area  intensity_mean  label image_id expression
-0   1377.0     6591.146696      6  F01_837        off
-1    796.0    30661.822864      8  F01_837         on
-2    744.0    25821.069892      9  F01_837         on
-3    643.0     6733.486781     10  F01_837        off
-4   1222.0     5673.916530     11  F01_837        off
+0   1377.0     1190.348584      6  F01_837        off
+1    796.0     1762.503769      8  F01_837        off
+2    744.0     2053.278226      9  F01_837        off
+3    643.0     2353.867807     10  F01_837        off
+4   1222.0     1984.824877     11  F01_837        off
 ..     ...             ...    ...      ...        ...
-72  1372.0     6305.796647     83  F01_837        off
-73  1219.0     6472.525021     84  F01_837        off
-74  1872.0    25275.821047     85  F01_837         on
-75   868.0     6763.014977     86  F01_837        off
-76  1472.0    29915.608696     87  F01_837         on
+72  1372.0     2598.682945     83  F01_837        off
+73  1219.0     1351.519278     84  F01_837        off
+74  1872.0     1978.978098     85  F01_837        off
+75   868.0     2060.660138     86  F01_837        off
+76  1472.0     1160.914402     87  F01_837        off
 
 [77 rows x 5 columns]
 </pre></div>
@@ -828,7 +645,7 @@ Categories (2, object): ['off' &lt; 'on']
 <li><p><code class="docutils literal notranslate"><span class="pre">df_nuc</span></code> stores information about the nuclei, including the expression status</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">df_spots</span></code> stores the coordinates of the spots</p></li>
 </ul>
-<p>We want to connect information about the nucleus (<em>on</em>/<em>off</em>) with informatin about the spots (how many/per cell). Both of these are properties of the cell, which makes it our central object. Another way of looking at this is that the cell is the unifying object that contains both the nucleus (and its expression state) and all the dots. Dots and nuclei are not directly connected.</p>
+<p>We want to connect information about the nucleus (<em>on</em>/<em>off</em>) with information about the spots (how many/per cell). Both of these are properties of the cell, which makes it our central object. Another way of looking at this is that the cell is the unifying object that contains both the nucleus (and its expression state) and all the dots. Dots and nuclei are not directly connected.</p>
 <p>Practically, this means we need to create two columns in <code class="docutils literal notranslate"><span class="pre">df_cell</span></code>:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">nuclear_expression</span></code>: that maps the expression classification of the nucleus to the cell</p></li>
@@ -839,45 +656,42 @@ Categories (2, object): ['off' &lt; 'on']
 <p>To map the expression of the nuclei to the cells, we need to know which nuclear label corresponds to which cell label. As we can see below, they are not identical.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">overlay</span><span class="p">(</span><span class="n">label_mask</span><span class="o">=</span><span class="n">mask_cell</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">overlay_labels</span><span class="p">(</span><span class="n">label_mask</span><span class="o">=</span><span class="n">mask_cell</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
+<img alt="../../_images/702cbfa7d323b3465ba7fb0130bf66ee1aff876708210093c06f82c1c43ac56c.png" src="../../_images/702cbfa7d323b3465ba7fb0130bf66ee1aff876708210093c06f82c1c43ac56c.png"/>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 800x800 with 1 Axes&gt;,
  &lt;Axes: title={'center': 'Segmentation overlay'}&gt;)
 </pre></div>
 </div>
-<img alt="../../_images/3c6f0d9a74c163e0358bd3c8292029a715ff4efa69fb8654c7ba51982c058d7b.png" src="../../_images/3c6f0d9a74c163e0358bd3c8292029a715ff4efa69fb8654c7ba51982c058d7b.png"/>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">overlay</span><span class="p">(</span><span class="n">label_mask</span><span class="o">=</span><span class="n">mask_nucleus</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">overlay_labels</span><span class="p">(</span><span class="n">label_mask</span><span class="o">=</span><span class="n">mask_nucleus</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
+<img alt="../../_images/778b46db191d833408c986fd2b5f35a085aafd2b6d1221400b84d6503baff958.png" src="../../_images/778b46db191d833408c986fd2b5f35a085aafd2b6d1221400b84d6503baff958.png"/>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 800x800 with 1 Axes&gt;,
  &lt;Axes: title={'center': 'Segmentation overlay'}&gt;)
 </pre></div>
 </div>
-<img alt="../../_images/26920a98b823f222d7d8aad59493fe4c66ff4fc0322a7132f68e52b88361f0a0.png" src="../../_images/26920a98b823f222d7d8aad59493fe4c66ff4fc0322a7132f68e52b88361f0a0.png"/>
 </div>
 </div>
 <p>We can use regionprops_table to measure identify the cell label of each nucleus.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">properties</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s2">"intensity_mean"</span><span class="p">,</span>
-    <span class="s2">"label"</span>
-<span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">properties</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"intensity_mean"</span><span class="p">,</span> <span class="s2">"label"</span><span class="p">]</span>
 <span class="n">labels</span> <span class="o">=</span> <span class="n">skimage</span><span class="o">.</span><span class="n">measure</span><span class="o">.</span><span class="n">regionprops_table</span><span class="p">(</span>
     <span class="n">mask_nucleus</span><span class="p">,</span> <span class="n">intensity_image</span><span class="o">=</span><span class="n">mask_cell</span><span class="p">,</span> <span class="n">properties</span><span class="o">=</span><span class="n">properties</span>
 <span class="p">)</span>
 
 <span class="n">df_merge</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
-<span class="n">df_merge</span> <span class="o">=</span> <span class="n">df_merge</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="s1">'intensity_mean'</span><span class="p">:</span><span class="s1">'label_cell'</span><span class="p">},</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">df_merge</span> <span class="o">=</span> <span class="n">df_merge</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="s2">"intensity_mean"</span><span class="p">:</span> <span class="s2">"label_cell"</span><span class="p">},</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df_merge</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -903,24 +717,24 @@ Categories (2, object): ['off' &lt; 'on']
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_nuc</span> <span class="o">=</span> <span class="n">df_nuc</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_merge</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">'label'</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">'left'</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_nuc</span> <span class="o">=</span> <span class="n">df_nuc</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_merge</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">"label"</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">"left"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df_nuc</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      area  intensity_mean  label image_id expression  label_cell
-0   1377.0     6591.146696      6  F01_837        off         0.0
-1    796.0    30661.822864      8  F01_837         on         0.0
-2    744.0    25821.069892      9  F01_837         on         0.0
-3    643.0     6733.486781     10  F01_837        off        14.0
-4   1222.0     5673.916530     11  F01_837        off        17.0
+0   1377.0     1190.348584      6  F01_837        off         0.0
+1    796.0     1762.503769      8  F01_837        off         0.0
+2    744.0     2053.278226      9  F01_837        off         0.0
+3    643.0     2353.867807     10  F01_837        off        14.0
+4   1222.0     1984.824877     11  F01_837        off        17.0
 ..     ...             ...    ...      ...        ...         ...
-72  1372.0     6305.796647     83  F01_837        off        84.0
-73  1219.0     6472.525021     84  F01_837        off         0.0
-74  1872.0    25275.821047     85  F01_837         on        88.0
-75   868.0     6763.014977     86  F01_837        off         0.0
-76  1472.0    29915.608696     87  F01_837         on         0.0
+72  1372.0     2598.682945     83  F01_837        off        84.0
+73  1219.0     1351.519278     84  F01_837        off         0.0
+74  1872.0     1978.978098     85  F01_837        off        88.0
+75   868.0     2060.660138     86  F01_837        off         0.0
+76  1472.0     1160.914402     87  F01_837        off         0.0
 
 [77 rows x 6 columns]
 </pre></div>
@@ -929,7 +743,9 @@ Categories (2, object): ['off' &lt; 'on']
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mapping</span> <span class="o">=</span> <span class="n">df_nuc</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_nuc</span><span class="p">[</span><span class="s1">'label_cell'</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="s1">'label_cell'</span><span class="p">,</span> <span class="n">keep</span><span class="o">=</span><span class="kc">False</span><span class="p">)[[</span><span class="s1">'label_cell'</span><span class="p">,</span> <span class="s1">'expression'</span><span class="p">]]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mapping</span> <span class="o">=</span> <span class="n">df_nuc</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_nuc</span><span class="p">[</span><span class="s2">"label_cell"</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span>
+    <span class="s2">"label_cell"</span><span class="p">,</span> <span class="n">keep</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)[[</span><span class="s2">"label_cell"</span><span class="p">,</span> <span class="s2">"expression"</span><span class="p">]]</span>
 <span class="n">mapping</span>
 </pre></div>
 </div>
@@ -971,7 +787,7 @@ Categories (2, object): ['off' &lt; 'on']
 <tr>
 <th>5</th>
 <td>18.0</td>
-<td>on</td>
+<td>off</td>
 </tr>
 <tr>
 <th>6</th>
@@ -981,7 +797,7 @@ Categories (2, object): ['off' &lt; 'on']
 <tr>
 <th>7</th>
 <td>13.0</td>
-<td>on</td>
+<td>off</td>
 </tr>
 <tr>
 <th>...</th>
@@ -991,7 +807,7 @@ Categories (2, object): ['off' &lt; 'on']
 <tr>
 <th>68</th>
 <td>80.0</td>
-<td>on</td>
+<td>off</td>
 </tr>
 <tr>
 <th>70</th>
@@ -1001,7 +817,7 @@ Categories (2, object): ['off' &lt; 'on']
 <tr>
 <th>71</th>
 <td>85.0</td>
-<td>on</td>
+<td>off</td>
 </tr>
 <tr>
 <th>72</th>
@@ -1011,7 +827,7 @@ Categories (2, object): ['off' &lt; 'on']
 <tr>
 <th>74</th>
 <td>88.0</td>
-<td>on</td>
+<td>off</td>
 </tr>
 </tbody>
 </table>
@@ -1020,7 +836,9 @@ Categories (2, object): ['off' &lt; 'on']
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_cell</span> <span class="o">=</span> <span class="n">df_cell</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">mapping</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s1">'label'</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s1">'label_cell'</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">'inner'</span><span class="p">)</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">'label_cell'</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_cell</span> <span class="o">=</span> <span class="n">df_cell</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
+    <span class="n">mapping</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s2">"label"</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s2">"label_cell"</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">"inner"</span>
+<span class="p">)</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s2">"label_cell"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df_cell</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1028,16 +846,16 @@ Categories (2, object): ['off' &lt; 'on']
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       area  label expression
 0   11083.0     12        off
-1   11811.0     13         on
+1   11811.0     13        off
 2    2201.0     14        off
 3    4385.0     15        off
-4    3136.0     16         on
+4    3136.0     16        off
 ..      ...    ...        ...
 62   5343.0     81        off
 63   3711.0     83        off
 64   6932.0     84        off
-65   6111.0     85         on
-66   9146.0     88         on
+65   6111.0     85        off
+66   9146.0     88        off
 
 [67 rows x 3 columns]
 </pre></div>
@@ -1046,21 +864,21 @@ Categories (2, object): ['off' &lt; 'on']
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">overlay</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">image_nuclear</span><span class="p">,</span> <span class="n">label_mask</span><span class="o">=</span><span class="n">mask_cell</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="n">df_cell</span><span class="p">,</span> <span class="n">id_col</span><span class="o">=</span><span class="s1">'label'</span><span class="p">,</span> <span class="n">measurement_col</span><span class="o">=</span><span class="s1">'expression'</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">overlay_labels</span><span class="p">(</span>
+    <span class="n">image</span><span class="o">=</span><span class="n">image_nuclear</span><span class="p">,</span>
+    <span class="n">label_mask</span><span class="o">=</span><span class="n">mask_cell</span><span class="p">,</span>
+    <span class="n">df</span><span class="o">=</span><span class="n">df_cell</span><span class="p">,</span>
+    <span class="n">id_col</span><span class="o">=</span><span class="s2">"label"</span><span class="p">,</span>
+    <span class="n">measurement_col</span><span class="o">=</span><span class="s2">"expression"</span><span class="p">,</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/nj/7mmlcz5x01z_gtm4ncvyj1cc0000gq/T/ipykernel_97289/452572658.py:115: DeprecationWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, pd.CategoricalDtype) instead
-  elif pd.api.types.is_categorical_dtype(df[measurement_col]) or pd.api.types.is_object_dtype(df[measurement_col]):
-/var/folders/nj/7mmlcz5x01z_gtm4ncvyj1cc0000gq/T/ipykernel_97289/452572658.py:146: DeprecationWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, pd.CategoricalDtype) instead
-  elif pd.api.types.is_categorical_dtype(df[measurement_col]) or pd.api.types.is_object_dtype(df[measurement_col]):
-</pre></div>
-</div>
+<img alt="../../_images/f1efe976d84f30accb5c912626173c0aecba52eb40718cae70303d64195a471c.png" src="../../_images/f1efe976d84f30accb5c912626173c0aecba52eb40718cae70303d64195a471c.png"/>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 800x800 with 1 Axes&gt;, &lt;Axes: title={'center': 'expression'}&gt;)
 </pre></div>
 </div>
-<img alt="../../_images/69727b52cb5d6c071fc477a1bca99cbd831f1b12ee97067d37ab41eb4edc5f07.png" src="../../_images/69727b52cb5d6c071fc477a1bca99cbd831f1b12ee97067d37ab41eb4edc5f07.png"/>
 </div>
 </div>
 </section>
@@ -1074,23 +892,23 @@ Categories (2, object): ['off' &lt; 'on']
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">overlay</span><span class="p">(</span><span class="n">label_mask</span><span class="o">=</span><span class="n">mask_cell</span><span class="p">,</span> <span class="n">coordinates</span><span class="o">=</span><span class="n">df_spots</span><span class="p">[[</span><span class="s1">'y'</span><span class="p">,</span> <span class="s1">'x'</span><span class="p">]]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">())</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">overlay_labels</span><span class="p">(</span><span class="n">label_mask</span><span class="o">=</span><span class="n">mask_cell</span><span class="p">,</span> <span class="n">coordinates</span><span class="o">=</span><span class="n">df_spots</span><span class="p">[[</span><span class="s2">"y"</span><span class="p">,</span> <span class="s2">"x"</span><span class="p">]]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
+<img alt="../../_images/b3df8b9f2cb53e69aeba0bb834a5bb3e404f7f0558ed08c070421defe61923a2.png" src="../../_images/b3df8b9f2cb53e69aeba0bb834a5bb3e404f7f0558ed08c070421defe61923a2.png"/>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 800x800 with 1 Axes&gt;,
  &lt;Axes: title={'center': 'Segmentation overlay'}&gt;)
 </pre></div>
 </div>
-<img alt="../../_images/180f1e8d352e3ab33b4d5ee6d1c39f50751690eb1c6a645beca87c70e980ac3c.png" src="../../_images/180f1e8d352e3ab33b4d5ee6d1c39f50751690eb1c6a645beca87c70e980ac3c.png"/>
 </div>
 </div>
 <p>For each spot in <code class="docutils literal notranslate"><span class="pre">df_spots</span></code> we look up the cell label in <code class="docutils literal notranslate"><span class="pre">mask_cell</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_spots</span><span class="p">[</span><span class="s1">'label_cell'</span><span class="p">]</span> <span class="o">=</span> <span class="n">mask_cell</span><span class="p">[</span><span class="n">df_spots</span><span class="p">[</span><span class="s1">'y'</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">),</span> <span class="n">df_spots</span><span class="p">[</span><span class="s1">'x'</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s1">'label_cell'</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"label_cell"</span><span class="p">]</span> <span class="o">=</span> <span class="n">mask_cell</span><span class="p">[</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"y"</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">),</span> <span class="n">df_spots</span><span class="p">[</span><span class="s2">"x"</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"label_cell"</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
@@ -1105,11 +923,7 @@ Categories (2, object): ['off' &lt; 'on']
 <p>Now we count the number of spots per <code class="docutils literal notranslate"><span class="pre">cell_label</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span>
-    <span class="n">data</span><span class="o">=</span><span class="n">df_spots</span><span class="p">,</span>
-    <span class="n">x</span><span class="o">=</span><span class="s1">'label_cell'</span><span class="p">,</span>
-    <span class="n">bins</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s1">'label_cell'</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
-<span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_spots</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">"label_cell"</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"label_cell"</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()))</span>
 </pre></div>
 </div>
 </div>
@@ -1117,13 +931,13 @@ Categories (2, object): ['off' &lt; 'on']
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel='label_cell', ylabel='Count'&gt;
 </pre></div>
 </div>
-<img alt="../../_images/1c7750e90e812d440e165620356ebc13cb0b9e7bfcb30eb7b93135019d651b1d.png" src="../../_images/1c7750e90e812d440e165620356ebc13cb0b9e7bfcb30eb7b93135019d651b1d.png"/>
+<img alt="../../_images/740985425692234691706b99d871dff9e8c8bd1c22fa1cc568dccc061d02790b.png" src="../../_images/740985425692234691706b99d871dff9e8c8bd1c22fa1cc568dccc061d02790b.png"/>
 </div>
 </div>
 <p>Remove spots with <code class="docutils literal notranslate"><span class="pre">cell_label</span> <span class="pre">==</span> <span class="pre">0</span></code>. Those spots are outside of valid cells.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_spots</span> <span class="o">=</span> <span class="n">df_spots</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_spots</span><span class="p">[</span><span class="s1">'label_cell'</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_spots</span> <span class="o">=</span> <span class="n">df_spots</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"label_cell"</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df_spots</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1150,7 +964,7 @@ Categories (2, object): ['off' &lt; 'on']
 <p>Now we count the spots per cell, I.e., per unique <code class="docutils literal notranslate"><span class="pre">label_cell</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mapping</span> <span class="o">=</span> <span class="n">df_spots</span><span class="p">[</span><span class="s1">'label_cell'</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mapping</span> <span class="o">=</span> <span class="n">df_spots</span><span class="p">[</span><span class="s2">"label_cell"</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">mapping</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1159,15 +973,15 @@ Categories (2, object): ['off' &lt; 'on']
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    label_cell  count
 0           53    156
 1           13     65
-2           69     44
-3           62     44
+2           62     44
+3           69     44
 4           22     43
 ..         ...    ...
-65          46      1
+65          25      1
 66          41      1
-67          25      1
-68          14      1
-69          47      1
+67          46      1
+68          47      1
+69          49      1
 
 [70 rows x 2 columns]
 </pre></div>
@@ -1177,7 +991,9 @@ Categories (2, object): ['off' &lt; 'on']
 <p>Now we merge these measurements with <code class="docutils literal notranslate"><span class="pre">df_cell</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_cell</span> <span class="o">=</span> <span class="n">df_cell</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">mapping</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s1">'label'</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s1">'label_cell'</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">'inner'</span><span class="p">)</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">'label_cell'</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_cell</span> <span class="o">=</span> <span class="n">df_cell</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
+    <span class="n">mapping</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s2">"label"</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s2">"label_cell"</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">"inner"</span>
+<span class="p">)</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s2">"label_cell"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df_cell</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1185,16 +1001,16 @@ Categories (2, object): ['off' &lt; 'on']
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       area  label expression  count
 0   11083.0     12        off      6
-1   11811.0     13         on     65
+1   11811.0     13        off     65
 2    2201.0     14        off      1
 3    4385.0     15        off      5
-4    3136.0     16         on      6
+4    3136.0     16        off      6
 ..      ...    ...        ...    ...
 62   5343.0     81        off      3
 63   3711.0     83        off      4
 64   6932.0     84        off      5
-65   6111.0     85         on     21
-66   9146.0     88         on     13
+65   6111.0     85        off     21
+66   9146.0     88        off     13
 
 [67 rows x 4 columns]
 </pre></div>
@@ -1205,9 +1021,9 @@ Categories (2, object): ['off' &lt; 'on']
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span>
     <span class="n">data</span><span class="o">=</span><span class="n">df_cell</span><span class="p">,</span>
-    <span class="n">x</span><span class="o">=</span><span class="s1">'count'</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">"count"</span><span class="p">,</span>
     <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
-    <span class="n">hue</span><span class="o">=</span><span class="s1">'expression'</span><span class="p">,</span>
+    <span class="n">hue</span><span class="o">=</span><span class="s2">"expression"</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -1216,26 +1032,26 @@ Categories (2, object): ['off' &lt; 'on']
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel='count', ylabel='Count'&gt;
 </pre></div>
 </div>
-<img alt="../../_images/91ebc6089881b50cff277181cccadb17e615ebf38dd25e3b2f9545e321e718bb.png" src="../../_images/91ebc6089881b50cff277181cccadb17e615ebf38dd25e3b2f9545e321e718bb.png"/>
+<img alt="../../_images/cb16dcdb81f596403d207933438b30c880a0bb4375b91b25275111d57722d8e1.png" src="../../_images/cb16dcdb81f596403d207933438b30c880a0bb4375b91b25275111d57722d8e1.png"/>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">overlay</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">image_nuclear</span><span class="p">,</span> <span class="n">label_mask</span><span class="o">=</span><span class="n">mask_cell</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="n">df_cell</span><span class="p">,</span> <span class="n">id_col</span><span class="o">=</span><span class="s1">'label'</span><span class="p">,</span> <span class="n">measurement_col</span><span class="o">=</span><span class="s1">'count'</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">overlay_labels</span><span class="p">(</span>
+    <span class="n">image</span><span class="o">=</span><span class="n">image_nuclear</span><span class="p">,</span>
+    <span class="n">label_mask</span><span class="o">=</span><span class="n">mask_cell</span><span class="p">,</span>
+    <span class="n">df</span><span class="o">=</span><span class="n">df_cell</span><span class="p">,</span>
+    <span class="n">id_col</span><span class="o">=</span><span class="s2">"label"</span><span class="p">,</span>
+    <span class="n">measurement_col</span><span class="o">=</span><span class="s2">"count"</span><span class="p">,</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/nj/7mmlcz5x01z_gtm4ncvyj1cc0000gq/T/ipykernel_97289/452572658.py:115: DeprecationWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, pd.CategoricalDtype) instead
-  elif pd.api.types.is_categorical_dtype(df[measurement_col]) or pd.api.types.is_object_dtype(df[measurement_col]):
-/var/folders/nj/7mmlcz5x01z_gtm4ncvyj1cc0000gq/T/ipykernel_97289/452572658.py:146: DeprecationWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, pd.CategoricalDtype) instead
-  elif pd.api.types.is_categorical_dtype(df[measurement_col]) or pd.api.types.is_object_dtype(df[measurement_col]):
-</pre></div>
-</div>
+<img alt="../../_images/f9b7608de9b0abf07e2164d1bc50a2739a4d721a5b282b3a9b86f91a2341ce06.png" src="../../_images/f9b7608de9b0abf07e2164d1bc50a2739a4d721a5b282b3a9b86f91a2341ce06.png"/>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 800x800 with 2 Axes&gt;, &lt;Axes: title={'center': 'count'}&gt;)
 </pre></div>
 </div>
-<img alt="../../_images/aa4e124319c6f0ac67118168f6437cea059a82ca65f73b0a01be8982cbe4a565.png" src="../../_images/aa4e124319c6f0ac67118168f6437cea059a82ca65f73b0a01be8982cbe4a565.png"/>
 </div>
 </div>
 </section>
@@ -1245,8 +1061,8 @@ Categories (2, object): ['off' &lt; 'on']
 <p>We can see from the overlay above that the largest cell also has the most spots. This might be a case of size and number of spots being confunding variables; larger cells have more space and therefore more spots. Let’s normalise the spot count by area.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_cell</span><span class="p">[</span><span class="s1">'spot_count_norm'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_cell</span><span class="p">[</span><span class="s1">'count'</span><span class="p">]</span> <span class="o">/</span> <span class="n">df_cell</span><span class="p">[</span><span class="s1">'area'</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df_cell</span><span class="p">[</span><span class="s1">'spot_count_norm'</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_cell</span><span class="p">[</span><span class="s2">"spot_count_norm"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_cell</span><span class="p">[</span><span class="s2">"count"</span><span class="p">]</span> <span class="o">/</span> <span class="n">df_cell</span><span class="p">[</span><span class="s2">"area"</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_cell</span><span class="p">[</span><span class="s2">"spot_count_norm"</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1269,32 +1085,27 @@ Name: spot_count_norm, Length: 67, dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">overlay</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">image_nuclear</span><span class="p">,</span> <span class="n">label_mask</span><span class="o">=</span><span class="n">mask_cell</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="n">df_cell</span><span class="p">,</span> <span class="n">id_col</span><span class="o">=</span><span class="s1">'label'</span><span class="p">,</span> <span class="n">measurement_col</span><span class="o">=</span><span class="s1">'spot_count_norm'</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">overlay_labels</span><span class="p">(</span>
+    <span class="n">image</span><span class="o">=</span><span class="n">image_nuclear</span><span class="p">,</span>
+    <span class="n">label_mask</span><span class="o">=</span><span class="n">mask_cell</span><span class="p">,</span>
+    <span class="n">df</span><span class="o">=</span><span class="n">df_cell</span><span class="p">,</span>
+    <span class="n">id_col</span><span class="o">=</span><span class="s2">"label"</span><span class="p">,</span>
+    <span class="n">measurement_col</span><span class="o">=</span><span class="s2">"spot_count_norm"</span><span class="p">,</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/nj/7mmlcz5x01z_gtm4ncvyj1cc0000gq/T/ipykernel_97289/452572658.py:115: DeprecationWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, pd.CategoricalDtype) instead
-  elif pd.api.types.is_categorical_dtype(df[measurement_col]) or pd.api.types.is_object_dtype(df[measurement_col]):
-/var/folders/nj/7mmlcz5x01z_gtm4ncvyj1cc0000gq/T/ipykernel_97289/452572658.py:146: DeprecationWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, pd.CategoricalDtype) instead
-  elif pd.api.types.is_categorical_dtype(df[measurement_col]) or pd.api.types.is_object_dtype(df[measurement_col]):
-</pre></div>
-</div>
+<img alt="../../_images/a64900eabc4c5b92319a5dd63a49986c054e1bd88a9fa647b4eaff518cdbc823.png" src="../../_images/a64900eabc4c5b92319a5dd63a49986c054e1bd88a9fa647b4eaff518cdbc823.png"/>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 800x800 with 2 Axes&gt;,
  &lt;Axes: title={'center': 'spot_count_norm'}&gt;)
 </pre></div>
 </div>
-<img alt="../../_images/6432e46e3fce318a3ba47cba981876bd2517a11de82d748b19cc01cfaff04a8a.png" src="../../_images/6432e46e3fce318a3ba47cba981876bd2517a11de82d748b19cc01cfaff04a8a.png"/>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span>
-    <span class="n">data</span><span class="o">=</span><span class="n">df_cell</span><span class="p">,</span>
-    <span class="n">x</span><span class="o">=</span><span class="s1">'spot_count_norm'</span><span class="p">,</span>
-    <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
-    <span class="n">hue</span><span class="o">=</span><span class="s1">'expression'</span>
-<span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_cell</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">"spot_count_norm"</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">"expression"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1302,7 +1113,7 @@ Name: spot_count_norm, Length: 67, dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel='spot_count_norm', ylabel='Count'&gt;
 </pre></div>
 </div>
-<img alt="../../_images/4ab2d5b57837328df4942fb6e2a123d2785ecd63e3e74d8eb4530d8a4b674b1f.png" src="../../_images/4ab2d5b57837328df4942fb6e2a123d2785ecd63e3e74d8eb4530d8a4b674b1f.png"/>
+<img alt="../../_images/4f71d95574e23f082007daa5777ded592aeed2fcbdb3c5b29de4760f52309b4c.png" src="../../_images/4f71d95574e23f082007daa5777ded592aeed2fcbdb3c5b29de4760f52309b4c.png"/>
 </div>
 </div>
 <p>The picture is much clearer now.</p>
@@ -1313,8 +1124,8 @@ Name: spot_count_norm, Length: 67, dtype: float64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">image_folder</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"../../_static/images/quant/02_nested_measurements/images/"</span><span class="p">)</span>
-<span class="n">mask_folder</span>  <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"../../_static/images/quant/02_nested_measurements/masks/"</span><span class="p">)</span>
-<span class="n">spot_folder</span>  <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"../../_static/images/quant/02_nested_measurements/spot_lists/"</span><span class="p">)</span>
+<span class="n">mask_folder</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"../../_static/images/quant/02_nested_measurements/masks/"</span><span class="p">)</span>
+<span class="n">spot_folder</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"../../_static/images/quant/02_nested_measurements/spot_lists/"</span><span class="p">)</span>
 
 <span class="n">nuclear_images</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">image_folder</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">"*_ch0_nuclear.tif"</span><span class="p">))</span>
 
@@ -1325,54 +1136,59 @@ Name: spot_count_norm, Length: 67, dtype: float64
 
     <span class="c1"># load images, masks, and spot coordinates</span>
     <span class="n">image_nuclear</span> <span class="o">=</span> <span class="n">tifffile</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">nuclear_path</span><span class="p">)</span>
-    <span class="n">mask_cell</span>     <span class="o">=</span> <span class="n">tifffile</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">mask_folder</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">image_id</span><span class="si">}</span><span class="s2">w1.TIF"</span><span class="p">)</span>
-    <span class="n">mask_nucleus</span>  <span class="o">=</span> <span class="n">tifffile</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">mask_folder</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">image_id</span><span class="si">}</span><span class="s2">w2.TIF"</span><span class="p">)</span>
-    <span class="n">df_spots</span>      <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">spot_folder</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">image_id</span><span class="si">}</span><span class="s2">_spots.csv"</span><span class="p">)</span>
+    <span class="n">mask_cell</span> <span class="o">=</span> <span class="n">tifffile</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">mask_folder</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">image_id</span><span class="si">}</span><span class="s2">w1.TIF"</span><span class="p">)</span>
+    <span class="n">mask_nucleus</span> <span class="o">=</span> <span class="n">tifffile</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">mask_folder</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">image_id</span><span class="si">}</span><span class="s2">w2.TIF"</span><span class="p">)</span>
+    <span class="n">df_spots</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">spot_folder</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">image_id</span><span class="si">}</span><span class="s2">_spots.csv"</span><span class="p">)</span>
 
     <span class="c1"># remove objects touching the border</span>
-    <span class="n">mask_cell</span>    <span class="o">=</span> <span class="n">skimage</span><span class="o">.</span><span class="n">segmentation</span><span class="o">.</span><span class="n">clear_border</span><span class="p">(</span><span class="n">mask_cell</span><span class="p">)</span>
+    <span class="n">mask_cell</span> <span class="o">=</span> <span class="n">skimage</span><span class="o">.</span><span class="n">segmentation</span><span class="o">.</span><span class="n">clear_border</span><span class="p">(</span><span class="n">mask_cell</span><span class="p">)</span>
     <span class="n">mask_nucleus</span> <span class="o">=</span> <span class="n">skimage</span><span class="o">.</span><span class="n">segmentation</span><span class="o">.</span><span class="n">clear_border</span><span class="p">(</span><span class="n">mask_nucleus</span><span class="p">)</span>
 
     <span class="c1"># --- cell dataframe ---</span>
-    <span class="n">df_cell</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">skimage</span><span class="o">.</span><span class="n">measure</span><span class="o">.</span><span class="n">regionprops_table</span><span class="p">(</span>
-        <span class="n">mask_cell</span><span class="p">,</span> <span class="n">properties</span><span class="o">=</span><span class="p">[</span><span class="s2">"area"</span><span class="p">,</span> <span class="s2">"label"</span><span class="p">]</span>
-    <span class="p">))</span>
+    <span class="n">df_cell</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+        <span class="n">skimage</span><span class="o">.</span><span class="n">measure</span><span class="o">.</span><span class="n">regionprops_table</span><span class="p">(</span><span class="n">mask_cell</span><span class="p">,</span> <span class="n">properties</span><span class="o">=</span><span class="p">[</span><span class="s2">"area"</span><span class="p">,</span> <span class="s2">"label"</span><span class="p">])</span>
+    <span class="p">)</span>
 
     <span class="c1"># --- nucleus dataframe: measure and classify expression ---</span>
-    <span class="n">df_nuc</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">skimage</span><span class="o">.</span><span class="n">measure</span><span class="o">.</span><span class="n">regionprops_table</span><span class="p">(</span>
-        <span class="n">mask_nucleus</span><span class="p">,</span> <span class="n">intensity_image</span><span class="o">=</span><span class="n">image_nuclear</span><span class="p">,</span>
-        <span class="n">properties</span><span class="o">=</span><span class="p">[</span><span class="s2">"area"</span><span class="p">,</span> <span class="s2">"intensity_mean"</span><span class="p">,</span> <span class="s2">"label"</span><span class="p">]</span>
-    <span class="p">))</span>
-    <span class="n">df_nuc</span><span class="p">[</span><span class="s2">"image_id"</span><span class="p">]</span>   <span class="o">=</span> <span class="n">image_id</span>
-    <span class="n">df_nuc</span><span class="p">[</span><span class="s2">"expression"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">df_nuc</span><span class="p">[</span><span class="s2">"intensity_mean"</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">15000</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">"off"</span><span class="p">,</span> <span class="s2">"on"</span><span class="p">])</span>
+    <span class="n">df_nuc</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+        <span class="n">skimage</span><span class="o">.</span><span class="n">measure</span><span class="o">.</span><span class="n">regionprops_table</span><span class="p">(</span>
+            <span class="n">mask_nucleus</span><span class="p">,</span>
+            <span class="n">intensity_image</span><span class="o">=</span><span class="n">image_nuclear</span><span class="p">,</span>
+            <span class="n">properties</span><span class="o">=</span><span class="p">[</span><span class="s2">"area"</span><span class="p">,</span> <span class="s2">"intensity_mean"</span><span class="p">,</span> <span class="s2">"label"</span><span class="p">],</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">df_nuc</span><span class="p">[</span><span class="s2">"image_id"</span><span class="p">]</span> <span class="o">=</span> <span class="n">image_id</span>
+    <span class="n">df_nuc</span><span class="p">[</span><span class="s2">"expression"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span>
+        <span class="n">df_nuc</span><span class="p">[</span><span class="s2">"intensity_mean"</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">15000</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">"off"</span><span class="p">,</span> <span class="s2">"on"</span><span class="p">]</span>
+    <span class="p">)</span>
 
     <span class="c1"># --- map each nucleus to the cell it sits in ---</span>
-    <span class="n">df_merge</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">skimage</span><span class="o">.</span><span class="n">measure</span><span class="o">.</span><span class="n">regionprops_table</span><span class="p">(</span>
-        <span class="n">mask_nucleus</span><span class="p">,</span> <span class="n">intensity_image</span><span class="o">=</span><span class="n">mask_cell</span><span class="p">,</span> <span class="n">properties</span><span class="o">=</span><span class="p">[</span><span class="s2">"intensity_mean"</span><span class="p">,</span> <span class="s2">"label"</span><span class="p">]</span>
-    <span class="p">))</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">"intensity_mean"</span><span class="p">:</span> <span class="s2">"label_cell"</span><span class="p">})</span>
+    <span class="n">df_merge</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+        <span class="n">skimage</span><span class="o">.</span><span class="n">measure</span><span class="o">.</span><span class="n">regionprops_table</span><span class="p">(</span>
+            <span class="n">mask_nucleus</span><span class="p">,</span>
+            <span class="n">intensity_image</span><span class="o">=</span><span class="n">mask_cell</span><span class="p">,</span>
+            <span class="n">properties</span><span class="o">=</span><span class="p">[</span><span class="s2">"intensity_mean"</span><span class="p">,</span> <span class="s2">"label"</span><span class="p">],</span>
+        <span class="p">)</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">"intensity_mean"</span><span class="p">:</span> <span class="s2">"label_cell"</span><span class="p">})</span>
 
     <span class="n">df_nuc</span> <span class="o">=</span> <span class="n">df_nuc</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_merge</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">"label"</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">"left"</span><span class="p">)</span>
 
-    <span class="n">mapping_expr</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="n">df_nuc</span><span class="p">[</span><span class="n">df_nuc</span><span class="p">[</span><span class="s2">"label_cell"</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
-        <span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="s2">"label_cell"</span><span class="p">,</span> <span class="n">keep</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-        <span class="p">[[</span><span class="s2">"label_cell"</span><span class="p">,</span> <span class="s2">"expression"</span><span class="p">]]</span>
-    <span class="p">)</span>
-    <span class="n">df_cell</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="n">df_cell</span>
-        <span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">mapping_expr</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s2">"label"</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s2">"label_cell"</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">"inner"</span><span class="p">)</span>
-        <span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s2">"label_cell"</span><span class="p">)</span>
-    <span class="p">)</span>
+    <span class="n">mapping_expr</span> <span class="o">=</span> <span class="n">df_nuc</span><span class="p">[</span><span class="n">df_nuc</span><span class="p">[</span><span class="s2">"label_cell"</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span>
+        <span class="s2">"label_cell"</span><span class="p">,</span> <span class="n">keep</span><span class="o">=</span><span class="kc">False</span>
+    <span class="p">)[[</span><span class="s2">"label_cell"</span><span class="p">,</span> <span class="s2">"expression"</span><span class="p">]]</span>
+    <span class="n">df_cell</span> <span class="o">=</span> <span class="n">df_cell</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
+        <span class="n">mapping_expr</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s2">"label"</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s2">"label_cell"</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">"inner"</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s2">"label_cell"</span><span class="p">)</span>
 
     <span class="c1"># --- count spots per cell ---</span>
-    <span class="n">df_spots</span><span class="p">[</span><span class="s2">"label_cell"</span><span class="p">]</span> <span class="o">=</span> <span class="n">mask_cell</span><span class="p">[</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"y"</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">),</span> <span class="n">df_spots</span><span class="p">[</span><span class="s2">"x"</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)]</span>
+    <span class="n">df_spots</span><span class="p">[</span><span class="s2">"label_cell"</span><span class="p">]</span> <span class="o">=</span> <span class="n">mask_cell</span><span class="p">[</span>
+        <span class="n">df_spots</span><span class="p">[</span><span class="s2">"y"</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">),</span> <span class="n">df_spots</span><span class="p">[</span><span class="s2">"x"</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="p">]</span>
     <span class="n">df_spots</span> <span class="o">=</span> <span class="n">df_spots</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"label_cell"</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
     <span class="n">mapping_spots</span> <span class="o">=</span> <span class="n">df_spots</span><span class="p">[</span><span class="s2">"label_cell"</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
-    <span class="n">df_cell</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="n">df_cell</span>
-        <span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">mapping_spots</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s2">"label"</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s2">"label_cell"</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">"inner"</span><span class="p">)</span>
-        <span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s2">"label_cell"</span><span class="p">)</span>
-    <span class="p">)</span>
+    <span class="n">df_cell</span> <span class="o">=</span> <span class="n">df_cell</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
+        <span class="n">mapping_spots</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s2">"label"</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s2">"label_cell"</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">"inner"</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s2">"label_cell"</span><span class="p">)</span>
     <span class="n">df_cell</span><span class="p">[</span><span class="s2">"spot_count_norm"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_cell</span><span class="p">[</span><span class="s2">"count"</span><span class="p">]</span> <span class="o">/</span> <span class="n">df_cell</span><span class="p">[</span><span class="s2">"area"</span><span class="p">]</span>
 
     <span class="n">df_cell</span><span class="p">[</span><span class="s2">"image_id"</span><span class="p">]</span> <span class="o">=</span> <span class="n">image_id</span>
@@ -1383,22 +1199,32 @@ Name: spot_count_norm, Length: 67, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/nj/7mmlcz5x01z_gtm4ncvyj1cc0000gq/T/ipykernel_97289/3390080950.py:48: UserWarning: You are merging on int and float columns where the float values are not equal to their int representation.
-  df_cell
-/var/folders/nj/7mmlcz5x01z_gtm4ncvyj1cc0000gq/T/ipykernel_97289/3390080950.py:48: UserWarning: You are merging on int and float columns where the float values are not equal to their int representation.
-  df_cell
-/var/folders/nj/7mmlcz5x01z_gtm4ncvyj1cc0000gq/T/ipykernel_97289/3390080950.py:48: UserWarning: You are merging on int and float columns where the float values are not equal to their int representation.
-  df_cell
-/var/folders/nj/7mmlcz5x01z_gtm4ncvyj1cc0000gq/T/ipykernel_97289/3390080950.py:48: UserWarning: You are merging on int and float columns where the float values are not equal to their int representation.
-  df_cell
-/var/folders/nj/7mmlcz5x01z_gtm4ncvyj1cc0000gq/T/ipykernel_97289/3390080950.py:48: UserWarning: You are merging on int and float columns where the float values are not equal to their int representation.
-  df_cell
-/var/folders/nj/7mmlcz5x01z_gtm4ncvyj1cc0000gq/T/ipykernel_97289/3390080950.py:48: UserWarning: You are merging on int and float columns where the float values are not equal to their int representation.
-  df_cell
-/var/folders/nj/7mmlcz5x01z_gtm4ncvyj1cc0000gq/T/ipykernel_97289/3390080950.py:48: UserWarning: You are merging on int and float columns where the float values are not equal to their int representation.
-  df_cell
-/var/folders/nj/7mmlcz5x01z_gtm4ncvyj1cc0000gq/T/ipykernel_97289/3390080950.py:48: UserWarning: You are merging on int and float columns where the float values are not equal to their int representation.
-  df_cell
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">34</span><span class="p">],</span> <span class="n">line</span> <span class="mi">72</span>
+<span class="g g-Whitespace">     </span><span class="mi">68</span> 
+<span class="g g-Whitespace">     </span><span class="mi">69</span>     <span class="n">df_cell</span><span class="p">[</span><span class="s2">"image_id"</span><span class="p">]</span> <span class="o">=</span> <span class="n">image_id</span>
+<span class="g g-Whitespace">     </span><span class="mi">70</span>     <span class="n">list_df</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df_cell</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">71</span> 
+<span class="ne">---&gt; </span><span class="mi">72</span> <span class="n">df_full</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">list_df</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="nn">File ~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/pandas/core/reshape/concat.py:407,</span> in <span class="ni">concat</span><span class="nt">(objs, axis, join, ignore_index, keys, levels, names, verify_integrity, sort, copy)</span>
+<span class="g g-Whitespace">    </span><span class="mi">402</span> <span class="k">else</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+<span class="g g-Whitespace">    </span><span class="mi">403</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">404</span>         <span class="s2">"Only can inner (intersect) or outer (union) join the other axis"</span>
+<span class="g g-Whitespace">    </span><span class="mi">405</span>     <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">407</span> <span class="n">objs</span><span class="p">,</span> <span class="n">keys</span><span class="p">,</span> <span class="n">ndims</span> <span class="o">=</span> <span class="n">_clean_keys_and_objs</span><span class="p">(</span><span class="n">objs</span><span class="p">,</span> <span class="n">keys</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">409</span> <span class="k">if</span> <span class="n">sort</span> <span class="ow">is</span> <span class="n">lib</span><span class="o">.</span><span class="n">no_default</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">410</span>     <span class="k">if</span> <span class="n">axis</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+
+<span class="nn">File ~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/pandas/core/reshape/concat.py:808,</span> in <span class="ni">_clean_keys_and_objs</span><span class="nt">(objs, keys)</span>
+<span class="g g-Whitespace">    </span><span class="mi">805</span>     <span class="n">objs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">objs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">807</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">objs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">808</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"No objects to concatenate"</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">810</span> <span class="k">if</span> <span class="n">keys</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">811</span>     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">keys</span><span class="p">,</span> <span class="n">Index</span><span class="p">):</span>
+
+<span class="ne">ValueError</span>: No objects to concatenate
 </pre></div>
 </div>
 </div>
@@ -1409,274 +1235,51 @@ Name: spot_count_norm, Length: 67, dtype: float64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       area  label expression  count  spot_count_norm  image_id
-0    9515.0      7        off      7         0.000736  F01_1296
-1    3140.0      8        off      1         0.000318  F01_1296
-2    8611.0      9         on     49         0.005690  F01_1296
-3    1978.0     10         on     10         0.005056  F01_1296
-4    4599.0     11         on     27         0.005871  F01_1296
-..      ...    ...        ...    ...              ...       ...
-742  5713.0     83         on     61         0.010677   F01_972
-743  2650.0     84         on      4         0.001509   F01_972
-744  3695.0     88         on     17         0.004601   F01_972
-745  3584.0     91         on     12         0.003348   F01_972
-746  3458.0     93         on     19         0.005495   F01_972
-
-[747 rows x 6 columns]
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_plot</span> <span class="o">=</span> <span class="n">df_full</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">'expression'</span><span class="p">,</span><span class="s1">'image_id'</span><span class="p">])[[</span><span class="s1">'count'</span><span class="p">,</span> <span class="s1">'spot_count_norm'</span><span class="p">]]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_plot</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_full</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">"expression"</span><span class="p">,</span> <span class="s2">"image_id"</span><span class="p">])[[</span><span class="s2">"count"</span><span class="p">,</span> <span class="s2">"spot_count_norm"</span><span class="p">]]</span>
+    <span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="p">)</span>
 <span class="n">df_plot</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/nj/7mmlcz5x01z_gtm4ncvyj1cc0000gq/T/ipykernel_97289/4043656410.py:1: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
-  df_plot = df_full.groupby(['expression','image_id'])[['count', 'spot_count_norm']].mean().reset_index()
-</pre></div>
-</div>
-<div class="output text_html"><div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th></th>
-<th>expression</th>
-<th>image_id</th>
-<th>count</th>
-<th>spot_count_norm</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>0</th>
-<td>off</td>
-<td>F01_1296</td>
-<td>4.735294</td>
-<td>0.000758</td>
-</tr>
-<tr>
-<th>1</th>
-<td>off</td>
-<td>F01_1377</td>
-<td>3.566667</td>
-<td>0.000641</td>
-</tr>
-<tr>
-<th>2</th>
-<td>off</td>
-<td>F01_1457</td>
-<td>9.000000</td>
-<td>0.000916</td>
-</tr>
-<tr>
-<th>3</th>
-<td>off</td>
-<td>F01_1464</td>
-<td>4.551724</td>
-<td>0.000721</td>
-</tr>
-<tr>
-<th>4</th>
-<td>off</td>
-<td>F01_1465</td>
-<td>4.307692</td>
-<td>0.000704</td>
-</tr>
-<tr>
-<th>5</th>
-<td>off</td>
-<td>F01_1467</td>
-<td>3.918367</td>
-<td>0.000700</td>
-</tr>
-<tr>
-<th>6</th>
-<td>off</td>
-<td>F01_1489</td>
-<td>7.090909</td>
-<td>0.000889</td>
-</tr>
-<tr>
-<th>7</th>
-<td>off</td>
-<td>F01_837</td>
-<td>3.766667</td>
-<td>0.000668</td>
-</tr>
-<tr>
-<th>8</th>
-<td>off</td>
-<td>F01_840</td>
-<td>5.078947</td>
-<td>0.000763</td>
-</tr>
-<tr>
-<th>9</th>
-<td>off</td>
-<td>F01_884</td>
-<td>4.952381</td>
-<td>0.000793</td>
-</tr>
-<tr>
-<th>10</th>
-<td>off</td>
-<td>F01_972</td>
-<td>5.806452</td>
-<td>0.000707</td>
-</tr>
-<tr>
-<th>11</th>
-<td>on</td>
-<td>F01_1296</td>
-<td>22.968750</td>
-<td>0.003991</td>
-</tr>
-<tr>
-<th>12</th>
-<td>on</td>
-<td>F01_1377</td>
-<td>21.137931</td>
-<td>0.004126</td>
-</tr>
-<tr>
-<th>13</th>
-<td>on</td>
-<td>F01_1457</td>
-<td>31.851852</td>
-<td>0.004342</td>
-</tr>
-<tr>
-<th>14</th>
-<td>on</td>
-<td>F01_1464</td>
-<td>20.472222</td>
-<td>0.003474</td>
-</tr>
-<tr>
-<th>15</th>
-<td>on</td>
-<td>F01_1465</td>
-<td>26.457143</td>
-<td>0.003739</td>
-</tr>
-<tr>
-<th>16</th>
-<td>on</td>
-<td>F01_1467</td>
-<td>29.125000</td>
-<td>0.004528</td>
-</tr>
-<tr>
-<th>17</th>
-<td>on</td>
-<td>F01_1489</td>
-<td>45.760000</td>
-<td>0.004512</td>
-</tr>
-<tr>
-<th>18</th>
-<td>on</td>
-<td>F01_837</td>
-<td>23.081081</td>
-<td>0.003325</td>
-</tr>
-<tr>
-<th>19</th>
-<td>on</td>
-<td>F01_840</td>
-<td>30.416667</td>
-<td>0.004117</td>
-</tr>
-<tr>
-<th>20</th>
-<td>on</td>
-<td>F01_884</td>
-<td>28.170732</td>
-<td>0.004016</td>
-</tr>
-<tr>
-<th>21</th>
-<td>on</td>
-<td>F01_972</td>
-<td>29.636364</td>
-<td>0.004509</td>
-</tr>
-</tbody>
-</table>
-</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span>
     <span class="n">data</span><span class="o">=</span><span class="n">df_plot</span><span class="p">,</span>
-    <span class="n">x</span><span class="o">=</span><span class="s1">'expression'</span><span class="p">,</span>
-    <span class="n">y</span><span class="o">=</span><span class="s1">'count'</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">"expression"</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">"count"</span><span class="p">,</span>
 <span class="p">)</span>
 
-<span class="n">sns</span><span class="o">.</span><span class="n">swarmplot</span><span class="p">(</span>
-    <span class="n">data</span><span class="o">=</span><span class="n">df_plot</span><span class="p">,</span>
-    <span class="n">x</span><span class="o">=</span><span class="s1">'expression'</span><span class="p">,</span>
-    <span class="n">y</span><span class="o">=</span><span class="s1">'count'</span><span class="p">,</span>
-    <span class="n">c</span><span class="o">=</span><span class="s1">'k'</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span>
-<span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">swarmplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_plot</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">"expression"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"count"</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">"k"</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.0, 47.86966666666667)
-</pre></div>
-</div>
-<img alt="../../_images/47c8f31e8af3088690a76e191ff3292a9d47f048cc503c09bf06a83f424413dc.png" src="../../_images/47c8f31e8af3088690a76e191ff3292a9d47f048cc503c09bf06a83f424413dc.png"/>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span>
     <span class="n">data</span><span class="o">=</span><span class="n">df_plot</span><span class="p">,</span>
-    <span class="n">x</span><span class="o">=</span><span class="s1">'expression'</span><span class="p">,</span>
-    <span class="n">y</span><span class="o">=</span><span class="s1">'spot_count_norm'</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">"expression"</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">"spot_count_norm"</span><span class="p">,</span>
 <span class="p">)</span>
 
-<span class="n">sns</span><span class="o">.</span><span class="n">swarmplot</span><span class="p">(</span>
-    <span class="n">data</span><span class="o">=</span><span class="n">df_plot</span><span class="p">,</span>
-    <span class="n">x</span><span class="o">=</span><span class="s1">'expression'</span><span class="p">,</span>
-    <span class="n">y</span><span class="o">=</span><span class="s1">'spot_count_norm'</span><span class="p">,</span>
-    <span class="n">c</span><span class="o">=</span><span class="s1">'k'</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span>
-<span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">swarmplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_plot</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">"expression"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"spot_count_norm"</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">"k"</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.0, 0.00472279472490316)
-</pre></div>
-</div>
-<img alt="../../_images/afb7e2c7dbb527c1658259cdd9f7124f3adc7c0c5f7174088e731bbd7dc57f87.png" src="../../_images/afb7e2c7dbb527c1658259cdd9f7124f3adc7c0c5f7174088e731bbd7dc57f87.png"/>
 </div>
 </div>
 </section>
 <section id="conclusion">
 <h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
-<p>We sucessfully integrated properties of different objects with each other. Handling these sort of nested measurements is a key aspect of analysing images.</p>
+<p>We successfully integrated properties of different objects with each other. Handling these sort of nested measurements is a key aspect of analysing images.</p>
 </section>
 </section>
 <script type="text/x-thebe-config">

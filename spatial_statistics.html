@@ -484,23 +484,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">7</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> 
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.colors</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mcolors</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.cm</span><span class="w"> </span><span class="kn">import</span> <span class="n">ScalarMappable</span>
-<span class="ne">----&gt; </span><span class="mi">7</span> <span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> 
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="kn">from</span><span class="w"> </span><span class="nn">scipy.spatial</span><span class="w"> </span><span class="kn">import</span> <span class="n">KDTree</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;seaborn&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -781,6 +764,61 @@
 <span class="n">df_spots</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path_spots</span><span class="p">)</span>
 
 <span class="n">mask</span> <span class="o">=</span> <span class="n">skimage</span><span class="o">.</span><span class="n">segmentation</span><span class="o">.</span><span class="n">clear_border</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">path_image</span> <span class="o">=</span> <span class="s1">&#39;../../_static/images/quant/05_spatial_stats/images/F02_821.tif&#39;</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">path_mask</span> <span class="o">=</span> <span class="s1">&#39;../../_static/images/quant/05_spatial_stats/masks/F02_821w1.TIF&#39;</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">path_spots</span> <span class="o">=</span> <span class="s1">&#39;../../_static/images/quant/05_spatial_stats/spots/F02_821_spots.csv&#39;</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> 
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">image</span> <span class="o">=</span> <span class="n">tifffile</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">path_image</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">mask</span> <span class="o">=</span> <span class="n">tifffile</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">path_mask</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">df_spots</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path_spots</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> 
+
+<span class="nn">File ~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/tifffile/tifffile.py:1256,</span> in <span class="ni">imread</span><span class="nt">(files, selection, return_as, aszarr, key, series, kind, level, squeeze, maxworkers, buffersize, mode, name, offset, size, pattern, axesorder, categories, imread, imreadargs, sort, container, chunkshape, chunkdtype, axestiled, ioworkers, chunkmode, fillvalue, zattrs, multiscales, omexml, superres, out, out_inplace, _multifile, _useframes, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1252</span>         <span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1253</span>             <span class="n">files</span> <span class="o">=</span> <span class="n">files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1254</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1255</span>         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">files</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">files</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">1256</span>             <span class="k">with</span> <span class="n">TiffFile</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1257</span>                 <span class="n">files</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1258</span>                 <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1259</span>                 <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
+
+<span class="nn">File ~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/tifffile/tifffile.py:4554,</span> in <span class="ni">TiffFile.__init__</span><span class="nt">(self, file, mode, name, offset, size, omexml, superres, _multifile, _useframes, _root, **is_flags)</span>
+<span class="g g-Whitespace">   </span><span class="mi">4550</span>                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">4551</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_omexml</span> <span class="o">=</span> <span class="n">omexml</span>
+<span class="g g-Whitespace">   </span><span class="mi">4552</span>             <span class="bp">self</span><span class="o">.</span><span class="n">is_ome</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="g g-Whitespace">   </span><span class="mi">4553</span> 
+<span class="ne">-&gt; </span><span class="mi">4554</span>         <span class="n">fh</span> <span class="o">=</span> <span class="n">FileHandle</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="n">offset</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">4555</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_fh</span> <span class="o">=</span> <span class="n">fh</span>
+<span class="g g-Whitespace">   </span><span class="mi">4556</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_multifile</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="n">_multifile</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="nb">bool</span><span class="p">(</span><span class="n">_multifile</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">4557</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_files</span> <span class="o">=</span> <span class="p">{</span><span class="n">fh</span><span class="o">.</span><span class="n">name</span><span class="p">:</span> <span class="bp">self</span><span class="p">}</span>
+
+<span class="nn">File ~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/tifffile/tifffile.py:12751,</span> in <span class="ni">FileHandle.__init__</span><span class="nt">(self, file, mode, name, offset, size)</span>
+<span class="g g-Whitespace">  </span><span class="mi">12747</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_offset</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="k">if</span> <span class="n">offset</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">offset</span>
+<span class="g g-Whitespace">  </span><span class="mi">12748</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_size</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="k">if</span> <span class="n">size</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">size</span>
+<span class="g g-Whitespace">  </span><span class="mi">12749</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_close</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="g g-Whitespace">  </span><span class="mi">12750</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_lock</span> <span class="o">=</span> <span class="n">contextlib</span><span class="o">.</span><span class="n">nullcontext</span><span class="p">()</span>
+<span class="ne">&gt; </span><span class="mi">12751</span>         <span class="bp">self</span><span class="o">.</span><span class="n">open</span><span class="p">()</span>
+<span class="g g-Whitespace">  </span><span class="mi">12752</span>         <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fh</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+
+<span class="nn">File ~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/tifffile/tifffile.py:12771,</span> in <span class="ni">FileHandle.open</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">  </span><span class="mi">12767</span>                 <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;invalid mode </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_mode</span><span class="si">}</span><span class="s1">&#39;</span>
+<span class="g g-Whitespace">  </span><span class="mi">12768</span>                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+<span class="g g-Whitespace">  </span><span class="mi">12769</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_file</span><span class="p">)</span>
+<span class="g g-Whitespace">  </span><span class="mi">12770</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_dir</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_file</span><span class="p">)</span>
+<span class="ne">&gt; </span><span class="mi">12771</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_fh</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span>  <span class="c1"># noqa: SIM115</span>
+<span class="g g-Whitespace">  </span><span class="mi">12772</span>                 <span class="bp">self</span><span class="o">.</span><span class="n">_file</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="kc">None</span>
+<span class="g g-Whitespace">  </span><span class="mi">12773</span>             <span class="p">)</span>
+<span class="g g-Whitespace">  </span><span class="mi">12774</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_close</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;/home/runner/work/_static/images/quant/05_spatial_stats/images/F02_821.tif&#39;
 </pre></div>
 </div>
 </div>
