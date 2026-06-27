@@ -153,9 +153,22 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../08_colocalization/colocalization_intro.html">08 - <i class="fa-solid fa-location-crosshairs"></i> Colocalization</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../08_colocalization/pixel_intensity_based_colocalization_pearsons.html">Pearson’s correlation coefficient</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../08_colocalization/pixel_intensity_based_colocalization_manders.html">Manders’ Colocalization Coefficients</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../08_colocalization/object_based_colocalization.html">Object-based colocalization analysis</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../08_colocalization/intensity_based/intensity_based_colocalization_intro.html">Intensity-based Colocalization</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../08_colocalization/intensity_based/pixel_intensity_based_colocalization_pearsons.html">Pearson’s correlation coefficient</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../08_colocalization/intensity_based/pixel_intensity_based_colocalization_manders.html">Manders’ Colocalization Coefficients</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../08_colocalization/object_based/object_based_colocalization_intro.html">Object-based Colocalization</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../08_colocalization/object_based/object_based_colocalization.html">Object-based colocalization analysis</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../08_colocalization/spatial_statistics/spatial_stats_intro.html">Spatial Statistics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../08_colocalization/spatial_statistics/notebook_1.html">Notebook 1: Does a protein cluster?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../08_colocalization/spatial_statistics/notebook_2.html">Notebook 2: Do two different protein clusters co-localize?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../08_colocalization/spatial_statistics/notebook_3.html">Notebook 3: Does a protein localize to a cellular compartment?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../08_colocalization/spatial_statistics/spatial_statistics.html">Spatial statistics</a></li>
+</ul>
+</details></li>
 </ul>
 </details></li>
 </ul>
@@ -281,6 +294,8 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-name-your-variables">How to name your variables</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-change-your-variable-s-value">How to change your variable’s value</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-variable-practice">✍️ Exercise: Variable Practice</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-print-variables-and-strings-together-using-f-strings">How to print variables and strings together using f-strings</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-f-string-practice">✍️ Exercise: F-string Practice</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operators">3. Operators</a><ul class="nav section-nav flex-column">
@@ -410,8 +425,11 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-more-function-writing-practice">✍️ Exercise: More function writing practice</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-function-documentation">Accessing Function Documentation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-access-your-function-s-docstring">✍️ Exercise: Access your function’s docstring</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-adding-type-labels-to-functions">BONUS: Adding type labels to functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-modify-the-function-you-wrote-in-the-above-exercise-to-subtract-two-values-to-have-type-labels-in-addition-to-the-docstring"><mark style="color: black; background-color: rgb(252,185,118); padding: 3px; border-radius: 5px;">✍️ Exercise: Modify the function you wrote in the above exercise to subtract two values to have type labels in addition to the docstring</mark></a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-note-on-syntax">A Note on Syntax</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#next-steps">Next Steps</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reviewing-python-fundamentals-code-in-place">Reviewing Python Fundamentals: Code in Place</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extra-practice-on-python-fundamentals-real-python">Extra Practice on Python Fundamentals: Real Python</a></li>
@@ -533,7 +551,7 @@ This notebook is written <strong>like a small interactive book</strong> to compl
 <h3 style="color: black; background-color: rgb(126,172,182); padding: 3px; border-radius: 5px;">📓 Example: Making a comment<a class="headerlink" href="#example-making-a-comment" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Monday, July 14, 2025</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Monday, July 6, 2026</span>
 </pre></div>
 </div>
 </div>
@@ -788,7 +806,7 @@ Let’s now discuss different types of <strong>values</strong> commonly used in 
 <h3 style="color: black; background-color: rgb(252,185,118); padding: 3px; border-radius: 5px;">✍️ Exercise: Guess the output before running the code!<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="mi">2025</span><span class="p">)))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="mi">2026</span><span class="p">)))</span>
 </pre></div>
 </div>
 </div>
@@ -876,7 +894,7 @@ Let’s now discuss different types of <strong>values</strong> commonly used in 
 <div class="cell tag_teacher docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first_name</span> <span class="o">=</span> <span class="s2">"Eva"</span>  <span class="c1"># your first name</span>
-<span class="n">bobiac_year</span> <span class="o">=</span> <span class="mi">2025</span>  <span class="c1"># your BoBiAC cohort year</span>
+<span class="n">bobiac_year</span> <span class="o">=</span> <span class="mi">2026</span>  <span class="c1"># your BoBiAC cohort year</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">first_name</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">bobiac_year</span><span class="p">)</span>
 </pre></div>
@@ -884,7 +902,61 @@ Let’s now discuss different types of <strong>values</strong> commonly used in 
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Eva
-2025
+2026
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="how-to-print-variables-and-strings-together-using-f-strings">
+<h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">How to print variables and strings together using f-strings<a class="headerlink" href="#how-to-print-variables-and-strings-together-using-f-strings" title="Link to this heading">#</a></h3>
+<p>Sometimes it is helpful to print strings with values assigned to variables. For example, instead of just doing the following:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fav_number</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fav_number</span><span class="p">)</span>
+</pre></div>
+</div>
+<blockquote>
+<div><blockquote>
+<div><p>3</p>
+</div></blockquote>
+</div></blockquote>
+<p>We could assemble one big string that included “This is Eva’s favorite number: “ and then add the value that is assigned to the variable <code class="docutils literal notranslate"><span class="pre">fav_number</span></code> at the end. In Python, one way we can do this is using <strong>f-strings</strong>.</p>
+<p>F-strings let you assemble a string with variables in {} placeholders. You create one by putting the letter <code class="docutils literal notranslate"><span class="pre">f</span></code> right before the beginning <code class="docutils literal notranslate"><span class="pre">'</span></code> or <code class="docutils literal notranslate"><span class="pre">"</span></code> of the overall string, and then place variables in <code class="docutils literal notranslate"><span class="pre">{}</span></code> within that string:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fav_number</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"This is Eva's favorite number: </span><span class="si">{</span><span class="n">fav_number</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span> <span class="c1"># this is an f-string</span>
+</pre></div>
+</div>
+<blockquote>
+<div><blockquote>
+<div><p>This is Eva’s favorite number: 3.</p>
+</div></blockquote>
+</div></blockquote>
+<p>It does not matter what type of value is assigned to variables placed within <code class="docutils literal notranslate"><span class="pre">{}</span></code> in f-strings. The <code class="docutils literal notranslate"><span class="pre">f</span></code> at the beginning will cue Python to evaluate each variable inside the <code class="docutils literal notranslate"><span class="pre">{}</span></code> and substitute it with what is assigned to that variable, instead of treating the variable name as literal text.</p>
+</section>
+<section id="exercise-f-string-practice">
+<h3 style="color: black; background-color: rgb(252,185,118); padding: 3px; border-radius: 5px;">✍️ Exercise: F-string Practice<a class="headerlink" href="#exercise-f-string-practice" title="Link to this heading">#</a></h3>
+<p>Create two variables:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">first_name</span></code> = your first name</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bobiac_year</span></code> = your BoBiAC cohort year</p></li>
+</ul>
+<p>Bonus points for commenting what your variables are!</p>
+<p>Then, use f-strings to have Python <strong>print</strong> the following:
+<br/><code class="docutils literal notranslate"><span class="pre">First</span> <span class="pre">Name:</span> <span class="pre">...</span></code>
+<br/><code class="docutils literal notranslate"><span class="pre">BoBiAC</span> <span class="pre">Cohort</span> <span class="pre">Year:</span> <span class="pre">...</span></code></p>
+<p>Where … are the values assigned to each of the variables.</p>
+<div class="cell tag_teacher docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first_name</span> <span class="o">=</span> <span class="s2">"Eva"</span>
+<span class="n">bobiac_year</span> <span class="o">=</span> <span class="mi">2026</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"First Name: </span><span class="si">{</span><span class="n">first_name</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"BoBiAC Cohort Year: </span><span class="si">{</span><span class="n">bobiac_year</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>First Name: Eva
+BoBiAC Cohort Year: 2026
 </pre></div>
 </div>
 </div>
@@ -957,13 +1029,13 @@ Let’s now discuss different types of <strong>values</strong> commonly used in 
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">v1</span> <span class="o">=</span> <span class="s2">"BoBiAC"</span>
-<span class="n">v2</span> <span class="o">=</span> <span class="s2">"2025"</span>
+<span class="n">v2</span> <span class="o">=</span> <span class="s2">"2026"</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">v1</span> <span class="o">+</span> <span class="n">v2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>BoBiAC2025
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>BoBiAC2026
 </pre></div>
 </div>
 </div>
@@ -1221,7 +1293,7 @@ When thinking about how to organize values into a data structure, there are a fe
 </div>
 </div>
 <p>Now you give it a try! Get the length of this list:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mylist</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Bo'</span><span class="p">,</span> <span class="s1">'Bi'</span><span class="p">,</span> <span class="s1">'A'</span><span class="p">,</span> <span class="s1">'C'</span><span class="p">,</span> <span class="mi">2025</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mylist</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Bo'</span><span class="p">,</span> <span class="s1">'Bi'</span><span class="p">,</span> <span class="s1">'A'</span><span class="p">,</span> <span class="s1">'C'</span><span class="p">,</span> <span class="mi">2026</span><span class="p">]</span>
 </pre></div>
 </div>
 </section>
@@ -1229,7 +1301,7 @@ When thinking about how to organize values into a data structure, there are a fe
 <h3 style="color: black; background-color: rgb(252,185,118); padding: 3px; border-radius: 5px;">✍️ Exercise: Printing a list’s length<a class="headerlink" href="#exercise-printing-a-list-s-length" title="Link to this heading">#</a></h3>
 <div class="cell tag_teacher docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mylist</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Bo"</span><span class="p">,</span> <span class="s2">"Bi"</span><span class="p">,</span> <span class="s2">"A"</span><span class="p">,</span> <span class="s2">"C"</span><span class="p">,</span> <span class="mi">2025</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mylist</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Bo"</span><span class="p">,</span> <span class="s2">"Bi"</span><span class="p">,</span> <span class="s2">"A"</span><span class="p">,</span> <span class="s2">"C"</span><span class="p">,</span> <span class="mi">2026</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">mylist</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -1730,7 +1802,7 @@ code
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">34</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">35</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 <span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
 
@@ -1821,7 +1893,7 @@ code
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mydict</span> <span class="o">=</span> <span class="p">{</span>
         <span class="mi">1</span><span class="p">:</span> <span class="s2">"Start of course"</span><span class="p">,</span>
         <span class="mi">2</span><span class="p">:</span> <span class="p">[</span><span class="s2">"Lectures"</span><span class="p">,</span> <span class="s2">"Labs"</span><span class="p">,</span> <span class="s2">"Office Hours"</span><span class="p">,</span> <span class="s2">"End"</span><span class="p">],</span>
-        <span class="mi">3</span><span class="p">:</span> <span class="p">[</span><span class="s2">"Course dinner"</span><span class="p">,</span> <span class="mi">2025</span><span class="p">,</span> <span class="s2">"End"</span><span class="p">],</span>
+        <span class="mi">3</span><span class="p">:</span> <span class="p">[</span><span class="s2">"Course dinner"</span><span class="p">,</span> <span class="mi">2026</span><span class="p">,</span> <span class="s2">"End"</span><span class="p">],</span>
         <span class="p">}</span>
 </pre></div>
 </div>
@@ -1833,7 +1905,7 @@ code
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mydict</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s1">'beginning'</span><span class="p">:</span> <span class="s2">"Start of course"</span><span class="p">,</span>
         <span class="s1">'middle'</span><span class="p">:</span> <span class="p">[</span><span class="s2">"Lectures"</span><span class="p">,</span> <span class="s2">"Labs"</span><span class="p">,</span> <span class="s2">"Office Hours"</span><span class="p">],</span>
-        <span class="s1">'end'</span><span class="p">:</span> <span class="p">[</span><span class="s2">"Course dinner"</span><span class="p">,</span> <span class="mi">2025</span><span class="p">],</span>
+        <span class="s1">'end'</span><span class="p">:</span> <span class="p">[</span><span class="s2">"Course dinner"</span><span class="p">,</span> <span class="mi">2026</span><span class="p">],</span>
         <span class="p">}</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">mydict</span><span class="p">[</span><span class="s1">'middle'</span><span class="p">])</span>
 <span class="o">&gt;</span> <span class="p">[</span><span class="s2">"Lectures"</span><span class="p">,</span> <span class="s2">"Labs"</span><span class="p">,</span> <span class="s2">"Office Hours"</span><span class="p">]</span>
@@ -2556,6 +2628,100 @@ Once every item in the list has been used, the <code class="docutils literal not
 </div>
 </div>
 </section>
+<section id="bonus-adding-type-labels-to-functions">
+<h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">BONUS: Adding type labels to functions<a class="headerlink" href="#bonus-adding-type-labels-to-functions" title="Link to this heading">#</a></h3>
+<p>We can also add <code class="docutils literal notranslate"><span class="pre">type</span></code> labels to specify the expected data types for the function’s inputs and outputs. These labels will make it easier use the function correctly.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">function_name</span><span class="p">(</span><span class="n">parameters</span><span class="p">:</span><span class="nb">type</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">type</span><span class="p">:</span> 
+<span class="w">    </span><span class="sd">"""A brief description of the function.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    parameters: type</span>
+<span class="sd">    what this is</span>
+
+<span class="sd">    Return</span>
+<span class="sd">    ------</span>
+<span class="sd">    type: what the function returns</span>
+<span class="sd">    </span>
+<span class="sd">    """</span>
+    <span class="c1"># do task here</span>
+    <span class="k">return</span> <span class="n">value</span>
+</pre></div>
+</div>
+</section>
+<section id="exercise-modify-the-function-you-wrote-in-the-above-exercise-to-subtract-two-values-to-have-type-labels-in-addition-to-the-docstring">
+<h3 style="color: black; background-color: rgb(252,185,118); padding: 3px; border-radius: 5px;"><mark style="color: black; background-color: rgb(252,185,118); padding: 3px; border-radius: 5px;">✍️ Exercise: Modify the function you wrote in the above exercise to subtract two values to have type labels in addition to the docstring</mark><a class="headerlink" href="#exercise-modify-the-function-you-wrote-in-the-above-exercise-to-subtract-two-values-to-have-type-labels-in-addition-to-the-docstring" title="Link to this heading">#</a></h3>
+<div class="cell tag_teacher docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># define function</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">subtract_values</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    A simple subtraction function</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    -----------</span>
+<span class="sd">    x: int</span>
+<span class="sd">    first number to subtract from</span>
+
+<span class="sd">    y: int</span>
+<span class="sd">    second number to subtract</span>
+
+<span class="sd">    Return</span>
+<span class="sd">    ----------</span>
+<span class="sd">    x-y: int</span>
+<span class="sd">    the difference between x and y</span>
+
+<span class="sd">    """</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">-</span> <span class="n">y</span>
+
+
+<span class="c1"># call function</span>
+<span class="n">sub_calc</span> <span class="o">=</span> <span class="n">subtract_values</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sub_calc</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<hr class="docutils"/>
+<section id="a-note-on-syntax">
+<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">A Note on Syntax<a class="headerlink" href="#a-note-on-syntax" title="Link to this heading">#</a></h2>
+<p>At this point, you may be curious about why certain functions we use in Python are written as <code class="docutils literal notranslate"><span class="pre">function()</span></code>, while others we write as <code class="docutils literal notranslate"><span class="pre">something.function()</span></code>. For example, we learned that we can get the length of a <code class="docutils literal notranslate"><span class="pre">list</span></code> using the <code class="docutils literal notranslate"><span class="pre">len(list)</span></code> function, but to add an item to the end of a list with <code class="docutils literal notranslate"><span class="pre">append()</span></code> we need to write it as <code class="docutils literal notranslate"><span class="pre">list.append(item)</span></code>.</p>
+<p>The reason has to do with another overarching structure in Python that we will not dwell on during the course. This structure is called a <code class="docutils literal notranslate"><span class="pre">class</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Name</span><span class="p">():</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="n">herself</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="n">herself</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">say_hello</span><span class="p">(</span><span class="n">herself</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Hello, my name is </span><span class="si">{</span><span class="n">herself</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">!"</span><span class="p">)</span>
+
+
+<span class="n">n</span> <span class="o">=</span> <span class="n">Name</span><span class="p">(</span><span class="s2">"Eva"</span><span class="p">)</span>
+<span class="n">n</span><span class="o">.</span><span class="n">say_hello</span><span class="p">()</span>
+
+
+
+
+<span class="c1"># def function(...):</span>
+<span class="c1">#     ...</span>
+
+<span class="c1"># class Name:</span>
+<span class="c1">#     ...</span>
+
+<span class="c1">#     def method(...):</span>
+<span class="c1">#         ...</span>
+
+<span class="c1"># n = Name()</span>
+<span class="c1"># n.method()</span>
+
+<span class="c1"># function()</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <hr class="docutils"/>
 <section id="next-steps">
@@ -2653,6 +2819,8 @@ Once every item in the list has been used, the <code class="docutils literal not
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-name-your-variables">How to name your variables</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-change-your-variable-s-value">How to change your variable’s value</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-variable-practice">✍️ Exercise: Variable Practice</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-print-variables-and-strings-together-using-f-strings">How to print variables and strings together using f-strings</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-f-string-practice">✍️ Exercise: F-string Practice</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operators">3. Operators</a><ul class="nav section-nav flex-column">
@@ -2782,8 +2950,11 @@ Once every item in the list has been used, the <code class="docutils literal not
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-more-function-writing-practice">✍️ Exercise: More function writing practice</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-function-documentation">Accessing Function Documentation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-access-your-function-s-docstring">✍️ Exercise: Access your function’s docstring</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-adding-type-labels-to-functions">BONUS: Adding type labels to functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-modify-the-function-you-wrote-in-the-above-exercise-to-subtract-two-values-to-have-type-labels-in-addition-to-the-docstring"><mark style="color: black; background-color: rgb(252,185,118); padding: 3px; border-radius: 5px;">✍️ Exercise: Modify the function you wrote in the above exercise to subtract two values to have type labels in addition to the docstring</mark></a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-note-on-syntax">A Note on Syntax</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#next-steps">Next Steps</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reviewing-python-fundamentals-code-in-place">Reviewing Python Fundamentals: Code in Place</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extra-practice-on-python-fundamentals-real-python">Extra Practice on Python Fundamentals: Real Python</a></li>
