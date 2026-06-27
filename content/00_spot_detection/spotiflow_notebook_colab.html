@@ -52,7 +52,7 @@
 <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
 <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
 <script>DOCUMENTATION_OPTIONS.pagename = 'content/00_spot_detection/spotiflow_notebook_colab';</script>
-<script src="../../_static/scripts/custom.js?v=abd1ef31"></script>
+<script src="../../_static/scripts/custom.js?v=976628f9"></script>
 <link href="../../genindex.html" rel="index" title="Index"/>
 <link href="../../search.html" rel="search" title="Search"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
@@ -348,7 +348,7 @@
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create directory</span>
 <span class="o">!</span>mkdir<span class="w"> </span>-p<span class="w"> </span>/content/bobiac_data_spotiflow
 <span class="c1"># Download the data</span>
-<span class="o">!</span>wget<span class="w"> </span>https://raw.githubusercontent.com/bobiac/bobiac-book/main/_static/data/00_spot_detection_spotiflow.zip<span class="w"> </span>-O<span class="w"> </span>/content/bobiac_data_spotiflow/00_spot_detection_spotiflow.zip
+<span class="o">!</span>wget<span class="w"> </span>https://github.com/bobiac/bobiac-book/releases/download/data-bobiac-2026/00_spot_detection_spotiflow.zip<span class="w"> </span>-O<span class="w"> </span>/content/bobiac_data_spotiflow/00_spot_detection_spotiflow.zip
 <span class="c1"># Unzip the data, remove zip file and macOS metadata files (if any)</span>
 <span class="o">!</span><span class="nb">cd</span><span class="w"> </span>/content/bobiac_data_spotiflow<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>unzip<span class="w"> </span>00_spot_detection_spotiflow.zip<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span>00_spot_detection_spotiflow.zip<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>__MACOSX
 </pre></div>
@@ -795,11 +795,24 @@
 <section id="bonus-running-spotiflow-on-3d-images">
 <h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Bonus: Running Spotiflow on 3D images<a class="headerlink" href="#bonus-running-spotiflow-on-3d-images" title="Link to this heading">#</a></h2>
 <p>Running <code class="docutils literal notranslate"><span class="pre">Spotiflow</span></code> on 3D images is very similar to running it on 2D images. The only differences are that the input image is a 3D stack in <code class="docutils literal notranslate"><span class="pre">(Z,</span> <span class="pre">Y,</span> <span class="pre">X)</span></code> format (single-channel) or <code class="docutils literal notranslate"><span class="pre">(Z,</span> <span class="pre">Y,</span> <span class="pre">X,</span> <span class="pre">C)</span></code> (multi-channel), and the output <code class="docutils literal notranslate"><span class="pre">points</span></code> will be in <code class="docutils literal notranslate"><span class="pre">(z,</span> <span class="pre">y,</span> <span class="pre">x)</span></code> or <code class="docutils literal notranslate"><span class="pre">(z,</span> <span class="pre">y,</span> <span class="pre">x,</span> <span class="pre">channel)</span></code> format respectively.</p>
+<p>The file we will use for this section can be downloaded by running the cell below. A new folder called <code class="docutils literal notranslate"><span class="pre">bobiac_data_spotiflow_3d</span></code> will be created in your Google Drive.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create directory</span>
+<span class="o">!</span>mkdir<span class="w"> </span>-p<span class="w"> </span>/content/bobiac_data_spotiflow_3d
+<span class="c1"># Download the data</span>
+<span class="o">!</span>wget<span class="w"> </span>https://github.com/bobiac/bobiac-book/releases/download/data-bobiac-2026/00_spot_detection_spotiflow_3d.zip<span class="w"> </span>-O<span class="w"> </span>/content/bobiac_data_spotiflow/00_spot_detection_spotiflow_3d.zip
+<span class="c1"># Unzip the data, remove zip file and macOS metadata files (if any)</span>
+<span class="o">!</span><span class="nb">cd</span><span class="w"> </span>/content/bobiac_data_spotiflow<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>unzip<span class="w"> </span>00_spot_detection_spotiflow_3d.zip<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span>00_spot_detection_spotiflow_3d.zip<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>__MACOSX
+</pre></div>
+</div>
+</div>
+</div>
 <section id="load-and-visualize-the-image">
 <h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">Load and Visualize the Image<a class="headerlink" href="#load-and-visualize-the-image" title="Link to this heading">#</a></h3>
 <div class="cell tag_teacher docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">image_path</span> <span class="o">=</span> <span class="s2">"content/bobiac_data_spotiflow/00_spot_detection_spotiflow/3d_spots.tif"</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">image_path</span> <span class="o">=</span> <span class="s2">"content/bobiac_data_spotiflow_3d/00_spot_detection_spotiflow_3d/3d_spots.tif"</span>
 <span class="n">image_3d</span> <span class="o">=</span> <span class="n">tifffile</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">image_3d</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
