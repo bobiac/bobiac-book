@@ -64,7 +64,7 @@
 
 <div class="custom-button-row" style="text-align: center; margin: 20px 0;">
     <a
-        class="custom-button custom-download-button" href="javascript:void(0)" onclick="downloadScript()">
+        class="custom-button custom-download-button" href="https://github.com/bobiac/bobiac-book/releases/download/data-bobiac-2026/bobiac_data_all.zip">
         <i class="fas fa-download"></i> Download All Course Data
     </a>
 </div>
