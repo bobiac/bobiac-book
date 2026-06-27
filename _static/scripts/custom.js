@@ -34,18 +34,22 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Function to download all course data files
 async function downloadScript() {
-    // Hardcoded list of raw GitHub URLs for each zip file
     const zipFiles = [
-        '04_python_for_bioimage_analysis.zip',
-        '05_segmentation_cellpose.zip',
+        '00_spot_detection_spotiflow.zip',
+        '00_spot_detection_spotiflow_3d.zip',
+        '00_spot_detection_spotiflow_finetuning.zip',
+        '04_working_with_bioimages.zip',
+        '05_segmentation.zip',
+        '05_segmentation_cellpose_3d.zip',
         '05_segmentation_cellpose_training.zip',
         '05_segmentation_ilastik.zip',
-        '07_measurement_and_quantification.zip',
+        '07_background_correction.zip',
         '08_object_based_colocalization.zip',
-        '08_pixel_intensity_based_coloc.zip'
+        '08_pixel_intensity_based_coloc.zip',
+        'bobiac_exercises_oscillations.zip',
+        'student_work_group_new.zip'
     ];
-    // Change these to your repo info
-    const githubRawBase = 'https://raw.githubusercontent.com/fdrgsp/bobiac/main/_static/data/';
+    const releaseBase = 'https://github.com/bobiac/bobiac-book/releases/download/data-bobiac-2026/';
     if (zipFiles.length === 0) {
         alert('No zip files found in the GitHub data folder.');
         return;
@@ -80,7 +84,7 @@ async function downloadScript() {
     for (let i = 0; i < zipFiles.length; i++) {
         const filename = zipFiles[i];
         try {
-            const fileResponse = await fetch(githubRawBase + filename);
+            const fileResponse = await fetch(releaseBase + filename);
             if (!fileResponse.ok) throw new Error(`HTTP ${fileResponse.status}`);
             const fileBlob = await fileResponse.blob();
             dataFolder.file(filename, fileBlob);

@@ -2,7 +2,7 @@
 
 In this section, we will explore how to use **Ilastik** for **semantic segmentation** through [**pixel classification**](https://www.ilastik.org/documentation/pixelclassification/pixelclassification). This process involves training a machine learning model to classify pixels in an image based on user-defined labels.
 
-In this exercise, we will use the <a href="../../../_static/data/05_segmentation_ilastik.zip" download> <i class="fas fa-download"></i> Ilastik Pixel Classification Dataset</a> of nuclei images, and the goal is to train a classifier to distinguish between **nuclei** and **background**.
+In this exercise, we will use the <a href="https://github.com/bobiac/bobiac-book/releases/download/data-bobiac-2026/05_segmentation_ilastik.zip" download> <i class="fas fa-download"></i> Ilastik Pixel Classification Dataset</a> of nuclei images, and the goal is to train a classifier to distinguish between **nuclei** and **background**.
 
 <div class="alert alert-info">
     <strong>NOTE:</strong> Ilastik supports a variety of <a href="https://www.ilastik.org/documentation/basics/dataselection#formats" target="_blank">data formats</a>. For simplicity and ease of use during this course, we will use images saved as <strong>.tif</strong> files. However, Ilastik recommends using files saved as <strong>.h5</strong> for [optimal performance](https://www.ilastik.org/documentation/basics/performance_tips). If you wish to use your own dataset and need to convert your files to <strong>.h5</strong>, Ilastik provides tools such as a <a href="https://www.ilastik.org/documentation/fiji_export/plugin" target="_blank">Fiji plugin</a> or a <a href="https://github.com/ilastik/ilastik/tree/main/notebooks/h5convert" target="_blank">Jupyter Notebook</a> with instructions.
@@ -46,7 +46,7 @@ For each dataset, you can check (and change) how the data is stored by going to 
 
 ### 2. Load the Image Data
 
-Next, you will need to [load the image data](https://www.ilastik.org/documentation/basics/dataselection) you want to use to train the classifier. Select the ***Raw Data*** tab and either *Drag and drop* your image files into the ***Add New...*** field of the data table, or click on it to select your images. To create a robust classifier, you should load multiple images from the dataset. For this exercise, you can load 3 random images from the <a href="../../../_static/data/05_segmentation_ilastik.zip" download> <i class="fas fa-download"></i> pixel classification dataset</a>.
+Next, you will need to [load the image data](https://www.ilastik.org/documentation/basics/dataselection) you want to use to train the classifier. Select the ***Raw Data*** tab and either *Drag and drop* your image files into the ***Add New...*** field of the data table, or click on it to select your images. To create a robust classifier, you should load multiple images from the dataset. For this exercise, you can load 3 random images from the <a href="https://github.com/bobiac/bobiac-book/releases/download/data-bobiac-2026/05_segmentation_ilastik.zip" download> <i class="fas fa-download"></i> pixel classification dataset</a>.
 
 <div align="center"> <img src="../../../_static/images/ilastik/1b.png" alt="Ilastik" width="800"> </div>
 
