@@ -1,0 +1,79 @@
+Traceback (most recent call last):
+  File "/home/runner/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/home/runner/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/nbclient/client.py", line 1323, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/home/runner/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "/home/runner/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/runner/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+image_folder = Path("../../_static/images/quant/03_time_series/images/")
+image_paths = sorted(image_folder.glob("*.tif"))
+
+fig, axes = plt.subplots(2, 4, figsize=(16, 8))
+
+for ax, path in zip(axes.flat, image_paths[:8]):
+    image = tifffile.imread(path)
+    tp = path.stem.split("_t")[1].split("_")[0]
+    ax.imshow(image, cmap="gray")
+    ax.set_title(f"t={tp}", fontsize=20)
+    ax.axis("off")
+
+plt.tight_layout()
+plt.show()
+------------------
+
+
+[31m---------------------------------------------------------------------------[39m
+[31mTypeError[39m                                 Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[3][39m[32m, line 9[39m
+[32m      5[39m 
+[32m      6[39m [38;5;28;01mfor[39;00m ax, path [38;5;28;01min[39;00m zip(axes.flat, image_paths[:[32m8[39m]):
+[32m      7[39m     image = tifffile.imread(path)
+[32m      8[39m     tp = path.stem.split([33m"_t"[39m)[[32m1[39m].split([33m"_"[39m)[[32m0[39m]
+[32m----> [39m[32m9[39m     ax.imshow(image, cmap=[33m"gray"[39m)
+[32m     10[39m     ax.set_title(f"t={tp}", fontsize=[32m20[39m)
+[32m     11[39m     ax.axis([33m"off"[39m)
+[32m     12[39m 
+
+    [31m[... skipping hidden 1 frame][39m
+
+[36mFile [39m[32m~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/matplotlib/axes/_axes.py:6377[39m, in [36mAxes.imshow[39m[34m(self, X, cmap, norm, aspect, interpolation, alpha, vmin, vmax, colorizer, origin, extent, interpolation_stage, filternorm, filterrad, resample, url, **kwargs)[39m
+[32m   6374[39m [38;5;28;01mif[39;00m aspect [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m:
+[32m   6375[39m     [38;5;28mself[39m.set_aspect(aspect)
+[32m-> [39m[32m6377[39m [30;43mim[39;49m[30;43m.[39;49m[30;43mset_data[39;49m[30;43m([39;49m[30;43mX[39;49m[30;43m)[39;49m
+[32m   6378[39m im.set_alpha(alpha)
+[32m   6379[39m [38;5;28;01mif[39;00m im.get_clip_path() [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
+[32m   6380[39m     [38;5;66;03m# image does not already have clipping set, clip to Axes patch[39;00m
+
+[36mFile [39m[32m~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/matplotlib/image.py:709[39m, in [36m_ImageBase.set_data[39m[34m(self, A)[39m
+[32m    707[39m [38;5;28;01mif[39;00m [38;5;28misinstance[39m(A, PIL.Image.Image):
+[32m    708[39m     A = pil_to_array(A)  [38;5;66;03m# Needed e.g. to apply png palette.[39;00m
+[32m--> [39m[32m709[39m [38;5;28mself[39m._A = [30;43mself[39;49m[30;43m.[39;49m[30;43m_normalize_image_array[39;49m[30;43m([39;49m[30;43mA[39;49m[30;43m)[39;49m
+[32m    710[39m [38;5;28mself[39m._imcache = [38;5;28;01mNone[39;00m
+[32m    711[39m [38;5;28mself[39m.stale = [38;5;28;01mTrue[39;00m
+
+[36mFile [39m[32m~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/matplotlib/image.py:677[39m, in [36m_ImageBase._normalize_image_array[39m[34m(A)[39m
+[32m    675[39m     A = A.squeeze(-[32m1[39m)  [38;5;66;03m# If just (M, N, 1), assume scalar and apply colormap.[39;00m
+[32m    676[39m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m (A.ndim == [32m2[39m [38;5;129;01mor[39;00m A.ndim == [32m3[39m [38;5;129;01mand[39;00m A.shape[-[32m1[39m] [38;5;129;01min[39;00m [[32m3[39m, [32m4[39m]):
+[32m--> [39m[32m677[39m     [38;5;28;01mraise[39;00m [38;5;167;01mTypeError[39;00m([33mf[39m[33m"[39m[33mInvalid shape [39m[38;5;132;01m{[39;00mA.shape[38;5;132;01m}[39;00m[33m for image data[39m[33m"[39m)
+[32m    678[39m [38;5;28;01mif[39;00m A.ndim == [32m3[39m:
+[32m    679[39m     [38;5;66;03m# If the input data has values outside the valid range (after[39;00m
+[32m    680[39m     [38;5;66;03m# normalisation), we issue a warning and then clip X to the bounds[39;00m
+[32m    681[39m     [38;5;66;03m# - otherwise casting wraps extreme values, hiding outliers and[39;00m
+[32m    682[39m     [38;5;66;03m# making reliable interpretation impossible.[39;00m
+[32m    683[39m     high = [32m255[39m [38;5;28;01mif[39;00m np.issubdtype(A.dtype, np.integer) [38;5;28;01melse[39;00m [32m1[39m
+
+[31mTypeError[39m: Invalid shape (3, 1040, 1392) for image data
+

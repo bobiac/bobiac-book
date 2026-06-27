@@ -40,11 +40,11 @@ async function downloadPdfs() {
         '02_getting_started_with_python/getting_started_python_uv.pdf',
         '03_python_basics/python_cheat_sheet.pdf',
         '04_digital_images_intro/digital_images_intro.pdf',
-        '04_digital_images_intro/python_for_bioimage_analysis_beginners.pdf',
+        '04_digital_images_intro/working_with_bioimages_in_python_beginners.pdf',
         '05_segmentation/classic/classic_segmentation.pdf',
-        '07_measurement_and_quantification/introtoquantitativefluorescencemicroscopy.pdf',
-        '08_colocalization/bobiac_coloc_intro.pdf',
-        '08_colocalization/practical_object_based_coloc.pdf'
+        '08_measurement_and_quantification/introtoquantitativefluorescencemicroscopy.pdf',
+        '09_colocalization/bobiac_coloc_intro.pdf',
+        '09_colocalization/practical_object_based_coloc.pdf'
     ];
     
     // GitHub raw base URL for PDF files
@@ -119,15 +119,15 @@ async function downloadNotebooks() {
     const notebookFiles = [
         '03_python_basics/error_notebook.ipynb',
         '03_python_basics/python_basics_notebook.ipynb',
-        '04_digital_images_intro/python_for_bioimage_analysis.ipynb',
+        '04_digital_images_intro/working_with_bioimages_in_python.ipynb',
         '05_segmentation/classic/classic_segmentation.ipynb',
         '05_segmentation/deep_learning/cellpose_notebook.ipynb',
         '05_segmentation/machine_learning/from_ilastik_masks_to_labels.ipynb',
-        '07_measurement_and_quantification/background_correction_notebook.ipynb',
-        '07_measurement_and_quantification/measurement_and_quantification_notebook.ipynb',
-        '08_colocalization/object_based_colocalization.ipynb',
-        '08_colocalization/pixel_intensity_based_colocalization_manders.ipynb',
-        '08_colocalization/pixel_intensity_based_colocalization_pearsons.ipynb',
+        '08_measurement_and_quantification/background_correction_notebook.ipynb',
+        '08_measurement_and_quantification/measurement_and_quantification_notebook.ipynb',
+        '09_colocalization/object_based_colocalization.ipynb',
+        '09_colocalization/pixel_intensity_based_colocalization_manders.ipynb',
+        '09_colocalization/pixel_intensity_based_colocalization_pearsons.ipynb',
         '10_student_group/student_work_group.ipynb'
     ];
     
@@ -203,15 +203,15 @@ async function downloadNotebooksTeacher() {
     const notebookFiles = [
         '03_python_basics/error_notebook.ipynb',
         '03_python_basics/python_basics_notebook.ipynb',
-        '04_digital_images_intro/python_for_bioimage_analysis.ipynb',
+        '04_digital_images_intro/working_with_bioimages_in_python.ipynb',
         '05_segmentation/classic/classic_segmentation.ipynb',
         '05_segmentation/deep_learning/cellpose_notebook.ipynb',
         '05_segmentation/machine_learning/from_ilastik_masks_to_labels.ipynb',
-        '07_measurement_and_quantification/background_correction_notebook.ipynb',
-        '07_measurement_and_quantification/measurement_and_quantification_notebook.ipynb',
-        '08_colocalization/object_based_colocalization.ipynb',
-        '08_colocalization/pixel_intensity_based_colocalization_manders.ipynb',
-        '08_colocalization/pixel_intensity_based_colocalization_pearsons.ipynb',
+        '08_measurement_and_quantification/background_correction_notebook.ipynb',
+        '08_measurement_and_quantification/measurement_and_quantification_notebook.ipynb',
+        '09_colocalization/object_based_colocalization.ipynb',
+        '09_colocalization/pixel_intensity_based_colocalization_manders.ipynb',
+        '09_colocalization/pixel_intensity_based_colocalization_pearsons.ipynb',
         '10_student_group/[solution]_student_work_group.ipynb'
     ];
     
