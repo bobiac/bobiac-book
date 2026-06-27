@@ -45,9 +45,10 @@ dependencies = [
     "bffile",
     "rich",
     "shapely",
-    "coloc_tools @ git+https://github.com/fdrgsp/coloc-tools.git",
+    "bobiac_tools @ git+https://github.com/bobiac/bobiac-tools.git",
     "spotiflow",
     "napari[all]",
+    "seaborn",
 ]
 
 
