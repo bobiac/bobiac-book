@@ -19,7 +19,7 @@ parts:
 
   - file: content/04_digital_images_intro/digital_images_intro.md
     sections:
-      - file: content/04_digital_images_intro/python_for_bioimage_analysis
+      - file: content/04_digital_images_intro/working_with_bioimages_in_python
 
   - file: content/05_segmentation/segmentation_intro.md
     sections:
@@ -37,48 +37,45 @@ parts:
           - file: content/05_segmentation/deep_learning/cellpose_notebook
           - file: content/05_segmentation/deep_learning/cellpose_retraining
 
-  - file: content/00_spot_detection/spot_detection_intro.md
+  - file: content/06_spot_detection/spot_detection_intro.md
     sections:
-      - file: content/00_spot_detection/intro_to_spotiflow.md
-      - file: content/00_spot_detection/spotiflow_notebook
-      - file: content/00_spot_detection/spotiflow_retraining
+      - file: content/06_spot_detection/intro_to_spotiflow.md
+      - file: content/06_spot_detection/spotiflow_notebook
+      - file: content/06_spot_detection/spotiflow_retraining
 
-  - file: content/06_object_classification/object_classification.md
+  - file: content/07_object_classification/object_classification.md
     sections:
-    - file: content/06_object_classification/object_classification_with_ilastik.md
+    - file: content/07_object_classification/object_classification_with_ilastik.md
 
-  - file: content/07_measurement_and_quantification/measurement_and_quantification_intro.md
+  - file: content/08_measurement_and_quantification/measurement_and_quantification_intro.md
     sections:
-      - file: content/07_measurement_and_quantification/measurement_and_quantification_notebook
-      - file: content/07_measurement_and_quantification/background_correction_notebook
+      - file: content/08_measurement_and_quantification/A_measurement_pipeline
+      - file: content/08_measurement_and_quantification/B_nested_objects
+      - file: content/08_measurement_and_quantification/background_correction_notebook
 
-  - file: content/08_colocalization/colocalization_intro.md
+  - file: content/09_colocalization/colocalization_intro.md
     sections:
-      - file: content/08_colocalization/intensity_based/intensity_based_colocalization_intro.md
+      - file: content/09_colocalization/intensity_based/intensity_based_colocalization_intro.md
         sections:
-        - file: content/08_colocalization/intensity_based/pixel_intensity_based_colocalization_pearsons
-        - file: content/08_colocalization/intensity_based/pixel_intensity_based_colocalization_manders
-      - file: content/08_colocalization/object_based/object_based_colocalization_intro.md
+        - file: content/09_colocalization/intensity_based/pixel_intensity_based_colocalization_pearsons
+        - file: content/09_colocalization/intensity_based/pixel_intensity_based_colocalization_manders
+      - file: content/09_colocalization/spatial_statistics/spatial_stats_intro.md
         sections:
-          - file: content/08_colocalization/object_based/object_based_colocalization
-      - file: content/08_colocalization/spatial_statistics/spatial_stats_intro.md
-        sections:
-          - file: content/08_colocalization/spatial_statistics/notebook_1
-          - file: content/08_colocalization/spatial_statistics/notebook_2
-          - file: content/08_colocalization/spatial_statistics/notebook_3
-          - file: content/08_colocalization/spatial_statistics/spatial_statistics
+          - file: content/09_colocalization/spatial_statistics/notebook_1
+          - file: content/09_colocalization/spatial_statistics/notebook_2
+          - file: content/09_colocalization/spatial_statistics/notebook_3
 
 
 
 # BoBiAC EXERCISES
 - caption: BoBiAC Exercises
   chapters:
-  - file: content/09_bobiac_exercises/bobiac_exercises.md
+  - file: content/10_bobiac_exercises/bobiac_exercises.md
     sections:
-      - file: content/09_bobiac_exercises/uv_and_juv.md
-      - file: content/09_bobiac_exercises/working_with_bioimages.md
-      - file: content/09_bobiac_exercises/classic_segmentation.md
-      - file: content/09_bobiac_exercises/group_work_1.md
+      - file: content/10_bobiac_exercises/uv_and_juv.md
+      - file: content/10_bobiac_exercises/working_with_bioimages.md
+      - file: content/10_bobiac_exercises/classic_segmentation.md
+      - file: content/10_bobiac_exercises/group_work_1.md
 
 # COURSE DATA
 - caption: Course Materials Downloads
@@ -114,3 +111,5 @@ parts:
     title: Eva de la Serna, PhD
   - url: https://orcid.org/0000-0001-6194-9568
     title: Max Brambach, PhD
+  - url: https://www.linkedin.com/in/amelie-andreas-542b93204
+    title: Amelie Andreas

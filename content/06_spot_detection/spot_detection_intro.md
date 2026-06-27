@@ -1,4 +1,4 @@
-# 00 - <i class="fa-solid fa-crosshairs"></i> Spot Detection
+# 06 - <i class="fa-solid fa-crosshairs"></i> Spot Detection
 
 Many image analysis tasks require detecting small, **spot-like structures** in an image such as fluorescent beads, foci, or any other punctate signal like in fluorescence in situ hybridization (FISH).
 

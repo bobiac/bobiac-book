@@ -1,4 +1,4 @@
-# 07 - <i class="fa-solid fa-chart-simple"></i> Measurements & Quantification
+# 08 - <i class="fa-solid fa-chart-simple"></i> Measurements & Quantification
 
 ## Lesson Overview
 
@@ -9,11 +9,11 @@ In this lesson, we will begin by introducing the limitations of optical microsco
 ### Slides
 
 <a
-    class="custom-button custom-download-button" href="../../pdfs/07_measurement_and_quantification/introtoquantitativefluorescencemicroscopy.pdf" download> <i class="fas fa-download"></i> Download the Slides
+    class="custom-button custom-download-button" href="../../pdfs/08_measurement_and_quantification/introtoquantitativefluorescencemicroscopy.pdf" download> <i class="fas fa-download"></i> Download the Slides
 </a>
 
 <div align="center">
-  <iframe class="custom-pdf-frame-169" src="../../pdfs/07_measurement_and_quantification/introtoquantitativefluorescencemicroscopy.pdf"> </iframe>
+  <iframe class="custom-pdf-frame-169" src="../../pdfs/08_measurement_and_quantification/introtoquantitativefluorescencemicroscopy.pdf"> </iframe>
 </div>
 
 ## Introduction to Measurements and Quantification
