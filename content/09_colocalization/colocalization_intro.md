@@ -1,4 +1,4 @@
-# 08 - <i class="fa-solid fa-location-crosshairs"></i> Colocalization
+# 09 - <i class="fa-solid fa-location-crosshairs"></i> Colocalization
 
 ## Lesson Overview
 
@@ -7,11 +7,11 @@ In this lesson, we will explore the concept of colocalization in microscopy imag
 ### Slides
 
 <a
-    class="custom-button custom-download-button" href="../../pdfs/08_colocalization/bobiac_coloc_intro.pdf" download> <i class="fas fa-download"></i> Download the Slides
+    class="custom-button custom-download-button" href="../../pdfs/09_colocalization/bobiac_coloc_intro.pdf" download> <i class="fas fa-download"></i> Download the Slides
 </a>
 
 <div align="center">
-  <iframe class="custom-pdf-frame-169" src="../../pdfs/08_colocalization/bobiac_coloc_intro.pdf"> </iframe>
+  <iframe class="custom-pdf-frame-169" src="../../pdfs/09_colocalization/bobiac_coloc_intro.pdf"> </iframe>
 </div>
 
 ## Pixel intensity-based colocalization
@@ -40,9 +40,9 @@ Although points are the simplest type of object, many of the learned concepts ar
 ### Slides
 
 <a
-    class="custom-button custom-download-button" href="../../pdfs/08_colocalization/practical_object_based_coloc.pdf" download> <i class="fas fa-download"></i> Download the Slides
+    class="custom-button custom-download-button" href="../../pdfs/09_colocalization/practical_object_based_coloc.pdf" download> <i class="fas fa-download"></i> Download the Slides
 </a>
 
 <div align="center">
-  <iframe class="custom-pdf-frame-169" src="../../pdfs/08_colocalization/practical_object_based_coloc.pdf"> </iframe>
+  <iframe class="custom-pdf-frame-169" src="../../pdfs/09_colocalization/practical_object_based_coloc.pdf"> </iframe>
 </div>

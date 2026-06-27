@@ -1,4 +1,4 @@
-# 06 - <i class="fa-solid fa-shapes"></i> Object Classification
+# 07 - <i class="fa-solid fa-shapes"></i> Object Classification
 
 **Object Classification** is a technique in image analysis to **identify and categorize objects within an image based on their features**, such as shape, color, texture, and size. In this context, an **object** can be defined as a **set of pixels that belongs to a specific area within the image**, such as a cell, tissue region, or any other structure of interest.
 

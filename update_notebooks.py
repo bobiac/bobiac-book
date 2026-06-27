@@ -31,7 +31,7 @@ map_03_python_basics_book_to_notebook = {
     "#functions": "#11.-Functions",
 }
 
-map_04_python_for_bioimage_analysis_book_to_notebook = {
+map_04_working_with_bioimages_in_python_book_to_notebook = {
     "#reading-an-image": "#0.-Reading-an-Image",
     "#introduction-to-numpy-arrays": "#1.-Introduction-to-NumPy-Arrays",
     "#multidimensional-images": "#2.-Multidimensional-Images",
