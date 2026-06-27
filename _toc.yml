@@ -54,9 +54,20 @@ parts:
 
   - file: content/08_colocalization/colocalization_intro.md
     sections:
-      - file: content/08_colocalization/pixel_intensity_based_colocalization_pearsons
-      - file: content/08_colocalization/pixel_intensity_based_colocalization_manders
-      - file: content/08_colocalization/object_based_colocalization
+      - file: content/08_colocalization/intensity_based/intensity_based_colocalization_intro.md
+        sections:
+        - file: content/08_colocalization/intensity_based/pixel_intensity_based_colocalization_pearsons
+        - file: content/08_colocalization/intensity_based/pixel_intensity_based_colocalization_manders
+      - file: content/08_colocalization/object_based/object_based_colocalization_intro.md
+        sections:
+          - file: content/08_colocalization/object_based/object_based_colocalization
+      - file: content/08_colocalization/spatial_statistics/spatial_stats_intro.md
+        sections:
+          - file: content/08_colocalization/spatial_statistics/notebook_1
+          - file: content/08_colocalization/spatial_statistics/notebook_2
+          - file: content/08_colocalization/spatial_statistics/notebook_3
+          - file: content/08_colocalization/spatial_statistics/spatial_statistics
+
 
 
 # BoBiAC EXERCISES
