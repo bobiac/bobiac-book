@@ -103,7 +103,7 @@ exclude_patterns = [
     # "content/05_segmentation/classic/**",
     # "content/05_segmentation/deep_learning/**",
     # "content/05_segmentation/machine_learning/**",
-    # "content/06_object_classification/**",
-    # "content/07_measurement_and_quantification/**",
-    # "content/08_colocalization/**",
+    # "content/07_object_classification/**",
+    # "content/08_measurement_and_quantification/**",
+    # "content/09_colocalization/**",
 ]

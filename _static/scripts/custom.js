@@ -32,79 +32,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-// Function to download all course data files
-async function downloadScript() {
-    // Hardcoded list of raw GitHub URLs for each zip file
-    const zipFiles = [
-        '04_python_for_bioimage_analysis.zip',
-        '05_segmentation_cellpose.zip',
-        '05_segmentation_cellpose_training.zip',
-        '05_segmentation_ilastik.zip',
-        '07_measurement_and_quantification.zip',
-        '08_object_based_colocalization.zip',
-        '08_pixel_intensity_based_coloc.zip'
-    ];
-    // Change these to your repo info
-    const githubRawBase = 'https://raw.githubusercontent.com/fdrgsp/bobiac/main/_static/data/';
-    if (zipFiles.length === 0) {
-        alert('No zip files found in the GitHub data folder.');
-        return;
-    }
-    // Show loading indicator
-    const indicator = document.createElement('div');
-    indicator.id = 'download-indicator';
-    indicator.style.position = 'fixed';
-    indicator.style.top = '0';
-    indicator.style.left = '0';
-    indicator.style.width = '100vw';
-    indicator.style.height = '100vh';
-    indicator.style.background = 'rgba(0,0,0,0.4)';
-    indicator.style.display = 'flex';
-    indicator.style.alignItems = 'center';
-    indicator.style.justifyContent = 'center';
-    indicator.style.zIndex = '9999';
-    indicator.innerHTML = '<div style="background: #fff; padding: 30px 40px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.2); font-size: 1.2em; text-align: center;">Downloading course data...<br><span id="download-progress"></span></div>';
-    document.body.appendChild(indicator);
-    
-    // Load JSZip library
-    let JSZip;
-    if (window.JSZip) {
-        JSZip = window.JSZip;
-    } else {
-        const module = await import('https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js');
-        JSZip = module.default || module.JSZip || window.JSZip;
-    }
-    const zip = new JSZip();
-    const dataFolder = zip.folder("bobiac_data");
-    // Fetch and add each file to the zip from GitHub raw URLs
-    for (let i = 0; i < zipFiles.length; i++) {
-        const filename = zipFiles[i];
-        try {
-            const fileResponse = await fetch(githubRawBase + filename);
-            if (!fileResponse.ok) throw new Error(`HTTP ${fileResponse.status}`);
-            const fileBlob = await fileResponse.blob();
-            dataFolder.file(filename, fileBlob);
-            // Update progress
-            document.getElementById('download-progress').textContent = `(${i+1}/${zipFiles.length})`;
-        } catch (error) {
-            console.error(`Failed to fetch ${filename} from GitHub:`, error);
-        }
-    }
-    // Generate and download the combined zip
-    document.getElementById('download-progress').textContent = 'Zipping files...';
-    const zipBlob = await zip.generateAsync({type: "blob"});
-    const link = document.createElement('a');
-    link.href = window.URL.createObjectURL(zipBlob);
-    link.download = 'bobiac_data.zip';
-    link.style.display = 'none';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    window.URL.revokeObjectURL(link.href);
-    // Remove indicator
-    document.body.removeChild(indicator);
-}
-
 // Function to download all PDF files
 async function downloadPdfs() {
     // Hardcoded list of PDF files in the pdfs directory
@@ -113,11 +40,11 @@ async function downloadPdfs() {
         '02_getting_started_with_python/getting_started_python_uv.pdf',
         '03_python_basics/python_cheat_sheet.pdf',
         '04_digital_images_intro/digital_images_intro.pdf',
-        '04_digital_images_intro/python_for_bioimage_analysis_beginners.pdf',
+        '04_digital_images_intro/working_with_bioimages_in_python_beginners.pdf',
         '05_segmentation/classic/classic_segmentation.pdf',
-        '07_measurement_and_quantification/introtoquantitativefluorescencemicroscopy.pdf',
-        '08_colocalization/bobiac_coloc_intro.pdf',
-        '08_colocalization/practical_object_based_coloc.pdf'
+        '08_measurement_and_quantification/introtoquantitativefluorescencemicroscopy.pdf',
+        '09_colocalization/bobiac_coloc_intro.pdf',
+        '09_colocalization/practical_object_based_coloc.pdf'
     ];
     
     // GitHub raw base URL for PDF files
@@ -192,15 +119,15 @@ async function downloadNotebooks() {
     const notebookFiles = [
         '03_python_basics/error_notebook.ipynb',
         '03_python_basics/python_basics_notebook.ipynb',
-        '04_digital_images_intro/python_for_bioimage_analysis.ipynb',
+        '04_digital_images_intro/working_with_bioimages_in_python.ipynb',
         '05_segmentation/classic/classic_segmentation.ipynb',
         '05_segmentation/deep_learning/cellpose_notebook.ipynb',
         '05_segmentation/machine_learning/from_ilastik_masks_to_labels.ipynb',
-        '07_measurement_and_quantification/background_correction_notebook.ipynb',
-        '07_measurement_and_quantification/measurement_and_quantification_notebook.ipynb',
-        '08_colocalization/object_based_colocalization.ipynb',
-        '08_colocalization/pixel_intensity_based_colocalization_manders.ipynb',
-        '08_colocalization/pixel_intensity_based_colocalization_pearsons.ipynb',
+        '08_measurement_and_quantification/background_correction_notebook.ipynb',
+        '08_measurement_and_quantification/measurement_and_quantification_notebook.ipynb',
+        '09_colocalization/object_based_colocalization.ipynb',
+        '09_colocalization/pixel_intensity_based_colocalization_manders.ipynb',
+        '09_colocalization/pixel_intensity_based_colocalization_pearsons.ipynb',
         '10_student_group/student_work_group.ipynb'
     ];
     
@@ -276,15 +203,15 @@ async function downloadNotebooksTeacher() {
     const notebookFiles = [
         '03_python_basics/error_notebook.ipynb',
         '03_python_basics/python_basics_notebook.ipynb',
-        '04_digital_images_intro/python_for_bioimage_analysis.ipynb',
+        '04_digital_images_intro/working_with_bioimages_in_python.ipynb',
         '05_segmentation/classic/classic_segmentation.ipynb',
         '05_segmentation/deep_learning/cellpose_notebook.ipynb',
         '05_segmentation/machine_learning/from_ilastik_masks_to_labels.ipynb',
-        '07_measurement_and_quantification/background_correction_notebook.ipynb',
-        '07_measurement_and_quantification/measurement_and_quantification_notebook.ipynb',
-        '08_colocalization/object_based_colocalization.ipynb',
-        '08_colocalization/pixel_intensity_based_colocalization_manders.ipynb',
-        '08_colocalization/pixel_intensity_based_colocalization_pearsons.ipynb',
+        '08_measurement_and_quantification/background_correction_notebook.ipynb',
+        '08_measurement_and_quantification/measurement_and_quantification_notebook.ipynb',
+        '09_colocalization/object_based_colocalization.ipynb',
+        '09_colocalization/pixel_intensity_based_colocalization_manders.ipynb',
+        '09_colocalization/pixel_intensity_based_colocalization_pearsons.ipynb',
         '10_student_group/[solution]_student_work_group.ipynb'
     ];
     
