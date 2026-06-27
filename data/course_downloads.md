@@ -4,7 +4,7 @@
 
 <strong> 00 - <i class="fa-solid fa-crosshairs"></i> Spot Detection</strong>
 
-- Spotiflow Dataset: <a href="https://github.com/bobiac/bobiac-book/releases/download/data-bobiac-2026/00_spot_detection_spotiflow.zip" download> <i class="fas fa-download"></i> Spot Detection Dataset (generated from <a href="https://www.cellimagelibrary.org/images/CCDB_6843" target="_blank">CCDB_6843</a>)
+- Spotiflow Dataset: <a href="https://github.com/bobiac/bobiac-book/releases/download/data-bobiac-2026/00_spot_detection_spotiflow.zip" download> <i class="fas fa-download"></i> Spot Detection Dataset </a> (generated from <a href="https://www.cellimagelibrary.org/images/CCDB_6843" target="_blank">CCDB_6843</a>)
 - Spotiflow Finetuning Dataset: <a href="https://github.com/bobiac/bobiac-book/releases/download/data-bobiac-2026/00_spot_detection_spotiflow_finetuning.zip" download> <i class="fas fa-download"></i> Spotiflow Finetuning Dataset</a> (from Spotiflow example notebook, MERFISH dataset from <a href="https://doi.org/10.1038/s41586-021-03705-x" target="_blank">Zhang et al, 2021</a>)
 
 <strong> 04 - <i class="fas fa-table-cells"></i> Introduction to Digital Images</strong>
