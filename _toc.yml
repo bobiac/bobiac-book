@@ -68,14 +68,13 @@ parts:
           - file: content/09_colocalization/spatial_statistics/notebook_2
           - file: content/09_colocalization/spatial_statistics/notebook_3
 
-
-
 # BoBiAC EXERCISES
 - caption: BoBiAC Exercises
   chapters:
   - file: content/10_bobiac_exercises/bobiac_exercises.md
     sections:
-      - file: content/10_bobiac_exercises/uv_and_juv.md
+      - file: content/10_bobiac_exercises/uv.md
+      - file: content/10_bobiac_exercises/juv.md
       - file: content/10_bobiac_exercises/working_with_bioimages.md
       - file: content/10_bobiac_exercises/classic_segmentation.md
       - file: content/10_bobiac_exercises/group_work_1.md

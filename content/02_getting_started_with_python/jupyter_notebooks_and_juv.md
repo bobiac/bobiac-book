@@ -1,1 +1,1 @@
-# Jupyter Notebooks and `juv`
+# Jupyter Notebooks and juv

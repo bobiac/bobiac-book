@@ -8,5 +8,5 @@ We will also be writing and running our code in `Jupyter Notebooks`åå, an inte
 
 In the next two sections, we will:
 
-1. [**Python and `uv`**](python_and_uv.md): learn what `Python` is, how it works, and how to install and manage it using `uv`.
-2. [**Jupyter Notebooks and `juv`**](jupyter_notebooks_and_juv.md): learn what `Jupyter Notebooks` are and how to run and create them using `juv` (a `uv` tool).
+1. [**Python and uv**](python_and_uv.md): learn what `Python` is, how it works, and how to install and manage it using `uv`.
+2. [**Jupyter Notebooks and juv**](jupyter_notebooks_and_juv.md): learn what `Jupyter Notebooks` are and how to run and create them using `juv` (a `uv` tool).

@@ -4,9 +4,9 @@
 
 ## Exercise 1
 
-**Background:** When imaging, it is important to be aware of your detector's bit depth, as it specifies the range of possible intensity values in your acquired image. As you learned, the range is defined as 0 to 2^bit depth. Image **saturation** occurs when intensity values reach the maximum value. In practice, it is good to avoid saturation so that you can distinguish relative intensity differences. 
+**Background:** When imaging, it is important to be aware of your detector's bit depth, as it specifies the range of possible intensity values in your acquired image. As you learned, the range is defined as 0 to 2^bit depth. Image **saturation** occurs when intensity values reach the maximum value. In practice, it is good to avoid saturation so that you can distinguish relative intensity differences.
 
-**Problem:** You suspect that your colleague may have used settings that led to saturation. Write Python code to determine whether there are any saturated pixels in either channel across all z-slices. 
+**Problem:** You suspect that your colleague may have used settings that led to saturation. Write Python code to determine whether there are any saturated pixels in either channel across all z-slices.
 
 :::{dropdown} Solution
 
@@ -71,7 +71,7 @@ plt.show()
 
 **Background:** Your PI is constantly asking to see the 2 maximum intensity projections of each channel side by side for all of the images you collect, so you suspect that this request will continue to come.  
 
-**Problem:** Rewrite your code above as a function that takes in two images, plots them side by side, and then saves the resulting plot. Use this function to plot the 2 maximum intensity projections of each channel side by side. 
+**Problem:** Rewrite your code above as a function that takes in two images, plots them side by side, and then saves the resulting plot. Use this function to plot the 2 maximum intensity projections of each channel side by side.
 
 :::{dropdown} Solution
 

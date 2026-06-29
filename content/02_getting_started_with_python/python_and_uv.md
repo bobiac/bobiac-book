@@ -1,4 +1,4 @@
-# `Python` and `uv`
+# Python and uv
 
 ## 1. What is Python?
 
