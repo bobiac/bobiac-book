@@ -107,3 +107,7 @@ exclude_patterns = [
     # "content/08_measurement_and_quantification/**",
     # "content/09_colocalization/**",
 ]
+
+myst_substitutions = {
+    "pizza": '<img src="/_static/images/margarita_pizza.png" width="20" style="vertical-align: middle;">',
+}

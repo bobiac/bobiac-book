@@ -1,10 +1,4 @@
-# 02 - <i class="fab fa-python"></i> Getting Started with `Python` and `uv`
-
-Before we start writing code, let's take a few minutes to understand what `Python` actually is and how we will use it in this course.
-
-This is not an extensive introduction to Python, but rather a brief overview of minimal concepts and ideas that will help you get started.
-
-TODO: ADD TABLE WITH TOC
+# `Python` and `uv`
 
 ## 1. What is Python?
 
@@ -14,7 +8,7 @@ When people say `Python`, they can mean two things:
 2. **The Interpreter**: the actual program (also called `Python`) installed on your computer that is able to **read** the instructions and **execute** them.
 
 :::{note}
-🍕 **Analogy**: Think of the **Programming Language rules** and **syntax** as the **grammar** and **vocabulary** we use to write **a pizza recipe**, and the **Interpreter** as the **cook** who **reads**, **understands**, and **executes** the instructions to make a wonderful pizza.
+{{pizza}} **Analogy**: Think of the **Programming Language rules** and **syntax** as the **grammar** and **vocabulary** we use to write **a pizza recipe**, and the **Interpreter** as the **cook** who **reads**, **understands**, and **executes** the instructions to make a wonderful pizza.
 :::
 
 ## 2. Python Packages
@@ -29,15 +23,15 @@ But the **real power** of `Python` comes from the **hundreds of thousands** of a
 
 For example, in this course we will use packages to:
 
-- **read** and **manipulate** images
-- perform **numerical calculations** efficiently
-- use **deep learning** models
-- create **plots** and **visualizations**
+- **read** (e.g. `tifffile`, `bffile`)
+- **manipulate** images and perform **numerical calculations** efficiently (e.g. `numpy`, `scikit-image`)
+- use **deep learning** models (e.g. `cellpose`, `spotiflow`)
+- create **plots** and **visualizations** (e.g. `matplotlib`, `ndv`)
 
 Each of these would take an enormous amount of work to build ourselves, but thanks to packages we can simply **reuse** code that experts have already written, tested, and shared.
 
 :::{note}
-🍕 **Analogy**: To put the **mozzarella** (the **package**) on our pizza, we don't have to buy a cow, milk it, and make the cheese ourselves. We can simply get **mozzarella that someone else has already made beautifully** for us. Sure, we *could* try to make it from scratch (i.e. write the code ourselves), but it can be **quite hard** and time-consuming. **Packages** are exactly that: ready-made ingredients we can reuse instead of preparing everything from scratch.
+{{pizza}} **Analogy**: To put the **mozzarella** (the **package**) on our pizza, we don't have to buy a cow, milk it, and make the cheese ourselves. We can simply get **mozzarella that someone else has already made beautifully** for us. Sure, we *could* try to make it from scratch (i.e. write the code ourselves), but it can be **quite hard** and time-consuming. **Packages** are exactly that: ready-made ingredients we can reuse instead of preparing everything from scratch.
 :::
 
 Most of these installable packages are published on a central repository called the [Python Package Index (PyPI)](https://pypi.org/), from which they can be downloaded and installed.
@@ -60,7 +54,7 @@ To avoid this, we use **virtual environments**.
 A **virtual environment** is an **isolated workspace** that contains its **own packages** (and, as we will see, its own `Python`), completely **separate** from everything else on your computer. Each project gets its **own environment**, so the packages of one project can **never interfere** with the packages of another.
 
 :::{note}
-🍕 **Analogy**: Think of a **virtual environment** as a **separate, dedicated kitchen** for each recipe. Whatever ingredients and tools you bring into one kitchen stay there and don't get mixed up with the ingredients of another recipe in another kitchen.
+{{pizza}} **Analogy**: Think of a **virtual environment** as a **separate, dedicated kitchen** for each recipe. Whatever ingredients and tools you bring into one kitchen stay there and don't get mixed up with the ingredients of another recipe in another kitchen.
 :::
 
 A key idea is that virtual environments are **disposable**. An environment is **not precious**: if something goes wrong, or you no longer need a project, you can simply **delete the environment and recreate it from scratch**, without affecting `Python` itself or any of your other projects. This makes experimenting **safe**, you can always throw an environment away and start fresh.
@@ -74,7 +68,7 @@ Just like packages, `Python` evolves over time and comes in **different versions
 For this reason, it is useful to be able to **install a specific version of `Python` inside each environment**. This way, Project A can use an older `Python` while Project B uses a newer one, again **without any conflict**.
 
 :::{note}
-🍕 **Analogy**: If a package is a special ingredient, the **`Python` version** is like the **type of oven** in the kitchen. Some recipes only turn out right in a particular oven, so each kitchen (environment) can have exactly the oven (`Python` version) that recipe needs.
+{{pizza}} **Analogy**: If a package is a special ingredient, the **`Python` version** is like the **type of oven** in the kitchen. Some recipes only turn out right in a particular oven, so each kitchen (environment) can have exactly the oven (`Python` version) that recipe needs.
 :::
 
 ## 5. Putting It All Together with `uv`
@@ -94,7 +88,7 @@ How do we handle **all of this** easily? With a single tool called [`uv`](https:
 - **download and install any version of `Python`** you need.
 
 :::{note}
-🍕 **Analogy**: If `Python` is the **cook** and packages are the **ingredients**, then `uv` is the **kitchen manager**: it sets up a dedicated kitchen for each recipe (the **environment**), installs the right oven (the **`Python` version**), and makes sure all the **ingredients** (the **packages**) are stocked and ready.
+{{pizza}} **Analogy**: If `Python` is the **cook** and packages are the **ingredients**, then `uv` is the **kitchen manager**: it sets up a dedicated kitchen for each recipe (the **environment**), installs the right oven (the **`Python` version**), and makes sure all the **ingredients** (the **packages**) are stocked and ready.
 :::
 
 :::{note}
