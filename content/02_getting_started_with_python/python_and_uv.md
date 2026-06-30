@@ -83,6 +83,12 @@ How do we handle **all of this** easily? With a single tool called [`uv`](https:
 - **create and manage virtual environments** automatically,
 - **download and install any version of `Python`** you need.
 
+:::{tip}
+To learn how to use `uv` to manage your `Python` environments and packages, check out the [Getting Started with uv](getting_started_with_uv.md) section.
+
+Instead, to learn how to use the code proivided in this course, you can skip to the [Jupyter Notebooks and Juv](jupyter_notebooks_and_juv.md) section.
+:::
+
 :::{note}
 🔧 **Other tools**: `uv` is not the only tool that can manage packages, virtual environments, and `Python` versions together. Other popular options include [conda](https://docs.conda.io/) and [pixi](https://pixi.sh/), which are also common in scientific computing. In this course we will use `uv`, but the concepts you learn here apply to these other tools as well.
 :::

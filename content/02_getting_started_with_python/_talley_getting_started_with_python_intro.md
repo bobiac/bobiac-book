@@ -1,1 +1,0 @@
-# 02 - <i class="fab fa-python"></i> Getting Started with `Python` and `uv`

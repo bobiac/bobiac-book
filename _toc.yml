@@ -13,6 +13,8 @@ parts:
   - file: content/02_getting_started_with_python/getting_started_with_python_intro.md
     sections:
       - file: content/02_getting_started_with_python/python_and_uv.md
+        sections:
+          - file: content/02_getting_started_with_python/getting_started_with_uv.md
       - file: content/02_getting_started_with_python/jupyter_notebooks_and_juv.md
   
   - file: content/03_python_basics/python_basics.md
