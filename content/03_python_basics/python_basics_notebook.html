@@ -2680,9 +2680,29 @@ Once every item in the list has been used, the <code class="docutils literal not
 <section id="a-note-on-syntax">
 <h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">A Note on Syntax<a class="headerlink" href="#a-note-on-syntax" title="Link to this heading">#</a></h2>
 <p>At this point, you may be curious about why certain functions we use in Python are used by writing <code class="docutils literal notranslate"><span class="pre">function()</span></code>, while others we write as <code class="docutils literal notranslate"><span class="pre">something.function()</span></code>. For example, we learned that we can get the length of a <code class="docutils literal notranslate"><span class="pre">list</span></code> using the <code class="docutils literal notranslate"><span class="pre">len(list)</span></code> function, but to add an item to the end of a list with <code class="docutils literal notranslate"><span class="pre">append()</span></code> we need to write it as <code class="docutils literal notranslate"><span class="pre">list.append(item)</span></code>.</p>
-<p>The reason for this difference has to do with another overarching structure in Python that we will not dwell on during the course. This structure is called a <code class="docutils literal notranslate"><span class="pre">class</span></code>. A <code class="docutils literal notranslate"><span class="pre">class</span></code> is a blueprint for creating your own custom data structure, where you get to decide what information it stores and what actions it can perform.</p>
-<p>You can think of a <code class="docutils literal notranslate"><span class="pre">class</span></code> as an animal species definition, describing traits and behaviors that every member of that animal species has. An individual animal built from that definition shares all of those traits and behaviors, but holds its own specific information, such as its own name and age.</p>
-<p>This distinction explains the syntax difference you noticed. A function like <code class="docutils literal notranslate"><span class="pre">len()</span></code> is a standalone tool that you hand something to: <code class="docutils literal notranslate"><span class="pre">len(list)</span></code>. However, <code class="docutils literal notranslate"><span class="pre">append()</span></code> belongs to the list itself, as it’s a built-in behavior of every <code class="docutils literal notranslate"><span class="pre">list</span></code>. So you call it directly on a <code class="docutils literal notranslate"><span class="pre">list</span></code>, using dot notation: <code class="docutils literal notranslate"><span class="pre">list.append(item)</span></code>.</p>
+<p>The reason for this difference has to do with another overarching structure in Python that we will not dwell on during the course. This structure is called a <code class="docutils literal notranslate"><span class="pre">class</span></code>. A <code class="docutils literal notranslate"><span class="pre">class</span></code> is a blueprint for creating your own custom data structure, where you get to decide what information it stores and what actions it can perform. Functions within a class are called methods.</p>
+<p>We learned that standalone functions are defined as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="o">...</span><span class="p">):</span>
+     <span class="o">...</span>
+</pre></div>
+</div>
+<p>Methods are functions defined within a class:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Name</span><span class="p">:</span>
+     <span class="o">...</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">method</span><span class="p">(</span><span class="o">...</span><span class="p">):</span>
+        <span class="o">...</span>
+</pre></div>
+</div>
+<p>This definition distinction explains the syntax difference you noticed. A function like <code class="docutils literal notranslate"><span class="pre">len()</span></code> is defined as a standalone function, like the function <code class="docutils literal notranslate"><span class="pre">function()</span></code> above. To use it, we simply write the name of the function and provide inputs if necessary:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">function</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>A method like <code class="docutils literal notranslate"><span class="pre">append()</span></code> is defined within the <code class="docutils literal notranslate"><span class="pre">class</span></code> <code class="docutils literal notranslate"><span class="pre">list</span></code>, just as the method <code class="docutils literal notranslate"><span class="pre">method()</span></code> within the <code class="docutils literal notranslate"><span class="pre">class</span></code> <code class="docutils literal notranslate"><span class="pre">Name</span></code> above. To use the method <code class="docutils literal notranslate"><span class="pre">method()</span></code>, we need to first specify a variable that follows the blueprint of the class <code class="docutils literal notranslate"><span class="pre">Name</span></code>. We can apply the method <code class="docutils literal notranslate"><span class="pre">method()</span></code> to it using the dot notation:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">variable</span> <span class="o">=</span> <span class="n">Name</span><span class="p">()</span>
+<span class="n">variable</span><span class="o">.</span><span class="n">method</span><span class="p">()</span>
+</pre></div>
+</div>
 <p>In summary, when you see the syntax <code class="docutils literal notranslate"><span class="pre">something.function()</span></code> in Python, that means the function is a behavior that belongs to something, rather than a generic tool you want to apply to it.</p>
 </section>
 <hr class="docutils"/>
