@@ -47,6 +47,7 @@ html_theme_options = {
     "use_repository_button": True,
     "use_edit_page_button": False,
     "use_issues_button": False,
+    "show_toc_level": 1,
     "logo": {
         # "text": "BoBiAC Book",
         "image_light": "_static/logo/bobiac-landing-black.png",

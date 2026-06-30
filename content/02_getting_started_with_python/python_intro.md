@@ -1,4 +1,4 @@
-# Python and uv
+# Introduction to Python
 
 ## 1. What is Python?
 
@@ -67,7 +67,7 @@ Just like packages, `Python` evolves over time and comes in **different versions
 
 For this reason, it is useful to be able to **install a specific version of `Python` inside each environment**. This way, Project A can use an older `Python` while Project B uses a newer one, again **without any conflict**.
 
-## 5. Putting It All Together with uv
+## 5. Putting It All Together with `uv`
 
 So far we have introduced three things we need to manage:
 
@@ -83,12 +83,6 @@ How do we handle **all of this** easily? With a single tool called [`uv`](https:
 - **create and manage virtual environments** automatically,
 - **download and install any version of `Python`** you need.
 
-:::{tip}
-To learn how to use `uv` to manage your `Python` environments and packages, check out the [Getting Started with uv](getting_started_with_uv.md) section.
-
-Instead, to learn how to use the code proivided in this course, you can skip to the [Jupyter Notebooks and Juv](jupyter_notebooks_and_juv.md) section.
-:::
-
 :::{note}
 🔧 **Other tools**: `uv` is not the only tool that can manage packages, virtual environments, and `Python` versions together. Other popular options include [conda](https://docs.conda.io/) and [pixi](https://pixi.sh/), which are also common in scientific computing. In this course we will use `uv`, but the concepts you learn here apply to these other tools as well.
 :::
@@ -96,3 +90,9 @@ Instead, to learn how to use the code proivided in this course, you can skip to 
 :::{note}
 💡 **NOTE**: In principle, you *can* download `Python` directly from the [official Python website](https://www.python.org/downloads/), and it will be installed **system-wide** on your computer. However, this is **not ideal**: installing packages directly into that system `Python` can quickly become messy and lead to the conflicts we described above. By letting `uv` manage the `Python` versions, the environments, and the packages for us, we keep everything **clean**, **reproducible**, and **easy to throw away** and recreate.
 :::
+
+## 6. What's Next?
+
+To learn how to use `uv` to manage your `Python` environments and packages, check out the [Getting Started with uv](getting_started_with_uv.md) section.
+
+Instead, to learn how to use the code provided in this course, you can look at the [Jupyter Notebooks and Juv](jupyter_notebooks_and_juv.md) section.

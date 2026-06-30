@@ -10,9 +10,9 @@ parts:
   chapters:
   - file: content/01_intro_to_bobiac/bobiac_intro.md
 
-  - file: content/02_getting_started_with_python/getting_started_with_python_intro.md
+  - file: content/02_getting_started_with_python/python_landing_page.md
     sections:
-      - file: content/02_getting_started_with_python/python_and_uv.md
+      - file: content/02_getting_started_with_python/python_intro.md
         sections:
           - file: content/02_getting_started_with_python/getting_started_with_uv.md
       - file: content/02_getting_started_with_python/jupyter_notebooks_and_juv.md

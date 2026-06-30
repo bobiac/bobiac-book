@@ -1,4 +1,4 @@
-# 02 - <i class="fab fa-python"></i> Getting Started with `Python`
+# 02 - <i class="fab fa-python"></i> Getting Started with Python
 
 Before we start writing any code, let's take a few minutes to understand what `Python` actually is, how it works, and how we will set it up for this course.
 
