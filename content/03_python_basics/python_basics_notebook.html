@@ -427,12 +427,7 @@
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-note-on-syntax">A Note on Syntax</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#next-steps">Next Steps</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reviewing-python-fundamentals-code-in-place">Reviewing Python Fundamentals: Code in Place</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extra-practice-on-python-fundamentals-real-python">Extra Practice on Python Fundamentals: Real Python</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reviewing-python-syntax-rules-python-docs">Reviewing Python Syntax &amp; Rules: Python Docs</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#next-steps">Next Steps</a></li>
 </ul>
 </nav>
 </div>
@@ -2684,58 +2679,22 @@ Once every item in the list has been used, the <code class="docutils literal not
 <hr class="docutils"/>
 <section id="a-note-on-syntax">
 <h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">A Note on Syntax<a class="headerlink" href="#a-note-on-syntax" title="Link to this heading">#</a></h2>
-<p>At this point, you may be curious about why certain functions we use in Python are written as <code class="docutils literal notranslate"><span class="pre">function()</span></code>, while others we write as <code class="docutils literal notranslate"><span class="pre">something.function()</span></code>. For example, we learned that we can get the length of a <code class="docutils literal notranslate"><span class="pre">list</span></code> using the <code class="docutils literal notranslate"><span class="pre">len(list)</span></code> function, but to add an item to the end of a list with <code class="docutils literal notranslate"><span class="pre">append()</span></code> we need to write it as <code class="docutils literal notranslate"><span class="pre">list.append(item)</span></code>.</p>
-<p>The reason has to do with another overarching structure in Python that we will not dwell on during the course. This structure is called a <code class="docutils literal notranslate"><span class="pre">class</span></code>.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Name</span><span class="p">():</span>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="n">herself</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
-        <span class="n">herself</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">say_hello</span><span class="p">(</span><span class="n">herself</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Hello, my name is </span><span class="si">{</span><span class="n">herself</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">!"</span><span class="p">)</span>
-
-
-<span class="n">n</span> <span class="o">=</span> <span class="n">Name</span><span class="p">(</span><span class="s2">"Eva"</span><span class="p">)</span>
-<span class="n">n</span><span class="o">.</span><span class="n">say_hello</span><span class="p">()</span>
-
-
-
-
-<span class="c1"># def function(...):</span>
-<span class="c1">#     ...</span>
-
-<span class="c1"># class Name:</span>
-<span class="c1">#     ...</span>
-
-<span class="c1">#     def method(...):</span>
-<span class="c1">#         ...</span>
-
-<span class="c1"># n = Name()</span>
-<span class="c1"># n.method()</span>
-
-<span class="c1"># function()</span>
-</pre></div>
-</div>
-</div>
-</div>
+<p>At this point, you may be curious about why certain functions we use in Python are used by writing <code class="docutils literal notranslate"><span class="pre">function()</span></code>, while others we write as <code class="docutils literal notranslate"><span class="pre">something.function()</span></code>. For example, we learned that we can get the length of a <code class="docutils literal notranslate"><span class="pre">list</span></code> using the <code class="docutils literal notranslate"><span class="pre">len(list)</span></code> function, but to add an item to the end of a list with <code class="docutils literal notranslate"><span class="pre">append()</span></code> we need to write it as <code class="docutils literal notranslate"><span class="pre">list.append(item)</span></code>.</p>
+<p>The reason for this difference has to do with another overarching structure in Python that we will not dwell on during the course. This structure is called a <code class="docutils literal notranslate"><span class="pre">class</span></code>. A <code class="docutils literal notranslate"><span class="pre">class</span></code> is a blueprint for creating your own custom data structure, where you get to decide what information it stores and what actions it can perform.</p>
+<p>You can think of a <code class="docutils literal notranslate"><span class="pre">class</span></code> as an animal species definition, describing traits and behaviors that every member of that animal species has. An individual animal built from that definition shares all of those traits and behaviors, but holds its own specific information, such as its own name and age.</p>
+<p>This distinction explains the syntax difference you noticed. A function like <code class="docutils literal notranslate"><span class="pre">len()</span></code> is a standalone tool that you hand something to: <code class="docutils literal notranslate"><span class="pre">len(list)</span></code>. However, <code class="docutils literal notranslate"><span class="pre">append()</span></code> belongs to the list itself, as it’s a built-in behavior of every <code class="docutils literal notranslate"><span class="pre">list</span></code>. So you call it directly on a <code class="docutils literal notranslate"><span class="pre">list</span></code>, using dot notation: <code class="docutils literal notranslate"><span class="pre">list.append(item)</span></code>.</p>
+<p>In summary, when you see the syntax <code class="docutils literal notranslate"><span class="pre">something.function()</span></code> in Python, that means the function is a behavior that belongs to something, rather than a generic tool you want to apply to it.</p>
 </section>
 <hr class="docutils"/>
 <section id="next-steps">
 <h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Next Steps<a class="headerlink" href="#next-steps" title="Link to this heading">#</a></h2>
 <p>Congratulations for making it to the end of this lesson! You have now been introduced to relevant Python fundamentals needed for the rest of the course. However, there is always more to learn when it comes to mastering a programming language and mindset. Below are three resources we recommend to review concepts and build upon your new-found knowledge.</p>
-<section id="reviewing-python-fundamentals-code-in-place">
-<h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">Reviewing Python Fundamentals: Code in Place<a class="headerlink" href="#reviewing-python-fundamentals-code-in-place" title="Link to this heading">#</a></h3>
-<p><a class="reference external" href="https://codeinplace.stanford.edu">Code in Place</a> is a self-paced beginner course that covers many of the core topics introduced in this lesson.</p>
-</section>
-<section id="extra-practice-on-python-fundamentals-real-python">
-<h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">Extra Practice on Python Fundamentals: Real Python<a class="headerlink" href="#extra-practice-on-python-fundamentals-real-python" title="Link to this heading">#</a></h3>
-<p><a class="reference external" href="https://realpython.com">Real Python</a> offers beginner-friendly practice problems and tutorials to strengthen your Python skills.</p>
-</section>
-<section id="reviewing-python-syntax-rules-python-docs">
-<h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">Reviewing Python Syntax &amp; Rules: Python Docs<a class="headerlink" href="#reviewing-python-syntax-rules-python-docs" title="Link to this heading">#</a></h3>
-<p><a class="reference external" href="https://www.python.org">Python Docs</a> are the official source for Python syntax, rules, and concepts—perfect for deeper reference and learning.</p>
-</section>
+<p><strong>1. Reviewing Python Fundamentals: Code in Place</strong>
+<a class="reference external" href="https://codeinplace.stanford.edu">Code in Place</a> is a self-paced beginner course that covers many of the core topics introduced in this lesson.</p>
+<p><strong>2. Extra Practice on Python Fundamentals: Real Python</strong>
+<a class="reference external" href="https://realpython.com">Real Python</a> offers beginner-friendly practice problems and tutorials to strengthen your Python skills.</p>
+<p><strong>3. Reviewing Python Syntax &amp; Rules: Python Docs</strong>
+<a class="reference external" href="https://www.python.org">Python Docs</a> are the official source for Python syntax, rules, and concepts—perfect for deeper reference and learning.</p>
 </section>
 </section>
 <script type="text/x-thebe-config">
@@ -2952,12 +2911,7 @@ Once every item in the list has been used, the <code class="docutils literal not
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-note-on-syntax">A Note on Syntax</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#next-steps">Next Steps</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reviewing-python-fundamentals-code-in-place">Reviewing Python Fundamentals: Code in Place</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extra-practice-on-python-fundamentals-real-python">Extra Practice on Python Fundamentals: Real Python</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reviewing-python-syntax-rules-python-docs">Reviewing Python Syntax &amp; Rules: Python Docs</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#next-steps">Next Steps</a></li>
 </ul>
 </nav></div>
 </div></div>
