@@ -320,9 +320,9 @@
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-multiple-images">4. Visualizing Multiple Images</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Concept</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-matplotlib-pyplot-organizes-figures">How <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code> organizes figures</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-figure-with-subplots">Creating a figure with subplots</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filling-the-subplots-with-images">Filling the subplots with images</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-a-figure-can-be-organized-with-matplotlib-pyplot">How a figure can be organized with <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-figure">Creating a figure</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filling-the-figure-with-subplots-each-containing-images">Filling the figure with subplots, each containing images</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#displaying-the-final-figure">Displaying the final figure</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-use-matplotlib-to-display-each-channel-of-the-multichannel-tif-image-file-side-by-side">✍️ Exercise: Use <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> to display each channel of the “multichannel.tif” image file, side by side</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#figure-aesthetics">Figure Aesthetics</a><ul class="nav section-nav flex-column">
@@ -346,11 +346,7 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-drop-unnecessary-axes-from-nd2-image-print-its-shape-to-confirm-the-change">✍️ Exercise: Drop unnecessary axes from <code class="docutils literal notranslate"><span class="pre">nd2_image</span></code>. Print its shape to confirm the change.</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#next-steps">Next Steps</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bobiac-exercises-working-with-bioimages-exercise">BoBiAC Exercises: Working with Bioimages Exercise</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reviewing-images-pixels-with-python">Reviewing Images &amp; Pixels with Python</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#next-steps">Next Steps</a></li>
 </ul>
 </nav>
 </div>
@@ -1152,27 +1148,36 @@ float32
 <h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">4. Visualizing Multiple Images<a class="headerlink" href="#visualizing-multiple-images" title="Link to this heading">#</a></h2>
 <section id="id6">
 <h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">Concept<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
-<p>So far we have been using <code class="docutils literal notranslate"><span class="pre">ndv</span></code> to view multidimensional images. We can also use <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code>, but doing so would involve plotting multiple images. In practice, this is done by creating multiple <strong>subplots</strong> (1 for each image) within an overall <strong>figure</strong>.</p>
+<p>So far we have been using <code class="docutils literal notranslate"><span class="pre">ndv</span></code> to view multidimensional images. We can also use <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code>, but doing so would involve plotting multiple images. One way we can do this is by organizing each image as a <strong>subplot</strong> within an overall <strong>figure</strong>.</p>
 </section>
-<section id="how-matplotlib-pyplot-organizes-figures">
-<h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">How <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code> organizes figures<a class="headerlink" href="#how-matplotlib-pyplot-organizes-figures" title="Link to this heading">#</a></h3>
-<img align="center" alt="matplotlib subplots" src="https://raw.githubusercontent.com/bobiac/bobiac-book/main/_static/images/python4bia/figures/matplotlib_subplots.png" width="800px"/>
+<section id="how-a-figure-can-be-organized-with-matplotlib-pyplot">
+<h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">How a figure can be organized with <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code><a class="headerlink" href="#how-a-figure-can-be-organized-with-matplotlib-pyplot" title="Link to this heading">#</a></h3>
+<img align="center" alt="matplotlib subplot" src="https://raw.githubusercontent.com/bobiac/bobiac-book/main/_static/images/python4bia/figures/matplotlib_subplot.png" width="800px"/>
 </section>
-<section id="creating-a-figure-with-subplots">
-<h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">Creating a figure with subplots<a class="headerlink" href="#creating-a-figure-with-subplots" title="Link to this heading">#</a></h3>
-<p>Using <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code>, we can create a 8 inch x 6 inch figure with 2 subplots, side by side, by writing the following:</p>
+<section id="creating-a-figure">
+<h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">Creating a figure<a class="headerlink" href="#creating-a-figure" title="Link to this heading">#</a></h3>
+<p>Using <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code>, we can create a 8 inch x 6 inch figure by writing the following:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="c1"># Create a figure with axes</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>  <span class="c1"># 1 row, 2 columns in a 8 in x 6 in figure</span>
+
+<span class="c1"># Create a figure</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 </pre></div>
 </div>
 </section>
-<section id="filling-the-subplots-with-images">
-<h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">Filling the subplots with images<a class="headerlink" href="#filling-the-subplots-with-images" title="Link to this heading">#</a></h3>
-<p>The code above creates an empty figure and fills it with subplots spanning 1 row and 2 columns, resulting in spots for 2 subplots. We now need to fill these two spots with images. We can place each image in a specific spot by referencing the axis.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span> <span class="c1"># Plot images</span>
-<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_1</span><span class="p">)</span>
-<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_2</span><span class="p">)</span>
+<section id="filling-the-figure-with-subplots-each-containing-images">
+<h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">Filling the figure with subplots, each containing images<a class="headerlink" href="#filling-the-figure-with-subplots-each-containing-images" title="Link to this heading">#</a></h3>
+<p>The code above creates an empty figure. We will now need to fill it with subplots containing images. We can use the <code class="docutils literal notranslate"><span class="pre">subplot()</span></code> function to create a subplots organized in a total number of rows and columns,  and select a specific spot to put an image into:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">tot_rows</span><span class="p">,</span> <span class="n">tot_columns</span><span class="p">,</span> <span class="n">specific_spot</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To fill the figure with 2 subplots organized next to each other, we would want to have 1 row and 2 columns. We would therefore write the following:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Select the first spot and plot an image into it</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># (1 row, 2 columns, first spot)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_1</span><span class="p">)</span>
+
+<span class="c1"># Select the second spot and plot an image into it</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="c1"># (1 row, 2 columns, second spot)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_2</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -1183,8 +1188,9 @@ float32
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Now you give it a try!</p>
-</section>
+<p class="alert alert-warning">
+<strong>Caution:</strong> Using <b>matplotlib.pyplot.subplot()</b> is not the only way that you can plot multiple images in a figure with <b>matplotlib.pyplot</b>. Ironically, another common way to plot multiple images in a figure is with <b>matplotlib.pyplot.subplots()</b>. While both accomplish the same final result, the second option uses a different indexing system to add items to each subplot.
+</p></section>
 <section id="exercise-use-matplotlib-to-display-each-channel-of-the-multichannel-tif-image-file-side-by-side">
 <h3 style="color: black; background-color: rgb(252,185,118); padding: 3px; border-radius: 5px;">✍️ Exercise: Use <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> to display each channel of the “multichannel.tif” image file, side by side<a class="headerlink" href="#exercise-use-matplotlib-to-display-each-channel-of-the-multichannel-tif-image-file-side-by-side" title="Link to this heading">#</a></h3>
 <div class="cell tag_teacher docutils container">
@@ -1197,9 +1203,15 @@ float32
 <span class="nb">print</span><span class="p">(</span><span class="n">multichannel</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="c1"># we see that it's a 2 channel image with dimensions 1392x1040 px</span>
 
 <span class="c1"># create a figure with 2 subplots, one for each channel</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span> <span class="c1"># 1 row, 2 columns</span>
-<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">multichannel</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># channel 1 in the first subplot</span>
-<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">multichannel</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># channel 2 in the second subplot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span> <span class="c1"># 8 inches wide, 6 inches tall</span>
+
+<span class="c1"># channel 1 in the first subplot position</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># 1 row, 2 columns, first subplot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">multichannel</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># channel 1 in the first subplot</span>
+
+<span class="c1"># channel 2 in the second subplot position</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="c1"># 1 row, 2 columns, second subplot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">multichannel</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># channel 2 in the second subplot</span>
 
 <span class="c1"># show the plot</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -1219,17 +1231,19 @@ float32
 <p><code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code> has additional settings you can use to edit the look of these figures. Below are a few key examples of aspects you can edit, although many more options can be found in the documentation.</p>
 <section id="removing-axis-labels">
 <h4>Removing axis labels<a class="headerlink" href="#removing-axis-labels" title="Link to this heading">#</a></h4>
-<p>If you do not want to display the axis number labels on the sides of images, you can turn them off by writing the following for each subplot after plotting the images:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a figure and axis</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>  <span class="c1"># 1 row, 2 columns</span>
+<p>If you do not want to display the axis number labels on the sides of images, you can turn them off by writing <code class="docutils literal notranslate"><span class="pre">plt.axis("off")</span></code> for each subplot after plotting the image:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a figure</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 
-<span class="c1"># Plot images</span>
-<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_1</span><span class="p">)</span>
-<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_2</span><span class="p">)</span>
+<span class="c1"># First subplot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">"off"</span><span class="p">)</span>  <span class="c1"># Turn off axis labels</span>
 
-<span class="c1"># Turn off axis labels</span>
-<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">"off"</span><span class="p">)</span>  <span class="c1"># Turn off axis</span>
-<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">"off"</span><span class="p">)</span>  <span class="c1"># Turn off axis</span>
+<span class="c1"># Second subplot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">"off"</span><span class="p">)</span>  <span class="c1"># Turn off axis labels</span>
 </pre></div>
 </div>
 </section>
@@ -1237,7 +1251,8 @@ float32
 <h4>Changing the lookup table (LUT)<a class="headerlink" href="#changing-the-lookup-table-lut" title="Link to this heading">#</a></h4>
 <p>You can change the LUT of the image display by specifying a colormap for each subplot. Color map options can be found in this <a class="reference external" href="https://matplotlib.org/3.1.0/tutorials/colors/colormaps.html">documentation page</a>. If the colormap is not specified, <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code> defaults to using the <code class="docutils literal notranslate"><span class="pre">viridis</span></code> colormap.</p>
 <p>You can specify the colormap <code class="docutils literal notranslate"><span class="pre">cmap</span></code> for a subplot by including it when you plot the image</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_1</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">"gray"</span><span class="p">)</span> <span class="c1"># will use the gray colormap to plot img_1</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_1</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">"gray"</span><span class="p">)</span> <span class="c1"># will use the gray colormap to plot img_1</span>
 </pre></div>
 </div>
 </section>
@@ -1245,7 +1260,8 @@ float32
 <h4>Adjusting image brightness &amp; contrast<a class="headerlink" href="#adjusting-image-brightness-contrast" title="Link to this heading">#</a></h4>
 <p>You can also change the color mapping of the image to its minimum and maximum intensity values, rather than to the minimum and maximum of the image bit depth. Doing so will help you view features in the image more clearly.</p>
 <p>You can specify the minimum <code class="docutils literal notranslate"><span class="pre">vmin</span></code> and maximum <code class="docutils literal notranslate"><span class="pre">vmax</span></code> value of the color mapping by including it when you plot the image:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_1</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">"gray"</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="n">img_1</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">vmax</span><span class="o">=</span><span class="n">img_1</span><span class="o">.</span><span class="n">max</span><span class="p">())</span> <span class="c1"># adjust to the min and max of img_1</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_1</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">"gray"</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="n">img_1</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">vmax</span><span class="o">=</span><span class="n">img_1</span><span class="o">.</span><span class="n">max</span><span class="p">())</span> <span class="c1"># adjust to the min and max of img_1</span>
 </pre></div>
 </div>
 </section>
@@ -1253,7 +1269,7 @@ float32
 <h4>Fitting the subplots in the figure<a class="headerlink" href="#fitting-the-subplots-in-the-figure" title="Link to this heading">#</a></h4>
 <p>When you create a figure with subplots, you specify the figure size but not individual subplot sizes. If the figure size is too small to fit individual subplots,  you can run into situations where the axis labels, among other things for each image, will overlap. <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code> has a <code class="docutils literal notranslate"><span class="pre">layout</span></code> setting called <strong>constrained layout</strong>, which you can use to fit plots within your figure cleanly. Constrained layout automatically adjusts subplots so that decorations like tick labels do not overlap.</p>
 <p>You can specify you want to use constrained layout by specifying it when you define the figure:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">layout</span><span class="o">=</span><span class="s2">"constrained"</span><span class="p">)</span>  <span class="c1"># use constrained layout</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">layout</span><span class="o">=</span><span class="s2">"constrained"</span><span class="p">)</span>  <span class="c1"># use constrained layout</span>
 </pre></div>
 </div>
 </section>
@@ -1263,15 +1279,17 @@ float32
 <div class="cell tag_teacher docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a figure with 2 subplots, one for each channel</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">layout</span><span class="o">=</span><span class="s2">"constrained"</span><span class="p">)</span> <span class="c1"># 1 row, 2 columns, constrained layout</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">layout</span><span class="o">=</span><span class="s2">"constrained"</span><span class="p">)</span> <span class="c1"># 8 inches wide, 6 inches tall</span>
 
-<span class="c1"># plot images</span>
-<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">multichannel</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">"green"</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="n">multichannel</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">vmax</span><span class="o">=</span><span class="n">multichannel</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">())</span> <span class="c1"># channel 1</span>
-<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">multichannel</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">"magenta"</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="n">multichannel</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">vmax</span><span class="o">=</span><span class="n">multichannel</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">())</span> <span class="c1"># channel 2</span>
+<span class="c1"># channel 1 in the first subplot position</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># 1 row, 2 columns, first subplot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">multichannel</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">"green"</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="n">multichannel</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">vmax</span><span class="o">=</span><span class="n">multichannel</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">"off"</span><span class="p">)</span> <span class="c1"># turn off axes labels for the first subplot</span>
 
-<span class="c1"># turn off axes labels for both subplots</span>
-<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">"off"</span><span class="p">)</span>
-<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">"off"</span><span class="p">)</span>
+<span class="c1"># channel 2 in the second subplot position</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="c1"># 1 row, 2 columns, second subplot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">multichannel</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">"magenta"</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="n">multichannel</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">vmax</span><span class="o">=</span><span class="n">multichannel</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">"off"</span><span class="p">)</span> <span class="c1"># turn off axes labels for the second subplot</span>
 
 <span class="c1"># show the plot</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -1436,13 +1454,10 @@ X = Columns in an Image</p>
 <section id="next-steps">
 <h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Next Steps<a class="headerlink" href="#next-steps" title="Link to this heading">#</a></h2>
 <p>Congratulations for making it to the end of this lesson! You have now started learning how to work with images in Python! However, just as with syntax, there is always more to learn when it comes to mastering a programming language and mindset. Below is another resource we recommend to review concepts and build upon your new-found knowledge.</p>
-<section id="bobiac-exercises-working-with-bioimages-exercise">
-<h3 style="color: black; background-color: rgb(252,185,118); padding: 3px; border-radius: 5px;">BoBiAC Exercises: Working with Bioimages Exercise<a class="headerlink" href="#bobiac-exercises-working-with-bioimages-exercise" title="Link to this heading">#</a></h3>
-</section>
-<section id="reviewing-images-pixels-with-python">
-<h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">Reviewing Images &amp; Pixels with Python<a class="headerlink" href="#reviewing-images-pixels-with-python" title="Link to this heading">#</a></h3>
-<p><a class="reference external" href="https://bioimagebook.github.io/index.html">Pete Bankhead’s Introduction to Bioimage Analysis Book</a> is a self-paced beginner resource that covers many of the core topics introduced in this lesson within the “Introducing Images” section.</p>
-</section>
+<p><strong>1. BoBiAC Exercises:</strong>
+<a class="reference internal" href="#woring_with_bioimages.md"><span class="xref myst">Working with Bioimages</span></a></p>
+<p><strong>2. Reviewing Images &amp; Pixels with Python:</strong>
+<a class="reference external" href="https://bioimagebook.github.io/index.html">Pete Bankhead’s Introduction to Bioimage Analysis Book</a> is a self-paced beginner resource that covers many of the core topics introduced in this lesson within the “Introducing Images” section.</p>
 </section>
 </section>
 <script type="text/x-thebe-config">
@@ -1552,9 +1567,9 @@ X = Columns in an Image</p>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-multiple-images">4. Visualizing Multiple Images</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Concept</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-matplotlib-pyplot-organizes-figures">How <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code> organizes figures</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-figure-with-subplots">Creating a figure with subplots</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filling-the-subplots-with-images">Filling the subplots with images</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-a-figure-can-be-organized-with-matplotlib-pyplot">How a figure can be organized with <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-figure">Creating a figure</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filling-the-figure-with-subplots-each-containing-images">Filling the figure with subplots, each containing images</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#displaying-the-final-figure">Displaying the final figure</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-use-matplotlib-to-display-each-channel-of-the-multichannel-tif-image-file-side-by-side">✍️ Exercise: Use <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> to display each channel of the “multichannel.tif” image file, side by side</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#figure-aesthetics">Figure Aesthetics</a><ul class="nav section-nav flex-column">
@@ -1578,11 +1593,7 @@ X = Columns in an Image</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-drop-unnecessary-axes-from-nd2-image-print-its-shape-to-confirm-the-change">✍️ Exercise: Drop unnecessary axes from <code class="docutils literal notranslate"><span class="pre">nd2_image</span></code>. Print its shape to confirm the change.</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#next-steps">Next Steps</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bobiac-exercises-working-with-bioimages-exercise">BoBiAC Exercises: Working with Bioimages Exercise</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reviewing-images-pixels-with-python">Reviewing Images &amp; Pixels with Python</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#next-steps">Next Steps</a></li>
 </ul>
 </nav></div>
 </div></div>
