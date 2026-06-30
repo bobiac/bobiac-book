@@ -110,5 +110,5 @@ exclude_patterns = [
 ]
 
 myst_substitutions = {
-    "pizza": '<img src="/_static/images/margarita_pizza.png" width="20" style="vertical-align: middle;">',
+    "pizza": '<span class="pizza-icon"></span>',
 }
