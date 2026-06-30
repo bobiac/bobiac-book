@@ -267,3 +267,31 @@ No manual environment creation, no `uv pip install`, nothing to set up beforehan
 
 This is especially useful if you write your own `PEP 723` script and want to share it with **someone who doesn't know how to use `Python` or a terminal**: they can just double-click `pyrunner`, pick your file, and run it, without ever opening a terminal. See the [`pyrunner` repository](https://github.com/fdrgsp/pyrunner) for more details.
 :::
+
+## 5. Summary Table
+
+Here is a quick recap of all the **terminal** and `uv` commands we have seen in this section:
+
+| <span style="display: inline-block; width:300px;">Command</span> | Description |
+| ------- | ----------- |
+| **`pwd`** | Print the path of the current working directory. |
+| **`ls`** | List the contents of the current directory. |
+| **`cd [DIR]`** | Change directory to `[DIR]`. <br><small>_If `[DIR]` is not provided, defaults to the home directory._</small> |
+| **`mkdir [DIR]`** | Create a new directory named `[DIR]`. |
+| <hr> | <hr> |
+| **`uv venv [ENV_PATH]`** | Create a virtual environment at `[ENV_PATH]`. <br><small>👍 _Defaults to `.venv` in the current directory if not provided._</small> |
+| **`uv venv -p <PYTHON>`** | Create a virtual environment with a specific `Python` version (e.g. `-p 3.11`). |
+| <i class="fab fa-apple"></i> `source .venv/bin/activate`<br><i class="fab fa-windows"></i> `.venv\Scripts\activate` | Activate the virtual environment in `.venv`. |
+| **`deactivate`** | Deactivate the currently active virtual environment. |
+| **`uv pip install [PACKAGE]`**<br>**`uv pip uninstall [PACKAGE]`** | Install or uninstall `PACKAGE` in the active virtual environment. <br><small>_May specify multiple packages separated by a space, and pin versions with `==`._</small> |
+| **`uv pip list`** | List all packages installed in the active virtual environment. |
+| <hr> | <hr> |
+| **`python path/to/script.py`** | Run `script.py` with the `Python` interpreter of the currently **activated** environment. |
+| **`uv run script.py`** | Run `script.py`, automatically using a `.venv` in the current directory if one exists (even if not activated), or an on-demand interpreter otherwise. See [Running Python Files with uv](#running-python-files-with-uv) for the full picture. |
+| **`uv run --with [PACKAGE] script.py`** | Run `script.py` with `PACKAGE` installed temporarily, just for that run. |
+| **`uv run -p <PYTHON> script.py`** | Run `script.py` with a specific `Python` version. |
+| **`uvx <COMMAND>`**<br>_short for:_<br>**`uv tool run <COMMAND>`** | Run a `<COMMAND>` provided by a package of the same name, installing it on the fly in a temporary environment. |
+
+:::{note}
+💡 For the full list of `uv` commands and options, see the [official uv documentation](https://docs.astral.sh/uv/).
+:::
