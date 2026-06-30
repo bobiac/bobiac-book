@@ -26,3 +26,9 @@ Download this Python Cheat Sheet for quick reference of concepts covered in this
 <div align="center">
   <iframe class="custom-cheatsheet-frame" src="../../pdfs/03_python_basics/python_cheat_sheet.pdf"> </iframe>
 </div>
+
+## Resources for Further Learning
+
+- [Code in Place](https://codeinplace.stanford.edu) is a self-paced beginner course that covers many of the core topics introduced in this lesson.
+- [Real Python](https://realpython.com) offers beginner-friendly practice problems and tutorials to strengthen your Python skills.
+- [Python Docs](https://www.python.org) are the official source for Python syntax, rules, and concepts—perfect for deeper reference and learning. 

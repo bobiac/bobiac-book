@@ -10,8 +10,13 @@ parts:
   chapters:
   - file: content/01_intro_to_bobiac/bobiac_intro.md
 
-  - file: content/02_getting_started_with_python/getting_started_with_python.md
-
+  - file: content/02_getting_started_with_python/python_landing_page.md
+    sections:
+      - file: content/02_getting_started_with_python/python_intro.md
+        sections:
+          - file: content/02_getting_started_with_python/getting_started_with_uv.md
+      - file: content/02_getting_started_with_python/jupyter_notebooks_and_juv.md
+  
   - file: content/03_python_basics/python_basics.md
     sections:
       - file: content/03_python_basics/python_basics_notebook
@@ -65,14 +70,13 @@ parts:
           - file: content/09_colocalization/spatial_statistics/notebook_2
           - file: content/09_colocalization/spatial_statistics/notebook_3
 
-
-
 # BoBiAC EXERCISES
 - caption: BoBiAC Exercises
   chapters:
   - file: content/10_bobiac_exercises/bobiac_exercises.md
     sections:
-      - file: content/10_bobiac_exercises/uv_and_juv.md
+      - file: content/10_bobiac_exercises/uv.md
+      - file: content/10_bobiac_exercises/juv.md
       - file: content/10_bobiac_exercises/working_with_bioimages.md
       - file: content/10_bobiac_exercises/classic_segmentation.md
       - file: content/10_bobiac_exercises/group_work_1.md

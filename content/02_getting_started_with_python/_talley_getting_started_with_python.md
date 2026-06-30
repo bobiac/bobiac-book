@@ -125,7 +125,7 @@ uv run hello.py
 
 ### `uv run` with additional dependencies
 
-A particulary useful feature of `uv run` is that you can specify dependencies
+A particularly useful feature of `uv run` is that you can specify dependencies
 _in your script_ using a special syntax in a comment at the top of the file.
 
 For example, the following `example_script.py` uses _two_ packages, `requests`
