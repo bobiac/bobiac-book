@@ -1,0 +1,717 @@
+
+<!DOCTYPE html>
+
+<html data-content_root="../../" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Getting started with uv — BoBiAC Book</title>
+<script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+<!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+<noscript>
+<style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+</noscript>
+<!-- Loaded before other Sphinx assets -->
+<link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet"/>
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet"/>
+<link href="../../_static/pygments.css?v=03e43079" rel="stylesheet" type="text/css"/>
+<link href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" rel="stylesheet" type="text/css"/>
+<link href="../../_static/togglebutton.css?v=9c3e77be" rel="stylesheet" type="text/css"/>
+<link href="../../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/sphinx-thebe.css?v=4fa983c6" rel="stylesheet" type="text/css"/>
+<link href="../../_static/sphinx-design.min.css?v=95c83b7e" rel="stylesheet" type="text/css"/>
+<link href="../../_static/styles/custom.css?v=fc1e9281" rel="stylesheet" type="text/css"/>
+<!-- So that users can add custom icons -->
+<script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+<!-- Pre-loaded scripts that we'll load fully later -->
+<link as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" rel="preload"/>
+<link as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" rel="preload"/>
+<script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+<script src="../../_static/doctools.js?v=9a2dae69"></script>
+<script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../../_static/copybutton.js?v=f281be69"></script>
+<script src="../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+<script>let toggleHintShow = 'Click to show';</script>
+<script>let toggleHintHide = 'Click to hide';</script>
+<script>let toggleOpenOnPrint = 'true';</script>
+<script src="../../_static/togglebutton.js?v=b8b12719"></script>
+<script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+<script src="../../_static/design-tabs.js?v=f930bc37"></script>
+<script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+<script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+<script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+<script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+<script>DOCUMENTATION_OPTIONS.pagename = 'content/02_getting_started_with_python/getting_started_with_uv';</script>
+<script src="../../_static/scripts/custom.js?v=a8e6099b"></script>
+<link href="../../genindex.html" rel="index" title="Index"/>
+<link href="../../search.html" rel="search" title="Search"/>
+<link href="jupyter_notebooks_and_juv.html" rel="next" title="Jupyter Notebooks and juv"/>
+<link href="python_intro.html" rel="prev" title="Introduction to Python"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+<meta content="" name="docsearch:version"/>
+</head>
+<body data-bs-root-margin="0px 0px -60%" data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-default-mode="" data-offset="180">
+<div class="skip-link d-print-none" id="pst-skip-link"><a href="#main-content">Skip to main content</a></div>
+<div id="pst-scroll-pixel-helper"></div>
+<button class="btn rounded-pill" id="pst-back-to-top" type="button">
+<i class="fa-solid fa-arrow-up"></i>Back to top</button>
+<dialog id="pst-search-dialog">
+<form action="../../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Search this book..." autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" name="q" placeholder="Search this book..." spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+</dialog>
+<div class="pst-async-banner-revealer d-none">
+<aside aria-label="Version warning" class="d-none d-print-none" id="bd-header-version-warning"></aside>
+</div>
+<header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+</header>
+<div class="bd-container">
+<div class="bd-container__inner bd-page-width">
+<dialog id="pst-primary-sidebar-modal"></dialog>
+<div class="bd-sidebar-primary bd-sidebar" id="pst-primary-sidebar">
+<div class="sidebar-header-items sidebar-primary__section">
+</div>
+<div class="sidebar-primary-items__start sidebar-primary__section">
+<div class="sidebar-primary-item">
+<a class="navbar-brand logo" href="../../landing-page.html">
+<img alt="BoBiAC Book - Home" class="logo__image only-light" src="../../_static/bobiac-landing-black.png"/>
+<img alt="BoBiAC Book - Home" class="logo__image only-dark pst-js-only" src="../../_static/bobiac-landing-white.png"/>
+</a></div>
+<div class="sidebar-primary-item">
+<button aria-label="Search" class="btn search-button-field search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Search">
+<i class="fa-solid fa-magnifying-glass"></i>
+<span class="search-button__default-text">Search</span>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+<div class="sidebar-primary-item"><nav aria-label="Main" class="bd-links bd-docs-nav">
+<div class="bd-toc-item navbar-nav active">
+<ul class="nav bd-sidenav bd-sidenav__home-link">
+<li class="toctree-l1">
+<a class="reference internal" href="../../landing-page.html">
+<i class="fas fa-home"></i> Home
+                </a>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Course Material</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01_intro_to_bobiac/bobiac_intro.html">01 - <i class="fas fa-image"></i> Introduction to BoBiAC</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="python_landing_page.html">02 - <i class="fab fa-python"></i> Getting Started with Python</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="python_intro.html">Introduction to Python</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Getting started with uv</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="jupyter_notebooks_and_juv.html">Jupyter Notebooks and juv</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../03_python_basics/python_basics.html">03 - <i class="fab fa-python"></i> Python Basics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../03_python_basics/python_basics_notebook.html">The Python Basics Notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03_python_basics/error_notebook.html">Errors Everywhere</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../04_digital_images_intro/digital_images_intro.html">04 - <i class="fas fa-table-cells"></i> Introduction to Digital Images</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../04_digital_images_intro/working_with_bioimages_in_python.html">Working with Bioimages in Python</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../05_segmentation/segmentation_intro.html">05 - <i class="fa-solid fa-disease"></i> Image Segmentation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../05_segmentation/classic/classic.html">Classical Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05_segmentation/classic/classic_segmentation.html">Classical Segmentation</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../05_segmentation/machine_learning/machine_learning.html">Machine Learning Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05_segmentation/machine_learning/intro_to_ilastik.html">Introduction to Ilastik</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05_segmentation/machine_learning/pixel_classification_with_ilastik.html">Ilastik for Pixel Classification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05_segmentation/machine_learning/from_ilastik_masks_to_labels.html">From Ilastik Masks to Labels</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../05_segmentation/deep_learning/deep_learning.html">Deep Learning Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05_segmentation/deep_learning/intro_to_cellpose.html">Introduction to Cellpose</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05_segmentation/deep_learning/cellpose_notebook.html">Cellpose in Python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05_segmentation/deep_learning/cellpose_retraining.html">Retraining Cellpose on Custom Data</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../06_spot_detection/spot_detection_intro.html">06 - <i class="fa-solid fa-crosshairs"></i> Spot Detection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../06_spot_detection/intro_to_spotiflow.html">Introduction to Spotiflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06_spot_detection/spotiflow_notebook.html">Spotiflow in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06_spot_detection/spotiflow_retraining.html">Finetuning or Training Spotiflow on Custom Data</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../07_object_classification/object_classification.html">07 - <i class="fa-solid fa-shapes"></i> Object Classification</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../07_object_classification/object_classification_with_ilastik.html">Ilastik for Object Classification</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../08_measurement_and_quantification/measurement_and_quantification_intro.html">08 - <i class="fa-solid fa-chart-simple"></i> Measurements &amp; Quantification</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../08_measurement_and_quantification/A_measurement_pipeline.html">Measurement Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08_measurement_and_quantification/B_nested_objects.html">Nested Measurements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08_measurement_and_quantification/background_correction_notebook.html">Background Correction</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../09_colocalization/colocalization_intro.html">09 - <i class="fa-solid fa-location-crosshairs"></i> Colocalization</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../09_colocalization/intensity_based/intensity_based_colocalization_intro.html">Intensity-based Colocalization</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../09_colocalization/intensity_based/pixel_intensity_based_colocalization_pearsons.html">Pearson’s correlation coefficient</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../09_colocalization/intensity_based/pixel_intensity_based_colocalization_manders.html">Manders’ Colocalization Coefficients</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../09_colocalization/spatial_statistics/spatial_stats_intro.html">Spatial Statistics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../09_colocalization/spatial_statistics/notebook_1.html">Notebook 1: Does a protein cluster?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../09_colocalization/spatial_statistics/notebook_2.html">Notebook 2: Do two different protein clusters co-localize?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../09_colocalization/spatial_statistics/notebook_3.html">Notebook 3: Does a protein localize to a cellular compartment?</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">BoBiAC Exercises</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../10_bobiac_exercises/bobiac_exercises.html">BoBiAC Exercises</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../10_bobiac_exercises/uv.html">uv Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../10_bobiac_exercises/juv.html">juv Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../10_bobiac_exercises/working_with_bioimages.html">Working with Bioimages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../10_bobiac_exercises/classic_segmentation.html">Classic Segmentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../10_bobiac_exercises/group_work_1.html">Group Work 1</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Course Materials Downloads</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../data/course_downloads.html"><i class="fa-solid fa-folder"></i> Downloads</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://bobiac.github.io">BoBiAC</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.astral.sh/uv/">uv</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/manzt/juv">juv</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/fdrgsp/pyrunner">pyrunner</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://cite.hms.harvard.edu">Core for Imaging Technology &amp; Education (CITE)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Past Editions</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://bobiac.github.io/bobiac-book/2025/">2025 Edition</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Contributors</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://www.linkedin.com/in/federicogasparoli">Federico Gasparoli, PhD</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.linkedin.com/in/eva-de-la-serna-b1a69664">Eva de la Serna, PhD</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://orcid.org/0000-0001-6194-9568">Max Brambach, PhD</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.linkedin.com/in/amelie-andreas-542b93204">Amelie Andreas</a></li>
+</ul>
+</div>
+</nav></div>
+</div>
+<div class="sidebar-primary-items__end sidebar-primary__section">
+<div class="sidebar-primary-item">
+<div class="flat" data-ea-manual="true" data-ea-publisher="readthedocs" data-ea-type="readthedocs-sidebar" id="ethical-ad-placement">
+</div></div>
+</div>
+</div>
+<main class="bd-main" id="main-content" role="main">
+<div class="sbt-scroll-pixel-helper"></div>
+<div class="bd-content">
+<div class="bd-article-container">
+<div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Toggle primary sidebar">
+<span class="fa-solid fa-bars"></span>
+</button></div>
+</div>
+<div class="header-article-items__end">
+<div class="header-article-item">
+<div class="article-header-buttons">
+<a class="btn btn-sm btn-source-repository-button" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/bobiac/bobiac-book" target="_blank" title="Source repository">
+<span class="btn__icon-container">
+<i class="fab fa-github"></i>
+</span>
+</a>
+<button class="btn btn-sm btn-fullscreen-button pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" onclick="toggleFullScreen()" title="Fullscreen mode">
+<span class="btn__icon-container">
+<i class="fas fa-expand"></i>
+</span>
+</button>
+<button aria-label="Color mode" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Light"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Dark"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="System Settings"></i>
+</button>
+<button aria-label="Search" class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Search">
+<i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Toggle secondary sidebar">
+<span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+</div>
+</div>
+</div>
+<div class="onlyprint" id="jb-print-docs-body">
+<h1>Getting started with uv</h1>
+<!-- Table of contents -->
+<div id="print-main-content">
+<div id="jb-print-toc">
+<div>
+<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;"> Contents </h2>
+</div>
+<nav aria-label="Page">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#terminal-commands">1. Terminal Commands</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-uv">2. Installing <code class="docutils literal notranslate"><span class="pre">uv</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#virtual-environments-with-uv">3. Virtual Environments with uv</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-a-python-version-with-the-p-flag">3.1. Choosing a Python Version with the <code class="docutils literal notranslate"><span class="pre">-p</span></code> Flag</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#activating-and-deactivating-the-environment">3.2. Activating and Deactivating the Environment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-packages-with-uv">3.3. Installing Packages with <code class="docutils literal notranslate"><span class="pre">uv</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-python-files-and-uv">4. The Python Files and <code class="docutils literal notranslate"><span class="pre">uv</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-packages-in-a-python-file">4.1. Importing Packages in a Python File</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-python-files">4.2. Running Python Files</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-python-files-with-uv">4.3. Running Python Files with <code class="docutils literal notranslate"><span class="pre">uv</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uv-run-with">4.4. <code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">run</span> <span class="pre">--with</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-p-flag">4.5. The <code class="docutils literal notranslate"><span class="pre">-p</span></code> Flag</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uvx-uv-tool-run">4.6. <code class="docutils literal notranslate"><span class="pre">uvx</span></code> (<code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">tool</span> <span class="pre">run</span></code>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uv-and-pep-723">4.7. <code class="docutils literal notranslate"><span class="pre">uv</span></code> and <code class="docutils literal notranslate"><span class="pre">PEP</span> <span class="pre">723</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-table">5. Summary Table</a></li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article">
+<section class="tex2jax_ignore mathjax_ignore" id="getting-started-with-uv">
+<h1>Getting started with uv<a class="headerlink" href="#getting-started-with-uv" title="Link to this heading">#</a></h1>
+<p>This is not an extensive tutorial on <code class="docutils literal notranslate"><span class="pre">uv</span></code>, but rather a <strong>brief introduction</strong> to some of the tools that we will use in this course. For a more complete guide, check out the <a class="reference external" href="https://docs.astral.sh/uv/">official uv documentation</a>.</p>
+<section id="terminal-commands">
+<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">1. Terminal Commands<a class="headerlink" href="#terminal-commands" title="Link to this heading">#</a></h2>
+<p>Before we start, let’s go over some of the <code class="docutils literal notranslate"><span class="pre">terminal</span></code> commands that could be useful during the course.</p>
+<p>First of all, what is a <code class="docutils literal notranslate"><span class="pre">terminal</span></code>? A <code class="docutils literal notranslate"><span class="pre">terminal</span></code> is a text-based interface that allows you to interact with your computer’s operating system. You can use it to run commands, navigate the file system, and manage files and directories.</p>
+<p>On <strong>macOS</strong> and <strong>Linux</strong>, this program is simply called the <strong>Terminal</strong>. On <strong>Windows</strong>, we suggest using <strong>PowerShell</strong> (instead of the older <code class="docutils literal notranslate"><span class="pre">cmd</span></code> Prompt) since most of the commands we will use behave the same way as on macOS and Linux.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>To open the terminal:</p>
+<ul class="simple">
+<li><p>On <strong>macOS</strong>, use the <code class="docutils literal notranslate"><span class="pre">Command</span> <span class="pre">+</span> <span class="pre">Space</span></code> shortcut to open Spotlight, then type “Terminal” and hit <code class="docutils literal notranslate"><span class="pre">Enter</span></code>.</p></li>
+<li><p>On <strong>Windows</strong>, use the <code class="docutils literal notranslate"><span class="pre">Windows</span> <span class="pre">+</span> <span class="pre">R</span></code> shortcut to open the Run dialog, then type “powershell” and hit <code class="docutils literal notranslate"><span class="pre">Enter</span></code>.</p></li>
+</ul>
+</div>
+<p>Here are a few basic commands that work on macOS, Linux, and the Windows PowerShell terminal (but not the Windows <code class="docutils literal notranslate"><span class="pre">cmd</span></code> Prompt):</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><span style="display: inline-block; width:120px;">Command</span></p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong><code class="docutils literal notranslate"><span class="pre">pwd</span></code></strong></p></td>
+<td><p>Print the path of the current working directory.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong><code class="docutils literal notranslate"><span class="pre">ls</span></code></strong></p></td>
+<td><p>List the contents of the current directory.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">[DIR]</span></code></strong></p></td>
+<td><p>Change directory to <code class="docutils literal notranslate"><span class="pre">[DIR]</span></code>. <br/><small><em>If <code class="docutils literal notranslate"><span class="pre">[DIR]</span></code> is not provided, defaults to the home directory.</em></small></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong><code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">[DIR]</span></code></strong></p></td>
+<td><p>Create a new directory named <code class="docutils literal notranslate"><span class="pre">[DIR]</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>💡 <strong>Relative paths</strong>: when navigating with <code class="docutils literal notranslate"><span class="pre">cd</span></code>, you can use <code class="docutils literal notranslate"><span class="pre">.</span></code> to refer to the current directory and <code class="docutils literal notranslate"><span class="pre">..</span></code> to refer to the parent directory (for example, <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">..</span></code> moves you up one level).</p>
+<p>For example, if you are in <code class="docutils literal notranslate"><span class="pre">Desktop/bobiac</span></code> and want to move to a sibling folder <code class="docutils literal notranslate"><span class="pre">Desktop/data</span></code>, you don’t need to type the full path, you can instead go up one level and then into <code class="docutils literal notranslate"><span class="pre">data</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>../data
+</pre></div>
+</div>
+</div>
+</section>
+<section id="installing-uv">
+<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">2. Installing <code class="docutils literal notranslate"><span class="pre">uv</span></code><a class="headerlink" href="#installing-uv" title="Link to this heading">#</a></h2>
+<p>To install <code class="docutils literal notranslate"><span class="pre">uv</span></code> you can follow this <a class="reference external" href="https://bobiac.github.io/uv_instruction.html">uv instruction</a> or follow the <a class="reference external" href="https://docs.astral.sh/uv/getting-started/installation">uv documentation</a>.</p>
+</section>
+<section id="virtual-environments-with-uv">
+<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">3. Virtual Environments with uv<a class="headerlink" href="#virtual-environments-with-uv" title="Link to this heading">#</a></h2>
+<p>As we saw in the <a class="reference internal" href="#python_and_uv.md#3-virtual-environments"><span class="xref myst">previous section</span></a>, a <strong>virtual environment</strong> is an isolated workspace with its own <code class="docutils literal notranslate"><span class="pre">Python</span></code> and its own packages. With <code class="docutils literal notranslate"><span class="pre">uv</span></code>, creating one is a single command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>venv
+</pre></div>
+</div>
+<p>By default, this creates a virtual environment in a folder named <code class="docutils literal notranslate"><span class="pre">.venv</span></code> inside your current directory. If you want to give it a different name or location, you can pass a path:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>venv<span class="w"> </span>my-env
+</pre></div>
+</div>
+<section id="choosing-a-python-version-with-the-p-flag">
+<h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">3.1. Choosing a Python Version with the <code class="docutils literal notranslate"><span class="pre">-p</span></code> Flag<a class="headerlink" href="#choosing-a-python-version-with-the-p-flag" title="Link to this heading">#</a></h3>
+<p>You can also tell <code class="docutils literal notranslate"><span class="pre">uv</span></code> which <strong>version of <code class="docutils literal notranslate"><span class="pre">Python</span></code></strong> to use inside the new environment with the <code class="docutils literal notranslate"><span class="pre">-p</span></code> (<code class="docutils literal notranslate"><span class="pre">--python</span></code>) flag. If that version isn’t already installed on your computer, <code class="docutils literal notranslate"><span class="pre">uv</span></code> will <strong>automatically download and install it</strong> for you.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>venv<span class="w"> </span>-p<span class="w"> </span><span class="m">3</span>.13
+</pre></div>
+</div>
+</section>
+<section id="activating-and-deactivating-the-environment">
+<h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">3.2. Activating and Deactivating the Environment<a class="headerlink" href="#activating-and-deactivating-the-environment" title="Link to this heading">#</a></h3>
+<p>Creating an environment doesn’t put you “inside” it, you also need to <strong>activate</strong> it. Activation tells your terminal to use the <code class="docutils literal notranslate"><span class="pre">Python</span></code> and packages from that environment instead of any others on your computer. The command differs slightly between operating systems:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><span style="display: inline-block; width:200px;">OS</span></p></th>
+<th class="head"><p>Command</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><i class="fab fa-apple"></i> macOS / Linux</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">.venv/bin/activate</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><i class="fab fa-windows"></i> Windows (PowerShell)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">.venv\Scripts\activate</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Once activated, you should see the environment’s name appear at the beginning of your terminal prompt (e.g. <code class="docutils literal notranslate"><span class="pre">(.venv)</span></code>), this is <code class="docutils literal notranslate"><span class="pre">uv</span></code> (and your terminal) telling you that the environment is now active. From here, any package you install with <code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">pip</span> <span class="pre">install</span></code> (see below) will be installed <strong>inside this environment only</strong>.</p>
+<p>To leave the environment and go back to your computer’s normal terminal, simply run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>deactivate
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>💡 <strong>Remember</strong>: environments are disposable. If anything feels broken, you can always delete the <code class="docutils literal notranslate"><span class="pre">.venv</span></code> folder and recreate it from scratch with <code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">venv</span></code>.</p>
+<p>In order to see folder starting with a dot (like <code class="docutils literal notranslate"><span class="pre">.venv</span></code>), on mac you can use the keyboard shortcut <code class="docutils literal notranslate"><span class="pre">Command</span> <span class="pre">+</span> <span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">.</span></code> to toggle hidden files. On Windows, you can go to the <code class="docutils literal notranslate"><span class="pre">View</span></code> tab in the file explorer and check the <code class="docutils literal notranslate"><span class="pre">Hidden</span> <span class="pre">items</span></code> box.</p>
+</div>
+</section>
+<section id="installing-packages-with-uv">
+<h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">3.3. Installing Packages with <code class="docutils literal notranslate"><span class="pre">uv</span></code><a class="headerlink" href="#installing-packages-with-uv" title="Link to this heading">#</a></h3>
+<p>Once your virtual environment is <strong>activated</strong>, you can install <strong>packages</strong> into it with <code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">pip</span> <span class="pre">install</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>numpy
+</pre></div>
+</div>
+<p>You can install <strong>multiple packages</strong> at once by separating them with a space, and even pin a <strong>specific version</strong> of a package:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>numpy<span class="w"> </span>matplotlib<span class="w"> </span><span class="s2">"scikit-image==0.24"</span>
+</pre></div>
+</div>
+<p>To remove a package you no longer need, use <code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">pip</span> <span class="pre">uninstall</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>pip<span class="w"> </span>uninstall<span class="w"> </span>matplotlib
+</pre></div>
+</div>
+<p>And to see everything that is currently installed in the active environment, use <code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">pip</span> <span class="pre">list</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>pip<span class="w"> </span>list
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>📦 <strong>What is <code class="docutils literal notranslate"><span class="pre">pip</span></code>?</strong>: <code class="docutils literal notranslate"><span class="pre">pip</span></code> is the standard <code class="docutils literal notranslate"><span class="pre">Python</span></code> package installer, it’s what <code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">pip</span> <span class="pre">install</span></code> mimics (and replaces) under the hood. Both <code class="docutils literal notranslate"><span class="pre">pip</span></code> and <code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">pip</span> <span class="pre">install</span></code> download packages from <a class="reference external" href="https://pypi.org/">PyPI</a>, the <strong>Python Package Index</strong>.</p>
+<p>Not all packages are published on <code class="docutils literal notranslate"><span class="pre">PyPI</span></code> though. Some, especially in <strong>scientific programming</strong>, are instead only available on <a class="reference external" href="https://conda-forge.org/">conda-forge</a>. <code class="docutils literal notranslate"><span class="pre">uv</span></code> <strong>cannot</strong> install packages from <code class="docutils literal notranslate"><span class="pre">conda-forge</span></code>, if you need one of those, you’ll have to use <code class="docutils literal notranslate"><span class="pre">conda</span></code> (or its faster reimplementation <code class="docutils literal notranslate"><span class="pre">mamba</span></code>) or <code class="docutils literal notranslate"><span class="pre">pixi</span></code> instead of <code class="docutils literal notranslate"><span class="pre">uv</span></code>.</p>
+</div>
+</section>
+</section>
+<section id="the-python-files-and-uv">
+<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">4. The Python Files and <code class="docutils literal notranslate"><span class="pre">uv</span></code><a class="headerlink" href="#the-python-files-and-uv" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">Python</span></code> code is usually saved in plain text files ending in <strong><code class="docutils literal notranslate"><span class="pre">.py</span></code></strong> (for example <code class="docutils literal notranslate"><span class="pre">bobiac.py</span></code>). Each of these files contains a list of instructions that the <code class="docutils literal notranslate"><span class="pre">Python</span></code> interpreter reads and executes, one after the other, from top to bottom.</p>
+<section id="importing-packages-in-a-python-file">
+<h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">4.1. Importing Packages in a Python File<a class="headerlink" href="#importing-packages-in-a-python-file" title="Link to this heading">#</a></h3>
+<p>As we saw earlier, <strong>packages</strong> give us access to functionality that we don’t have to write ourselves. But before we can actually use a package inside a <code class="docutils literal notranslate"><span class="pre">.py</span></code> file, we need to <strong>import</strong> it:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">mean</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]))</span>
+<span class="o">&gt;</span> <span class="mf">2.5</span>
+</pre></div>
+</div>
+<p>This makes everything inside the <code class="docutils literal notranslate"><span class="pre">numpy</span></code> package available, and you access its functions with the <code class="docutils literal notranslate"><span class="pre">numpy.</span></code> prefix.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>✅ <strong>Best practice</strong>: it’s good practice to put <strong>all your imports at the very top</strong> of a <code class="docutils literal notranslate"><span class="pre">.py</span></code> file, before any other code. This makes it immediately clear, just by glancing at the first few lines, which packages a script depends on.</p>
+</div>
+<p>Since typing the full package name every time can get tedious, especially for packages with long names, it’s common to import a package with a shorter <strong>alias</strong> instead:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]))</span>
+<span class="o">&gt;</span> <span class="mf">2.5</span>
+</pre></div>
+</div>
+<p>Here, <code class="docutils literal notranslate"><span class="pre">np</span></code> is just a “nickname” for <code class="docutils literal notranslate"><span class="pre">numpy</span></code>, both refer to the exact same package, but <code class="docutils literal notranslate"><span class="pre">np</span></code> is much quicker to type. This is such a common convention that you’ll see <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">numpy</span> <span class="pre">as</span> <span class="pre">np</span></code> (and similar aliases, like <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">pandas</span> <span class="pre">as</span> <span class="pre">pd</span></code>) at the top of almost every script that uses them.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>💡 You can technically choose any alias you like, but it’s best to stick to the <strong>conventional ones</strong> (like <code class="docutils literal notranslate"><span class="pre">np</span></code> for <code class="docutils literal notranslate"><span class="pre">numpy</span></code>), since that’s what most <code class="docutils literal notranslate"><span class="pre">Python</span></code> programmers will recognize at a glance.</p>
+</div>
+</section>
+<section id="running-python-files">
+<h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">4.2. Running Python Files<a class="headerlink" href="#running-python-files" title="Link to this heading">#</a></h3>
+<p>So far we’ve created an environment, activated it, and installed packages into it manually. We also created a <code class="docutils literal notranslate"><span class="pre">.py</span></code> file and imported some packages into it. Now we want to <strong>run</strong> that file, which means telling <code class="docutils literal notranslate"><span class="pre">Python</span></code> to read the instructions in the file and execute them.</p>
+<p>Once your virtual environment is <strong>activated</strong>, the simplest way to run a <code class="docutils literal notranslate"><span class="pre">.py</span></code> file is with the <code class="docutils literal notranslate"><span class="pre">python</span></code> command, followed by the <strong>path</strong> to the file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>path/to/your/script.py
+</pre></div>
+</div>
+<p>This works because, once activated, your terminal’s <code class="docutils literal notranslate"><span class="pre">python</span></code> command points to the <code class="docutils literal notranslate"><span class="pre">Python</span></code> interpreter that lives <strong>inside that specific environment</strong>, the one with all the packages you installed in it.</p>
+</section>
+<section id="running-python-files-with-uv">
+<h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">4.3. Running Python Files with <code class="docutils literal notranslate"><span class="pre">uv</span></code><a class="headerlink" href="#running-python-files-with-uv" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">uv</span></code> can also run a <code class="docutils literal notranslate"><span class="pre">.py</span></code> file for you directly, without requiring you to manually create and activate an environment first.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">run</span></code> command runs a <code class="docutils literal notranslate"><span class="pre">Python</span></code> script (or any command):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>run<span class="w"> </span>script.py
+</pre></div>
+</div>
+<p>This is shorthand for <code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">run</span> <span class="pre">python</span> <span class="pre">script.py</span></code>. Depending on your situation, this is what actually happens:</p>
+<ol class="arabic">
+<li><p><strong>No environment was ever created</strong>: if there is no <code class="docutils literal notranslate"><span class="pre">.venv</span></code> folder at all in the current directory, <code class="docutils literal notranslate"><span class="pre">uv</span></code> simply uses (or quickly downloads) a plain <code class="docutils literal notranslate"><span class="pre">Python</span></code> interpreter to run your script, no environment is created on disk for this. If your script only relies on <code class="docutils literal notranslate"><span class="pre">Python</span></code>’s standard library, this works perfectly fine, there is <strong>nothing to install</strong>. But if your script <code class="docutils literal notranslate"><span class="pre">import</span></code>s a third-party package (like <code class="docutils literal notranslate"><span class="pre">numpy</span></code>), it will fail with a <code class="docutils literal notranslate"><span class="pre">ModuleNotFoundError</span></code>, since that package is nowhere to be found.</p></li>
+<li><p><strong>An environment exists but is <em>not</em> activated</strong>: if you previously created a <code class="docutils literal notranslate"><span class="pre">.venv</span></code> in the current directory with <code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">venv</span></code> (as we saw <a class="reference internal" href="#virtual-environments-with-uv"><span class="xref myst">above</span></a>) and installed packages into it, <code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">run</span> <span class="pre">script.py</span></code> will automatically <strong>detect and use that <code class="docutils literal notranslate"><span class="pre">.venv</span></code></strong>, including everything you installed in it, <strong>even without activating it</strong>. <code class="docutils literal notranslate"><span class="pre">uv</span></code> simply looks for a folder literally named <strong><code class="docutils literal notranslate"><span class="pre">.venv</span></code></strong> next to your script.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>⚠️ <strong>Custom-named environments</strong>: this auto-detection only works for the <strong>default</strong> <code class="docutils literal notranslate"><span class="pre">.venv</span></code> name. If you created your environment with a custom name (e.g. <code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">venv</span> <span class="pre">my-env</span></code>), <code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">run</span></code> will <strong>not</strong> find it automatically, you would need to <strong>activate it</strong> first.</p>
+</div>
+</li>
+<li><p><strong>An environment is activated</strong>: if you have <strong>activated</strong> an environment (default-named or not), <code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">run</span> <span class="pre">script.py</span></code> will use that <strong>active environment</strong> and everything installed in it, exactly like running <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">script.py</span></code> directly.</p></li>
+</ol>
+</section>
+<section id="uv-run-with">
+<h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">4.4. <code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">run</span> <span class="pre">--with</span></code><a class="headerlink" href="#uv-run-with" title="Link to this heading">#</a></h3>
+<p>As we just saw, if your <code class="docutils literal notranslate"><span class="pre">.py</span></code> file <code class="docutils literal notranslate"><span class="pre">import</span></code>s a third-party package and there is no environment to provide it, <code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">run</span> <span class="pre">script.py</span></code> fails with a <code class="docutils literal notranslate"><span class="pre">ModuleNotFoundError</span></code>. The <code class="docutils literal notranslate"><span class="pre">--with</span></code> flag fixes exactly that: it tells <code class="docutils literal notranslate"><span class="pre">uv</span></code> to install <strong>extra dependencies</strong>, just for that single run, without needing a <code class="docutils literal notranslate"><span class="pre">.venv</span></code> at all:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>run<span class="w"> </span>--with<span class="w"> </span>numpy<span class="w"> </span>script.py
+</pre></div>
+</div>
+<p>You can also pass multiple packages, or even pin a specific version, for example to quickly check that your code still works with an older release of a package:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>run<span class="w"> </span>--with<span class="w"> </span><span class="s2">"numpy==1.26"</span><span class="w"> </span>--with<span class="w"> </span>matplotlib<span class="w"> </span>script.py
+</pre></div>
+</div>
+</section>
+<section id="the-p-flag">
+<h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">4.5. The <code class="docutils literal notranslate"><span class="pre">-p</span></code> Flag<a class="headerlink" href="#the-p-flag" title="Link to this heading">#</a></h3>
+<p>You can use the <code class="docutils literal notranslate"><span class="pre">-p</span></code> flag with <code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">run</span></code> to choose which <code class="docutils literal notranslate"><span class="pre">Python</span></code> version to run the script with, for example if you want to test your code against a version different from the one in your active environment:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>run<span class="w"> </span>-p<span class="w"> </span><span class="m">3</span>.11<span class="w"> </span>script.py
+</pre></div>
+</div>
+<p>This is especially handy when you want to quickly check that your code works across different <code class="docutils literal notranslate"><span class="pre">Python</span></code> versions, without having to manually create a new environment for each one.</p>
+</section>
+<section id="uvx-uv-tool-run">
+<h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">4.6. <code class="docutils literal notranslate"><span class="pre">uvx</span></code> (<code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">tool</span> <span class="pre">run</span></code>)<a class="headerlink" href="#uvx-uv-tool-run" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">uvx</span></code> is a shortcut for <code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">tool</span> <span class="pre">run</span></code>: it runs a <strong>command-line tool</strong> provided by a package, installing it into a temporary, isolated environment on the fly, without you ever having to <code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">pip</span> <span class="pre">install</span></code> it yourself.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uvx<span class="w"> </span>ruff<span class="w"> </span>check<span class="w"> </span>script.py
+</pre></div>
+</div>
+<p>This installs <code class="docutils literal notranslate"><span class="pre">ruff</span></code> into a throwaway environment (if it isn’t already cached), then runs the <code class="docutils literal notranslate"><span class="pre">check</span></code> command on <code class="docutils literal notranslate"><span class="pre">script.py</span></code>.</p>
+<p>In this course, we will use <code class="docutils literal notranslate"><span class="pre">uvx</span></code> to quickly launch some common tools with a graphical interface, such as <code class="docutils literal notranslate"><span class="pre">napari</span></code> and <code class="docutils literal notranslate"><span class="pre">cellpose</span></code>, without having to install them first:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uvx<span class="w"> </span><span class="s2">"napari[all]"</span>
+uvx<span class="w"> </span><span class="s2">"cellpose[gui]"</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>💡 <code class="docutils literal notranslate"><span class="pre">uvx</span> <span class="pre">&lt;command&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">tool</span> <span class="pre">run</span> <span class="pre">&lt;command&gt;</span></code> are exactly the same thing, <code class="docutils literal notranslate"><span class="pre">uvx</span></code> is just shorter to type. Notice there is no extra <code class="docutils literal notranslate"><span class="pre">run</span></code> keyword after <code class="docutils literal notranslate"><span class="pre">uvx</span></code>, since <code class="docutils literal notranslate"><span class="pre">uvx</span></code> already means “run”.</p>
+</div>
+</section>
+<section id="uv-and-pep-723">
+<h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">4.7. <code class="docutils literal notranslate"><span class="pre">uv</span></code> and <code class="docutils literal notranslate"><span class="pre">PEP</span> <span class="pre">723</span></code><a class="headerlink" href="#uv-and-pep-723" title="Link to this heading">#</a></h3>
+<p>A <a class="reference external" href="https://peps.python.org/"><strong>PEP</strong></a> (<strong>P</strong>ython <strong>E</strong>nhancement <strong>P</strong>roposal) is a document that describes a new feature or convention for the <code class="docutils literal notranslate"><span class="pre">Python</span></code> language. <a class="reference external" href="https://peps.python.org/pep-0723/"><strong>PEP 723</strong></a> is one of these proposals, and it defines a standard way to declare a script’s dependencies <strong>directly inside the script itself</strong>, using a special comment block at the top of the file:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># /// script</span>
+<span class="c1"># requires-python = "&gt;=3.12"</span>
+<span class="c1"># dependencies = [</span>
+<span class="c1">#     "numpy",</span>
+<span class="c1">#     "matplotlib",</span>
+<span class="c1"># ]</span>
+<span class="c1"># ///</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]))</span>
+</pre></div>
+</div>
+<p>This is exactly the kind of block we saw earlier when running <code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">run</span> <span class="pre">--with</span></code>, except now the dependencies travel <strong>with the file</strong>, instead of being typed out on the command line.</p>
+<p>This is where <code class="docutils literal notranslate"><span class="pre">uv</span></code> really shines: when you run a <code class="docutils literal notranslate"><span class="pre">.py</span></code> file that contains this <code class="docutils literal notranslate"><span class="pre">///script</span></code> block, <code class="docutils literal notranslate"><span class="pre">uv</span></code> automatically <strong>reads the dependencies</strong>, creates a <strong>temporary environment</strong>, installs everything that’s needed, and runs the script, all in one single command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>run<span class="w"> </span>script.py
+</pre></div>
+</div>
+<p>No manual environment creation, no <code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">pip</span> <span class="pre">install</span></code>, nothing to set up beforehand. The script is <strong>completely self-contained</strong>: anyone (including future you!) can run it with a single command and get the exact same result, regardless of what is or isn’t already installed on their computer.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>🚀 <strong>pyrunner</strong>: if you like the idea of self-contained <code class="docutils literal notranslate"><span class="pre">Python</span></code> scripts, check out <a class="reference external" href="https://github.com/fdrgsp/pyrunner"><code class="docutils literal notranslate"><span class="pre">pyrunner</span></code></a>, a small <strong>desktop app</strong> (an icon on your computer, just like any other application) built specifically for <code class="docutils literal notranslate"><span class="pre">PEP</span> <span class="pre">723</span></code> scripts. You simply double-click it, select a <code class="docutils literal notranslate"><span class="pre">.py</span></code> (or <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code>) file containing a <code class="docutils literal notranslate"><span class="pre">///script</span></code> block, and it runs the script for you, installing <code class="docutils literal notranslate"><span class="pre">uv</span></code> itself first if it isn’t already on your computer.</p>
+<p>This is especially useful if you write your own <code class="docutils literal notranslate"><span class="pre">PEP</span> <span class="pre">723</span></code> script and want to share it with <strong>someone who doesn’t know how to use <code class="docutils literal notranslate"><span class="pre">Python</span></code> or a terminal</strong>: they can just double-click <code class="docutils literal notranslate"><span class="pre">pyrunner</span></code>, pick your file, and run it, without ever opening a terminal. See the <a class="reference external" href="https://github.com/fdrgsp/pyrunner"><code class="docutils literal notranslate"><span class="pre">pyrunner</span></code> repository</a> for more details.</p>
+</div>
+</section>
+</section>
+<section id="summary-table">
+<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">5. Summary Table<a class="headerlink" href="#summary-table" title="Link to this heading">#</a></h2>
+<p>Here is a quick recap of all the <strong>terminal</strong> and <code class="docutils literal notranslate"><span class="pre">uv</span></code> commands we have seen in this section:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><span style="display: inline-block; width:300px;">Command</span></p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong><code class="docutils literal notranslate"><span class="pre">pwd</span></code></strong></p></td>
+<td><p>Print the path of the current working directory.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong><code class="docutils literal notranslate"><span class="pre">ls</span></code></strong></p></td>
+<td><p>List the contents of the current directory.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">[DIR]</span></code></strong></p></td>
+<td><p>Change directory to <code class="docutils literal notranslate"><span class="pre">[DIR]</span></code>. <br/><small><em>If <code class="docutils literal notranslate"><span class="pre">[DIR]</span></code> is not provided, defaults to the home directory.</em></small></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong><code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">[DIR]</span></code></strong></p></td>
+<td><p>Create a new directory named <code class="docutils literal notranslate"><span class="pre">[DIR]</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><hr/></p></td>
+<td><p><hr/></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong><code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">venv</span> <span class="pre">[ENV_PATH]</span></code></strong></p></td>
+<td><p>Create a virtual environment at <code class="docutils literal notranslate"><span class="pre">[ENV_PATH]</span></code>. <br/><small>👍 <em>Defaults to <code class="docutils literal notranslate"><span class="pre">.venv</span></code> in the current directory if not provided.</em></small></p></td>
+</tr>
+<tr class="row-even"><td><p><strong><code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">venv</span> <span class="pre">-p</span> <span class="pre">&lt;PYTHON&gt;</span></code></strong></p></td>
+<td><p>Create a virtual environment with a specific <code class="docutils literal notranslate"><span class="pre">Python</span></code> version (e.g. <code class="docutils literal notranslate"><span class="pre">-p</span> <span class="pre">3.11</span></code>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><i class="fab fa-apple"></i> <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">.venv/bin/activate</span></code><br/><i class="fab fa-windows"></i> <code class="docutils literal notranslate"><span class="pre">.venv\Scripts\activate</span></code></p></td>
+<td><p>Activate the virtual environment in <code class="docutils literal notranslate"><span class="pre">.venv</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong><code class="docutils literal notranslate"><span class="pre">deactivate</span></code></strong></p></td>
+<td><p>Deactivate the currently active virtual environment.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong><code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">[PACKAGE]</span></code></strong><br/><strong><code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">pip</span> <span class="pre">uninstall</span> <span class="pre">[PACKAGE]</span></code></strong></p></td>
+<td><p>Install or uninstall <code class="docutils literal notranslate"><span class="pre">PACKAGE</span></code> in the active virtual environment. <br/><small><em>May specify multiple packages separated by a space, and pin versions with <code class="docutils literal notranslate"><span class="pre">==</span></code>.</em></small></p></td>
+</tr>
+<tr class="row-even"><td><p><strong><code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">pip</span> <span class="pre">list</span></code></strong></p></td>
+<td><p>List all packages installed in the active virtual environment.</p></td>
+</tr>
+<tr class="row-odd"><td><p><hr/></p></td>
+<td><p><hr/></p></td>
+</tr>
+<tr class="row-even"><td><p><strong><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">path/to/script.py</span></code></strong></p></td>
+<td><p>Run <code class="docutils literal notranslate"><span class="pre">script.py</span></code> with the <code class="docutils literal notranslate"><span class="pre">Python</span></code> interpreter of the currently <strong>activated</strong> environment.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong><code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">run</span> <span class="pre">script.py</span></code></strong></p></td>
+<td><p>Run <code class="docutils literal notranslate"><span class="pre">script.py</span></code>, automatically using a <code class="docutils literal notranslate"><span class="pre">.venv</span></code> in the current directory if one exists (even if not activated), or an on-demand interpreter otherwise. See <a class="reference internal" href="#running-python-files-with-uv"><span class="xref myst">Running Python Files with uv</span></a> for the full picture.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong><code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">run</span> <span class="pre">--with</span> <span class="pre">[PACKAGE]</span> <span class="pre">script.py</span></code></strong></p></td>
+<td><p>Run <code class="docutils literal notranslate"><span class="pre">script.py</span></code> with <code class="docutils literal notranslate"><span class="pre">PACKAGE</span></code> installed temporarily, just for that run.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong><code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">run</span> <span class="pre">-p</span> <span class="pre">&lt;PYTHON&gt;</span> <span class="pre">script.py</span></code></strong></p></td>
+<td><p>Run <code class="docutils literal notranslate"><span class="pre">script.py</span></code> with a specific <code class="docutils literal notranslate"><span class="pre">Python</span></code> version.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong><code class="docutils literal notranslate"><span class="pre">uvx</span> <span class="pre">&lt;COMMAND&gt;</span></code></strong><br/><em>short for:</em><br/><strong><code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">tool</span> <span class="pre">run</span> <span class="pre">&lt;COMMAND&gt;</span></code></strong></p></td>
+<td><p>Run a <code class="docutils literal notranslate"><span class="pre">&lt;COMMAND&gt;</span></code> provided by a package of the same name, installing it on the fly in a temporary environment.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>💡 For the full list of <code class="docutils literal notranslate"><span class="pre">uv</span></code> commands and options, see the <a class="reference external" href="https://docs.astral.sh/uv/">official uv documentation</a>.</p>
+</div>
+</section>
+</section>
+<script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content/02_getting_started_with_python"
+        },
+        predefinedOutput: true
+    }
+    </script>
+<script>kernelName = 'python3'</script>
+</article>
+<footer class="prev-next-footer d-print-none">
+<div class="prev-next-area">
+<a class="left-prev" href="python_intro.html" title="previous page">
+<i class="fa-solid fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">previous</p>
+<p class="prev-next-title">Introduction to Python</p>
+</div>
+</a>
+<a class="right-next" href="jupyter_notebooks_and_juv.html" title="next page">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">next</p>
+<p class="prev-next-title">Jupyter Notebooks and juv</p>
+</div>
+<i class="fa-solid fa-angle-right"></i>
+</a>
+</div>
+</footer>
+</div>
+<dialog id="pst-secondary-sidebar-modal"></dialog>
+<div class="bd-sidebar-secondary bd-toc" id="pst-secondary-sidebar"><div class="sidebar-secondary-items sidebar-secondary__inner">
+<div class="sidebar-secondary-item"><div class="page-toc tocsection onthispage" id="pst-page-navigation-heading-2">
+<i class="fa-solid fa-list"></i> Contents
+  </div>
+<nav aria-labelledby="pst-page-navigation-heading-2" class="page-toc" id="pst-page-toc-nav">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#terminal-commands">1. Terminal Commands</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-uv">2. Installing <code class="docutils literal notranslate"><span class="pre">uv</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#virtual-environments-with-uv">3. Virtual Environments with uv</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-a-python-version-with-the-p-flag">3.1. Choosing a Python Version with the <code class="docutils literal notranslate"><span class="pre">-p</span></code> Flag</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#activating-and-deactivating-the-environment">3.2. Activating and Deactivating the Environment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-packages-with-uv">3.3. Installing Packages with <code class="docutils literal notranslate"><span class="pre">uv</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-python-files-and-uv">4. The Python Files and <code class="docutils literal notranslate"><span class="pre">uv</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-packages-in-a-python-file">4.1. Importing Packages in a Python File</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-python-files">4.2. Running Python Files</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-python-files-with-uv">4.3. Running Python Files with <code class="docutils literal notranslate"><span class="pre">uv</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uv-run-with">4.4. <code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">run</span> <span class="pre">--with</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-p-flag">4.5. The <code class="docutils literal notranslate"><span class="pre">-p</span></code> Flag</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uvx-uv-tool-run">4.6. <code class="docutils literal notranslate"><span class="pre">uvx</span></code> (<code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">tool</span> <span class="pre">run</span></code>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uv-and-pep-723">4.7. <code class="docutils literal notranslate"><span class="pre">uv</span></code> and <code class="docutils literal notranslate"><span class="pre">PEP</span> <span class="pre">723</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-table">5. Summary Table</a></li>
+</ul>
+</nav></div>
+</div></div>
+</div>
+<footer class="bd-footer-content">
+<div class="bd-footer-content__inner container">
+<div class="footer-item">
+<p class="component-author">
+By Federico Gasparoli, PhD - federico@hms.harvard.edu (federico.gasparoli@gmail.com)<br/>Materials:<br/>- Federico Gasparoli, PhD - federico@hms.harvard.edu (federico.gasparoli@gmail.com)<br/>- Eva de la Serna, PhD - eva_delaserna@hms.harvard.edu<br/>- Max Brambach, PhD - max_brambach@hms.harvard.edu
+</p>
+</div>
+<div class="footer-item">
+<p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+</p>
+</div>
+<div class="footer-item">
+</div>
+<div class="footer-item">
+<div class="extra_footer">
+<p>
+All content is licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC-BY 4.0</a>, except where noted otherwise.
+</p>
+</div>
+</div>
+</div>
+</footer>
+</main>
+</div>
+</div>
+<!-- Scripts loaded after <body> so the DOM is not blocked -->
+<script defer="" src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer="" src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+<footer class="bd-footer">
+</footer>
+</body>
+</html>

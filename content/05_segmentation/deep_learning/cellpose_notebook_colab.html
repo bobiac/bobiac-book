@@ -106,7 +106,14 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Course Material</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../01_intro_to_bobiac/bobiac_intro.html">01 - <i class="fas fa-image"></i> Introduction to BoBiAC</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../02_getting_started_with_python/getting_started_with_python.html">02 - <i class="fab fa-python"></i> Getting Started with Python and <code class="docutils literal notranslate"><span class="pre">uv</span></code></a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../02_getting_started_with_python/python_landing_page.html">02 - <i class="fab fa-python"></i> Getting Started with Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../02_getting_started_with_python/python_intro.html">Introduction to Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../02_getting_started_with_python/getting_started_with_uv.html">Getting started with uv</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02_getting_started_with_python/jupyter_notebooks_and_juv.html">Jupyter Notebooks and juv</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../03_python_basics/python_basics.html">03 - <i class="fab fa-python"></i> Python Basics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../03_python_basics/python_basics_notebook.html">The Python Basics Notebook</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../03_python_basics/error_notebook.html">Errors Everywhere</a></li>
@@ -169,7 +176,8 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">BoBiAC Exercises</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../10_bobiac_exercises/bobiac_exercises.html">BoBiAC Exercises</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../10_bobiac_exercises/uv_and_juv.html"><code class="docutils literal notranslate"><span class="pre">uv</span></code> and <code class="docutils literal notranslate"><span class="pre">juv</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../10_bobiac_exercises/uv.html">uv Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../10_bobiac_exercises/juv.html">juv Exercises</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../10_bobiac_exercises/working_with_bioimages.html">Working with Bioimages</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../10_bobiac_exercises/classic_segmentation.html">Classic Segmentation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../10_bobiac_exercises/group_work_1.html">Group Work 1</a></li>
@@ -275,8 +283,7 @@
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#run-cellpose-on-a-folder-of-images">Run Cellpose on a Folder of Images</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-1-gpu-optimization-with-batch-size">Bonus 1: GPU Optimization with <code class="docutils literal notranslate"><span class="pre">batch_size</span></code></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-2-cellpose-3d-segmentation">Bonus 2: Cellpose 3D Segmentation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-1-cellpose-3d-segmentation">Bonus 1: Cellpose 3D Segmentation</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-the-3d-sample-image">Download the 3D Sample Image</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-3d-image">Load the 3D Image</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-3d-image">Visualize the 3D Image</a></li>
@@ -287,6 +294,7 @@
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-2-timelapse-batch-processing">Bonus 2: Timelapse Batch Processing</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-3-gpu-optimization-with-batch-size">Bonus 3: GPU Optimization with <code class="docutils literal notranslate"><span class="pre">batch_size</span></code></a></li>
 </ul>
 </nav>
 </div>
@@ -792,60 +800,8 @@
 </div>
 </div>
 </section>
-<section id="bonus-1-gpu-optimization-with-batch-size">
-<h1>Bonus 1: GPU Optimization with <code class="docutils literal notranslate"><span class="pre">batch_size</span></code><a class="headerlink" href="#bonus-1-gpu-optimization-with-batch-size" title="Link to this heading">#</a></h1>
-<p>The simple loop above uses the default <code class="docutils literal notranslate"><span class="pre">batch_size=8</span></code>. This controls how many <strong>256×256 tiles</strong> are sent to the GPU per forward pass.</p>
-<p>For each image, <code class="docutils literal notranslate"><span class="pre">Cellpose</span></code> splits it into overlapping tiles (10% overlap by default) and runs the network on them in groups of <code class="docutils literal notranslate"><span class="pre">batch_size</span></code>. Increasing <code class="docutils literal notranslate"><span class="pre">batch_size</span></code> reduces the number of GPU passes per image, which is faster, at the cost of more GPU memory.</p>
-<p><strong>How many tiles does an image produce?</strong></p>
-<p>The image is divided into 256×256 tiles with a 10% overlap between neighbors, and tiles are added to ensure the edges are fully covered. The total number of tiles grows with image size.</p>
-<p>For example, a <strong>1392×1040</strong> image produces <strong>5×7 = 35 tiles</strong>:</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p><code class="docutils literal notranslate"><span class="pre">batch_size</span></code></p></th>
-<th class="head"><p>GPU passes (35 tiles)</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>8 (default)</p></td>
-<td><p>5</p></td>
-</tr>
-<tr class="row-odd"><td><p>16</p></td>
-<td><p>3</p></td>
-</tr>
-<tr class="row-even"><td><p>32</p></td>
-<td><p>2</p></td>
-</tr>
-<tr class="row-odd"><td><p>64</p></td>
-<td><p>1</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>Increase <code class="docutils literal notranslate"><span class="pre">batch_size</span></code> until you hit out-of-memory errors, then back off one step.</p>
-<p class="alert alert alert-info">
-<strong>Note:</strong> The tile overlap can be adjusted using the <code>tile_overlap</code> parameters in <code>model.eval()</code>. The default is 0.1 (10%) overlap which is the value used during training, so it is recommended to keep it as default unless you have specific reasons to change it.
-</p><div class="cell tag_skip-execution tag_teacher docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Path to the folder containing the images to segment</span>
-<span class="n">folder_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"content/bobiac_data_cellpose/05_segmentation_cellpose"</span><span class="p">)</span>
-
-<span class="c1"># Get the sorted list of all .tif images in the folder</span>
-<span class="n">images_path</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">folder_path</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">"*.tif"</span><span class="p">))</span>
-
-<span class="c1"># Increase batch_size to reduce GPU passes per image (uses more GPU memory)</span>
-<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">8</span>  <span class="c1"># each pass sends batch_size tiles of 256×256 to the GPU</span>
-<span class="k">for</span> <span class="n">image_path</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">images_path</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s2">"Processing images"</span><span class="p">):</span>
-    <span class="n">image</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span>
-    <span class="n">masks</span><span class="p">,</span> <span class="n">flows</span><span class="p">,</span> <span class="n">styles</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">)</span>
-    <span class="n">output_path</span> <span class="o">=</span> <span class="n">folder_path</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">image_path</span><span class="o">.</span><span class="n">stem</span><span class="si">}</span><span class="s2">_labels.tif"</span>
-    <span class="n">io</span><span class="o">.</span><span class="n">imsave</span><span class="p">(</span><span class="n">output_path</span><span class="p">,</span> <span class="n">masks</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="bonus-2-cellpose-3d-segmentation">
-<h1>Bonus 2: Cellpose 3D Segmentation<a class="headerlink" href="#bonus-2-cellpose-3d-segmentation" title="Link to this heading">#</a></h1>
+<section id="bonus-1-cellpose-3d-segmentation">
+<h1>Bonus 1: Cellpose 3D Segmentation<a class="headerlink" href="#bonus-1-cellpose-3d-segmentation" title="Link to this heading">#</a></h1>
 <p>Running a 3D segmentation on a z-stack is not very different than running it on a 2D image, you just need to set <code class="docutils literal notranslate"><span class="pre">do_3D=True</span></code> and specify the <code class="docutils literal notranslate"><span class="pre">z_axis</span></code> and, if needed, <code class="docutils literal notranslate"><span class="pre">anisotropy</span></code> (see the <code class="docutils literal notranslate"><span class="pre">model.eval()</span></code> parameter dropdown above and the <a class="reference external" href="https://cellpose.readthedocs.io/en/latest/do3d.html">3D Cellpose documentation</a> for more details).</p>
 <section id="download-the-3d-sample-image">
 <h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Download the 3D Sample Image<a class="headerlink" href="#download-the-3d-sample-image" title="Link to this heading">#</a></h2>
@@ -990,6 +946,65 @@ Z step size = 0.5 µm</p>
 </pre></div>
 </div>
 </section>
+<section id="bonus-3-gpu-optimization-with-batch-size">
+<h1>Bonus 3: GPU Optimization with <code class="docutils literal notranslate"><span class="pre">batch_size</span></code><a class="headerlink" href="#bonus-3-gpu-optimization-with-batch-size" title="Link to this heading">#</a></h1>
+<p>The simple loop above uses the default <code class="docutils literal notranslate"><span class="pre">batch_size=8</span></code>. This controls how many <strong>256×256 tiles</strong> are sent to the GPU per forward pass.</p>
+<p>For each image, <code class="docutils literal notranslate"><span class="pre">Cellpose</span></code> splits it into overlapping tiles (10% overlap by default) and runs the network on them in groups of <code class="docutils literal notranslate"><span class="pre">batch_size</span></code>. Increasing <code class="docutils literal notranslate"><span class="pre">batch_size</span></code> reduces the number of GPU passes per image, which <em>can</em> be faster, at the cost of more GPU memory.</p>
+<p class="alert alert alert-info">
+<strong>💡 Note:</strong> <code>batch_size</code> counts <strong>tiles, not images</strong>. Even when you loop and pass one image at a time (as above), the knob still matters because a single image is split into many tiles. Note also that passing a <strong>list</strong> of separate 2D images to <code>model.eval()</code> does <strong>not</strong> run them in parallel on the GPU: internally Cellpose simply loops over the list one image at a time, so the GPU behaviour is identical to the manual <code>for</code> loop.
+</p>
+<p><strong>How many tiles does an image produce?</strong></p>
+<p>The image is divided into 256×256 tiles with a 10% overlap between neighbors, and tiles are added to ensure the edges are fully covered. The total number of tiles grows with image size.</p>
+<p>For example, a <strong>1392×1040</strong> image produces <strong>5×7 = 35 tiles</strong>:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p><code class="docutils literal notranslate"><span class="pre">batch_size</span></code></p></th>
+<th class="head text-left"><p>GPU passes (35 tiles)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>8 (default)</p></td>
+<td class="text-left"><p>5</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>16</p></td>
+<td class="text-left"><p>3</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>32</p></td>
+<td class="text-left"><p>2</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>64</p></td>
+<td class="text-left"><p>1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Since this image only ever produces 35 tiles, raising <code class="docutils literal notranslate"><span class="pre">batch_size</span></code> above 35 has no effect for it: the extra capacity simply goes unused.</p>
+<p class="alert alert-warning">
+<strong>⚠️ The speedup depends on your GPU.</strong> Fewer GPU passes is not automatically faster, it depends on the hardware. On <strong>NVIDIA (CUDA)</strong> GPUs, packing more tiles into each pass typically reduces wall-clock time. On <strong>Apple Silicon (MPS)</strong>, however, we measured essentially <strong>no difference</strong> between <code>batch_size=8</code> and <code>64</code> on the image above (~16 s either way): the tiles are not processed any faster in larger batches. On such hardware there is no speed reason to raise <code>batch_size</code>, the only reason to change it is to <strong>lower</strong> it (using less GPU memory) if you run into out-of-memory errors. It is worth benchmarking on your own machine before tuning this parameter.
+</p>
+<p>On a CUDA GPU, a common strategy is to increase <code class="docutils literal notranslate"><span class="pre">batch_size</span></code> until you hit out-of-memory errors, then back off one step.</p>
+<p class="alert alert alert-info">
+<strong>Note:</strong> The tile overlap can be adjusted using the <code>tile_overlap</code> parameters in <code>model.eval()</code>. The default is 0.1 (10%) overlap which is the value used during training, so it is recommended to keep it as default unless you have specific reasons to change it.
+</p><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Path to the folder containing the images to segment</span>
+<span class="n">folder_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"content/bobiac_data_cellpose/05_segmentation_cellpose"</span><span class="p">)</span>
+
+<span class="c1"># Get the sorted list of all .tif images in the folder</span>
+<span class="n">images_path</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">folder_path</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">"*.tif"</span><span class="p">))</span>
+
+<span class="c1"># Increase batch_size to reduce GPU passes per image (uses more GPU memory)</span>
+<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">8</span>  <span class="c1"># each pass sends batch_size tiles of 256×256 to the GPU</span>
+<span class="k">for</span> <span class="n">image_path</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">images_path</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s2">"Processing images"</span><span class="p">):</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span>
+    <span class="n">masks</span><span class="p">,</span> <span class="n">flows</span><span class="p">,</span> <span class="n">styles</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">)</span>
+    <span class="n">output_path</span> <span class="o">=</span> <span class="n">folder_path</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">image_path</span><span class="o">.</span><span class="n">stem</span><span class="si">}</span><span class="s2">_labels.tif"</span>
+    <span class="n">io</span><span class="o">.</span><span class="n">imsave</span><span class="p">(</span><span class="n">output_path</span><span class="p">,</span> <span class="n">masks</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 <script type="text/x-thebe-config">
     {
         requestKernel: true,
@@ -1040,8 +1055,7 @@ Z step size = 0.5 µm</p>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#run-cellpose-on-a-folder-of-images">Run Cellpose on a Folder of Images</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-1-gpu-optimization-with-batch-size">Bonus 1: GPU Optimization with <code class="docutils literal notranslate"><span class="pre">batch_size</span></code></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-2-cellpose-3d-segmentation">Bonus 2: Cellpose 3D Segmentation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-1-cellpose-3d-segmentation">Bonus 1: Cellpose 3D Segmentation</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-the-3d-sample-image">Download the 3D Sample Image</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-3d-image">Load the 3D Image</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-3d-image">Visualize the 3D Image</a></li>
@@ -1052,6 +1066,7 @@ Z step size = 0.5 µm</p>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-2-timelapse-batch-processing">Bonus 2: Timelapse Batch Processing</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-3-gpu-optimization-with-batch-size">Bonus 3: GPU Optimization with <code class="docutils literal notranslate"><span class="pre">batch_size</span></code></a></li>
 </ul>
 </nav></div>
 </div></div>
