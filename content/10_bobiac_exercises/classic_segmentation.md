@@ -81,7 +81,7 @@ from skimage.color import label2rgb
 
 # define a function to plot images side by side
 def double_image_plotter(img_1, img_2):
-    """Function that plots 2 images side by side with their variable names as titles
+    """Function that plots 2 images side by side
 
     Parameters
     ----------
@@ -96,14 +96,18 @@ def double_image_plotter(img_1, img_2):
     plot of the images
 
     """
-    # Create a figure and axis
-    fig, axes = plt.subplots(1, 2, figsize=(8, 6), layout="constrained")  # 1 row, 2 columns
+    # Create a figure
+    plt.figure(figsize=(8, 6), layout="constrained") 
 
     # Plot images
-    axes[0].imshow(img_1, cmap="gray", vmin=img_1.min(), vmax=img_1.max())
-    axes[0].axis("off")  # Turn off axis
-    axes[1].imshow(img_2, cmap="gray", vmin=img_2.min(), vmax=img_2.max())
-    axes[1].axis("off")  # Turn off axis
+    # img_1
+    plt.subplot(1, 2, 1)
+    plt.imshow(img_1, cmap="gray", vmin=img_1.min(), vmax=img_1.max())
+    plt.axis("off")  # Turn off axis
+    # img_2
+    plt.subplot(1, 2, 2)
+    plt.imshow(img_2, cmap="gray", vmin=img_2.min(), vmax=img_2.max())
+    plt.axis("off")  # Turn off axis
 
     # Show the plot
     plt.show()
