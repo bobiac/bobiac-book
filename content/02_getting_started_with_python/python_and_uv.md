@@ -44,17 +44,17 @@ Most of these installable packages are published on a central repository called 
 
 Once we start installing packages, a new problem appears. Imagine you are working on **two different projects** at the same time:
 
-- **Project A** needs an **old version** of a package.
-- **Project B** needs the **newest version** of that same package.
+- **Project A** needs **version 1.0** of a package.
+- **Project B** needs **version 2.0** of that same package.
 
 If all packages were installed in **one single shared place** on your computer, these two requirements would **conflict** with each other: installing the version needed for Project B would **break** Project A.
 
 To avoid this, we use **virtual environments**.
 
-A **virtual environment** is an **isolated workspace** that contains its **own packages** (and, as we will see, its own `Python`), completely **separate** from everything else on your computer. Each project gets its **own environment**, so the packages of one project can **never interfere** with the packages of another.
+A **virtual environment** is an **isolated workspace** (imagine a folder on your computer) that contains its **own packages** (and, as we will see, its own `Python`), completely **separate** from everything else on your computer. Each project gets its **own environment**, so the packages of one project can **never interfere** with the packages of another.
 
 :::{note}
-{{pizza}} **Analogy**: Think of a **virtual environment** as a **separate, dedicated kitchen** for each recipe. Whatever ingredients and tools you bring into one kitchen stay there and don't get mixed up with the ingredients of another recipe in another kitchen.
+{{pizza}} **Analogy**: Imagine a kitchen that prepares **pizza** and **hot dogs** (Project A and Project B). Pizza needs **tomato sauce**, while hot dogs need **ketchup** (two different packages). If both recipes shared the same kitchen space, the sauces could get mixed up, and you might end up with ketchup on a pizza 😱! This does not work! By giving each recipe its **own dedicated space in the kitchen** (virtual environment), the ingredients of one **do not mix** with the ingredients of the other.
 :::
 
 A key idea is that virtual environments are **disposable**. An environment is **not precious**: if something goes wrong, or you no longer need a project, you can simply **delete the environment and recreate it from scratch**, without affecting `Python` itself or any of your other projects. This makes experimenting **safe**, you can always throw an environment away and start fresh.
@@ -63,19 +63,15 @@ A key idea is that virtual environments are **disposable**. An environment is **
 
 Now that each project has its **own environment**, there is one more thing we may want to control: the **version of `Python`** itself.
 
-Just like packages, `Python` evolves over time and comes in **different versions** (for example `Python 3.10`, `Python 3.11`, `Python 3.12`, ...). Sometimes a package only works with a **specific** (often **older**) version of `Python`, while another project might need a **newer** one.
+Just like packages, `Python` evolves over time and comes in **different versions** (for example `Python 3.10`, `Python 3.11`, `Python 3.12`, ...). Sometimes a package only works with a **specific** version of `Python`, while another project might need a **newer** one.
 
 For this reason, it is useful to be able to **install a specific version of `Python` inside each environment**. This way, Project A can use an older `Python` while Project B uses a newer one, again **without any conflict**.
 
-:::{note}
-{{pizza}} **Analogy**: If a package is a special ingredient, the **`Python` version** is like the **type of oven** in the kitchen. Some recipes only turn out right in a particular oven, so each kitchen (environment) can have exactly the oven (`Python` version) that recipe needs.
-:::
-
-## 5. Putting It All Together with `uv`
+## 5. Putting It All Together with uv
 
 So far we have introduced three things we need to manage:
 
-1. **Packages**, the libraries our code depends on.
+1. **Packages**, the libraries (or dependencies) our code depends on.
 2. **Virtual environments**, the isolated and disposable workspaces for each project.
 3. **Python versions**, the specific version of `Python` each environment uses.
 
@@ -88,9 +84,9 @@ How do we handle **all of this** easily? With a single tool called [`uv`](https:
 - **download and install any version of `Python`** you need.
 
 :::{note}
-{{pizza}} **Analogy**: If `Python` is the **cook** and packages are the **ingredients**, then `uv` is the **kitchen manager**: it sets up a dedicated kitchen for each recipe (the **environment**), installs the right oven (the **`Python` version**), and makes sure all the **ingredients** (the **packages**) are stocked and ready.
+🔧 **Other tools**: `uv` is not the only tool that can manage packages, virtual environments, and `Python` versions together. Other popular options include [conda](https://docs.conda.io/) and [pixi](https://pixi.sh/), which are also common in scientific computing. In this course we will use `uv`, but the concepts you learn here apply to these other tools as well.
 :::
 
 :::{note}
-💡 **You don't need to install Python yourself**: In principle, you *can* download `Python` directly from the [official Python website](https://www.python.org/downloads/), and it will be installed **system-wide** on your computer. However, this is **not ideal**: installing packages directly into that system `Python` can quickly become messy and lead to the conflicts we described above. By letting `uv` manage the `Python` versions, the environments, and the packages for us, we keep everything **clean**, **reproducible**, and **easy to throw away** and recreate.
+💡 **NOTE**: In principle, you *can* download `Python` directly from the [official Python website](https://www.python.org/downloads/), and it will be installed **system-wide** on your computer. However, this is **not ideal**: installing packages directly into that system `Python` can quickly become messy and lead to the conflicts we described above. By letting `uv` manage the `Python` versions, the environments, and the packages for us, we keep everything **clean**, **reproducible**, and **easy to throw away** and recreate.
 :::
