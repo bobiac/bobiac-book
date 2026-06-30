@@ -29,7 +29,7 @@
 <link href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" rel="stylesheet" type="text/css"/>
 <link href="../../_static/sphinx-thebe.css?v=4fa983c6" rel="stylesheet" type="text/css"/>
 <link href="../../_static/sphinx-design.min.css?v=95c83b7e" rel="stylesheet" type="text/css"/>
-<link href="../../_static/styles/custom.css?v=fc1e9281" rel="stylesheet" type="text/css"/>
+<link href="../../_static/styles/custom.css?v=db811428" rel="stylesheet" type="text/css"/>
 <!-- So that users can add custom icons -->
 <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
 <!-- Pre-loaded scripts that we'll load fully later -->
@@ -291,7 +291,7 @@
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><img src="/_static/images/margarita_pizza.png" style="vertical-align: middle;" width="20"/> <strong>Analogy</strong>: Think of the <strong>Programming Language rules</strong> and <strong>syntax</strong> as the <strong>grammar</strong> and <strong>vocabulary</strong> we use to write <strong>a pizza recipe</strong>, and the <strong>Interpreter</strong> as the <strong>cook</strong> who <strong>reads</strong>, <strong>understands</strong>, and <strong>executes</strong> the instructions to make a wonderful pizza.</p>
+<p><span class="pizza-icon"></span> <strong>Analogy</strong>: Think of the <strong>Programming Language rules</strong> and <strong>syntax</strong> as the <strong>grammar</strong> and <strong>vocabulary</strong> we use to write <strong>a pizza recipe</strong>, and the <strong>Interpreter</strong> as the <strong>cook</strong> who <strong>reads</strong>, <strong>understands</strong>, and <strong>executes</strong> the instructions to make a wonderful pizza.</p>
 </div>
 </section>
 <section id="python-packages">
@@ -310,7 +310,7 @@
 <p>Each of these would take an enormous amount of work to build ourselves, but thanks to packages we can simply <strong>reuse</strong> code that experts have already written, tested, and shared.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><img src="/_static/images/margarita_pizza.png" style="vertical-align: middle;" width="20"/> <strong>Analogy</strong>: To put the <strong>mozzarella</strong> (the <strong>package</strong>) on our pizza, we don’t have to buy a cow, milk it, and make the cheese ourselves. We can simply get <strong>mozzarella that someone else has already made beautifully</strong> for us. Sure, we <em>could</em> try to make it from scratch (i.e. write the code ourselves), but it can be <strong>quite hard</strong> and time-consuming. <strong>Packages</strong> are exactly that: ready-made ingredients we can reuse instead of preparing everything from scratch.</p>
+<p><span class="pizza-icon"></span> <strong>Analogy</strong>: To put the <strong>mozzarella</strong> (the <strong>package</strong>) on our pizza, we don’t have to buy a cow, milk it, and make the cheese ourselves. We can simply get <strong>mozzarella that someone else has already made beautifully</strong> for us. Sure, we <em>could</em> try to make it from scratch (i.e. write the code ourselves), but it can be <strong>quite hard</strong> and time-consuming. <strong>Packages</strong> are exactly that: ready-made ingredients we can reuse instead of preparing everything from scratch.</p>
 </div>
 <p>Most of these installable packages are published on a central repository called the <a class="reference external" href="https://pypi.org/">Python Package Index (PyPI)</a>, from which they can be downloaded and installed.</p>
 <div class="admonition note">
@@ -330,7 +330,7 @@
 <p>A <strong>virtual environment</strong> is an <strong>isolated workspace</strong> (imagine a folder on your computer) that contains its <strong>own packages</strong> (and, as we will see, its own <code class="docutils literal notranslate"><span class="pre">Python</span></code>), completely <strong>separate</strong> from everything else on your computer. Each project gets its <strong>own environment</strong>, so the packages of one project can <strong>never interfere</strong> with the packages of another.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><img src="/_static/images/margarita_pizza.png" style="vertical-align: middle;" width="20"/> <strong>Analogy</strong>: Imagine a kitchen that prepares <strong>pizza</strong> and <strong>hot dogs</strong> (Project A and Project B). Pizza needs <strong>tomato sauce</strong>, while hot dogs need <strong>ketchup</strong> (two different packages). If both recipes shared the same kitchen space, the sauces could get mixed up, and you might end up with ketchup on a pizza 😱! This does not work! By giving each recipe its <strong>own dedicated space in the kitchen</strong> (virtual environment), the ingredients of one <strong>do not mix</strong> with the ingredients of the other.</p>
+<p><span class="pizza-icon"></span> <strong>Analogy</strong>: Imagine a kitchen that prepares <strong>pizza</strong> and <strong>hot dogs</strong> (Project A and Project B). Pizza needs <strong>tomato sauce</strong>, while hot dogs need <strong>ketchup</strong> (two different packages). If both recipes shared the same kitchen space, the sauces could get mixed up, and you might end up with ketchup on a pizza 😱! This does not work! By giving each recipe its <strong>own dedicated space in the kitchen</strong> (virtual environment), the ingredients of one <strong>do not mix</strong> with the ingredients of the other.</p>
 </div>
 <p>A key idea is that virtual environments are <strong>disposable</strong>. An environment is <strong>not precious</strong>: if something goes wrong, or you no longer need a project, you can simply <strong>delete the environment and recreate it from scratch</strong>, without affecting <code class="docutils literal notranslate"><span class="pre">Python</span></code> itself or any of your other projects. This makes experimenting <strong>safe</strong>, you can always throw an environment away and start fresh.</p>
 </section>

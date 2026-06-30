@@ -6,7 +6,8 @@ There are several ways to install and work with `Python`. In this course, we cho
 
 We will also be writing and running our code in `Jupyter Notebooks`, an interactive format that is ideal for learning and experimenting. All the content in this book is designed so that each notebook is fully self-contained, it includes everything it needs to run on its own, with no extra setup required. We will explain what this means and how it works later in this chapter.
 
-In the next two sections, we will:
+The next two sections will cover:
 
-1. [**Python and uv**](python_and_uv.md): learn what `Python` is, how it works, and how to install and manage it using `uv`.
-2. [**Jupyter Notebooks and juv**](jupyter_notebooks_and_juv.md): learn what `Jupyter Notebooks` are and how to run and create them using `juv` (a `uv` tool).
+1. [**Introduction to Python**](python_intro.md): learn what `Python` is, how it works.
+2. [**Getting Started with uv**](getting_started_with_uv.md): learn how to use `uv` to manage your `Python` environments, packages and python files.
+3. [**Jupyter Notebooks and juv**](jupyter_notebooks_and_juv.md): learn what `Jupyter Notebooks` are and how to run and create them using `juv` (a `uv` tool).
