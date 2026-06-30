@@ -123,6 +123,10 @@ Not all packages are published on `PyPI` though. Some, especially in **scientifi
 
 `Python` code is usually saved in plain text files ending in **`.py`** (for example `bobiac.py`). Each of these files contains a list of instructions that the `Python` interpreter reads and executes, one after the other, from top to bottom.
 
+:::{note}
+To create a `.py` file, you can create any plain text file and rename its extension to `.py`. In practice, most people use an **IDE** (Integrated Development Environment), a code editor with extras like syntax highlighting, autocomplete, error squiggles and AI tools integration. A popular free choice is [VS Code](https://code.visualstudio.com).
+:::
+
 ### 4.1. Importing Packages in a Python File
 
 As we saw earlier, **packages** give us access to functionality that we don't have to write ourselves. But before we can actually use a package inside a `.py` file, we need to **import** it:
