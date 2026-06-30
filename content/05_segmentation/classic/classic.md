@@ -8,23 +8,14 @@
 
 ## Lesson Overview
 
-The following lesson is in two acts, each introduced by a lecture component:
+The following lesson will contain lecture and lab components:
 
-* Act 1: Learn how to write Python code to conduct classical segmentation processing on a single image
-* Act 2: Learn how to adapt the code to process many images
-
-In **Act 1**, we will walk through the following classical processing steps:
-
-1. Setup
-2. Loading an Image
-3. Filtering
-4. Thresholding
-5. Labeling
-6. Mask Refinement
-
-In **Act 2**, we will finish the lesson with the following section:
-
-1. Processing Many Images
+* Lecture: Learn how to write Python code to conduct classical segmentation processing on a single image
+* Lab: Conduct classical segmentation processing in a single image
+* Lecture: Learn how to refine segmentation results in a single image
+* Lab: Refine segmentation results in a single image
+* Lecture: Learn how to adapt the code to process many images
+* Lab: Modify code to process many images
 
 <a
     class="custom-button custom-download-button" href="../../../pdfs/05_segmentation/classic/classic_segmentation.pdf" download> <i class="fas fa-download"></i> Download the Slides
