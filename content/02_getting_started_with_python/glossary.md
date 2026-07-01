@@ -33,6 +33,8 @@ A quick reference for the key terms and concepts used throughout this course.
 | **uvx** | `uv tool run` | A shortcut for `uv tool run`. Runs a command-line tool from a package on the fly, installing it into a temporary isolated environment without any manual install step. |
 | **Virtual Environment** | `.venv`, env | An isolated workspace (a folder on your computer) containing its own `Python` interpreter and its own installed packages, completely separate from other environments. Prevents package conflicts between projects. |
 
+<br>
+
 # `uv` ↔️ `conda` Translation Table
 
 If you are already familiar with `conda`, here is a quick translation table to help you understand how `uv` commands map to `conda` commands:
