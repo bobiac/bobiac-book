@@ -58,7 +58,6 @@ In this course we will use `Jupyter Notebooks` and its particular file type with
 
 **JupyterLab** is the browser-based application we'll use to open and work with `Jupyter Notebooks` files.
 
-<!-- <div align="left"> <img src="https://raw.githubusercontent.com/bobiac/bobiac-book/main/_static/images/jlab.png" alt="JupyterLab interface" width="1000"></div> -->
 <div align="left"> <img src="../../_static/images/jlab.png" alt="JupyterLab interface" width="1000"></div>
 
 <br>
