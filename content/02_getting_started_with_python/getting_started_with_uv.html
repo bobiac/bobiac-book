@@ -113,7 +113,8 @@
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">Getting started with uv</a></li>
 </ul>
 </details></li>
-<li class="toctree-l2"><a class="reference internal" href="jupyter_notebooks_and_juv.html">Jupyter Notebooks and juv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jupyter_notebooks_and_juv.html">Jupyter Notebooks and <code class="docutils literal notranslate"><span class="pre">juv</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="glossary.html">Glossary</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../03_python_basics/python_basics.html">03 - <i class="fab fa-python"></i> Python Basics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -344,6 +345,17 @@
 <section id="installing-uv">
 <h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">2. Installing <code class="docutils literal notranslate"><span class="pre">uv</span></code><a class="headerlink" href="#installing-uv" title="Link to this heading">#</a></h2>
 <p>To install <code class="docutils literal notranslate"><span class="pre">uv</span></code> you can follow this <a class="reference external" href="https://bobiac.github.io/uv_instruction.html">uv instruction</a> or follow the <a class="reference external" href="https://docs.astral.sh/uv/getting-started/installation">uv documentation</a>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>To see all the <code class="docutils literal notranslate"><span class="pre">uv</span></code> commands and options, you can run in the terminal:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>--help
+</pre></div>
+</div>
+<p>This can also work for any <code class="docutils literal notranslate"><span class="pre">uv</span></code> subcommand, for example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>venv<span class="w"> </span>--help
+</pre></div>
+</div>
+</div>
 </section>
 <section id="virtual-environments-with-uv">
 <h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">3. Virtual Environments with uv<a class="headerlink" href="#virtual-environments-with-uv" title="Link to this heading">#</a></h2>
@@ -419,7 +431,16 @@
 </section>
 <section id="the-python-files-and-uv">
 <h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">4. The Python Files and <code class="docutils literal notranslate"><span class="pre">uv</span></code><a class="headerlink" href="#the-python-files-and-uv" title="Link to this heading">#</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">Python</span></code> code is usually saved in plain text files ending in <strong><code class="docutils literal notranslate"><span class="pre">.py</span></code></strong> (for example <code class="docutils literal notranslate"><span class="pre">bobiac.py</span></code>). Each of these files contains a list of instructions that the <code class="docutils literal notranslate"><span class="pre">Python</span></code> interpreter reads and executes, one after the other, from top to bottom.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Python</span></code> code is usually saved in plain text files ending in <strong><code class="docutils literal notranslate"><span class="pre">.py</span></code></strong> (for example <code class="docutils literal notranslate"><span class="pre">bobiac.py</span></code>). Each of these files contains a list of instructions that the <code class="docutils literal notranslate"><span class="pre">Python</span></code> interpreter reads and executes, one after the other, from top to bottom:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s2">"Python"</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"We love </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">!"</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">We</span> <span class="n">love</span> <span class="n">Python</span><span class="err">!</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>How to create a <code class="docutils literal notranslate"><span class="pre">.py</span></code> file</strong>: most people use an <strong>IDE</strong> (Integrated Development Environment), a code editor with extras like syntax highlighting, autocomplete, error squiggles and AI tools integration. A popular free choice is <a class="reference external" href="https://code.visualstudio.com">VS Code</a>. Once you become familiar with the Python syntax, you can try to use <strong>VS Code</strong> to create your <code class="docutils literal notranslate"><span class="pre">.py</span></code> files.</p>
+</div>
 <section id="importing-packages-in-a-python-file">
 <h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">4.1. Importing Packages in a Python File<a class="headerlink" href="#importing-packages-in-a-python-file" title="Link to this heading">#</a></h3>
 <p>As we saw earlier, <strong>packages</strong> give us access to functionality that we don’t have to write ourselves. But before we can actually use a package inside a <code class="docutils literal notranslate"><span class="pre">.py</span></code> file, we need to <strong>import</strong> it:</p>
@@ -497,13 +518,16 @@
 <section id="uvx-uv-tool-run">
 <h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">4.6. <code class="docutils literal notranslate"><span class="pre">uvx</span></code> (<code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">tool</span> <span class="pre">run</span></code>)<a class="headerlink" href="#uvx-uv-tool-run" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">uvx</span></code> is a shortcut for <code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">tool</span> <span class="pre">run</span></code>: it runs a <strong>command-line tool</strong> provided by a package, installing it into a temporary, isolated environment on the fly, without you ever having to <code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">pip</span> <span class="pre">install</span></code> it yourself.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uvx<span class="w"> </span>ruff<span class="w"> </span>check<span class="w"> </span>script.py
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uvx<span class="w"> </span>juv<span class="w"> </span>run<span class="w"> </span>my_notebook.ipynb
 </pre></div>
 </div>
-<p>This installs <code class="docutils literal notranslate"><span class="pre">ruff</span></code> into a throwaway environment (if it isn’t already cached), then runs the <code class="docutils literal notranslate"><span class="pre">check</span></code> command on <code class="docutils literal notranslate"><span class="pre">script.py</span></code>.</p>
-<p>In this course, we will use <code class="docutils literal notranslate"><span class="pre">uvx</span></code> to quickly launch some common tools with a graphical interface, such as <code class="docutils literal notranslate"><span class="pre">napari</span></code> and <code class="docutils literal notranslate"><span class="pre">cellpose</span></code>, without having to install them first:</p>
+<p>This fetches the <code class="docutils literal notranslate"><span class="pre">juv</span></code> package into a temporary environment (if it isn’t already cached), then calls <code class="docutils literal notranslate"><span class="pre">juv</span></code>’s <code class="docutils literal notranslate"><span class="pre">run</span></code> command on <code class="docutils literal notranslate"><span class="pre">my_notebook.ipynb</span></code>, without you ever installing <code class="docutils literal notranslate"><span class="pre">juv</span></code> manually.</p>
+<p>In this course, we will use <code class="docutils literal notranslate"><span class="pre">uvx</span></code> for <code class="docutils literal notranslate"><span class="pre">Jupyter</span> <span class="pre">Notebooks</span></code> and to quickly launch some common tools with a graphical interface, such as <code class="docutils literal notranslate"><span class="pre">napari</span></code> and <code class="docutils literal notranslate"><span class="pre">cellpose</span></code>, without having to install them first:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uvx<span class="w"> </span><span class="s2">"napari[all]"</span>
-uvx<span class="w"> </span><span class="s2">"cellpose[gui]"</span>
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uvx<span class="w"> </span><span class="s2">"cellpose[gui]"</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -643,7 +667,7 @@ uvx<span class="w"> </span><span class="s2">"cellpose[gui]"</span>
 <a class="right-next" href="jupyter_notebooks_and_juv.html" title="next page">
 <div class="prev-next-info">
 <p class="prev-next-subtitle">next</p>
-<p class="prev-next-title">Jupyter Notebooks and juv</p>
+<p class="prev-next-title">Jupyter Notebooks and <code class="docutils literal notranslate"><span class="pre">juv</span></code></p>
 </div>
 <i class="fa-solid fa-angle-right"></i>
 </a>

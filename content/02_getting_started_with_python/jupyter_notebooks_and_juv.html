@@ -1,176 +1,111 @@
 
 <!DOCTYPE html>
 
-
-<html lang="en" data-content_root="../../" >
-
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <title>Jupyter Notebooks and juv &#8212; BoBiAC Book</title>
-  
-  
-  
-  <script data-cfasync="false">
+<html data-content_root="../../" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Jupyter Notebooks and juv — BoBiAC Book</title>
+<script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!--
+<!--
     this give us a css class that will be invisible only if js is disabled
   -->
-  <noscript>
-    <style>
+<noscript>
+<style>
       .pst-js-only { display: none !important; }
 
     </style>
-  </noscript>
-  
-  <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/custom.css?v=db811428" />
-  
-  <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
-  <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
-
-    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../../_static/copybutton.js?v=f281be69"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
-    <script>let toggleHintShow = 'Click to show';</script>
-    <script>let toggleHintHide = 'Click to hide';</script>
-    <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js?v=b8b12719"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'content/02_getting_started_with_python/jupyter_notebooks_and_juv';</script>
-    <script src="../../_static/scripts/custom.js?v=a8e6099b"></script>
-    <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="03 - Python Basics" href="../03_python_basics/python_basics.html" />
-    <link rel="prev" title="Getting started with uv" href="getting_started_with_uv.html" />
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
-  </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
-  
-  
-  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
-  
-  <div id="pst-scroll-pixel-helper"></div>
-  
-  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
-  
-  <dialog id="pst-search-dialog">
-    
-<form class="bd-search d-flex align-items-center"
-      action="../../search.html"
-      method="get">
-  <i class="fa-solid fa-magnifying-glass"></i>
-  <input type="search"
-         class="form-control"
-         name="q"
-         placeholder="Search this book..."
-         aria-label="Search this book..."
-         autocomplete="off"
-         autocorrect="off"
-         autocapitalize="off"
-         spellcheck="false"/>
-  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</noscript>
+<!-- Loaded before other Sphinx assets -->
+<link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet"/>
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet"/>
+<link href="../../_static/pygments.css?v=03e43079" rel="stylesheet" type="text/css"/>
+<link href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" rel="stylesheet" type="text/css"/>
+<link href="../../_static/togglebutton.css?v=9c3e77be" rel="stylesheet" type="text/css"/>
+<link href="../../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/sphinx-thebe.css?v=4fa983c6" rel="stylesheet" type="text/css"/>
+<link href="../../_static/sphinx-design.min.css?v=95c83b7e" rel="stylesheet" type="text/css"/>
+<link href="../../_static/styles/custom.css?v=db811428" rel="stylesheet" type="text/css"/>
+<!-- So that users can add custom icons -->
+<script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+<!-- Pre-loaded scripts that we'll load fully later -->
+<link as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" rel="preload"/>
+<link as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" rel="preload"/>
+<script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+<script src="../../_static/doctools.js?v=9a2dae69"></script>
+<script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../../_static/copybutton.js?v=f281be69"></script>
+<script src="../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+<script>let toggleHintShow = 'Click to show';</script>
+<script>let toggleHintHide = 'Click to hide';</script>
+<script>let toggleOpenOnPrint = 'true';</script>
+<script src="../../_static/togglebutton.js?v=b8b12719"></script>
+<script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+<script src="../../_static/design-tabs.js?v=f930bc37"></script>
+<script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+<script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+<script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+<script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+<script>DOCUMENTATION_OPTIONS.pagename = 'content/02_getting_started_with_python/jupyter_notebooks_and_juv';</script>
+<script src="../../_static/scripts/custom.js?v=a8e6099b"></script>
+<link href="../../genindex.html" rel="index" title="Index"/>
+<link href="../../search.html" rel="search" title="Search"/>
+<link href="glossary.html" rel="next" title="Glossary"/>
+<link href="getting_started_with_uv.html" rel="prev" title="Getting started with uv"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+<meta content="" name="docsearch:version"/>
+</head>
+<body data-bs-root-margin="0px 0px -60%" data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-default-mode="" data-offset="180">
+<div class="skip-link d-print-none" id="pst-skip-link"><a href="#main-content">Skip to main content</a></div>
+<div id="pst-scroll-pixel-helper"></div>
+<button class="btn rounded-pill" id="pst-back-to-top" type="button">
+<i class="fa-solid fa-arrow-up"></i>Back to top</button>
+<dialog id="pst-search-dialog">
+<form action="../../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Search this book..." autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" name="q" placeholder="Search this book..." spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form>
-  </dialog>
-
-  <div class="pst-async-banner-revealer d-none">
-  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</dialog>
+<div class="pst-async-banner-revealer d-none">
+<aside aria-label="Version warning" class="d-none d-print-none" id="bd-header-version-warning"></aside>
 </div>
-
-  
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
-    </header>
-  
-
-  <div class="bd-container">
-    <div class="bd-container__inner bd-page-width">
-      
-      
-      
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
-        
-
-  
-  <div class="sidebar-header-items sidebar-primary__section">
-    
-    
-    
-    
-  </div>
-  
-    <div class="sidebar-primary-items__start sidebar-primary__section">
-        <div class="sidebar-primary-item">
-
-  
-    
-  
-
+<header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+</header>
+<div class="bd-container">
+<div class="bd-container__inner bd-page-width">
+<dialog id="pst-primary-sidebar-modal"></dialog>
+<div class="bd-sidebar-primary bd-sidebar" id="pst-primary-sidebar">
+<div class="sidebar-header-items sidebar-primary__section">
+</div>
+<div class="sidebar-primary-items__start sidebar-primary__section">
+<div class="sidebar-primary-item">
 <a class="navbar-brand logo" href="../../landing-page.html">
-  
-  
-  
-  
-  
-    
-    
-      
-    
-    
-    <img src="../../_static/bobiac-landing-black.png" class="logo__image only-light" alt="BoBiAC Book - Home"/>
-    <img src="../../_static/bobiac-landing-white.png" class="logo__image only-dark pst-js-only" alt="BoBiAC Book - Home"/>
-  
-  
+<img alt="BoBiAC Book - Home" class="logo__image only-light" src="../../_static/bobiac-landing-black.png"/>
+<img alt="BoBiAC Book - Home" class="logo__image only-dark pst-js-only" src="../../_static/bobiac-landing-white.png"/>
 </a></div>
-        <div class="sidebar-primary-item">
-
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+<div class="sidebar-primary-item">
+<button aria-label="Search" class="btn search-button-field search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Search">
+<i class="fa-solid fa-magnifying-glass"></i>
+<span class="search-button__default-text">Search</span>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
 </button></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item navbar-nav active">
-        
-        <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="../../landing-page.html">
-                    <i class="fas fa-home"></i> Home
+<div class="sidebar-primary-item"><nav aria-label="Main" class="bd-links bd-docs-nav">
+<div class="bd-toc-item navbar-nav active">
+<ul class="nav bd-sidenav bd-sidenav__home-link">
+<li class="toctree-l1">
+<a class="reference internal" href="../../landing-page.html">
+<i class="fas fa-home"></i> Home
                 </a>
-            </li>
-        </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Course Material</span></p>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Course Material</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../01_intro_to_bobiac/bobiac_intro.html">01 - <i class="fas fa-image"></i> Introduction to BoBiAC</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="python_landing_page.html">02 - <i class="fab fa-python"></i> Getting Started with Python</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
@@ -178,7 +113,8 @@
 <li class="toctree-l3"><a class="reference internal" href="getting_started_with_uv.html">Getting started with uv</a></li>
 </ul>
 </details></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Jupyter Notebooks and juv</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Jupyter Notebooks and <code class="docutils literal notranslate"><span class="pre">juv</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="glossary.html">Glossary</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../03_python_basics/python_basics.html">03 - <i class="fab fa-python"></i> Python Basics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -274,124 +210,291 @@
 <li class="toctree-l1"><a class="reference external" href="https://orcid.org/0000-0001-6194-9568">Max Brambach, PhD</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://www.linkedin.com/in/amelie-andreas-542b93204">Amelie Andreas</a></li>
 </ul>
-
-    </div>
+</div>
 </nav></div>
-    </div>
-  
-  
-  <div class="sidebar-primary-items__end sidebar-primary__section">
-      <div class="sidebar-primary-item">
-<div id="ethical-ad-placement"
-      class="flat"
-      data-ea-publisher="readthedocs"
-      data-ea-type="readthedocs-sidebar"
-      data-ea-manual="true">
+</div>
+<div class="sidebar-primary-items__end sidebar-primary__section">
+<div class="sidebar-primary-item">
+<div class="flat" data-ea-manual="true" data-ea-publisher="readthedocs" data-ea-type="readthedocs-sidebar" id="ethical-ad-placement">
 </div></div>
-  </div>
-
-
-      </div>
-      
-      <main id="main-content" class="bd-main" role="main">
-        
-        
-
+</div>
+</div>
+<main class="bd-main" id="main-content" role="main">
 <div class="sbt-scroll-pixel-helper"></div>
-
-          <div class="bd-content">
-            <div class="bd-article-container">
-              
-              <div class="bd-header-article d-print-none">
+<div class="bd-content">
+<div class="bd-article-container">
+<div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
-  
-    <div class="header-article-items__start">
-      
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <span class="fa-solid fa-bars"></span>
+<div class="header-article-items__start">
+<div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Toggle primary sidebar">
+<span class="fa-solid fa-bars"></span>
 </button></div>
-      
-    </div>
-  
-  
-    <div class="header-article-items__end">
-      
-        <div class="header-article-item">
-
+</div>
+<div class="header-article-items__end">
+<div class="header-article-item">
 <div class="article-header-buttons">
-
-
-<a href="https://github.com/bobiac/bobiac-book" target="_blank"
-   class="btn btn-sm btn-source-repository-button"
-   title="Source repository"
-   data-bs-placement="bottom" data-bs-toggle="tooltip"
->
-  
-
+<a class="btn btn-sm btn-source-repository-button" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/bobiac/bobiac-book" target="_blank" title="Source repository">
 <span class="btn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-
+<i class="fab fa-github"></i>
+</span>
 </a>
-
-
-
-
-<button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
-  title="Fullscreen mode"
-  data-bs-placement="bottom" data-bs-toggle="tooltip"
->
-  
-
+<button class="btn btn-sm btn-fullscreen-button pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" onclick="toggleFullScreen()" title="Fullscreen mode">
 <span class="btn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
+<i class="fas fa-expand"></i>
+</span>
 </button>
-
-
-
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+<button aria-label="Color mode" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Light"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Dark"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="System Settings"></i>
 </button>
-
-
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+<button aria-label="Search" class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Search">
+<i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Toggle secondary sidebar">
+<span class="fa-solid fa-list"></span>
+</button>
 </div></div>
-      
-    </div>
-  
 </div>
 </div>
-              
-              
-
-<div id="jb-print-docs-body" class="onlyprint">
-    <h1>Jupyter Notebooks and juv</h1>
-    <!-- Table of contents -->
-    <div id="print-main-content">
-        <div id="jb-print-toc">
-            
-        </div>
-    </div>
 </div>
-
-              
-                
+<div class="onlyprint" id="jb-print-docs-body">
+<h1>Jupyter Notebooks and juv</h1>
+<!-- Table of contents -->
+<div id="print-main-content">
+<div id="jb-print-toc">
+<div>
+<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;"> Contents </h2>
+</div>
+<nav aria-label="Page">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#terminal-commands">1. Terminal Commands</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-jupyter-notebook">2. What is a Jupyter Notebook?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyterlab">3. JupyterLab</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-packages-and-juv">4. Python Packages and <code class="docutils literal notranslate"><span class="pre">juv</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-packages-with-juv">4.1. Installing Packages with <code class="docutils literal notranslate"><span class="pre">juv</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initializing-a-notebook">4.2. Initializing a Notebook</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-packages-to-a-notebook">4.3. Adding Packages to a Notebook</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-a-notebook">4.4. Running a Notebook</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-packages-in-a-notebook">4.5. Importing Packages in a Notebook</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-table">5. Summary Table</a></li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
 <div id="searchbox"></div>
-                <article class="bd-article">
-                  
-  <section class="tex2jax_ignore mathjax_ignore" id="jupyter-notebooks-and-juv">
-<h1>Jupyter Notebooks and juv<a class="headerlink" href="#jupyter-notebooks-and-juv" title="Link to this heading">#</a></h1>
+<article class="bd-article">
+<section class="tex2jax_ignore mathjax_ignore" id="jupyter-notebooks-and-juv">
+<h1>Jupyter Notebooks and <code class="docutils literal notranslate"><span class="pre">juv</span></code><a class="headerlink" href="#jupyter-notebooks-and-juv" title="Link to this heading">#</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">Python</span></code> code is usually saved in plain text files ending in <strong><code class="docutils literal notranslate"><span class="pre">.py</span></code></strong>. In this course, however, we will mostly <strong>not</strong> work with <code class="docutils literal notranslate"><span class="pre">.py</span></code> files directly, we will use <strong><code class="docutils literal notranslate"><span class="pre">Jupyter</span> <span class="pre">Notebooks</span></code></strong> (<code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> files) instead. This page explains what they are, how we are going to use them.</p>
+<section id="terminal-commands">
+<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">1. Terminal Commands<a class="headerlink" href="#terminal-commands" title="Link to this heading">#</a></h2>
+<p>Before we start, let’s go over some of the <code class="docutils literal notranslate"><span class="pre">terminal</span></code> commands that could be useful during the course.</p>
+<p>First of all, what is a <code class="docutils literal notranslate"><span class="pre">terminal</span></code>? A <code class="docutils literal notranslate"><span class="pre">terminal</span></code> is a text-based interface that allows you to interact with your computer’s operating system. You can use it to run commands, navigate the file system, and manage files and directories.</p>
+<p>On <strong>macOS</strong> and <strong>Linux</strong>, this program is simply called the <strong>Terminal</strong>. On <strong>Windows</strong>, we suggest using <strong>PowerShell</strong> (instead of the older <code class="docutils literal notranslate"><span class="pre">cmd</span></code> Prompt) since most of the commands we will use behave the same way as on macOS and Linux.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>To open the terminal:</p>
+<ul class="simple">
+<li><p>On <strong>macOS</strong>, use the <code class="docutils literal notranslate"><span class="pre">Command</span> <span class="pre">+</span> <span class="pre">Space</span></code> shortcut to open Spotlight, then type “Terminal” and hit <code class="docutils literal notranslate"><span class="pre">Enter</span></code>.</p></li>
+<li><p>On <strong>Windows</strong>, use the <code class="docutils literal notranslate"><span class="pre">Windows</span> <span class="pre">+</span> <span class="pre">R</span></code> shortcut to open the Run dialog, then type “powershell” and hit <code class="docutils literal notranslate"><span class="pre">Enter</span></code>.</p></li>
+</ul>
+</div>
+<p>Here are a few basic commands that work on macOS, Linux, and the Windows PowerShell terminal (but not the Windows <code class="docutils literal notranslate"><span class="pre">cmd</span></code> Prompt):</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><span style="display: inline-block; width:120px;">Command</span></p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong><code class="docutils literal notranslate"><span class="pre">pwd</span></code></strong></p></td>
+<td><p>Print the path of the current working directory.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong><code class="docutils literal notranslate"><span class="pre">ls</span></code></strong></p></td>
+<td><p>List the contents of the current directory.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">[DIR]</span></code></strong></p></td>
+<td><p>Change directory to <code class="docutils literal notranslate"><span class="pre">[DIR]</span></code>. <br/><small><em>If <code class="docutils literal notranslate"><span class="pre">[DIR]</span></code> is not provided, defaults to the home directory.</em></small></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong><code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">[DIR]</span></code></strong></p></td>
+<td><p>Create a new directory named <code class="docutils literal notranslate"><span class="pre">[DIR]</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>💡 <strong>Relative paths</strong>: when navigating with <code class="docutils literal notranslate"><span class="pre">cd</span></code>, you can use <code class="docutils literal notranslate"><span class="pre">.</span></code> to refer to the current directory and <code class="docutils literal notranslate"><span class="pre">..</span></code> to refer to the parent directory (for example, <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">..</span></code> moves you up one level).</p>
+<p>For example, if you are in <code class="docutils literal notranslate"><span class="pre">Desktop/bobiac</span></code> and want to move to a sibling folder <code class="docutils literal notranslate"><span class="pre">Desktop/data</span></code>, you don’t need to type the full path, you can instead go up one level and then into <code class="docutils literal notranslate"><span class="pre">data</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>../data
+</pre></div>
+</div>
+</div>
 </section>
+<section id="what-is-a-jupyter-notebook">
+<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">2. What is a Jupyter Notebook?<a class="headerlink" href="#what-is-a-jupyter-notebook" title="Link to this heading">#</a></h2>
+<p>Running full <code class="docutils literal notranslate"><span class="pre">.py</span></code> files is great once you are familiar with <code class="docutils literal notranslate"><span class="pre">Python</span></code> and you are comfortable with the workflow, but for <strong>learning</strong> and <strong>experimenting</strong> it’s a bit clunky: you have to write the whole file, save it, run it, look at the output, then go back and edit.</p>
+<p>In this course we will use <code class="docutils literal notranslate"><span class="pre">Jupyter</span> <span class="pre">Notebooks</span></code> and its particular file type with the extension <strong><code class="docutils literal notranslate"><span class="pre">.ipynb</span></code></strong> (short for <strong>i</strong>nteractive <strong>py</strong>thon <strong>n</strong>ote<strong>b</strong>ook). For example, a file called <code class="docutils literal notranslate"><span class="pre">bobiac.ipynb</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Jupyter</span> <span class="pre">Notebooks</span></code> allow us to:</p>
+<ul class="simple">
+<li><p>Write and run <code class="docutils literal notranslate"><span class="pre">Python</span></code> code in <strong>small chunks</strong> (called <em>cells</em>) and execute them one at a time.</p></li>
+<li><p>Display the output of each cell <strong>immediately</strong> below the cell, so you can see the results of your code as you go.</p></li>
+<li><p>Mix <strong><code class="docutils literal notranslate"><span class="pre">Python</span></code> code</strong> with <strong>text</strong>, <strong>images</strong>, and <strong>equations</strong> in the same document, which is great for <strong>learning</strong> purposes.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>💡 A new and very valid alternative to <code class="docutils literal notranslate"><span class="pre">Jupyter</span> <span class="pre">Notebooks</span></code> is <a class="reference external" href="https://marimo.io"><code class="docutils literal notranslate"><span class="pre">marimo</span></code></a>, which uses plain <code class="docutils literal notranslate"><span class="pre">.py</span></code> files. We encourage you to have a look at it in the future, once you get more familiar with <code class="docutils literal notranslate"><span class="pre">Python</span></code>.</p>
+</div>
+</section>
+<section id="jupyterlab">
+<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">3. JupyterLab<a class="headerlink" href="#jupyterlab" title="Link to this heading">#</a></h2>
+<p><strong>JupyterLab</strong> is the browser-based application we’ll use to open and work with <code class="docutils literal notranslate"><span class="pre">Jupyter</span> <span class="pre">Notebooks</span></code> files.</p>
+<!-- <div align="left"> <img src="https://raw.githubusercontent.com/bobiac/bobiac-book/main/_static/images/jlab.png" alt="JupyterLab interface" width="1000"></div> -->
+<div align="left"> <img alt="JupyterLab interface" src="../../_static/images/jlab.png" width="1000"/></div>
+<br/>
+<p>The key elements of the interface are highlighted in the screenshot above:</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">+</span></code> button</strong>: adds a new cell.</p></li>
+<li><p><strong>Cell type selector</strong>: a dropdown that switches a cell between <strong>Code</strong> (runs <code class="docutils literal notranslate"><span class="pre">Python</span></code>) and <strong>Markdown</strong> (renders formatted text).</p></li>
+<li><p><strong>▶ Run button</strong> (or <code class="docutils literal notranslate"><span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">Enter</span></code>): runs the selected cell and moves to the next one.</p></li>
+<li><p><strong>⟳ Restart Kernel button</strong>: the <code class="docutils literal notranslate"><span class="pre">kernel</span></code> is the <code class="docutils literal notranslate"><span class="pre">Python</span></code> process running behind your notebook. If something goes wrong (an unexpected error, an infinite loop, or stale state from running cells out of order), use the ⟳ button to restart it and start fresh.</p></li>
+</ul>
+</section>
+<section id="python-packages-and-juv">
+<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">4. Python Packages and <code class="docutils literal notranslate"><span class="pre">juv</span></code><a class="headerlink" href="#python-packages-and-juv" title="Link to this heading">#</a></h2>
+<p>As we saw in the <a class="reference internal" href="python_intro.html"><span class="std std-doc">Python introduction</span></a>, running <code class="docutils literal notranslate"><span class="pre">Python</span></code> code requires three things: a <strong>virtual environment</strong>, the <strong>packages</strong> (aka <strong>dependencies</strong> or <strong>libraries</strong>) your code imports, and the <strong><code class="docutils literal notranslate"><span class="pre">Python</span></code> version</strong> you want to use.</p>
+<p>This is also true for <code class="docutils literal notranslate"><span class="pre">Jupyter</span> <span class="pre">Notebooks</span></code> files (<code class="docutils literal notranslate"><span class="pre">.ipynb</span></code>). Managing these manually for each notebook would be tedious, and the <code class="docutils literal notranslate"><span class="pre">kernel</span></code> needs everything set up before <code class="docutils literal notranslate"><span class="pre">JupyterLab</span></code> even opens.</p>
+<p>To handle all of this automatically, we use <a class="reference external" href="https://github.com/manzt/juv"><code class="docutils literal notranslate"><span class="pre">juv</span></code></a>, a tool built on top of <code class="docutils literal notranslate"><span class="pre">uv</span></code> specifically designed for <code class="docutils literal notranslate"><span class="pre">Jupyter</span> <span class="pre">Notebooks</span></code> (check out the <a class="reference internal" href="getting_started_with_uv.html"><span class="std std-doc">Getting Started with uv</span></a> to learn more about <code class="docutils literal notranslate"><span class="pre">uv</span></code>). Instead of manually creating environments and installing packages, <code class="docutils literal notranslate"><span class="pre">juv</span></code> reads a dependencies list declared directly inside the notebook file and sets everything up for you in one command (through <code class="docutils literal notranslate"><span class="pre">PEP</span> <span class="pre">723</span></code>, see below).</p>
+<section id="installing-packages-with-juv">
+<h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">4.1. Installing Packages with <code class="docutils literal notranslate"><span class="pre">juv</span></code><a class="headerlink" href="#installing-packages-with-juv" title="Link to this heading">#</a></h3>
+<p>A <a class="reference external" href="https://peps.python.org/"><strong>PEP</strong></a> (<strong>P</strong>ython <strong>E</strong>nhancement <strong>P</strong>roposal) is a document that describes a new feature or convention for the <code class="docutils literal notranslate"><span class="pre">Python</span></code> language. <a class="reference external" href="https://peps.python.org/pep-0723/"><strong>PEP 723</strong></a> is one of these proposals, and it defines a standard way to declare a script’s dependencies <strong>directly inside the file itself</strong>, using a special comment block at the top of the file:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># /// script</span>
+<span class="c1"># requires-python = "&gt;=3.12"</span>
+<span class="c1"># dependencies = [</span>
+<span class="c1">#     "numpy",</span>
+<span class="c1">#     "matplotlib",</span>
+<span class="c1"># ]</span>
+<span class="c1"># ///</span>
+</pre></div>
+</div>
+<p>This means the notebook (or a <code class="docutils literal notranslate"><span class="pre">.py</span></code> file) is <strong>completely self-contained</strong>: anyone can run it and get the exact same environment, regardless of what is or isn’t already installed on their computer.</p>
+<p><code class="docutils literal notranslate"><span class="pre">juv</span></code> reads this block and automatically installs everything listed before launching <code class="docutils literal notranslate"><span class="pre">JupyterLab</span></code>, so you never have to manually create environments or install packages.</p>
+<p>In the nrext sections, we will she three basic <code class="docutils literal notranslate"><span class="pre">juv</span></code> commands that we will use throughout the course: <code class="docutils literal notranslate"><span class="pre">init</span></code>, <code class="docutils literal notranslate"><span class="pre">add</span></code>, and <code class="docutils literal notranslate"><span class="pre">run</span></code>.</p>
+</section>
+<section id="initializing-a-notebook">
+<h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">4.2. Initializing a Notebook<a class="headerlink" href="#initializing-a-notebook" title="Link to this heading">#</a></h3>
+<p>To create a new notebook with a <code class="docutils literal notranslate"><span class="pre">juv</span></code>-compatible header:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uvx<span class="w"> </span>juv<span class="w"> </span>init<span class="w"> </span>bobiac_notebook.ipynb
+</pre></div>
+</div>
+<p>This creates <code class="docutils literal notranslate"><span class="pre">bobiac_notebook.ipynb</span></code> with an empty <code class="docutils literal notranslate"><span class="pre">///script</span></code> block at the top, ready for you to declare dependencies. You can also set the <code class="docutils literal notranslate"><span class="pre">Python</span></code> version at creation time with the <code class="docutils literal notranslate"><span class="pre">-p</span></code> flag:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uvx<span class="w"> </span>juv<span class="w"> </span>init<span class="w"> </span>-p<span class="w"> </span><span class="m">3</span>.12<span class="w"> </span>bobiac_notebook.ipynb
+</pre></div>
+</div>
+<p>This sets <code class="docutils literal notranslate"><span class="pre">requires-python</span> <span class="pre">=</span> <span class="pre">"&gt;=3.12"</span></code> in the <code class="docutils literal notranslate"><span class="pre">///script</span></code> block automatically.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>💡 All <code class="docutils literal notranslate"><span class="pre">juv</span></code> commands are prefixed with <code class="docutils literal notranslate"><span class="pre">uvx</span></code>, which is a shortcut for <code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">tool</span> <span class="pre">run</span></code>. <code class="docutils literal notranslate"><span class="pre">uvx</span> <span class="pre">juv</span></code> means “fetch and run the <code class="docutils literal notranslate"><span class="pre">juv</span></code> tool”. See <a class="reference internal" href="getting_started_with_uv.html#46-uvx-uv-tool-run"><span class="std std-ref">Getting Started with <code class="docutils literal notranslate"><span class="pre">uv</span></code></span></a> for more details on <code class="docutils literal notranslate"><span class="pre">uvx</span></code>.</p>
+</div>
+</section>
+<section id="adding-packages-to-a-notebook">
+<h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">4.3. Adding Packages to a Notebook<a class="headerlink" href="#adding-packages-to-a-notebook" title="Link to this heading">#</a></h3>
+<p>To add a package to a notebook’s dependency list:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uvx<span class="w"> </span>juv<span class="w"> </span>add<span class="w"> </span>bobiac_notebook.ipynb<span class="w"> </span>numpy
+</pre></div>
+</div>
+<p>This writes <code class="docutils literal notranslate"><span class="pre">numpy</span></code> into the <code class="docutils literal notranslate"><span class="pre">///script</span></code> block inside the notebook file. You can add multiple packages at once, and even pin a <strong>specific version</strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uvx<span class="w"> </span>juv<span class="w"> </span>add<span class="w"> </span>bobiac_notebook.ipynb<span class="w"> </span>numpy<span class="w"> </span>matplotlib<span class="w"> </span><span class="s2">"scikit-image==0.24"</span>
+</pre></div>
+</div>
+</section>
+<section id="running-a-notebook">
+<h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">4.4. Running a Notebook<a class="headerlink" href="#running-a-notebook" title="Link to this heading">#</a></h3>
+<p>To launch a notebook in JupyterLab:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uvx<span class="w"> </span>juv<span class="w"> </span>run<span class="w"> </span>bobiac_notebook.ipynb
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">juv</span></code> reads the <code class="docutils literal notranslate"><span class="pre">///script</span></code> block, creates a temporary environment with all the listed dependencies installed, and opens JupyterLab in your browser — no manual environment creation or package installation needed.</p>
+</section>
+<section id="importing-packages-in-a-notebook">
+<h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">4.5. Importing Packages in a Notebook<a class="headerlink" href="#importing-packages-in-a-notebook" title="Link to this heading">#</a></h3>
+<p>Before you can use a package inside a notebook cell, you need to <strong>import</strong> it:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span>
 
-    <script type="text/x-thebe-config">
+<span class="nb">print</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">mean</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]))</span>
+<span class="o">&gt;</span> <span class="mf">2.5</span>
+</pre></div>
+</div>
+<p>This makes everything inside the <code class="docutils literal notranslate"><span class="pre">numpy</span></code> package available, and you access its functions with the <code class="docutils literal notranslate"><span class="pre">numpy.</span></code> prefix.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>✅ <strong>Best practice</strong>: it’s good practice to put <strong>all your imports in a dedicated cell at the very top of the notebook</strong>, before any other code. This makes it immediately clear, just by glancing at the first cell, which packages a notebook depends on.</p>
+</div>
+<p>Since typing the full package name every time can get tedious, it’s common to import a package with a shorter <strong>alias</strong> instead:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]))</span>
+<span class="o">&gt;</span> <span class="mf">2.5</span>
+</pre></div>
+</div>
+<p>Here, <code class="docutils literal notranslate"><span class="pre">np</span></code> is just a “nickname” for <code class="docutils literal notranslate"><span class="pre">numpy</span></code> — both refer to the exact same package, but <code class="docutils literal notranslate"><span class="pre">np</span></code> is much quicker to type. This is such a common convention that you’ll see <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">numpy</span> <span class="pre">as</span> <span class="pre">np</span></code> (and similar aliases like <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">pandas</span> <span class="pre">as</span> <span class="pre">pd</span></code>) at the top of almost every notebook that uses them.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>💡 You can technically choose any alias you like, but it’s best to stick to the <strong>conventional ones</strong> (like <code class="docutils literal notranslate"><span class="pre">np</span></code> for <code class="docutils literal notranslate"><span class="pre">numpy</span></code>), since that’s what most <code class="docutils literal notranslate"><span class="pre">Python</span></code> programmers will recognize at a glance.</p>
+</div>
+</section>
+</section>
+<section id="summary-table">
+<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">5. Summary Table<a class="headerlink" href="#summary-table" title="Link to this heading">#</a></h2>
+<p>Here is a quick recap of all the <strong>terminal</strong> and <code class="docutils literal notranslate"><span class="pre">juv</span></code> commands we have seen in this section:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><span style="display: inline-block; width:320px;">Command</span></p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong><code class="docutils literal notranslate"><span class="pre">pwd</span></code></strong></p></td>
+<td><p>Print the path of the current working directory.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong><code class="docutils literal notranslate"><span class="pre">ls</span></code></strong></p></td>
+<td><p>List the contents of the current directory.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">[DIR]</span></code></strong></p></td>
+<td><p>Change directory to <code class="docutils literal notranslate"><span class="pre">[DIR]</span></code>. <br/><small><em>If <code class="docutils literal notranslate"><span class="pre">[DIR]</span></code> is not provided, defaults to the home directory.</em></small></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong><code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">[DIR]</span></code></strong></p></td>
+<td><p>Create a new directory named <code class="docutils literal notranslate"><span class="pre">[DIR]</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><hr/></p></td>
+<td><p><hr/></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong><code class="docutils literal notranslate"><span class="pre">uvx</span> <span class="pre">juv</span> <span class="pre">init</span> <span class="pre">&lt;name.ipynb&gt;</span></code></strong></p></td>
+<td><p>Create a new <code class="docutils literal notranslate"><span class="pre">Jupyter</span> <span class="pre">Notebook</span></code> with an empty <code class="docutils literal notranslate"><span class="pre">///script</span></code> header.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong><code class="docutils literal notranslate"><span class="pre">uvx</span> <span class="pre">juv</span> <span class="pre">init</span> <span class="pre">-p</span> <span class="pre">&lt;PYTHON&gt;</span> <span class="pre">&lt;name.ipynb&gt;</span></code></strong></p></td>
+<td><p>Create a new <code class="docutils literal notranslate"><span class="pre">Jupyter</span> <span class="pre">Notebook</span></code> with a specific <code class="docutils literal notranslate"><span class="pre">Python</span></code> version (e.g. <code class="docutils literal notranslate"><span class="pre">-p</span> <span class="pre">3.12</span></code>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong><code class="docutils literal notranslate"><span class="pre">uvx</span> <span class="pre">juv</span> <span class="pre">add</span> <span class="pre">&lt;name.ipynb&gt;</span> <span class="pre">&lt;PACKAGE&gt;</span></code></strong></p></td>
+<td><p>Add <code class="docutils literal notranslate"><span class="pre">PACKAGE</span></code> to the notebook’s dependency list.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong><code class="docutils literal notranslate"><span class="pre">uvx</span> <span class="pre">juv</span> <span class="pre">run</span> <span class="pre">&lt;name.ipynb&gt;</span></code></strong></p></td>
+<td><p>Launch the notebook in JupyterLab, installing all dependencies automatically.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>💡 For the full list of <code class="docutils literal notranslate"><span class="pre">juv</span></code> commands and options, see the <a class="reference external" href="https://github.com/manzt/juv">juv repository</a>.</p>
+</div>
+</section>
+</section>
+<script type="text/x-thebe-config">
     {
         requestKernel: true,
         binderOptions: {
@@ -409,96 +512,82 @@
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
-
-                </article>
-              
-
-              
-              
-              
-              
-                <footer class="prev-next-footer d-print-none">
-                  
+<script>kernelName = 'python3'</script>
+</article>
+<footer class="prev-next-footer d-print-none">
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="getting_started_with_uv.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Getting started with uv</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="../03_python_basics/python_basics.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">03 - <i class="fab fa-python"></i> Python Basics</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
+<a class="left-prev" href="getting_started_with_uv.html" title="previous page">
+<i class="fa-solid fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">previous</p>
+<p class="prev-next-title">Getting started with uv</p>
 </div>
-                </footer>
-              
-            </div>
-            
-            
-              
-            
-          </div>
-          <footer class="bd-footer-content">
-            
-<div class="bd-footer-content__inner container">
-  
-  <div class="footer-item">
-    
-<p class="component-author">
-By Federico Gasparoli, PhD - federico@hms.harvard.edu (federico.gasparoli@gmail.com)<br>Materials:<br>- Federico Gasparoli, PhD - federico@hms.harvard.edu (federico.gasparoli@gmail.com)<br>- Eva de la Serna, PhD - eva_delaserna@hms.harvard.edu<br>- Max Brambach, PhD - max_brambach@hms.harvard.edu
-</p>
-
+</a>
+<a class="right-next" href="glossary.html" title="next page">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">next</p>
+<p class="prev-next-title">Glossary</p>
+</div>
+<i class="fa-solid fa-angle-right"></i>
+</a>
+</div>
+</footer>
+</div>
+<dialog id="pst-secondary-sidebar-modal"></dialog>
+<div class="bd-sidebar-secondary bd-toc" id="pst-secondary-sidebar"><div class="sidebar-secondary-items sidebar-secondary__inner">
+<div class="sidebar-secondary-item"><div class="page-toc tocsection onthispage" id="pst-page-navigation-heading-2">
+<i class="fa-solid fa-list"></i> Contents
   </div>
-  
-  <div class="footer-item">
-    
-
-  <p class="copyright">
+<nav aria-labelledby="pst-page-navigation-heading-2" class="page-toc" id="pst-page-toc-nav">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#terminal-commands">1. Terminal Commands</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-jupyter-notebook">2. What is a Jupyter Notebook?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyterlab">3. JupyterLab</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-packages-and-juv">4. Python Packages and <code class="docutils literal notranslate"><span class="pre">juv</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-packages-with-juv">4.1. Installing Packages with <code class="docutils literal notranslate"><span class="pre">juv</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initializing-a-notebook">4.2. Initializing a Notebook</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-packages-to-a-notebook">4.3. Adding Packages to a Notebook</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-a-notebook">4.4. Running a Notebook</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-packages-in-a-notebook">4.5. Importing Packages in a Notebook</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-table">5. Summary Table</a></li>
+</ul>
+</nav></div>
+</div></div>
+</div>
+<footer class="bd-footer-content">
+<div class="bd-footer-content__inner container">
+<div class="footer-item">
+<p class="component-author">
+By Federico Gasparoli, PhD - federico@hms.harvard.edu (federico.gasparoli@gmail.com)<br/>Materials:<br/>- Federico Gasparoli, PhD - federico@hms.harvard.edu (federico.gasparoli@gmail.com)<br/>- Eva de la Serna, PhD - eva_delaserna@hms.harvard.edu<br/>- Max Brambach, PhD - max_brambach@hms.harvard.edu
+</p>
+</div>
+<div class="footer-item">
+<p class="copyright">
     
       © Copyright 2025.
       <br/>
-    
-  </p>
-
-  </div>
-  
-  <div class="footer-item">
-    
-  </div>
-  
-  <div class="footer-item">
-    
+</p>
+</div>
+<div class="footer-item">
+</div>
+<div class="footer-item">
 <div class="extra_footer">
-  <p>
+<p>
 All content is licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC-BY 4.0</a>, except where noted otherwise.
 </p>
-
 </div>
-  </div>
-  
 </div>
-          </footer>
-        
-
-      </main>
-    </div>
-  </div>
-  
-  <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
-
-  <footer class="bd-footer">
-  </footer>
-  </body>
+</div>
+</footer>
+</main>
+</div>
+</div>
+<!-- Scripts loaded after <body> so the DOM is not blocked -->
+<script defer="" src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer="" src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+<footer class="bd-footer">
+</footer>
+</body>
 </html>
