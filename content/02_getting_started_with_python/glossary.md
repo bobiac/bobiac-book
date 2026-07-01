@@ -7,6 +7,7 @@ A quick reference for the key terms and concepts used throughout this course.
 | ---- | ------------- | ---------- |
 | **Alias** | | A shorter nickname given to a package when importing it (e.g. `import numpy as np` makes `np` an alias for `numpy`). Conventional aliases (like `np`, `pd`, `plt`) are widely recognized and should be preferred. |
 | **API** | | **A**pplication **P**rogramming **I**nterface. A defined set of functions and rules that lets you interact with a library, service, or program. When you call `numpy.mean(...)`, you are using `numpy`'s API. |
+| **base** | | The default system-wide Python environment that is active unless you switch to another environment.  |
 | **Cell** | | The basic unit of a `Jupyter Notebook`. Each cell contains either `Python` code or text (Markdown) and can be run independently. |
 | **conda-forge** | | A community-maintained package repository, common in scientific computing. Packages hosted there cannot be installed with `uv` — use `conda`, `mamba`, or `pixi` instead. |
 | **Dependencies** | Packages, Libraries | The external packages that a script or notebook needs in order to run. |
