@@ -142,6 +142,12 @@ uvx juv run bobiac_notebook.ipynb
 
 `juv` reads the `///script` block, creates a temporary environment with all the listed dependencies installed, and opens JupyterLab in your browser — no manual environment creation or package installation needed.
 
+:::{tip}
+🚀 **pyrunner**: if you like the idea of self-contained notebooks, check out [`pyrunner`](https://github.com/fdrgsp/pyrunner), a small **desktop app** (an icon on your computer, just like any other application) built specifically for `PEP 723` scripts. You simply double-click it, select a `.py` (or `.ipynb`) file containing a `///script` block, and it runs the script for you, installing `uv` itself first if it isn't already on your computer.
+
+This is especially useful if you write your own `PEP 723` notebook and want to share it with **someone who doesn't know how to use `Python` or a terminal**: they can just double-click `pyrunner`, pick your file, and run it, without ever opening a terminal. See the [`pyrunner` repository](https://github.com/fdrgsp/pyrunner) for more details.
+:::
+
 ### 4.5. Importing Packages in a Notebook
 
 Before you can use a package inside a notebook cell, you need to **import** it:
