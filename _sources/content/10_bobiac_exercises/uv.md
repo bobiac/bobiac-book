@@ -17,7 +17,7 @@ To go through these exercises, you need to create a new folder on your `Desktop`
 
 1. open the Terminal or PowerShell.
 2. `cd .../Desktop/bobiac_uv`
-3. `uv venv .venv`
+3. `uv venv .venv` (or simply `uv venv`)
 4. `source .venv/bin/activate` (Linux/macOS) or `.venv\Scripts\activate` (Windows)
 5. `uv pip install numpy matplotlib`
 6. `uv pip list`
@@ -34,3 +34,14 @@ To go through these exercises, you need to create a new folder on your `Desktop`
 3. Add the `scikit-image` package to the `.venv` virtual environment.
 4. List the installed packages in the `.venv` virtual environment to confirm that `scikit-image` is installed.
 5. Deactivate the `.venv` virtual environment.
+
+:::{dropdown} Solution
+
+1. open the Terminal or PowerShell.
+2. `cd .../Desktop/bobiac_uv`
+3. `source .venv/bin/activate` (Linux/macOS) or `.venv\Scripts\activate` (Windows)
+4. `uv pip install scikit-image`
+5. `uv pip list`
+6. `deactivate`
+
+:::
