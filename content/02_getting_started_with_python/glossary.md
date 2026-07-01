@@ -3,7 +3,7 @@
 
 A quick reference for the key terms and concepts used throughout this course.
 
-| Term | Also known as | Definition |
+| Term | aka | Definition |
 | ---- | ------------- | ---------- |
 | **Alias** | | A shorter nickname given to a package when importing it (e.g. `import numpy as np` makes `np` an alias for `numpy`). Conventional aliases (like `np`, `pd`, `plt`) are widely recognized and should be preferred. |
 | **API** | | **A**pplication **P**rogramming **I**nterface. A defined set of functions and rules that lets you interact with a library, service, or program. When you call `numpy.mean(...)`, you are using `numpy`'s API. |
@@ -33,7 +33,7 @@ A quick reference for the key terms and concepts used throughout this course.
 | **uvx** | `uv tool run` | A shortcut for `uv tool run`. Runs a command-line tool from a package on the fly, installing it into a temporary isolated environment without any manual install step. |
 | **Virtual Environment** | `.venv`, env | An isolated workspace (a folder on your computer) containing its own `Python` interpreter and its own installed packages, completely separate from other environments. Prevents package conflicts between projects. |
 
-## `uv` ↔️ `conda` Translation Table
+# `uv` ↔️ `conda` Translation Table
 
 If you are already familiar with `conda`, here is a quick translation table to help you understand how `uv` commands map to `conda` commands:
 

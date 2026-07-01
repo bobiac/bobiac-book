@@ -58,7 +58,10 @@ In this course we will use `Jupyter Notebooks` and its particular file type with
 
 **JupyterLab** is the browser-based application we'll use to open and work with `Jupyter Notebooks` files.
 
-TODO: screenshot
+<!-- <div align="left"> <img src="https://raw.githubusercontent.com/bobiac/bobiac-book/main/_static/images/jlab.png" alt="JupyterLab interface" width="1000"></div> -->
+<div align="left"> <img src="../../_static/images/jlab.png" alt="JupyterLab interface" width="1000"></div>
+
+<br>
 
 The key elements of the interface are highlighted in the screenshot above:
 
@@ -188,5 +191,5 @@ Here is a quick recap of all the **terminal** and `juv` commands we have seen in
 | **`uvx juv run <name.ipynb>`** | Launch the notebook in JupyterLab, installing all dependencies automatically. |
 
 :::{note}
-💡 For the full list of `juv` commands and options, see the [`juv` repository](https://github.com/manzt/juv).
+💡 For the full list of `juv` commands and options, see the [juv repository](https://github.com/manzt/juv).
 :::
