@@ -21,11 +21,11 @@ These capabilities are organized into **packages** (also referred to as **librar
 
 Some packages are **already included** with `Python` and are available **by default**, without you having to do anything. Together they form what is called the **standard library** (for example, `Python` already comes with packages to work with `.csv` files, dates, or the file system).
 
-But the **real power** of `Python` comes from the **hundreds of thousands** of additional packages written by people all around the world, which are **not** included by default and must be **installed** before you can use them. Instead of writing everything from scratch, you can simply **install** one of these packages and immediately reuse all the functionality it provides.
+However, the **real power** of `Python` comes from the **hundreds of thousands** of additional packages written by people all around the world, which are **not** included by default and must be **installed** before you can use them. Instead of writing everything from scratch, you can simply **install** one of these packages and immediately reuse all the functionality it provides.
 
 For example, in this course we will use packages to:
 
-- **read** (e.g. `tifffile`, `bffile`)
+- **read images** (e.g. `tifffile`, `bffile`)
 - **manipulate** images and perform **numerical calculations** efficiently (e.g. `numpy`, `scikit-image`)
 - use **deep learning** models (e.g. `cellpose`, `spotiflow`)
 - create **plots** and **visualizations** (e.g. `matplotlib`, `ndv`)
@@ -90,7 +90,7 @@ How do we handle **all of this** easily? With a single tool called [`uv`](https:
 :::
 
 :::{note}
-💡 **NOTE**: In principle, you *can* download `Python` directly from the [official Python website](https://www.python.org/downloads/), and it will be installed **system-wide** on your computer. However, this is **not ideal**: installing packages directly into that system `Python` can quickly become messy and lead to the conflicts we described above. By letting `uv` manage the `Python` versions, the environments, and the packages for us, we keep everything **clean**, **reproducible**, and **easy to throw away** and recreate.
+💡 **NOTE**: In principle, you *can* download `Python` directly from the [official Python website](https://www.python.org/downloads/), and it will be installed **system-wide** on your computer (called the base environment). However, this is **not ideal**: installing packages directly into that system `Python` can quickly become messy and lead to the conflicts we described above. By letting `uv` manage the `Python` versions, the environments, and the packages for us, we keep everything **clean**, **reproducible**, and **easy to throw away** and recreate.
 :::
 
 ## 6. What's Next?
