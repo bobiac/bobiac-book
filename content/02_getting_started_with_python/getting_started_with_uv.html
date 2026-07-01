@@ -283,7 +283,10 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uv-run-with">4.4. <code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">run</span> <span class="pre">--with</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-p-flag">4.5. The <code class="docutils literal notranslate"><span class="pre">-p</span></code> Flag</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uvx-uv-tool-run">4.6. <code class="docutils literal notranslate"><span class="pre">uvx</span></code> (<code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">tool</span> <span class="pre">run</span></code>)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uv-and-pep-723">4.7. <code class="docutils literal notranslate"><span class="pre">uv</span></code> and <code class="docutils literal notranslate"><span class="pre">PEP</span> <span class="pre">723</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uv-and-pep-723">4.7. <code class="docutils literal notranslate"><span class="pre">uv</span></code> and <code class="docutils literal notranslate"><span class="pre">PEP</span> <span class="pre">723</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-pep-723-script-with-uv">Creating a PEP 723 Script with <code class="docutils literal notranslate"><span class="pre">uv</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-table">5. Summary Table</a></li>
@@ -563,6 +566,18 @@
 <p>🚀 <strong>pyrunner</strong>: if you like the idea of self-contained <code class="docutils literal notranslate"><span class="pre">Python</span></code> scripts, check out <a class="reference external" href="https://github.com/fdrgsp/pyrunner"><code class="docutils literal notranslate"><span class="pre">pyrunner</span></code></a>, a small <strong>desktop app</strong> (an icon on your computer, just like any other application) built specifically for <code class="docutils literal notranslate"><span class="pre">PEP</span> <span class="pre">723</span></code> scripts. You simply double-click it, select a <code class="docutils literal notranslate"><span class="pre">.py</span></code> (or <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code>) file containing a <code class="docutils literal notranslate"><span class="pre">///script</span></code> block, and it runs the script for you, installing <code class="docutils literal notranslate"><span class="pre">uv</span></code> itself first if it isn’t already on your computer.</p>
 <p>This is especially useful if you write your own <code class="docutils literal notranslate"><span class="pre">PEP</span> <span class="pre">723</span></code> script and want to share it with <strong>someone who doesn’t know how to use <code class="docutils literal notranslate"><span class="pre">Python</span></code> or a terminal</strong>: they can just double-click <code class="docutils literal notranslate"><span class="pre">pyrunner</span></code>, pick your file, and run it, without ever opening a terminal. See the <a class="reference external" href="https://github.com/fdrgsp/pyrunner"><code class="docutils literal notranslate"><span class="pre">pyrunner</span></code> repository</a> for more details.</p>
 </div>
+<section id="creating-a-pep-723-script-with-uv">
+<h4>Creating a PEP 723 Script with <code class="docutils literal notranslate"><span class="pre">uv</span></code><a class="headerlink" href="#creating-a-pep-723-script-with-uv" title="Link to this heading">#</a></h4>
+<p>Instead of writing the <code class="docutils literal notranslate"><span class="pre">///script</span></code> header by hand, <code class="docutils literal notranslate"><span class="pre">uv</span></code> can create it for you with <code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">init</span> <span class="pre">--script</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>init<span class="w"> </span>--script<span class="w"> </span>script.py<span class="w"> </span>-p<span class="w"> </span><span class="m">3</span>.13
+</pre></div>
+</div>
+<p>This creates a new <code class="docutils literal notranslate"><span class="pre">script.py</span></code> file (or adds the header to an existing one) with the <code class="docutils literal notranslate"><span class="pre">///script</span></code> block already filled in, targeting <code class="docutils literal notranslate"><span class="pre">Python</span> <span class="pre">3.13</span></code>. You can then <strong>add dependencies</strong> to the header directly from the terminal, without ever editing the file manually:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>add<span class="w"> </span>--script<span class="w"> </span>script.py<span class="w"> </span>numpy<span class="w"> </span>matplotlib
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">uv</span></code> will update the <code class="docutils literal notranslate"><span class="pre">dependencies</span></code> list in the <code class="docutils literal notranslate"><span class="pre">///script</span></code> header for you. The result is a self-contained script ready to run with <code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">run</span> <span class="pre">script.py</span></code>.</p>
+</section>
 </section>
 </section>
 <section id="summary-table">
@@ -625,6 +640,15 @@
 </tr>
 <tr class="row-even"><td><p><strong><code class="docutils literal notranslate"><span class="pre">uvx</span> <span class="pre">&lt;COMMAND&gt;</span></code></strong><br/><em>short for:</em><br/><strong><code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">tool</span> <span class="pre">run</span> <span class="pre">&lt;COMMAND&gt;</span></code></strong></p></td>
 <td><p>Run a <code class="docutils literal notranslate"><span class="pre">&lt;COMMAND&gt;</span></code> provided by a package of the same name, installing it on the fly in a temporary environment.</p></td>
+</tr>
+<tr class="row-odd"><td><p><hr/></p></td>
+<td><p><hr/></p></td>
+</tr>
+<tr class="row-even"><td><p><strong><code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">init</span> <span class="pre">--script</span> <span class="pre">script.py</span> <span class="pre">-p</span> <span class="pre">&lt;PYTHON&gt;</span></code></strong></p></td>
+<td><p>Create a new <code class="docutils literal notranslate"><span class="pre">.py</span></code> file with a <code class="docutils literal notranslate"><span class="pre">PEP</span> <span class="pre">723</span></code> <code class="docutils literal notranslate"><span class="pre">///script</span></code> header, targeting a specific <code class="docutils literal notranslate"><span class="pre">Python</span></code> version.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong><code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">add</span> <span class="pre">--script</span> <span class="pre">script.py</span> <span class="pre">[PACKAGE]</span></code></strong></p></td>
+<td><p>Add a dependency to the <code class="docutils literal notranslate"><span class="pre">///script</span></code> header of <code class="docutils literal notranslate"><span class="pre">script.py</span></code>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -696,7 +720,10 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uv-run-with">4.4. <code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">run</span> <span class="pre">--with</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-p-flag">4.5. The <code class="docutils literal notranslate"><span class="pre">-p</span></code> Flag</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uvx-uv-tool-run">4.6. <code class="docutils literal notranslate"><span class="pre">uvx</span></code> (<code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">tool</span> <span class="pre">run</span></code>)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uv-and-pep-723">4.7. <code class="docutils literal notranslate"><span class="pre">uv</span></code> and <code class="docutils literal notranslate"><span class="pre">PEP</span> <span class="pre">723</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uv-and-pep-723">4.7. <code class="docutils literal notranslate"><span class="pre">uv</span></code> and <code class="docutils literal notranslate"><span class="pre">PEP</span> <span class="pre">723</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-pep-723-script-with-uv">Creating a PEP 723 Script with <code class="docutils literal notranslate"><span class="pre">uv</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-table">5. Summary Table</a></li>

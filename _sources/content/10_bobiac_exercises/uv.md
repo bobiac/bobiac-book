@@ -45,3 +45,29 @@ To go through these exercises, you need to create a new folder on your `Desktop`
 6. `deactivate`
 
 :::
+
+## Exercise 3
+
+**Create a `.py` file with the PEP723 `///script` header using `uv`**
+
+1. Open the Terminal or PowerShell and navigate to the `bobiac_uv` folder.
+2. Inside the `bobiac_uv` folder, create a new folder named `py_folder` and navigate into it.
+3. Use `uv` to create a new Python file named `bobiac_script.py` with the PEP723 `///script` header and Python `3.13`.
+4. Add `numpy` and `matplotlib` as dependencies to the `bobiac_script.py` file using `uv`.
+5. Run the `bobiac_script.py` file using `uv` to verify that the dependencies are installed and the script runs without errors.
+6. Optional: show the dependencies of the `bobiac_script.py` file using `uv tree`.
+7. Optional: show the python version used for the `bobiac_script.py` file using `uv python`.
+
+:::{dropdown} Solution
+
+1. open the Terminal or PowerShell.
+2. `cd .../Desktop/bobiac_uv`
+3. `mkdir py_folder`
+4. `cd .../Desktop/bobiac_uv/py_folder`
+5. `uv init --script bobiac_script.py -p 3.13`
+6. `uv add --script bobiac_script.py numpy matplotlib`
+7. `uv run bobiac_script.py`
+8. Optional: `uv tree --script bobiac_script.py`
+9. Optional: `uv python find --script bobiac_script.py --show-version`
+
+:::

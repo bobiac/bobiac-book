@@ -427,6 +427,14 @@
 <p>🚀 <strong>pyrunner</strong>: if you like the idea of self-contained notebooks, check out <a class="reference external" href="https://github.com/fdrgsp/pyrunner"><code class="docutils literal notranslate"><span class="pre">pyrunner</span></code></a>, a small <strong>desktop app</strong> (an icon on your computer, just like any other application) built specifically for <code class="docutils literal notranslate"><span class="pre">PEP</span> <span class="pre">723</span></code> scripts. You simply double-click it, select a <code class="docutils literal notranslate"><span class="pre">.py</span></code> (or <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code>) file containing a <code class="docutils literal notranslate"><span class="pre">///script</span></code> block, and it runs the script for you, installing <code class="docutils literal notranslate"><span class="pre">uv</span></code> itself first if it isn’t already on your computer.</p>
 <p>This is especially useful if you write your own <code class="docutils literal notranslate"><span class="pre">PEP</span> <span class="pre">723</span></code> notebook and want to share it with <strong>someone who doesn’t know how to use <code class="docutils literal notranslate"><span class="pre">Python</span></code> or a terminal</strong>: they can just double-click <code class="docutils literal notranslate"><span class="pre">pyrunner</span></code>, pick your file, and run it, without ever opening a terminal. See the <a class="reference external" href="https://github.com/fdrgsp/pyrunner"><code class="docutils literal notranslate"><span class="pre">pyrunner</span></code> repository</a> for more details.</p>
 </div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>⚡ <strong>Running a notebook without opening JupyterLab</strong>: if you want to execute all cells in a notebook from top to bottom without manually opening JupyterLab and clicking through each one, use <code class="docutils literal notranslate"><span class="pre">juv</span> <span class="pre">exec</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uvx<span class="w"> </span>juv<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>bobiac_notebook.ipynb
+</pre></div>
+</div>
+<p>This runs every cell in order and prints the output directly in the terminal — useful for re-running a notebook as a script, or quickly checking that everything still works after changing a dependency.</p>
+</div>
 </section>
 <section id="importing-packages-in-a-notebook">
 <h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">4.5. Importing Packages in a Notebook<a class="headerlink" href="#importing-packages-in-a-notebook" title="Link to this heading">#</a></h3>

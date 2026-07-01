@@ -298,6 +298,22 @@ No manual environment creation, no `uv pip install`, nothing to set up beforehan
 This is especially useful if you write your own `PEP 723` script and want to share it with **someone who doesn't know how to use `Python` or a terminal**: they can just double-click `pyrunner`, pick your file, and run it, without ever opening a terminal. See the [`pyrunner` repository](https://github.com/fdrgsp/pyrunner) for more details.
 :::
 
+#### Creating a PEP 723 Script with `uv`
+
+Instead of writing the `///script` header by hand, `uv` can create it for you with `uv init --script`:
+
+```bash
+uv init --script script.py -p 3.13
+```
+
+This creates a new `script.py` file (or adds the header to an existing one) with the `///script` block already filled in, targeting `Python 3.13`. You can then **add dependencies** to the header directly from the terminal, without ever editing the file manually:
+
+```bash
+uv add --script script.py numpy matplotlib
+```
+
+`uv` will update the `dependencies` list in the `///script` header for you. The result is a self-contained script ready to run with `uv run script.py`.
+
 ## 5. Summary Table
 
 Here is a quick recap of all the **terminal** and `uv` commands we have seen in this section:
@@ -321,6 +337,9 @@ Here is a quick recap of all the **terminal** and `uv` commands we have seen in 
 | **`uv run --with [PACKAGE] script.py`** | Run `script.py` with `PACKAGE` installed temporarily, just for that run. |
 | **`uv run -p <PYTHON> script.py`** | Run `script.py` with a specific `Python` version. |
 | **`uvx <COMMAND>`**<br>_short for:_<br>**`uv tool run <COMMAND>`** | Run a `<COMMAND>` provided by a package of the same name, installing it on the fly in a temporary environment. |
+| <hr> | <hr> |
+| **`uv init --script script.py -p <PYTHON>`** | Create a new `.py` file with a `PEP 723` `///script` header, targeting a specific `Python` version. |
+| **`uv add --script script.py [PACKAGE]`** | Add a dependency to the `///script` header of `script.py`. |
 
 :::{note}
 💡 For the full list of `uv` commands and options, see the [official uv documentation](https://docs.astral.sh/uv/).
