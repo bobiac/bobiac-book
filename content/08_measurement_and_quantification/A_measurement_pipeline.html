@@ -1857,13 +1857,6 @@ Name: circularity, dtype: float64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../_images/95a8297ee82ffda3e9dff94fcd23643ed481c692e1a7b34c48cd8226ee74bafe.png" src="../../_images/95a8297ee82ffda3e9dff94fcd23643ed481c692e1a7b34c48cd8226ee74bafe.png"/>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 800x800 with 1 Axes&gt;,
- &lt;Axes: title={'center': 'Segmentation overlay'}&gt;)
-</pre></div>
-</div>
-</div>
 </div>
 <p>Now it is absolutely necessary to add a column that identifies where the data came from. In this case we (like above) use the image name as identifier.</p>
 <div class="cell tag_teacher docutils container">
@@ -1888,25 +1881,6 @@ Name: circularity, dtype: float64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Second DataFrame with image_id column:
-  image_id
-0   F02_92
-1   F02_92
-2   F02_92
-3   F02_92
-4   F02_92
-
-First DataFrame with image_id column:
-  image_id
-0  F01_202
-1  F01_202
-2  F01_202
-3  F01_202
-4  F01_202
-</pre></div>
-</div>
-</div>
 </div>
 <p>Now we can use the <code class="docutils literal notranslate"><span class="pre">concat</span></code> function in pandas to create a merged dataframe from the first and second ones.</p>
 <div class="cell tag_teacher docutils container">
@@ -1918,63 +1892,6 @@ First DataFrame with image_id column:
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       area  intensity_mean  intensity_std  intensity_max  intensity_min  \
-0    4669.0      771.729707     522.346755         3509.0          141.0   
-1    7866.0      276.046148     125.950313         1069.0          117.0   
-2    6945.0      428.922102     254.124969         1445.0          123.0   
-3    9735.0      489.907345     267.662076         1934.0          132.0   
-4    7749.0      313.540070     125.673970         1243.0          124.0   
-..      ...             ...            ...            ...            ...   
-114  7223.0      317.398865     145.378202         1381.0          109.0   
-115  5137.0     2359.760950    1210.807862         4095.0          194.0   
-116  5019.0      327.123730     167.998792         1366.0          114.0   
-117   905.0      122.363536      26.930633          218.0           73.0   
-118  3572.0      856.063550     780.933474         4095.0          131.0   
-
-      perimeter  intensity_mean_bg_subtracted  intensity_range  cell_id  \
-0    505.209199                    643.558229           3368.0        2   
-1    515.445743                    147.874671            952.0        3   
-2    453.546248                    300.750625           1322.0        4   
-3    577.363528                    361.735867           1802.0        5   
-4    493.286363                    185.368592           1119.0        6   
-..          ...                           ...              ...      ...   
-114  455.889394                           NaN              NaN       38   
-115  274.249783                           NaN              NaN       39   
-116  420.717821                           NaN              NaN       40   
-117  162.509668                           NaN              NaN       41   
-118  305.634560                           NaN              NaN       42   
-
-     intensity_sum  circularity image_id size_category expression condition  \
-0        3603206.0     0.229875  F01_202        medium       high   control   
-1        2171379.0     0.372047  F01_202        medium       none   control   
-2        2978864.0     0.424267  F01_202        medium        low   control   
-3        4769248.0     0.366984  F01_202         large        low   control   
-4        2429622.0     0.400182  F01_202        medium       none   control   
-..             ...          ...      ...           ...        ...       ...   
-114            NaN          NaN   F02_92           NaN        NaN       NaN   
-115            NaN          NaN   F02_92           NaN        NaN       NaN   
-116            NaN          NaN   F02_92           NaN        NaN       NaN   
-117            NaN          NaN   F02_92           NaN        NaN       NaN   
-118            NaN          NaN   F02_92           NaN        NaN       NaN   
-
-    sum_classified circularity_class  
-0             high               low  
-1             high               low  
-2             high               low  
-3             high               low  
-4             high               low  
-..             ...               ...  
-114            NaN               NaN  
-115            NaN               NaN  
-116            NaN               NaN  
-117            NaN               NaN  
-118            NaN               NaN  
-
-[119 rows x 17 columns]
-</pre></div>
-</div>
-</div>
 </div>
 <p>There are lot’s of <code class="docutils literal notranslate"><span class="pre">NaN</span></code> values in the lower part of the dataframe. Those correspond to entries that we have computed in the first dataframe but not the second.
 To avoid this, we can use the parameter <code class="docutils literal notranslate"><span class="pre">join</span></code> and set it to <code class="docutils literal notranslate"><span class="pre">inner</span></code>. This way only columns that exist in both dataframes will be kept. <code class="docutils literal notranslate"><span class="pre">outer</span></code> retains all columns from both dataframes as we have seen above.</p>
@@ -1982,37 +1899,6 @@ To avoid this, we can use the parameter <code class="docutils literal notranslat
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_combined</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="p">,</span> <span class="n">df_2</span><span class="p">],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">join</span><span class="o">=</span><span class="s2">"inner"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df_combined</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       area  intensity_mean  intensity_std  intensity_max  intensity_min  \
-0    4669.0      771.729707     522.346755         3509.0          141.0   
-1    7866.0      276.046148     125.950313         1069.0          117.0   
-2    6945.0      428.922102     254.124969         1445.0          123.0   
-3    9735.0      489.907345     267.662076         1934.0          132.0   
-4    7749.0      313.540070     125.673970         1243.0          124.0   
-..      ...             ...            ...            ...            ...   
-114  7223.0      317.398865     145.378202         1381.0          109.0   
-115  5137.0     2359.760950    1210.807862         4095.0          194.0   
-116  5019.0      327.123730     167.998792         1366.0          114.0   
-117   905.0      122.363536      26.930633          218.0           73.0   
-118  3572.0      856.063550     780.933474         4095.0          131.0   
-
-      perimeter  cell_id image_id  
-0    505.209199        2  F01_202  
-1    515.445743        3  F01_202  
-2    453.546248        4  F01_202  
-3    577.363528        5  F01_202  
-4    493.286363        6  F01_202  
-..          ...      ...      ...  
-114  455.889394       38   F02_92  
-115  274.249783       39   F02_92  
-116  420.717821       40   F02_92  
-117  162.509668       41   F02_92  
-118  305.634560       42   F02_92  
-
-[119 rows x 8 columns]
 </pre></div>
 </div>
 </div>
@@ -2047,54 +1933,6 @@ To avoid this, we can use the parameter <code class="docutils literal notranslat
 <span class="n">df_combined</span><span class="p">[</span><span class="s2">"condition"</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">df_combined</span><span class="p">[</span><span class="s2">"image_id"</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"_"</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">dict_condition</span><span class="p">)</span>
 <span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1. String-like object
- &lt;pandas.core.strings.accessor.StringMethods object at 0x12824d4e0&gt;
-
-2. Split strings
- 0      [F01, 202]
-1      [F01, 202]
-2      [F01, 202]
-3      [F01, 202]
-4      [F01, 202]
-          ...    
-114     [F02, 92]
-115     [F02, 92]
-116     [F02, 92]
-117     [F02, 92]
-118     [F02, 92]
-Name: image_id, Length: 119, dtype: object
-
-3. Select first entry
- 0      F01
-1      F01
-2      F01
-3      F01
-4      F01
-      ... 
-114    F02
-115    F02
-116    F02
-117    F02
-118    F02
-Name: image_id, Length: 119, dtype: object
-
-4. Replace:
- 0      control
-1      control
-2      control
-3      control
-4      control
-        ...   
-114       drug
-115       drug
-116       drug
-117       drug
-118       drug
-Name: image_id, Length: 119, dtype: object
 </pre></div>
 </div>
 </div>
@@ -2155,12 +1993,6 @@ Name: image_id, Length: 119, dtype: object
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel='area', ylabel='Count'&gt;
-</pre></div>
-</div>
-<img alt="../../_images/b6322420804cc269325804ef877ef50c48bbce392261709253bea491be1c098b.png" src="../../_images/b6322420804cc269325804ef877ef50c48bbce392261709253bea491be1c098b.png"/>
-</div>
 </div>
 </section>
 <section id="box-plot">
@@ -2171,12 +2003,6 @@ Name: image_id, Length: 119, dtype: object
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_combined</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">"condition"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"intensity_mean"</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel='condition', ylabel='intensity_mean'&gt;
-</pre></div>
-</div>
-<img alt="../../_images/44f34ee948cc9ca53d6cd221add77e2e279e4ae9f6fa10b223f765e7c6424567.png" src="../../_images/44f34ee948cc9ca53d6cd221add77e2e279e4ae9f6fa10b223f765e7c6424567.png"/>
 </div>
 </div>
 </section>
@@ -2191,12 +2017,6 @@ Name: image_id, Length: 119, dtype: object
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"mean intensity (AU)"</span><span class="p">)</span>  <span class="c1"># overwrite y label</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, 'mean intensity (AU)')
-</pre></div>
-</div>
-<img alt="../../_images/2bbc6f2e6fa8b96c9357fc3a03ce5780a7a27ba2754842882c4edde15dae6c03.png" src="../../_images/2bbc6f2e6fa8b96c9357fc3a03ce5780a7a27ba2754842882c4edde15dae6c03.png"/>
 </div>
 </div>
 </section>
@@ -2230,12 +2050,6 @@ Name: image_id, Length: 119, dtype: object
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x129122f50&gt;
-</pre></div>
-</div>
-<img alt="../../_images/2a47de9f4c11ebbd14652ea8c54966da5cbf1e4bde8e80dec7602eecb97925f4.png" src="../../_images/2a47de9f4c11ebbd14652ea8c54966da5cbf1e4bde8e80dec7602eecb97925f4.png"/>
-</div>
 </div>
 </section>
 <section id="scatter-plot">
@@ -2255,12 +2069,6 @@ Name: image_id, Length: 119, dtype: object
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1291b2b00&gt;
-</pre></div>
-</div>
-<img alt="../../_images/fa30953fc0f9dc68609489a7d744ef410c9e7206bd17a7304dd301c688ff7d61.png" src="../../_images/fa30953fc0f9dc68609489a7d744ef410c9e7206bd17a7304dd301c688ff7d61.png"/>
-</div>
 </div>
 </section>
 <section id="exercise-plot-the-results-for-area-changes">
@@ -2279,12 +2087,6 @@ Name: image_id, Length: 119, dtype: object
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, 'mean intensity (AU)')
-</pre></div>
-</div>
-<img alt="../../_images/df172aed138ec156a7e86253c45365d19da2808096e7416c3e45862ad16d48a8.png" src="../../_images/df172aed138ec156a7e86253c45365d19da2808096e7416c3e45862ad16d48a8.png"/>
-</div>
 </div>
 <div class="cell tag_teacher docutils container">
 <div class="cell_input docutils container">
@@ -2302,12 +2104,6 @@ Name: image_id, Length: 119, dtype: object
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">borderaxespad</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1296fbaf0&gt;
-</pre></div>
-</div>
-<img alt="../../_images/1100509056e0de24e80f69a4837b035c2d4207ad809b5ace3e53c066797c4176.png" src="../../_images/1100509056e0de24e80f69a4837b035c2d4207ad809b5ace3e53c066797c4176.png"/>
 </div>
 </div>
 </section>

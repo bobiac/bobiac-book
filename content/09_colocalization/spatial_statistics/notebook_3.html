@@ -575,37 +575,11 @@
 <p>Here channel 0 is the observed distribution of Protein C and channel 1 are the points marking the cell membrane.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">NNdist_target</span><span class="p">(</span><span class="n">spots_from</span><span class="p">,</span> <span class="n">spots_to</span><span class="p">,</span> <span class="n">mask</span><span class="p">,</span> <span class="n">cell_id</span><span class="p">,</span> <span class="n">n_repeats</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""</span>
-<span class="sd">    Calculate the nearest neighbour distance from `spots_from` to `spots_to`.</span>
-<span class="sd">    """</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># or use:</span>
+<span class="c1"># from bobiac_tools import random_points_in_mask</span>
 
-    <span class="n">n_from</span> <span class="o">=</span> <span class="n">spots_from</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
-    <span class="c1"># observed NN distances</span>
-    <span class="n">nn_obs</span> <span class="o">=</span> <span class="n">KDTree</span><span class="p">(</span><span class="n">spots_to</span><span class="p">)</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">spots_from</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-
-    <span class="c1"># randomised NN distances</span>
-    <span class="n">sims</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_repeats</span><span class="p">):</span>
-        <span class="n">rnd</span> <span class="o">=</span> <span class="n">random_points_in_mask</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="n">cell_label</span><span class="o">=</span><span class="n">cell_id</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="n">n_from</span><span class="p">)</span>
-        <span class="n">sims</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">KDTree</span><span class="p">(</span><span class="n">spots_to</span><span class="p">)</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">rnd</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
-
-    <span class="n">sims</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sims</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="p">{</span>
-        <span class="s2">"nn_observed"</span><span class="p">:</span> <span class="n">nn_obs</span><span class="p">,</span>
-        <span class="s2">"nn_random"</span><span class="p">:</span> <span class="n">sims</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
-        <span class="s2">"ce"</span><span class="p">:</span> <span class="n">nn_obs</span> <span class="o">/</span> <span class="n">sims</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
-        <span class="s2">"pval"</span><span class="p">:</span> <span class="p">(</span><span class="n">sims</span> <span class="o">&lt;=</span> <span class="n">nn_obs</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
-    <span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">random_points_in_mask</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="n">cell_label</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">random_points_in_mask</span><span class="p">(</span><span class="n">mask</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">cell_label</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Generate n random points uniformly distributed within a labeled cell region.</span>
 
@@ -646,6 +620,46 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># or use:</span>
+<span class="c1"># from bobiac_tools import nn_dist_target</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">nn_dist_target</span><span class="p">(</span>
+    <span class="n">spots_from</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">spots_to</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">mask</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">cell_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">n_repeats</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Calculate the nearest neighbour distance from `spots_from` to `spots_to`.</span>
+<span class="sd">    """</span>
+
+    <span class="n">n_from</span> <span class="o">=</span> <span class="n">spots_from</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="c1"># observed NN distances</span>
+    <span class="n">nn_obs</span> <span class="o">=</span> <span class="n">KDTree</span><span class="p">(</span><span class="n">spots_to</span><span class="p">)</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">spots_from</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+    <span class="c1"># randomised NN distances</span>
+    <span class="n">sims</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_repeats</span><span class="p">):</span>
+        <span class="n">rnd</span> <span class="o">=</span> <span class="n">random_points_in_mask</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="n">cell_label</span><span class="o">=</span><span class="n">cell_id</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="n">n_from</span><span class="p">)</span>
+        <span class="n">sims</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">KDTree</span><span class="p">(</span><span class="n">spots_to</span><span class="p">)</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">rnd</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+
+    <span class="n">sims</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sims</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">"nn_observed"</span><span class="p">:</span> <span class="n">nn_obs</span><span class="p">,</span>
+        <span class="s2">"nn_random"</span><span class="p">:</span> <span class="n">sims</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
+        <span class="s2">"ce"</span><span class="p">:</span> <span class="n">nn_obs</span> <span class="o">/</span> <span class="n">sims</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
+        <span class="s2">"pval"</span><span class="p">:</span> <span class="p">(</span><span class="n">sims</span> <span class="o">&lt;=</span> <span class="n">nn_obs</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_repeats</span> <span class="o">=</span> <span class="mi">10</span>
 
 <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
@@ -658,7 +672,7 @@
 
     <span class="c1"># calculate the NN distance, Clark-Evans index and p-value for that cell</span>
     <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-        <span class="n">NNdist_target</span><span class="p">(</span>
+        <span class="n">nn_dist_target</span><span class="p">(</span>
             <span class="n">spots_from</span><span class="o">=</span><span class="n">spots_C</span><span class="p">,</span>
             <span class="n">spots_to</span><span class="o">=</span><span class="n">coords</span><span class="p">,</span>
             <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span>
@@ -701,36 +715,36 @@
 <tr>
 <th>0</th>
 <td>4.585573</td>
-<td>7.282333</td>
-<td>0.629685</td>
+<td>7.661353</td>
+<td>0.598533</td>
 <td>0.0</td>
 </tr>
 <tr>
 <th>1</th>
 <td>4.553575</td>
-<td>9.976894</td>
-<td>0.456412</td>
+<td>9.824422</td>
+<td>0.463495</td>
 <td>0.0</td>
 </tr>
 <tr>
 <th>2</th>
 <td>5.152849</td>
-<td>8.636848</td>
-<td>0.596612</td>
+<td>9.214725</td>
+<td>0.559197</td>
 <td>0.0</td>
 </tr>
 <tr>
 <th>3</th>
 <td>5.909423</td>
-<td>10.789954</td>
-<td>0.547678</td>
+<td>11.803700</td>
+<td>0.500642</td>
 <td>0.0</td>
 </tr>
 <tr>
 <th>4</th>
 <td>5.043336</td>
-<td>9.822399</td>
-<td>0.513453</td>
+<td>8.915352</td>
+<td>0.565691</td>
 <td>0.0</td>
 </tr>
 <tr>
@@ -743,36 +757,36 @@
 <tr>
 <th>72</th>
 <td>5.876321</td>
-<td>15.491438</td>
-<td>0.379327</td>
+<td>14.499597</td>
+<td>0.405275</td>
 <td>0.0</td>
 </tr>
 <tr>
 <th>73</th>
 <td>5.066749</td>
-<td>7.595649</td>
-<td>0.667059</td>
+<td>7.148685</td>
+<td>0.708767</td>
 <td>0.0</td>
 </tr>
 <tr>
 <th>74</th>
 <td>3.332884</td>
-<td>5.145603</td>
-<td>0.647715</td>
+<td>5.098550</td>
+<td>0.653692</td>
 <td>0.0</td>
 </tr>
 <tr>
 <th>75</th>
 <td>3.951430</td>
-<td>6.561081</td>
-<td>0.602253</td>
+<td>7.211304</td>
+<td>0.547949</td>
 <td>0.0</td>
 </tr>
 <tr>
 <th>76</th>
 <td>0.750000</td>
-<td>2.397039</td>
-<td>0.312886</td>
+<td>2.768268</td>
+<td>0.270928</td>
 <td>0.0</td>
 </tr>
 </tbody>
@@ -794,10 +808,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f6cca2c1370&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fa3591cf7d0&gt;
 </pre></div>
 </div>
-<img alt="../../../_images/070f55d335c1dcb5698737181e4c1f169d4caf179e00e2f4f27d82b8f062a40b.png" src="../../../_images/070f55d335c1dcb5698737181e4c1f169d4caf179e00e2f4f27d82b8f062a40b.png"/>
+<img alt="../../../_images/3ee7ab0818448d9f6ed3c34bb409dcef3f724a04fecdf3c9d0f1f68cc6c4d368.png" src="../../../_images/3ee7ab0818448d9f6ed3c34bb409dcef3f724a04fecdf3c9d0f1f68cc6c4d368.png"/>
 </div>
 </div>
 <div class="cell docutils container">
@@ -812,10 +826,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x7f6cca342960&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x7fa358b79af0&gt;
 </pre></div>
 </div>
-<img alt="../../../_images/cc7a07d1c86a33692f22eb580bc9e2c2e80e6e0c39cf66da3aaa466aa859bdde.png" src="../../../_images/cc7a07d1c86a33692f22eb580bc9e2c2e80e6e0c39cf66da3aaa466aa859bdde.png"/>
+<img alt="../../../_images/1b6124ebc9517b01ee7103755f1a0263a975bda8345056419380c90dbfa0f766.png" src="../../../_images/1b6124ebc9517b01ee7103755f1a0263a975bda8345056419380c90dbfa0f766.png"/>
 </div>
 </div>
 <p>So, definitely, Protein C localises close to the cell membrane with an average distance of ~4.5 pixels.</p>

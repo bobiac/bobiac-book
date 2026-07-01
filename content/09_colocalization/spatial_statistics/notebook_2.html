@@ -299,7 +299,7 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-clark-evans-indices">6. Calculate Clark-Evans Indices</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repeat-steps-4-6-with-multiple-random-patterns">7. Repeat Steps 4-6 with Multiple Random Patterns</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#per-cell-colocalization-measurements">8. Per-cell Colocalization Measurements</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-summarise-the-per-cell-co-localisation-analysis-as-a-function">✍️ Exercise: Summarise the per-cell co-localisation analysis as a function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-summarise-the-per-cell-co-localisation-analysis-as-a-function">✍️ Exercise: Summarise the per-cell co-localisation analysis as a function</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#repeat-measurements-for-all-cells">Repeat measurements for all cells</a></li>
 </ul>
 </li>
@@ -565,7 +565,11 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">random_points_in_mask</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="n">cell_label</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># or use:</span>
+<span class="c1"># from bobiac_tools import random_points_in_mask</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">random_points_in_mask</span><span class="p">(</span><span class="n">mask</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">cell_label</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Generate n random points uniformly distributed within a labeled cell region.</span>
 
@@ -625,7 +629,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/9c030e798b15b3807b68bbd17a12811edc9a3ef81be63175de18a23598d25f90.png" src="../../../_images/9c030e798b15b3807b68bbd17a12811edc9a3ef81be63175de18a23598d25f90.png"/>
+<img alt="../../../_images/3442d77f771bb9aef80f90eb09e0d62c029faf25979bdac543602240b7178f3a.png" src="../../../_images/3442d77f771bb9aef80f90eb09e0d62c029faf25979bdac543602240b7178f3a.png"/>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 800x587.05 with 1 Axes&gt;,
  &lt;Axes: title={'center': 'Segmentation overlay'}&gt;)
 </pre></div>
@@ -663,8 +667,8 @@
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean NN dist. A-&gt;B: 1.9655708446943665
 Mean NN dist. B-&gt;A: 3.207888882211614
-Mean NN dist. A-&gt;random(B): 6.3284584355234825
-Mean NN dist. B-&gt;random(A): 7.292017086529328
+Mean NN dist. A-&gt;random(B): 6.533843237525505
+Mean NN dist. B-&gt;random(A): 7.5547308542865945
 </pre></div>
 </div>
 </div>
@@ -685,8 +689,8 @@ Mean NN dist. B-&gt;random(A): 7.292017086529328
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Clark-Evans index A-&gt;B: 0.31059236063889495
-Clark-Evans index B-&gt;A: 0.43991790531286656
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Clark-Evans index A-&gt;B: 0.30082920162601984
+Clark-Evans index B-&gt;A: 0.4246198764832821
 </pre></div>
 </div>
 </div>
@@ -724,10 +728,10 @@ Clark-Evans index B-&gt;A: 0.43991790531286656
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nn_AtoB 1.9655708446943665
 nn_BtoA 3.207888882211614
-nn_random_AtoB 5.958412310999138
-nn_random_BtoA 7.621821018426221
-ce_AtoB 0.32988164331393327
-ce_BtoA 0.4208822110170713
+nn_random_AtoB 5.96855103488785
+nn_random_BtoA 7.628145474213061
+ce_AtoB 0.32932127633743186
+ce_BtoA 0.4205332597622685
 pval_AtoB 0.0
 pval_BtoA 0.0
 </pre></div>
@@ -739,8 +743,8 @@ pval_BtoA 0.0
 <section id="per-cell-colocalization-measurements">
 <h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">8. Per-cell Colocalization Measurements<a class="headerlink" href="#per-cell-colocalization-measurements" title="Link to this heading">#</a></h2>
 <section id="exercise-summarise-the-per-cell-co-localisation-analysis-as-a-function">
-<h3 style="color: black; background-color: rgb(252,185,118); padding: 3px; border-radius: 5px;">✍️ Exercise: Summarise the per-cell co-localisation analysis as a function<a class="headerlink" href="#exercise-summarise-the-per-cell-co-localisation-analysis-as-a-function" title="Link to this heading">#</a></h3>
-<p>To make processing individual cells simpler, we can summarise our above analysis in a function called <code class="docutils literal notranslate"><span class="pre">CrossNN</span></code>.
+<h3 style="color: black; background-color: rgb(252,185,118); padding: 3px; border-radius: 5px;">✍️ Exercise: Summarise the per-cell co-localisation analysis as a function<a class="headerlink" href="#exercise-summarise-the-per-cell-co-localisation-analysis-as-a-function" title="Link to this heading">#</a></h3>
+<p>To make processing individual cells simpler, we can summarise our above analysis in a function called <code class="docutils literal notranslate"><span class="pre">cross_nn</span></code>.
 The function should have the following features:</p>
 <p><strong>Parameters</strong>
 spots_A, spots_B : (n, 2) numpy arrays
@@ -765,14 +769,28 @@ Fraction of simulations with cross-NN &lt;= observed.
 Small values indicate significant co-localization.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">CrossNN</span><span class="p">(</span><span class="n">spots_A</span><span class="p">,</span> <span class="n">spots_B</span><span class="p">,</span> <span class="n">mask</span><span class="p">,</span> <span class="n">cell_id</span><span class="p">,</span> <span class="n">n_repeats</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># or use:</span>
+<span class="c1"># from bobiac_tools import cross_nn</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">cross_nn</span><span class="p">(</span>
+    <span class="n">spots_A</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">spots_B</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">mask</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">cell_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">n_repeats</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Test whether two sets of spots are more co-localized than expected under</span>
 <span class="sd">    CSR using cross nearest-neighbor distances.</span>
 
 <span class="sd">    For each point in A, the nearest neighbor in B is found (and vice versa).</span>
-<span class="sd">    The observed mean cross-NN distances are compared to a null distribution</span>
-<span class="sd">    where both sets are independently randomized within the cell mask.</span>
+<span class="sd">    For the A→B direction, the null distribution holds A at its observed</span>
+<span class="sd">    positions and randomizes only B (and vice versa for B→A) — this tests</span>
+<span class="sd">    whether the *real* configuration of one set is closer to the other than</span>
+<span class="sd">    a same-sized random configuration would be, controlling for the</span>
+<span class="sd">    reference set's density without discarding the query set's real spatial</span>
+<span class="sd">    structure.</span>
 
 <span class="sd">    The two directions (A→B and B→A) can differ when the sets have different</span>
 <span class="sd">    sizes: a small set is always close to a large one even by chance.</span>
@@ -840,19 +858,14 @@ Small values indicate significant co-localization.</p>
 <span class="n">spots_B</span> <span class="o">=</span> <span class="n">df_spots</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
     <span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"channel"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"label_cell"</span><span class="p">]</span> <span class="o">==</span> <span class="n">cell_id</span><span class="p">)</span>
 <span class="p">][[</span><span class="s2">"y"</span><span class="p">,</span> <span class="s2">"x"</span><span class="p">]]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
-<span class="n">CrossNN</span><span class="p">(</span><span class="n">spots_A</span><span class="o">=</span><span class="n">spots_A</span><span class="p">,</span> <span class="n">spots_B</span><span class="o">=</span><span class="n">spots_B</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">cell_id</span><span class="o">=</span><span class="n">cell_id</span><span class="p">,</span> <span class="n">n_repeats</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span>
+    <span class="n">cross_nn</span><span class="p">(</span><span class="n">spots_A</span><span class="o">=</span><span class="n">spots_A</span><span class="p">,</span> <span class="n">spots_B</span><span class="o">=</span><span class="n">spots_B</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">cell_id</span><span class="o">=</span><span class="n">cell_id</span><span class="p">,</span> <span class="n">n_repeats</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{'nn_AtoB': np.float64(1.9655708446943665),
- 'nn_BtoA': np.float64(3.207888882211614),
- 'nn_random_AtoB': np.float64(6.045066999190856),
- 'nn_random_BtoA': np.float64(7.504317031022924),
- 'ce_AtoB': np.float64(0.32515286347652755),
- 'ce_BtoA': np.float64(0.4274724627104863),
- 'pval_AtoB': np.float64(0.0),
- 'pval_BtoA': np.float64(0.0)}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{'nn_AtoB': np.float64(1.9655708446943665), 'nn_BtoA': np.float64(3.207888882211614), 'nn_random_AtoB': np.float64(5.969043240707505), 'nn_random_BtoA': np.float64(7.704319012241365), 'ce_AtoB': np.float64(0.32929412058696855), 'ce_BtoA': np.float64(0.41637539633478454), 'pval_AtoB': np.float64(0.0), 'pval_BtoA': np.float64(0.0)}
 </pre></div>
 </div>
 </div>
@@ -876,7 +889,7 @@ Small values indicate significant co-localization.</p>
 
     <span class="c1"># calculate the NN distance, Clark-Evans index and p-value for that cell</span>
     <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-        <span class="n">CrossNN</span><span class="p">(</span>
+        <span class="n">cross_nn</span><span class="p">(</span>
             <span class="n">spots_A</span><span class="o">=</span><span class="n">spots_A</span><span class="p">,</span>
             <span class="n">spots_B</span><span class="o">=</span><span class="n">spots_B</span><span class="p">,</span>
             <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span>
@@ -930,10 +943,10 @@ Small values indicate significant co-localization.</p>
 <td>23</td>
 <td>1.742602</td>
 <td>5.578599</td>
-<td>4.570773</td>
-<td>9.459320</td>
-<td>0.381249</td>
-<td>0.589746</td>
+<td>4.691437</td>
+<td>8.431806</td>
+<td>0.371443</td>
+<td>0.661614</td>
 <td>0.0</td>
 <td>0.0</td>
 </tr>
@@ -944,10 +957,10 @@ Small values indicate significant co-localization.</p>
 <td>39</td>
 <td>1.776632</td>
 <td>3.954749</td>
-<td>4.655921</td>
-<td>7.765419</td>
-<td>0.381586</td>
-<td>0.509277</td>
+<td>4.759385</td>
+<td>7.483377</td>
+<td>0.373290</td>
+<td>0.528471</td>
 <td>0.0</td>
 <td>0.0</td>
 </tr>
@@ -958,10 +971,10 @@ Small values indicate significant co-localization.</p>
 <td>34</td>
 <td>1.764162</td>
 <td>5.842747</td>
-<td>4.921835</td>
-<td>7.944777</td>
-<td>0.358436</td>
-<td>0.735420</td>
+<td>4.767084</td>
+<td>7.394651</td>
+<td>0.370072</td>
+<td>0.790131</td>
 <td>0.0</td>
 <td>0.0</td>
 </tr>
@@ -972,10 +985,10 @@ Small values indicate significant co-localization.</p>
 <td>48</td>
 <td>1.777044</td>
 <td>4.682295</td>
-<td>5.411767</td>
-<td>7.744384</td>
-<td>0.328367</td>
-<td>0.604605</td>
+<td>5.495804</td>
+<td>7.076684</td>
+<td>0.323346</td>
+<td>0.661651</td>
 <td>0.0</td>
 <td>0.0</td>
 </tr>
@@ -986,10 +999,10 @@ Small values indicate significant co-localization.</p>
 <td>38</td>
 <td>1.730490</td>
 <td>6.242496</td>
-<td>5.015744</td>
-<td>8.211811</td>
-<td>0.345012</td>
-<td>0.760185</td>
+<td>5.106933</td>
+<td>8.331586</td>
+<td>0.338851</td>
+<td>0.749257</td>
 <td>0.0</td>
 <td>0.0</td>
 </tr>
@@ -1014,10 +1027,10 @@ Small values indicate significant co-localization.</p>
 <td>47</td>
 <td>1.715710</td>
 <td>3.593778</td>
-<td>5.095438</td>
-<td>7.552222</td>
-<td>0.336715</td>
-<td>0.475857</td>
+<td>5.206823</td>
+<td>7.209218</td>
+<td>0.329512</td>
+<td>0.498498</td>
 <td>0.0</td>
 <td>0.0</td>
 </tr>
@@ -1028,12 +1041,12 @@ Small values indicate significant co-localization.</p>
 <td>14</td>
 <td>1.504764</td>
 <td>7.685147</td>
-<td>3.552178</td>
-<td>8.154699</td>
-<td>0.423617</td>
-<td>0.942419</td>
+<td>3.496796</td>
+<td>7.448302</td>
+<td>0.430326</td>
+<td>1.031798</td>
 <td>0.0</td>
-<td>0.4</td>
+<td>0.5</td>
 </tr>
 <tr>
 <th>74</th>
@@ -1042,10 +1055,10 @@ Small values indicate significant co-localization.</p>
 <td>9</td>
 <td>2.093022</td>
 <td>10.883218</td>
-<td>3.091593</td>
-<td>7.216184</td>
-<td>0.677004</td>
-<td>1.508168</td>
+<td>3.069716</td>
+<td>8.071630</td>
+<td>0.681829</td>
+<td>1.348330</td>
 <td>0.0</td>
 <td>1.0</td>
 </tr>
@@ -1056,10 +1069,10 @@ Small values indicate significant co-localization.</p>
 <td>20</td>
 <td>1.648309</td>
 <td>6.056318</td>
-<td>4.383543</td>
-<td>7.985929</td>
-<td>0.376022</td>
-<td>0.758374</td>
+<td>4.342187</td>
+<td>8.007327</td>
+<td>0.379603</td>
+<td>0.756347</td>
 <td>0.0</td>
 <td>0.0</td>
 </tr>
@@ -1070,10 +1083,10 @@ Small values indicate significant co-localization.</p>
 <td>2</td>
 <td>1.414214</td>
 <td>7.920230</td>
-<td>1.785310</td>
-<td>8.498365</td>
-<td>0.792139</td>
-<td>0.931971</td>
+<td>1.547311</td>
+<td>8.323545</td>
+<td>0.913982</td>
+<td>0.951545</td>
 <td>0.3</td>
 <td>0.6</td>
 </tr>
@@ -1095,10 +1108,10 @@ Small values indicate significant co-localization.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fc074469d90&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f22ba144fb0&gt;
 </pre></div>
 </div>
-<img alt="../../../_images/cca58ec20b9c047d5d7f94aba1fa39e65df0fc6c088ac4e2ed7cff952d7c325f.png" src="../../../_images/cca58ec20b9c047d5d7f94aba1fa39e65df0fc6c088ac4e2ed7cff952d7c325f.png"/>
+<img alt="../../../_images/87da6c2adc68fea4917c7ae55b9990bfa5f80b3a5e4e96d7dc6966c11eae417c.png" src="../../../_images/87da6c2adc68fea4917c7ae55b9990bfa5f80b3a5e4e96d7dc6966c11eae417c.png"/>
 </div>
 </div>
 <div class="cell docutils container">
@@ -1114,10 +1127,10 @@ Small values indicate significant co-localization.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fc0743326f0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f22ba0126f0&gt;
 </pre></div>
 </div>
-<img alt="../../../_images/288a528fc24c16ab7109bd4db4848bc99173e6f8ef33552853018b4fe5d1eb1f.png" src="../../../_images/288a528fc24c16ab7109bd4db4848bc99173e6f8ef33552853018b4fe5d1eb1f.png"/>
+<img alt="../../../_images/fd85789d786b8797a9ae55f8f6d005aa716a79a923fd5c3f360e6d18137435ad.png" src="../../../_images/fd85789d786b8797a9ae55f8f6d005aa716a79a923fd5c3f360e6d18137435ad.png"/>
 </div>
 </div>
 <div class="cell docutils container">
@@ -1131,10 +1144,10 @@ Small values indicate significant co-localization.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x7fc0745817c0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x7f22ba35ec60&gt;
 </pre></div>
 </div>
-<img alt="../../../_images/f028bcac655c52fd9ffb4f84fa6997ff21b0064a16b201710290d577c4ea0b2a.png" src="../../../_images/f028bcac655c52fd9ffb4f84fa6997ff21b0064a16b201710290d577c4ea0b2a.png"/>
+<img alt="../../../_images/0d83614dc169c22aa33c6e681f846c06fa7198e542f2721cb1e7d3f2a1377384.png" src="../../../_images/0d83614dc169c22aa33c6e681f846c06fa7198e542f2721cb1e7d3f2a1377384.png"/>
 </div>
 </div>
 <div class="cell docutils container">
@@ -1148,10 +1161,10 @@ Small values indicate significant co-localization.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x7fc0741d8f50&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x7f22ba394080&gt;
 </pre></div>
 </div>
-<img alt="../../../_images/7ed801e1ef5fd2d2ded3417664a0c7f7de277241cb6108e92830de76946d57bd.png" src="../../../_images/7ed801e1ef5fd2d2ded3417664a0c7f7de277241cb6108e92830de76946d57bd.png"/>
+<img alt="../../../_images/b4b23c1ce069493adb5eec276fbb0827a169e8f363a788cd65e02ea478801bc7.png" src="../../../_images/b4b23c1ce069493adb5eec276fbb0827a169e8f363a788cd65e02ea478801bc7.png"/>
 </div>
 </div>
 <p><strong>Interpretation:</strong> Almost all of protein A associates with protein B but not vice versa.</p>
@@ -1250,7 +1263,7 @@ Small values indicate significant co-localization.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-clark-evans-indices">6. Calculate Clark-Evans Indices</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repeat-steps-4-6-with-multiple-random-patterns">7. Repeat Steps 4-6 with Multiple Random Patterns</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#per-cell-colocalization-measurements">8. Per-cell Colocalization Measurements</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-summarise-the-per-cell-co-localisation-analysis-as-a-function">✍️ Exercise: Summarise the per-cell co-localisation analysis as a function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-summarise-the-per-cell-co-localisation-analysis-as-a-function">✍️ Exercise: Summarise the per-cell co-localisation analysis as a function</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#repeat-measurements-for-all-cells">Repeat measurements for all cells</a></li>
 </ul>
 </li>

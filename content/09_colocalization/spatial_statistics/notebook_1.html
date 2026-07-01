@@ -306,7 +306,7 @@
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repeat-measurements-for-all-cells">8. Repeat Measurements for All Cells</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-summarise-the-per-cell-clustering-analysis-as-a-function">✍️ Exercise: Summarise the per-cell clustering analysis as a function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-summarise-the-per-cell-clustering-analysis-as-a-function">✍️ Exercise: Summarise the per-cell clustering analysis as a function</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perform-the-same-calculation-on-the-other-channels">9. Perform the Same Calculation on the Other Channels</a></li>
@@ -401,7 +401,7 @@
 <span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">skimage</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">tifffile</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">bobiac_tools</span><span class="w"> </span><span class="kn">import</span> <span class="n">overlay_labels</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">bobiac_tools</span><span class="w"> </span><span class="kn">import</span> <span class="n">overlay_labels</span><span class="p">,</span> <span class="n">ripleys_l</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">scipy.spatial</span><span class="w"> </span><span class="kn">import</span> <span class="n">KDTree</span>
 </pre></div>
 </div>
@@ -656,7 +656,11 @@ This sequence is repeated until the cell contains the specified number of points
 <p>This procedure is necessary since cells have irregular shapes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">random_points_in_mask</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="n">cell_label</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># or use:</span>
+<span class="c1"># from bobiac_tools import random_points_in_mask</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">random_points_in_mask</span><span class="p">(</span><span class="n">mask</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">cell_label</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Generate n random points uniformly distributed within a labeled cell region.</span>
 
@@ -730,7 +734,7 @@ This sequence is repeated until the cell contains the specified number of points
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/487385cfbfc9395deab7d79ac2989334d7cbc8f2e0bafd0a836a710d4ec0060f.png" src="../../../_images/487385cfbfc9395deab7d79ac2989334d7cbc8f2e0bafd0a836a710d4ec0060f.png"/>
+<img alt="../../../_images/7ebeeda82f4a6bddfe9c2c37a578eb674e4ebb872d0e024260c0755ae146e1bc.png" src="../../../_images/7ebeeda82f4a6bddfe9c2c37a578eb674e4ebb872d0e024260c0755ae146e1bc.png"/>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 800x587.05 with 1 Axes&gt;,
  &lt;Axes: title={'center': 'Segmentation overlay'}&gt;)
 </pre></div>
@@ -755,9 +759,8 @@ This sequence is repeated until the cell contains the specified number of points
 </ul>
 <div class="cell tag_teacher docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dist_spots</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">KDTree</span><span class="p">(</span><span class="n">spots</span><span class="p">)</span><span class="o">.</span><span class="n">query</span><span class="p">(</span>
-    <span class="n">spots</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">2</span>
-<span class="p">)</span>  <span class="c1"># the query returns an array of distances and an array of indices. We don't need the indicis so we assign it to the variable `_`.</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># the query below returns an array of distances and an array of indices. We don't need the indicis so we assign it to the variable `_`.</span>
+<span class="n">dist_spots</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">KDTree</span><span class="p">(</span><span class="n">spots</span><span class="p">)</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">spots</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">dist_spots</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -859,103 +862,102 @@ This sequence is repeated until the cell contains the specified number of points
 <p>We do the same for the random spots.</p>
 <div class="cell tag_teacher docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dist_rnd</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">KDTree</span><span class="p">(</span><span class="n">rnd_points</span><span class="p">)</span><span class="o">.</span><span class="n">query</span><span class="p">(</span>
-    <span class="n">rnd_points</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">2</span>
-<span class="p">)</span>  <span class="c1"># the query returns an array of distances and an array of indices. We don't need the indicis so we assign it to the variable `_`.</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># the query below returns an array of distances and an array of indices. We don't need the indicis so we assign it to the variable `_`.</span>
+<span class="n">dist_rnd</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">KDTree</span><span class="p">(</span><span class="n">rnd_points</span><span class="p">)</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">rnd_points</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">dist_rnd</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 0.          2.43264923]
- [ 0.         18.14068447]
- [ 0.          8.77773606]
- [ 0.          2.43264923]
- [ 0.          8.08771849]
- [ 0.          2.27810388]
- [ 0.          3.16109685]
- [ 0.          2.79969004]
- [ 0.          2.95715361]
- [ 0.          9.0163707 ]
- [ 0.         15.94779785]
- [ 0.         16.40382679]
- [ 0.         13.14138183]
- [ 0.          4.94571384]
- [ 0.          9.24262347]
- [ 0.          0.99838115]
- [ 0.          8.90328151]
- [ 0.          5.85860203]
- [ 0.         10.39077196]
- [ 0.          5.27552197]
- [ 0.          9.92648969]
- [ 0.         10.85559857]
- [ 0.          4.94571384]
- [ 0.          2.95715361]
- [ 0.          8.55347273]
- [ 0.         16.0981116 ]
- [ 0.          8.23580184]
- [ 0.          7.9394258 ]
- [ 0.          5.59843543]
- [ 0.          7.82187327]
- [ 0.          8.56824415]
- [ 0.         30.4617319 ]
- [ 0.          6.34814246]
- [ 0.          2.60423693]
- [ 0.          8.56824415]
- [ 0.          2.98854586]
- [ 0.          7.01080125]
- [ 0.          8.01874494]
- [ 0.          8.68363506]
- [ 0.          4.00502053]
- [ 0.          1.89219354]
- [ 0.          0.99838115]
- [ 0.          7.61279218]
- [ 0.          3.64407148]
- [ 0.         10.53645665]
- [ 0.         11.11346017]
- [ 0.          0.59226343]
- [ 0.          8.55347273]
- [ 0.         10.39077196]
- [ 0.          7.9394258 ]
- [ 0.          5.69268575]
- [ 0.         13.86324704]
- [ 0.          8.54290142]
- [ 0.          3.16109685]
- [ 0.          8.85891066]
- [ 0.          1.9853004 ]
- [ 0.         16.69847312]
- [ 0.          1.90501884]
- [ 0.          8.58593133]
- [ 0.          8.68363506]
- [ 0.          7.61279218]
- [ 0.          8.01874494]
- [ 0.          2.9026063 ]
- [ 0.          7.20717542]
- [ 0.         10.53645665]
- [ 0.          1.9853004 ]
- [ 0.          2.79969004]
- [ 0.          2.96816939]
- [ 0.          2.27810388]
- [ 0.         14.71672551]
- [ 0.         11.65582415]
- [ 0.         11.55640542]
- [ 0.          8.59789585]
- [ 0.          4.21963453]
- [ 0.          5.02802215]
- [ 0.          2.98854586]
- [ 0.         10.85559857]
- [ 0.         12.66692391]
- [ 0.          8.08771849]
- [ 0.          8.77773606]
- [ 0.          0.59226343]
- [ 0.         10.37927814]
- [ 0.          5.27552197]
- [ 0.          5.94063371]
- [ 0.          1.89219354]
- [ 0.          5.59843543]
- [ 0.          6.34814246]
- [ 0.          4.87787734]
- [ 0.          2.60423693]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 0.          7.58375007]
+ [ 0.          7.51444025]
+ [ 0.          5.46539317]
+ [ 0.          4.44426812]
+ [ 0.          3.95007682]
+ [ 0.          5.04051509]
+ [ 0.         12.85178584]
+ [ 0.          5.46539317]
+ [ 0.         38.2893459 ]
+ [ 0.          5.87427849]
+ [ 0.          7.68525218]
+ [ 0.          4.96584377]
+ [ 0.          5.58648416]
+ [ 0.          5.87427849]
+ [ 0.          7.07728298]
+ [ 0.          6.76721058]
+ [ 0.          5.57023495]
+ [ 0.          8.51824679]
+ [ 0.          1.48002027]
+ [ 0.          3.95007682]
+ [ 0.         10.02372439]
+ [ 0.          3.80861511]
+ [ 0.          4.65501927]
+ [ 0.          4.89411638]
+ [ 0.          1.3033204 ]
+ [ 0.          6.49144589]
+ [ 0.         14.15598874]
+ [ 0.          3.74282736]
+ [ 0.          5.57023495]
+ [ 0.          9.52156343]
+ [ 0.          1.59261741]
+ [ 0.          6.05428187]
+ [ 0.          4.14488423]
+ [ 0.          9.87484208]
+ [ 0.         21.48087996]
+ [ 0.          5.94908018]
+ [ 0.          3.74282736]
+ [ 0.          3.2141619 ]
+ [ 0.         10.02372439]
+ [ 0.          6.90931503]
+ [ 0.          2.67855554]
+ [ 0.          8.86517505]
+ [ 0.         13.10134246]
+ [ 0.         14.6808373 ]
+ [ 0.          7.07728298]
+ [ 0.          7.51444025]
+ [ 0.          4.89411638]
+ [ 0.          6.46675419]
+ [ 0.          3.80861511]
+ [ 0.          5.29282784]
+ [ 0.          2.67855554]
+ [ 0.          4.14488423]
+ [ 0.          5.65667389]
+ [ 0.         11.99135009]
+ [ 0.         12.89646542]
+ [ 0.          4.65501927]
+ [ 0.         21.18106701]
+ [ 0.         12.86099506]
+ [ 0.          6.60149762]
+ [ 0.          5.04051509]
+ [ 0.          6.90931503]
+ [ 0.          5.85688199]
+ [ 0.         10.90878051]
+ [ 0.         12.24650605]
+ [ 0.          6.01289271]
+ [ 0.          1.59261741]
+ [ 0.          7.61452659]
+ [ 0.          6.49144589]
+ [ 0.         14.38559426]
+ [ 0.          6.27306801]
+ [ 0.          6.27306801]
+ [ 0.          6.02663158]
+ [ 0.         12.7785579 ]
+ [ 0.          1.3033204 ]
+ [ 0.          6.01289271]
+ [ 0.          1.48002027]
+ [ 0.         14.9862159 ]
+ [ 0.          3.2141619 ]
+ [ 0.          7.06429705]
+ [ 0.          8.19868477]
+ [ 0.          7.80687806]
+ [ 0.          5.87734528]
+ [ 0.          4.00038941]
+ [ 0.          7.53736036]
+ [ 0.          4.00038941]
+ [ 0.          5.87734528]
+ [ 0.         13.94530164]
+ [ 0.          4.50765906]
+ [ 0.          5.94908018]]
 </pre></div>
 </div>
 </div>
@@ -978,8 +980,8 @@ This sequence is repeated until the cell contains the specified number of points
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean NN distance spots: 7.382794742295512
-Mean NN distance random: 7.321351918420882
-Clark-Evans index (ratio): 1.0083922784424604
+Mean NN distance random: 7.396919620418393
+Clark-Evans index (ratio): 0.9980904377973919
 </pre></div>
 </div>
 </div>
@@ -996,26 +998,26 @@ Clark-Evans index (ratio): 1.0083922784424604
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_repeats</span> <span class="o">=</span> <span class="mi">10</span>
 
 <span class="n">list_rnd_dist</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># this list holds the average NN distances of the random points for each run</span>
-<span class="n">list_ce_index</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># this list holds the Clark-Evans indices for each run</span>
-
 
 <span class="k">for</span> <span class="n">_i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_repeats</span><span class="p">):</span>
     <span class="n">rnd_points</span> <span class="o">=</span> <span class="n">random_points_in_mask</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="n">cell_label</span><span class="o">=</span><span class="n">cell_id</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="n">n_points</span><span class="p">)</span>
     <span class="n">dist_rnd</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">KDTree</span><span class="p">(</span><span class="n">rnd_points</span><span class="p">)</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">rnd_points</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
     <span class="n">rnd_dist_avg</span> <span class="o">=</span> <span class="n">dist_rnd</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
     <span class="n">list_rnd_dist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">rnd_dist_avg</span><span class="p">)</span>
-    <span class="n">list_ce_index</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">spot_dist_avg</span> <span class="o">/</span> <span class="n">rnd_dist_avg</span><span class="p">)</span>
+
+<span class="n">rnd_dist_avg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">list_rnd_dist</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">clark_evans</span> <span class="o">=</span> <span class="n">spot_dist_avg</span> <span class="o">/</span> <span class="n">rnd_dist_avg</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Mean NN distance spots:"</span><span class="p">,</span> <span class="n">spot_dist_avg</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Mean NN distance spots (</span><span class="si">{</span><span class="n">n_repeats</span><span class="si">}</span><span class="s2"> runs):"</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">list_rnd_dist</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Mean Clark-Evans index (</span><span class="si">{</span><span class="n">n_repeats</span><span class="si">}</span><span class="s2"> runs):"</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">list_ce_index</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Mean NN distance random (</span><span class="si">{</span><span class="n">n_repeats</span><span class="si">}</span><span class="s2"> runs):"</span><span class="p">,</span> <span class="n">rnd_dist_avg</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Clark-Evans index (</span><span class="si">{</span><span class="n">n_repeats</span><span class="si">}</span><span class="s2"> runs):"</span><span class="p">,</span> <span class="n">clark_evans</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean NN distance spots: 7.382794742295512
-Mean NN distance spots (10 runs): 7.597993584780245
-Mean Clark-Evans index (10 runs): 0.9735820969541733
+Mean NN distance random (10 runs): 7.551103415323377
+Clark-Evans index (10 runs): 0.9777107180539578
 </pre></div>
 </div>
 </div>
@@ -1029,7 +1031,7 @@ Mean Clark-Evans index (10 runs): 0.9735820969541733
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[False False False False False False  True False  True  True]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[False False False False False  True  True  True False False]
 </pre></div>
 </div>
 </div>
@@ -1059,8 +1061,8 @@ Mean Clark-Evans index (10 runs): 0.9735820969541733
 <h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">8. Repeat Measurements for All Cells<a class="headerlink" href="#repeat-measurements-for-all-cells" title="Link to this heading">#</a></h2>
 <p>So far, we have focussed on one single cell. Of course, we need to analyse all cells.</p>
 <section id="exercise-summarise-the-per-cell-clustering-analysis-as-a-function">
-<h3 style="color: black; background-color: rgb(252,185,118); padding: 3px; border-radius: 5px;">✍️ Exercise: Summarise the per-cell clustering analysis as a function<a class="headerlink" href="#exercise-summarise-the-per-cell-clustering-analysis-as-a-function" title="Link to this heading">#</a></h3>
-<p>To make processing individual cells simpler, we can summarise our above analysis in a function called <code class="docutils literal notranslate"><span class="pre">NNDist</span></code>.
+<h3 style="color: black; background-color: rgb(252,185,118); padding: 3px; border-radius: 5px;">✍️ Exercise: Summarise the per-cell clustering analysis as a function<a class="headerlink" href="#exercise-summarise-the-per-cell-clustering-analysis-as-a-function" title="Link to this heading">#</a></h3>
+<p>To make processing individual cells simpler, we can summarise our above analysis in a function called <code class="docutils literal notranslate"><span class="pre">nn_dist</span></code>.
 The function should have the following features:</p>
 <p><strong>Parameters:</strong></p>
 <ul class="simple">
@@ -1086,7 +1088,13 @@ Fraction of CSR simulations with mean NND &lt;= spot_dist_avg.</p></li>
 </ul>
 <div class="cell tag_teacher docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">NNDist</span><span class="p">(</span><span class="n">spots</span><span class="p">,</span> <span class="n">mask</span><span class="p">,</span> <span class="n">cell_id</span><span class="p">,</span> <span class="n">n_repeats</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># or use:</span>
+<span class="c1"># from bobiac_tools import nn_dist</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">nn_dist</span><span class="p">(</span>
+    <span class="n">spots</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">mask</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">cell_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">n_repeats</span><span class="p">:</span> <span class="nb">int</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Test whether spots in a cell are randomly distributed using nearest-neighbor</span>
 <span class="sd">    distances and a Monte Carlo simulation of Complete Spatial Randomness (CSR).</span>
@@ -1128,32 +1136,32 @@ Fraction of CSR simulations with mean NND &lt;= spot_dist_avg.</p></li>
     <span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>  <span class="c1"># k=2: column 0 is self, column 1 is nearest neighbor</span>
 
     <span class="n">list_rnd_dist</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">list_ce_index</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">_i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_repeats</span><span class="p">):</span>
         <span class="n">rnd_points</span> <span class="o">=</span> <span class="n">random_points_in_mask</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="n">cell_label</span><span class="o">=</span><span class="n">cell_id</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="n">n_points</span><span class="p">)</span>
         <span class="n">dist_rnd</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">KDTree</span><span class="p">(</span><span class="n">rnd_points</span><span class="p">)</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">rnd_points</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
         <span class="n">rnd_dist_avg</span> <span class="o">=</span> <span class="n">dist_rnd</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
         <span class="n">list_rnd_dist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">rnd_dist_avg</span><span class="p">)</span>
-        <span class="n">list_ce_index</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">spot_dist_avg</span> <span class="o">/</span> <span class="n">rnd_dist_avg</span><span class="p">)</span>
 
+    <span class="n">rnd_dist_avg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">list_rnd_dist</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">clark_evans</span> <span class="o">=</span> <span class="n">spot_dist_avg</span> <span class="o">/</span> <span class="n">rnd_dist_avg</span>
     <span class="n">pval</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">list_rnd_dist</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">spot_dist_avg</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 
     <span class="k">return</span> <span class="p">(</span>
         <span class="n">spot_dist_avg</span><span class="p">,</span>
-        <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">list_rnd_dist</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
-        <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">list_ce_index</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
+        <span class="n">rnd_dist_avg</span><span class="p">,</span>
+        <span class="n">clark_evans</span><span class="p">,</span>
         <span class="n">pval</span><span class="p">,</span>
     <span class="p">)</span>
 
 
-<span class="n">NNDist</span><span class="p">(</span><span class="n">spots</span><span class="p">,</span> <span class="n">mask</span><span class="p">,</span> <span class="n">cell_id</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">nn_dist</span><span class="p">(</span><span class="n">spots</span><span class="p">,</span> <span class="n">mask</span><span class="p">,</span> <span class="n">cell_id</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(np.float64(7.382794742295512),
- np.float64(7.503951842041025),
- np.float64(0.987035622840706),
+ np.float64(7.50128551459793),
+ np.float64(0.9842039378354779),
  np.float64(0.42))
 </pre></div>
 </div>
@@ -1171,7 +1179,7 @@ Fraction of CSR simulations with mean NND &lt;= spot_dist_avg.</p></li>
         <span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"label_cell"</span><span class="p">]</span> <span class="o">==</span> <span class="n">row</span><span class="p">[</span><span class="s2">"label"</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"channel"</span><span class="p">]</span> <span class="o">==</span> <span class="n">channel</span><span class="p">)</span>
     <span class="p">][[</span><span class="s2">"y"</span><span class="p">,</span> <span class="s2">"x"</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span>
     <span class="c1"># calculate the NN distance, Clark-Evans index and p-value for that cell</span>
-    <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">NNDist</span><span class="p">(</span><span class="n">spots_in_cell</span><span class="p">,</span> <span class="n">mask</span><span class="p">,</span> <span class="n">row</span><span class="p">[</span><span class="s2">"label"</span><span class="p">],</span> <span class="n">n_repeats</span><span class="o">=</span><span class="n">n_repeats</span><span class="p">))</span>
+    <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn_dist</span><span class="p">(</span><span class="n">spots_in_cell</span><span class="p">,</span> <span class="n">mask</span><span class="p">,</span> <span class="n">row</span><span class="p">[</span><span class="s2">"label"</span><span class="p">],</span> <span class="n">n_repeats</span><span class="o">=</span><span class="n">n_repeats</span><span class="p">))</span>
 
 <span class="n">df_cell</span><span class="p">[[</span><span class="s2">"nnd_observed"</span><span class="p">,</span> <span class="s2">"nnd_random"</span><span class="p">,</span> <span class="s2">"clark_evans"</span><span class="p">,</span> <span class="s2">"p_value"</span><span class="p">]]</span> <span class="o">=</span> <span class="n">results</span>
 <span class="n">df_cell</span>
@@ -1213,9 +1221,9 @@ Fraction of CSR simulations with mean NND &lt;= spot_dist_avg.</p></li>
 <td>2</td>
 <td>23</td>
 <td>7.542691</td>
-<td>9.087614</td>
-<td>0.840439</td>
-<td>0.1</td>
+<td>8.424651</td>
+<td>0.895312</td>
+<td>0.3</td>
 </tr>
 <tr>
 <th>1</th>
@@ -1223,9 +1231,9 @@ Fraction of CSR simulations with mean NND &lt;= spot_dist_avg.</p></li>
 <td>3</td>
 <td>39</td>
 <td>7.040435</td>
-<td>7.653851</td>
-<td>0.932022</td>
-<td>0.3</td>
+<td>7.905550</td>
+<td>0.890569</td>
+<td>0.1</td>
 </tr>
 <tr>
 <th>2</th>
@@ -1233,9 +1241,9 @@ Fraction of CSR simulations with mean NND &lt;= spot_dist_avg.</p></li>
 <td>4</td>
 <td>34</td>
 <td>7.250944</td>
-<td>7.806599</td>
-<td>0.933555</td>
-<td>0.3</td>
+<td>7.570875</td>
+<td>0.957742</td>
+<td>0.2</td>
 </tr>
 <tr>
 <th>3</th>
@@ -1243,8 +1251,8 @@ Fraction of CSR simulations with mean NND &lt;= spot_dist_avg.</p></li>
 <td>5</td>
 <td>48</td>
 <td>7.201960</td>
-<td>7.766974</td>
-<td>0.930432</td>
+<td>7.660002</td>
+<td>0.940203</td>
 <td>0.2</td>
 </tr>
 <tr>
@@ -1253,9 +1261,9 @@ Fraction of CSR simulations with mean NND &lt;= spot_dist_avg.</p></li>
 <td>6</td>
 <td>38</td>
 <td>7.557600</td>
-<td>7.976779</td>
-<td>0.954786</td>
-<td>0.3</td>
+<td>7.768490</td>
+<td>0.972853</td>
+<td>0.2</td>
 </tr>
 <tr>
 <th>...</th>
@@ -1273,9 +1281,9 @@ Fraction of CSR simulations with mean NND &lt;= spot_dist_avg.</p></li>
 <td>80</td>
 <td>47</td>
 <td>7.071116</td>
-<td>7.508558</td>
-<td>0.949123</td>
-<td>0.3</td>
+<td>7.751189</td>
+<td>0.912262</td>
+<td>0.1</td>
 </tr>
 <tr>
 <th>73</th>
@@ -1283,9 +1291,9 @@ Fraction of CSR simulations with mean NND &lt;= spot_dist_avg.</p></li>
 <td>81</td>
 <td>14</td>
 <td>7.357530</td>
-<td>8.500260</td>
-<td>0.891643</td>
-<td>0.2</td>
+<td>9.123912</td>
+<td>0.806401</td>
+<td>0.1</td>
 </tr>
 <tr>
 <th>74</th>
@@ -1293,8 +1301,8 @@ Fraction of CSR simulations with mean NND &lt;= spot_dist_avg.</p></li>
 <td>83</td>
 <td>9</td>
 <td>5.538022</td>
-<td>9.743415</td>
-<td>0.596491</td>
+<td>9.109394</td>
+<td>0.607946</td>
 <td>0.0</td>
 </tr>
 <tr>
@@ -1303,9 +1311,9 @@ Fraction of CSR simulations with mean NND &lt;= spot_dist_avg.</p></li>
 <td>85</td>
 <td>20</td>
 <td>7.137660</td>
-<td>8.525507</td>
-<td>0.852561</td>
-<td>0.0</td>
+<td>8.431323</td>
+<td>0.846565</td>
+<td>0.1</td>
 </tr>
 <tr>
 <th>76</th>
@@ -1313,9 +1321,9 @@ Fraction of CSR simulations with mean NND &lt;= spot_dist_avg.</p></li>
 <td>90</td>
 <td>2</td>
 <td>21.377558</td>
-<td>11.974445</td>
-<td>2.736709</td>
-<td>0.9</td>
+<td>14.779611</td>
+<td>1.446422</td>
+<td>0.8</td>
 </tr>
 </tbody>
 </table>
@@ -1363,9 +1371,9 @@ Fraction of CSR simulations with mean NND &lt;= spot_dist_avg.</p></li>
 <td>11</td>
 <td>89</td>
 <td>7.382795</td>
-<td>7.502472</td>
-<td>0.986462</td>
-<td>0.4</td>
+<td>7.442827</td>
+<td>0.991934</td>
+<td>0.5</td>
 </tr>
 </tbody>
 </table>
@@ -1382,10 +1390,10 @@ Fraction of CSR simulations with mean NND &lt;= spot_dist_avg.</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x7fe56029e6f0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x7fa2679185c0&gt;
 </pre></div>
 </div>
-<img alt="../../../_images/7137d42e020fbbd1bb17069f17c4337c58744561291b0bf65c9bf61c020f5da8.png" src="../../../_images/7137d42e020fbbd1bb17069f17c4337c58744561291b0bf65c9bf61c020f5da8.png"/>
+<img alt="../../../_images/f0e8f11359222a9b9c07a5dbad29e3b0714a6ad761b53b5e44dbf264892fb2fb.png" src="../../../_images/f0e8f11359222a9b9c07a5dbad29e3b0714a6ad761b53b5e44dbf264892fb2fb.png"/>
 </div>
 </div>
 <div class="cell tag_teacher docutils container">
@@ -1401,7 +1409,7 @@ Fraction of CSR simulations with mean NND &lt;= spot_dist_avg.</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/d2d5af8358e0dfb29c44a2db4399c42fddb6f99557ac22750eaed7a9071fad6e.png" src="../../../_images/d2d5af8358e0dfb29c44a2db4399c42fddb6f99557ac22750eaed7a9071fad6e.png"/>
+<img alt="../../../_images/df737406bccaf23b27989a21c23047398442a6e49a1a6329e402c1fd3fde9392.png" src="../../../_images/df737406bccaf23b27989a21c23047398442a6e49a1a6329e402c1fd3fde9392.png"/>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 800x800 with 2 Axes&gt;, &lt;Axes: title={'center': 'clark_evans'}&gt;)
 </pre></div>
 </div>
@@ -1426,7 +1434,7 @@ Fraction of CSR simulations with mean NND &lt;= spot_dist_avg.</p></li>
         <span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"label_cell"</span><span class="p">]</span> <span class="o">==</span> <span class="n">row</span><span class="p">[</span><span class="s2">"label"</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"channel"</span><span class="p">]</span> <span class="o">==</span> <span class="n">channel</span><span class="p">)</span>
     <span class="p">][[</span><span class="s2">"y"</span><span class="p">,</span> <span class="s2">"x"</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span>
     <span class="c1"># calculate the NN distance, Clark-Evans index and p-value for that cell</span>
-    <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">NNDist</span><span class="p">(</span><span class="n">spots_in_cell</span><span class="p">,</span> <span class="n">mask</span><span class="p">,</span> <span class="n">row</span><span class="p">[</span><span class="s2">"label"</span><span class="p">],</span> <span class="n">n_repeats</span><span class="o">=</span><span class="n">n_repeats</span><span class="p">))</span>
+    <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn_dist</span><span class="p">(</span><span class="n">spots_in_cell</span><span class="p">,</span> <span class="n">mask</span><span class="p">,</span> <span class="n">row</span><span class="p">[</span><span class="s2">"label"</span><span class="p">],</span> <span class="n">n_repeats</span><span class="o">=</span><span class="n">n_repeats</span><span class="p">))</span>
 
 <span class="n">df_cell</span><span class="p">[[</span><span class="s2">"nnd_observed"</span><span class="p">,</span> <span class="s2">"nnd_random"</span><span class="p">,</span> <span class="s2">"clark_evans"</span><span class="p">,</span> <span class="s2">"p_value"</span><span class="p">]]</span> <span class="o">=</span> <span class="n">results</span>
 <span class="n">df_cell</span>
@@ -1468,8 +1476,8 @@ Fraction of CSR simulations with mean NND &lt;= spot_dist_avg.</p></li>
 <td>2</td>
 <td>23</td>
 <td>3.854920</td>
-<td>4.633376</td>
-<td>0.834412</td>
+<td>4.464964</td>
+<td>0.863371</td>
 <td>0.0</td>
 </tr>
 <tr>
@@ -1478,8 +1486,8 @@ Fraction of CSR simulations with mean NND &lt;= spot_dist_avg.</p></li>
 <td>3</td>
 <td>39</td>
 <td>4.270026</td>
-<td>5.084569</td>
-<td>0.842730</td>
+<td>5.349347</td>
+<td>0.798233</td>
 <td>0.0</td>
 </tr>
 <tr>
@@ -1488,9 +1496,9 @@ Fraction of CSR simulations with mean NND &lt;= spot_dist_avg.</p></li>
 <td>4</td>
 <td>34</td>
 <td>4.445110</td>
-<td>4.886673</td>
-<td>0.912402</td>
-<td>0.0</td>
+<td>4.870329</td>
+<td>0.912692</td>
+<td>0.2</td>
 </tr>
 <tr>
 <th>3</th>
@@ -1498,8 +1506,8 @@ Fraction of CSR simulations with mean NND &lt;= spot_dist_avg.</p></li>
 <td>5</td>
 <td>48</td>
 <td>4.891864</td>
-<td>5.424104</td>
-<td>0.903167</td>
+<td>5.361681</td>
+<td>0.912375</td>
 <td>0.0</td>
 </tr>
 <tr>
@@ -1508,9 +1516,9 @@ Fraction of CSR simulations with mean NND &lt;= spot_dist_avg.</p></li>
 <td>6</td>
 <td>38</td>
 <td>4.489295</td>
-<td>5.072717</td>
-<td>0.889426</td>
-<td>0.1</td>
+<td>5.015529</td>
+<td>0.895079</td>
+<td>0.0</td>
 </tr>
 <tr>
 <th>...</th>
@@ -1528,8 +1536,8 @@ Fraction of CSR simulations with mean NND &lt;= spot_dist_avg.</p></li>
 <td>80</td>
 <td>47</td>
 <td>4.367094</td>
-<td>5.158180</td>
-<td>0.848231</td>
+<td>5.158174</td>
+<td>0.846636</td>
 <td>0.0</td>
 </tr>
 <tr>
@@ -1538,9 +1546,9 @@ Fraction of CSR simulations with mean NND &lt;= spot_dist_avg.</p></li>
 <td>81</td>
 <td>14</td>
 <td>3.344642</td>
-<td>3.542409</td>
-<td>0.947467</td>
-<td>0.2</td>
+<td>3.484418</td>
+<td>0.959885</td>
+<td>0.3</td>
 </tr>
 <tr>
 <th>74</th>
@@ -1548,8 +1556,8 @@ Fraction of CSR simulations with mean NND &lt;= spot_dist_avg.</p></li>
 <td>83</td>
 <td>9</td>
 <td>2.414088</td>
-<td>3.172940</td>
-<td>0.766482</td>
+<td>3.136460</td>
+<td>0.769686</td>
 <td>0.0</td>
 </tr>
 <tr>
@@ -1558,8 +1566,8 @@ Fraction of CSR simulations with mean NND &lt;= spot_dist_avg.</p></li>
 <td>85</td>
 <td>20</td>
 <td>3.384426</td>
-<td>4.377382</td>
-<td>0.774864</td>
+<td>4.322734</td>
+<td>0.782936</td>
 <td>0.0</td>
 </tr>
 <tr>
@@ -1568,9 +1576,9 @@ Fraction of CSR simulations with mean NND &lt;= spot_dist_avg.</p></li>
 <td>90</td>
 <td>2</td>
 <td>1.696659</td>
-<td>1.514953</td>
-<td>1.127112</td>
-<td>0.9</td>
+<td>1.594354</td>
+<td>1.064167</td>
+<td>0.8</td>
 </tr>
 </tbody>
 </table>
@@ -1588,10 +1596,10 @@ Fraction of CSR simulations with mean NND &lt;= spot_dist_avg.</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x7fe56044bfe0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x7fa26791a690&gt;
 </pre></div>
 </div>
-<img alt="../../../_images/4b5dbb40a89ef4014bf13fe46c654cd570cfbb40ad2db64891d0d6d9b2a31b8e.png" src="../../../_images/4b5dbb40a89ef4014bf13fe46c654cd570cfbb40ad2db64891d0d6d9b2a31b8e.png"/>
+<img alt="../../../_images/800100ac9d1676e698bf32870cd6ec3fa9655efb5cec8706c93e0e0e2e1c2a37.png" src="../../../_images/800100ac9d1676e698bf32870cd6ec3fa9655efb5cec8706c93e0e0e2e1c2a37.png"/>
 </div>
 </div>
 <div class="cell tag_teacher docutils container">
@@ -1607,7 +1615,7 @@ Fraction of CSR simulations with mean NND &lt;= spot_dist_avg.</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/18a93eeaed14ae07e06b68809df2fbbcb9c802bdeaf3d8d56eb5c9a84c16c69c.png" src="../../../_images/18a93eeaed14ae07e06b68809df2fbbcb9c802bdeaf3d8d56eb5c9a84c16c69c.png"/>
+<img alt="../../../_images/9477a419b6f652db3f0b55a2b2fa4093267662017423ea2b3f57f2c88df9c142.png" src="../../../_images/9477a419b6f652db3f0b55a2b2fa4093267662017423ea2b3f57f2c88df9c142.png"/>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 800x800 with 2 Axes&gt;, &lt;Axes: title={'center': 'clark_evans'}&gt;)
 </pre></div>
 </div>
@@ -1626,7 +1634,7 @@ Fraction of CSR simulations with mean NND &lt;= spot_dist_avg.</p></li>
         <span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"label_cell"</span><span class="p">]</span> <span class="o">==</span> <span class="n">row</span><span class="p">[</span><span class="s2">"label"</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"channel"</span><span class="p">]</span> <span class="o">==</span> <span class="n">channel</span><span class="p">)</span>
     <span class="p">][[</span><span class="s2">"y"</span><span class="p">,</span> <span class="s2">"x"</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span>
     <span class="c1"># calculate the NN distance, Clark-Evans index and p-value for that cell</span>
-    <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">NNDist</span><span class="p">(</span><span class="n">spots_in_cell</span><span class="p">,</span> <span class="n">mask</span><span class="p">,</span> <span class="n">row</span><span class="p">[</span><span class="s2">"label"</span><span class="p">],</span> <span class="n">n_repeats</span><span class="o">=</span><span class="n">n_repeats</span><span class="p">))</span>
+    <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn_dist</span><span class="p">(</span><span class="n">spots_in_cell</span><span class="p">,</span> <span class="n">mask</span><span class="p">,</span> <span class="n">row</span><span class="p">[</span><span class="s2">"label"</span><span class="p">],</span> <span class="n">n_repeats</span><span class="o">=</span><span class="n">n_repeats</span><span class="p">))</span>
 
 <span class="n">df_cell</span><span class="p">[[</span><span class="s2">"nnd_observed"</span><span class="p">,</span> <span class="s2">"nnd_random"</span><span class="p">,</span> <span class="s2">"clark_evans"</span><span class="p">,</span> <span class="s2">"p_value"</span><span class="p">]]</span> <span class="o">=</span> <span class="n">results</span>
 <span class="n">df_cell</span>
@@ -1668,9 +1676,9 @@ Fraction of CSR simulations with mean NND &lt;= spot_dist_avg.</p></li>
 <td>2</td>
 <td>23</td>
 <td>6.870816</td>
-<td>6.832565</td>
-<td>1.017287</td>
-<td>0.5</td>
+<td>7.040617</td>
+<td>0.975883</td>
+<td>0.4</td>
 </tr>
 <tr>
 <th>1</th>
@@ -1678,9 +1686,9 @@ Fraction of CSR simulations with mean NND &lt;= spot_dist_avg.</p></li>
 <td>3</td>
 <td>39</td>
 <td>7.355929</td>
-<td>7.717526</td>
-<td>0.964585</td>
-<td>0.2</td>
+<td>7.574855</td>
+<td>0.971098</td>
+<td>0.5</td>
 </tr>
 <tr>
 <th>2</th>
@@ -1688,8 +1696,8 @@ Fraction of CSR simulations with mean NND &lt;= spot_dist_avg.</p></li>
 <td>4</td>
 <td>34</td>
 <td>6.231751</td>
-<td>6.898174</td>
-<td>0.908345</td>
+<td>7.103239</td>
+<td>0.877311</td>
 <td>0.1</td>
 </tr>
 <tr>
@@ -1698,9 +1706,9 @@ Fraction of CSR simulations with mean NND &lt;= spot_dist_avg.</p></li>
 <td>5</td>
 <td>48</td>
 <td>6.240532</td>
-<td>7.006468</td>
-<td>0.893712</td>
-<td>0.0</td>
+<td>7.007292</td>
+<td>0.890577</td>
+<td>0.1</td>
 </tr>
 <tr>
 <th>4</th>
@@ -1708,9 +1716,9 @@ Fraction of CSR simulations with mean NND &lt;= spot_dist_avg.</p></li>
 <td>6</td>
 <td>38</td>
 <td>6.343255</td>
-<td>7.035634</td>
-<td>0.910782</td>
-<td>0.2</td>
+<td>6.749658</td>
+<td>0.939789</td>
+<td>0.4</td>
 </tr>
 <tr>
 <th>...</th>
@@ -1728,8 +1736,8 @@ Fraction of CSR simulations with mean NND &lt;= spot_dist_avg.</p></li>
 <td>80</td>
 <td>47</td>
 <td>6.363679</td>
-<td>7.882438</td>
-<td>0.812163</td>
+<td>7.807400</td>
+<td>0.815083</td>
 <td>0.0</td>
 </tr>
 <tr>
@@ -1738,9 +1746,9 @@ Fraction of CSR simulations with mean NND &lt;= spot_dist_avg.</p></li>
 <td>81</td>
 <td>14</td>
 <td>6.751128</td>
-<td>7.083127</td>
-<td>0.966773</td>
-<td>0.3</td>
+<td>6.358954</td>
+<td>1.061673</td>
+<td>0.7</td>
 </tr>
 <tr>
 <th>74</th>
@@ -1748,8 +1756,8 @@ Fraction of CSR simulations with mean NND &lt;= spot_dist_avg.</p></li>
 <td>83</td>
 <td>9</td>
 <td>7.651594</td>
-<td>6.334667</td>
-<td>1.244624</td>
+<td>6.130065</td>
+<td>1.248208</td>
 <td>0.9</td>
 </tr>
 <tr>
@@ -1758,9 +1766,9 @@ Fraction of CSR simulations with mean NND &lt;= spot_dist_avg.</p></li>
 <td>85</td>
 <td>20</td>
 <td>6.427021</td>
-<td>6.492825</td>
-<td>1.003571</td>
-<td>0.4</td>
+<td>6.672263</td>
+<td>0.963245</td>
+<td>0.5</td>
 </tr>
 <tr>
 <th>76</th>
@@ -1768,9 +1776,9 @@ Fraction of CSR simulations with mean NND &lt;= spot_dist_avg.</p></li>
 <td>90</td>
 <td>2</td>
 <td>9.328427</td>
-<td>8.089736</td>
-<td>1.307545</td>
-<td>0.8</td>
+<td>6.780361</td>
+<td>1.375801</td>
+<td>0.9</td>
 </tr>
 </tbody>
 </table>
@@ -1788,10 +1796,10 @@ Fraction of CSR simulations with mean NND &lt;= spot_dist_avg.</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x7fe560161040&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x7fa267705550&gt;
 </pre></div>
 </div>
-<img alt="../../../_images/3d4edda3f2638284b3bc0c1d8ac7e9d0795822198d773142fa6d1a31fddfaa37.png" src="../../../_images/3d4edda3f2638284b3bc0c1d8ac7e9d0795822198d773142fa6d1a31fddfaa37.png"/>
+<img alt="../../../_images/47320724e48bd8c913c3f37ca8bea48ca17687257d4631c7afc690da94115447.png" src="../../../_images/47320724e48bd8c913c3f37ca8bea48ca17687257d4631c7afc690da94115447.png"/>
 </div>
 </div>
 <div class="cell tag_teacher docutils container">
@@ -1807,7 +1815,7 @@ Fraction of CSR simulations with mean NND &lt;= spot_dist_avg.</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/611ddaf67a4ecbc42d6accd544226e1c52908c4dff2b5785ef69695e204020fe.png" src="../../../_images/611ddaf67a4ecbc42d6accd544226e1c52908c4dff2b5785ef69695e204020fe.png"/>
+<img alt="../../../_images/7cd34553cba5777a7a823f5d22f0fbfc505cd91e115e5af0d22594dcee0316b0.png" src="../../../_images/7cd34553cba5777a7a823f5d22f0fbfc505cd91e115e5af0d22594dcee0316b0.png"/>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 800x800 with 2 Axes&gt;, &lt;Axes: title={'center': 'clark_evans'}&gt;)
 </pre></div>
 </div>
@@ -1821,87 +1829,6 @@ Fraction of CSR simulations with mean NND &lt;= spot_dist_avg.</p></li>
 <p>We know that Protein B is clustered compared to random. However, we don’t know what scale the clustering is occurring on.</p>
 <p>A common method to investigate the length scales of spatial patterns is <strong>Ripley’s L function</strong>. The idea is to calculate the density of spots around each spot for different radii and compare that to a random point pattern. The density of a random pattern is independent of the radius, while clustered points will exhibit higher density at shorter radii than longer ones. This way we can infer the average cluster size and distance between clusters.</p>
 <p>Here, we only demonstrate the concept on the spot pattern of protein B in one cell.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.ndimage</span><span class="w"> </span><span class="kn">import</span> <span class="n">binary_erosion</span>
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">RipleysL</span><span class="p">(</span><span class="n">spots</span><span class="p">,</span> <span class="n">mask</span><span class="p">,</span> <span class="n">cell_id</span><span class="p">,</span> <span class="n">n_repeats</span><span class="p">,</span> <span class="n">r_values</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""</span>
-<span class="sd">    Compute Ripley's L function for spots in a cell against a CSR null model,</span>
-<span class="sd">    using a Monte Carlo envelope from simulated random point patterns.</span>
-
-<span class="sd">    Returns the centered L function L(r) - r, which is 0 under CSR.</span>
-<span class="sd">    Positive values indicate clustering at scale r, negative values indicate</span>
-<span class="sd">    dispersion. Border correction is applied via mask erosion: only points at</span>
-<span class="sd">    least r pixels from the cell boundary are used as source points.</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    spots : (n, 2) numpy array</span>
-<span class="sd">        Spot coordinates in (row, col) / (y, x) order.</span>
-<span class="sd">    mask : 2D numpy array</span>
-<span class="sd">        Label mask where each cell is identified by a unique integer ID.</span>
-<span class="sd">    cell_id : int</span>
-<span class="sd">        ID of the cell in mask that spots belong to.</span>
-<span class="sd">    n_repeats : int</span>
-<span class="sd">        Number of CSR simulations to run.</span>
-<span class="sd">    r_values : 1D array or None</span>
-<span class="sd">        Radii at which to evaluate L(r) - r. Defaults to 30 values from 0</span>
-<span class="sd">        to half the cell's effective radius.</span>
-
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    r_values : 1D array</span>
-<span class="sd">        Radii at which L(r) - r was evaluated.</span>
-<span class="sd">    L_observed : 1D array</span>
-<span class="sd">        L(r) - r for the observed spots.</span>
-<span class="sd">    L_sims : (n_repeats, len(r_values)) array</span>
-<span class="sd">        L(r) - r for each CSR simulation. Use .min(axis=0) / .max(axis=0)</span>
-<span class="sd">        for the envelope, .mean(axis=0) for the expected value under CSR.</span>
-<span class="sd">    """</span>
-    <span class="n">cell_mask</span> <span class="o">=</span> <span class="n">mask</span> <span class="o">==</span> <span class="n">cell_id</span>
-    <span class="n">area</span> <span class="o">=</span> <span class="n">cell_mask</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-    <span class="n">n_points</span> <span class="o">=</span> <span class="n">spots</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-
-    <span class="k">if</span> <span class="n">r_values</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">r_max</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">area</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.5</span>
-        <span class="n">r_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">r_max</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
-
-    <span class="c1"># precompute eroded masks for each r — done once, not per simulation</span>
-    <span class="n">eroded_masks</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">r_values</span><span class="p">:</span>
-        <span class="n">r_int</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">r</span><span class="p">))</span>
-        <span class="n">size</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">r_int</span> <span class="o">+</span> <span class="mi">1</span>
-        <span class="n">cy</span><span class="p">,</span> <span class="n">cx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ogrid</span><span class="p">[</span><span class="o">-</span><span class="n">r_int</span> <span class="p">:</span> <span class="n">size</span> <span class="o">-</span> <span class="n">r_int</span><span class="p">,</span> <span class="o">-</span><span class="n">r_int</span> <span class="p">:</span> <span class="n">size</span> <span class="o">-</span> <span class="n">r_int</span><span class="p">]</span>
-        <span class="n">struct</span> <span class="o">=</span> <span class="n">cy</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">cx</span><span class="o">**</span><span class="mi">2</span> <span class="o">&lt;=</span> <span class="n">r</span><span class="o">**</span><span class="mi">2</span>
-        <span class="n">eroded_masks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">binary_erosion</span><span class="p">(</span><span class="n">cell_mask</span><span class="p">,</span> <span class="n">structure</span><span class="o">=</span><span class="n">struct</span><span class="p">))</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">compute_L</span><span class="p">(</span><span class="n">coords</span><span class="p">):</span>
-        <span class="n">tree</span> <span class="o">=</span> <span class="n">KDTree</span><span class="p">(</span><span class="n">coords</span><span class="p">)</span>
-        <span class="n">K</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">r</span><span class="p">,</span> <span class="n">eroded</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">r_values</span><span class="p">,</span> <span class="n">eroded_masks</span><span class="p">):</span>
-            <span class="n">valid</span> <span class="o">=</span> <span class="n">eroded</span><span class="p">[</span><span class="n">coords</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">),</span> <span class="n">coords</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)]</span>
-            <span class="n">n_valid</span> <span class="o">=</span> <span class="n">valid</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-            <span class="k">if</span> <span class="n">n_valid</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="n">K</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
-                <span class="k">continue</span>
-            <span class="n">count</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">query_ball_point</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">r</span><span class="p">))</span> <span class="o">-</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">coords</span><span class="p">[</span><span class="n">valid</span><span class="p">])</span>
-            <span class="n">K</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">area</span> <span class="o">/</span> <span class="p">(</span><span class="n">n_valid</span> <span class="o">*</span> <span class="n">n_points</span><span class="p">))</span> <span class="o">*</span> <span class="n">count</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">K</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">-</span> <span class="n">r_values</span>
-
-    <span class="n">L_observed</span> <span class="o">=</span> <span class="n">compute_L</span><span class="p">(</span><span class="n">spots</span><span class="p">)</span>
-
-    <span class="n">L_sims</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_repeats</span><span class="p">):</span>
-        <span class="n">rnd_points</span> <span class="o">=</span> <span class="n">random_points_in_mask</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="n">cell_label</span><span class="o">=</span><span class="n">cell_id</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="n">n_points</span><span class="p">)</span>
-        <span class="n">L_sims</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">compute_L</span><span class="p">(</span><span class="n">rnd_points</span><span class="p">))</span>
-
-    <span class="k">return</span> <span class="n">r_values</span><span class="p">,</span> <span class="n">L_observed</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">L_sims</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spots</span> <span class="o">=</span> <span class="n">df_spots</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"channel"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"label_cell"</span><span class="p">]</span> <span class="o">==</span> <span class="n">cell_id</span><span class="p">)][</span>
@@ -1921,7 +1848,7 @@ Fraction of CSR simulations with mean NND &lt;= spot_dist_avg.</p></li>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r_values</span><span class="p">,</span> <span class="n">L_obs</span><span class="p">,</span> <span class="n">L_sims</span> <span class="o">=</span> <span class="n">RipleysL</span><span class="p">(</span><span class="n">spots</span><span class="p">,</span> <span class="n">mask</span><span class="p">,</span> <span class="n">cell_id</span><span class="o">=</span><span class="n">cell_id</span><span class="p">,</span> <span class="n">n_repeats</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r_values</span><span class="p">,</span> <span class="n">L_obs</span><span class="p">,</span> <span class="n">L_sims</span> <span class="o">=</span> <span class="n">ripleys_l</span><span class="p">(</span><span class="n">spots</span><span class="p">,</span> <span class="n">mask</span><span class="p">,</span> <span class="n">cell_id</span><span class="o">=</span><span class="n">cell_id</span><span class="p">,</span> <span class="n">n_repeats</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r_values</span><span class="p">,</span> <span class="n">L_obs</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"black"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"observed"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span>
@@ -1940,10 +1867,10 @@ Fraction of CSR simulations with mean NND &lt;= spot_dist_avg.</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fe560009d90&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fa2679352b0&gt;
 </pre></div>
 </div>
-<img alt="../../../_images/dc2126b3024e1fb2332ad059a7b2e75c61c423b0c53ad82906fe1c05aab34a23.png" src="../../../_images/dc2126b3024e1fb2332ad059a7b2e75c61c423b0c53ad82906fe1c05aab34a23.png"/>
+<img alt="../../../_images/0cd4a2a0421fbf0e239c61f28bbfe4da6f4d82cc31ed01e50014ba20cc344ced.png" src="../../../_images/0cd4a2a0421fbf0e239c61f28bbfe4da6f4d82cc31ed01e50014ba20cc344ced.png"/>
 </div>
 </div>
 <p>We observe clustering with scale 2-10 pixels, where the observed curve is above the 95% CSR envelope. Moreover, we see a corresponding dispersion from 15 pixels onward. This is because our random null distribution has the same number of points as the observed distribution.</p>
@@ -2043,7 +1970,7 @@ Fraction of CSR simulations with mean NND &lt;= spot_dist_avg.</p></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repeat-measurements-for-all-cells">8. Repeat Measurements for All Cells</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-summarise-the-per-cell-clustering-analysis-as-a-function">✍️ Exercise: Summarise the per-cell clustering analysis as a function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-summarise-the-per-cell-clustering-analysis-as-a-function">✍️ Exercise: Summarise the per-cell clustering analysis as a function</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perform-the-same-calculation-on-the-other-channels">9. Perform the Same Calculation on the Other Channels</a></li>
