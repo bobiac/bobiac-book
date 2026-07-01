@@ -30,7 +30,7 @@ For example, in this course we will use packages to:
 - use **deep learning** models (e.g. `cellpose`, `spotiflow`)
 - create **plots** and **visualizations** (e.g. `matplotlib`, `ndv`)
 
-Each of these would take an enormous amount of work to build ourselves, but thanks to packages we can simply **reuse** code that experts have already written, tested, and shared.
+Each of these tasks would take an enormous amount of work to build ourselves, but thanks to packages we can simply **reuse** code that experts have already written, tested, and shared.
 
 :::{note}
 {{pizza}} **Analogy**: To put the **mozzarella** (the **package**) on our pizza, we don't have to buy a cow, milk it, and make the cheese ourselves. We can simply get **mozzarella that someone else has already made beautifully** for us. Sure, we *could* try to make it from scratch (i.e. write the code ourselves), but it can be **quite hard** and time-consuming. **Packages** are exactly that: ready-made ingredients we can reuse instead of preparing everything from scratch.
