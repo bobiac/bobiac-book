@@ -1,5 +1,7 @@
 # Introduction to Python
 
+This is not a thorough introduction to `Python`, but rather a **brief overview** of the key concepts you need to know to get started with this course.
+
 ## 1. What is Python?
 
 When people say `Python`, they can mean two things:
