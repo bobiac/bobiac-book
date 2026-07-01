@@ -155,6 +155,16 @@ uvx juv run bobiac_notebook.ipynb
 This is especially useful if you write your own `PEP 723` notebook and want to share it with **someone who doesn't know how to use `Python` or a terminal**: they can just double-click `pyrunner`, pick your file, and run it, without ever opening a terminal. See the [`pyrunner` repository](https://github.com/fdrgsp/pyrunner) for more details.
 :::
 
+:::{tip}
+⚡ **Running a notebook without opening JupyterLab**: if you want to execute all cells in a notebook from top to bottom without manually opening JupyterLab and clicking through each one, use `juv exec`:
+
+```bash
+uvx juv exec bobiac_notebook.ipynb
+```
+
+This runs every cell in order and prints the output directly in the terminal — useful for re-running a notebook as a script, or quickly checking that everything still works after changing a dependency.
+:::
+
 ### 4.5. Importing Packages in a Notebook
 
 Before you can use a package inside a notebook cell, you need to **import** it:
