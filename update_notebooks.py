@@ -51,7 +51,6 @@ map_05_classic_segmentation_book_to_notebook = {
 }
 
 
-
 def update_notebooks(
     input_path: str | Path, output_path: str | Path, teacher: bool
 ) -> None:
@@ -104,6 +103,32 @@ def update_notebooks(
             # This prevents partial matches from breaking longer patterns
             sorted_mappings = sorted(
                 map_03_python_basics_book_to_notebook.items(),
+                key=lambda x: len(x[0]),
+                reverse=True,
+            )
+            for old_link, new_link in sorted_mappings:
+                cell.source = cell.source.replace(old_link, new_link)
+
+        # Replace links in working_with_bioimages_in_python.ipynb
+        if (
+            Path(input_path).name == "working_with_bioimages_in_python.ipynb"
+            and cell.cell_type == "markdown"
+        ):
+            sorted_mappings = sorted(
+                map_04_working_with_bioimages_in_python_book_to_notebook.items(),
+                key=lambda x: len(x[0]),
+                reverse=True,
+            )
+            for old_link, new_link in sorted_mappings:
+                cell.source = cell.source.replace(old_link, new_link)
+
+        # Replace links in classic_segmentation.ipynb
+        if (
+            Path(input_path).name == "classic_segmentation.ipynb"
+            and cell.cell_type == "markdown"
+        ):
+            sorted_mappings = sorted(
+                map_05_classic_segmentation_book_to_notebook.items(),
                 key=lambda x: len(x[0]),
                 reverse=True,
             )
