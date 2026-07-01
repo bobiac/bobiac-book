@@ -42,6 +42,21 @@ cd ../data
 
 To install `uv` you can follow this [uv instruction](https://bobiac.github.io/uv_instruction.html) or follow the [uv documentation](https://docs.astral.sh/uv/getting-started/installation).
 
+:::{tip}
+To see all the `uv` commands and options, you can run in the terminal:
+
+```bash
+uv --help
+```
+
+This can also work for any `uv` subcommand, for example:
+
+```bash
+uv venv --help
+```
+
+:::
+
 ## 3. Virtual Environments with uv
 
 As we saw in the [previous section](python_and_uv.md#3-virtual-environments), a **virtual environment** is an isolated workspace with its own `Python` and its own packages. With `uv`, creating one is a single command:
@@ -121,10 +136,16 @@ Not all packages are published on `PyPI` though. Some, especially in **scientifi
 
 ## 4. The Python Files and `uv`
 
-`Python` code is usually saved in plain text files ending in **`.py`** (for example `bobiac.py`). Each of these files contains a list of instructions that the `Python` interpreter reads and executes, one after the other, from top to bottom.
+`Python` code is usually saved in plain text files ending in **`.py`** (for example `bobiac.py`). Each of these files contains a list of instructions that the `Python` interpreter reads and executes, one after the other, from top to bottom:
+
+```python
+name = "Python"
+print(f"We love {name}!")
+> We love Python!
+```
 
 :::{note}
-**How to create a `.py` file**: most people use an **IDE** (Integrated Development Environment), a code editor with extras like syntax highlighting, autocomplete, error squiggles and AI tools integration. A popular free choice is [VS Code](https://code.visualstudio.com).
+**How to create a `.py` file**: most people use an **IDE** (Integrated Development Environment), a code editor with extras like syntax highlighting, autocomplete, error squiggles and AI tools integration. A popular free choice is [VS Code](https://code.visualstudio.com). Once you become familiar with the Python syntax, you can try to use **VS Code** to create your `.py` files.
 :::
 
 ### 4.1. Importing Packages in a Python File
@@ -221,15 +242,20 @@ This is especially handy when you want to quickly check that your code works acr
 `uvx` is a shortcut for `uv tool run`: it runs a **command-line tool** provided by a package, installing it into a temporary, isolated environment on the fly, without you ever having to `uv pip install` it yourself.
 
 ```bash
-uvx ruff check script.py
+uvx juv run my_notebook.ipynb
 ```
 
-This installs `ruff` into a throwaway environment (if it isn't already cached), then runs the `check` command on `script.py`.
+This fetches the `juv` package into a temporary environment (if it isn't already cached), then calls `juv`'s `run` command on `my_notebook.ipynb`, without you ever installing `juv` manually.
 
-In this course, we will use `uvx` to quickly launch some common tools with a graphical interface, such as `napari` and `cellpose`, without having to install them first:
+In this course, we will use `uvx` for `Jupyter Notebooks` and to quickly launch some common tools with a graphical interface, such as `napari` and `cellpose`, without having to install them first:
 
 ```bash
 uvx "napari[all]"
+```
+
+or
+
+```bash
 uvx "cellpose[gui]"
 ```
 
