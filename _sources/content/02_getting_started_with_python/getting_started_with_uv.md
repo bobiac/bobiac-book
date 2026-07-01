@@ -24,13 +24,19 @@ Here are a few basic commands that work on macOS, Linux, and the Windows PowerSh
 | -------- | ----------- |
 | **`pwd`** | Print the path of the current working directory. |
 | **`ls`** | List the contents of the current directory. |
-| **`cd [DIR]`** | Change directory to `[DIR]`. <br><small>_If `[DIR]` is not provided, defaults to the home directory._</small> |
-| **`mkdir [DIR]`** | Create a new directory named `[DIR]`. |
+| **`cd [DIR]`** | Change directory to `[DIR]`. Example: `cd Desktop/bobiac` <br><small>_If `[DIR]` is not provided, defaults to the home directory._</small> |
+| **`mkdir [DIR]`** | Create a new directory named `[DIR]`. Example: `mkdir Desktop/bobiac` |
 
 :::{note}
 💡 **Relative paths**: when navigating with `cd`, you can use `.` to refer to the current directory and `..` to refer to the parent directory (for example, `cd ..` moves you up one level).
 
-For example, if you are in `Desktop/bobiac` and want to move to a sibling folder `Desktop/data`, you don't need to type the full path, you can instead go up one level and then into `data`:
+For example, consider the following folder organization: 
+Desktop/
+├── bobiac/
+│   ├── ...
+└── data/
+    └── ...
+If you are in `Desktop/bobiac` and want to move to a sibling folder `Desktop/data`, you don't need to type the full path, you can instead go up one level and then into `data`:
 
 ```bash
 cd ../data
@@ -40,7 +46,7 @@ cd ../data
 
 ## 2. Installing `uv`
 
-To install `uv` you can follow this [uv instruction](https://bobiac.github.io/uv_instruction.html) or follow the [uv documentation](https://docs.astral.sh/uv/getting-started/installation).
+To install `uv` you can follow these [uv installation instructions](https://bobiac.github.io/uv_instruction.html) or follow the [uv documentation](https://docs.astral.sh/uv/getting-started/installation).
 
 :::{tip}
 To see all the `uv` commands and options, you can run in the terminal:
@@ -59,27 +65,30 @@ uv venv --help
 
 ## 3. Virtual Environments with uv
 
-As we saw in the [previous section](python_and_uv.md#3-virtual-environments), a **virtual environment** is an isolated workspace with its own `Python` and its own packages. With `uv`, creating one is a single command:
+As we saw in the [previous section](python_intro.md#virtual-environments), a **virtual environment** is an isolated workspace with its own `Python` and its own packages. With `uv`, creating one is a single command:
 
 ```bash
 uv venv
 ```
 
-By default, this creates a virtual environment in a folder named `.venv` inside your current directory. If you want to give it a different name or location, you can pass a path:
+By default, this creates a virtual environment in a folder named `.venv` inside your current directory. If you want to give it a different name, you can specify one after `venv`:
 
 ```bash
 uv venv my-env
 ```
 
-### 3.1. Choosing a Python Version with the `-p` Flag
+### 3.1 Choosing a Python Version with the `-p` Flag
 
 You can also tell `uv` which **version of `Python`** to use inside the new environment with the `-p` (`--python`) flag. If that version isn't already installed on your computer, `uv` will **automatically download and install it** for you.
 
 ```bash
 uv venv -p 3.13
 ```
+:::{note}
+If you don't specify a version of Python to use, `uv` will search Python versions you already have and pick the latest version to use. If `uv` does not find any Python versions, it will download the latest stable Python version to use. 
+:::
 
-### 3.2. Activating and Deactivating the Environment
+### 3.2 Activating and Deactivating the Environment
 
 Creating an environment doesn't put you "inside" it, you also need to **activate** it. Activation tells your terminal to use the `Python` and packages from that environment instead of any others on your computer. The command differs slightly between operating systems:
 
@@ -99,10 +108,10 @@ deactivate
 :::{note}
 💡 **Remember**: environments are disposable. If anything feels broken, you can always delete the `.venv` folder and recreate it from scratch with `uv venv`.
 
-In order to see folder starting with a dot (like `.venv`), on mac you can use the keyboard shortcut `Command + Shift + .` to toggle hidden files. On Windows, you can go to the `View` tab in the file explorer and check the `Hidden items` box.
+In order to see a folder starting with a dot (like `.venv`), on mac you can use the keyboard shortcut `Command + Shift + .` to toggle hidden files. On Windows, you can go to the `View` tab in the file explorer and check the `Hidden items` box.
 :::
 
-### 3.3. Installing Packages with `uv`
+### 3.3 Installing Packages with `uv`
 
 Once your virtual environment is **activated**, you can install **packages** into it with `uv pip install`:
 
@@ -148,7 +157,7 @@ print(f"We love {name}!")
 **How to create a `.py` file**: most people use an **IDE** (Integrated Development Environment), a code editor with extras like syntax highlighting, autocomplete, error squiggles and AI tools integration. A popular free choice is [VS Code](https://code.visualstudio.com). Once you become familiar with the Python syntax, you can try to use **VS Code** to create your `.py` files.
 :::
 
-### 4.1. Importing Packages in a Python File
+### 4.1 Importing Packages in a Python File
 
 As we saw earlier, **packages** give us access to functionality that we don't have to write ourselves. But before we can actually use a package inside a `.py` file, we need to **import** it:
 
@@ -180,7 +189,7 @@ Here, `np` is just a "nickname" for `numpy`, both refer to the exact same packag
 💡 You can technically choose any alias you like, but it's best to stick to the **conventional ones** (like `np` for `numpy`), since that's what most `Python` programmers will recognize at a glance.
 :::
 
-### 4.2. Running Python Files
+### 4.2 Running Python Files
 
 So far we've created an environment, activated it, and installed packages into it manually. We also created a `.py` file and imported some packages into it. Now we want to **run** that file, which means telling `Python` to read the instructions in the file and execute them.
 
@@ -192,7 +201,7 @@ python path/to/your/script.py
 
 This works because, once activated, your terminal's `python` command points to the `Python` interpreter that lives **inside that specific environment**, the one with all the packages you installed in it.
 
-### 4.3. Running Python Files with `uv`
+### 4.3 Running Python Files with `uv`
 
 `uv` can also run a `.py` file for you directly, without requiring you to manually create and activate an environment first.
 
@@ -213,7 +222,7 @@ This is shorthand for `uv run python script.py`. Depending on your situation, th
 
 3. **An environment is activated**: if you have **activated** an environment (default-named or not), `uv run script.py` will use that **active environment** and everything installed in it, exactly like running `python script.py` directly.
 
-### 4.4. `uv run --with`
+### 4.4 `uv run --with`
 
 As we just saw, if your `.py` file `import`s a third-party package and there is no environment to provide it, `uv run script.py` fails with a `ModuleNotFoundError`. The `--with` flag fixes exactly that: it tells `uv` to install **extra dependencies**, just for that single run, without needing a `.venv` at all:
 
@@ -227,7 +236,7 @@ You can also pass multiple packages, or even pin a specific version, for example
 uv run --with "numpy==1.26" --with matplotlib script.py
 ```
 
-### 4.5. The `-p` Flag
+### 4.5 The `-p` Flag
 
 You can use the `-p` flag with `uv run` to choose which `Python` version to run the script with, for example if you want to test your code against a version different from the one in your active environment:
 
@@ -237,7 +246,7 @@ uv run -p 3.11 script.py
 
 This is especially handy when you want to quickly check that your code works across different `Python` versions, without having to manually create a new environment for each one.
 
-### 4.6. `uvx` (`uv tool run`)
+### 4.6 `uvx` (`uv tool run`)
 
 `uvx` is a shortcut for `uv tool run`: it runs a **command-line tool** provided by a package, installing it into a temporary, isolated environment on the fly, without you ever having to `uv pip install` it yourself.
 
@@ -263,7 +272,7 @@ uvx "cellpose[gui]"
 💡 `uvx <command>` and `uv tool run <command>` are exactly the same thing, `uvx` is just shorter to type. Notice there is no extra `run` keyword after `uvx`, since `uvx` already means "run".
 :::
 
-### 4.7. `uv` and `PEP 723`
+### 4.7 `uv` and `PEP 723`
 
 A [**PEP**](https://peps.python.org/) (**P**ython **E**nhancement **P**roposal) is a document that describes a new feature or convention for the `Python` language. [**PEP 723**](https://peps.python.org/pep-0723/) is one of these proposals, and it defines a standard way to declare a script's dependencies **directly inside the script itself**, using a special comment block at the top of the file:
 

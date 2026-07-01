@@ -296,103 +296,107 @@
 <td><p></p></td>
 <td><p><strong>A</strong>pplication <strong>P</strong>rogramming <strong>I</strong>nterface. A defined set of functions and rules that lets you interact with a library, service, or program. When you call <code class="docutils literal notranslate"><span class="pre">numpy.mean(...)</span></code>, you are using <code class="docutils literal notranslate"><span class="pre">numpy</span></code>’s API.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Cell</strong></p></td>
+<tr class="row-even"><td><p><strong>base</strong></p></td>
+<td><p></p></td>
+<td><p>The default system-wide Python environment that is active unless you switch to another environment.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Cell</strong></p></td>
 <td><p></p></td>
 <td><p>The basic unit of a <code class="docutils literal notranslate"><span class="pre">Jupyter</span> <span class="pre">Notebook</span></code>. Each cell contains either <code class="docutils literal notranslate"><span class="pre">Python</span></code> code or text (Markdown) and can be run independently.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>conda-forge</strong></p></td>
+<tr class="row-even"><td><p><strong>conda-forge</strong></p></td>
 <td><p></p></td>
 <td><p>A community-maintained package repository, common in scientific computing. Packages hosted there cannot be installed with <code class="docutils literal notranslate"><span class="pre">uv</span></code> — use <code class="docutils literal notranslate"><span class="pre">conda</span></code>, <code class="docutils literal notranslate"><span class="pre">mamba</span></code>, or <code class="docutils literal notranslate"><span class="pre">pixi</span></code> instead.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Dependencies</strong></p></td>
+<tr class="row-odd"><td><p><strong>Dependencies</strong></p></td>
 <td><p>Packages, Libraries</p></td>
 <td><p>The external packages that a script or notebook needs in order to run.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>IDE</strong></p></td>
+<tr class="row-even"><td><p><strong>IDE</strong></p></td>
 <td><p></p></td>
 <td><p><strong>I</strong>ntegrated <strong>D</strong>evelopment <strong>E</strong>nvironment. A code editor with extras like syntax highlighting, autocomplete, error detection, and AI tools. <a class="reference external" href="https://code.visualstudio.com">VS Code</a> is a popular free choice.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Import</strong></p></td>
+<tr class="row-odd"><td><p><strong>Import</strong></p></td>
 <td><p></p></td>
 <td><p>A statement (<code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">package_name</span></code>) that makes a package’s functionality available inside a script or notebook cell. Packages must be imported before they can be used, even if they are already installed.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Interpreter</strong></p></td>
+<tr class="row-even"><td><p><strong>Interpreter</strong></p></td>
 <td><p>Python Interpreter</p></td>
 <td><p>The program installed on your computer that reads and executes <code class="docutils literal notranslate"><span class="pre">Python</span></code> code. When you run <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">script.py</span></code>, the interpreter is what actually runs the instructions.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Jupyter Notebook</strong></p></td>
+<tr class="row-odd"><td><p><strong>Jupyter Notebook</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> file</p></td>
 <td><p>An interactive file format (<code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> — <strong>i</strong>nteractive <strong>py</strong>thon <strong>n</strong>ote<strong>b</strong>ook) that lets you write and run <code class="docutils literal notranslate"><span class="pre">Python</span></code> code in small chunks called <em>cells</em>, and mix code with text, images, and equations.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>JupyterLab</strong></p></td>
+<tr class="row-even"><td><p><strong>JupyterLab</strong></p></td>
 <td><p></p></td>
 <td><p>The browser-based application used to open and work with <code class="docutils literal notranslate"><span class="pre">Jupyter</span> <span class="pre">Notebooks</span></code>. Launched automatically by <code class="docutils literal notranslate"><span class="pre">uvx</span> <span class="pre">juv</span> <span class="pre">run</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>juv</strong></p></td>
+<tr class="row-odd"><td><p><strong>juv</strong></p></td>
 <td><p></p></td>
 <td><p>A command-line tool built on top of <code class="docutils literal notranslate"><span class="pre">uv</span></code>, specifically designed for <code class="docutils literal notranslate"><span class="pre">Jupyter</span> <span class="pre">Notebooks</span></code>. It reads the <code class="docutils literal notranslate"><span class="pre">///script</span></code> block of a notebook and automatically sets up the environment before launching <code class="docutils literal notranslate"><span class="pre">JupyterLab</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Kernel</strong></p></td>
+<tr class="row-even"><td><p><strong>Kernel</strong></p></td>
 <td><p></p></td>
 <td><p>The <code class="docutils literal notranslate"><span class="pre">Python</span></code> process running behind a <code class="docutils literal notranslate"><span class="pre">Jupyter</span> <span class="pre">Notebook</span></code>. All cells in a notebook share the same kernel. If something goes wrong (stale state, infinite loop), you can restart it with the ⟳ button.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Library</strong></p></td>
+<tr class="row-odd"><td><p><strong>Library</strong></p></td>
 <td><p>Package, Dependency</p></td>
 <td><p>See <strong>Package</strong>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Module</strong></p></td>
+<tr class="row-even"><td><p><strong>Module</strong></p></td>
 <td><p></p></td>
 <td><p>A single <code class="docutils literal notranslate"><span class="pre">.py</span></code> file containing <code class="docutils literal notranslate"><span class="pre">Python</span></code> code (functions, classes, variables) that can be imported. A <strong>package</strong> is a collection of modules grouped together. For example, <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code> is the <code class="docutils literal notranslate"><span class="pre">pyplot</span></code> module inside the <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> package.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Package</strong></p></td>
+<tr class="row-odd"><td><p><strong>Package</strong></p></td>
 <td><p>Library, Dependency</p></td>
 <td><p>A collection of <code class="docutils literal notranslate"><span class="pre">Python</span></code> code grouped together to provide a specific set of functionality (e.g. <code class="docutils literal notranslate"><span class="pre">numpy</span></code> for numerical computing). Packages must be installed before they can be imported.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>PEP</strong></p></td>
+<tr class="row-even"><td><p><strong>PEP</strong></p></td>
 <td><p></p></td>
 <td><p><strong>P</strong>ython <strong>E</strong>nhancement <strong>P</strong>roposal. A document that describes a new feature or convention for the <code class="docutils literal notranslate"><span class="pre">Python</span></code> language. See <a class="reference external" href="https://peps.python.org/">peps.python.org</a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>PEP 723</strong></p></td>
+<tr class="row-odd"><td><p><strong>PEP 723</strong></p></td>
 <td><p></p></td>
 <td><p>A <code class="docutils literal notranslate"><span class="pre">PEP</span></code> that defines a standard way to declare a script’s dependencies directly inside the file itself, using a <code class="docutils literal notranslate"><span class="pre">///script</span></code> comment block. Both <code class="docutils literal notranslate"><span class="pre">uv</span></code> and <code class="docutils literal notranslate"><span class="pre">juv</span></code> use this standard.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong><code class="docutils literal notranslate"><span class="pre">///script</span></code> block</strong></p></td>
+<tr class="row-even"><td><p><strong><code class="docutils literal notranslate"><span class="pre">///script</span></code> block</strong></p></td>
 <td><p>inline script metadata</p></td>
 <td><p>The special comment block defined by <code class="docutils literal notranslate"><span class="pre">PEP</span> <span class="pre">723</span></code>, placed at the top of a <code class="docutils literal notranslate"><span class="pre">.py</span></code> or <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> file to declare its <code class="docutils literal notranslate"><span class="pre">Python</span></code> version and package dependencies.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>pip</strong></p></td>
+<tr class="row-odd"><td><p><strong>pip</strong></p></td>
 <td><p></p></td>
 <td><p>The standard <code class="docutils literal notranslate"><span class="pre">Python</span></code> package installer. <code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">pip</span> <span class="pre">install</span></code> mimics and replaces it. Packages are downloaded from <code class="docutils literal notranslate"><span class="pre">PyPI</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Python</strong></p></td>
+<tr class="row-even"><td><p><strong>Python</strong></p></td>
 <td><p></p></td>
 <td><p>Both the <strong>programming language</strong> (the rules and syntax for writing instructions) and the <strong>interpreter</strong> (the program that reads and executes those instructions).</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Python Version</strong></p></td>
+<tr class="row-odd"><td><p><strong>Python Version</strong></p></td>
 <td><p></p></td>
 <td><p>The specific release of <code class="docutils literal notranslate"><span class="pre">Python</span></code> in use (e.g. <code class="docutils literal notranslate"><span class="pre">3.11</span></code>, <code class="docutils literal notranslate"><span class="pre">3.12</span></code>, <code class="docutils literal notranslate"><span class="pre">3.13</span></code>). Different projects may require different versions; <code class="docutils literal notranslate"><span class="pre">uv</span></code> can install and manage multiple versions side by side.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>PyPI</strong></p></td>
+<tr class="row-even"><td><p><strong>PyPI</strong></p></td>
 <td><p>Python Package Index</p></td>
 <td><p>The central online repository at <a class="reference external" href="https://pypi.org/">pypi.org</a> from which <code class="docutils literal notranslate"><span class="pre">pip</span></code> and <code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">pip</span> <span class="pre">install</span></code> download packages.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Standard Library</strong></p></td>
+<tr class="row-odd"><td><p><strong>Standard Library</strong></p></td>
 <td><p></p></td>
 <td><p>The collection of packages that come bundled with <code class="docutils literal notranslate"><span class="pre">Python</span></code> and are available by default, without any installation (e.g. packages for working with files, dates, or CSV data).</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Terminal</strong></p></td>
+<tr class="row-even"><td><p><strong>Terminal</strong></p></td>
 <td><p>Command line, Shell</p></td>
 <td><p>A text-based interface for interacting with your computer’s operating system. On macOS/Linux it is called the <strong>Terminal</strong>; on Windows, use <strong>PowerShell</strong>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>uv</strong></p></td>
+<tr class="row-odd"><td><p><strong>uv</strong></p></td>
 <td><p></p></td>
 <td><p>A modern, extremely fast tool for managing <code class="docutils literal notranslate"><span class="pre">Python</span></code> versions, virtual environments, and packages — all in one. Used via the <code class="docutils literal notranslate"><span class="pre">uv</span></code> command in the terminal.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>uvx</strong></p></td>
+<tr class="row-even"><td><p><strong>uvx</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">tool</span> <span class="pre">run</span></code></p></td>
 <td><p>A shortcut for <code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">tool</span> <span class="pre">run</span></code>. Runs a command-line tool from a package on the fly, installing it into a temporary isolated environment without any manual install step.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Virtual Environment</strong></p></td>
+<tr class="row-odd"><td><p><strong>Virtual Environment</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">.venv</span></code>, env</p></td>
 <td><p>An isolated workspace (a folder on your computer) containing its own <code class="docutils literal notranslate"><span class="pre">Python</span></code> interpreter and its own installed packages, completely separate from other environments. Prevents package conflicts between projects.</p></td>
 </tr>

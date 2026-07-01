@@ -272,11 +272,11 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-jupyter-notebook">2. What is a Jupyter Notebook?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyterlab">3. JupyterLab</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-packages-and-juv">4. Python Packages and <code class="docutils literal notranslate"><span class="pre">juv</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-packages-with-juv">4.1. Installing Packages with <code class="docutils literal notranslate"><span class="pre">juv</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initializing-a-notebook">4.2. Initializing a Notebook</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-packages-to-a-notebook">4.3. Adding Packages to a Notebook</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-a-notebook">4.4. Running a Notebook</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-packages-in-a-notebook">4.5. Importing Packages in a Notebook</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-packages-with-juv">4.1 Installing Packages with <code class="docutils literal notranslate"><span class="pre">juv</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initializing-a-notebook">4.2 Initializing a Notebook</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-packages-to-a-notebook">4.3 Adding Packages to a Notebook</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-a-notebook">4.4 Running a Notebook</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-packages-in-a-notebook">4.5 Importing Packages in a Notebook</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-table">5. Summary Table</a></li>
@@ -289,7 +289,7 @@
 <article class="bd-article">
 <section class="tex2jax_ignore mathjax_ignore" id="jupyter-notebooks-and-juv">
 <h1>Jupyter Notebooks and <code class="docutils literal notranslate"><span class="pre">juv</span></code><a class="headerlink" href="#jupyter-notebooks-and-juv" title="Link to this heading">#</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">Python</span></code> code is usually saved in plain text files ending in <strong><code class="docutils literal notranslate"><span class="pre">.py</span></code></strong>. In this course, however, we will mostly <strong>not</strong> work with <code class="docutils literal notranslate"><span class="pre">.py</span></code> files directly, we will use <strong><code class="docutils literal notranslate"><span class="pre">Jupyter</span> <span class="pre">Notebooks</span></code></strong> (<code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> files) instead. This page explains what they are, how we are going to use them.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Python</span></code> code is usually saved in plain text files ending in <strong><code class="docutils literal notranslate"><span class="pre">.py</span></code></strong>. In this course, however, we will mostly <strong>not</strong> work with <code class="docutils literal notranslate"><span class="pre">.py</span></code> files directly. Instead, we will use <strong><code class="docutils literal notranslate"><span class="pre">Jupyter</span> <span class="pre">Notebooks</span></code></strong> (<code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> files). This page explains what they are, how we are going to use them.</p>
 <section id="terminal-commands">
 <h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">1. Terminal Commands<a class="headerlink" href="#terminal-commands" title="Link to this heading">#</a></h2>
 <p>Before we start, let’s go over some of the <code class="docutils literal notranslate"><span class="pre">terminal</span></code> commands that could be useful during the course.</p>
@@ -318,10 +318,10 @@
 <td><p>List the contents of the current directory.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">[DIR]</span></code></strong></p></td>
-<td><p>Change directory to <code class="docutils literal notranslate"><span class="pre">[DIR]</span></code>. <br/><small><em>If <code class="docutils literal notranslate"><span class="pre">[DIR]</span></code> is not provided, defaults to the home directory.</em></small></p></td>
+<td><p>Change directory to <code class="docutils literal notranslate"><span class="pre">[DIR]</span></code>. Example: <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">Desktop/bobiac</span></code> <br/><small><em>If <code class="docutils literal notranslate"><span class="pre">[DIR]</span></code> is not provided, defaults to the home directory.</em></small></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong><code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">[DIR]</span></code></strong></p></td>
-<td><p>Create a new directory named <code class="docutils literal notranslate"><span class="pre">[DIR]</span></code>.</p></td>
+<td><p>Create a new directory named <code class="docutils literal notranslate"><span class="pre">[DIR]</span></code>. Example: <code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">Desktop/bobiac</span></code></p></td>
 </tr>
 </tbody>
 </table>
@@ -329,7 +329,13 @@
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>💡 <strong>Relative paths</strong>: when navigating with <code class="docutils literal notranslate"><span class="pre">cd</span></code>, you can use <code class="docutils literal notranslate"><span class="pre">.</span></code> to refer to the current directory and <code class="docutils literal notranslate"><span class="pre">..</span></code> to refer to the parent directory (for example, <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">..</span></code> moves you up one level).</p>
-<p>For example, if you are in <code class="docutils literal notranslate"><span class="pre">Desktop/bobiac</span></code> and want to move to a sibling folder <code class="docutils literal notranslate"><span class="pre">Desktop/data</span></code>, you don’t need to type the full path, you can instead go up one level and then into <code class="docutils literal notranslate"><span class="pre">data</span></code>:</p>
+<p>For example, consider the following folder organization:
+Desktop/
+├── bobiac/
+│   ├── …
+└── data/
+└── …
+If you are in <code class="docutils literal notranslate"><span class="pre">Desktop/bobiac</span></code> and want to move to a sibling folder <code class="docutils literal notranslate"><span class="pre">Desktop/data</span></code>, you don’t need to type the full path, you can instead go up one level and then into <code class="docutils literal notranslate"><span class="pre">data</span></code>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>../data
 </pre></div>
 </div>
@@ -369,7 +375,7 @@
 <p>This is also true for <code class="docutils literal notranslate"><span class="pre">Jupyter</span> <span class="pre">Notebooks</span></code> files (<code class="docutils literal notranslate"><span class="pre">.ipynb</span></code>). Managing these manually for each notebook would be tedious, and the <code class="docutils literal notranslate"><span class="pre">kernel</span></code> needs everything set up before <code class="docutils literal notranslate"><span class="pre">JupyterLab</span></code> even opens.</p>
 <p>To handle all of this automatically, we use <a class="reference external" href="https://github.com/manzt/juv"><code class="docutils literal notranslate"><span class="pre">juv</span></code></a>, a tool built on top of <code class="docutils literal notranslate"><span class="pre">uv</span></code> specifically designed for <code class="docutils literal notranslate"><span class="pre">Jupyter</span> <span class="pre">Notebooks</span></code> (check out the <a class="reference internal" href="getting_started_with_uv.html"><span class="std std-doc">Getting Started with uv</span></a> to learn more about <code class="docutils literal notranslate"><span class="pre">uv</span></code>). Instead of manually creating environments and installing packages, <code class="docutils literal notranslate"><span class="pre">juv</span></code> reads a dependencies list declared directly inside the notebook file and sets everything up for you in one command (through <code class="docutils literal notranslate"><span class="pre">PEP</span> <span class="pre">723</span></code>, see below).</p>
 <section id="installing-packages-with-juv">
-<h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">4.1. Installing Packages with <code class="docutils literal notranslate"><span class="pre">juv</span></code><a class="headerlink" href="#installing-packages-with-juv" title="Link to this heading">#</a></h3>
+<h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">4.1 Installing Packages with <code class="docutils literal notranslate"><span class="pre">juv</span></code><a class="headerlink" href="#installing-packages-with-juv" title="Link to this heading">#</a></h3>
 <p>A <a class="reference external" href="https://peps.python.org/"><strong>PEP</strong></a> (<strong>P</strong>ython <strong>E</strong>nhancement <strong>P</strong>roposal) is a document that describes a new feature or convention for the <code class="docutils literal notranslate"><span class="pre">Python</span></code> language. <a class="reference external" href="https://peps.python.org/pep-0723/"><strong>PEP 723</strong></a> is one of these proposals, and it defines a standard way to declare a script’s dependencies <strong>directly inside the file itself</strong>, using a special comment block at the top of the file:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># /// script</span>
 <span class="c1"># requires-python = "&gt;=3.12"</span>
@@ -382,10 +388,10 @@
 </div>
 <p>This means the notebook (or a <code class="docutils literal notranslate"><span class="pre">.py</span></code> file) is <strong>completely self-contained</strong>: anyone can run it and get the exact same environment, regardless of what is or isn’t already installed on their computer.</p>
 <p><code class="docutils literal notranslate"><span class="pre">juv</span></code> reads this block and automatically installs everything listed before launching <code class="docutils literal notranslate"><span class="pre">JupyterLab</span></code>, so you never have to manually create environments or install packages.</p>
-<p>In the nrext sections, we will she three basic <code class="docutils literal notranslate"><span class="pre">juv</span></code> commands that we will use throughout the course: <code class="docutils literal notranslate"><span class="pre">init</span></code>, <code class="docutils literal notranslate"><span class="pre">add</span></code>, and <code class="docutils literal notranslate"><span class="pre">run</span></code>.</p>
+<p>In the next sections, we will learn about three basic <code class="docutils literal notranslate"><span class="pre">juv</span></code> commands that we will use throughout the course: <code class="docutils literal notranslate"><span class="pre">init</span></code>, <code class="docutils literal notranslate"><span class="pre">add</span></code>, and <code class="docutils literal notranslate"><span class="pre">run</span></code>.</p>
 </section>
 <section id="initializing-a-notebook">
-<h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">4.2. Initializing a Notebook<a class="headerlink" href="#initializing-a-notebook" title="Link to this heading">#</a></h3>
+<h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">4.2 Initializing a Notebook<a class="headerlink" href="#initializing-a-notebook" title="Link to this heading">#</a></h3>
 <p>To create a new notebook with a <code class="docutils literal notranslate"><span class="pre">juv</span></code>-compatible header:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uvx<span class="w"> </span>juv<span class="w"> </span>init<span class="w"> </span>bobiac_notebook.ipynb
 </pre></div>
@@ -404,7 +410,7 @@
 </div>
 </section>
 <section id="adding-packages-to-a-notebook">
-<h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">4.3. Adding Packages to a Notebook<a class="headerlink" href="#adding-packages-to-a-notebook" title="Link to this heading">#</a></h3>
+<h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">4.3 Adding Packages to a Notebook<a class="headerlink" href="#adding-packages-to-a-notebook" title="Link to this heading">#</a></h3>
 <p>To add a package to a notebook’s dependency list:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uvx<span class="w"> </span>juv<span class="w"> </span>add<span class="w"> </span>bobiac_notebook.ipynb<span class="w"> </span>numpy
 </pre></div>
@@ -416,12 +422,12 @@
 <div align="left"> <img alt="JupyterLab interface" src="../../_static/images/python_intro/pep723_3.png" width="1000"/></div>
 </section>
 <section id="running-a-notebook">
-<h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">4.4. Running a Notebook<a class="headerlink" href="#running-a-notebook" title="Link to this heading">#</a></h3>
-<p>To launch a notebook in JupyterLab:</p>
+<h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">4.4 Running a Notebook<a class="headerlink" href="#running-a-notebook" title="Link to this heading">#</a></h3>
+<p>To launch a notebook in <code class="docutils literal notranslate"><span class="pre">JupyterLab</span></code>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uvx<span class="w"> </span>juv<span class="w"> </span>run<span class="w"> </span>bobiac_notebook.ipynb
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">juv</span></code> reads the <code class="docutils literal notranslate"><span class="pre">///script</span></code> block, creates a temporary environment with all the listed dependencies installed, and opens JupyterLab in your browser — no manual environment creation or package installation needed.</p>
+<p><code class="docutils literal notranslate"><span class="pre">juv</span></code> reads the <code class="docutils literal notranslate"><span class="pre">///script</span></code> block, creates a temporary environment with all the listed dependencies installed, and opens <code class="docutils literal notranslate"><span class="pre">JupyterLab</span></code> in your browser — no manual environment creation or package installation needed.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>🚀 <strong>pyrunner</strong>: if you like the idea of self-contained notebooks, check out <a class="reference external" href="https://github.com/fdrgsp/pyrunner"><code class="docutils literal notranslate"><span class="pre">pyrunner</span></code></a>, a small <strong>desktop app</strong> (an icon on your computer, just like any other application) built specifically for <code class="docutils literal notranslate"><span class="pre">PEP</span> <span class="pre">723</span></code> scripts. You simply double-click it, select a <code class="docutils literal notranslate"><span class="pre">.py</span></code> (or <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code>) file containing a <code class="docutils literal notranslate"><span class="pre">///script</span></code> block, and it runs the script for you, installing <code class="docutils literal notranslate"><span class="pre">uv</span></code> itself first if it isn’t already on your computer.</p>
@@ -429,7 +435,7 @@
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>⚡ <strong>Running a notebook without opening JupyterLab</strong>: if you want to execute all cells in a notebook from top to bottom without manually opening JupyterLab and clicking through each one, use <code class="docutils literal notranslate"><span class="pre">juv</span> <span class="pre">exec</span></code>:</p>
+<p>⚡ <strong>Running a notebook without opening <code class="docutils literal notranslate"><span class="pre">JupyterLab</span></code></strong>: if you want to execute all cells in a notebook from top to bottom without manually opening <code class="docutils literal notranslate"><span class="pre">JupyterLab</span></code> and clicking through each one, use <code class="docutils literal notranslate"><span class="pre">juv</span> <span class="pre">exec</span></code>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uvx<span class="w"> </span>juv<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>bobiac_notebook.ipynb
 </pre></div>
 </div>
@@ -437,7 +443,7 @@
 </div>
 </section>
 <section id="importing-packages-in-a-notebook">
-<h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">4.5. Importing Packages in a Notebook<a class="headerlink" href="#importing-packages-in-a-notebook" title="Link to this heading">#</a></h3>
+<h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">4.5 Importing Packages in a Notebook<a class="headerlink" href="#importing-packages-in-a-notebook" title="Link to this heading">#</a></h3>
 <p>Before you can use a package inside a notebook cell, you need to <strong>import</strong> it:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span>
 
@@ -481,25 +487,22 @@
 <td><p>List the contents of the current directory.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">[DIR]</span></code></strong></p></td>
-<td><p>Change directory to <code class="docutils literal notranslate"><span class="pre">[DIR]</span></code>. <br/><small><em>If <code class="docutils literal notranslate"><span class="pre">[DIR]</span></code> is not provided, defaults to the home directory.</em></small></p></td>
+<td><p>Change directory to <code class="docutils literal notranslate"><span class="pre">[DIR]</span></code>. Example: <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">Desktop/bobiac</span></code> <br/><small><em>If <code class="docutils literal notranslate"><span class="pre">[DIR]</span></code> is not provided, defaults to the home directory.</em></small></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong><code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">[DIR]</span></code></strong></p></td>
-<td><p>Create a new directory named <code class="docutils literal notranslate"><span class="pre">[DIR]</span></code>.</p></td>
+<td><p>Create a new directory named <code class="docutils literal notranslate"><span class="pre">[DIR]</span></code>. Example: <code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">Desktop/bobiac</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><hr/></p></td>
-<td><p><hr/></p></td>
+<tr class="row-even"><td><p><strong><code class="docutils literal notranslate"><span class="pre">uvx</span> <span class="pre">juv</span> <span class="pre">init</span> <span class="pre">&lt;name.ipynb&gt;</span></code></strong></p></td>
+<td><p>Create a new <code class="docutils literal notranslate"><span class="pre">Jupyter</span> <span class="pre">Notebook</span></code> with an empty <code class="docutils literal notranslate"><span class="pre">///script</span></code> header. Example: <code class="docutils literal notranslate"><span class="pre">uvx</span> <span class="pre">juv</span> <span class="pre">init</span> <span class="pre">my_notebook.ipynb</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong><code class="docutils literal notranslate"><span class="pre">uvx</span> <span class="pre">juv</span> <span class="pre">init</span> <span class="pre">&lt;name.ipynb&gt;</span></code></strong></p></td>
-<td><p>Create a new <code class="docutils literal notranslate"><span class="pre">Jupyter</span> <span class="pre">Notebook</span></code> with an empty <code class="docutils literal notranslate"><span class="pre">///script</span></code> header.</p></td>
+<tr class="row-odd"><td><p><strong><code class="docutils literal notranslate"><span class="pre">uvx</span> <span class="pre">juv</span> <span class="pre">init</span> <span class="pre">-p</span> <span class="pre">&lt;PYTHON&gt;</span> <span class="pre">&lt;name.ipynb&gt;</span></code></strong></p></td>
+<td><p>Create a new <code class="docutils literal notranslate"><span class="pre">Jupyter</span> <span class="pre">Notebook</span></code> with a specific <code class="docutils literal notranslate"><span class="pre">Python</span></code> version (e.g. <code class="docutils literal notranslate"><span class="pre">-p</span> <span class="pre">3.12</span></code>). Example: <code class="docutils literal notranslate"><span class="pre">uvx</span> <span class="pre">juv</span> <span class="pre">init</span> <span class="pre">-p</span> <span class="pre">3.13</span> <span class="pre">my_notebook.ipynb</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><strong><code class="docutils literal notranslate"><span class="pre">uvx</span> <span class="pre">juv</span> <span class="pre">init</span> <span class="pre">-p</span> <span class="pre">&lt;PYTHON&gt;</span> <span class="pre">&lt;name.ipynb&gt;</span></code></strong></p></td>
-<td><p>Create a new <code class="docutils literal notranslate"><span class="pre">Jupyter</span> <span class="pre">Notebook</span></code> with a specific <code class="docutils literal notranslate"><span class="pre">Python</span></code> version (e.g. <code class="docutils literal notranslate"><span class="pre">-p</span> <span class="pre">3.12</span></code>).</p></td>
+<tr class="row-even"><td><p><strong><code class="docutils literal notranslate"><span class="pre">uvx</span> <span class="pre">juv</span> <span class="pre">add</span> <span class="pre">&lt;name.ipynb&gt;</span> <span class="pre">&lt;PACKAGE&gt;</span></code></strong></p></td>
+<td><p>Add <code class="docutils literal notranslate"><span class="pre">PACKAGE</span></code> to the notebook’s dependency list. Example: <code class="docutils literal notranslate"><span class="pre">uvx</span> <span class="pre">juv</span> <span class="pre">add</span> <span class="pre">my_notebook.ipynb</span> <span class="pre">numpy</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong><code class="docutils literal notranslate"><span class="pre">uvx</span> <span class="pre">juv</span> <span class="pre">add</span> <span class="pre">&lt;name.ipynb&gt;</span> <span class="pre">&lt;PACKAGE&gt;</span></code></strong></p></td>
-<td><p>Add <code class="docutils literal notranslate"><span class="pre">PACKAGE</span></code> to the notebook’s dependency list.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong><code class="docutils literal notranslate"><span class="pre">uvx</span> <span class="pre">juv</span> <span class="pre">run</span> <span class="pre">&lt;name.ipynb&gt;</span></code></strong></p></td>
-<td><p>Launch the notebook in JupyterLab, installing all dependencies automatically.</p></td>
+<tr class="row-odd"><td><p><strong><code class="docutils literal notranslate"><span class="pre">uvx</span> <span class="pre">juv</span> <span class="pre">run</span> <span class="pre">&lt;name.ipynb&gt;</span></code></strong></p></td>
+<td><p>Launch the notebook in JupyterLab, installing all dependencies automatically. Example: <code class="docutils literal notranslate"><span class="pre">uvx</span> <span class="pre">juv</span> <span class="pre">run</span> <span class="pre">my_notebook.ipynb</span></code></p></td>
 </tr>
 </tbody>
 </table>
@@ -560,11 +563,11 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-jupyter-notebook">2. What is a Jupyter Notebook?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyterlab">3. JupyterLab</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-packages-and-juv">4. Python Packages and <code class="docutils literal notranslate"><span class="pre">juv</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-packages-with-juv">4.1. Installing Packages with <code class="docutils literal notranslate"><span class="pre">juv</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initializing-a-notebook">4.2. Initializing a Notebook</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-packages-to-a-notebook">4.3. Adding Packages to a Notebook</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-a-notebook">4.4. Running a Notebook</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-packages-in-a-notebook">4.5. Importing Packages in a Notebook</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-packages-with-juv">4.1 Installing Packages with <code class="docutils literal notranslate"><span class="pre">juv</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initializing-a-notebook">4.2 Initializing a Notebook</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-packages-to-a-notebook">4.3 Adding Packages to a Notebook</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-a-notebook">4.4 Running a Notebook</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-packages-in-a-notebook">4.5 Importing Packages in a Notebook</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-table">5. Summary Table</a></li>
