@@ -384,8 +384,8 @@ Our question is: <strong>Do cells that are in the nuclear <em>on</em> state exhi
 
 <span class="c1"># load images and masks</span>
 <span class="n">image</span> <span class="o">=</span> <span class="n">tifffile</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span>
-<span class="n">image_nuclear</span> <span class="o">=</span> <span class="n">image</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">image_spots</span> <span class="o">=</span> <span class="n">image</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">image_nuclear</span> <span class="o">=</span> <span class="n">image</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">image_spots</span> <span class="o">=</span> <span class="n">image</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
 
 <span class="n">mask_cell</span> <span class="o">=</span> <span class="n">tifffile</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">mask_cell_path</span><span class="p">)</span>
 <span class="n">mask_nucleus</span> <span class="o">=</span> <span class="n">tifffile</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">mask_nucleus_path</span><span class="p">)</span>
@@ -407,7 +407,7 @@ Our question is: <strong>Do cells that are in the nuclear <em>on</em> state exhi
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/6a31603cdc9c3aebc8eafd7ae3d734322a78ad001defc40cd9c8ae1c92b07e02.png" src="../../_images/6a31603cdc9c3aebc8eafd7ae3d734322a78ad001defc40cd9c8ae1c92b07e02.png"/>
+<img alt="../../_images/65540bc62d84908741a993c249141db3d6463e96a607c1889dcd72d212afd32e.png" src="../../_images/65540bc62d84908741a993c249141db3d6463e96a607c1889dcd72d212afd32e.png"/>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 800x800 with 1 Axes&gt;, &lt;Axes: &gt;)
 </pre></div>
 </div>
@@ -536,17 +536,17 @@ For that we use the label mask of the nuclei, the nuclear expression image and t
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      area  intensity_mean  label
-0   1377.0     1190.348584      6
-1    796.0     1762.503769      8
-2    744.0     2053.278226      9
-3    643.0     2353.867807     10
-4   1222.0     1984.824877     11
+0   1377.0      411.344227      6
+1    796.0     1915.419598      8
+2    744.0     1612.961022      9
+3    643.0      420.241058     10
+4   1222.0      354.035188     11
 ..     ...             ...    ...
-72  1372.0     2598.682945     83
-73  1219.0     1351.519278     84
-74  1872.0     1978.978098     85
-75   868.0     2060.660138     86
-76  1472.0     1160.914402     87
+72  1372.0      393.518222     83
+73  1219.0      403.940935     84
+74  1872.0     1578.886218     85
+75   868.0      422.084101     86
+76  1472.0     1868.783967     87
 
 [77 rows x 3 columns]
 </pre></div>
@@ -563,17 +563,17 @@ For that we use the label mask of the nuclei, the nuclear expression image and t
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      area  intensity_mean  label image_id
-0   1377.0     1190.348584      6  F01_837
-1    796.0     1762.503769      8  F01_837
-2    744.0     2053.278226      9  F01_837
-3    643.0     2353.867807     10  F01_837
-4   1222.0     1984.824877     11  F01_837
+0   1377.0      411.344227      6  F01_837
+1    796.0     1915.419598      8  F01_837
+2    744.0     1612.961022      9  F01_837
+3    643.0      420.241058     10  F01_837
+4   1222.0      354.035188     11  F01_837
 ..     ...             ...    ...      ...
-72  1372.0     2598.682945     83  F01_837
-73  1219.0     1351.519278     84  F01_837
-74  1872.0     1978.978098     85  F01_837
-75   868.0     2060.660138     86  F01_837
-76  1472.0     1160.914402     87  F01_837
+72  1372.0      393.518222     83  F01_837
+73  1219.0      403.940935     84  F01_837
+74  1872.0     1578.886218     85  F01_837
+75   868.0      422.084101     86  F01_837
+76  1472.0     1868.783967     87  F01_837
 
 [77 rows x 4 columns]
 </pre></div>
@@ -598,7 +598,7 @@ For that we use the label mask of the nuclei, the nuclear expression image and t
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel='intensity_mean', ylabel='Count'&gt;
 </pre></div>
 </div>
-<img alt="../../_images/6a476daeadaa6c2a3372b45e7e8af7b72201e7d9a7c4f14c0adb6bf4c042dd29.png" src="../../_images/6a476daeadaa6c2a3372b45e7e8af7b72201e7d9a7c4f14c0adb6bf4c042dd29.png"/>
+<img alt="../../_images/bd596632ec378a59e651e99a310aa5f7471a597caf0db79bb8fdd95a4229a109.png" src="../../_images/bd596632ec378a59e651e99a310aa5f7471a597caf0db79bb8fdd95a4229a109.png"/>
 </div>
 </div>
 <p>It seems like the expression is truly bimodal and 1,700 would be a good threshold.</p>
@@ -606,7 +606,7 @@ For that we use the label mask of the nuclei, the nuclear expression image and t
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_nuc</span><span class="p">[</span><span class="s2">"expression"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span>
-    <span class="n">df_nuc</span><span class="p">[</span><span class="s2">"intensity_mean"</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1700</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">"off"</span><span class="p">,</span> <span class="s2">"on"</span><span class="p">]</span>
+    <span class="n">df_nuc</span><span class="p">[</span><span class="s2">"intensity_mean"</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">"off"</span><span class="p">,</span> <span class="s2">"on"</span><span class="p">]</span>
 <span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df_nuc</span><span class="p">[</span><span class="s2">"expression"</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
 </pre></div>
@@ -632,7 +632,7 @@ Categories (2, str): ['off' &lt; 'on']
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/43c78f898c59aff58d07d130c57547abd361c5434d534d8b424fc31b97629b2b.png" src="../../_images/43c78f898c59aff58d07d130c57547abd361c5434d534d8b424fc31b97629b2b.png"/>
+<img alt="../../_images/d33ba4f4dc1bb2c1b4d20b00190f95d0bb3e08d2ad3acf4b15fbeb4669f0f0bd.png" src="../../_images/d33ba4f4dc1bb2c1b4d20b00190f95d0bb3e08d2ad3acf4b15fbeb4669f0f0bd.png"/>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 800x800 with 1 Axes&gt;, &lt;Axes: title={'center': 'expression'}&gt;)
 </pre></div>
 </div>
@@ -646,17 +646,17 @@ Categories (2, str): ['off' &lt; 'on']
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      area  intensity_mean  label image_id expression
-0   1377.0     1190.348584      6  F01_837        off
-1    796.0     1762.503769      8  F01_837         on
-2    744.0     2053.278226      9  F01_837         on
-3    643.0     2353.867807     10  F01_837         on
-4   1222.0     1984.824877     11  F01_837         on
+0   1377.0      411.344227      6  F01_837        off
+1    796.0     1915.419598      8  F01_837         on
+2    744.0     1612.961022      9  F01_837         on
+3    643.0      420.241058     10  F01_837        off
+4   1222.0      354.035188     11  F01_837        off
 ..     ...             ...    ...      ...        ...
-72  1372.0     2598.682945     83  F01_837         on
-73  1219.0     1351.519278     84  F01_837        off
-74  1872.0     1978.978098     85  F01_837         on
-75   868.0     2060.660138     86  F01_837         on
-76  1472.0     1160.914402     87  F01_837        off
+72  1372.0      393.518222     83  F01_837        off
+73  1219.0      403.940935     84  F01_837        off
+74  1872.0     1578.886218     85  F01_837         on
+75   868.0      422.084101     86  F01_837        off
+76  1472.0     1868.783967     87  F01_837         on
 
 [77 rows x 5 columns]
 </pre></div>
@@ -753,17 +753,17 @@ Categories (2, str): ['off' &lt; 'on']
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      area  intensity_mean  label image_id expression  label_cell
-0   1377.0     1190.348584      6  F01_837        off         0.0
-1    796.0     1762.503769      8  F01_837         on         0.0
-2    744.0     2053.278226      9  F01_837         on         0.0
-3    643.0     2353.867807     10  F01_837         on        14.0
-4   1222.0     1984.824877     11  F01_837         on        17.0
+0   1377.0      411.344227      6  F01_837        off         0.0
+1    796.0     1915.419598      8  F01_837         on         0.0
+2    744.0     1612.961022      9  F01_837         on         0.0
+3    643.0      420.241058     10  F01_837        off        14.0
+4   1222.0      354.035188     11  F01_837        off        17.0
 ..     ...             ...    ...      ...        ...         ...
-72  1372.0     2598.682945     83  F01_837         on        84.0
-73  1219.0     1351.519278     84  F01_837        off         0.0
-74  1872.0     1978.978098     85  F01_837         on        88.0
-75   868.0     2060.660138     86  F01_837         on         0.0
-76  1472.0     1160.914402     87  F01_837        off         0.0
+72  1372.0      393.518222     83  F01_837        off        84.0
+73  1219.0      403.940935     84  F01_837        off         0.0
+74  1872.0     1578.886218     85  F01_837         on        88.0
+75   868.0      422.084101     86  F01_837        off         0.0
+76  1472.0     1868.783967     87  F01_837         on         0.0
 
 [77 rows x 6 columns]
 </pre></div>
@@ -806,27 +806,27 @@ Categories (2, str): ['off' &lt; 'on']
 <tr>
 <th>3</th>
 <td>14.0</td>
-<td>on</td>
+<td>off</td>
 </tr>
 <tr>
 <th>4</th>
 <td>17.0</td>
-<td>on</td>
+<td>off</td>
 </tr>
 <tr>
 <th>5</th>
 <td>18.0</td>
-<td>off</td>
+<td>on</td>
 </tr>
 <tr>
 <th>6</th>
 <td>15.0</td>
-<td>on</td>
+<td>off</td>
 </tr>
 <tr>
 <th>7</th>
 <td>13.0</td>
-<td>off</td>
+<td>on</td>
 </tr>
 <tr>
 <th>...</th>
@@ -836,22 +836,22 @@ Categories (2, str): ['off' &lt; 'on']
 <tr>
 <th>68</th>
 <td>80.0</td>
-<td>off</td>
+<td>on</td>
 </tr>
 <tr>
 <th>70</th>
 <td>83.0</td>
-<td>on</td>
+<td>off</td>
 </tr>
 <tr>
 <th>71</th>
 <td>85.0</td>
-<td>off</td>
+<td>on</td>
 </tr>
 <tr>
 <th>72</th>
 <td>84.0</td>
-<td>on</td>
+<td>off</td>
 </tr>
 <tr>
 <th>74</th>
@@ -875,15 +875,15 @@ Categories (2, str): ['off' &lt; 'on']
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       area  label expression
 0   11083.0     12        off
-1   11811.0     13        off
-2    2201.0     14         on
-3    4385.0     15         on
+1   11811.0     13         on
+2    2201.0     14        off
+3    4385.0     15        off
 4    3136.0     16         on
 ..      ...    ...        ...
 62   5343.0     81        off
-63   3711.0     83         on
-64   6932.0     84         on
-65   6111.0     85        off
+63   3711.0     83        off
+64   6932.0     84        off
+65   6111.0     85         on
 66   9146.0     88         on
 
 [67 rows x 3 columns]
@@ -904,7 +904,7 @@ Categories (2, str): ['off' &lt; 'on']
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/2bb78a71a82c8748a3bf15bbb7bbe73f6c585f3ec4750879e72c657a1c327e5c.png" src="../../_images/2bb78a71a82c8748a3bf15bbb7bbe73f6c585f3ec4750879e72c657a1c327e5c.png"/>
+<img alt="../../_images/07cea9e59d9c907942e428c9ced0ecd9be28642831896a4b7a5805d99fe4f54a.png" src="../../_images/07cea9e59d9c907942e428c9ced0ecd9be28642831896a4b7a5805d99fe4f54a.png"/>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 800x800 with 1 Axes&gt;, &lt;Axes: title={'center': 'expression'}&gt;)
 </pre></div>
 </div>
@@ -1030,15 +1030,15 @@ Categories (2, str): ['off' &lt; 'on']
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       area  label expression  count
 0   11083.0     12        off      6
-1   11811.0     13        off     65
-2    2201.0     14         on      1
-3    4385.0     15         on      5
+1   11811.0     13         on     65
+2    2201.0     14        off      1
+3    4385.0     15        off      5
 4    3136.0     16         on      6
 ..      ...    ...        ...    ...
 62   5343.0     81        off      3
-63   3711.0     83         on      4
-64   6932.0     84         on      5
-65   6111.0     85        off     21
+63   3711.0     83        off      4
+64   6932.0     84        off      5
+65   6111.0     85         on     21
 66   9146.0     88         on     13
 
 [67 rows x 4 columns]
@@ -1061,7 +1061,7 @@ Categories (2, str): ['off' &lt; 'on']
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel='count', ylabel='Count'&gt;
 </pre></div>
 </div>
-<img alt="../../_images/d66fd39e480648d35691c05258ce96dabc5e8e907f4af056261c7424a34884cb.png" src="../../_images/d66fd39e480648d35691c05258ce96dabc5e8e907f4af056261c7424a34884cb.png"/>
+<img alt="../../_images/a4e7e6e7206e1ae1b443b9bafa3a10b15237cd92ffe82773b83235723acb7e09.png" src="../../_images/a4e7e6e7206e1ae1b443b9bafa3a10b15237cd92ffe82773b83235723acb7e09.png"/>
 </div>
 </div>
 <div class="cell docutils container">
@@ -1077,7 +1077,7 @@ Categories (2, str): ['off' &lt; 'on']
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/f9b7608de9b0abf07e2164d1bc50a2739a4d721a5b282b3a9b86f91a2341ce06.png" src="../../_images/f9b7608de9b0abf07e2164d1bc50a2739a4d721a5b282b3a9b86f91a2341ce06.png"/>
+<img alt="../../_images/d5144572cd3aa5aa48c5e61bda824e1b2b0a474a09cd5e18464027998b36aa9d.png" src="../../_images/d5144572cd3aa5aa48c5e61bda824e1b2b0a474a09cd5e18464027998b36aa9d.png"/>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 800x800 with 2 Axes&gt;, &lt;Axes: title={'center': 'count'}&gt;)
 </pre></div>
 </div>
@@ -1125,7 +1125,7 @@ Name: spot_count_norm, Length: 67, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/a64900eabc4c5b92319a5dd63a49986c054e1bd88a9fa647b4eaff518cdbc823.png" src="../../_images/a64900eabc4c5b92319a5dd63a49986c054e1bd88a9fa647b4eaff518cdbc823.png"/>
+<img alt="../../_images/15fb591250bfb33dbc60d5ec349a91f01c2540cb2f49af28e413efcf01302db6.png" src="../../_images/15fb591250bfb33dbc60d5ec349a91f01c2540cb2f49af28e413efcf01302db6.png"/>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 800x800 with 2 Axes&gt;,
  &lt;Axes: title={'center': 'spot_count_norm'}&gt;)
 </pre></div>
@@ -1142,7 +1142,7 @@ Name: spot_count_norm, Length: 67, dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel='spot_count_norm', ylabel='Count'&gt;
 </pre></div>
 </div>
-<img alt="../../_images/1d20048139b606edee6554f9593e00d5fe22e2eb928fe2248c3447f37d553553.png" src="../../_images/1d20048139b606edee6554f9593e00d5fe22e2eb928fe2248c3447f37d553553.png"/>
+<img alt="../../_images/39382fb2e108574b07bb81e070fcfa3ab8df36062cbfcc5028f1adc46c0e452e.png" src="../../_images/39382fb2e108574b07bb81e070fcfa3ab8df36062cbfcc5028f1adc46c0e452e.png"/>
 </div>
 </div>
 <p>The picture is much clearer now.</p>
