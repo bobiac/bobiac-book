@@ -131,6 +131,7 @@ ome = "ome"
 ".tiles.ome.tif" = ".tiles.ome.tif" 
 "np.arange" = "np.arange"
 arange = "arange"
+"np" = "np"
 
 [tool.typos.files]
 # You can also exclude specific files or patterns if needed
