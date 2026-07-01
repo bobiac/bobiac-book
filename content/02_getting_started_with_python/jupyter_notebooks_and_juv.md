@@ -58,7 +58,7 @@ In this course we will use `Jupyter Notebooks` and its particular file type with
 
 **JupyterLab** is the browser-based application we'll use to open and work with `Jupyter Notebooks` files.
 
-<div align="left"> <img src="../../_static/images/jlab.png" alt="JupyterLab interface" width="1000"></div>
+<div align="left"> <img src="../../_static/images/python_intro/jlab.png" alt="JupyterLab interface" width="1000"></div>
 
 <br>
 
@@ -105,13 +105,19 @@ To create a new notebook with a `juv`-compatible header:
 uvx juv init bobiac_notebook.ipynb
 ```
 
-This creates `bobiac_notebook.ipynb` with an empty `///script` block at the top, ready for you to declare dependencies. You can also set the `Python` version at creation time with the `-p` flag:
+This creates `bobiac_notebook.ipynb` with an empty `///script` block at the top, ready for you to declare dependencies.
+
+<div align="left"> <img src="../../_static/images/python_intro/pep723_1.png" alt="JupyterLab interface" width="1000"></div>
+
+You can also set the `Python` version at creation time with the `-p` flag:
 
 ```bash
 uvx juv init -p 3.12 bobiac_notebook.ipynb
 ```
 
 This sets `requires-python = ">=3.12"` in the `///script` block automatically.
+
+<div align="left"> <img src="../../_static/images/python_intro/pep723_2.png" alt="JupyterLab interface" width="1000"></div>
 
 :::{note}
 💡 All `juv` commands are prefixed with `uvx`, which is a shortcut for `uv tool run`. `uvx juv` means "fetch and run the `juv` tool". See [Getting Started with `uv`](getting_started_with_uv.md#46-uvx-uv-tool-run) for more details on `uvx`.
@@ -128,8 +134,10 @@ uvx juv add bobiac_notebook.ipynb numpy
 This writes `numpy` into the `///script` block inside the notebook file. You can add multiple packages at once, and even pin a **specific version**:
 
 ```bash
-uvx juv add bobiac_notebook.ipynb numpy matplotlib "scikit-image==0.24"
+uvx juv add bobiac_notebook.ipynb numpy matplotlib "scikit-image==0.25.2"
 ```
+
+<div align="left"> <img src="../../_static/images/python_intro/pep723_3.png" alt="JupyterLab interface" width="1000"></div>
 
 ### 4.4. Running a Notebook
 

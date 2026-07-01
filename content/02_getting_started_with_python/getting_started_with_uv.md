@@ -113,7 +113,7 @@ uv pip install numpy
 You can install **multiple packages** at once by separating them with a space, and even pin a **specific version** of a package:
 
 ```bash
-uv pip install numpy matplotlib "scikit-image==0.24"
+uv pip install numpy matplotlib "scikit-image==0.25.2"
 ```
 
 To remove a package you no longer need, use `uv pip uninstall`:
