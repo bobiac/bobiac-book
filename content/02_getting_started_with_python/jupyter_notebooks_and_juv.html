@@ -353,7 +353,7 @@
 <section id="jupyterlab">
 <h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">3. JupyterLab<a class="headerlink" href="#jupyterlab" title="Link to this heading">#</a></h2>
 <p><strong>JupyterLab</strong> is the browser-based application we’ll use to open and work with <code class="docutils literal notranslate"><span class="pre">Jupyter</span> <span class="pre">Notebooks</span></code> files.</p>
-<div align="left"> <img alt="JupyterLab interface" src="../../_static/images/jlab.png" width="1000"/></div>
+<div align="left"> <img alt="JupyterLab interface" src="../../_static/images/python_intro/jlab.png" width="1000"/></div>
 <br/>
 <p>The key elements of the interface are highlighted in the screenshot above:</p>
 <ul class="simple">
@@ -390,11 +390,14 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uvx<span class="w"> </span>juv<span class="w"> </span>init<span class="w"> </span>bobiac_notebook.ipynb
 </pre></div>
 </div>
-<p>This creates <code class="docutils literal notranslate"><span class="pre">bobiac_notebook.ipynb</span></code> with an empty <code class="docutils literal notranslate"><span class="pre">///script</span></code> block at the top, ready for you to declare dependencies. You can also set the <code class="docutils literal notranslate"><span class="pre">Python</span></code> version at creation time with the <code class="docutils literal notranslate"><span class="pre">-p</span></code> flag:</p>
+<p>This creates <code class="docutils literal notranslate"><span class="pre">bobiac_notebook.ipynb</span></code> with an empty <code class="docutils literal notranslate"><span class="pre">///script</span></code> block at the top, ready for you to declare dependencies.</p>
+<div align="left"> <img alt="JupyterLab interface" src="../../_static/images/python_intro/pep723_1.png" width="1000"/></div>
+<p>You can also set the <code class="docutils literal notranslate"><span class="pre">Python</span></code> version at creation time with the <code class="docutils literal notranslate"><span class="pre">-p</span></code> flag:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uvx<span class="w"> </span>juv<span class="w"> </span>init<span class="w"> </span>-p<span class="w"> </span><span class="m">3</span>.12<span class="w"> </span>bobiac_notebook.ipynb
 </pre></div>
 </div>
 <p>This sets <code class="docutils literal notranslate"><span class="pre">requires-python</span> <span class="pre">=</span> <span class="pre">"&gt;=3.12"</span></code> in the <code class="docutils literal notranslate"><span class="pre">///script</span></code> block automatically.</p>
+<div align="left"> <img alt="JupyterLab interface" src="../../_static/images/python_intro/pep723_2.png" width="1000"/></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>💡 All <code class="docutils literal notranslate"><span class="pre">juv</span></code> commands are prefixed with <code class="docutils literal notranslate"><span class="pre">uvx</span></code>, which is a shortcut for <code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">tool</span> <span class="pre">run</span></code>. <code class="docutils literal notranslate"><span class="pre">uvx</span> <span class="pre">juv</span></code> means “fetch and run the <code class="docutils literal notranslate"><span class="pre">juv</span></code> tool”. See <a class="reference internal" href="getting_started_with_uv.html#46-uvx-uv-tool-run"><span class="std std-ref">Getting Started with <code class="docutils literal notranslate"><span class="pre">uv</span></code></span></a> for more details on <code class="docutils literal notranslate"><span class="pre">uvx</span></code>.</p>
@@ -407,9 +410,10 @@
 </pre></div>
 </div>
 <p>This writes <code class="docutils literal notranslate"><span class="pre">numpy</span></code> into the <code class="docutils literal notranslate"><span class="pre">///script</span></code> block inside the notebook file. You can add multiple packages at once, and even pin a <strong>specific version</strong>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uvx<span class="w"> </span>juv<span class="w"> </span>add<span class="w"> </span>bobiac_notebook.ipynb<span class="w"> </span>numpy<span class="w"> </span>matplotlib<span class="w"> </span><span class="s2">"scikit-image==0.24"</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uvx<span class="w"> </span>juv<span class="w"> </span>add<span class="w"> </span>bobiac_notebook.ipynb<span class="w"> </span>numpy<span class="w"> </span>matplotlib<span class="w"> </span><span class="s2">"scikit-image==0.25.2"</span>
 </pre></div>
 </div>
+<div align="left"> <img alt="JupyterLab interface" src="../../_static/images/python_intro/pep723_3.png" width="1000"/></div>
 </section>
 <section id="running-a-notebook">
 <h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">4.4. Running a Notebook<a class="headerlink" href="#running-a-notebook" title="Link to this heading">#</a></h3>
