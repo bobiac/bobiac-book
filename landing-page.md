@@ -47,7 +47,7 @@ If you already ran `uv tool install juv`, you can simply run:
 juv run path/to/your/notebook.ipynb
 ```
 
-More details can be found in the [Getting Started with Python and `uv`](content/02_getting_started_with_python/jupyter_notebooks_and_juv.md) section of this book.
+More details can be found in the [Jupyter Notebooks and juv](content/02_getting_started_with_python/jupyter_notebooks_and_juv.md) section of this book.
 
 ### Course Datasets
 
