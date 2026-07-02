@@ -1,5 +1,5 @@
 
-# Jupyter Notebooks and `juv`
+# Jupyter Notebooks and juv
 
 `Python` code is usually saved in plain text files ending in **`.py`**. In this course, however, we will mostly **not** work with `.py` files directly. Instead, we will use **`Jupyter Notebooks`** (`.ipynb` files). This page explains what they are, how we are going to use them.
 
