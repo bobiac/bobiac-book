@@ -280,7 +280,6 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-commenting-out-lines-of-code">📓 Example: Commenting out lines of code</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commenting-keyboard-shortcuts">Commenting keyboard shortcuts</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commenting-best-practices">Commenting Best Practices</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-commenting-practice">✍️ Exercise: Commenting Practice</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-types">1. Data Types</a><ul class="nav section-nav flex-column">
@@ -647,30 +646,6 @@ This notebook is written <strong>like a small interactive book</strong> to compl
 <h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">Commenting Best Practices<a class="headerlink" href="#commenting-best-practices" title="Link to this heading">#</a></h3>
 <p>Writing clear comments helps others and your future self understand what your code does without extra explanation. As you work through this lesson, we will highlight best practices for writing helpful comments and keeping your code easy to read.</p>
 </section>
-<section id="exercise-commenting-practice">
-<h3 style="color: black; background-color: rgb(252,185,118); padding: 3px; border-radius: 5px;">✍️ Exercise: Commenting Practice<a class="headerlink" href="#exercise-commenting-practice" title="Link to this heading">#</a></h3>
-<ol class="arabic simple">
-<li><p>Make a line comment that says: “This is a comment”</p></li>
-<li><p>Run the code in the cell</p></li>
-<li><p>Then add the following code in a separate line: <code class="docutils literal notranslate"><span class="pre">print("This</span> <span class="pre">shouldn't</span> <span class="pre">be</span> <span class="pre">here")</span></code></p></li>
-<li><p>Run the code in the cell</p></li>
-<li><p>Comment out the <code class="docutils literal notranslate"><span class="pre">print("This</span> <span class="pre">shouldn't</span> <span class="pre">be</span> <span class="pre">here")</span></code> code line</p></li>
-<li><p>Run the code in the cell again</p></li>
-</ol>
-<div class="cell tag_teacher docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This is a comment</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"This shouldn't be here"</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>This shouldn't be here
-</pre></div>
-</div>
-</div>
-</div>
-</section>
 </section>
 <hr class="docutils"/>
 <section id="data-types">
@@ -917,9 +892,7 @@ Let’s now discuss different types of <strong>values</strong> commonly used in 
 </pre></div>
 </div>
 <blockquote>
-<div><blockquote>
 <div><p>3</p>
-</div></blockquote>
 </div></blockquote>
 <p>We could assemble one big string that included “This is Eva’s favorite number: “ and then add the value that is assigned to the variable <code class="docutils literal notranslate"><span class="pre">fav_number</span></code> at the end. In Python, one way we can do this is using <strong>f-strings</strong>.</p>
 <p>F-strings let you assemble a string with variables in {} placeholders. You create one by putting the letter <code class="docutils literal notranslate"><span class="pre">f</span></code> right before the beginning <code class="docutils literal notranslate"><span class="pre">'</span></code> or <code class="docutils literal notranslate"><span class="pre">"</span></code> of the overall string, and then place variables in <code class="docutils literal notranslate"><span class="pre">{}</span></code> within that string:</p>
@@ -928,9 +901,7 @@ Let’s now discuss different types of <strong>values</strong> commonly used in 
 </pre></div>
 </div>
 <blockquote>
-<div><blockquote>
 <div><p>This is Eva’s favorite number: 3.</p>
-</div></blockquote>
 </div></blockquote>
 <p>It does not matter what type of value is assigned to variables placed within <code class="docutils literal notranslate"><span class="pre">{}</span></code> in f-strings. The <code class="docutils literal notranslate"><span class="pre">f</span></code> at the beginning will cue Python to evaluate each variable inside the <code class="docutils literal notranslate"><span class="pre">{}</span></code> and substitute it with what is assigned to that variable, instead of treating the variable name as literal text.</p>
 </section>
@@ -1293,7 +1264,7 @@ When thinking about how to organize values into a data structure, there are a fe
 </div>
 </div>
 </div>
-<p>Now you give it a try! Get the length of this list:</p>
+<p>Now you give it a try! Create the following list and get its length:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mylist</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Bo'</span><span class="p">,</span> <span class="s1">'Bi'</span><span class="p">,</span> <span class="s1">'A'</span><span class="p">,</span> <span class="s1">'C'</span><span class="p">,</span> <span class="mi">2026</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -1332,7 +1303,11 @@ When thinking about how to organize values into a data structure, there are a fe
 </section>
 <section id="exercise-printing-items-in-a-list">
 <h3 style="color: black; background-color: rgb(252,185,118); padding: 3px; border-radius: 5px;">✍️ Exercise: Printing Items in a List<a class="headerlink" href="#exercise-printing-items-in-a-list" title="Link to this heading">#</a></h3>
-<p>Print the following sentence by accessing and printing items in the list <code class="docutils literal notranslate"><span class="pre">mylist</span></code></p>
+<p>Create the following list:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mylist</span> <span class="pre">=</span> <span class="pre">['I',</span> <span class="pre">'hate',</span> <span class="pre">'love',</span> <span class="pre">'to',</span> <span class="pre">'code']</span> </code></p></li>
+</ul>
+<p>Then, print the following sentence by accessing and printing items in the list <code class="docutils literal notranslate"><span class="pre">mylist</span></code></p>
 <ul>
 <li><p>Sentence:</p>
 <p>I</p>
@@ -1340,7 +1315,6 @@ When thinking about how to organize values into a data structure, there are a fe
 <p>to</p>
 <p>code</p>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">mylist</span> <span class="pre">=</span> <span class="pre">['I',</span> <span class="pre">'hate',</span> <span class="pre">'love',</span> <span class="pre">'to',</span> <span class="pre">'code']</span> </code></p></li>
 </ul>
 <div class="cell tag_teacher docutils container">
 <div class="cell_input docutils container">
@@ -1582,11 +1556,11 @@ code
 </section>
 <section id="exercise-adding-items-to-a-list">
 <h3 style="color: black; background-color: rgb(252,185,118); padding: 3px; border-radius: 5px;">✍️ Exercise: Adding Items to a List<a class="headerlink" href="#exercise-adding-items-to-a-list" title="Link to this heading">#</a></h3>
-<p>Given <code class="docutils literal notranslate"><span class="pre">mylist</span></code>:</p>
+<p>Create <code class="docutils literal notranslate"><span class="pre">mylist</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mylist</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'a'</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">,</span> <span class="s1">'c'</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>Add <code class="docutils literal notranslate"><span class="pre">'easy</span> <span class="pre">as'</span></code> to the beginning of <code class="docutils literal notranslate"><span class="pre">mylist</span></code>. Print the updated <code class="docutils literal notranslate"><span class="pre">mylist</span></code> to confirm it’s correct.</p>
+<p>Then, add <code class="docutils literal notranslate"><span class="pre">'easy</span> <span class="pre">as'</span></code> to the beginning of <code class="docutils literal notranslate"><span class="pre">mylist</span></code>. Print the updated <code class="docutils literal notranslate"><span class="pre">mylist</span></code> to confirm it’s correct.</p>
 <div class="cell tag_teacher docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s2">"easy as"</span>
@@ -1605,7 +1579,7 @@ code
 </section>
 <section id="id11">
 <h3 style="color: black; background-color: rgb(252,185,118); padding: 3px; border-radius: 5px;">✍️ Exercise: Adding Items to a List<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
-<p>Given <code class="docutils literal notranslate"><span class="pre">mylist</span></code>:</p>
+<p>Create <code class="docutils literal notranslate"><span class="pre">mylist</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mylist</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'a'</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">,</span> <span class="s1">'c'</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -1666,7 +1640,7 @@ code
 </section>
 <section id="exercise-removing-items-from-a-list">
 <h3 style="color: black; background-color: rgb(252,185,118); padding: 3px; border-radius: 5px;">✍️ Exercise: Removing Items from a List<a class="headerlink" href="#exercise-removing-items-from-a-list" title="Link to this heading">#</a></h3>
-<p>Given <code class="docutils literal notranslate"><span class="pre">letters</span></code>:</p>
+<p>Create the list <code class="docutils literal notranslate"><span class="pre">letters</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">letters</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'d'</span><span class="p">,</span> <span class="s1">'m'</span><span class="p">,</span> <span class="s1">'x'</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -1803,7 +1777,7 @@ code
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">35</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">34</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 <span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
 
@@ -2366,11 +2340,11 @@ Once every item in the list has been used, the <code class="docutils literal not
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">count_sequence</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
 <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">count_sequence</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">item</span> <span class="o">==</span> <span class="mi">7</span><span class="p">:</span>  <span class="c1"># if we're on the count of 7,</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">"Hurry up!"</span><span class="p">)</span>  <span class="c1"># then print "Hurry up!"</span>
     <span class="k">if</span> <span class="n">item</span> <span class="o">==</span> <span class="mi">10</span><span class="p">:</span>
         <span class="k">break</span>  <span class="c1"># end the entire for loop</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2696,7 +2670,7 @@ Once every item in the list has been used, the <code class="docutils literal not
 </pre></div>
 </div>
 <p>Methods are functions defined within a class:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Name</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">MyClass</span><span class="p">:</span>
      <span class="o">...</span>
     
     <span class="k">def</span><span class="w"> </span><span class="nf">method</span><span class="p">(</span><span class="o">...</span><span class="p">):</span>
@@ -2707,9 +2681,9 @@ Once every item in the list has been used, the <code class="docutils literal not
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">function</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>A method like <code class="docutils literal notranslate"><span class="pre">append()</span></code> is defined within the <code class="docutils literal notranslate"><span class="pre">class</span></code> <code class="docutils literal notranslate"><span class="pre">list</span></code>, just as the method <code class="docutils literal notranslate"><span class="pre">method()</span></code> within the <code class="docutils literal notranslate"><span class="pre">class</span></code> <code class="docutils literal notranslate"><span class="pre">Name</span></code> above. To use the method <code class="docutils literal notranslate"><span class="pre">method()</span></code>, we need to first specify a variable that follows the blueprint of the class <code class="docutils literal notranslate"><span class="pre">Name</span></code>. We can apply the method <code class="docutils literal notranslate"><span class="pre">method()</span></code> to it using the dot notation:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">variable</span> <span class="o">=</span> <span class="n">Name</span><span class="p">()</span>
-<span class="n">variable</span><span class="o">.</span><span class="n">method</span><span class="p">()</span>
+<p>A method like <code class="docutils literal notranslate"><span class="pre">append()</span></code> is defined within the <code class="docutils literal notranslate"><span class="pre">class</span></code> <code class="docutils literal notranslate"><span class="pre">list</span></code>, just as the method <code class="docutils literal notranslate"><span class="pre">method()</span></code> within the <code class="docutils literal notranslate"><span class="pre">class</span></code> <code class="docutils literal notranslate"><span class="pre">MyClass</span></code> above. To use the method <code class="docutils literal notranslate"><span class="pre">method()</span></code>, we need to first specify a variable <code class="docutils literal notranslate"><span class="pre">object</span></code> that follows the blueprint of the class <code class="docutils literal notranslate"><span class="pre">MyClass</span></code>. We can apply the method <code class="docutils literal notranslate"><span class="pre">method()</span></code> to it using the dot notation:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">object</span> <span class="o">=</span> <span class="n">MyClass</span><span class="p">()</span>
+<span class="nb">object</span><span class="o">.</span><span class="n">method</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>In summary, when you see the syntax <code class="docutils literal notranslate"><span class="pre">something.function()</span></code> in Python, that means the function is a behavior that belongs to something, rather than a generic tool you want to apply to it.</p>
@@ -2784,7 +2758,6 @@ Once every item in the list has been used, the <code class="docutils literal not
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-commenting-out-lines-of-code">📓 Example: Commenting out lines of code</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commenting-keyboard-shortcuts">Commenting keyboard shortcuts</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commenting-best-practices">Commenting Best Practices</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-commenting-practice">✍️ Exercise: Commenting Practice</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-types">1. Data Types</a><ul class="nav section-nav flex-column">

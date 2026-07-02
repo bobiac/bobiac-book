@@ -18,30 +18,138 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-seg_summary = label2rgb(labeled_image, image=raw_image)
+# specify dependencies
+import matplotlib.pyplot as plt
+import ndv
+import numpy as np
+import tifffile
+from scipy.ndimage import distance_transform_edt
+from skimage.color import label2rgb
+from skimage.feature import peak_local_max
+from skimage.filters import gaussian, threshold_otsu
+from skimage.measure import label
+from skimage.morphology import closing, remove_small_objects, disk
+from skimage.segmentation import watershed
+
+# load the image
+image_path = r"../../../_static/images/classic_seg/DAPI_wf_0.tif"
+raw_image = tifffile.imread(image_path)
+dapi_image = raw_image[0]
+
+# filter the image with gaussian filter
+filtered_image = gaussian(dapi_image, sigma=1)
+
+# threshold filtered_image to generate binary mask
+binary_mask = filtered_image > threshold_otsu(filtered_image)
+
+# Remove small objects
+binary_mask_sized = remove_small_objects(binary_mask, min_size=50)
+
+# Fill small holes by performing morphological closing
+binary_mask_filled = closing(binary_mask_sized, disk(5))
+
+# apply watershed to separate nuclei and label mask
+# compute the distance transform
+distance_transform = distance_transform_edt(binary_mask_filled)
+
+# find local maxima coordinates in the distance transform
+local_maxima_coords = peak_local_max(
+    distance_transform, footprint=np.ones((25, 25)), min_distance=10
+)
+
+# create image that's the same size and dtype as binary_mask_filled
+local_maxima_image = np.zeros_like(binary_mask_filled, dtype=bool)
+
+# organize the local maxima coordinates into a tuple of arrays for indexing
+local_maxima_coords_transpose = local_maxima_coords.T
+local_maxima_coords_tuple = tuple(local_maxima_coords_transpose)
+
+# add the local_maxima_coords to the created local_maxima image
+local_maxima_image[local_maxima_coords_tuple] = True
+
+# label the local_maxima image to create seeds for the watershed function
+seeds = label(local_maxima_image)
+
+# apply the watershed algorithm to segment the image and get labels
+labeled_ws_image = watershed(-distance_transform, seeds, mask=binary_mask_filled)
 ------------------
 
+----- stderr -----
+/tmp/ipykernel_3188/2815980081.py:26: FutureWarning: Parameter `min_size` is deprecated since version 0.26.0 and will be removed in 2.0.0 (or later). To avoid this warning, please use the parameter `max_size` instead. For more details, see the documentation of `remove_small_objects`. Note that the new threshold removes objects smaller than **or equal to** its value, while the previous parameter only removed smaller ones.
+  binary_mask_sized = remove_small_objects(binary_mask, min_size=50)
+------------------
 
 [31m---------------------------------------------------------------------------[39m
-[31mValueError[39m                                Traceback (most recent call last)
-[36mCell[39m[36m [39m[32mIn[15][39m[32m, line 1[39m
-[32m----> [39m[32m1[39m seg_summary = label2rgb(labeled_image, image=raw_image)
+[31mRuntimeError[39m                              Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[30][39m[32m, line 29[39m
+[32m     25[39m [38;5;66;03m# Remove small objects[39;00m
+[32m     26[39m binary_mask_sized = remove_small_objects(binary_mask, min_size=[32m50[39m)
+[32m     27[39m 
+[32m     28[39m [38;5;66;03m# Fill small holes by performing morphological closing[39;00m
+[32m---> [39m[32m29[39m binary_mask_filled = closing(binary_mask_sized, disk([32m5[39m))
+[32m     30[39m 
+[32m     31[39m [38;5;66;03m# apply watershed to separate nuclei and label mask[39;00m
+[32m     32[39m [38;5;66;03m# compute the distance transform[39;00m
 
-[36mFile [39m[32m~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/skimage/color/colorlabel.py:149[39m, in [36mlabel2rgb[39m[34m(label, image, colors, alpha, bg_label, bg_color, image_alpha, kind, saturation, channel_axis)[39m
-[32m    147[39m     image = np.moveaxis(image, source=channel_axis, destination=-[32m1[39m)
-[32m    148[39m [38;5;28;01mif[39;00m kind == [33m'[39m[33moverlay[39m[33m'[39m:
-[32m--> [39m[32m149[39m     rgb = [30;43m_label2rgb_overlay[39;49m[30;43m([39;49m
-[32m    150[39m [30;43m        [39;49m[30;43mlabel[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mimage[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mcolors[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43malpha[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mbg_label[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mbg_color[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mimage_alpha[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43msaturation[39;49m
-[32m    151[39m [30;43m    [39;49m[30;43m)[39;49m
-[32m    152[39m [38;5;28;01melif[39;00m kind == [33m'[39m[33mavg[39m[33m'[39m:
-[32m    153[39m     rgb = _label2rgb_avg(label, image, bg_label, bg_color)
+[36mFile [39m[32m~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/skimage/morphology/misc.py:47[39m, in [36mdefault_footprint.<locals>.func_out[39m[34m(image, footprint, *args, **kwargs)[39m
+[32m     45[39m [38;5;28;01mif[39;00m footprint [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
+[32m     46[39m     footprint = ndi.generate_binary_structure(image.ndim, [32m1[39m)
+[32m---> [39m[32m47[39m [38;5;28;01mreturn[39;00m [30;43mfunc[39;49m[30;43m([39;49m[30;43mimage[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mfootprint[39;49m[30;43m=[39;49m[30;43mfootprint[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43m*[39;49m[30;43margs[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43m*[39;49m[30;43m*[39;49m[30;43mkwargs[39;49m[30;43m)[39;49m
 
-[36mFile [39m[32m~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/skimage/color/colorlabel.py:216[39m, in [36m_label2rgb_overlay[39m[34m(label, image, colors, alpha, bg_label, bg_color, image_alpha, saturation)[39m
-[32m    214[39m [38;5;28;01melse[39;00m:
-[32m    215[39m     [38;5;28;01mif[39;00m image.shape[: label.ndim] != label.shape [38;5;129;01mor[39;00m image.ndim > label.ndim + [32m1[39m:
-[32m--> [39m[32m216[39m         [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m([33m"[39m[33m`image` and `label` must be the same shape[39m[33m"[39m)
-[32m    218[39m     [38;5;28;01mif[39;00m image.ndim == label.ndim + [32m1[39m [38;5;129;01mand[39;00m image.shape[-[32m1[39m] != [32m3[39m:
-[32m    219[39m         [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m([33m"[39m[33m`image` must be RGB (image.shape[-1] must be 3).[39m[33m"[39m)
+[36mFile [39m[32m~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/skimage/morphology/gray.py:436[39m, in [36mclosing[39m[34m(image, footprint, out, mode, cval)[39m
+[32m    366[39m [38;5;250m[39m[33;03m"""Return grayscale morphological closing of an image.[39;00m
+[32m    367[39m 
+[32m    368[39m [33;03mThe morphological closing of an image is defined as a dilation followed by[39;00m
+[32m   (...)[39m[32m    433[39m 
+[32m    434[39m [33;03m"""[39;00m
+[32m    435[39m footprint = pad_footprint(footprint, pad_end=[38;5;28;01mFalse[39;00m)
+[32m--> [39m[32m436[39m dilated = [30;43mdilation[39;49m[30;43m([39;49m[30;43mimage[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mfootprint[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mmode[39;49m[30;43m=[39;49m[30;43mmode[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mcval[39;49m[30;43m=[39;49m[30;43mcval[39;49m[30;43m)[39;49m
+[32m    437[39m out = erosion(dilated, mirror_footprint(footprint), out=out, mode=mode, cval=cval)
+[32m    438[39m [38;5;28;01mreturn[39;00m out
 
-[31mValueError[39m: `image` and `label` must be the same shape
+[36mFile [39m[32m~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/skimage/morphology/misc.py:47[39m, in [36mdefault_footprint.<locals>.func_out[39m[34m(image, footprint, *args, **kwargs)[39m
+[32m     45[39m [38;5;28;01mif[39;00m footprint [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
+[32m     46[39m     footprint = ndi.generate_binary_structure(image.ndim, [32m1[39m)
+[32m---> [39m[32m47[39m [38;5;28;01mreturn[39;00m [30;43mfunc[39;49m[30;43m([39;49m[30;43mimage[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mfootprint[39;49m[30;43m=[39;49m[30;43mfootprint[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43m*[39;49m[30;43margs[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43m*[39;49m[30;43m*[39;49m[30;43mkwargs[39;49m[30;43m)[39;49m
+
+[36mFile [39m[32m~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/skimage/morphology/gray.py:276[39m, in [36mdilation[39m[34m(image, footprint, out, mode, cval)[39m
+[32m    273[39m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m _footprint_is_sequence(footprint):
+[32m    274[39m     footprint = [(footprint, [32m1[39m)]
+[32m--> [39m[32m276[39m out = [30;43m_iterate_gray_func[39;49m[30;43m([39;49m
+[32m    277[39m [30;43m    [39;49m[30;43mgray_func[39;49m[30;43m=[39;49m[30;43mndi[39;49m[30;43m.[39;49m[30;43mgrey_dilation[39;49m[30;43m,[39;49m
+[32m    278[39m [30;43m    [39;49m[30;43mimage[39;49m[30;43m=[39;49m[30;43mimage[39;49m[30;43m,[39;49m
+[32m    279[39m [30;43m    [39;49m[30;43mfootprints[39;49m[30;43m=[39;49m[30;43mfootprint[39;49m[30;43m,[39;49m
+[32m    280[39m [30;43m    [39;49m[30;43mout[39;49m[30;43m=[39;49m[30;43mout[39;49m[30;43m,[39;49m
+[32m    281[39m [30;43m    [39;49m[30;43mmode[39;49m[30;43m=[39;49m[30;43mmode[39;49m[30;43m,[39;49m
+[32m    282[39m [30;43m    [39;49m[30;43mcval[39;49m[30;43m=[39;49m[30;43mcval[39;49m[30;43m,[39;49m
+[32m    283[39m [30;43m[39;49m[30;43m)[39;49m
+[32m    284[39m [38;5;28;01mreturn[39;00m out
+
+[36mFile [39m[32m~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/skimage/morphology/gray.py:22[39m, in [36m_iterate_gray_func[39m[34m(gray_func, image, footprints, out, mode, cval)[39m
+[32m     16[39m [38;5;250m[39m[33;03m"""Helper to call `gray_func` for each footprint in a sequence.[39;00m
+[32m     17[39m 
+[32m     18[39m [33;03m`gray_func` is a morphology function that accepts `footprint`, `output`,[39;00m
+[32m     19[39m [33;03m`mode` and `cval` keyword arguments (e.g. `scipy.ndimage.grey_erosion`).[39;00m
+[32m     20[39m [33;03m"""[39;00m
+[32m     21[39m fp, num_iter = footprints[[32m0[39m]
+[32m---> [39m[32m22[39m [30;43mgray_func[39;49m[30;43m([39;49m[30;43mimage[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mfootprint[39;49m[30;43m=[39;49m[30;43mfp[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43moutput[39;49m[30;43m=[39;49m[30;43mout[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mmode[39;49m[30;43m=[39;49m[30;43mmode[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mcval[39;49m[30;43m=[39;49m[30;43mcval[39;49m[30;43m)[39;49m
+[32m     23[39m [38;5;28;01mfor[39;00m _ [38;5;129;01min[39;00m [38;5;28mrange[39m([32m1[39m, num_iter):
+[32m     24[39m     gray_func(out.copy(), footprint=fp, output=out, mode=mode, cval=cval)
+
+[36mFile [39m[32m~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/scipy/ndimage/_morphology.py:1444[39m, in [36mgrey_dilation[39m[34m(input, size, footprint, structure, output, mode, cval, origin, axes)[39m
+[32m   1441[39m     [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m sz & [32m1[39m:
+[32m   1442[39m         origin[ii] -= [32m1[39m
+[32m-> [39m[32m1444[39m [38;5;28;01mreturn[39;00m [30;43m_filters[39;49m[30;43m.[39;49m[30;43m_min_or_max_filter[39;49m[30;43m([39;49m[30;43minput[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43msize[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mfootprint[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mstructure[39;49m[30;43m,[39;49m
+[32m   1445[39m [30;43m                                   [39;49m[30;43moutput[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mmode[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mcval[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43morigin[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43m0[39;49m[30;43m,[39;49m
+[32m   1446[39m [30;43m                                   [39;49m[30;43maxes[39;49m[30;43m=[39;49m[30;43maxes[39;49m[30;43m)[39;49m
+
+[36mFile [39m[32m~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/scipy/ndimage/_filters.py:1799[39m, in [36m_min_or_max_filter[39m[34m(input, size, footprint, structure, output, mode, cval, origin, minimum, axes)[39m
+[32m   1797[39m fshape = [ii [38;5;28;01mfor[39;00m ii [38;5;129;01min[39;00m footprint.shape [38;5;28;01mif[39;00m ii > [32m0[39m]
+[32m   1798[39m [38;5;28;01mif[39;00m [38;5;28mlen[39m(fshape) != [38;5;28minput[39m.ndim:
+[32m-> [39m[32m1799[39m     [38;5;28;01mraise[39;00m [38;5;167;01mRuntimeError[39;00m([33mf[39m[33m"[39m[33mfootprint.ndim ([39m[38;5;132;01m{[39;00mfootprint.ndim[38;5;132;01m}[39;00m[33m) must match [39m[33m"[39m
+[32m   1800[39m                        [33mf[39m[33m"[39m[33mlen(axes) ([39m[38;5;132;01m{[39;00m[38;5;28mlen[39m(axes)[38;5;132;01m}[39;00m[33m)[39m[33m"[39m)
+[32m   1801[39m [38;5;28;01mfor[39;00m origin, lenf [38;5;129;01min[39;00m [38;5;28mzip[39m(origins, fshape):
+[32m   1802[39m     [38;5;28;01mif[39;00m (lenf // [32m2[39m + origin < [32m0[39m) [38;5;129;01mor[39;00m (lenf // [32m2[39m + origin >= lenf):
+
+[31mRuntimeError[39m: footprint.ndim (2) must match len(axes) (1)
 

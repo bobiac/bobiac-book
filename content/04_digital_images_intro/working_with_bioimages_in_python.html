@@ -281,7 +281,7 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#viewing-an-image-s-shape">Viewing an image’s shape</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#viewing-an-image-s-dtype">Viewing an image’s dtype</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#viewing-an-image-s-type">Viewing an image’s type</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#print-your-image-s-shape-dtype-and-type">✍️ Print your image’s shape, dtype, and type</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-print-your-image-s-shape-dtype-and-type">✍️ Exercise: Print your image’s shape, dtype, and type</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-numpy-arrays">1. Introduction to NumPy Arrays</a><ul class="nav section-nav flex-column">
@@ -289,6 +289,7 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-is-an-external-python-library"><code class="docutils literal notranslate"><span class="pre">numpy</span></code> is an external Python library</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-a-2d-image-is-organized-in-a-numpy-array">How a 2D image is organized in a <code class="docutils literal notranslate"><span class="pre">numpy</span></code> array</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-view-an-image-as-a-numpy-array">How to view an image as a numpy array</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-import-numpy">✍️ Exercise: Import <code class="docutils literal notranslate"><span class="pre">numpy</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-run-the-cell-to-view-an-image-as-a-numpy-array">📓 Example: Run the cell to view an image as a numpy array</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-array-indexing"><code class="docutils literal notranslate"><span class="pre">numpy</span></code> array indexing</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-guess-the-output-before-running-the-code">✍️ Exercise: Guess the output before running the code!</a></li>
@@ -306,7 +307,7 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-print-the-first-column-of-pixel-values-in-raw-image">✍️ Exercise: Print the <strong>first column</strong> of pixel values in <code class="docutils literal notranslate"><span class="pre">raw_image</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-print-the-middle-row-of-pixel-values-in-raw-image">✍️ Exercise: Print the <strong>middle row</strong> of pixel values in <code class="docutils literal notranslate"><span class="pre">raw_image</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-access-pixel-statistics-from-a-numpy-array">How to access pixel statistics from a numpy array</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#print-the-minimum-maximum-and-mean-intensity-value-of-raw-image">✍️ Print the minimum, maximum, and mean intensity value of <code class="docutils literal notranslate"><span class="pre">raw_image</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-print-the-minimum-maximum-and-mean-intensity-value-of-raw-image">✍️ Exercise: Print the minimum, maximum, and mean intensity value of <code class="docutils literal notranslate"><span class="pre">raw_image</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multidimensional-images">2. Multidimensional Images</a><ul class="nav section-nav flex-column">
@@ -619,8 +620,8 @@ This notebook is written <strong>like a small interactive book</strong> to compl
 <p class="alert alert-info">
 <strong>Note:</strong> Notice the syntax when accessing an image's shape dtype. The syntax is <b>.shape</b> and <b>.dtype</b> instead of <b>.shape()</b> and <b>.dtype()</b>. The parentheses are used when there are required or optional inputs. <b>.shape</b> and <b>.dtype</b> do not have any inputs so they do not have any parentheses. 
 </p></section>
-<section id="print-your-image-s-shape-dtype-and-type">
-<h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">✍️ Print your image’s shape, dtype, and type<a class="headerlink" href="#print-your-image-s-shape-dtype-and-type" title="Link to this heading">#</a></h3>
+<section id="exercise-print-your-image-s-shape-dtype-and-type">
+<h3 style="color: black; background-color: rgb(252,185,118); padding: 3px; border-radius: 5px;">✍️ Exercise: Print your image’s shape, dtype, and type<a class="headerlink" href="#exercise-print-your-image-s-shape-dtype-and-type" title="Link to this heading">#</a></h3>
 <div class="cell tag_teacher docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">raw_image</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
@@ -637,7 +638,7 @@ This notebook is written <strong>like a small interactive book</strong> to compl
 <h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">1. Introduction to NumPy Arrays<a class="headerlink" href="#introduction-to-numpy-arrays" title="Link to this heading">#</a></h2>
 <section id="id1">
 <h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">Concept<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
-<p>A <code class="docutils literal notranslate"><span class="pre">numpy</span></code> array is an external data structure that is the most common representation of images in Python. Numpy is pronounced “numb-pie” and stands for <em>Numerical Python</em>. A <code class="docutils literal notranslate"><span class="pre">numpy</span></code> array holds numeric data, one example is images! <code class="docutils literal notranslate"><span class="pre">numpy</span></code> lets us compute on and manipulate images quickly.</p>
+<p>A <code class="docutils literal notranslate"><span class="pre">numpy</span></code> array is an external data structure that is the most common representation of images in Python. Numpy is pronounced “num-pie” and stands for <em>Numerical Python</em>. A <code class="docutils literal notranslate"><span class="pre">numpy</span></code> array holds numeric data, one example is images! <code class="docutils literal notranslate"><span class="pre">numpy</span></code> lets us compute on and manipulate images quickly.</p>
 </section>
 <section id="numpy-is-an-external-python-library">
 <h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;"><code class="docutils literal notranslate"><span class="pre">numpy</span></code> is an external Python library<a class="headerlink" href="#numpy-is-an-external-python-library" title="Link to this heading">#</a></h3>
@@ -676,10 +677,13 @@ This notebook is written <strong>like a small interactive book</strong> to compl
 <section id="how-to-view-an-image-as-a-numpy-array">
 <h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">How to view an image as a numpy array<a class="headerlink" href="#how-to-view-an-image-as-a-numpy-array" title="Link to this heading">#</a></h3>
 <p>While <code class="docutils literal notranslate"><span class="pre">ndv</span></code> and <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code> allow us to view an image with the intensity values mapped to color, we can also view an image as a <code class="docutils literal notranslate"><span class="pre">numpy</span></code> array. We can do this by simply printing the variable name.</p>
-<p>Let’s first import <code class="docutils literal notranslate"><span class="pre">numpy</span></code></p>
+<p>Let’s first import <code class="docutils literal notranslate"><span class="pre">numpy</span></code>!</p>
+</section>
+<section id="exercise-import-numpy">
+<h3 style="color: black; background-color: rgb(252,185,118); padding: 3px; border-radius: 5px;">✍️ Exercise: Import <code class="docutils literal notranslate"><span class="pre">numpy</span></code><a class="headerlink" href="#exercise-import-numpy" title="Link to this heading">#</a></h3>
 <div class="cell tag_teacher docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Note that we use the alias `np` to refer to the `numpy` library.</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Note that we use the alias np to refer to the numpy library</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 </pre></div>
 </div>
@@ -688,7 +692,7 @@ This notebook is written <strong>like a small interactive book</strong> to compl
 </section>
 <section id="example-run-the-cell-to-view-an-image-as-a-numpy-array">
 <h3 style="color: black; background-color: rgb(126,172,182); padding: 3px; border-radius: 5px;">📓 Example: Run the cell to view an image as a numpy array<a class="headerlink" href="#example-run-the-cell-to-view-an-image-as-a-numpy-array" title="Link to this heading">#</a></h3>
-<div class="cell tag_teacher docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">raw_image</span><span class="p">)</span>
 </pre></div>
@@ -893,8 +897,8 @@ This notebook is written <strong>like a small interactive book</strong> to compl
 </div>
 <p>Now you give it a try! Go ahead and use <code class="docutils literal notranslate"><span class="pre">numpy</span></code> functionality to access pixel statistics for <code class="docutils literal notranslate"><span class="pre">raw_image</span></code>.</p>
 </section>
-<section id="print-the-minimum-maximum-and-mean-intensity-value-of-raw-image">
-<h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">✍️ Print the minimum, maximum, and mean intensity value of <code class="docutils literal notranslate"><span class="pre">raw_image</span></code><a class="headerlink" href="#print-the-minimum-maximum-and-mean-intensity-value-of-raw-image" title="Link to this heading">#</a></h3>
+<section id="exercise-print-the-minimum-maximum-and-mean-intensity-value-of-raw-image">
+<h3 style="color: black; background-color: rgb(252,185,118); padding: 3px; border-radius: 5px;">✍️ Exercise: Print the minimum, maximum, and mean intensity value of <code class="docutils literal notranslate"><span class="pre">raw_image</span></code><a class="headerlink" href="#exercise-print-the-minimum-maximum-and-mean-intensity-value-of-raw-image" title="Link to this heading">#</a></h3>
 <div class="cell tag_teacher docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">raw_image</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>  <span class="c1"># Min pixel value</span>
@@ -1229,7 +1233,7 @@ This notebook is written <strong>like a small interactive book</strong> to compl
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># 1 row, 2 columns, first subplot</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span>
     <span class="n">multichannel</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-    <span class="n">cmap</span><span class="o">=</span><span class="s2">"green"</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="s2">"Greens"</span><span class="p">,</span>
     <span class="n">vmin</span><span class="o">=</span><span class="n">multichannel</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span>
     <span class="n">vmax</span><span class="o">=</span><span class="n">multichannel</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span>
 <span class="p">)</span>
@@ -1239,7 +1243,7 @@ This notebook is written <strong>like a small interactive book</strong> to compl
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># 1 row, 2 columns, second subplot</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span>
     <span class="n">multichannel</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
-    <span class="n">cmap</span><span class="o">=</span><span class="s2">"magenta"</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="s2">"Purples"</span><span class="p">,</span>
     <span class="n">vmin</span><span class="o">=</span><span class="n">multichannel</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span>
     <span class="n">vmax</span><span class="o">=</span><span class="n">multichannel</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span>
 <span class="p">)</span>
@@ -1396,7 +1400,7 @@ X = Columns in an Image</p>
 <h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Next Steps<a class="headerlink" href="#next-steps" title="Link to this heading">#</a></h2>
 <p>Congratulations for making it to the end of this lesson! You have now started learning how to work with images in Python! However, just as with syntax, there is always more to learn when it comes to mastering a programming language and mindset. Below is another resource we recommend to review concepts and build upon your new-found knowledge.</p>
 <p><strong>1. BoBiAC Exercises:</strong>
-<a class="reference internal" href="#working_with_bioimages.md"><span class="xref myst">Working with Bioimages</span></a></p>
+<a class="reference internal" href="../10_bobiac_exercises/working_with_bioimages.html"><span class="std std-doc">Working with Bioimages</span></a></p>
 <p><strong>2. Reviewing Images &amp; Pixels with Python:</strong>
 <a class="reference external" href="https://bioimagebook.github.io/index.html">Pete Bankhead’s Introduction to Bioimage Analysis Book</a> is a self-paced beginner resource that covers many of the core topics introduced in this lesson within the “Introducing Images” section.</p>
 </section>
@@ -1460,7 +1464,7 @@ X = Columns in an Image</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#viewing-an-image-s-shape">Viewing an image’s shape</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#viewing-an-image-s-dtype">Viewing an image’s dtype</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#viewing-an-image-s-type">Viewing an image’s type</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#print-your-image-s-shape-dtype-and-type">✍️ Print your image’s shape, dtype, and type</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-print-your-image-s-shape-dtype-and-type">✍️ Exercise: Print your image’s shape, dtype, and type</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-numpy-arrays">1. Introduction to NumPy Arrays</a><ul class="nav section-nav flex-column">
@@ -1468,6 +1472,7 @@ X = Columns in an Image</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-is-an-external-python-library"><code class="docutils literal notranslate"><span class="pre">numpy</span></code> is an external Python library</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-a-2d-image-is-organized-in-a-numpy-array">How a 2D image is organized in a <code class="docutils literal notranslate"><span class="pre">numpy</span></code> array</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-view-an-image-as-a-numpy-array">How to view an image as a numpy array</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-import-numpy">✍️ Exercise: Import <code class="docutils literal notranslate"><span class="pre">numpy</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-run-the-cell-to-view-an-image-as-a-numpy-array">📓 Example: Run the cell to view an image as a numpy array</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-array-indexing"><code class="docutils literal notranslate"><span class="pre">numpy</span></code> array indexing</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-guess-the-output-before-running-the-code">✍️ Exercise: Guess the output before running the code!</a></li>
@@ -1485,7 +1490,7 @@ X = Columns in an Image</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-print-the-first-column-of-pixel-values-in-raw-image">✍️ Exercise: Print the <strong>first column</strong> of pixel values in <code class="docutils literal notranslate"><span class="pre">raw_image</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-print-the-middle-row-of-pixel-values-in-raw-image">✍️ Exercise: Print the <strong>middle row</strong> of pixel values in <code class="docutils literal notranslate"><span class="pre">raw_image</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-access-pixel-statistics-from-a-numpy-array">How to access pixel statistics from a numpy array</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#print-the-minimum-maximum-and-mean-intensity-value-of-raw-image">✍️ Print the minimum, maximum, and mean intensity value of <code class="docutils literal notranslate"><span class="pre">raw_image</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-print-the-minimum-maximum-and-mean-intensity-value-of-raw-image">✍️ Exercise: Print the minimum, maximum, and mean intensity value of <code class="docutils literal notranslate"><span class="pre">raw_image</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multidimensional-images">2. Multidimensional Images</a><ul class="nav section-nav flex-column">
