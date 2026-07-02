@@ -72,17 +72,36 @@ jobs:
           uv run ./build.sh
           touch ./_build/.nojekyll
 
-      # Deploy main branch to root
+      # Preserve the /2025/ subfolder (published from the 2025 branch) so the
+      # clean root deploy below does not delete it. We pull the existing 2025/
+      # tree off gh-pages and drop it into the publish dir.
+      - name: Restore /2025/ subfolder from gh-pages
+        if: github.ref == 'refs/heads/main'
+        run: |
+          if git fetch --depth=1 origin gh-pages 2>/dev/null; then
+            git archive FETCH_HEAD -- 2025 2>/dev/null | tar -x -C ./_build/html \
+              && echo "Restored /2025/ subfolder into the publish dir" \
+              || echo "No /2025/ subfolder found on gh-pages (nothing to preserve)"
+          else
+            echo "gh-pages branch does not exist yet; nothing to preserve"
+          fi
+
+      # Deploy main branch to root.
+      # keep_files: false replaces the published tree with the fresh build, so
+      # stale files (e.g. from renamed/renumbered chapters) are removed instead
+      # of piling up. The /2025/ subfolder is preserved by the step above.
       - name: Deploy main to root
         if: github.ref == 'refs/heads/main'
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./_build/html
-          keep_files: true
+          keep_files: false
           destination_dir: .
 
-      # Deploy 2025 branch to /2025/ subfolder
+      # Deploy 2025 branch to /2025/ subfolder.
+      # keep_files: true is required here so publishing 2025 does NOT wipe the
+      # root site. (The 2025 content is frozen, so it rarely redeploys.)
       - name: Deploy 2025 to subfolder
         if: github.ref == 'refs/heads/2025'
         uses: peaceiris/actions-gh-pages@v4
