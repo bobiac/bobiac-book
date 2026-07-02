@@ -10,12 +10,10 @@
 
 The following lesson will contain lecture and lab components:
 
-* Lecture: Learn how to write Python code to conduct classical segmentation processing on a single image
-* Lab: Conduct classical segmentation processing in a single image
-* Lecture: Learn how to refine segmentation results in a single image
-* Lab: Refine segmentation results in a single image
-* Lecture: Learn how to adapt the code to process many images
-* Lab: Modify code to process many images
+* **Lecture:** Learn how to conduct classical segmentation processing on a single image
+* **Lab:** Classically segment an image using Python
+* **Lecture:** Learn how to adapt the code to process many images
+* **Lab:** Modify classical segmentation code to process many images
 
 <a
     class="custom-button custom-download-button" href="../../../pdfs/05_segmentation/classic/classic_segmentation.pdf" download> <i class="fas fa-download"></i> Download the Slides
