@@ -96,17 +96,17 @@ exclude_patterns = [
     "build.sh",
     # This is to exclude the specific notebook from the build to speed up the process
     # during development.
-    # "content/01_intro_to_bobiac/**",
-    # "content/02_getting_started_with_python/**",
-    # "content/03_python_basics/**",
-    # "content/04_digital_images_intro/**",
-    # "content/05_segmentation/**",
-    # "content/05_segmentation/classic/**",
-    # "content/05_segmentation/deep_learning/**",
-    # "content/05_segmentation/machine_learning/**",
-    # "content/07_object_classification/**",
-    # "content/08_measurement_and_quantification/**",
-    # "content/09_colocalization/**",
+    # "content/00_intro_to_bobiac/**",
+    # "content/01_getting_started_with_python/**",
+    # "content/02_python_basics/**",
+    # "content/03_digital_images_intro/**",
+    # "content/04_segmentation/**",
+    # "content/04_segmentation/classic/**",
+    # "content/04_segmentation/deep_learning/**",
+    # "content/04_segmentation/machine_learning/**",
+    # "content/06_object_classification/**",
+    # "content/07_measurement_and_quantification/**",
+    # "content/08_colocalization/**",
 ]
 
 myst_substitutions = {
