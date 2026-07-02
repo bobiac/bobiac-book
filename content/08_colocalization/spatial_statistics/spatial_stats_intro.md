@@ -11,11 +11,12 @@ Each notebook will focus on a question:
 To answer these questions, we will introduce the following concepts:
 | Concept | Purpose |
 |---------|---------|
-| `complete spatial randomness` method | Use randomly generated patterns as a control |
-| `KD-tree` | Use for efficient neighbor search |
-| `nearest neighbor` metric | A metric to quantify spatial proximity |
-| `Clark-Evans index` | A metric to quantify spatial proximity |
-| `Ripleys L` | A metric to quantify spatial proximity |
+| `Complete Spatial Randomness` method | A null distribution where all object locations are randomly distributed |
+| `KD-tree` | A data structure for efficient nearest neighbor search |
+| `Nearest Neighbor` relationship | A formalism to establish spatial relationships between objects |
+| `Nearest Neighbor Distance` | A metric to quantify spatial relationships between objects |
+| `Clark-Evans Index` | An index that reports whether a distribution of objects is randomly distributed |
+| `Ripley's L` | A method to assess the length scale of clustering / dispersion |
 
 ### Dataset
 Our data consists of fluorescence images with five channels:
