@@ -39,7 +39,7 @@
 - Exercise after Cellpose and Spotiflow - using the `Spot Detection Dataset` (we used it in Spotiflow notebook to get the spots but no segmentation). They need to run both cellpose and spotiflow on the dataset since it will be used by Max.
 - Measurement & Quantification (`bobiac_exercises_oscillations.zip` dataset)
 
-## Download All Course Materials
+<!-- ## Download All Course Materials
 
 <div class="custom-button-row" style="text-align: center; margin: 20px 0;">
     <a
@@ -67,4 +67,4 @@
         class="custom-button custom-download-button" href="https://github.com/bobiac/bobiac-book/releases/download/data-bobiac-2026/bobiac_data_all.zip">
         <i class="fas fa-download"></i> Download All Course Data
     </a>
-</div>
+</div> -->
