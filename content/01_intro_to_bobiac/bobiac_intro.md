@@ -1,4 +1,4 @@
-# 01 - <i class="fas fa-image"></i> Introduction to BoBiAC
+# 01 - <i class="fas fa-laptop-code"></i> Introduction to BoBiAC
 
 <a
     class="custom-button custom-download-button" href="../../pdfs/01_intro_to_bobiac/bobiac_intro.pdf" download> <i class="fas fa-download"></i> Download the Slides
