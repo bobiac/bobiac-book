@@ -20,7 +20,7 @@ nbclient.exceptions.CellExecutionError: An error occurred while executing the fo
 ------------------
 # define the paths to the second image and its corresponding label mask
 image_path_2 = Path(
-    "../../_static/images/quant/01_measurement_quantification/images/F02_92w1.TIF"
+    "../../_static/images/quant/01_measurement_quantification/images/F02_92.TIF"
 )
 label_path_2 = Path(
     "../../_static/images/quant/01_measurement_quantification/masks/F02_92w1.TIF"
@@ -93,5 +93,5 @@ print(df_2.head())
 [32m  12773[39m             )
 [32m  12774[39m             self._close = [38;5;28;01mTrue[39;00m
 
-[31mFileNotFoundError[39m: [Errno 2] No such file or directory: '/home/runner/work/bobiac-book/bobiac-book/_static/images/quant/01_measurement_quantification/images/F02_92w1.TIF'
+[31mFileNotFoundError[39m: [Errno 2] No such file or directory: '/home/runner/work/bobiac-book/bobiac-book/_static/images/quant/01_measurement_quantification/images/F02_92.TIF'
 

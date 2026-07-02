@@ -29,7 +29,7 @@
 <link href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" rel="stylesheet" type="text/css"/>
 <link href="../../_static/sphinx-thebe.css?v=4fa983c6" rel="stylesheet" type="text/css"/>
 <link href="../../_static/sphinx-design.min.css?v=95c83b7e" rel="stylesheet" type="text/css"/>
-<link href="../../_static/styles/custom.css?v=fc1e9281" rel="stylesheet" type="text/css"/>
+<link href="../../_static/styles/custom.css?v=db811428" rel="stylesheet" type="text/css"/>
 <!-- So that users can add custom icons -->
 <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
 <!-- Pre-loaded scripts that we'll load fully later -->
@@ -52,7 +52,7 @@
 <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
 <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
 <script>DOCUMENTATION_OPTIONS.pagename = 'content/06_object_classification/object_classification_with_ilastik';</script>
-<script src="../../_static/scripts/custom.js?v=976628f9"></script>
+<script src="../../_static/scripts/custom.js?v=c465b8ac"></script>
 <link href="../../genindex.html" rel="index" title="Index"/>
 <link href="../../search.html" rel="search" title="Search"/>
 <link href="../07_measurement_and_quantification/measurement_and_quantification_intro.html" rel="next" title="07 - Measurements &amp; Quantification"/>
@@ -107,40 +107,48 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Course Material</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../01_intro_to_bobiac/bobiac_intro.html">01 - <i class="fas fa-image"></i> Introduction to BoBiAC</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../02_getting_started_with_python/getting_started_with_python.html">02 - <i class="fab fa-python"></i> Getting Started with Python and <code class="docutils literal notranslate"><span class="pre">uv</span></code></a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../03_python_basics/python_basics.html">03 - <i class="fab fa-python"></i> Python Basics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../03_python_basics/python_basics_notebook.html">The Python Basics Notebook</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../03_python_basics/error_notebook.html">Errors Everywhere</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../00_intro_to_bobiac/bobiac_intro.html">00 - <i class="fas fa-laptop-code"></i> Introduction to BoBiAC</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01_getting_started_with_python/python_landing_page.html">01 - <i class="fab fa-python"></i> Getting Started with Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../01_getting_started_with_python/python_intro.html">Introduction to Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01_getting_started_with_python/getting_started_with_uv.html">Getting started with uv</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../04_digital_images_intro/digital_images_intro.html">04 - <i class="fas fa-table-cells"></i> Introduction to Digital Images</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../04_digital_images_intro/python_for_bioimage_analysis.html">Working with Bioimages in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_getting_started_with_python/jupyter_notebooks_and_juv.html">Jupyter Notebooks and juv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_getting_started_with_python/glossary.html">Glossary</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../05_segmentation/segmentation_intro.html">05 - <i class="fa-solid fa-disease"></i> Image Segmentation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../05_segmentation/classic/classic.html">Classical Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="../05_segmentation/classic/classic_segmentation.html">Classical Segmentation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../02_python_basics/python_basics.html">02 - <i class="fab fa-python"></i> Python Basics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02_python_basics/python_basics_notebook.html">The Python Basics Notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02_python_basics/error_notebook.html">Errors Everywhere</a></li>
 </ul>
 </details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../05_segmentation/machine_learning/machine_learning.html">Machine Learning Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="../05_segmentation/machine_learning/intro_to_ilastik.html">Introduction to Ilastik</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../05_segmentation/machine_learning/pixel_classification_with_ilastik.html">Ilastik for Pixel Classification</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../05_segmentation/machine_learning/from_ilastik_masks_to_labels.html">From Ilastik Masks to Labels</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../03_digital_images_intro/digital_images_intro.html">03 - <i class="fas fa-table-cells"></i> Introduction to Digital Images</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../03_digital_images_intro/working_with_bioimages_in_python.html">Working with Bioimages in Python</a></li>
 </ul>
 </details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../05_segmentation/deep_learning/deep_learning.html">Deep Learning Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="../05_segmentation/deep_learning/intro_to_cellpose.html">Introduction to Cellpose</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../05_segmentation/deep_learning/cellpose_notebook.html">Cellpose in Python</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../05_segmentation/deep_learning/cellpose_retraining.html">Retraining Cellpose on Custom Data</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../04_segmentation/segmentation_intro.html">04 - <i class="fa-solid fa-disease"></i> Image Segmentation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../04_segmentation/classic/classic.html">Classical Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../04_segmentation/classic/classic_segmentation.html">Classical Segmentation</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../04_segmentation/machine_learning/machine_learning.html">Machine Learning Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../04_segmentation/machine_learning/intro_to_ilastik.html">Introduction to Ilastik</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../04_segmentation/machine_learning/pixel_classification_with_ilastik.html">Ilastik for Pixel Classification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../04_segmentation/machine_learning/from_ilastik_masks_to_labels.html">From Ilastik Masks to Labels</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../04_segmentation/deep_learning/deep_learning.html">Deep Learning Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../04_segmentation/deep_learning/intro_to_cellpose.html">Introduction to Cellpose</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../04_segmentation/deep_learning/cellpose_notebook.html">Cellpose in Python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../04_segmentation/deep_learning/cellpose_retraining.html">Retraining Cellpose on Custom Data</a></li>
 </ul>
 </details></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../00_spot_detection/spot_detection_intro.html">00 - <i class="fa-solid fa-crosshairs"></i> Spot Detection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../00_spot_detection/intro_to_spotiflow.html">Introduction to Spotiflow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../00_spot_detection/spotiflow_notebook.html">Spotiflow in Python</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../00_spot_detection/spotiflow_retraining.html">Finetuning or Training Spotiflow on Custom Data</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../05_spot_detection/spot_detection_intro.html">05 - <i class="fa-solid fa-crosshairs"></i> Spot Detection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../05_spot_detection/intro_to_spotiflow.html">Introduction to Spotiflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05_spot_detection/spotiflow_notebook.html">Spotiflow in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05_spot_detection/spotiflow_retraining.html">Finetuning or Training Spotiflow on Custom Data</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="object_classification.html">06 - <i class="fa-solid fa-shapes"></i> Object Classification</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
@@ -148,7 +156,8 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../07_measurement_and_quantification/measurement_and_quantification_intro.html">07 - <i class="fa-solid fa-chart-simple"></i> Measurements &amp; Quantification</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../07_measurement_and_quantification/measurement_and_quantification_notebook.html">Measurements &amp; Quantification Notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07_measurement_and_quantification/A_measurement_pipeline.html">Measurement Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07_measurement_and_quantification/B_nested_objects.html">Nested Measurements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../07_measurement_and_quantification/background_correction_notebook.html">Background Correction</a></li>
 </ul>
 </details></li>
@@ -158,15 +167,10 @@
 <li class="toctree-l3"><a class="reference internal" href="../08_colocalization/intensity_based/pixel_intensity_based_colocalization_manders.html">Manders’ Colocalization Coefficients</a></li>
 </ul>
 </details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../08_colocalization/object_based/object_based_colocalization_intro.html">Object-based Colocalization</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="../08_colocalization/object_based/object_based_colocalization.html">Object-based colocalization analysis</a></li>
-</ul>
-</details></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../08_colocalization/spatial_statistics/spatial_stats_intro.html">Spatial Statistics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="../08_colocalization/spatial_statistics/notebook_1.html">Notebook 1: Does a protein cluster?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../08_colocalization/spatial_statistics/notebook_2.html">Notebook 2: Do two different protein clusters co-localize?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../08_colocalization/spatial_statistics/notebook_3.html">Notebook 3: Does a protein localize to a cellular compartment?</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../08_colocalization/spatial_statistics/spatial_statistics.html">Spatial statistics</a></li>
 </ul>
 </details></li>
 </ul>
@@ -175,7 +179,8 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">BoBiAC Exercises</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../09_bobiac_exercises/bobiac_exercises.html">BoBiAC Exercises</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../09_bobiac_exercises/uv_and_juv.html"><code class="docutils literal notranslate"><span class="pre">uv</span></code> and <code class="docutils literal notranslate"><span class="pre">juv</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09_bobiac_exercises/uv.html">uv Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09_bobiac_exercises/juv.html">juv Exercises</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../09_bobiac_exercises/working_with_bioimages.html">Working with Bioimages</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../09_bobiac_exercises/classic_segmentation.html">Classic Segmentation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../09_bobiac_exercises/group_work_1.html">Group Work 1</a></li>
@@ -203,6 +208,7 @@
 <li class="toctree-l1"><a class="reference external" href="https://www.linkedin.com/in/federicogasparoli">Federico Gasparoli, PhD</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://www.linkedin.com/in/eva-de-la-serna-b1a69664">Eva de la Serna, PhD</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://orcid.org/0000-0001-6194-9568">Max Brambach, PhD</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.linkedin.com/in/amelie-andreas-542b93204">Amelie Andreas</a></li>
 </ul>
 </div>
 </nav></div>
@@ -281,8 +287,8 @@
 <article class="bd-article">
 <section class="tex2jax_ignore mathjax_ignore" id="ilastik-for-object-classification">
 <h1>Ilastik for Object Classification<a class="headerlink" href="#ilastik-for-object-classification" title="Link to this heading">#</a></h1>
-<p>In this section, we will explore how to use <strong>Ilastik</strong> for <a class="reference external" href="https://www.ilastik.org/documentation/objects/objects"><strong>object classification</strong></a>. This process is very similar to what we have done in the <a class="reference internal" href="../05_segmentation/machine_learning/pixel_classification_with_ilastik.html"><span class="std std-doc"><strong>pixel classification</strong></span></a> section and still involves training a machine learning model. However, instead of classifying pixels, we will <strong>classify entire objects</strong> based on <strong>instance segmentation</strong> images.</p>
-<p>In this exercise, we will use the <strong>instance segmentation</strong> data from the nuclei dataset that we generated from the <a class="reference internal" href="../05_segmentation/machine_learning/from_ilastik_masks_to_labels.html"><span class="std std-doc">From Ilastik Masks to Labels</span></a> exercise and train a model to separate cells into <em>mitotic</em> vs <em>non-mitotic</em> states. We will also need the raw data from the <a download="" href="https://github.com/bobiac/bobiac-book/releases/download/data-bobiac-2026/05_segmentation_ilastik.zip"> <i class="fas fa-download"></i> Ilastik Pixel Classification Dataset</a> we used to generate the instance segmentation images.</p>
+<p>In this section, we will explore how to use <strong>Ilastik</strong> for <a class="reference external" href="https://www.ilastik.org/documentation/objects/objects"><strong>object classification</strong></a>. This process is very similar to what we have done in the <a class="reference internal" href="../04_segmentation/machine_learning/pixel_classification_with_ilastik.html"><span class="std std-doc"><strong>pixel classification</strong></span></a> section and still involves training a machine learning model. However, instead of classifying pixels, we will <strong>classify entire objects</strong> based on <strong>instance segmentation</strong> images.</p>
+<p>In this exercise, we will use the <strong>instance segmentation</strong> data from the nuclei dataset that we generated from the <a class="reference internal" href="../04_segmentation/machine_learning/from_ilastik_masks_to_labels.html"><span class="std std-doc">From Ilastik Masks to Labels</span></a> exercise and train a model to separate cells into <em>mitotic</em> vs <em>non-mitotic</em> states. We will also need the raw data from the <a download="" href="https://github.com/bobiac/bobiac-book/releases/download/data-bobiac-2026/04_segmentation_ilastik.zip"> <i class="fas fa-download"></i> Ilastik Pixel Classification Dataset</a> we used to generate the instance segmentation images.</p>
 <div class="alert alert-info">
 <strong>NOTE:</strong> Ilastik supports a variety of <a href="https://www.ilastik.org/documentation/basics/dataselection#formats" target="_blank">data formats</a>. For simplicity and ease of use during this course, we will use images saved as <strong>.tif</strong> files. However, Ilastik recommends using files saved as <strong>.h5</strong> for [optimal performance](https://www.ilastik.org/documentation/basics/performance_tips). If you wish to use your own dataset and need to convert your files to <strong>.h5</strong>, Ilastik provides tools such as a <a href="https://www.ilastik.org/documentation/fiji_export/plugin" target="_blank">Fiji plugin</a> or a <a href="https://github.com/ilastik/ilastik/tree/main/notebooks/h5convert" target="_blank">Jupyter Notebook</a> with instructions.
 </div>
@@ -294,10 +300,10 @@
 <p>When you open <strong>Ilastik</strong>, you will see the <a class="reference external" href="https://www.ilastik.org/documentation/basics/startup">Startup Screen</a> with various workflows.</p>
 <p>There are two options for the <strong>Object Classification</strong> workflow:</p>
 <ul class="simple">
-<li><p><strong>Start from Pixel Predictions Map</strong>: You can use the <em>probability maps</em> generated with the <a class="reference internal" href="../05_segmentation/machine_learning/pixel_classification_with_ilastik.html"><span class="std std-doc">Pixel Classification</span></a> workflow, as Ilastik has a built-in way of converting <em>probability</em> map images to instance segmentation images.</p></li>
+<li><p><strong>Start from Pixel Predictions Map</strong>: You can use the <em>probability maps</em> generated with the <a class="reference internal" href="../04_segmentation/machine_learning/pixel_classification_with_ilastik.html"><span class="std std-doc">Pixel Classification</span></a> workflow, as Ilastik has a built-in way of converting <em>probability</em> map images to instance segmentation images.</p></li>
 <li><p><strong>Start from Segmentation</strong>: You can directly load pre-existing <em>semantic</em> or <em>instance segmentation</em> images.</p></li>
 </ul>
-<p>For this exercise, we will use the <em>Instance Segmentation</em> images that we generated in the previous <a class="reference internal" href="../05_segmentation/machine_learning/from_ilastik_masks_to_labels.html"><span class="std std-doc">From Ilastik Masks to Labels</span></a> exercise. Note that Ilastik’s <em>object classification</em> workflow can be used with segmentation results from any source, including Deep Learning approaches that we will explore later in this course.</p>
+<p>For this exercise, we will use the <em>Instance Segmentation</em> images that we generated in the previous <a class="reference internal" href="../04_segmentation/machine_learning/from_ilastik_masks_to_labels.html"><span class="std std-doc">From Ilastik Masks to Labels</span></a> exercise. Note that Ilastik’s <em>object classification</em> workflow can be used with segmentation results from any source, including Deep Learning approaches that we will explore later in this course.</p>
 <div class="alert alert-info">
 <strong>NOTE:</strong> If you want to use semantic segmentation images, make sure that all objects you are considering are clearly separated. With semantic segmentation, touching or overlapping objects cannot be distinguished as individual entities, which can affect the classification accuracy. For better results, especially when dealing with touching objects, it is recommended to use instance segmentation images where each object is already individually labeled and separated.
 </div>
@@ -309,7 +315,7 @@
 </section>
 <section id="load-the-image-data">
 <h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">2. Load the Image Data<a class="headerlink" href="#load-the-image-data" title="Link to this heading">#</a></h3>
-<p>The data loading step is similar to the one in the <a class="reference internal" href="../05_segmentation/machine_learning/pixel_classification_with_ilastik.html"><span class="std std-doc">Pixel Classification</span></a> workflow (<em>Drag and drop</em> your image files into the <em><strong>Add New…</strong></em> field). However, in this case, we will need to load not only the <em>raw data</em> in the <em><strong>Raw Data</strong></em> tab, but also the <em>instance segmentation</em> images in the <em><strong>Segmentation Image</strong></em> tab. To create a robust classifier, you should load multiple images from the dataset.</p>
+<p>The data loading step is similar to the one in the <a class="reference internal" href="../04_segmentation/machine_learning/pixel_classification_with_ilastik.html"><span class="std std-doc">Pixel Classification</span></a> workflow (<em>Drag and drop</em> your image files into the <em><strong>Add New…</strong></em> field). However, in this case, we will need to load not only the <em>raw data</em> in the <em><strong>Raw Data</strong></em> tab, but also the <em>instance segmentation</em> images in the <em><strong>Segmentation Image</strong></em> tab. To create a robust classifier, you should load multiple images from the dataset.</p>
 <p>It is important that the <strong>order of the images in both tabs matches</strong>, as Ilastik will use the <em>instance segmentation</em> images to identify and classify the objects in the corresponding <em>raw data</em> images.
 By clicking on the <em><strong>Summary</strong></em> tab, you can verify that the images are correctly paired.</p>
 <div align="center"> <img alt="Ilastik" src="../../_static/images/ilastik_obj_classification/2a.png" width="800"/> </div>
@@ -371,7 +377,7 @@ Next, repeat the process for the <em><strong>non-mitotic</strong></em> class, se
 </section>
 <section id="what-s-next">
 <h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">7. What’s Next?<a class="headerlink" href="#what-s-next" title="Link to this heading">#</a></h3>
-<p>The output of this classifier is very similar to the one we obtained in the <a class="reference internal" href="../05_segmentation/machine_learning/pixel_classification_with_ilastik.html"><span class="std std-doc">Pixel Classification</span></a> section. However, instead of pixel-wise predictions, we have object-wise predictions. In these images, each nucleus that has been classified as <em>mitotic</em> will have a value of 1, while each nucleus that has been classified as <em>non-mitotic</em> will have a value of 2. You could use this information to then analyze cells based on the cell cycle stage.</p>
+<p>The output of this classifier is very similar to the one we obtained in the <a class="reference internal" href="../04_segmentation/machine_learning/pixel_classification_with_ilastik.html"><span class="std std-doc">Pixel Classification</span></a> section. However, instead of pixel-wise predictions, we have object-wise predictions. In these images, each nucleus that has been classified as <em>mitotic</em> will have a value of 1, while each nucleus that has been classified as <em>non-mitotic</em> will have a value of 2. You could use this information to then analyze cells based on the cell cycle stage.</p>
 </section>
 </section>
 </section>

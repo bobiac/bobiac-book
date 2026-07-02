@@ -29,7 +29,7 @@
 <link href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" rel="stylesheet" type="text/css"/>
 <link href="../../_static/sphinx-thebe.css?v=4fa983c6" rel="stylesheet" type="text/css"/>
 <link href="../../_static/sphinx-design.min.css?v=95c83b7e" rel="stylesheet" type="text/css"/>
-<link href="../../_static/styles/custom.css?v=fc1e9281" rel="stylesheet" type="text/css"/>
+<link href="../../_static/styles/custom.css?v=db811428" rel="stylesheet" type="text/css"/>
 <!-- So that users can add custom icons -->
 <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
 <!-- Pre-loaded scripts that we'll load fully later -->
@@ -52,9 +52,11 @@
 <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
 <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
 <script>DOCUMENTATION_OPTIONS.pagename = 'content/07_measurement_and_quantification/A_measurement_pipeline';</script>
-<script src="../../_static/scripts/custom.js?v=976628f9"></script>
+<script src="../../_static/scripts/custom.js?v=c465b8ac"></script>
 <link href="../../genindex.html" rel="index" title="Index"/>
 <link href="../../search.html" rel="search" title="Search"/>
+<link href="B_nested_objects.html" rel="next" title="Nested Measurements"/>
+<link href="measurement_and_quantification_intro.html" rel="prev" title="07 - Measurements &amp; Quantification"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="en" name="docsearch:language"/>
 <meta content="" name="docsearch:version"/>
@@ -104,49 +106,58 @@
 </li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Course Material</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../01_intro_to_bobiac/bobiac_intro.html">01 - <i class="fas fa-image"></i> Introduction to BoBiAC</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../02_getting_started_with_python/getting_started_with_python.html">02 - <i class="fab fa-python"></i> Getting Started with Python and <code class="docutils literal notranslate"><span class="pre">uv</span></code></a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../03_python_basics/python_basics.html">03 - <i class="fab fa-python"></i> Python Basics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../03_python_basics/python_basics_notebook.html">The Python Basics Notebook</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../03_python_basics/error_notebook.html">Errors Everywhere</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../00_intro_to_bobiac/bobiac_intro.html">00 - <i class="fas fa-laptop-code"></i> Introduction to BoBiAC</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01_getting_started_with_python/python_landing_page.html">01 - <i class="fab fa-python"></i> Getting Started with Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../01_getting_started_with_python/python_intro.html">Introduction to Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01_getting_started_with_python/getting_started_with_uv.html">Getting started with uv</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../04_digital_images_intro/digital_images_intro.html">04 - <i class="fas fa-table-cells"></i> Introduction to Digital Images</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../04_digital_images_intro/python_for_bioimage_analysis.html">Working with Bioimages in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_getting_started_with_python/jupyter_notebooks_and_juv.html">Jupyter Notebooks and juv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_getting_started_with_python/glossary.html">Glossary</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../05_segmentation/segmentation_intro.html">05 - <i class="fa-solid fa-disease"></i> Image Segmentation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../05_segmentation/classic/classic.html">Classical Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="../05_segmentation/classic/classic_segmentation.html">Classical Segmentation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../02_python_basics/python_basics.html">02 - <i class="fab fa-python"></i> Python Basics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02_python_basics/python_basics_notebook.html">The Python Basics Notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02_python_basics/error_notebook.html">Errors Everywhere</a></li>
 </ul>
 </details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../05_segmentation/machine_learning/machine_learning.html">Machine Learning Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="../05_segmentation/machine_learning/intro_to_ilastik.html">Introduction to Ilastik</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../05_segmentation/machine_learning/pixel_classification_with_ilastik.html">Ilastik for Pixel Classification</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../05_segmentation/machine_learning/from_ilastik_masks_to_labels.html">From Ilastik Masks to Labels</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../03_digital_images_intro/digital_images_intro.html">03 - <i class="fas fa-table-cells"></i> Introduction to Digital Images</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../03_digital_images_intro/working_with_bioimages_in_python.html">Working with Bioimages in Python</a></li>
 </ul>
 </details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../05_segmentation/deep_learning/deep_learning.html">Deep Learning Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="../05_segmentation/deep_learning/intro_to_cellpose.html">Introduction to Cellpose</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../05_segmentation/deep_learning/cellpose_notebook.html">Cellpose in Python</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../05_segmentation/deep_learning/cellpose_retraining.html">Retraining Cellpose on Custom Data</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../04_segmentation/segmentation_intro.html">04 - <i class="fa-solid fa-disease"></i> Image Segmentation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../04_segmentation/classic/classic.html">Classical Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../04_segmentation/classic/classic_segmentation.html">Classical Segmentation</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../04_segmentation/machine_learning/machine_learning.html">Machine Learning Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../04_segmentation/machine_learning/intro_to_ilastik.html">Introduction to Ilastik</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../04_segmentation/machine_learning/pixel_classification_with_ilastik.html">Ilastik for Pixel Classification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../04_segmentation/machine_learning/from_ilastik_masks_to_labels.html">From Ilastik Masks to Labels</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../04_segmentation/deep_learning/deep_learning.html">Deep Learning Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../04_segmentation/deep_learning/intro_to_cellpose.html">Introduction to Cellpose</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../04_segmentation/deep_learning/cellpose_notebook.html">Cellpose in Python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../04_segmentation/deep_learning/cellpose_retraining.html">Retraining Cellpose on Custom Data</a></li>
 </ul>
 </details></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../00_spot_detection/spot_detection_intro.html">00 - <i class="fa-solid fa-crosshairs"></i> Spot Detection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../00_spot_detection/intro_to_spotiflow.html">Introduction to Spotiflow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../00_spot_detection/spotiflow_notebook.html">Spotiflow in Python</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../00_spot_detection/spotiflow_retraining.html">Finetuning or Training Spotiflow on Custom Data</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../05_spot_detection/spot_detection_intro.html">05 - <i class="fa-solid fa-crosshairs"></i> Spot Detection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../05_spot_detection/intro_to_spotiflow.html">Introduction to Spotiflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05_spot_detection/spotiflow_notebook.html">Spotiflow in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05_spot_detection/spotiflow_retraining.html">Finetuning or Training Spotiflow on Custom Data</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../06_object_classification/object_classification.html">06 - <i class="fa-solid fa-shapes"></i> Object Classification</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../06_object_classification/object_classification_with_ilastik.html">Ilastik for Object Classification</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="measurement_and_quantification_intro.html">07 - <i class="fa-solid fa-chart-simple"></i> Measurements &amp; Quantification</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="measurement_and_quantification_notebook.html">Measurements &amp; Quantification Notebook</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="measurement_and_quantification_intro.html">07 - <i class="fa-solid fa-chart-simple"></i> Measurements &amp; Quantification</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Measurement Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="B_nested_objects.html">Nested Measurements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="background_correction_notebook.html">Background Correction</a></li>
 </ul>
 </details></li>
@@ -156,15 +167,10 @@
 <li class="toctree-l3"><a class="reference internal" href="../08_colocalization/intensity_based/pixel_intensity_based_colocalization_manders.html">Manders’ Colocalization Coefficients</a></li>
 </ul>
 </details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../08_colocalization/object_based/object_based_colocalization_intro.html">Object-based Colocalization</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="../08_colocalization/object_based/object_based_colocalization.html">Object-based colocalization analysis</a></li>
-</ul>
-</details></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../08_colocalization/spatial_statistics/spatial_stats_intro.html">Spatial Statistics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="../08_colocalization/spatial_statistics/notebook_1.html">Notebook 1: Does a protein cluster?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../08_colocalization/spatial_statistics/notebook_2.html">Notebook 2: Do two different protein clusters co-localize?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../08_colocalization/spatial_statistics/notebook_3.html">Notebook 3: Does a protein localize to a cellular compartment?</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../08_colocalization/spatial_statistics/spatial_statistics.html">Spatial statistics</a></li>
 </ul>
 </details></li>
 </ul>
@@ -173,7 +179,8 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">BoBiAC Exercises</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../09_bobiac_exercises/bobiac_exercises.html">BoBiAC Exercises</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../09_bobiac_exercises/uv_and_juv.html"><code class="docutils literal notranslate"><span class="pre">uv</span></code> and <code class="docutils literal notranslate"><span class="pre">juv</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09_bobiac_exercises/uv.html">uv Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09_bobiac_exercises/juv.html">juv Exercises</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../09_bobiac_exercises/working_with_bioimages.html">Working with Bioimages</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../09_bobiac_exercises/classic_segmentation.html">Classic Segmentation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../09_bobiac_exercises/group_work_1.html">Group Work 1</a></li>
@@ -201,6 +208,7 @@
 <li class="toctree-l1"><a class="reference external" href="https://www.linkedin.com/in/federicogasparoli">Federico Gasparoli, PhD</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://www.linkedin.com/in/eva-de-la-serna-b1a69664">Eva de la Serna, PhD</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://orcid.org/0000-0001-6194-9568">Max Brambach, PhD</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.linkedin.com/in/amelie-andreas-542b93204">Amelie Andreas</a></li>
 </ul>
 </div>
 </nav></div>
@@ -312,16 +320,14 @@
 <section class="tex2jax_ignore mathjax_ignore" id="measurement-pipeline">
 <h1>Measurement Pipeline<a class="headerlink" href="#measurement-pipeline" title="Link to this heading">#</a></h1>
 <div class="custom-button-row">
-<a class="custom-button custom-download-button" download="" href="../../notebooks/07_measurement_and_quantification/measurement_and_quantification_notebook.ipynb">
+<a class="custom-button custom-download-button" download="" href="../../notebooks/07_measurement_and_quantification/A_measurement_pipeline.ipynb">
 <i class="fas fa-download"></i> Download this Notebook
     </a>
-<a class="custom-button custom-download-button" href="https://colab.research.google.com/github/bobiac/bobiac-book/blob/gh-pages/colab_notebooks/07_measurement_and_quantification/measurement_and_quantification_notebook.ipynb" target="_blank">
+<a class="custom-button custom-download-button" href="https://colab.research.google.com/github/bobiac/bobiac-book/blob/gh-pages/colab_notebooks/07_measurement_and_quantification/A_measurement_pipeline.ipynb" target="_blank">
 <img alt="Open in Colab" class="button-icon" src="../../_static/logo/icon-google-colab.svg"/>
         Open in Colab
     </a>
-</div>
-<p>TODO: Update the links</p>
-<div class="cell docutils container">
+</div><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># /// script</span>
 <span class="c1"># requires-python = "&gt;=3.10"</span>
@@ -1237,7 +1243,7 @@ Index: []
 <li><p>Print only the first ten rows.</p></li>
 <li><p>Print all rows where the <code class="docutils literal notranslate"><span class="pre">perimeter</span></code> is smaller than 140 pixels.</p></li>
 <li><p>Print all rows where the <code class="docutils literal notranslate"><span class="pre">area</span></code> is smaller than 1500 pixesl or the <code class="docutils literal notranslate"><span class="pre">minimum</span> <span class="pre">intensity</span></code> exceeds 0.08.</p></li>
-<li><p>BONUS: Print the <code class="docutils literal notranslate"><span class="pre">area</span></code> of all rows where <code class="docutils literal notranslate"><span class="pre">instensity_std</span></code> is less than 0.5.</p></li>
+<li><p>BONUS: Print the <code class="docutils literal notranslate"><span class="pre">area</span></code> of all rows where <code class="docutils literal notranslate"><span class="pre">instensity_std</span></code> is less than 100.</p></li>
 </ol>
 <div class="cell tag_teacher docutils container">
 <div class="cell_input docutils container">
@@ -1257,8 +1263,8 @@ Index: []
 <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span> <span class="o">+</span> <span class="s2">"="</span> <span class="o">*</span> <span class="mi">80</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
 
 <span class="c1"># 4. BONUS: Print the area of all rows where intensity_std is less than 0.5</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Area of rows where intensity_std &lt; 0.5:"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">"intensity_std"</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">0.5</span><span class="p">][</span><span class="s2">"area"</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Area of rows where intensity_std &lt; 100:"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">"intensity_std"</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">][</span><span class="s2">"area"</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1332,8 +1338,9 @@ Rows where area &lt; 1500 OR intensity_min &gt; 0.08:
 
 ================================================================================
 
-Area of rows where intensity_std &lt; 0.5:
-Series([], Name: area, dtype: float64)
+Area of rows where intensity_std &lt; 100:
+31    1537.0
+Name: area, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -1652,7 +1659,7 @@ Name: area, dtype: float64
 </div>
 </div>
 </div>
-<p>This is a table of common statistics that can be used either as e.g. <code class="docutils literal notranslate"><span class="pre">df['area'].mean()</span></code> or `df[‘area’].agg([‘mean’]).</p>
+<p>This is a table of common statistics that can be used either as e.g. <code class="docutils literal notranslate"><span class="pre">df['area'].mean()</span></code> or <code class="docutils literal notranslate"><span class="pre">df['area'].agg(['mean'])</span></code>.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Function</p></th>
@@ -1765,7 +1772,7 @@ Name: circularity, dtype: float64
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># define the paths to the second image and its corresponding label mask</span>
 <span class="n">image_path_2</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span>
-    <span class="s2">"../../_static/images/quant/01_measurement_quantification/images/F02_92w1.TIF"</span>
+    <span class="s2">"../../_static/images/quant/01_measurement_quantification/images/F02_92.TIF"</span>
 <span class="p">)</span>
 <span class="n">label_path_2</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span>
     <span class="s2">"../../_static/images/quant/01_measurement_quantification/masks/F02_92w1.TIF"</span>
@@ -1839,7 +1846,14 @@ Name: circularity, dtype: float64
 <span class="g g-Whitespace">  </span><span class="mi">12773</span>             <span class="p">)</span>
 <span class="g g-Whitespace">  </span><span class="mi">12774</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_close</span> <span class="o">=</span> <span class="kc">True</span>
 
-<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: '/home/runner/work/bobiac-book/bobiac-book/_static/images/quant/01_measurement_quantification/images/F02_92w1.TIF'
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: '/home/runner/work/bobiac-book/bobiac-book/_static/images/quant/01_measurement_quantification/images/F02_92.TIF'
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">overlay_labels</span><span class="p">(</span><span class="n">image_2</span><span class="p">,</span> <span class="n">labeled_mask_2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1889,7 +1903,7 @@ To avoid this, we can use the parameter <code class="docutils literal notranslat
 </div>
 </div>
 </div>
-<p>Now we don’t have any <code class="docutils literal notranslate"><span class="pre">NaN</span></code>s anymore. But we have also lost all the new columns we generated on the first dataframe. It is therefore generally advised to merge dataframes before doing calculations or classifications.</p>
+<p>Now we don’t have any <code class="docutils literal notranslate"><span class="pre">NaN</span></code>s anymore. But we have also lost all the new columns we generated on the first dataframe. It is therefore generally advised to merge dataframes before doing calculations or classifications or to perform them in parallel on all dataframes using e.g. a for loop.</p>
 </section>
 <section id="handle-strings-in-dataframes">
 <h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">Handle strings in DataFrames<a class="headerlink" href="#handle-strings-in-dataframes" title="Link to this heading">#</a></h3>
@@ -2118,7 +2132,7 @@ To avoid this, we can use the parameter <code class="docutils literal notranslat
     <span class="n">img_name</span> <span class="o">=</span> <span class="n">image_path</span><span class="o">.</span><span class="n">stem</span>
 
     <span class="c1"># load the image and label mask</span>
-    <span class="n">image</span> <span class="o">=</span> <span class="n">tifffile</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">tifffile</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">image_path</span><span class="p">)[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span>
     <span class="n">mask</span> <span class="o">=</span> <span class="n">tifffile</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">mask_path</span><span class="p">)</span>
     <span class="n">mask</span> <span class="o">=</span> <span class="n">skimage</span><span class="o">.</span><span class="n">segmentation</span><span class="o">.</span><span class="n">clear_border</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>  <span class="c1"># remove boundary objects</span>
 
@@ -2226,6 +2240,20 @@ To avoid this, we can use the parameter <code class="docutils literal notranslat
 </article>
 <footer class="prev-next-footer d-print-none">
 <div class="prev-next-area">
+<a class="left-prev" href="measurement_and_quantification_intro.html" title="previous page">
+<i class="fa-solid fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">previous</p>
+<p class="prev-next-title">07 - <i class="fa-solid fa-chart-simple"></i> Measurements &amp; Quantification</p>
+</div>
+</a>
+<a class="right-next" href="B_nested_objects.html" title="next page">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">next</p>
+<p class="prev-next-title">Nested Measurements</p>
+</div>
+<i class="fa-solid fa-angle-right"></i>
+</a>
 </div>
 </footer>
 </div>

@@ -36,15 +36,15 @@ document.addEventListener('DOMContentLoaded', function () {
 async function downloadPdfs() {
     // Hardcoded list of PDF files in the pdfs directory
     const pdfFiles = [
-        '01_intro_to_bobiac/bobiac_intro.pdf',
-        '02_getting_started_with_python/getting_started_python_uv.pdf',
-        '03_python_basics/python_cheat_sheet.pdf',
-        '04_digital_images_intro/digital_images_intro.pdf',
-        '04_digital_images_intro/working_with_bioimages_in_python_beginners.pdf',
-        '05_segmentation/classic/classic_segmentation.pdf',
-        '08_measurement_and_quantification/introtoquantitativefluorescencemicroscopy.pdf',
-        '09_colocalization/bobiac_coloc_intro.pdf',
-        '09_colocalization/practical_object_based_coloc.pdf'
+        '00_intro_to_bobiac/bobiac_intro.pdf',
+        '01_getting_started_with_python/getting_started_python_uv.pdf',
+        '02_python_basics/python_cheat_sheet.pdf',
+        '03_digital_images_intro/digital_images_intro.pdf',
+        '03_digital_images_intro/working_with_bioimages_in_python_beginners.pdf',
+        '04_segmentation/classic/classic_segmentation.pdf',
+        '07_measurement_and_quantification/introtoquantitativefluorescencemicroscopy.pdf',
+        '08_colocalization/bobiac_coloc_intro.pdf',
+        '08_colocalization/practical_object_based_coloc.pdf'
     ];
     
     // GitHub raw base URL for PDF files
@@ -117,18 +117,18 @@ async function downloadPdfs() {
 async function downloadNotebooks() {
     // Hardcoded list of notebook files in the student notebooks directory
     const notebookFiles = [
-        '03_python_basics/error_notebook.ipynb',
-        '03_python_basics/python_basics_notebook.ipynb',
-        '04_digital_images_intro/working_with_bioimages_in_python.ipynb',
-        '05_segmentation/classic/classic_segmentation.ipynb',
-        '05_segmentation/deep_learning/cellpose_notebook.ipynb',
-        '05_segmentation/machine_learning/from_ilastik_masks_to_labels.ipynb',
-        '08_measurement_and_quantification/background_correction_notebook.ipynb',
-        '08_measurement_and_quantification/measurement_and_quantification_notebook.ipynb',
-        '09_colocalization/object_based_colocalization.ipynb',
-        '09_colocalization/pixel_intensity_based_colocalization_manders.ipynb',
-        '09_colocalization/pixel_intensity_based_colocalization_pearsons.ipynb',
-        '10_student_group/student_work_group.ipynb'
+        '02_python_basics/error_notebook.ipynb',
+        '02_python_basics/python_basics_notebook.ipynb',
+        '03_digital_images_intro/working_with_bioimages_in_python.ipynb',
+        '04_segmentation/classic/classic_segmentation.ipynb',
+        '04_segmentation/deep_learning/cellpose_notebook.ipynb',
+        '04_segmentation/machine_learning/from_ilastik_masks_to_labels.ipynb',
+        '07_measurement_and_quantification/background_correction_notebook.ipynb',
+        '07_measurement_and_quantification/measurement_and_quantification_notebook.ipynb',
+        '08_colocalization/object_based_colocalization.ipynb',
+        '08_colocalization/pixel_intensity_based_colocalization_manders.ipynb',
+        '08_colocalization/pixel_intensity_based_colocalization_pearsons.ipynb',
+        '09_student_group/student_work_group.ipynb'
     ];
     
     // GitHub raw base URL for student notebooks
@@ -201,18 +201,18 @@ async function downloadNotebooks() {
 async function downloadNotebooksTeacher() {
     // Hardcoded list of notebook files in the teacher notebooks directory
     const notebookFiles = [
-        '03_python_basics/error_notebook.ipynb',
-        '03_python_basics/python_basics_notebook.ipynb',
-        '04_digital_images_intro/working_with_bioimages_in_python.ipynb',
-        '05_segmentation/classic/classic_segmentation.ipynb',
-        '05_segmentation/deep_learning/cellpose_notebook.ipynb',
-        '05_segmentation/machine_learning/from_ilastik_masks_to_labels.ipynb',
-        '08_measurement_and_quantification/background_correction_notebook.ipynb',
-        '08_measurement_and_quantification/measurement_and_quantification_notebook.ipynb',
-        '09_colocalization/object_based_colocalization.ipynb',
-        '09_colocalization/pixel_intensity_based_colocalization_manders.ipynb',
-        '09_colocalization/pixel_intensity_based_colocalization_pearsons.ipynb',
-        '10_student_group/[solution]_student_work_group.ipynb'
+        '02_python_basics/error_notebook.ipynb',
+        '02_python_basics/python_basics_notebook.ipynb',
+        '03_digital_images_intro/working_with_bioimages_in_python.ipynb',
+        '04_segmentation/classic/classic_segmentation.ipynb',
+        '04_segmentation/deep_learning/cellpose_notebook.ipynb',
+        '04_segmentation/machine_learning/from_ilastik_masks_to_labels.ipynb',
+        '07_measurement_and_quantification/background_correction_notebook.ipynb',
+        '07_measurement_and_quantification/measurement_and_quantification_notebook.ipynb',
+        '08_colocalization/object_based_colocalization.ipynb',
+        '08_colocalization/pixel_intensity_based_colocalization_manders.ipynb',
+        '08_colocalization/pixel_intensity_based_colocalization_pearsons.ipynb',
+        '09_student_group/[solution]_student_work_group.ipynb'
     ];
     
     // GitHub raw base URL for teacher notebooks

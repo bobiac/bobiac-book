@@ -29,7 +29,7 @@
 <link href="../../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" rel="stylesheet" type="text/css"/>
 <link href="../../../_static/sphinx-thebe.css?v=4fa983c6" rel="stylesheet" type="text/css"/>
 <link href="../../../_static/sphinx-design.min.css?v=95c83b7e" rel="stylesheet" type="text/css"/>
-<link href="../../../_static/styles/custom.css?v=fc1e9281" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/styles/custom.css?v=db811428" rel="stylesheet" type="text/css"/>
 <!-- So that users can add custom icons -->
 <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
 <!-- Pre-loaded scripts that we'll load fully later -->
@@ -52,7 +52,7 @@
 <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
 <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
 <script>DOCUMENTATION_OPTIONS.pagename = 'content/08_colocalization/spatial_statistics/notebook_2';</script>
-<script src="../../../_static/scripts/custom.js?v=976628f9"></script>
+<script src="../../../_static/scripts/custom.js?v=c465b8ac"></script>
 <link href="../../../genindex.html" rel="index" title="Index"/>
 <link href="../../../search.html" rel="search" title="Search"/>
 <link href="notebook_3.html" rel="next" title="Notebook 3: Does a protein localize to a cellular compartment?"/>
@@ -107,40 +107,48 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Course Material</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../01_intro_to_bobiac/bobiac_intro.html">01 - <i class="fas fa-image"></i> Introduction to BoBiAC</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../02_getting_started_with_python/getting_started_with_python.html">02 - <i class="fab fa-python"></i> Getting Started with Python and <code class="docutils literal notranslate"><span class="pre">uv</span></code></a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../03_python_basics/python_basics.html">03 - <i class="fab fa-python"></i> Python Basics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../03_python_basics/python_basics_notebook.html">The Python Basics Notebook</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../03_python_basics/error_notebook.html">Errors Everywhere</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../00_intro_to_bobiac/bobiac_intro.html">00 - <i class="fas fa-laptop-code"></i> Introduction to BoBiAC</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../01_getting_started_with_python/python_landing_page.html">01 - <i class="fab fa-python"></i> Getting Started with Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../01_getting_started_with_python/python_intro.html">Introduction to Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01_getting_started_with_python/getting_started_with_uv.html">Getting started with uv</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../04_digital_images_intro/digital_images_intro.html">04 - <i class="fas fa-table-cells"></i> Introduction to Digital Images</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../04_digital_images_intro/python_for_bioimage_analysis.html">Working with Bioimages in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01_getting_started_with_python/jupyter_notebooks_and_juv.html">Jupyter Notebooks and juv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01_getting_started_with_python/glossary.html">Glossary</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../05_segmentation/segmentation_intro.html">05 - <i class="fa-solid fa-disease"></i> Image Segmentation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../../05_segmentation/classic/classic.html">Classical Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../05_segmentation/classic/classic_segmentation.html">Classical Segmentation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../02_python_basics/python_basics.html">02 - <i class="fab fa-python"></i> Python Basics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../02_python_basics/python_basics_notebook.html">The Python Basics Notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02_python_basics/error_notebook.html">Errors Everywhere</a></li>
 </ul>
 </details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../../05_segmentation/machine_learning/machine_learning.html">Machine Learning Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../05_segmentation/machine_learning/intro_to_ilastik.html">Introduction to Ilastik</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../05_segmentation/machine_learning/pixel_classification_with_ilastik.html">Ilastik for Pixel Classification</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../05_segmentation/machine_learning/from_ilastik_masks_to_labels.html">From Ilastik Masks to Labels</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../03_digital_images_intro/digital_images_intro.html">03 - <i class="fas fa-table-cells"></i> Introduction to Digital Images</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../03_digital_images_intro/working_with_bioimages_in_python.html">Working with Bioimages in Python</a></li>
 </ul>
 </details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../../05_segmentation/deep_learning/deep_learning.html">Deep Learning Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../05_segmentation/deep_learning/intro_to_cellpose.html">Introduction to Cellpose</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../05_segmentation/deep_learning/cellpose_notebook.html">Cellpose in Python</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../05_segmentation/deep_learning/cellpose_retraining.html">Retraining Cellpose on Custom Data</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../04_segmentation/segmentation_intro.html">04 - <i class="fa-solid fa-disease"></i> Image Segmentation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../04_segmentation/classic/classic.html">Classical Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../04_segmentation/classic/classic_segmentation.html">Classical Segmentation</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../04_segmentation/machine_learning/machine_learning.html">Machine Learning Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../04_segmentation/machine_learning/intro_to_ilastik.html">Introduction to Ilastik</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../04_segmentation/machine_learning/pixel_classification_with_ilastik.html">Ilastik for Pixel Classification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../04_segmentation/machine_learning/from_ilastik_masks_to_labels.html">From Ilastik Masks to Labels</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../04_segmentation/deep_learning/deep_learning.html">Deep Learning Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../04_segmentation/deep_learning/intro_to_cellpose.html">Introduction to Cellpose</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../04_segmentation/deep_learning/cellpose_notebook.html">Cellpose in Python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../04_segmentation/deep_learning/cellpose_retraining.html">Retraining Cellpose on Custom Data</a></li>
 </ul>
 </details></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../00_spot_detection/spot_detection_intro.html">00 - <i class="fa-solid fa-crosshairs"></i> Spot Detection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../00_spot_detection/intro_to_spotiflow.html">Introduction to Spotiflow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../00_spot_detection/spotiflow_notebook.html">Spotiflow in Python</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../00_spot_detection/spotiflow_retraining.html">Finetuning or Training Spotiflow on Custom Data</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../05_spot_detection/spot_detection_intro.html">05 - <i class="fa-solid fa-crosshairs"></i> Spot Detection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../05_spot_detection/intro_to_spotiflow.html">Introduction to Spotiflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../05_spot_detection/spotiflow_notebook.html">Spotiflow in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../05_spot_detection/spotiflow_retraining.html">Finetuning or Training Spotiflow on Custom Data</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../06_object_classification/object_classification.html">06 - <i class="fa-solid fa-shapes"></i> Object Classification</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -148,7 +156,8 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../07_measurement_and_quantification/measurement_and_quantification_intro.html">07 - <i class="fa-solid fa-chart-simple"></i> Measurements &amp; Quantification</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../07_measurement_and_quantification/measurement_and_quantification_notebook.html">Measurements &amp; Quantification Notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../07_measurement_and_quantification/A_measurement_pipeline.html">Measurement Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../07_measurement_and_quantification/B_nested_objects.html">Nested Measurements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../07_measurement_and_quantification/background_correction_notebook.html">Background Correction</a></li>
 </ul>
 </details></li>
@@ -158,15 +167,10 @@
 <li class="toctree-l3"><a class="reference internal" href="../intensity_based/pixel_intensity_based_colocalization_manders.html">Manders’ Colocalization Coefficients</a></li>
 </ul>
 </details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../object_based/object_based_colocalization_intro.html">Object-based Colocalization</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="../object_based/object_based_colocalization.html">Object-based colocalization analysis</a></li>
-</ul>
-</details></li>
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="spatial_stats_intro.html">Spatial Statistics</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="notebook_1.html">Notebook 1: Does a protein cluster?</a></li>
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">Notebook 2: Do two different protein clusters co-localize?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="notebook_3.html">Notebook 3: Does a protein localize to a cellular compartment?</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spatial_statistics.html">Spatial statistics</a></li>
 </ul>
 </details></li>
 </ul>
@@ -175,7 +179,8 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">BoBiAC Exercises</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../09_bobiac_exercises/bobiac_exercises.html">BoBiAC Exercises</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../09_bobiac_exercises/uv_and_juv.html"><code class="docutils literal notranslate"><span class="pre">uv</span></code> and <code class="docutils literal notranslate"><span class="pre">juv</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../09_bobiac_exercises/uv.html">uv Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../09_bobiac_exercises/juv.html">juv Exercises</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../09_bobiac_exercises/working_with_bioimages.html">Working with Bioimages</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../09_bobiac_exercises/classic_segmentation.html">Classic Segmentation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../09_bobiac_exercises/group_work_1.html">Group Work 1</a></li>
@@ -203,6 +208,7 @@
 <li class="toctree-l1"><a class="reference external" href="https://www.linkedin.com/in/federicogasparoli">Federico Gasparoli, PhD</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://www.linkedin.com/in/eva-de-la-serna-b1a69664">Eva de la Serna, PhD</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://orcid.org/0000-0001-6194-9568">Max Brambach, PhD</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.linkedin.com/in/amelie-andreas-542b93204">Amelie Andreas</a></li>
 </ul>
 </div>
 </nav></div>
@@ -268,7 +274,7 @@
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-libraries">0. Importing libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-image-mask-and-spot-table">2. Load image, mask and spot table</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualy-inspect-the-images-masks-and-spots">Visualy inspect the images, masks and spots</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visually-inspect-the-images-masks-and-spots">Visually inspect the images, masks and spots</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-an-analysis-plan">3. Make An Analysis Plan</a><ul class="nav section-nav flex-column">
@@ -293,10 +299,11 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-clark-evans-indices">6. Calculate Clark-Evans Indices</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repeat-steps-4-6-with-multiple-random-patterns">7. Repeat Steps 4-6 with Multiple Random Patterns</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#per-cell-colocalization-measurements">8. Per-cell Colocalization Measurements</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-summarise-the-per-cell-co-localisation-analysis-as-a-function">✍️ Exercise: Summarise the per-cell co-localisation analysis as a function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-summarise-the-per-cell-co-localisation-analysis-as-a-function">✍️ Exercise: Summarise the per-cell co-localisation analysis as a function</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#repeat-measurements-for-all-cells">Repeat measurements for all cells</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
 </ul>
 </nav>
 </div>
@@ -307,16 +314,14 @@
 <section class="tex2jax_ignore mathjax_ignore" id="notebook-2-do-two-different-protein-clusters-co-localize">
 <h1>Notebook 2: Do two different protein clusters co-localize?<a class="headerlink" href="#notebook-2-do-two-different-protein-clusters-co-localize" title="Link to this heading">#</a></h1>
 <div class="custom-button-row">
-<a class="custom-button custom-download-button" download="" href="../../notebooks/07_measurement_and_quantification/measurement_and_quantification_notebook.ipynb">
+<a class="custom-button custom-download-button" download="" href="../../notebooks/08_colocalization/spatial_statistics/notebook_2.ipynb">
 <i class="fas fa-download"></i> Download this Notebook
     </a>
-<a class="custom-button custom-download-button" href="https://colab.research.google.com/github/bobiac/bobiac-book/blob/gh-pages/colab_notebooks/07_measurement_and_quantification/measurement_and_quantification_notebook.ipynb" target="_blank">
-<img alt="Open in Colab" class="button-icon" src="../../_static/logo/icon-google-colab.svg"/>
+<a class="custom-button custom-download-button" href="https://colab.research.google.com/github/bobiac/bobiac-book/blob/gh-pages/colab_notebooks/08_colocalization/spatial_statistics/notebook_2.ipynb" target="_blank">
+<img alt="Open in Colab" class="button-icon" src="../../../_static/logo/icon-google-colab.svg"/>
         Open in Colab
     </a>
-</div>
-<p>TODO: Update the links</p>
-<div class="cell docutils container">
+</div><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># /// script</span>
 <span class="c1"># requires-python = "&gt;=3.10"</span>
@@ -329,6 +334,7 @@
 <span class="c1">#     "imagecodecs",</span>
 <span class="c1">#     "pandas",</span>
 <span class="c1">#     "seaborn",</span>
+<span class="c1">#     "bobiac_tools @ git+https://github.com/bobiac/bobiac-tools.git"</span>
 <span class="c1"># ]</span>
 <span class="c1"># ///</span>
 </pre></div>
@@ -379,285 +385,14 @@
 <h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">0. Importing libraries<a class="headerlink" href="#importing-libraries" title="Link to this heading">#</a></h2>
 <div class="cell tag_teacher docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">tqdm</span>
-
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.colors</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mcolors</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.cm</span><span class="w"> </span><span class="kn">import</span> <span class="n">ScalarMappable</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
-
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.spatial</span><span class="w"> </span><span class="kn">import</span> <span class="n">KDTree</span>
-
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">skimage</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">tifffile</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">overlay</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">label_mask</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">id_col</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">measurement_col</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-            <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">vmin</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-            <span class="n">coordinates</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">focus_object</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""</span>
-<span class="sd">    Overlay a segmentation mask on an image, color-coded by a measurement.</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    image : 2D array, list of 2D arrays, or (c, y, x) array, or None</span>
-<span class="sd">        Single image, list of images, or 3D array composited as colored channels:</span>
-<span class="sd">        1 image: grey | 2: red + cyan | 3: magenta + cyan + yellow.</span>
-<span class="sd">    label_mask : 2D array, list of 2D arrays, or (c, y, x) array, or None</span>
-<span class="sd">        Single mask (integer IDs, background=0), list of masks, or 3D array —</span>
-<span class="sd">        each mask shown in a distinct color. If None, only the image is shown.</span>
-<span class="sd">    df : pd.DataFrame, optional</span>
-<span class="sd">        Table with cell IDs and measurements. If None and label_mask is a single</span>
-<span class="sd">        array, cells are shown with random colors and labeled by ID.</span>
-<span class="sd">    id_col : str, optional</span>
-<span class="sd">        Column in df with cell IDs matching label_mask values.</span>
-<span class="sd">    measurement_col : str or None</span>
-<span class="sd">        Column to color cells by (categorical or continuous).</span>
-<span class="sd">    alpha : float</span>
-<span class="sd">        Overlay opacity (0 = transparent, 1 = opaque).</span>
-<span class="sd">    cmap : str or None</span>
-<span class="sd">        Colormap. Defaults: categorical='tab10', continuous='viridis'.</span>
-<span class="sd">    figsize : tuple</span>
-<span class="sd">        Figure size in inches. Adjusted automatically when focus_object is set.</span>
-<span class="sd">    vmin, vmax : float or None</span>
-<span class="sd">        Continuous colormap range. Defaults to data min/max.</span>
-<span class="sd">    coordinates : (N, 2) array, or pd.DataFrame with columns 'x', 'y' [, 'channel']</span>
-<span class="sd">        Points to scatter on top of the image. Array: (row, col) order.</span>
-<span class="sd">        DataFrame: 'x'/'y' columns; if 'channel' column present, one color per channel.</span>
-<span class="sd">    focus_object : int or None</span>
-<span class="sd">        Object ID to zoom into. Crops all data to the object's bounding box</span>
-<span class="sd">        (with 15% padding) and resizes the figure to match.</span>
-
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    fig, ax : matplotlib Figure and Axes</span>
-<span class="sd">    """</span>
-    <span class="c1"># normalize 3D (c, y, x) arrays to list of 2D arrays</span>
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="ow">and</span> <span class="n">image</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
-        <span class="n">image</span> <span class="o">=</span> <span class="p">[</span><span class="n">image</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])]</span>
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">label_mask</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="ow">and</span> <span class="n">label_mask</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
-        <span class="n">label_mask</span> <span class="o">=</span> <span class="p">[</span><span class="n">label_mask</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">label_mask</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])]</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">_normalize</span><span class="p">(</span><span class="n">img</span><span class="p">):</span>
-        <span class="n">img</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
-        <span class="n">img</span> <span class="o">=</span> <span class="p">(</span><span class="n">img</span> <span class="o">-</span> <span class="n">img</span><span class="o">.</span><span class="n">min</span><span class="p">())</span> <span class="o">/</span> <span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">img</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">+</span> <span class="mf">1e-8</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">img</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-            <span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">img</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">img</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">_plot_coordinates</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">coords</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">coords</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">return</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">coords</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
-            <span class="n">colors</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">'tab10'</span><span class="p">)</span><span class="o">.</span><span class="n">colors</span>
-            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">arr</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">coords</span><span class="p">):</span>
-                <span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
-                <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">arr</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">arr</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-                        <span class="n">c</span><span class="o">=</span><span class="p">[</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">colors</span><span class="p">)]],</span>
-                        <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s1">'black'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
-            <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.01</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">'lower left'</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">'channel'</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">coords</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
-            <span class="k">if</span> <span class="s1">'channel'</span> <span class="ow">in</span> <span class="n">coords</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
-                <span class="n">channels</span> <span class="o">=</span> <span class="n">coords</span><span class="p">[</span><span class="s1">'channel'</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
-                <span class="n">colors</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">'tab10'</span><span class="p">)</span><span class="o">.</span><span class="n">colors</span>
-                <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">ch</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">channels</span><span class="p">):</span>
-                    <span class="n">subset</span> <span class="o">=</span> <span class="n">coords</span><span class="p">[</span><span class="n">coords</span><span class="p">[</span><span class="s1">'channel'</span><span class="p">]</span> <span class="o">==</span> <span class="n">ch</span><span class="p">]</span>
-                    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">subset</span><span class="p">[</span><span class="s1">'x'</span><span class="p">],</span> <span class="n">subset</span><span class="p">[</span><span class="s1">'y'</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-                            <span class="n">c</span><span class="o">=</span><span class="p">[</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">colors</span><span class="p">)]],</span>
-                            <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s1">'black'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">ch</span><span class="p">))</span>
-                <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.01</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">'lower left'</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">'channel'</span><span class="p">)</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">coords</span><span class="p">[</span><span class="s1">'x'</span><span class="p">],</span> <span class="n">coords</span><span class="p">[</span><span class="s1">'y'</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-                        <span class="n">c</span><span class="o">=</span><span class="s1">'yellow'</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s1">'black'</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">coords</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">coords</span><span class="p">)</span>
-            <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">coords</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">coords</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-                    <span class="n">c</span><span class="o">=</span><span class="s1">'yellow'</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s1">'black'</span><span class="p">)</span>
-
-    <span class="c1"># compute crop region from focus_object</span>
-    <span class="n">crop</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="k">if</span> <span class="n">focus_object</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">masks_for_crop</span> <span class="o">=</span> <span class="n">label_mask</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">label_mask</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="k">else</span> <span class="p">([</span><span class="n">label_mask</span><span class="p">]</span> <span class="k">if</span> <span class="n">label_mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="p">[])</span>
-        <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">masks_for_crop</span><span class="p">:</span>
-            <span class="n">region</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argwhere</span><span class="p">(</span><span class="n">m</span> <span class="o">==</span> <span class="n">focus_object</span><span class="p">)</span>
-            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">region</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="n">y_min</span><span class="p">,</span> <span class="n">x_min</span> <span class="o">=</span> <span class="n">region</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-                <span class="n">y_max</span><span class="p">,</span> <span class="n">x_max</span> <span class="o">=</span> <span class="n">region</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-                <span class="n">pad</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">y_max</span> <span class="o">-</span> <span class="n">y_min</span><span class="p">,</span> <span class="n">x_max</span> <span class="o">-</span> <span class="n">x_min</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.15</span><span class="p">)</span>
-                <span class="n">mask_h</span><span class="p">,</span> <span class="n">mask_w</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">shape</span>
-                <span class="n">crop</span> <span class="o">=</span> <span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">y_min</span> <span class="o">-</span> <span class="n">pad</span><span class="p">),</span> <span class="nb">min</span><span class="p">(</span><span class="n">mask_h</span><span class="p">,</span> <span class="n">y_max</span> <span class="o">+</span> <span class="n">pad</span><span class="p">),</span>
-                        <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">x_min</span> <span class="o">-</span> <span class="n">pad</span><span class="p">),</span> <span class="nb">min</span><span class="p">(</span><span class="n">mask_w</span><span class="p">,</span> <span class="n">x_max</span> <span class="o">+</span> <span class="n">pad</span><span class="p">))</span>
-                <span class="k">break</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">_apply_crop</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">arr</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">crop</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">arr</span>
-        <span class="n">y0</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">x1</span> <span class="o">=</span> <span class="n">crop</span>
-        <span class="k">return</span> <span class="n">arr</span><span class="p">[</span><span class="n">y0</span><span class="p">:</span><span class="n">y1</span><span class="p">,</span> <span class="n">x0</span><span class="p">:</span><span class="n">x1</span><span class="p">]</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">_offset_coordinates</span><span class="p">(</span><span class="n">coords</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">coords</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">crop</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">coords</span>
-        <span class="n">y0</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">x1</span> <span class="o">=</span> <span class="n">crop</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">coords</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
-            <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
-            <span class="k">for</span> <span class="n">arr</span> <span class="ow">in</span> <span class="n">coords</span><span class="p">:</span>
-                <span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-                <span class="n">in_crop</span> <span class="o">=</span> <span class="p">(</span><span class="n">arr</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">y0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">arr</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">y1</span><span class="p">)</span> <span class="o">&amp;</span> \
-                        <span class="p">(</span><span class="n">arr</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">x0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">arr</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">x1</span><span class="p">)</span>
-                <span class="n">arr</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">in_crop</span><span class="p">]</span>
-                <span class="n">arr</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">-=</span> <span class="n">y0</span>
-                <span class="n">arr</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-=</span> <span class="n">x0</span>
-                <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
-            <span class="k">return</span> <span class="n">result</span>
-        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">coords</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
-            <span class="n">coords</span> <span class="o">=</span> <span class="n">coords</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-            <span class="n">in_crop</span> <span class="o">=</span> <span class="p">(</span><span class="n">coords</span><span class="p">[</span><span class="s1">'x'</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">x0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">coords</span><span class="p">[</span><span class="s1">'x'</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">x1</span><span class="p">)</span> <span class="o">&amp;</span> \
-                    <span class="p">(</span><span class="n">coords</span><span class="p">[</span><span class="s1">'y'</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">y0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">coords</span><span class="p">[</span><span class="s1">'y'</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">y1</span><span class="p">)</span>
-            <span class="n">coords</span> <span class="o">=</span> <span class="n">coords</span><span class="p">[</span><span class="n">in_crop</span><span class="p">]</span>
-            <span class="n">coords</span><span class="p">[</span><span class="s1">'x'</span><span class="p">]</span> <span class="o">=</span> <span class="n">coords</span><span class="p">[</span><span class="s1">'x'</span><span class="p">]</span> <span class="o">-</span> <span class="n">x0</span>
-            <span class="n">coords</span><span class="p">[</span><span class="s1">'y'</span><span class="p">]</span> <span class="o">=</span> <span class="n">coords</span><span class="p">[</span><span class="s1">'y'</span><span class="p">]</span> <span class="o">-</span> <span class="n">y0</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">coords</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">coords</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-            <span class="n">in_crop</span> <span class="o">=</span> <span class="p">(</span><span class="n">coords</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">y0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">coords</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">y1</span><span class="p">)</span> <span class="o">&amp;</span> \
-                    <span class="p">(</span><span class="n">coords</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">x0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">coords</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">x1</span><span class="p">)</span>
-            <span class="n">coords</span> <span class="o">=</span> <span class="n">coords</span><span class="p">[</span><span class="n">in_crop</span><span class="p">]</span>
-            <span class="n">coords</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">-=</span> <span class="n">y0</span>
-            <span class="n">coords</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-=</span> <span class="n">x0</span>
-        <span class="k">return</span> <span class="n">coords</span>
-
-
-    <span class="c1"># adjust figsize to match crop aspect ratio</span>
-    <span class="n">_figsize</span> <span class="o">=</span> <span class="n">figsize</span>
-    <span class="k">if</span> <span class="n">crop</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">y0</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">x1</span> <span class="o">=</span> <span class="n">crop</span>
-        <span class="n">w_px</span><span class="p">,</span> <span class="n">h_px</span> <span class="o">=</span> <span class="n">x1</span> <span class="o">-</span> <span class="n">x0</span><span class="p">,</span> <span class="n">y1</span> <span class="o">-</span> <span class="n">y0</span>
-        <span class="n">scale</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">figsize</span><span class="p">)</span>
-        <span class="n">_figsize</span> <span class="o">=</span> <span class="p">(</span><span class="n">scale</span> <span class="o">*</span> <span class="n">w_px</span> <span class="o">/</span> <span class="nb">max</span><span class="p">(</span><span class="n">w_px</span><span class="p">,</span> <span class="n">h_px</span><span class="p">),</span> <span class="n">scale</span> <span class="o">*</span> <span class="n">h_px</span> <span class="o">/</span> <span class="nb">max</span><span class="p">(</span><span class="n">w_px</span><span class="p">,</span> <span class="n">h_px</span><span class="p">))</span>
-
-    <span class="c1"># --- multiple images: composite colored channels ---</span>
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
-        <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"At most 3 images can be composited. Got </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span>
-        <span class="n">channel_colors</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="mi">1</span><span class="p">:</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span>
-            <span class="mi">2</span><span class="p">:</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span>
-            <span class="mi">3</span><span class="p">:</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)],</span>
-        <span class="p">}[</span><span class="n">n</span><span class="p">]</span>
-        <span class="n">imgs</span> <span class="o">=</span> <span class="p">[</span><span class="n">_normalize</span><span class="p">(</span><span class="n">img</span><span class="p">)[:,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">img</span> <span class="ow">in</span> <span class="n">image</span><span class="p">]</span>
-        <span class="n">h</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="n">imgs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
-        <span class="n">composite</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
-        <span class="k">for</span> <span class="n">img</span><span class="p">,</span> <span class="n">color</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">imgs</span><span class="p">,</span> <span class="n">channel_colors</span><span class="p">):</span>
-            <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
-                <span class="n">composite</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">c</span><span class="p">]</span> <span class="o">+=</span> <span class="n">img</span> <span class="o">*</span> <span class="n">color</span><span class="p">[</span><span class="n">c</span><span class="p">]</span>
-        <span class="n">img_display</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">composite</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">image</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">img_display</span> <span class="o">=</span> <span class="n">_normalize</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">img_display</span> <span class="o">=</span> <span class="kc">None</span>
-
-    <span class="n">img_display</span> <span class="o">=</span> <span class="n">_apply_crop</span><span class="p">(</span><span class="n">img_display</span><span class="p">)</span>
-    <span class="n">coordinates</span> <span class="o">=</span> <span class="n">_offset_coordinates</span><span class="p">(</span><span class="n">coordinates</span><span class="p">)</span>
-
-    <span class="c1"># --- multiple masks: one color per mask ---</span>
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">label_mask</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
-        <span class="n">mask_colors</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.10</span><span class="p">,</span> <span class="mf">0.11</span><span class="p">),</span>
-            <span class="p">(</span><span class="mf">0.42</span><span class="p">,</span> <span class="mf">0.67</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
-            <span class="p">(</span><span class="mf">0.20</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.17</span><span class="p">),</span>
-            <span class="p">(</span><span class="mf">0.60</span><span class="p">,</span> <span class="mf">0.31</span><span class="p">,</span> <span class="mf">0.64</span><span class="p">),</span>
-            <span class="p">(</span><span class="mf">1.00</span><span class="p">,</span> <span class="mf">0.50</span><span class="p">,</span> <span class="mf">0.00</span><span class="p">),</span>
-        <span class="p">]</span>
-        <span class="n">cropped_masks</span> <span class="o">=</span> <span class="p">[</span><span class="n">_apply_crop</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">label_mask</span><span class="p">]</span>
-        <span class="n">h</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="n">cropped_masks</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
-        <span class="n">multi_overlay</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-        <span class="k">for</span> <span class="n">mask</span><span class="p">,</span> <span class="n">color</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">cropped_masks</span><span class="p">,</span> <span class="n">mask_colors</span><span class="p">):</span>
-            <span class="n">region</span> <span class="o">=</span> <span class="n">mask</span> <span class="o">&gt;</span> <span class="mi">0</span>
-            <span class="n">multi_overlay</span><span class="p">[</span><span class="n">region</span><span class="p">,</span> <span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">color</span>
-            <span class="n">multi_overlay</span><span class="p">[</span><span class="n">region</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">alpha</span>
-
-        <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">_figsize</span><span class="p">)</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_display</span> <span class="k">if</span> <span class="n">img_display</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="mi">3</span><span class="p">)))</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">multi_overlay</span><span class="p">)</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">'off'</span><span class="p">)</span>
-        <span class="n">_plot_coordinates</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">coordinates</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span>
-
-    <span class="c1"># --- no mask: show image only ---</span>
-    <span class="k">if</span> <span class="n">label_mask</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">_figsize</span><span class="p">)</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_display</span><span class="p">)</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">'off'</span><span class="p">)</span>
-        <span class="n">_plot_coordinates</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">coordinates</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span>
-
-    <span class="c1"># --- single mask + measurement overlay ---</span>
-    <span class="n">label_mask</span> <span class="o">=</span> <span class="n">_apply_crop</span><span class="p">(</span><span class="n">label_mask</span><span class="p">)</span>
-    <span class="n">h</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="n">label_mask</span><span class="o">.</span><span class="n">shape</span>
-    <span class="n">overlay_rgba</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="n">df</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
-        <span class="n">cell_ids</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">label_mask</span><span class="p">[</span><span class="n">label_mask</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">])</span>
-        <span class="n">colors</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">cell_ids</span><span class="p">),</span> <span class="mi">3</span><span class="p">))</span>
-        <span class="n">centroids</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="k">for</span> <span class="n">cell_id</span><span class="p">,</span> <span class="n">color</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">cell_ids</span><span class="p">,</span> <span class="n">colors</span><span class="p">):</span>
-            <span class="n">overlay_rgba</span><span class="p">[</span><span class="n">label_mask</span> <span class="o">==</span> <span class="n">cell_id</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="n">color</span><span class="p">,</span> <span class="n">alpha</span><span class="p">]</span>
-            <span class="n">centroids</span><span class="p">[</span><span class="n">cell_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argwhere</span><span class="p">(</span><span class="n">label_mask</span> <span class="o">==</span> <span class="n">cell_id</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-
-    <span class="k">elif</span> <span class="n">pd</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">is_categorical_dtype</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">measurement_col</span><span class="p">])</span> <span class="ow">or</span> <span class="n">pd</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">is_object_dtype</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">measurement_col</span><span class="p">]):</span>
-        <span class="k">if</span> <span class="n">cmap</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">cmap</span> <span class="o">=</span> <span class="s1">'tab10'</span>
-        <span class="n">categories</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">measurement_col</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
-        <span class="n">color_map</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">categories</span><span class="p">,</span> <span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="n">cmap</span><span class="p">)</span><span class="o">.</span><span class="n">colors</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">categories</span><span class="p">)]))</span>
-        <span class="n">id_to_color</span> <span class="o">=</span> <span class="p">{</span><span class="n">cell_id</span><span class="p">:</span> <span class="n">color_map</span><span class="p">[</span><span class="n">val</span><span class="p">]</span> <span class="k">for</span> <span class="n">cell_id</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">id_col</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="n">measurement_col</span><span class="p">])}</span>
-        <span class="k">for</span> <span class="n">cell_id</span><span class="p">,</span> <span class="n">color</span> <span class="ow">in</span> <span class="n">id_to_color</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-            <span class="n">overlay_rgba</span><span class="p">[</span><span class="n">label_mask</span> <span class="o">==</span> <span class="n">cell_id</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="n">mcolors</span><span class="o">.</span><span class="n">to_rgb</span><span class="p">(</span><span class="n">color</span><span class="p">),</span> <span class="n">alpha</span><span class="p">]</span>
-
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">cmap</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">cmap</span> <span class="o">=</span> <span class="s1">'viridis'</span>
-        <span class="n">values</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">measurement_col</span><span class="p">]</span>
-        <span class="n">norm</span> <span class="o">=</span> <span class="n">mcolors</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span>
-            <span class="n">vmin</span><span class="o">=</span><span class="n">vmin</span> <span class="k">if</span> <span class="n">vmin</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">values</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span>
-            <span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span> <span class="k">if</span> <span class="n">vmax</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">values</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
-        <span class="p">)</span>
-        <span class="n">colormap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="n">cmap</span><span class="p">)</span>
-        <span class="n">id_to_value</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">id_col</span><span class="p">],</span> <span class="n">values</span><span class="p">))</span>
-        <span class="k">for</span> <span class="n">cell_id</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">id_to_value</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-            <span class="n">overlay_rgba</span><span class="p">[</span><span class="n">label_mask</span> <span class="o">==</span> <span class="n">cell_id</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="n">colormap</span><span class="p">(</span><span class="n">norm</span><span class="p">(</span><span class="n">value</span><span class="p">))[:</span><span class="mi">3</span><span class="p">],</span> <span class="n">alpha</span><span class="p">]</span>
-
-    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">_figsize</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_display</span> <span class="k">if</span> <span class="n">img_display</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="mi">3</span><span class="p">)))</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">overlay_rgba</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">'off'</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="n">df</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">cell_id</span><span class="p">,</span> <span class="n">yx</span> <span class="ow">in</span> <span class="n">centroids</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-            <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">yx</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">yx</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">str</span><span class="p">(</span><span class="n">cell_id</span><span class="p">),</span> <span class="n">ha</span><span class="o">=</span><span class="s1">'center'</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">'center'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'white'</span><span class="p">)</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'Segmentation overlay'</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">pd</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">is_categorical_dtype</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">measurement_col</span><span class="p">])</span> <span class="ow">or</span> <span class="n">pd</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">is_object_dtype</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">measurement_col</span><span class="p">]):</span>
-        <span class="n">legend_handles</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="n">plt</span><span class="o">.</span><span class="n">Line2D</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s1">'o'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'w'</span><span class="p">,</span> <span class="n">markerfacecolor</span><span class="o">=</span><span class="n">color_map</span><span class="p">[</span><span class="n">cat</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="n">cat</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-            <span class="k">for</span> <span class="n">cat</span> <span class="ow">in</span> <span class="n">categories</span>
-        <span class="p">]</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">handles</span><span class="o">=</span><span class="n">legend_handles</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.01</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">'upper left'</span><span class="p">)</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">measurement_col</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">ScalarMappable</span><span class="p">(</span><span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">),</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">measurement_col</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">measurement_col</span><span class="p">)</span>
-
-    <span class="n">_plot_coordinates</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">coordinates</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">bobiac_tools</span><span class="w"> </span><span class="kn">import</span> <span class="n">overlay_labels</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.spatial</span><span class="w"> </span><span class="kn">import</span> <span class="n">KDTree</span>
 </pre></div>
 </div>
 </div>
@@ -669,9 +404,9 @@
 <p>First, we load all the data that we will need for this notebook.</p>
 <div class="cell tag_teacher docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">path_image</span> <span class="o">=</span> <span class="s1">'../../_static/images/quant/05_spatial_stats/images/F02_821.tif'</span>
-<span class="n">path_mask</span> <span class="o">=</span> <span class="s1">'../../_static/images/quant/05_spatial_stats/masks/F02_821w1.TIF'</span>
-<span class="n">path_spots</span> <span class="o">=</span> <span class="s1">'../../_static/images/quant/05_spatial_stats/spots/F02_821_spots.csv'</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">path_image</span> <span class="o">=</span> <span class="s2">"../../../_static/images/quant/05_spatial_stats/images/F01_202.tif"</span>
+<span class="n">path_mask</span> <span class="o">=</span> <span class="s2">"../../../_static/images/quant/05_spatial_stats/masks/F01_202w1.TIF"</span>
+<span class="n">path_spots</span> <span class="o">=</span> <span class="s2">"../../../_static/images/quant/05_spatial_stats/spots/F01_202_spots.csv"</span>
 
 <span class="n">image</span> <span class="o">=</span> <span class="n">tifffile</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">path_image</span><span class="p">)</span>
 <span class="n">mask</span> <span class="o">=</span> <span class="n">tifffile</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">path_mask</span><span class="p">)</span>
@@ -681,105 +416,52 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">path_image</span> <span class="o">=</span> <span class="s1">'../../_static/images/quant/05_spatial_stats/images/F02_821.tif'</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">path_mask</span> <span class="o">=</span> <span class="s1">'../../_static/images/quant/05_spatial_stats/masks/F02_821w1.TIF'</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">path_spots</span> <span class="o">=</span> <span class="s1">'../../_static/images/quant/05_spatial_stats/spots/F02_821_spots.csv'</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> 
-<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">image</span> <span class="o">=</span> <span class="n">tifffile</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">path_image</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">mask</span> <span class="o">=</span> <span class="n">tifffile</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">path_mask</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">df_spots</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path_spots</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> 
-
-<span class="nn">File ~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/tifffile/tifffile.py:1256,</span> in <span class="ni">imread</span><span class="nt">(files, selection, return_as, aszarr, key, series, kind, level, squeeze, maxworkers, buffersize, mode, name, offset, size, pattern, axesorder, categories, imread, imreadargs, sort, container, chunkshape, chunkdtype, axestiled, ioworkers, chunkmode, fillvalue, zattrs, multiscales, omexml, superres, out, out_inplace, _multifile, _useframes, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1252</span>         <span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1253</span>             <span class="n">files</span> <span class="o">=</span> <span class="n">files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="g g-Whitespace">   </span><span class="mi">1254</span> 
-<span class="g g-Whitespace">   </span><span class="mi">1255</span>         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">files</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">files</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">):</span>
-<span class="ne">-&gt; </span><span class="mi">1256</span>             <span class="k">with</span> <span class="n">TiffFile</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1257</span>                 <span class="n">files</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1258</span>                 <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1259</span>                 <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
-
-<span class="nn">File ~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/tifffile/tifffile.py:4554,</span> in <span class="ni">TiffFile.__init__</span><span class="nt">(self, file, mode, name, offset, size, omexml, superres, _multifile, _useframes, _root, **is_flags)</span>
-<span class="g g-Whitespace">   </span><span class="mi">4550</span>                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">4551</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_omexml</span> <span class="o">=</span> <span class="n">omexml</span>
-<span class="g g-Whitespace">   </span><span class="mi">4552</span>             <span class="bp">self</span><span class="o">.</span><span class="n">is_ome</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="g g-Whitespace">   </span><span class="mi">4553</span> 
-<span class="ne">-&gt; </span><span class="mi">4554</span>         <span class="n">fh</span> <span class="o">=</span> <span class="n">FileHandle</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="n">offset</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">4555</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_fh</span> <span class="o">=</span> <span class="n">fh</span>
-<span class="g g-Whitespace">   </span><span class="mi">4556</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_multifile</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="n">_multifile</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="nb">bool</span><span class="p">(</span><span class="n">_multifile</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">4557</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_files</span> <span class="o">=</span> <span class="p">{</span><span class="n">fh</span><span class="o">.</span><span class="n">name</span><span class="p">:</span> <span class="bp">self</span><span class="p">}</span>
-
-<span class="nn">File ~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/tifffile/tifffile.py:12751,</span> in <span class="ni">FileHandle.__init__</span><span class="nt">(self, file, mode, name, offset, size)</span>
-<span class="g g-Whitespace">  </span><span class="mi">12747</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_offset</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="k">if</span> <span class="n">offset</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">offset</span>
-<span class="g g-Whitespace">  </span><span class="mi">12748</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_size</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="k">if</span> <span class="n">size</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">size</span>
-<span class="g g-Whitespace">  </span><span class="mi">12749</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_close</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="g g-Whitespace">  </span><span class="mi">12750</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_lock</span> <span class="o">=</span> <span class="n">contextlib</span><span class="o">.</span><span class="n">nullcontext</span><span class="p">()</span>
-<span class="ne">&gt; </span><span class="mi">12751</span>         <span class="bp">self</span><span class="o">.</span><span class="n">open</span><span class="p">()</span>
-<span class="g g-Whitespace">  </span><span class="mi">12752</span>         <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fh</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-
-<span class="nn">File ~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/tifffile/tifffile.py:12771,</span> in <span class="ni">FileHandle.open</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">  </span><span class="mi">12767</span>                 <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'invalid mode </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_mode</span><span class="si">}</span><span class="s1">'</span>
-<span class="g g-Whitespace">  </span><span class="mi">12768</span>                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
-<span class="g g-Whitespace">  </span><span class="mi">12769</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_file</span><span class="p">)</span>
-<span class="g g-Whitespace">  </span><span class="mi">12770</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_dir</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_file</span><span class="p">)</span>
-<span class="ne">&gt; </span><span class="mi">12771</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_fh</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span>  <span class="c1"># noqa: SIM115</span>
-<span class="g g-Whitespace">  </span><span class="mi">12772</span>                 <span class="bp">self</span><span class="o">.</span><span class="n">_file</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="kc">None</span>
-<span class="g g-Whitespace">  </span><span class="mi">12773</span>             <span class="p">)</span>
-<span class="g g-Whitespace">  </span><span class="mi">12774</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_close</span> <span class="o">=</span> <span class="kc">True</span>
-
-<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: '/home/runner/work/bobiac-book/bobiac-book/content/_static/images/quant/05_spatial_stats/images/F02_821.tif'
-</pre></div>
 </div>
-</div>
-</div>
-<section id="visualy-inspect-the-images-masks-and-spots">
-<h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">Visualy inspect the images, masks and spots<a class="headerlink" href="#visualy-inspect-the-images-masks-and-spots" title="Link to this heading">#</a></h3>
-<p>To be sure that the data we are workin with is corrects, we visualise it here.</p>
+<section id="visually-inspect-the-images-masks-and-spots">
+<h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">Visually inspect the images, masks and spots<a class="headerlink" href="#visually-inspect-the-images-masks-and-spots" title="Link to this heading">#</a></h3>
+<p>To be sure that the data we are working with is corrects, we visualise it here.</p>
 <div class="cell tag_teacher docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">overlay</span><span class="p">(</span><span class="n">image</span><span class="p">[</span><span class="mi">2</span><span class="p">:,:,:])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">overlay_labels</span><span class="p">(</span><span class="n">image</span><span class="p">[</span><span class="mi">2</span><span class="p">:,</span> <span class="p">:,</span> <span class="p">:])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
+<img alt="../../../_images/2c2017775eee90c835fa907abb2325ac819bd2def5e4ce6f34f8f079e9ca3d01.png" src="../../../_images/2c2017775eee90c835fa907abb2325ac819bd2def5e4ce6f34f8f079e9ca3d01.png"/>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 800x800 with 1 Axes&gt;, &lt;Axes: &gt;)
 </pre></div>
 </div>
-<img alt="../../../_images/ff1969b80f20f379daa5a19f25ee891fd27fc59bc08ee671240ccaf03e91adba.png" src="../../../_images/ff1969b80f20f379daa5a19f25ee891fd27fc59bc08ee671240ccaf03e91adba.png"/>
 </div>
 </div>
 <div class="cell tag_teacher docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">overlay</span><span class="p">(</span><span class="n">label_mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">coordinates</span><span class="o">=</span><span class="n">df_spots</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">overlay_labels</span><span class="p">(</span><span class="n">label_mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">coordinates</span><span class="o">=</span><span class="n">df_spots</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
+<img alt="../../../_images/37df2bc4bc608b472375bd74f418d1a473b36c1cefb5d92636927644b2749e1e.png" src="../../../_images/37df2bc4bc608b472375bd74f418d1a473b36c1cefb5d92636927644b2749e1e.png"/>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 800x800 with 1 Axes&gt;,
  &lt;Axes: title={'center': 'Segmentation overlay'}&gt;)
 </pre></div>
 </div>
-<img alt="../../../_images/d1f77359f554a21c683431c7405fb643ed20f0b9c885f28126952b1290ba065f.png" src="../../../_images/d1f77359f554a21c683431c7405fb643ed20f0b9c885f28126952b1290ba065f.png"/>
 </div>
 </div>
 <p>Using the <code class="docutils literal notranslate"><span class="pre">focus</span></code> attribute in <code class="docutils literal notranslate"><span class="pre">overlay</span></code> we can zoom in to view single objects.</p>
 <div class="cell tag_teacher docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">overlay</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">image</span><span class="p">[</span><span class="mi">2</span><span class="p">:,:,:],</span> <span class="n">label_mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">coordinates</span><span class="o">=</span><span class="n">df_spots</span><span class="p">,</span> <span class="n">focus_object</span><span class="o">=</span><span class="mi">63</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">overlay_labels</span><span class="p">(</span>
+    <span class="n">image</span><span class="o">=</span><span class="n">image</span><span class="p">[</span><span class="mi">2</span><span class="p">:,</span> <span class="p">:,</span> <span class="p">:],</span> <span class="n">label_mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">coordinates</span><span class="o">=</span><span class="n">df_spots</span><span class="p">,</span> <span class="n">focus_object</span><span class="o">=</span><span class="mi">11</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 673.684x800 with 1 Axes&gt;,
+<img alt="../../../_images/8f12cf01001467f2b6c15f79633c5f1bf2106990117178250dff59e89bb018e1.png" src="../../../_images/8f12cf01001467f2b6c15f79633c5f1bf2106990117178250dff59e89bb018e1.png"/>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 800x587.05 with 1 Axes&gt;,
  &lt;Axes: title={'center': 'Segmentation overlay'}&gt;)
 </pre></div>
 </div>
-<img alt="../../../_images/f95f72adb439209821c93f77468c14d22e5d091893860ee9117b687edec1f182.png" src="../../../_images/f95f72adb439209821c93f77468c14d22e5d091893860ee9117b687edec1f182.png"/>
 </div>
 </div>
 </section>
@@ -789,11 +471,11 @@
 <h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">3. Make An Analysis Plan<a class="headerlink" href="#make-an-analysis-plan" title="Link to this heading">#</a></h2>
 <section id="question">
 <h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">Question<a class="headerlink" href="#question" title="Link to this heading">#</a></h3>
-<p>Do Protein A spots co-localize with Protein B spots?</p>
+<p><strong>Do Protein A spots co-localize with Protein B spots?</strong></p>
 </section>
 <section id="approach">
 <h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">Approach<a class="headerlink" href="#approach" title="Link to this heading">#</a></h3>
-<p>Answering this question is very similar to answering the question of if spots are clustered. Instead of finding nearest neighbours for each point within its <em>own</em> dataset, we find the nearest neighbours of points in datasset A to points in dataset B.</p>
+<p>Answering this question is very similar to answering the question of if spots are clustered. Instead of finding nearest neighbours for each point within its <em>own</em> dataset, we find the nearest neighbours of points in dataset A to points in dataset B.</p>
 </section>
 <section id="workflow">
 <h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">Workflow<a class="headerlink" href="#workflow" title="Link to this heading">#</a></h3>
@@ -829,46 +511,132 @@
 <hr class="docutils"/>
 <section id="assemble-datasets">
 <h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">4. Assemble Datasets<a class="headerlink" href="#assemble-datasets" title="Link to this heading">#</a></h2>
-<div class="cell tag_teacher docutils container">
+<p>As before we generate a DataFrame that stores information about cells <code class="docutils literal notranslate"><span class="pre">df_cell</span></code> and another dataframe that stores information about spots <code class="docutils literal notranslate"><span class="pre">df_spots</span></code>. We then map the cell label to each spot which allows us to count how many spots exist inside each cell.</p>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">overlay</span><span class="p">(</span><span class="n">label_mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">coordinates</span><span class="o">=</span><span class="n">df_spots</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_spots</span><span class="p">[</span><span class="s1">'channel'</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])],</span> <span class="n">focus_object</span><span class="o">=</span><span class="n">cell_id</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_cell</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="n">skimage</span><span class="o">.</span><span class="n">measure</span><span class="o">.</span><span class="n">regionprops_table</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="n">properties</span><span class="o">=</span><span class="p">[</span><span class="s2">"area"</span><span class="p">,</span> <span class="s2">"label"</span><span class="p">])</span>
+<span class="p">)</span>
+
+<span class="c1"># map the cell label to the spots</span>
+<span class="n">df_spots</span><span class="p">[</span><span class="s2">"label_cell"</span><span class="p">]</span> <span class="o">=</span> <span class="n">mask</span><span class="p">[</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"y"</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">),</span> <span class="n">df_spots</span><span class="p">[</span><span class="s2">"x"</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)]</span>
+<span class="c1"># delete spots in the background</span>
+<span class="n">df_spots</span> <span class="o">=</span> <span class="n">df_spots</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"label_cell"</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
+<span class="c1"># count number of spots per cell label</span>
+<span class="n">mapping_spots</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_spots</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"channel"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">][</span><span class="s2">"label_cell"</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="p">)</span>
+<span class="c1"># add the cell count to the cell dataframe</span>
+<span class="n">df_cell</span> <span class="o">=</span> <span class="n">df_cell</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
+    <span class="n">mapping_spots</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s2">"label"</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s2">"label_cell"</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">"inner"</span>
+<span class="p">)</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s2">"label_cell"</span><span class="p">)</span>
+<span class="n">overlay_labels</span><span class="p">(</span><span class="n">label_mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="n">df_cell</span><span class="p">,</span> <span class="n">id_col</span><span class="o">=</span><span class="s2">"label"</span><span class="p">,</span> <span class="n">measurement_col</span><span class="o">=</span><span class="s2">"count"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 673.684x800 with 1 Axes&gt;,
- &lt;Axes: title={'center': 'Segmentation overlay'}&gt;)
+<img alt="../../../_images/5380a8d94353620554183989fc00ac61edc3c9208713798664b52aded70f1004.png" src="../../../_images/5380a8d94353620554183989fc00ac61edc3c9208713798664b52aded70f1004.png"/>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 800x800 with 2 Axes&gt;, &lt;Axes: title={'center': 'count'}&gt;)
 </pre></div>
 </div>
-<img alt="../../../_images/f77dfee93b461a8de29e1f8f6d3a0a9ba93dd4e60318e3f8440a85588501357d.png" src="../../../_images/f77dfee93b461a8de29e1f8f6d3a0a9ba93dd4e60318e3f8440a85588501357d.png"/>
 </div>
 </div>
 <section id="generate-random-point-distribution">
 <h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">Generate random point distribution<a class="headerlink" href="#generate-random-point-distribution" title="Link to this heading">#</a></h3>
-<p>As before, we focus on one cell to illustrate the principles. First, we need to generate two random set of points, one each as a random distribution of the points of protien A and B (same number of points).</p>
+<p>As before, we focus on one cell to illustrate the principles. First, we need to generate two random set of points, one each as a random distribution of the points of protein A and B (same number of points).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cell_id</span> <span class="o">=</span> <span class="mi">11</span>
+<span class="n">overlay_labels</span><span class="p">(</span>
+    <span class="n">label_mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span>
+    <span class="n">coordinates</span><span class="o">=</span><span class="n">df_spots</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"channel"</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])],</span>
+    <span class="n">focus_object</span><span class="o">=</span><span class="n">cell_id</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/f94a5b39f6c7e721f9968e0b450477c5ad8e019a09b5c57f7262da8d13a46dec.png" src="../../../_images/f94a5b39f6c7e721f9968e0b450477c5ad8e019a09b5c57f7262da8d13a46dec.png"/>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 800x587.05 with 1 Axes&gt;,
+ &lt;Axes: title={'center': 'Segmentation overlay'}&gt;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># or use:</span>
+<span class="c1"># from bobiac_tools import random_points_in_mask</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">random_points_in_mask</span><span class="p">(</span><span class="n">mask</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">cell_label</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Generate n random points uniformly distributed within a labeled cell region.</span>
+
+<span class="sd">    Points are placed continuously using rejection sampling:</span>
+<span class="sd">    candidate points are drawn uniformly from the bounding box of the cell and</span>
+<span class="sd">    accepted only if they fall within the cell mask. This correctly handles</span>
+<span class="sd">    irregular cell shapes and serves as a null model for Complete Spatial</span>
+<span class="sd">    Randomness (CSR).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    mask : 2D numpy array</span>
+<span class="sd">        Label mask where each cell is identified by a unique integer ID</span>
+<span class="sd">        and background is 0.</span>
+<span class="sd">    cell_label : int</span>
+<span class="sd">        ID of the cell to sample within.</span>
+<span class="sd">    n : int</span>
+<span class="sd">        Number of random points to generate.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    points : (n, 2) numpy array</span>
+<span class="sd">        Random point coordinates in (row, col) / (y, x) order.</span>
+<span class="sd">    """</span>
+    <span class="n">ys</span><span class="p">,</span> <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">mask</span> <span class="o">==</span> <span class="n">cell_label</span><span class="p">)</span>
+    <span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span> <span class="o">=</span> <span class="n">ys</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">ys</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+    <span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span> <span class="o">=</span> <span class="n">xs</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">xs</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+    <span class="n">points</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">mask</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">y</span><span class="p">)),</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">x</span><span class="p">))]</span> <span class="o">==</span> <span class="n">cell_label</span><span class="p">:</span>
+            <span class="n">points</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">points</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell tag_teacher docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cell_id</span> <span class="o">=</span> <span class="mi">63</span>
-<span class="n">spots_A</span> <span class="o">=</span> <span class="n">df_spots</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df_spots</span><span class="p">[</span><span class="s1">'channel'</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s1">'label_cell'</span><span class="p">]</span><span class="o">==</span><span class="n">cell_id</span><span class="p">)][[</span><span class="s1">'y'</span><span class="p">,</span> <span class="s1">'x'</span><span class="p">]]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
-<span class="n">spots_B</span> <span class="o">=</span> <span class="n">df_spots</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df_spots</span><span class="p">[</span><span class="s1">'channel'</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s1">'label_cell'</span><span class="p">]</span><span class="o">==</span><span class="n">cell_id</span><span class="p">)][[</span><span class="s1">'y'</span><span class="p">,</span> <span class="s1">'x'</span><span class="p">]]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spots_A</span> <span class="o">=</span> <span class="n">df_spots</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+    <span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"channel"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"label_cell"</span><span class="p">]</span> <span class="o">==</span> <span class="n">cell_id</span><span class="p">)</span>
+<span class="p">][[</span><span class="s2">"y"</span><span class="p">,</span> <span class="s2">"x"</span><span class="p">]]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">spots_B</span> <span class="o">=</span> <span class="n">df_spots</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+    <span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"channel"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"label_cell"</span><span class="p">]</span> <span class="o">==</span> <span class="n">cell_id</span><span class="p">)</span>
+<span class="p">][[</span><span class="s2">"y"</span><span class="p">,</span> <span class="s2">"x"</span><span class="p">]]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
 
 <span class="n">n_A</span><span class="p">,</span> <span class="n">n_B</span> <span class="o">=</span> <span class="n">spots_A</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">spots_B</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
 <span class="n">rnd_A</span> <span class="o">=</span> <span class="n">random_points_in_mask</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="n">cell_label</span><span class="o">=</span><span class="n">cell_id</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="n">n_A</span><span class="p">)</span>
 <span class="n">rnd_B</span> <span class="o">=</span> <span class="n">random_points_in_mask</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="n">cell_label</span><span class="o">=</span><span class="n">cell_id</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="n">n_B</span><span class="p">)</span>
 
-<span class="n">overlay</span><span class="p">(</span><span class="n">label_mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">coordinates</span><span class="o">=</span><span class="p">[</span><span class="n">spots_A</span><span class="p">,</span> <span class="n">spots_B</span><span class="p">,</span> <span class="n">rnd_A</span><span class="p">,</span> <span class="n">rnd_B</span><span class="p">],</span> <span class="n">focus_object</span><span class="o">=</span><span class="n">cell_id</span><span class="p">)</span>
+<span class="n">overlay_labels</span><span class="p">(</span>
+    <span class="n">label_mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">coordinates</span><span class="o">=</span><span class="p">[</span><span class="n">spots_A</span><span class="p">,</span> <span class="n">spots_B</span><span class="p">,</span> <span class="n">rnd_A</span><span class="p">,</span> <span class="n">rnd_B</span><span class="p">],</span> <span class="n">focus_object</span><span class="o">=</span><span class="n">cell_id</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 673.684x800 with 1 Axes&gt;,
+<img alt="../../../_images/3442d77f771bb9aef80f90eb09e0d62c029faf25979bdac543602240b7178f3a.png" src="../../../_images/3442d77f771bb9aef80f90eb09e0d62c029faf25979bdac543602240b7178f3a.png"/>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 800x587.05 with 1 Axes&gt;,
  &lt;Axes: title={'center': 'Segmentation overlay'}&gt;)
 </pre></div>
 </div>
-<img alt="../../../_images/d4adc1a0b666f52c9ca18e0308108612ebd4dc32559528b29929a4bda6797f56.png" src="../../../_images/d4adc1a0b666f52c9ca18e0308108612ebd4dc32559528b29929a4bda6797f56.png"/>
 </div>
 </div>
+<p>Note that channel 2, 3 in this overlay are the newly generated random distributions.</p>
 </section>
 </section>
 <hr class="docutils"/>
@@ -879,7 +647,7 @@
 <li><p>protein A spots to protein B spots</p></li>
 <li><p>protein B spots to protein A spots</p></li>
 <li><p>protein A spots to randomised B spots</p></li>
-<li><p>protien B spots to randomised A spots</p></li>
+<li><p>protein B spots to randomised A spots</p></li>
 </ul>
 <div class="cell tag_teacher docutils container">
 <div class="cell_input docutils container">
@@ -889,18 +657,18 @@
 <span class="n">nn_ArndB</span> <span class="o">=</span> <span class="n">KDTree</span><span class="p">(</span><span class="n">rnd_B</span><span class="p">)</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">spots_A</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 <span class="n">nn_BrndA</span> <span class="o">=</span> <span class="n">KDTree</span><span class="p">(</span><span class="n">rnd_A</span><span class="p">)</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">spots_B</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">'Mean NN dist. A-&gt;B:'</span><span class="p">,</span> <span class="n">nn_AtoB</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'Mean NN dist. B-&gt;A:'</span><span class="p">,</span> <span class="n">nn_BtoA</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'Mean NN dist. A-&gt;random(B):'</span><span class="p">,</span> <span class="n">nn_ArndB</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'Mean NN dist. B-&gt;random(A):'</span><span class="p">,</span> <span class="n">nn_BrndA</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Mean NN dist. A-&gt;B:"</span><span class="p">,</span> <span class="n">nn_AtoB</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Mean NN dist. B-&gt;A:"</span><span class="p">,</span> <span class="n">nn_BtoA</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Mean NN dist. A-&gt;random(B):"</span><span class="p">,</span> <span class="n">nn_ArndB</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Mean NN dist. B-&gt;random(A):"</span><span class="p">,</span> <span class="n">nn_BrndA</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean NN dist. A-&gt;B: 1.9696171301040926
-Mean NN dist. B-&gt;A: 3.3610265155268935
-Mean NN dist. A-&gt;random(B): 6.508343152191545
-Mean NN dist. B-&gt;random(A): 7.741334209284501
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean NN dist. A-&gt;B: 1.9655708446943665
+Mean NN dist. B-&gt;A: 3.207888882211614
+Mean NN dist. A-&gt;random(B): 6.533843237525505
+Mean NN dist. B-&gt;random(A): 7.5547308542865945
 </pre></div>
 </div>
 </div>
@@ -915,14 +683,14 @@ Mean NN dist. B-&gt;random(A): 7.741334209284501
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ce_AB</span> <span class="o">=</span> <span class="n">nn_AtoB</span> <span class="o">/</span> <span class="n">nn_ArndB</span>
 <span class="n">ce_BA</span> <span class="o">=</span> <span class="n">nn_BtoA</span> <span class="o">/</span> <span class="n">nn_BrndA</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">'Clark-Evans index A-&gt;B:'</span><span class="p">,</span> <span class="n">ce_AB</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'Clark-Evans index B-&gt;A:'</span><span class="p">,</span> <span class="n">ce_BA</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Clark-Evans index A-&gt;B:"</span><span class="p">,</span> <span class="n">ce_AB</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Clark-Evans index B-&gt;A:"</span><span class="p">,</span> <span class="n">ce_BA</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Clark-Evans index A-&gt;B: 0.3026295762295303
-Clark-Evans index B-&gt;A: 0.434166310956563
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Clark-Evans index A-&gt;B: 0.30082920162601984
+Clark-Evans index B-&gt;A: 0.4246198764832821
 </pre></div>
 </div>
 </div>
@@ -946,24 +714,24 @@ Clark-Evans index B-&gt;A: 0.434166310956563
 <span class="n">sims_AtoB</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sims_AtoB</span><span class="p">)</span>
 <span class="n">sims_BtoA</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sims_BtoA</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">'nn_AtoB'</span><span class="p">,</span> <span class="n">nn_AtoB</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'nn_BtoA'</span><span class="p">,</span> <span class="n">nn_BtoA</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'nn_random_AtoB'</span><span class="p">,</span> <span class="n">sims_AtoB</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'nn_random_BtoA'</span><span class="p">,</span> <span class="n">sims_BtoA</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'ce_AtoB'</span><span class="p">,</span> <span class="n">nn_AtoB</span> <span class="o">/</span> <span class="n">sims_AtoB</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'ce_BtoA'</span><span class="p">,</span> <span class="n">nn_BtoA</span> <span class="o">/</span> <span class="n">sims_BtoA</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'pval_AtoB'</span><span class="p">,</span> <span class="p">(</span><span class="n">sims_AtoB</span> <span class="o">&lt;=</span> <span class="n">nn_AtoB</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'pval_BtoA'</span><span class="p">,</span> <span class="p">(</span><span class="n">sims_BtoA</span> <span class="o">&lt;=</span> <span class="n">nn_BtoA</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"nn_AtoB"</span><span class="p">,</span> <span class="n">nn_AtoB</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"nn_BtoA"</span><span class="p">,</span> <span class="n">nn_BtoA</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"nn_random_AtoB"</span><span class="p">,</span> <span class="n">sims_AtoB</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"nn_random_BtoA"</span><span class="p">,</span> <span class="n">sims_BtoA</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"ce_AtoB"</span><span class="p">,</span> <span class="n">nn_AtoB</span> <span class="o">/</span> <span class="n">sims_AtoB</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"ce_BtoA"</span><span class="p">,</span> <span class="n">nn_BtoA</span> <span class="o">/</span> <span class="n">sims_BtoA</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"pval_AtoB"</span><span class="p">,</span> <span class="p">(</span><span class="n">sims_AtoB</span> <span class="o">&lt;=</span> <span class="n">nn_AtoB</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"pval_BtoA"</span><span class="p">,</span> <span class="p">(</span><span class="n">sims_BtoA</span> <span class="o">&lt;=</span> <span class="n">nn_BtoA</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nn_AtoB 1.9696171301040926
-nn_BtoA 3.3610265155268935
-nn_random_AtoB 6.537335330741165
-nn_random_BtoA 7.355972031404175
-ce_AtoB 0.30128745589080697
-ce_BtoA 0.4569112689904165
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nn_AtoB 1.9655708446943665
+nn_BtoA 3.207888882211614
+nn_random_AtoB 5.96855103488785
+nn_random_BtoA 7.628145474213061
+ce_AtoB 0.32932127633743186
+ce_BtoA 0.4205332597622685
 pval_AtoB 0.0
 pval_BtoA 0.0
 </pre></div>
@@ -975,8 +743,8 @@ pval_BtoA 0.0
 <section id="per-cell-colocalization-measurements">
 <h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">8. Per-cell Colocalization Measurements<a class="headerlink" href="#per-cell-colocalization-measurements" title="Link to this heading">#</a></h2>
 <section id="exercise-summarise-the-per-cell-co-localisation-analysis-as-a-function">
-<h3 style="color: black; background-color: rgb(252,185,118); padding: 3px; border-radius: 5px;">✍️ Exercise: Summarise the per-cell co-localisation analysis as a function<a class="headerlink" href="#exercise-summarise-the-per-cell-co-localisation-analysis-as-a-function" title="Link to this heading">#</a></h3>
-<p>To make processing individual cells simpler, we can summarise our above analysis in a function called <code class="docutils literal notranslate"><span class="pre">CrossNN</span></code>.
+<h3 style="color: black; background-color: rgb(252,185,118); padding: 3px; border-radius: 5px;">✍️ Exercise: Summarise the per-cell co-localisation analysis as a function<a class="headerlink" href="#exercise-summarise-the-per-cell-co-localisation-analysis-as-a-function" title="Link to this heading">#</a></h3>
+<p>To make processing individual cells simpler, we can summarise our above analysis in a function called <code class="docutils literal notranslate"><span class="pre">cross_nn</span></code>.
 The function should have the following features:</p>
 <p><strong>Parameters</strong>
 spots_A, spots_B : (n, 2) numpy arrays
@@ -1001,14 +769,28 @@ Fraction of simulations with cross-NN &lt;= observed.
 Small values indicate significant co-localization.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">CrossNN</span><span class="p">(</span><span class="n">spots_A</span><span class="p">,</span> <span class="n">spots_B</span><span class="p">,</span> <span class="n">mask</span><span class="p">,</span> <span class="n">cell_id</span><span class="p">,</span> <span class="n">n_repeats</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># or use:</span>
+<span class="c1"># from bobiac_tools import cross_nn</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">cross_nn</span><span class="p">(</span>
+    <span class="n">spots_A</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">spots_B</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">mask</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">cell_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">n_repeats</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Test whether two sets of spots are more co-localized than expected under</span>
 <span class="sd">    CSR using cross nearest-neighbor distances.</span>
 
 <span class="sd">    For each point in A, the nearest neighbor in B is found (and vice versa).</span>
-<span class="sd">    The observed mean cross-NN distances are compared to a null distribution</span>
-<span class="sd">    where both sets are independently randomized within the cell mask.</span>
+<span class="sd">    For the A→B direction, the null distribution holds A at its observed</span>
+<span class="sd">    positions and randomizes only B (and vice versa for B→A) — this tests</span>
+<span class="sd">    whether the *real* configuration of one set is closer to the other than</span>
+<span class="sd">    a same-sized random configuration would be, controlling for the</span>
+<span class="sd">    reference set's density without discarding the query set's real spatial</span>
+<span class="sd">    structure.</span>
 
 <span class="sd">    The two directions (A→B and B→A) can differ when the sets have different</span>
 <span class="sd">    sizes: a small set is always close to a large one even by chance.</span>
@@ -1055,14 +837,14 @@ Small values indicate significant co-localization.</p>
     <span class="n">sims_BtoA</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sims_BtoA</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="p">{</span>
-        <span class="s1">'nn_AtoB'</span><span class="p">:</span>        <span class="n">nn_AtoB</span><span class="p">,</span>
-        <span class="s1">'nn_BtoA'</span><span class="p">:</span>        <span class="n">nn_BtoA</span><span class="p">,</span>
-        <span class="s1">'nn_random_AtoB'</span><span class="p">:</span> <span class="n">sims_AtoB</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
-        <span class="s1">'nn_random_BtoA'</span><span class="p">:</span> <span class="n">sims_BtoA</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
-        <span class="s1">'ce_AtoB'</span><span class="p">:</span>        <span class="n">nn_AtoB</span> <span class="o">/</span> <span class="n">sims_AtoB</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
-        <span class="s1">'ce_BtoA'</span><span class="p">:</span>        <span class="n">nn_BtoA</span> <span class="o">/</span> <span class="n">sims_BtoA</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
-        <span class="s1">'pval_AtoB'</span><span class="p">:</span>      <span class="p">(</span><span class="n">sims_AtoB</span> <span class="o">&lt;=</span> <span class="n">nn_AtoB</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
-        <span class="s1">'pval_BtoA'</span><span class="p">:</span>      <span class="p">(</span><span class="n">sims_BtoA</span> <span class="o">&lt;=</span> <span class="n">nn_BtoA</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
+        <span class="s2">"nn_AtoB"</span><span class="p">:</span> <span class="n">nn_AtoB</span><span class="p">,</span>
+        <span class="s2">"nn_BtoA"</span><span class="p">:</span> <span class="n">nn_BtoA</span><span class="p">,</span>
+        <span class="s2">"nn_random_AtoB"</span><span class="p">:</span> <span class="n">sims_AtoB</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
+        <span class="s2">"nn_random_BtoA"</span><span class="p">:</span> <span class="n">sims_BtoA</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
+        <span class="s2">"ce_AtoB"</span><span class="p">:</span> <span class="n">nn_AtoB</span> <span class="o">/</span> <span class="n">sims_AtoB</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
+        <span class="s2">"ce_BtoA"</span><span class="p">:</span> <span class="n">nn_BtoA</span> <span class="o">/</span> <span class="n">sims_BtoA</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
+        <span class="s2">"pval_AtoB"</span><span class="p">:</span> <span class="p">(</span><span class="n">sims_AtoB</span> <span class="o">&lt;=</span> <span class="n">nn_AtoB</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
+        <span class="s2">"pval_BtoA"</span><span class="p">:</span> <span class="p">(</span><span class="n">sims_BtoA</span> <span class="o">&lt;=</span> <span class="n">nn_BtoA</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
     <span class="p">}</span>
 </pre></div>
 </div>
@@ -1070,21 +852,20 @@ Small values indicate significant co-localization.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spots_A</span> <span class="o">=</span> <span class="n">df_spots</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df_spots</span><span class="p">[</span><span class="s1">'channel'</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s1">'label_cell'</span><span class="p">]</span><span class="o">==</span><span class="n">cell_id</span><span class="p">)][[</span><span class="s1">'y'</span><span class="p">,</span> <span class="s1">'x'</span><span class="p">]]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
-<span class="n">spots_B</span> <span class="o">=</span> <span class="n">df_spots</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df_spots</span><span class="p">[</span><span class="s1">'channel'</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s1">'label_cell'</span><span class="p">]</span><span class="o">==</span><span class="n">cell_id</span><span class="p">)][[</span><span class="s1">'y'</span><span class="p">,</span> <span class="s1">'x'</span><span class="p">]]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
-<span class="n">CrossNN</span><span class="p">(</span><span class="n">spots_A</span><span class="o">=</span><span class="n">spots_A</span><span class="p">,</span> <span class="n">spots_B</span><span class="o">=</span><span class="n">spots_B</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">cell_id</span><span class="o">=</span><span class="n">cell_id</span><span class="p">,</span> <span class="n">n_repeats</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spots_A</span> <span class="o">=</span> <span class="n">df_spots</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+    <span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"channel"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"label_cell"</span><span class="p">]</span> <span class="o">==</span> <span class="n">cell_id</span><span class="p">)</span>
+<span class="p">][[</span><span class="s2">"y"</span><span class="p">,</span> <span class="s2">"x"</span><span class="p">]]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">spots_B</span> <span class="o">=</span> <span class="n">df_spots</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+    <span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"channel"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"label_cell"</span><span class="p">]</span> <span class="o">==</span> <span class="n">cell_id</span><span class="p">)</span>
+<span class="p">][[</span><span class="s2">"y"</span><span class="p">,</span> <span class="s2">"x"</span><span class="p">]]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span>
+    <span class="n">cross_nn</span><span class="p">(</span><span class="n">spots_A</span><span class="o">=</span><span class="n">spots_A</span><span class="p">,</span> <span class="n">spots_B</span><span class="o">=</span><span class="n">spots_B</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">cell_id</span><span class="o">=</span><span class="n">cell_id</span><span class="p">,</span> <span class="n">n_repeats</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{'nn_AtoB': np.float64(1.9696171301040926),
- 'nn_BtoA': np.float64(3.3610265155268935),
- 'nn_random_AtoB': np.float64(6.603303167119867),
- 'nn_random_BtoA': np.float64(7.246996725683177),
- 'ce_AtoB': np.float64(0.2982775559831174),
- 'ce_BtoA': np.float64(0.46378198345467697),
- 'pval_AtoB': np.float64(0.0),
- 'pval_BtoA': np.float64(0.0)}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{'nn_AtoB': np.float64(1.9655708446943665), 'nn_BtoA': np.float64(3.207888882211614), 'nn_random_AtoB': np.float64(5.969043240707505), 'nn_random_BtoA': np.float64(7.704319012241365), 'ce_AtoB': np.float64(0.32929412058696855), 'ce_BtoA': np.float64(0.41637539633478454), 'pval_AtoB': np.float64(0.0), 'pval_BtoA': np.float64(0.0)}
 </pre></div>
 </div>
 </div>
@@ -1098,12 +879,24 @@ Small values indicate significant co-localization.</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_repeats</span> <span class="o">=</span> <span class="mi">10</span>
 
 <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">cell_id</span> <span class="ow">in</span> <span class="n">df_cell</span><span class="p">[</span><span class="s1">'label'</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">():</span>
-    <span class="n">spots_A</span> <span class="o">=</span> <span class="n">df_spots</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df_spots</span><span class="p">[</span><span class="s1">'channel'</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s1">'label_cell'</span><span class="p">]</span><span class="o">==</span><span class="n">cell_id</span><span class="p">)][[</span><span class="s1">'y'</span><span class="p">,</span> <span class="s1">'x'</span><span class="p">]]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
-    <span class="n">spots_B</span> <span class="o">=</span> <span class="n">df_spots</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df_spots</span><span class="p">[</span><span class="s1">'channel'</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s1">'label_cell'</span><span class="p">]</span><span class="o">==</span><span class="n">cell_id</span><span class="p">)][[</span><span class="s1">'y'</span><span class="p">,</span> <span class="s1">'x'</span><span class="p">]]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
-    
+<span class="k">for</span> <span class="n">cell_id</span> <span class="ow">in</span> <span class="n">df_cell</span><span class="p">[</span><span class="s2">"label"</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">():</span>
+    <span class="n">spots_A</span> <span class="o">=</span> <span class="n">df_spots</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+        <span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"channel"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"label_cell"</span><span class="p">]</span> <span class="o">==</span> <span class="n">cell_id</span><span class="p">)</span>
+    <span class="p">][[</span><span class="s2">"y"</span><span class="p">,</span> <span class="s2">"x"</span><span class="p">]]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+    <span class="n">spots_B</span> <span class="o">=</span> <span class="n">df_spots</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+        <span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"channel"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"label_cell"</span><span class="p">]</span> <span class="o">==</span> <span class="n">cell_id</span><span class="p">)</span>
+    <span class="p">][[</span><span class="s2">"y"</span><span class="p">,</span> <span class="s2">"x"</span><span class="p">]]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+
     <span class="c1"># calculate the NN distance, Clark-Evans index and p-value for that cell</span>
-    <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">CrossNN</span><span class="p">(</span><span class="n">spots_A</span><span class="o">=</span><span class="n">spots_A</span><span class="p">,</span> <span class="n">spots_B</span><span class="o">=</span><span class="n">spots_B</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">cell_id</span><span class="o">=</span><span class="n">cell_id</span><span class="p">,</span> <span class="n">n_repeats</span><span class="o">=</span><span class="n">n_repeats</span><span class="p">))</span>
+    <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+        <span class="n">cross_nn</span><span class="p">(</span>
+            <span class="n">spots_A</span><span class="o">=</span><span class="n">spots_A</span><span class="p">,</span>
+            <span class="n">spots_B</span><span class="o">=</span><span class="n">spots_B</span><span class="p">,</span>
+            <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span>
+            <span class="n">cell_id</span><span class="o">=</span><span class="n">cell_id</span><span class="p">,</span>
+            <span class="n">n_repeats</span><span class="o">=</span><span class="n">n_repeats</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
 
 <span class="n">df_cell</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df_cell</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">results</span><span class="p">)],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">df_cell</span>
@@ -1132,10 +925,6 @@ Small values indicate significant co-localization.</p>
 <th>area</th>
 <th>label</th>
 <th>count</th>
-<th>nnd_observed</th>
-<th>nnd_random</th>
-<th>clark_evans</th>
-<th>p_value</th>
 <th>nn_AtoB</th>
 <th>nn_BtoA</th>
 <th>nn_random_AtoB</th>
@@ -1149,93 +938,73 @@ Small values indicate significant co-localization.</p>
 <tbody>
 <tr>
 <th>0</th>
-<td>813.0</td>
-<td>6</td>
-<td>4</td>
-<td>6.386375</td>
-<td>5.841208</td>
-<td>1.183311</td>
-<td>0.5</td>
-<td>0.500000</td>
-<td>7.040192</td>
-<td>2.107554</td>
-<td>8.423400</td>
-<td>0.237242</td>
-<td>0.835790</td>
+<td>4669.0</td>
+<td>2</td>
+<td>23</td>
+<td>1.742602</td>
+<td>5.578599</td>
+<td>4.691437</td>
+<td>8.431806</td>
+<td>0.371443</td>
+<td>0.661614</td>
 <td>0.0</td>
-<td>0.3</td>
+<td>0.0</td>
 </tr>
 <tr>
 <th>1</th>
-<td>12236.0</td>
-<td>7</td>
-<td>61</td>
-<td>6.311969</td>
-<td>6.802401</td>
-<td>0.931204</td>
-<td>0.0</td>
-<td>2.043728</td>
-<td>5.711784</td>
-<td>5.774096</td>
-<td>7.714179</td>
-<td>0.353948</td>
-<td>0.740427</td>
+<td>7866.0</td>
+<td>3</td>
+<td>39</td>
+<td>1.776632</td>
+<td>3.954749</td>
+<td>4.759385</td>
+<td>7.483377</td>
+<td>0.373290</td>
+<td>0.528471</td>
 <td>0.0</td>
 <td>0.0</td>
 </tr>
 <tr>
 <th>2</th>
-<td>3897.0</td>
-<td>9</td>
-<td>19</td>
-<td>6.835503</td>
-<td>6.882408</td>
-<td>1.000944</td>
-<td>0.3</td>
-<td>1.645157</td>
-<td>5.123184</td>
-<td>3.874341</td>
-<td>7.456071</td>
-<td>0.424629</td>
-<td>0.687116</td>
+<td>6945.0</td>
+<td>4</td>
+<td>34</td>
+<td>1.764162</td>
+<td>5.842747</td>
+<td>4.767084</td>
+<td>7.394651</td>
+<td>0.370072</td>
+<td>0.790131</td>
 <td>0.0</td>
-<td>0.1</td>
+<td>0.0</td>
 </tr>
 <tr>
 <th>3</th>
-<td>4029.0</td>
-<td>10</td>
-<td>20</td>
-<td>6.454970</td>
-<td>6.530639</td>
-<td>1.002395</td>
-<td>0.4</td>
-<td>3.593114</td>
-<td>5.122364</td>
-<td>4.420370</td>
-<td>7.349626</td>
-<td>0.812854</td>
-<td>0.696956</td>
+<td>9735.0</td>
+<td>5</td>
+<td>48</td>
+<td>1.777044</td>
+<td>4.682295</td>
+<td>5.495804</td>
+<td>7.076684</td>
+<td>0.323346</td>
+<td>0.661651</td>
 <td>0.0</td>
 <td>0.0</td>
 </tr>
 <tr>
 <th>4</th>
-<td>2124.0</td>
-<td>11</td>
-<td>10</td>
-<td>6.214888</td>
-<td>6.674236</td>
-<td>0.941602</td>
-<td>0.2</td>
-<td>1.700877</td>
-<td>8.957093</td>
-<td>3.213349</td>
-<td>8.099835</td>
-<td>0.529316</td>
-<td>1.105836</td>
+<td>7749.0</td>
+<td>6</td>
+<td>38</td>
+<td>1.730490</td>
+<td>6.242496</td>
+<td>5.106933</td>
+<td>8.331586</td>
+<td>0.338851</td>
+<td>0.749257</td>
 <td>0.0</td>
-<td>0.7</td>
+<td>0.0</td>
 </tr>
 <tr>
 <th>...</th>
@@ -1250,180 +1019,171 @@ Small values indicate significant co-localization.</p>
 <td>...</td>
 <td>...</td>
 <td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
 </tr>
 <tr>
-<th>89</th>
-<td>10682.0</td>
-<td>104</td>
-<td>53</td>
-<td>5.318296</td>
-<td>7.620668</td>
-<td>0.699892</td>
-<td>0.0</td>
-<td>1.852648</td>
-<td>4.067538</td>
-<td>5.544458</td>
-<td>7.544323</td>
-<td>0.334144</td>
-<td>0.539152</td>
+<th>72</th>
+<td>9504.0</td>
+<td>80</td>
+<td>47</td>
+<td>1.715710</td>
+<td>3.593778</td>
+<td>5.206823</td>
+<td>7.209218</td>
+<td>0.329512</td>
+<td>0.498498</td>
 <td>0.0</td>
 <td>0.0</td>
 </tr>
 <tr>
-<th>90</th>
-<td>6146.0</td>
-<td>106</td>
-<td>30</td>
-<td>5.234533</td>
-<td>6.652371</td>
-<td>0.792979</td>
+<th>73</th>
+<td>2878.0</td>
+<td>81</td>
+<td>14</td>
+<td>1.504764</td>
+<td>7.685147</td>
+<td>3.496796</td>
+<td>7.448302</td>
+<td>0.430326</td>
+<td>1.031798</td>
 <td>0.0</td>
-<td>2.548677</td>
-<td>5.406141</td>
-<td>4.760794</td>
-<td>8.318264</td>
-<td>0.535347</td>
-<td>0.649912</td>
+<td>0.5</td>
+</tr>
+<tr>
+<th>74</th>
+<td>1881.0</td>
+<td>83</td>
+<td>9</td>
+<td>2.093022</td>
+<td>10.883218</td>
+<td>3.069716</td>
+<td>8.071630</td>
+<td>0.681829</td>
+<td>1.348330</td>
+<td>0.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<th>75</th>
+<td>4198.0</td>
+<td>85</td>
+<td>20</td>
+<td>1.648309</td>
+<td>6.056318</td>
+<td>4.342187</td>
+<td>8.007327</td>
+<td>0.379603</td>
+<td>0.756347</td>
 <td>0.0</td>
 <td>0.0</td>
 </tr>
 <tr>
-<th>91</th>
-<td>6745.0</td>
-<td>107</td>
-<td>33</td>
-<td>6.339555</td>
-<td>6.902593</td>
-<td>0.925239</td>
-<td>0.2</td>
-<td>1.698497</td>
-<td>4.073663</td>
-<td>4.703580</td>
-<td>7.472306</td>
-<td>0.361107</td>
-<td>0.545168</td>
-<td>0.0</td>
-<td>0.0</td>
-</tr>
-<tr>
-<th>92</th>
-<td>7501.0</td>
-<td>108</td>
-<td>37</td>
-<td>7.490188</td>
-<td>7.352563</td>
-<td>1.020644</td>
-<td>0.7</td>
-<td>1.837516</td>
-<td>4.194518</td>
-<td>4.806957</td>
-<td>7.910465</td>
-<td>0.382262</td>
-<td>0.530249</td>
-<td>0.0</td>
-<td>0.0</td>
-</tr>
-<tr>
-<th>93</th>
-<td>4718.0</td>
-<td>110</td>
-<td>23</td>
-<td>5.064676</td>
-<td>6.928193</td>
-<td>0.733269</td>
-<td>0.0</td>
-<td>1.699123</td>
-<td>6.769784</td>
-<td>4.445838</td>
-<td>7.900927</td>
-<td>0.382183</td>
-<td>0.856834</td>
-<td>0.0</td>
-<td>0.2</td>
+<th>76</th>
+<td>441.0</td>
+<td>90</td>
+<td>2</td>
+<td>1.414214</td>
+<td>7.920230</td>
+<td>1.547311</td>
+<td>8.323545</td>
+<td>0.913982</td>
+<td>0.951545</td>
+<td>0.3</td>
+<td>0.6</td>
 </tr>
 </tbody>
 </table>
-<p>94 rows × 15 columns</p>
+<p>77 rows × 11 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span>
     <span class="n">df_cell</span><span class="p">,</span>
-    <span class="n">x</span><span class="o">=</span><span class="s1">'nn_AtoB'</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">"nn_AtoB"</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">df_cell</span><span class="p">[</span><span class="s1">'nn_AtoB'</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">c</span><span class="o">=</span><span class="s1">'red'</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'mean A-&gt;B'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">df_cell</span><span class="p">[</span><span class="s1">'nn_random_AtoB'</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">c</span><span class="o">=</span><span class="s1">'green'</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'mean A-&gt;random'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">df_cell</span><span class="p">[</span><span class="s2">"nn_AtoB"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">c</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"mean A-&gt;B"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">df_cell</span><span class="p">[</span><span class="s2">"nn_random_AtoB"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">c</span><span class="o">=</span><span class="s2">"green"</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"mean A-&gt;random"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x11bd726b0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f22ba144fb0&gt;
 </pre></div>
 </div>
-<img alt="../../../_images/69d10d19bc908e81a15136de8f868bebfc3212a6b859b089e0ce4f7e2c6c41ab.png" src="../../../_images/69d10d19bc908e81a15136de8f868bebfc3212a6b859b089e0ce4f7e2c6c41ab.png"/>
+<img alt="../../../_images/87da6c2adc68fea4917c7ae55b9990bfa5f80b3a5e4e96d7dc6966c11eae417c.png" src="../../../_images/87da6c2adc68fea4917c7ae55b9990bfa5f80b3a5e4e96d7dc6966c11eae417c.png"/>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span>
     <span class="n">df_cell</span><span class="p">,</span>
-    <span class="n">x</span><span class="o">=</span><span class="s1">'nn_BtoA'</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">"nn_BtoA"</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">df_cell</span><span class="p">[</span><span class="s1">'nn_BtoA'</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">c</span><span class="o">=</span><span class="s1">'red'</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'mean B-&gt;A'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">df_cell</span><span class="p">[</span><span class="s1">'nn_random_BtoA'</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">c</span><span class="o">=</span><span class="s1">'green'</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'mean B-&gt;random'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">df_cell</span><span class="p">[</span><span class="s2">"nn_BtoA"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">c</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"mean B-&gt;A"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">df_cell</span><span class="p">[</span><span class="s2">"nn_random_BtoA"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">c</span><span class="o">=</span><span class="s2">"green"</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"mean B-&gt;random"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x119de4550&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f22ba0126f0&gt;
 </pre></div>
 </div>
-<img alt="../../../_images/7d7707d0e3e53c122317cf0ae125bc44c8d207cf23330b0e58a55e45f7b397cd.png" src="../../../_images/7d7707d0e3e53c122317cf0ae125bc44c8d207cf23330b0e58a55e45f7b397cd.png"/>
+<img alt="../../../_images/fd85789d786b8797a9ae55f8f6d005aa716a79a923fd5c3f360e6d18137435ad.png" src="../../../_images/fd85789d786b8797a9ae55f8f6d005aa716a79a923fd5c3f360e6d18137435ad.png"/>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span>
     <span class="n">df_cell</span><span class="p">,</span>
-    <span class="n">x</span><span class="o">=</span><span class="s1">'ce_AtoB'</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">"ce_AtoB"</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">df_cell</span><span class="p">[</span><span class="s1">'ce_AtoB'</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">c</span><span class="o">=</span><span class="s1">'red'</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">df_cell</span><span class="p">[</span><span class="s2">"ce_AtoB"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">c</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x119de4130&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x7f22ba35ec60&gt;
 </pre></div>
 </div>
-<img alt="../../../_images/0f9fedb164bc78ffc94b04570fc666bcd3f8bdda1ef00258c9b0ed87e016a375.png" src="../../../_images/0f9fedb164bc78ffc94b04570fc666bcd3f8bdda1ef00258c9b0ed87e016a375.png"/>
+<img alt="../../../_images/0d83614dc169c22aa33c6e681f846c06fa7198e542f2721cb1e7d3f2a1377384.png" src="../../../_images/0d83614dc169c22aa33c6e681f846c06fa7198e542f2721cb1e7d3f2a1377384.png"/>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span>
     <span class="n">df_cell</span><span class="p">,</span>
-    <span class="n">x</span><span class="o">=</span><span class="s1">'ce_BtoA'</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">"ce_BtoA"</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">df_cell</span><span class="p">[</span><span class="s1">'ce_BtoA'</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">c</span><span class="o">=</span><span class="s1">'red'</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">df_cell</span><span class="p">[</span><span class="s2">"ce_BtoA"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">c</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x11a1919f0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x7f22ba394080&gt;
 </pre></div>
 </div>
-<img alt="../../../_images/2b6277ddf0821cb137e682318543d7835422adf0807ad08560c73d0d2f210f63.png" src="../../../_images/2b6277ddf0821cb137e682318543d7835422adf0807ad08560c73d0d2f210f63.png"/>
+<img alt="../../../_images/b4b23c1ce069493adb5eec276fbb0827a169e8f363a788cd65e02ea478801bc7.png" src="../../../_images/b4b23c1ce069493adb5eec276fbb0827a169e8f363a788cd65e02ea478801bc7.png"/>
 </div>
 </div>
 <p><strong>Interpretation:</strong> Almost all of protein A associates with protein B but not vice versa.</p>
 </section>
+</section>
+<section id="conclusion">
+<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<p>Here we have learned how to assess if two point patterns co-localise more than expected by random chance. Note that:</p>
+<ul class="simple">
+<li><p>The distance metric (distance to nearest neighbor) was a choice and could have been replaced with e.g. distance to the k nearest neighbors, number of spots in a certain radius or others.</p></li>
+<li><p>Using a complete spatially random pattern as null distribution was a choice. We could have e.g. randomised the labels between A and B.</p></li>
+<li><p>The formalism used to define spatial relationships (KDTree) was a choice. Other options exist.</p></li>
+</ul>
+<p>All these choices need to be made with your scientific question in mind.</p>
+<p>Moreover, other techniques for assessing co-localisation exist such as:</p>
+<ul class="simple">
+<li><p>Spatial cross-correlation: Takes into account expression levels</p></li>
+<li><p>Ripleys L for cross correlation: Reports on clustering length scales</p></li>
+</ul>
 </section>
 </section>
 <script type="text/x-thebe-config">
@@ -1478,7 +1238,7 @@ Small values indicate significant co-localization.</p>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-libraries">0. Importing libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-image-mask-and-spot-table">2. Load image, mask and spot table</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualy-inspect-the-images-masks-and-spots">Visualy inspect the images, masks and spots</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visually-inspect-the-images-masks-and-spots">Visually inspect the images, masks and spots</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-an-analysis-plan">3. Make An Analysis Plan</a><ul class="nav section-nav flex-column">
@@ -1503,10 +1263,11 @@ Small values indicate significant co-localization.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-clark-evans-indices">6. Calculate Clark-Evans Indices</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repeat-steps-4-6-with-multiple-random-patterns">7. Repeat Steps 4-6 with Multiple Random Patterns</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#per-cell-colocalization-measurements">8. Per-cell Colocalization Measurements</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-summarise-the-per-cell-co-localisation-analysis-as-a-function">✍️ Exercise: Summarise the per-cell co-localisation analysis as a function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-summarise-the-per-cell-co-localisation-analysis-as-a-function">✍️ Exercise: Summarise the per-cell co-localisation analysis as a function</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#repeat-measurements-for-all-cells">Repeat measurements for all cells</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
 </ul>
 </nav></div>
 </div></div>

@@ -29,7 +29,7 @@
 <link href="../../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" rel="stylesheet" type="text/css"/>
 <link href="../../../_static/sphinx-thebe.css?v=4fa983c6" rel="stylesheet" type="text/css"/>
 <link href="../../../_static/sphinx-design.min.css?v=95c83b7e" rel="stylesheet" type="text/css"/>
-<link href="../../../_static/styles/custom.css?v=fc1e9281" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/styles/custom.css?v=db811428" rel="stylesheet" type="text/css"/>
 <!-- So that users can add custom icons -->
 <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
 <!-- Pre-loaded scripts that we'll load fully later -->
@@ -55,7 +55,7 @@
 <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
 <script crossorigin="anonymous" data-jupyter-widgets-cdn="https://cdn.jsdelivr.net/npm/" src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@1.0.6/dist/embed-amd.js"></script>
 <script>DOCUMENTATION_OPTIONS.pagename = 'content/08_colocalization/intensity_based/pixel_intensity_based_colocalization_pearsons';</script>
-<script src="../../../_static/scripts/custom.js?v=976628f9"></script>
+<script src="../../../_static/scripts/custom.js?v=c465b8ac"></script>
 <link href="../../../genindex.html" rel="index" title="Index"/>
 <link href="../../../search.html" rel="search" title="Search"/>
 <link href="pixel_intensity_based_colocalization_manders.html" rel="next" title="Manders’ Colocalization Coefficients"/>
@@ -110,40 +110,48 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Course Material</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../01_intro_to_bobiac/bobiac_intro.html">01 - <i class="fas fa-image"></i> Introduction to BoBiAC</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../02_getting_started_with_python/getting_started_with_python.html">02 - <i class="fab fa-python"></i> Getting Started with Python and <code class="docutils literal notranslate"><span class="pre">uv</span></code></a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../03_python_basics/python_basics.html">03 - <i class="fab fa-python"></i> Python Basics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../03_python_basics/python_basics_notebook.html">The Python Basics Notebook</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../03_python_basics/error_notebook.html">Errors Everywhere</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../00_intro_to_bobiac/bobiac_intro.html">00 - <i class="fas fa-laptop-code"></i> Introduction to BoBiAC</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../01_getting_started_with_python/python_landing_page.html">01 - <i class="fab fa-python"></i> Getting Started with Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../01_getting_started_with_python/python_intro.html">Introduction to Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../01_getting_started_with_python/getting_started_with_uv.html">Getting started with uv</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../04_digital_images_intro/digital_images_intro.html">04 - <i class="fas fa-table-cells"></i> Introduction to Digital Images</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../04_digital_images_intro/python_for_bioimage_analysis.html">Working with Bioimages in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01_getting_started_with_python/jupyter_notebooks_and_juv.html">Jupyter Notebooks and juv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01_getting_started_with_python/glossary.html">Glossary</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../05_segmentation/segmentation_intro.html">05 - <i class="fa-solid fa-disease"></i> Image Segmentation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../../05_segmentation/classic/classic.html">Classical Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../05_segmentation/classic/classic_segmentation.html">Classical Segmentation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../02_python_basics/python_basics.html">02 - <i class="fab fa-python"></i> Python Basics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../02_python_basics/python_basics_notebook.html">The Python Basics Notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02_python_basics/error_notebook.html">Errors Everywhere</a></li>
 </ul>
 </details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../../05_segmentation/machine_learning/machine_learning.html">Machine Learning Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../05_segmentation/machine_learning/intro_to_ilastik.html">Introduction to Ilastik</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../05_segmentation/machine_learning/pixel_classification_with_ilastik.html">Ilastik for Pixel Classification</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../05_segmentation/machine_learning/from_ilastik_masks_to_labels.html">From Ilastik Masks to Labels</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../03_digital_images_intro/digital_images_intro.html">03 - <i class="fas fa-table-cells"></i> Introduction to Digital Images</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../03_digital_images_intro/working_with_bioimages_in_python.html">Working with Bioimages in Python</a></li>
 </ul>
 </details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../../05_segmentation/deep_learning/deep_learning.html">Deep Learning Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../05_segmentation/deep_learning/intro_to_cellpose.html">Introduction to Cellpose</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../05_segmentation/deep_learning/cellpose_notebook.html">Cellpose in Python</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../05_segmentation/deep_learning/cellpose_retraining.html">Retraining Cellpose on Custom Data</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../04_segmentation/segmentation_intro.html">04 - <i class="fa-solid fa-disease"></i> Image Segmentation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../04_segmentation/classic/classic.html">Classical Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../04_segmentation/classic/classic_segmentation.html">Classical Segmentation</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../04_segmentation/machine_learning/machine_learning.html">Machine Learning Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../04_segmentation/machine_learning/intro_to_ilastik.html">Introduction to Ilastik</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../04_segmentation/machine_learning/pixel_classification_with_ilastik.html">Ilastik for Pixel Classification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../04_segmentation/machine_learning/from_ilastik_masks_to_labels.html">From Ilastik Masks to Labels</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../04_segmentation/deep_learning/deep_learning.html">Deep Learning Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../04_segmentation/deep_learning/intro_to_cellpose.html">Introduction to Cellpose</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../04_segmentation/deep_learning/cellpose_notebook.html">Cellpose in Python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../04_segmentation/deep_learning/cellpose_retraining.html">Retraining Cellpose on Custom Data</a></li>
 </ul>
 </details></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../00_spot_detection/spot_detection_intro.html">00 - <i class="fa-solid fa-crosshairs"></i> Spot Detection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../00_spot_detection/intro_to_spotiflow.html">Introduction to Spotiflow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../00_spot_detection/spotiflow_notebook.html">Spotiflow in Python</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../00_spot_detection/spotiflow_retraining.html">Finetuning or Training Spotiflow on Custom Data</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../05_spot_detection/spot_detection_intro.html">05 - <i class="fa-solid fa-crosshairs"></i> Spot Detection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../05_spot_detection/intro_to_spotiflow.html">Introduction to Spotiflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../05_spot_detection/spotiflow_notebook.html">Spotiflow in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../05_spot_detection/spotiflow_retraining.html">Finetuning or Training Spotiflow on Custom Data</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../06_object_classification/object_classification.html">06 - <i class="fa-solid fa-shapes"></i> Object Classification</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -151,7 +159,8 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../07_measurement_and_quantification/measurement_and_quantification_intro.html">07 - <i class="fa-solid fa-chart-simple"></i> Measurements &amp; Quantification</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../07_measurement_and_quantification/measurement_and_quantification_notebook.html">Measurements &amp; Quantification Notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../07_measurement_and_quantification/A_measurement_pipeline.html">Measurement Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../07_measurement_and_quantification/B_nested_objects.html">Nested Measurements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../07_measurement_and_quantification/background_correction_notebook.html">Background Correction</a></li>
 </ul>
 </details></li>
@@ -161,15 +170,10 @@
 <li class="toctree-l3"><a class="reference internal" href="pixel_intensity_based_colocalization_manders.html">Manders’ Colocalization Coefficients</a></li>
 </ul>
 </details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../object_based/object_based_colocalization_intro.html">Object-based Colocalization</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="../object_based/object_based_colocalization.html">Object-based colocalization analysis</a></li>
-</ul>
-</details></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../spatial_statistics/spatial_stats_intro.html">Spatial Statistics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="../spatial_statistics/notebook_1.html">Notebook 1: Does a protein cluster?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../spatial_statistics/notebook_2.html">Notebook 2: Do two different protein clusters co-localize?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../spatial_statistics/notebook_3.html">Notebook 3: Does a protein localize to a cellular compartment?</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../spatial_statistics/spatial_statistics.html">Spatial statistics</a></li>
 </ul>
 </details></li>
 </ul>
@@ -178,7 +182,8 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">BoBiAC Exercises</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../09_bobiac_exercises/bobiac_exercises.html">BoBiAC Exercises</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../09_bobiac_exercises/uv_and_juv.html"><code class="docutils literal notranslate"><span class="pre">uv</span></code> and <code class="docutils literal notranslate"><span class="pre">juv</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../09_bobiac_exercises/uv.html">uv Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../09_bobiac_exercises/juv.html">juv Exercises</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../09_bobiac_exercises/working_with_bioimages.html">Working with Bioimages</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../09_bobiac_exercises/classic_segmentation.html">Classic Segmentation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../09_bobiac_exercises/group_work_1.html">Group Work 1</a></li>
@@ -206,6 +211,7 @@
 <li class="toctree-l1"><a class="reference external" href="https://www.linkedin.com/in/federicogasparoli">Federico Gasparoli, PhD</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://www.linkedin.com/in/eva-de-la-serna-b1a69664">Eva de la Serna, PhD</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://orcid.org/0000-0001-6194-9568">Max Brambach, PhD</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.linkedin.com/in/amelie-andreas-542b93204">Amelie Andreas</a></li>
 </ul>
 </div>
 </nav></div>
@@ -315,7 +321,7 @@
 <section id="description">
 <h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Description<a class="headerlink" href="#description" title="Link to this heading">#</a></h2>
 <p>In this section, we will explore how to implement in Python the <strong>Pearson’s Correlation Coefficient</strong>, which is a common method for quantifying colocalization based on pixel intensities.</p>
-<p>The images we will use for this section can be downloaded from the <a download="" href="https://github.com/bobiac/bobiac-book/releases/download/data-bobiac-2026/08_pixel_intensity_based_coloc.zip"> <i class="fas fa-download"></i> Manders &amp; Pearson’s Colocalization Dataset</a>.</p>
+<p>The images we will use for this section can be downloaded from the <a download="" href="https://github.com/bobiac/bobiac-book/releases/download/data-bobiac-2026/07_pixel_intensity_based_coloc.zip"> <i class="fas fa-download"></i> Manders &amp; Pearson’s Colocalization Dataset</a>.</p>
 <p class="alert alert-warning">
 <strong>Note:</strong> This notebook aims to show how to practically implement these methods but does not aim to describe when to use which method. For this exercise, we will use a single 2-channel image and without any preprocessing steps.
 </p>
@@ -357,7 +363,7 @@
 </section>
 <section id="load-and-visualize-the-image">
 <h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">Load and Visualize the Image<a class="headerlink" href="#load-and-visualize-the-image" title="Link to this heading">#</a></h3>
-<p>Open and visualize (with ndv) the image named <code class="docutils literal notranslate"><span class="pre">t_cell.tif</span></code> from the <a download="" href="https://github.com/bobiac/bobiac-book/releases/download/data-bobiac-2026/08_pixel_intensity_based_coloc.zip"><i class="fas fa-download"></i> Manders &amp; Pearson’s Colocalization Dataset</a>. This is a two-channel image of HEK293 cells where two distinct fluorescent proteins have been labeled with different fluorescent markers.</p>
+<p>Open and visualize (with ndv) the image named <code class="docutils literal notranslate"><span class="pre">t_cell.tif</span></code> from the <a download="" href="https://github.com/bobiac/bobiac-book/releases/download/data-bobiac-2026/07_pixel_intensity_based_coloc.zip"><i class="fas fa-download"></i> Manders &amp; Pearson’s Colocalization Dataset</a>. This is a two-channel image of HEK293 cells where two distinct fluorescent proteins have been labeled with different fluorescent markers.</p>
 <div class="cell tag_teacher docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># open the image</span>

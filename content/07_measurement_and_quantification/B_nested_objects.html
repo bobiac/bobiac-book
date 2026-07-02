@@ -29,7 +29,7 @@
 <link href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" rel="stylesheet" type="text/css"/>
 <link href="../../_static/sphinx-thebe.css?v=4fa983c6" rel="stylesheet" type="text/css"/>
 <link href="../../_static/sphinx-design.min.css?v=95c83b7e" rel="stylesheet" type="text/css"/>
-<link href="../../_static/styles/custom.css?v=fc1e9281" rel="stylesheet" type="text/css"/>
+<link href="../../_static/styles/custom.css?v=db811428" rel="stylesheet" type="text/css"/>
 <!-- So that users can add custom icons -->
 <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
 <!-- Pre-loaded scripts that we'll load fully later -->
@@ -52,9 +52,11 @@
 <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
 <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
 <script>DOCUMENTATION_OPTIONS.pagename = 'content/07_measurement_and_quantification/B_nested_objects';</script>
-<script src="../../_static/scripts/custom.js?v=976628f9"></script>
+<script src="../../_static/scripts/custom.js?v=c465b8ac"></script>
 <link href="../../genindex.html" rel="index" title="Index"/>
 <link href="../../search.html" rel="search" title="Search"/>
+<link href="background_correction_notebook.html" rel="next" title="Background Correction"/>
+<link href="A_measurement_pipeline.html" rel="prev" title="Measurement Pipeline"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="en" name="docsearch:language"/>
 <meta content="" name="docsearch:version"/>
@@ -104,49 +106,58 @@
 </li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Course Material</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../01_intro_to_bobiac/bobiac_intro.html">01 - <i class="fas fa-image"></i> Introduction to BoBiAC</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../02_getting_started_with_python/getting_started_with_python.html">02 - <i class="fab fa-python"></i> Getting Started with Python and <code class="docutils literal notranslate"><span class="pre">uv</span></code></a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../03_python_basics/python_basics.html">03 - <i class="fab fa-python"></i> Python Basics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../03_python_basics/python_basics_notebook.html">The Python Basics Notebook</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../03_python_basics/error_notebook.html">Errors Everywhere</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../00_intro_to_bobiac/bobiac_intro.html">00 - <i class="fas fa-laptop-code"></i> Introduction to BoBiAC</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01_getting_started_with_python/python_landing_page.html">01 - <i class="fab fa-python"></i> Getting Started with Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../01_getting_started_with_python/python_intro.html">Introduction to Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01_getting_started_with_python/getting_started_with_uv.html">Getting started with uv</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../04_digital_images_intro/digital_images_intro.html">04 - <i class="fas fa-table-cells"></i> Introduction to Digital Images</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../04_digital_images_intro/python_for_bioimage_analysis.html">Working with Bioimages in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_getting_started_with_python/jupyter_notebooks_and_juv.html">Jupyter Notebooks and juv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_getting_started_with_python/glossary.html">Glossary</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../05_segmentation/segmentation_intro.html">05 - <i class="fa-solid fa-disease"></i> Image Segmentation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../05_segmentation/classic/classic.html">Classical Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="../05_segmentation/classic/classic_segmentation.html">Classical Segmentation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../02_python_basics/python_basics.html">02 - <i class="fab fa-python"></i> Python Basics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02_python_basics/python_basics_notebook.html">The Python Basics Notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02_python_basics/error_notebook.html">Errors Everywhere</a></li>
 </ul>
 </details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../05_segmentation/machine_learning/machine_learning.html">Machine Learning Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="../05_segmentation/machine_learning/intro_to_ilastik.html">Introduction to Ilastik</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../05_segmentation/machine_learning/pixel_classification_with_ilastik.html">Ilastik for Pixel Classification</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../05_segmentation/machine_learning/from_ilastik_masks_to_labels.html">From Ilastik Masks to Labels</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../03_digital_images_intro/digital_images_intro.html">03 - <i class="fas fa-table-cells"></i> Introduction to Digital Images</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../03_digital_images_intro/working_with_bioimages_in_python.html">Working with Bioimages in Python</a></li>
 </ul>
 </details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../05_segmentation/deep_learning/deep_learning.html">Deep Learning Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="../05_segmentation/deep_learning/intro_to_cellpose.html">Introduction to Cellpose</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../05_segmentation/deep_learning/cellpose_notebook.html">Cellpose in Python</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../05_segmentation/deep_learning/cellpose_retraining.html">Retraining Cellpose on Custom Data</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../04_segmentation/segmentation_intro.html">04 - <i class="fa-solid fa-disease"></i> Image Segmentation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../04_segmentation/classic/classic.html">Classical Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../04_segmentation/classic/classic_segmentation.html">Classical Segmentation</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../04_segmentation/machine_learning/machine_learning.html">Machine Learning Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../04_segmentation/machine_learning/intro_to_ilastik.html">Introduction to Ilastik</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../04_segmentation/machine_learning/pixel_classification_with_ilastik.html">Ilastik for Pixel Classification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../04_segmentation/machine_learning/from_ilastik_masks_to_labels.html">From Ilastik Masks to Labels</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../04_segmentation/deep_learning/deep_learning.html">Deep Learning Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../04_segmentation/deep_learning/intro_to_cellpose.html">Introduction to Cellpose</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../04_segmentation/deep_learning/cellpose_notebook.html">Cellpose in Python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../04_segmentation/deep_learning/cellpose_retraining.html">Retraining Cellpose on Custom Data</a></li>
 </ul>
 </details></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../00_spot_detection/spot_detection_intro.html">00 - <i class="fa-solid fa-crosshairs"></i> Spot Detection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../00_spot_detection/intro_to_spotiflow.html">Introduction to Spotiflow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../00_spot_detection/spotiflow_notebook.html">Spotiflow in Python</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../00_spot_detection/spotiflow_retraining.html">Finetuning or Training Spotiflow on Custom Data</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../05_spot_detection/spot_detection_intro.html">05 - <i class="fa-solid fa-crosshairs"></i> Spot Detection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../05_spot_detection/intro_to_spotiflow.html">Introduction to Spotiflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05_spot_detection/spotiflow_notebook.html">Spotiflow in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05_spot_detection/spotiflow_retraining.html">Finetuning or Training Spotiflow on Custom Data</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../06_object_classification/object_classification.html">06 - <i class="fa-solid fa-shapes"></i> Object Classification</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../06_object_classification/object_classification_with_ilastik.html">Ilastik for Object Classification</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="measurement_and_quantification_intro.html">07 - <i class="fa-solid fa-chart-simple"></i> Measurements &amp; Quantification</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="measurement_and_quantification_notebook.html">Measurements &amp; Quantification Notebook</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="measurement_and_quantification_intro.html">07 - <i class="fa-solid fa-chart-simple"></i> Measurements &amp; Quantification</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="A_measurement_pipeline.html">Measurement Pipeline</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Nested Measurements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="background_correction_notebook.html">Background Correction</a></li>
 </ul>
 </details></li>
@@ -156,15 +167,10 @@
 <li class="toctree-l3"><a class="reference internal" href="../08_colocalization/intensity_based/pixel_intensity_based_colocalization_manders.html">Manders’ Colocalization Coefficients</a></li>
 </ul>
 </details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../08_colocalization/object_based/object_based_colocalization_intro.html">Object-based Colocalization</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="../08_colocalization/object_based/object_based_colocalization.html">Object-based colocalization analysis</a></li>
-</ul>
-</details></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../08_colocalization/spatial_statistics/spatial_stats_intro.html">Spatial Statistics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="../08_colocalization/spatial_statistics/notebook_1.html">Notebook 1: Does a protein cluster?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../08_colocalization/spatial_statistics/notebook_2.html">Notebook 2: Do two different protein clusters co-localize?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../08_colocalization/spatial_statistics/notebook_3.html">Notebook 3: Does a protein localize to a cellular compartment?</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../08_colocalization/spatial_statistics/spatial_statistics.html">Spatial statistics</a></li>
 </ul>
 </details></li>
 </ul>
@@ -173,7 +179,8 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">BoBiAC Exercises</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../09_bobiac_exercises/bobiac_exercises.html">BoBiAC Exercises</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../09_bobiac_exercises/uv_and_juv.html"><code class="docutils literal notranslate"><span class="pre">uv</span></code> and <code class="docutils literal notranslate"><span class="pre">juv</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09_bobiac_exercises/uv.html">uv Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09_bobiac_exercises/juv.html">juv Exercises</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../09_bobiac_exercises/working_with_bioimages.html">Working with Bioimages</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../09_bobiac_exercises/classic_segmentation.html">Classic Segmentation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../09_bobiac_exercises/group_work_1.html">Group Work 1</a></li>
@@ -201,6 +208,7 @@
 <li class="toctree-l1"><a class="reference external" href="https://www.linkedin.com/in/federicogasparoli">Federico Gasparoli, PhD</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://www.linkedin.com/in/eva-de-la-serna-b1a69664">Eva de la Serna, PhD</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://orcid.org/0000-0001-6194-9568">Max Brambach, PhD</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.linkedin.com/in/amelie-andreas-542b93204">Amelie Andreas</a></li>
 </ul>
 </div>
 </nav></div>
@@ -286,7 +294,15 @@
 <article class="bd-article">
 <section class="tex2jax_ignore mathjax_ignore" id="nested-measurements">
 <h1>Nested Measurements<a class="headerlink" href="#nested-measurements" title="Link to this heading">#</a></h1>
-<div class="cell docutils container">
+<div class="custom-button-row">
+<a class="custom-button custom-download-button" download="" href="../../notebooks/07_measurement_and_quantification/B_nested_objects.ipynb">
+<i class="fas fa-download"></i> Download this Notebook
+    </a>
+<a class="custom-button custom-download-button" href="https://colab.research.google.com/github/bobiac/bobiac-book/blob/gh-pages/colab_notebooks/07_measurement_and_quantification/B_nested_objects.ipynb" target="_blank">
+<img alt="Open in Colab" class="button-icon" src="../../_static/logo/icon-google-colab.svg"/>
+        Open in Colab
+    </a>
+</div><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># /// script</span>
 <span class="c1"># requires-python = "&gt;=3.10"</span>
@@ -368,8 +384,8 @@ Our question is: <strong>Do cells that are in the nuclear <em>on</em> state exhi
 
 <span class="c1"># load images and masks</span>
 <span class="n">image</span> <span class="o">=</span> <span class="n">tifffile</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span>
-<span class="n">image_nuclear</span> <span class="o">=</span> <span class="n">image</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">image_spots</span> <span class="o">=</span> <span class="n">image</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">image_nuclear</span> <span class="o">=</span> <span class="n">image</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">image_spots</span> <span class="o">=</span> <span class="n">image</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
 
 <span class="n">mask_cell</span> <span class="o">=</span> <span class="n">tifffile</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">mask_cell_path</span><span class="p">)</span>
 <span class="n">mask_nucleus</span> <span class="o">=</span> <span class="n">tifffile</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">mask_nucleus_path</span><span class="p">)</span>
@@ -391,7 +407,7 @@ Our question is: <strong>Do cells that are in the nuclear <em>on</em> state exhi
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/6a31603cdc9c3aebc8eafd7ae3d734322a78ad001defc40cd9c8ae1c92b07e02.png" src="../../_images/6a31603cdc9c3aebc8eafd7ae3d734322a78ad001defc40cd9c8ae1c92b07e02.png"/>
+<img alt="../../_images/65540bc62d84908741a993c249141db3d6463e96a607c1889dcd72d212afd32e.png" src="../../_images/65540bc62d84908741a993c249141db3d6463e96a607c1889dcd72d212afd32e.png"/>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 800x800 with 1 Axes&gt;, &lt;Axes: &gt;)
 </pre></div>
 </div>
@@ -520,17 +536,17 @@ For that we use the label mask of the nuclei, the nuclear expression image and t
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      area  intensity_mean  label
-0   1377.0     1190.348584      6
-1    796.0     1762.503769      8
-2    744.0     2053.278226      9
-3    643.0     2353.867807     10
-4   1222.0     1984.824877     11
+0   1377.0      411.344227      6
+1    796.0     1915.419598      8
+2    744.0     1612.961022      9
+3    643.0      420.241058     10
+4   1222.0      354.035188     11
 ..     ...             ...    ...
-72  1372.0     2598.682945     83
-73  1219.0     1351.519278     84
-74  1872.0     1978.978098     85
-75   868.0     2060.660138     86
-76  1472.0     1160.914402     87
+72  1372.0      393.518222     83
+73  1219.0      403.940935     84
+74  1872.0     1578.886218     85
+75   868.0      422.084101     86
+76  1472.0     1868.783967     87
 
 [77 rows x 3 columns]
 </pre></div>
@@ -540,24 +556,24 @@ For that we use the label mask of the nuclei, the nuclear expression image and t
 <p>Let’s add an <code class="docutils literal notranslate"><span class="pre">image_id</span></code> for book keeping.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_nuc</span><span class="p">[</span><span class="s2">"image_id"</span><span class="p">]</span> <span class="o">=</span> <span class="n">image_path</span><span class="o">.</span><span class="n">stem</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"_ch"</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_nuc</span><span class="p">[</span><span class="s2">"image_id"</span><span class="p">]</span> <span class="o">=</span> <span class="n">image_path</span><span class="o">.</span><span class="n">stem</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df_nuc</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      area  intensity_mean  label image_id
-0   1377.0     1190.348584      6  F01_837
-1    796.0     1762.503769      8  F01_837
-2    744.0     2053.278226      9  F01_837
-3    643.0     2353.867807     10  F01_837
-4   1222.0     1984.824877     11  F01_837
+0   1377.0      411.344227      6  F01_837
+1    796.0     1915.419598      8  F01_837
+2    744.0     1612.961022      9  F01_837
+3    643.0      420.241058     10  F01_837
+4   1222.0      354.035188     11  F01_837
 ..     ...             ...    ...      ...
-72  1372.0     2598.682945     83  F01_837
-73  1219.0     1351.519278     84  F01_837
-74  1872.0     1978.978098     85  F01_837
-75   868.0     2060.660138     86  F01_837
-76  1472.0     1160.914402     87  F01_837
+72  1372.0      393.518222     83  F01_837
+73  1219.0      403.940935     84  F01_837
+74  1872.0     1578.886218     85  F01_837
+75   868.0      422.084101     86  F01_837
+76  1472.0     1868.783967     87  F01_837
 
 [77 rows x 4 columns]
 </pre></div>
@@ -582,22 +598,22 @@ For that we use the label mask of the nuclei, the nuclear expression image and t
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel='intensity_mean', ylabel='Count'&gt;
 </pre></div>
 </div>
-<img alt="../../_images/6a476daeadaa6c2a3372b45e7e8af7b72201e7d9a7c4f14c0adb6bf4c042dd29.png" src="../../_images/6a476daeadaa6c2a3372b45e7e8af7b72201e7d9a7c4f14c0adb6bf4c042dd29.png"/>
+<img alt="../../_images/bd596632ec378a59e651e99a310aa5f7471a597caf0db79bb8fdd95a4229a109.png" src="../../_images/bd596632ec378a59e651e99a310aa5f7471a597caf0db79bb8fdd95a4229a109.png"/>
 </div>
 </div>
-<p>It seems like the expression is truly bimodal and 15,000 would be a good threshold.</p>
+<p>It seems like the expression is truly bimodal and 1,700 would be a good threshold.</p>
 <p>Now, we classify the intensity of nuclei using the <code class="docutils literal notranslate"><span class="pre">cut</span></code> function as before.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_nuc</span><span class="p">[</span><span class="s2">"expression"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span>
-    <span class="n">df_nuc</span><span class="p">[</span><span class="s2">"intensity_mean"</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">15000</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">"off"</span><span class="p">,</span> <span class="s2">"on"</span><span class="p">]</span>
+    <span class="n">df_nuc</span><span class="p">[</span><span class="s2">"intensity_mean"</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">"off"</span><span class="p">,</span> <span class="s2">"on"</span><span class="p">]</span>
 <span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df_nuc</span><span class="p">[</span><span class="s2">"expression"</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>['off']
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>['off', 'on']
 Categories (2, str): ['off' &lt; 'on']
 </pre></div>
 </div>
@@ -616,7 +632,7 @@ Categories (2, str): ['off' &lt; 'on']
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fddfb7accd2f11aaaa45d52dda85778daefbf7207f6fa24f3ae3e0516548466d.png" src="../../_images/fddfb7accd2f11aaaa45d52dda85778daefbf7207f6fa24f3ae3e0516548466d.png"/>
+<img alt="../../_images/d33ba4f4dc1bb2c1b4d20b00190f95d0bb3e08d2ad3acf4b15fbeb4669f0f0bd.png" src="../../_images/d33ba4f4dc1bb2c1b4d20b00190f95d0bb3e08d2ad3acf4b15fbeb4669f0f0bd.png"/>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 800x800 with 1 Axes&gt;, &lt;Axes: title={'center': 'expression'}&gt;)
 </pre></div>
 </div>
@@ -630,17 +646,17 @@ Categories (2, str): ['off' &lt; 'on']
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      area  intensity_mean  label image_id expression
-0   1377.0     1190.348584      6  F01_837        off
-1    796.0     1762.503769      8  F01_837        off
-2    744.0     2053.278226      9  F01_837        off
-3    643.0     2353.867807     10  F01_837        off
-4   1222.0     1984.824877     11  F01_837        off
+0   1377.0      411.344227      6  F01_837        off
+1    796.0     1915.419598      8  F01_837         on
+2    744.0     1612.961022      9  F01_837         on
+3    643.0      420.241058     10  F01_837        off
+4   1222.0      354.035188     11  F01_837        off
 ..     ...             ...    ...      ...        ...
-72  1372.0     2598.682945     83  F01_837        off
-73  1219.0     1351.519278     84  F01_837        off
-74  1872.0     1978.978098     85  F01_837        off
-75   868.0     2060.660138     86  F01_837        off
-76  1472.0     1160.914402     87  F01_837        off
+72  1372.0      393.518222     83  F01_837        off
+73  1219.0      403.940935     84  F01_837        off
+74  1872.0     1578.886218     85  F01_837         on
+75   868.0      422.084101     86  F01_837        off
+76  1472.0     1868.783967     87  F01_837         on
 
 [77 rows x 5 columns]
 </pre></div>
@@ -737,17 +753,17 @@ Categories (2, str): ['off' &lt; 'on']
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      area  intensity_mean  label image_id expression  label_cell
-0   1377.0     1190.348584      6  F01_837        off         0.0
-1    796.0     1762.503769      8  F01_837        off         0.0
-2    744.0     2053.278226      9  F01_837        off         0.0
-3    643.0     2353.867807     10  F01_837        off        14.0
-4   1222.0     1984.824877     11  F01_837        off        17.0
+0   1377.0      411.344227      6  F01_837        off         0.0
+1    796.0     1915.419598      8  F01_837         on         0.0
+2    744.0     1612.961022      9  F01_837         on         0.0
+3    643.0      420.241058     10  F01_837        off        14.0
+4   1222.0      354.035188     11  F01_837        off        17.0
 ..     ...             ...    ...      ...        ...         ...
-72  1372.0     2598.682945     83  F01_837        off        84.0
-73  1219.0     1351.519278     84  F01_837        off         0.0
-74  1872.0     1978.978098     85  F01_837        off        88.0
-75   868.0     2060.660138     86  F01_837        off         0.0
-76  1472.0     1160.914402     87  F01_837        off         0.0
+72  1372.0      393.518222     83  F01_837        off        84.0
+73  1219.0      403.940935     84  F01_837        off         0.0
+74  1872.0     1578.886218     85  F01_837         on        88.0
+75   868.0      422.084101     86  F01_837        off         0.0
+76  1472.0     1868.783967     87  F01_837         on         0.0
 
 [77 rows x 6 columns]
 </pre></div>
@@ -800,7 +816,7 @@ Categories (2, str): ['off' &lt; 'on']
 <tr>
 <th>5</th>
 <td>18.0</td>
-<td>off</td>
+<td>on</td>
 </tr>
 <tr>
 <th>6</th>
@@ -810,7 +826,7 @@ Categories (2, str): ['off' &lt; 'on']
 <tr>
 <th>7</th>
 <td>13.0</td>
-<td>off</td>
+<td>on</td>
 </tr>
 <tr>
 <th>...</th>
@@ -820,7 +836,7 @@ Categories (2, str): ['off' &lt; 'on']
 <tr>
 <th>68</th>
 <td>80.0</td>
-<td>off</td>
+<td>on</td>
 </tr>
 <tr>
 <th>70</th>
@@ -830,7 +846,7 @@ Categories (2, str): ['off' &lt; 'on']
 <tr>
 <th>71</th>
 <td>85.0</td>
-<td>off</td>
+<td>on</td>
 </tr>
 <tr>
 <th>72</th>
@@ -840,7 +856,7 @@ Categories (2, str): ['off' &lt; 'on']
 <tr>
 <th>74</th>
 <td>88.0</td>
-<td>off</td>
+<td>on</td>
 </tr>
 </tbody>
 </table>
@@ -859,16 +875,16 @@ Categories (2, str): ['off' &lt; 'on']
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       area  label expression
 0   11083.0     12        off
-1   11811.0     13        off
+1   11811.0     13         on
 2    2201.0     14        off
 3    4385.0     15        off
-4    3136.0     16        off
+4    3136.0     16         on
 ..      ...    ...        ...
 62   5343.0     81        off
 63   3711.0     83        off
 64   6932.0     84        off
-65   6111.0     85        off
-66   9146.0     88        off
+65   6111.0     85         on
+66   9146.0     88         on
 
 [67 rows x 3 columns]
 </pre></div>
@@ -888,7 +904,7 @@ Categories (2, str): ['off' &lt; 'on']
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/f1efe976d84f30accb5c912626173c0aecba52eb40718cae70303d64195a471c.png" src="../../_images/f1efe976d84f30accb5c912626173c0aecba52eb40718cae70303d64195a471c.png"/>
+<img alt="../../_images/07cea9e59d9c907942e428c9ced0ecd9be28642831896a4b7a5805d99fe4f54a.png" src="../../_images/07cea9e59d9c907942e428c9ced0ecd9be28642831896a4b7a5805d99fe4f54a.png"/>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 800x800 with 1 Axes&gt;, &lt;Axes: title={'center': 'expression'}&gt;)
 </pre></div>
 </div>
@@ -1014,16 +1030,16 @@ Categories (2, str): ['off' &lt; 'on']
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       area  label expression  count
 0   11083.0     12        off      6
-1   11811.0     13        off     65
+1   11811.0     13         on     65
 2    2201.0     14        off      1
 3    4385.0     15        off      5
-4    3136.0     16        off      6
+4    3136.0     16         on      6
 ..      ...    ...        ...    ...
 62   5343.0     81        off      3
 63   3711.0     83        off      4
 64   6932.0     84        off      5
-65   6111.0     85        off     21
-66   9146.0     88        off     13
+65   6111.0     85         on     21
+66   9146.0     88         on     13
 
 [67 rows x 4 columns]
 </pre></div>
@@ -1045,7 +1061,7 @@ Categories (2, str): ['off' &lt; 'on']
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel='count', ylabel='Count'&gt;
 </pre></div>
 </div>
-<img alt="../../_images/cb16dcdb81f596403d207933438b30c880a0bb4375b91b25275111d57722d8e1.png" src="../../_images/cb16dcdb81f596403d207933438b30c880a0bb4375b91b25275111d57722d8e1.png"/>
+<img alt="../../_images/a4e7e6e7206e1ae1b443b9bafa3a10b15237cd92ffe82773b83235723acb7e09.png" src="../../_images/a4e7e6e7206e1ae1b443b9bafa3a10b15237cd92ffe82773b83235723acb7e09.png"/>
 </div>
 </div>
 <div class="cell docutils container">
@@ -1061,7 +1077,7 @@ Categories (2, str): ['off' &lt; 'on']
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/f9b7608de9b0abf07e2164d1bc50a2739a4d721a5b282b3a9b86f91a2341ce06.png" src="../../_images/f9b7608de9b0abf07e2164d1bc50a2739a4d721a5b282b3a9b86f91a2341ce06.png"/>
+<img alt="../../_images/d5144572cd3aa5aa48c5e61bda824e1b2b0a474a09cd5e18464027998b36aa9d.png" src="../../_images/d5144572cd3aa5aa48c5e61bda824e1b2b0a474a09cd5e18464027998b36aa9d.png"/>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 800x800 with 2 Axes&gt;, &lt;Axes: title={'center': 'count'}&gt;)
 </pre></div>
 </div>
@@ -1109,7 +1125,7 @@ Name: spot_count_norm, Length: 67, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/a64900eabc4c5b92319a5dd63a49986c054e1bd88a9fa647b4eaff518cdbc823.png" src="../../_images/a64900eabc4c5b92319a5dd63a49986c054e1bd88a9fa647b4eaff518cdbc823.png"/>
+<img alt="../../_images/15fb591250bfb33dbc60d5ec349a91f01c2540cb2f49af28e413efcf01302db6.png" src="../../_images/15fb591250bfb33dbc60d5ec349a91f01c2540cb2f49af28e413efcf01302db6.png"/>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 800x800 with 2 Axes&gt;,
  &lt;Axes: title={'center': 'spot_count_norm'}&gt;)
 </pre></div>
@@ -1126,7 +1142,7 @@ Name: spot_count_norm, Length: 67, dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel='spot_count_norm', ylabel='Count'&gt;
 </pre></div>
 </div>
-<img alt="../../_images/4f71d95574e23f082007daa5777ded592aeed2fcbdb3c5b29de4760f52309b4c.png" src="../../_images/4f71d95574e23f082007daa5777ded592aeed2fcbdb3c5b29de4760f52309b4c.png"/>
+<img alt="../../_images/39382fb2e108574b07bb81e070fcfa3ab8df36062cbfcc5028f1adc46c0e452e.png" src="../../_images/39382fb2e108574b07bb81e070fcfa3ab8df36062cbfcc5028f1adc46c0e452e.png"/>
 </div>
 </div>
 <p>The picture is much clearer now.</p>
@@ -1140,15 +1156,18 @@ Name: spot_count_norm, Length: 67, dtype: float64
 <span class="n">mask_folder</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"../../_static/images/quant/02_nested_measurements/masks/"</span><span class="p">)</span>
 <span class="n">spot_folder</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"../../_static/images/quant/02_nested_measurements/spot_lists/"</span><span class="p">)</span>
 
-<span class="n">nuclear_images</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">image_folder</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">"*_ch0_nuclear.tif"</span><span class="p">))</span>
+<span class="n">image_paths</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">image_folder</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">"*.tif"</span><span class="p">))</span>
 
 <span class="n">list_df</span> <span class="o">=</span> <span class="p">[]</span>
 
-<span class="k">for</span> <span class="n">nuclear_path</span> <span class="ow">in</span> <span class="n">nuclear_images</span><span class="p">:</span>
-    <span class="n">image_id</span> <span class="o">=</span> <span class="n">nuclear_path</span><span class="o">.</span><span class="n">stem</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"_ch"</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># e.g. F01_837</span>
+<span class="k">for</span> <span class="n">image_path</span> <span class="ow">in</span> <span class="n">image_paths</span><span class="p">:</span>
+    <span class="n">image_id</span> <span class="o">=</span> <span class="n">image_path</span><span class="o">.</span><span class="n">stem</span>  <span class="c1"># e.g. F01_837</span>
 
-    <span class="c1"># load images, masks, and spot coordinates</span>
-    <span class="n">image_nuclear</span> <span class="o">=</span> <span class="n">tifffile</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">nuclear_path</span><span class="p">)</span>
+    <span class="c1"># load multi-channel image and extract nuclear channel</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">tifffile</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span>
+    <span class="n">image_nuclear</span> <span class="o">=</span> <span class="n">image</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="c1"># load masks and spot coordinates</span>
     <span class="n">mask_cell</span> <span class="o">=</span> <span class="n">tifffile</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">mask_folder</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">image_id</span><span class="si">}</span><span class="s2">w1.TIF"</span><span class="p">)</span>
     <span class="n">mask_nucleus</span> <span class="o">=</span> <span class="n">tifffile</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">mask_folder</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">image_id</span><span class="si">}</span><span class="s2">w2.TIF"</span><span class="p">)</span>
     <span class="n">df_spots</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">spot_folder</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">image_id</span><span class="si">}</span><span class="s2">_spots.csv"</span><span class="p">)</span>
@@ -1172,7 +1191,7 @@ Name: spot_count_norm, Length: 67, dtype: float64
     <span class="p">)</span>
     <span class="n">df_nuc</span><span class="p">[</span><span class="s2">"image_id"</span><span class="p">]</span> <span class="o">=</span> <span class="n">image_id</span>
     <span class="n">df_nuc</span><span class="p">[</span><span class="s2">"expression"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span>
-        <span class="n">df_nuc</span><span class="p">[</span><span class="s2">"intensity_mean"</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">15000</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">"off"</span><span class="p">,</span> <span class="s2">"on"</span><span class="p">]</span>
+        <span class="n">df_nuc</span><span class="p">[</span><span class="s2">"intensity_mean"</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1700</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">"off"</span><span class="p">,</span> <span class="s2">"on"</span><span class="p">]</span>
     <span class="p">)</span>
 
     <span class="c1"># --- map each nucleus to the cell it sits in ---</span>
@@ -1211,40 +1230,28 @@ Name: spot_count_norm, Length: 67, dtype: float64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">34</span><span class="p">],</span> <span class="n">line</span> <span class="mi">72</span>
-<span class="g g-Whitespace">     </span><span class="mi">68</span> 
-<span class="g g-Whitespace">     </span><span class="mi">69</span>     <span class="n">df_cell</span><span class="p">[</span><span class="s2">"image_id"</span><span class="p">]</span> <span class="o">=</span> <span class="n">image_id</span>
-<span class="g g-Whitespace">     </span><span class="mi">70</span>     <span class="n">list_df</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df_cell</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">71</span> 
-<span class="ne">---&gt; </span><span class="mi">72</span> <span class="n">df_full</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">list_df</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="nn">File ~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/pandas/core/reshape/concat.py:407,</span> in <span class="ni">concat</span><span class="nt">(objs, axis, join, ignore_index, keys, levels, names, verify_integrity, sort, copy)</span>
-<span class="g g-Whitespace">    </span><span class="mi">402</span> <span class="k">else</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
-<span class="g g-Whitespace">    </span><span class="mi">403</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">404</span>         <span class="s2">"Only can inner (intersect) or outer (union) join the other axis"</span>
-<span class="g g-Whitespace">    </span><span class="mi">405</span>     <span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">407</span> <span class="n">objs</span><span class="p">,</span> <span class="n">keys</span><span class="p">,</span> <span class="n">ndims</span> <span class="o">=</span> <span class="n">_clean_keys_and_objs</span><span class="p">(</span><span class="n">objs</span><span class="p">,</span> <span class="n">keys</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">409</span> <span class="k">if</span> <span class="n">sort</span> <span class="ow">is</span> <span class="n">lib</span><span class="o">.</span><span class="n">no_default</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">410</span>     <span class="k">if</span> <span class="n">axis</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-
-<span class="nn">File ~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/pandas/core/reshape/concat.py:808,</span> in <span class="ni">_clean_keys_and_objs</span><span class="nt">(objs, keys)</span>
-<span class="g g-Whitespace">    </span><span class="mi">805</span>     <span class="n">objs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">objs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">807</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">objs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">808</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"No objects to concatenate"</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">810</span> <span class="k">if</span> <span class="n">keys</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">811</span>     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">keys</span><span class="p">,</span> <span class="n">Index</span><span class="p">):</span>
-
-<span class="ne">ValueError</span>: No objects to concatenate
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df_full</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       area  label expression  count  spot_count_norm image_id
+0   11083.0     12        off      6         0.000541  F01_837
+1   11811.0     13        off     65         0.005503  F01_837
+2    2201.0     14         on      1         0.000454  F01_837
+3    4385.0     15         on      5         0.001140  F01_837
+4    3136.0     16         on      6         0.001913  F01_837
+..      ...    ...        ...    ...              ...      ...
+62   5343.0     81        off      3         0.000561  F01_837
+63   3711.0     83         on      4         0.001078  F01_837
+64   6932.0     84         on      5         0.000721  F01_837
+65   6111.0     85        off     21         0.003436  F01_837
+66   9146.0     88         on     13         0.001421  F01_837
+
+[67 rows x 6 columns]
 </pre></div>
 </div>
 </div>
@@ -1260,6 +1267,49 @@ Name: spot_count_norm, Length: 67, dtype: float64
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>expression</th>
+<th>image_id</th>
+<th>count</th>
+<th>spot_count_norm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>off</td>
+<td>F01_837</td>
+<td>19.812500</td>
+<td>0.002175</td>
+</tr>
+<tr>
+<th>1</th>
+<td>on</td>
+<td>F01_837</td>
+<td>9.514286</td>
+<td>0.002099</td>
+</tr>
+</tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1274,6 +1324,12 @@ Name: spot_count_norm, Length: 67, dtype: float64
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.0, 20.327410714285715)
+</pre></div>
+</div>
+<img alt="../../_images/0168f8acbb2ad6b025e304f5408a1b4311ccd6ce6b9edd74d13d55c54d27e9e4.png" src="../../_images/0168f8acbb2ad6b025e304f5408a1b4311ccd6ce6b9edd74d13d55c54d27e9e4.png"/>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1287,6 +1343,12 @@ Name: spot_count_norm, Length: 67, dtype: float64
 <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.0, 0.0021783840977964435)
+</pre></div>
+</div>
+<img alt="../../_images/bb3322b71dd5075b3f149116927666e10e01d6bf67811e1888a326891fd4d3cb.png" src="../../_images/bb3322b71dd5075b3f149116927666e10e01d6bf67811e1888a326891fd4d3cb.png"/>
 </div>
 </div>
 </section>
@@ -1317,6 +1379,20 @@ Name: spot_count_norm, Length: 67, dtype: float64
 </article>
 <footer class="prev-next-footer d-print-none">
 <div class="prev-next-area">
+<a class="left-prev" href="A_measurement_pipeline.html" title="previous page">
+<i class="fa-solid fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">previous</p>
+<p class="prev-next-title">Measurement Pipeline</p>
+</div>
+</a>
+<a class="right-next" href="background_correction_notebook.html" title="next page">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">next</p>
+<p class="prev-next-title">Background Correction</p>
+</div>
+<i class="fa-solid fa-angle-right"></i>
+</a>
 </div>
 </footer>
 </div>

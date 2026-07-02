@@ -93,7 +93,7 @@ use_gpu = core.use_gpu()
 print("GPU available:", use_gpu)
 
 # Path to the folder containing the images to segment
-folder_path = Path("data/05_segmentation_cellpose")
+folder_path = Path("data/04_segmentation_cellpose")
 
 # Get the sorted list of all .tif images in the folder
 images_path = sorted(folder_path.glob("*.tif"))
