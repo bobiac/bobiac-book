@@ -4,8 +4,8 @@
 
 This section is divided into two parts:
 
-- we will first introduce the concept of digital images, what they are and how can we display them.
-- we will then cover how digital images are represented in python and how we can manipulate and visualize them using different libraries.
+- We will first introduce the concept of digital images: what they are and how can we display them.
+- We will then cover how digital images are represented in python and how we can manipulate and visualize them using different libraries.
 
 We will use python in practice to:
 
@@ -15,7 +15,7 @@ We will use python in practice to:
 
 ## Slides
 
-### Inroduction to Digital Images
+### Introduction to Digital Images
 
 <a
     class="custom-button custom-download-button" href="../../pdfs/04_digital_images_intro/digital_images_intro.pdf" download> <i class="fas fa-download"></i> Download the Slides
