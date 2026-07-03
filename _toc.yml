@@ -81,6 +81,8 @@ parts:
       - file: content/09_bobiac_exercises/working_with_bioimages.md
       - file: content/09_bobiac_exercises/classic_segmentation.md
       - file: content/09_bobiac_exercises/group_work_1.md
+      - file: content/09_bobiac_exercises/group_work_2_oscillations.md
+      - file: content/09_bobiac_exercises/group_work_3_membrane_enrichment.md
 
 # COURSE DATA
 - caption: Course Materials Downloads
