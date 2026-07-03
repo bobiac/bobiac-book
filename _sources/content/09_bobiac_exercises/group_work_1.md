@@ -89,7 +89,7 @@ To get the nuclei segmentation, you can pass only the nuclei channel (channel 0)
 
 :::{dropdown} Solution
 
-See [Solution Notebook](group_work_1_solution.ipynb)
+See <a href="group_work_1_solution.html" target="_blank">Solution Notebook</a>
 
 :::
 
@@ -104,6 +104,6 @@ In this step you need to add the code that **detects spots in the 4th channels**
 
 :::{dropdown} Solution
 
-See [Solution Notebook](group_work_1_solution.ipynb)
+See <a href="group_work_1_solution.html" target="_blank">Solution Notebook</a>
 
 :::
