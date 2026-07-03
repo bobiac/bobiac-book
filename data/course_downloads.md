@@ -17,15 +17,15 @@
 
 <strong> 05 - <i class="fa-solid fa-crosshairs"></i> Spot Detection</strong>
 
-- Spotiflow Dataset: <a href="https://github.com/bobiac/bobiac-book/releases/download/data-bobiac-2026/group-work-1.zip" download> <i class="fas fa-download"></i> Group Work Dataset </a> (generated from <a href="https://www.cellimagelibrary.org/images/CCDB_6843" target="_blank">CCDB_6843</a>)
+- Spotiflow Dataset: <a href="https://github.com/bobiac/bobiac-book/releases/download/data-bobiac-2026/04_05_06_07_seg_and_spot.zip" download> <i class="fas fa-download"></i>Segmentation & Spot Detection Dataset </a> (same dataset as `Classical Methods`, generated from <a href="https://www.cellimagelibrary.org/images/CCDB_6843" target="_blank">CCDB_6843</a>)
 - Spotiflow Finetuning Dataset: <a href="https://github.com/bobiac/bobiac-book/releases/download/data-bobiac-2026/05_spot_detection_spotiflow_finetuning.zip" download> <i class="fas fa-download"></i> Spotiflow Finetuning Dataset</a> (from Spotiflow example notebook, MERFISH dataset from <a href="https://doi.org/10.1038/s41586-021-03705-x" target="_blank">Zhang et al, 2021</a>)
 
 <strong> 06 - <i class="fa-solid fa-chart-simple"></i> Measurement & Quantification</strong>
 
 - Measurement Pipeline:
-    <!-- - <a href="https://github.com/bobiac/bobiac-book/releases/download/data-bobiac-2026/04_05_06_07_seg_and_spot.zip" download> <i class="fas fa-download"></i>Segmentation & Spot Detection Dataset </a> (generated from <a href="https://www.cellimagelibrary.org/images/CCDB_6843" target="_blank">CCDB_6843</a>) -->
-- Nested Measurements:
-  - <a href="https://github.com/bobiac/bobiac-book/releases/download/data-bobiac-2026/group-work-1.zip" download> <i class="fas fa-download"></i>Group Work Dataset </a>
+    - <a href="https://github.com/bobiac/bobiac-book/releases/download/data-bobiac-2026/04_05_06_07_seg_and_spot.zip" download> <i class="fas fa-download"></i>Segmentation & Spot Detection Dataset </a> (generated from <a href="https://www.cellimagelibrary.org/images/CCDB_6843" target="_blank">CCDB_6843</a>)
+    - labels & spot coords: ...
+- Nested Measurements: <a href="https://github.com/bobiac/bobiac-book/releases/download/data-bobiac-2026/group-work-1.zip" download> <i class="fas fa-download"></i>Group Work Dataset </a> (also contains labels and spot coords)
 - Background Correction Dataset: <a href="https://github.com/bobiac/bobiac-book/releases/download/data-bobiac-2026/06_background_correction.zip" download> <i class="fas fa-download"></i> Background Correction Dataset</a>
 
 <strong> 07 - <i class="fa-solid fa-location-crosshairs"></i> Colocalization</strong>
