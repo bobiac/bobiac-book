@@ -11,3 +11,11 @@ The next two sections will cover:
 1. [**Introduction to Python**](python_intro.md): learn what `Python` is, how it works.
 2. [**Getting Started with uv**](getting_started_with_uv.md): learn how to use `uv` to manage your `Python` environments, packages and python files.
 3. [**Jupyter Notebooks and juv**](jupyter_notebooks_and_juv.md): learn what `Jupyter Notebooks` are and how to run and create them using `juv` (a `uv` tool).
+
+<a
+    class="custom-button custom-download-button" href="../../pdfs/01_python_intro/python_intro.pdf" download> <i class="fas fa-download"></i> Download the Slides
+</a>
+
+<div align="center">
+  <iframe class="custom-pdf-frame-169" src="../../pdfs/01_python_intro/python_intro.pdf"> </iframe>
+</div>
