@@ -1,6 +1,6 @@
 # Group Work 3: Does a Protein Localize to a Cellular Compartment?
 
-In this exercise, you will build an analysis workflow in a Jupyter Notebook to investigate whether a protein localizes to a cellular compartment; in this example, the cell membrane. The notebook is based on the example in [membrane_enrichment.ipynb](membrane_enrichment.ipynb), and it uses fluorescence images together with cell label masks and a table of detected spots.
+In this exercise, you will build an analysis workflow in a Jupyter Notebook to investigate whether a protein localizes to a cellular compartment; in this example, the cell membrane. The notebook is based on the example in <a href="group_work_3_membrane_enrichment_solution.html" target="_blank">Solution Notebook</a>, and it uses fluorescence images together with cell label masks and a table of detected spots.
 
 The dataset consists of fluorescence images with five channels:
 
@@ -102,7 +102,7 @@ In this step, you will load the fluorescence image, the segmentation mask and th
 3. Remove cells that touch the border of the image with `skimage.segmentation.clear_border`.
 4. Visualise the image channels, the mask and the spots to confirm the data is correct. You can use `overlay_labels` and its `focus_object` attribute to zoom in on a single cell.
 
-See [membrane_enrichment.ipynb](membrane_enrichment.ipynb) for a worked example.
+See <a href="group_work_3_membrane_enrichment_solution.html" target="_blank">Solution Notebook</a> for a worked example.
 
 :::
 
@@ -202,7 +202,7 @@ Focus on one cell, calculate the distances between Protein C and the membrane an
 4. Calculate the Clark-Evans index and the p-value as previously.
 5. Check if your results make sense.
 
-See [membrane_enrichment.ipynb](membrane_enrichment.ipynb) for a worked example.
+See <a href="group_work_3_membrane_enrichment_solution.html" target="_blank">Solution Notebook</a> for a worked example.
 
 :::
 
@@ -218,7 +218,7 @@ Perform the same analysis for all cells in the image.
 2. Store individual cell results (CE-index, p-val, average distance to membrane) in `df_cell`.
 3. Perform quality control and check for outliers by overlaying results on the image and by histogram analysis.
 
-See [membrane_enrichment.ipynb](membrane_enrichment.ipynb) for a worked example.
+See <a href="group_work_3_membrane_enrichment_solution.html" target="_blank">Solution Notebook</a> for a worked example.
 
 :::
 

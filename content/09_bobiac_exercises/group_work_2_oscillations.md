@@ -1,6 +1,6 @@
 # Group Work 2: Analysing Oscillations in Time-Series Images
 
-In this exercise, you will build a small analysis workflow in a Jupyter Notebook to investigate whether the expression of a gene oscillates over time. The notebook is based on the example in [Oscillations.ipynb](Oscillations.ipynb), and it uses time-resolved microscopy images together with cell and nucleus label masks.
+In this exercise, you will build a small analysis workflow in a Jupyter Notebook to investigate whether the expression of a gene oscillates over time. The notebook is based on the example in <a href="group_work_2_oscillations_solution.html" target="_blank">Solution Notebook</a>, and it uses time-resolved microscopy images together with cell and nucleus label masks.
 
 To go through this exercise, create a new folder named `bobiac_group_work`. In the instructions below, we assume this folder is on your `Desktop`, but you can choose a different location if you prefer.
 
@@ -94,7 +94,7 @@ The example notebook uses the data in the course repository under the `images/` 
 
 :::{dropdown} Solution
 
-See [Oscillations.ipynb](Oscillations.ipynb) for a worked example.
+See <a href="group_work_2_oscillations_solution.html" target="_blank">Solution Notebook</a> for a worked example.
 
 :::
 
@@ -115,7 +115,7 @@ You can use the same workflow as in the earlier measurement notebooks: load the 
 
 :::{dropdown} Solution
 
-See [Oscillations.ipynb](Oscillations.ipynb) for a worked example.
+See <a href="group_work_2_oscillations_solution.html" target="_blank">Solution Notebook</a> for a worked example.
 
 :::
 
@@ -132,7 +132,7 @@ Now you will turn the workflow into a batch analysis over all 16 images.
 
 :::{dropdown} Solution
 
-See [Oscillations.ipynb](Oscillations.ipynb) for a worked example.
+See <a href="group_work_2_oscillations_solution.html" target="_blank">Solution Notebook</a> for a worked example.
 
 :::
 
@@ -149,7 +149,7 @@ In this final step, you will answer the main question: what is the frequency of 
 
 :::{dropdown} Solution
 
-See [Oscillations.ipynb](Oscillations.ipynb) for a worked example.
+See <a href="group_work_2_oscillations_solution.html" target="_blank">Solution Notebook</a> for a worked example.
 
 :::
 
