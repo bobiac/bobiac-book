@@ -23,8 +23,8 @@
 <strong> 06 - <i class="fa-solid fa-chart-simple"></i> Measurement & Quantification</strong>
 
 - Measurement Pipeline:
-    - <a href="https://github.com/bobiac/bobiac-book/releases/download/data-bobiac-2026/04_05_06_07_seg_and_spot.zip" download> <i class="fas fa-download"></i>Segmentation & Spot Detection Dataset </a> (generated from <a href="https://www.cellimagelibrary.org/images/CCDB_6843" target="_blank">CCDB_6843</a>)
-    - labels & spot coords: ...
+    - Data: <a href="https://github.com/bobiac/bobiac-book/releases/download/data-bobiac-2026/04_05_06_07_seg_and_spot.zip" download> <i class="fas fa-download"></i>Segmentation & Spot Detection Dataset </a> (same dataset as `Classical Methods`, generated from <a href="https://www.cellimagelibrary.org/images/CCDB_6843" target="_blank">CCDB_6843</a>)
+    - Labels & Spot Coords: ...
 - Nested Measurements: <a href="https://github.com/bobiac/bobiac-book/releases/download/data-bobiac-2026/group-work-1.zip" download> <i class="fas fa-download"></i>Group Work Dataset </a> (also contains labels and spot coords)
 - Background Correction Dataset: <a href="https://github.com/bobiac/bobiac-book/releases/download/data-bobiac-2026/06_background_correction.zip" download> <i class="fas fa-download"></i> Background Correction Dataset</a>
 
