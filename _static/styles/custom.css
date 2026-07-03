@@ -155,3 +155,33 @@ html[data-theme="dark"] .logo-dark {
 .param-table tbody tr:nth-child(even) {
   background-color: rgba(116, 184, 104, 0.1);
 }
+
+/* Download tables on the Downloads page. table-layout: fixed + matching
+   <colgroup> widths keep the columns aligned across all the separate
+   per-section tables on the page. */
+.download-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  margin: 0.4em 0 1.2em 0;
+  font-size: 0.9em;
+}
+
+.download-table th,
+.download-table td {
+  border: 1px solid var(--pst-color-border, #d0d0d0);
+  padding: 0.45em 0.7em;
+  text-align: left;
+  vertical-align: top;
+  overflow-wrap: anywhere;
+}
+
+.download-table thead th {
+  background-color: var(--bobiac-green);
+  color: var(--bobiac-darkgrey);
+  font-weight: 600;
+}
+
+.download-table tbody tr:nth-child(even) {
+  background-color: rgba(116, 184, 104, 0.1);
+}
