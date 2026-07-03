@@ -178,7 +178,7 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../09_bobiac_exercises/bobiac_exercises.html">BoBiAC Exercises</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../09_bobiac_exercises/uv.html">uv Exercises</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../09_bobiac_exercises/juv.html">juv Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09_bobiac_exercises/juv.html">juv Exercise</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../09_bobiac_exercises/working_with_bioimages.html">Working with Bioimages</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../09_bobiac_exercises/classic_segmentation.html">Classic Segmentation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../09_bobiac_exercises/group_work_1.html">Group Work 1: Building your Own Spot Detection Pipeline</a></li>
@@ -270,7 +270,8 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-sure-you-have-gpu-access">Make sure you have GPU access</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mount-your-google-drive">Mount your google drive</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-the-data">Download the Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-cellpose-other-dependencies">Install Cellpose &amp; other dependencies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-dependencies">Install Dependencies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">Import Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">Setup</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-spotiflow-on-2d-images">Running Spotiflow on 2D images</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-image">Load the Image</a></li>
@@ -349,7 +350,7 @@
 <section id="download-the-data">
 <h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Download the Data<a class="headerlink" href="#download-the-data" title="Link to this heading">#</a></h2>
 <p>Run the cell below to download the data for this exercise and save it in you Google Drive. A new folder called <code class="docutils literal notranslate"><span class="pre">bobiac_data_spotiflow</span></code> will be created in your Google Drive.</p>
-<div class="cell docutils container">
+<div class="cell tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create directory</span>
 <span class="o">!</span>mkdir<span class="w"> </span>-p<span class="w"> </span>/content/bobiac_data_spotiflow
@@ -362,9 +363,23 @@
 </div>
 </div>
 </section>
-<section id="install-cellpose-other-dependencies">
-<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Install Cellpose &amp; other dependencies<a class="headerlink" href="#install-cellpose-other-dependencies" title="Link to this heading">#</a></h2>
-<div class="cell tag_teacher docutils container">
+<section id="install-dependencies">
+<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Install Dependencies<a class="headerlink" href="#install-dependencies" title="Link to this heading">#</a></h2>
+<div class="cell tag_skip-execution docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>cellpose
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>matplotlib
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>tqdm
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>tifffile
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>spotiflow
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="import-libraries">
+<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Import Libraries<a class="headerlink" href="#import-libraries" title="Link to this heading">#</a></h2>
+<div class="cell tag_teacher tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">csv</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
@@ -381,8 +396,10 @@
 </section>
 <section id="setup">
 <h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Setup<a class="headerlink" href="#setup" title="Link to this heading">#</a></h2>
-<p>These is an helper that saves the results of spot detection in a <code class="docutils literal notranslate"><span class="pre">.csv</span></code> file in a <code class="docutils literal notranslate"><span class="pre">napari</span></code>-compatible format, so that we can easily visualize the results in <code class="docutils literal notranslate"><span class="pre">napari</span></code> later on.</p>
-<div class="cell docutils container">
+<p>These are two helper functions.</p>
+<p>The first one it so saves the results of spot detection in a <code class="docutils literal notranslate"><span class="pre">.csv</span></code> file in a <code class="docutils literal notranslate"><span class="pre">napari</span></code>-compatible format, so that we can easily visualize the results in <code class="docutils literal notranslate"><span class="pre">napari</span></code> later on.”</p>
+<p>The second one is to visualize the detected spots as an overlay on the original image using <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>.</p>
+<div class="cell tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">save_points_as_csv</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">output_path</span><span class="o">=</span><span class="s2">"points.csv"</span><span class="p">,</span> <span class="n">channel_last</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">"""Save points as a napari-compatible CSV (drag-and-drop as Points layer).</span>
@@ -403,7 +420,6 @@
         <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">(</span><span class="n">headers</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">points</span><span class="p">):</span>
             <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="n">i</span><span class="p">,</span> <span class="o">*</span><span class="n">p</span><span class="p">])</span>
-
 
 <span class="k">def</span><span class="w"> </span><span class="nf">plot_points_on_image</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">points</span><span class="p">,</span> <span class="n">is_3d</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">skip_channels</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Overlay detected spots on each image channel.</span>
@@ -490,7 +506,7 @@
 <section id="load-the-image">
 <h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">Load the Image<a class="headerlink" href="#load-the-image" title="Link to this heading">#</a></h3>
 <p>Since we will be using TIFF files, to load the images, we can use the <code class="docutils literal notranslate"><span class="pre">imread</span></code> method from the <code class="docutils literal notranslate"><span class="pre">tifffile</span></code> library.</p>
-<div class="cell tag_teacher docutils container">
+<div class="cell tag_teacher tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">image_path</span> <span class="o">=</span> <span class="s2">"content/bobiac_data_spotiflow/05_spot_detection_spotiflow/2d_spots.tif"</span>
 <span class="n">image</span> <span class="o">=</span> <span class="n">tifffile</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span>
@@ -499,7 +515,7 @@
 </div>
 </div>
 <p>Let’s inspect the image shape. How many channels do we have?</p>
-<div class="cell tag_teacher docutils container">
+<div class="cell tag_teacher tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
@@ -507,7 +523,7 @@
 </div>
 </div>
 <p>This is a multi-channel image, we can use the <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> to visualize the image.</p>
-<div class="cell tag_teacher docutils container">
+<div class="cell tag_teacher tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ch</span> <span class="o">=</span> <span class="mi">6</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
@@ -538,7 +554,7 @@
 <p>For this first example, we’ll use the <code class="docutils literal notranslate"><span class="pre">general</span></code> model.</p>
 <p class="alert alert alert-info">
 <strong>Note:</strong> If you never used <code>Spotiflow</code> before, the model you will specify in the <code>from_pretrained()</code> method will be downloaded automatically the first time you run this notebook.
-</p><div class="cell tag_teacher docutils container">
+</p><div class="cell tag_teacher tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">Spotiflow</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">"general"</span><span class="p">)</span>
 </pre></div>
@@ -660,7 +676,7 @@
     ⚠️ Spotiflow expects the <strong>channel axis to be last</strong> (the image must be in <code>(Y, X, C)</code> shape).
     <br/><br/>
     ⚠️ In our case, the image is stored as <code>(C, Y, X)</code> so we need to move the channel axis to the end before running the model. We can do this easily with <a href="https://numpy.org/doc/stable/reference/generated/numpy.transpose.html"><strong>`numpy.transpose`</strong></a>.
-</p><div class="cell tag_teacher docutils container">
+</p><div class="cell tag_teacher tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tr_image</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># (C, Y, X) -&gt; (Y, X, C)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">tr_image</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
@@ -676,7 +692,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">points</span></code>: a numpy array containing the coordinates of the detected spots.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">details</span></code>: a <strong>list</strong> with one entry per channel, each containing the spot-wise details for that channel including <code class="docutils literal notranslate"><span class="pre">heatmap</span></code>, <code class="docutils literal notranslate"><span class="pre">intens</span></code>, <code class="docutils literal notranslate"><span class="pre">prob</span></code>, <code class="docutils literal notranslate"><span class="pre">flow</span></code>, and <code class="docutils literal notranslate"><span class="pre">subpix</span></code>.</p></li>
 </ul>
-<div class="cell tag_teacher docutils container">
+<div class="cell tag_teacher tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">points</span><span class="p">,</span> <span class="n">details</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_multichannel</span><span class="p">(</span><span class="n">tr_image</span><span class="p">,</span> <span class="n">channels</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 </pre></div>
@@ -690,14 +706,14 @@
 <h4>Points<a class="headerlink" href="#points" title="Link to this heading">#</a></h4>
 <p>Let’s explore the outputs starting from understanding the <code class="docutils literal notranslate"><span class="pre">points</span></code>.</p>
 <p>What is the <code class="docutils literal notranslate"><span class="pre">shape</span></code> of <code class="docutils literal notranslate"><span class="pre">points</span></code>?</p>
-<div class="cell tag_teacher docutils container">
+<div class="cell tag_teacher tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">points</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell tag_teacher docutils container">
+<div class="cell tag_teacher tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
@@ -706,7 +722,7 @@
 </div>
 <p>Since we used <code class="docutils literal notranslate"><span class="pre">predict_multichannel()</span></code>, each row of <code class="docutils literal notranslate"><span class="pre">points</span></code> is in <code class="docutils literal notranslate"><span class="pre">(y,</span> <span class="pre">x,</span> <span class="pre">channel)</span></code> format. The last column is therefore the <strong>index of the channel</strong> the spot was detected in (would have been simply <code class="docutils literal notranslate"><span class="pre">(y,</span> <span class="pre">x)</span></code> if we had used <code class="docutils literal notranslate"><span class="pre">predict()</span></code> on a single-channel image).</p>
 <p>To visualize the detected spots on top of the image we can use the <code class="docutils literal notranslate"><span class="pre">plot_points_on_image()</span></code> helper function we defined in the <a class="reference internal" href="#Setup"><span class="xref myst">Setup</span></a> section of this notebook. This function takes as input the image and the points and plots the points on top of the image.</p>
-<div class="cell tag_teacher docutils container">
+<div class="cell tag_teacher tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_points_on_image</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">points</span><span class="p">,</span> <span class="n">skip_channels</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
 </pre></div>
@@ -716,7 +732,7 @@
 <p>We can also save the detected spots for future use as a <code class="docutils literal notranslate"><span class="pre">csv</span></code> file using the <code class="docutils literal notranslate"><span class="pre">save_points_as_csv</span></code> function we defined in the <a class="reference internal" href="#Setup"><span class="xref myst">Setup</span></a> section of this notebook.</p>
 <p class="alert alert alert-info">
 <strong>Note:</strong> This function is compatible with <code>napari</code>, so you can directly drag and drop the saved <code>csv</code> file in <code>napari</code> (together with the original multi-channel image) to visualize the detected spots as a points layer: each spot will appear on the channel it was detected in.
-</p><div class="cell tag_teacher docutils container">
+</p><div class="cell tag_teacher tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">save_points_as_csv</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="s2">"2d_points.csv"</span><span class="p">,</span> <span class="n">channel_last</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
@@ -730,7 +746,7 @@
 <p><code class="docutils literal notranslate"><span class="pre">details</span></code> is a <strong>list</strong> with one entry per channel, each containing the spot-wise details for that channel including <code class="docutils literal notranslate"><span class="pre">heatmap</span></code>, <code class="docutils literal notranslate"><span class="pre">intens</span></code>, <code class="docutils literal notranslate"><span class="pre">prob</span></code>, <code class="docutils literal notranslate"><span class="pre">flow</span></code>, and <code class="docutils literal notranslate"><span class="pre">subpix</span></code>.</p>
 <p>We can first plot the <code class="docutils literal notranslate"><span class="pre">heatmap</span></code> of the probabilities per pixel using the <code class="docutils literal notranslate"><span class="pre">imshow</span></code> method from the <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code> module.</p>
 <p>Remember, <code class="docutils literal notranslate"><span class="pre">details</span></code> is a list, so we need to specify the channel index to visualize the heatmap of a specific channel.</p>
-<div class="cell tag_teacher docutils container">
+<div class="cell tag_teacher tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># `ch` is channel index, change it to visualize the heatmap of a different channel.</span>
 <span class="c1"># note that this is the channel index as passed to predict_multichannel().</span>
@@ -748,7 +764,7 @@
 </div>
 <p>In <code class="docutils literal notranslate"><span class="pre">details[channel].intens</span></code> we can find the value of the pixel in the original image at the coordinates of each detected spot, which can be used as a measure of the intensity of the detected spots.</p>
 <p>We can visualize the distribution of these intensities with a histogram using <code class="docutils literal notranslate"><span class="pre">hist</span></code> from <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code>.</p>
-<div class="cell tag_teacher docutils container">
+<div class="cell tag_teacher tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">details</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">intens</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"green"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"channel 3"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">details</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">intens</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"magenta"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"channel 4"</span><span class="p">)</span>
@@ -768,7 +784,7 @@
 <section id="running-spotiflow-on-a-folder-of-images">
 <h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Running Spotiflow on a Folder of Images<a class="headerlink" href="#running-spotiflow-on-a-folder-of-images" title="Link to this heading">#</a></h2>
 <p>To run <code class="docutils literal notranslate"><span class="pre">Spotiflow</span></code> on a folder of multi-channel images, we can simply loop over the files in the folder, load the images with <code class="docutils literal notranslate"><span class="pre">tifffile</span></code>, and run <code class="docutils literal notranslate"><span class="pre">predict_multichannel()</span></code> on each of them. To save the points, we can use the <code class="docutils literal notranslate"><span class="pre">save_points_as_csv</span></code> function we defined in the <a class="reference internal" href="#Setup"><span class="xref myst">Setup</span></a> section of this notebook.</p>
-<div class="cell tag_teacher docutils container">
+<div class="cell tag_teacher tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Path to the folder containing the images</span>
 <span class="n">folder_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"content/bobiac_data_spotiflow/05_spot_detection_spotiflow"</span><span class="p">)</span>  <span class="c1"># change this to your folder path</span>
@@ -802,7 +818,7 @@
 <h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Bonus: Running Spotiflow on 3D images<a class="headerlink" href="#bonus-running-spotiflow-on-3d-images" title="Link to this heading">#</a></h2>
 <p>Running <code class="docutils literal notranslate"><span class="pre">Spotiflow</span></code> on 3D images is very similar to running it on 2D images. The only differences are that the input image is a 3D stack in <code class="docutils literal notranslate"><span class="pre">(Z,</span> <span class="pre">Y,</span> <span class="pre">X)</span></code> format (single-channel) or <code class="docutils literal notranslate"><span class="pre">(Z,</span> <span class="pre">Y,</span> <span class="pre">X,</span> <span class="pre">C)</span></code> (multi-channel), and the output <code class="docutils literal notranslate"><span class="pre">points</span></code> will be in <code class="docutils literal notranslate"><span class="pre">(z,</span> <span class="pre">y,</span> <span class="pre">x)</span></code> or <code class="docutils literal notranslate"><span class="pre">(z,</span> <span class="pre">y,</span> <span class="pre">x,</span> <span class="pre">channel)</span></code> format respectively.</p>
 <p>The file we will use for this section can be downloaded by running the cell below. A new folder called <code class="docutils literal notranslate"><span class="pre">bobiac_data_spotiflow_3d</span></code> will be created in your Google Drive.</p>
-<div class="cell docutils container">
+<div class="cell tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create directory</span>
 <span class="o">!</span>mkdir<span class="w"> </span>-p<span class="w"> </span>/content/bobiac_data_spotiflow_3d
@@ -816,7 +832,7 @@
 </div>
 <section id="load-and-visualize-the-image">
 <h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">Load and Visualize the Image<a class="headerlink" href="#load-and-visualize-the-image" title="Link to this heading">#</a></h3>
-<div class="cell tag_teacher docutils container">
+<div class="cell tag_teacher tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">image_path</span> <span class="o">=</span> <span class="s2">"content/bobiac_data_spotiflow_3d/05_spot_detection_spotiflow_3d/3d_spots.tif"</span>
 <span class="n">image_3d</span> <span class="o">=</span> <span class="n">tifffile</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span>
@@ -827,7 +843,7 @@
 </div>
 </div>
 <p>We can visualize the stack as a <strong>max projection along Z</strong> using a combination of <code class="docutils literal notranslate"><span class="pre">numpy</span></code> and <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>.</p>
-<div class="cell tag_teacher docutils container">
+<div class="cell tag_teacher tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image_3d</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">"gray"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Max projection (Z)"</span><span class="p">)</span>
@@ -841,7 +857,7 @@
 <section id="id1">
 <h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">Initialize the Model<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <p>For 3D datasets, we need to use a pre-trained model that has been trained on 3D data, either <code class="docutils literal notranslate"><span class="pre">synth_3d</span></code> or <code class="docutils literal notranslate"><span class="pre">smfish_3d</span></code>. In this example, we will use the <code class="docutils literal notranslate"><span class="pre">smfish_3d</span></code> model.</p>
-<div class="cell tag_teacher docutils container">
+<div class="cell tag_teacher tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">Spotiflow</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">"smfish_3d"</span><span class="p">)</span>
 </pre></div>
@@ -852,14 +868,14 @@
 <section id="id2">
 <h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">Run Spotiflow<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <p>In this example we are using a single-channel z-stack, so we can use the <code class="docutils literal notranslate"><span class="pre">predict()</span></code> method. We also <strong>do not</strong> need to transpose the image since it is already in the required <code class="docutils literal notranslate"><span class="pre">(Z,</span> <span class="pre">Y,</span> <span class="pre">X)</span></code> format.</p>
-<div class="cell tag_teacher docutils container">
+<div class="cell tag_teacher tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">points</span><span class="p">,</span> <span class="n">details</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">image_3d</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell tag_teacher docutils container">
+<div class="cell tag_teacher tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># z, y, x</span>
 </pre></div>
@@ -872,7 +888,7 @@
 <section id="id3">
 <h4>Points<a class="headerlink" href="#id3" title="Link to this heading">#</a></h4>
 <p>The <code class="docutils literal notranslate"><span class="pre">points</span></code> coordinates are in <code class="docutils literal notranslate"><span class="pre">(z,</span> <span class="pre">y,</span> <span class="pre">x)</span></code> format. We can visualize them overlaid on the max projection using <code class="docutils literal notranslate"><span class="pre">plot_points_on_image</span></code> with <code class="docutils literal notranslate"><span class="pre">is_3d=True</span></code>.</p>
-<div class="cell tag_teacher docutils container">
+<div class="cell tag_teacher tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_points_on_image</span><span class="p">(</span><span class="n">image_3d</span><span class="p">,</span> <span class="n">points</span><span class="p">,</span> <span class="n">is_3d</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
@@ -880,7 +896,7 @@
 </div>
 </div>
 <p>We can save the detected spots using the <code class="docutils literal notranslate"><span class="pre">save_points_as_csv</span></code> helper defined in the <a class="reference internal" href="#Setup"><span class="xref myst">Setup</span></a> section.</p>
-<div class="cell tag_teacher docutils container">
+<div class="cell tag_teacher tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">save_points_as_csv</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="s2">"3d_points.csv"</span><span class="p">)</span>
 </pre></div>
@@ -892,7 +908,7 @@
 <h4>Details<a class="headerlink" href="#id4" title="Link to this heading">#</a></h4>
 <p>We can also visualize the <code class="docutils literal notranslate"><span class="pre">heatmap</span></code> and the intensity distribution of the detected spots as we did for 2D images.</p>
 <p>Again, using a combination of <code class="docutils literal notranslate"><span class="pre">numpy</span></code> and <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>, we can display the <code class="docutils literal notranslate"><span class="pre">heatmap</span></code> as a max projection along Z, and the intensity distribution with a histogram.</p>
-<div class="cell tag_teacher docutils container">
+<div class="cell tag_teacher tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">details</span><span class="o">.</span><span class="n">heatmap</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">"magma"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Heatmap (max projection)"</span><span class="p">)</span>
@@ -903,7 +919,7 @@
 </div>
 </div>
 </div>
-<div class="cell tag_teacher docutils container">
+<div class="cell tag_teacher tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">details</span><span class="o">.</span><span class="n">intens</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Intensity"</span><span class="p">)</span>
@@ -953,7 +969,8 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-sure-you-have-gpu-access">Make sure you have GPU access</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mount-your-google-drive">Mount your google drive</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-the-data">Download the Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-cellpose-other-dependencies">Install Cellpose &amp; other dependencies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-dependencies">Install Dependencies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">Import Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">Setup</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-spotiflow-on-2d-images">Running Spotiflow on 2D images</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-image">Load the Image</a></li>

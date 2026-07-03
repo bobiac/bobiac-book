@@ -55,7 +55,7 @@
 <script src="../../_static/scripts/custom.js?v=c465b8ac"></script>
 <link href="../../genindex.html" rel="index" title="Index"/>
 <link href="../../search.html" rel="search" title="Search"/>
-<link href="juv.html" rel="next" title="juv Exercises"/>
+<link href="juv.html" rel="next" title="juv Exercise"/>
 <link href="bobiac_exercises.html" rel="prev" title="BoBiAC Exercises"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="en" name="docsearch:language"/>
@@ -180,7 +180,7 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="bobiac_exercises.html">BoBiAC Exercises</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">uv Exercises</a></li>
-<li class="toctree-l2"><a class="reference internal" href="juv.html">juv Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="juv.html">juv Exercise</a></li>
 <li class="toctree-l2"><a class="reference internal" href="working_with_bioimages.html">Working with Bioimages</a></li>
 <li class="toctree-l2"><a class="reference internal" href="classic_segmentation.html">Classic Segmentation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="group_work_1.html">Group Work 1: Building your Own Spot Detection Pipeline</a></li>
@@ -268,9 +268,12 @@
 </div>
 <nav aria-label="Page">
 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">Exercise 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">Exercise 1</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1">Step 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2">Step 2</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">Exercise 2</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3">Exercise 3</a></li>
 </ul>
 </nav>
 </div>
@@ -283,6 +286,8 @@
 <p>To go through these exercises, you need to create a new folder on your <code class="docutils literal notranslate"><span class="pre">Desktop</span></code> called <code class="docutils literal notranslate"><span class="pre">bobiac_uv</span></code>.</p>
 <section id="exercise-1">
 <h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Exercise 1<a class="headerlink" href="#exercise-1" title="Link to this heading">#</a></h2>
+<section id="step-1">
+<h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">Step 1<a class="headerlink" href="#step-1" title="Link to this heading">#</a></h3>
 <p><strong>Create a Python Environment with <code class="docutils literal notranslate"><span class="pre">uv</span></code> and Install <code class="docutils literal notranslate"><span class="pre">numpy</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code></strong></p>
 <ol class="arabic simple">
 <li><p>Open the Terminal or PowerShell and navigate to the <code class="docutils literal notranslate"><span class="pre">bobiac_uv</span></code> folder.</p></li>
@@ -306,12 +311,12 @@
 </ol>
 </div>
 </details></section>
-<section id="exercise-2">
-<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Exercise 2<a class="headerlink" href="#exercise-2" title="Link to this heading">#</a></h2>
-<p><strong>Add to the environment created in <a class="reference internal" href="#exercise-1"><span class="xref myst">Exercise 1</span></a> the <code class="docutils literal notranslate"><span class="pre">scikit-image</span></code> package</strong></p>
+<section id="step-2">
+<h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">Step 2<a class="headerlink" href="#step-2" title="Link to this heading">#</a></h3>
+<p><strong>Add to the environment created in <a class="reference internal" href="#step-1"><span class="xref myst">Step 1</span></a> the <code class="docutils literal notranslate"><span class="pre">scikit-image</span></code> package</strong></p>
 <ol class="arabic simple">
 <li><p>Open the Terminal or PowerShell and navigate to the <code class="docutils literal notranslate"><span class="pre">bobiac_uv</span></code> folder.</p></li>
-<li><p>Activate the <code class="docutils literal notranslate"><span class="pre">.venv</span></code> virtual environment created in <a class="reference internal" href="#exercise-1"><span class="xref myst">Exercise 1</span></a>.</p></li>
+<li><p>Activate the <code class="docutils literal notranslate"><span class="pre">.venv</span></code> virtual environment created in <a class="reference internal" href="#step-1"><span class="xref myst">Step 1</span></a>.</p></li>
 <li><p>Add the <code class="docutils literal notranslate"><span class="pre">scikit-image</span></code> package to the <code class="docutils literal notranslate"><span class="pre">.venv</span></code> virtual environment.</p></li>
 <li><p>List the installed packages in the <code class="docutils literal notranslate"><span class="pre">.venv</span></code> virtual environment to confirm that <code class="docutils literal notranslate"><span class="pre">scikit-image</span></code> is installed.</p></li>
 <li><p>Deactivate the <code class="docutils literal notranslate"><span class="pre">.venv</span></code> virtual environment.</p></li>
@@ -329,8 +334,9 @@
 </ol>
 </div>
 </details></section>
-<section id="exercise-3">
-<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Exercise 3<a class="headerlink" href="#exercise-3" title="Link to this heading">#</a></h2>
+</section>
+<section id="exercise-2">
+<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Exercise 2<a class="headerlink" href="#exercise-2" title="Link to this heading">#</a></h2>
 <p><strong>Create a <code class="docutils literal notranslate"><span class="pre">.py</span></code> file with the PEP723 <code class="docutils literal notranslate"><span class="pre">///script</span></code> header using <code class="docutils literal notranslate"><span class="pre">uv</span></code></strong></p>
 <ol class="arabic simple">
 <li><p>Open the Terminal or PowerShell and navigate to the <code class="docutils literal notranslate"><span class="pre">bobiac_uv</span></code> folder.</p></li>
@@ -390,7 +396,7 @@
 <a class="right-next" href="juv.html" title="next page">
 <div class="prev-next-info">
 <p class="prev-next-subtitle">next</p>
-<p class="prev-next-title">juv Exercises</p>
+<p class="prev-next-title">juv Exercise</p>
 </div>
 <i class="fa-solid fa-angle-right"></i>
 </a>
@@ -404,9 +410,12 @@
   </div>
 <nav aria-labelledby="pst-page-navigation-heading-2" class="page-toc" id="pst-page-toc-nav">
 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">Exercise 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">Exercise 1</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1">Step 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2">Step 2</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">Exercise 2</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3">Exercise 3</a></li>
 </ul>
 </nav></div>
 </div></div>

@@ -18,18 +18,18 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-from google.colab import drive
-
-drive.mount("/content/drive")
+# OPTIONAL: what's the images shape?
+img1 = io.imread(images_path[0])
+print(f"Image shape: {img1.shape}")
 ------------------
 
 
 [31m---------------------------------------------------------------------------[39m
-[31mModuleNotFoundError[39m                       Traceback (most recent call last)
-[36mCell[39m[36m [39m[32mIn[1][39m[32m, line 1[39m
-[32m----> [39m[32m1[39m [38;5;28;01mfrom[39;00m google.colab [38;5;28;01mimport[39;00m drive
-[32m      2[39m 
-[32m      3[39m drive.mount([33m"/content/drive"[39m)
+[31mIndexError[39m                                Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[5][39m[32m, line 2[39m
+[32m      1[39m [38;5;66;03m# OPTIONAL: what's the images shape?[39;00m
+[32m----> [39m[32m2[39m img1 = io.imread(images_path[[32m0[39m])
+[32m      3[39m print(f"Image shape: {img1.shape}")
 
-[31mModuleNotFoundError[39m: No module named 'google.colab'
+[31mIndexError[39m: list index out of range
 

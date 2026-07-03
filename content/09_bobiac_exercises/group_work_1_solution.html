@@ -178,7 +178,7 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="bobiac_exercises.html">BoBiAC Exercises</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="uv.html">uv Exercises</a></li>
-<li class="toctree-l2"><a class="reference internal" href="juv.html">juv Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="juv.html">juv Exercise</a></li>
 <li class="toctree-l2"><a class="reference internal" href="working_with_bioimages.html">Working with Bioimages</a></li>
 <li class="toctree-l2"><a class="reference internal" href="classic_segmentation.html">Classic Segmentation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="group_work_1.html">Group Work 1: Building your Own Spot Detection Pipeline</a></li>
@@ -266,8 +266,8 @@
 </div>
 <nav aria-label="Page">
 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3">Exercise 3</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4">Exercise 4</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3">Step 3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4">Step 4</a></li>
 </ul>
 </nav>
 </div>
@@ -292,28 +292,26 @@
 <span class="c1">#     "tqdm",</span>
 <span class="c1">#     "cellpose",</span>
 <span class="c1">#     "tqdm",</span>
-<span class="c1">#     "jupyter-rfb&lt;=0.5.4",</span>
-<span class="c1">#     "numpy",    </span>
 <span class="c1"># ]</span>
 <span class="c1"># ///</span>
 </pre></div>
 </div>
 </div>
 </div>
-<hr class="docutils"/>
-<section id="exercise-3">
-<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Exercise 3<a class="headerlink" href="#exercise-3" title="Link to this heading">#</a></h2>
-<p><strong>Add code that segments the first two channels of many image files using Cellpose and saves the segmentation result as a tif file</strong></p>
+<section id="step-3">
+<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Step 3<a class="headerlink" href="#step-3" title="Link to this heading">#</a></h2>
+<p>In this step you need to add the code that <strong>segments nuclei and cytoplasm</strong> of all the images in the dataset using <strong>Cellpose</strong> and <strong>saves the segmentation of each image as a <code class="docutils literal notranslate"><span class="pre">.tif</span></code> file</strong>.</p>
 <ol class="arabic simple">
-<li><p>For each step, create a new <code class="docutils literal notranslate"><span class="pre">code</span></code> cell in the notebook (<code class="docutils literal notranslate"><span class="pre">+</span></code> button).</p></li>
+<li><p>For each step, create a new <code class="docutils literal notranslate"><span class="pre">code</span></code> cell in the notebook (<code class="docutils literal notranslate"><span class="pre">+</span></code> button)</p></li>
 <li><p>Within the cell, add the necessary code.</p></li>
+<li><p>Tip: to get the nuclei segmentation, you can pass only the nuclei channel (channel 0) to the <code class="docutils literal notranslate"><span class="pre">Cellpose</span></code> <code class="docutils literal notranslate"><span class="pre">eval</span></code> method. To get the cytoplasm segmentation, you can pass both channels (0 and 1).</p></li>
 </ol>
 <p>Import Dependencies</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">cellpose</span><span class="w"> </span><span class="kn">import</span> <span class="n">core</span><span class="p">,</span> <span class="n">io</span><span class="p">,</span> <span class="n">models</span><span class="p">,</span> <span class="n">plot</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cellpose</span><span class="w"> </span><span class="kn">import</span> <span class="n">core</span><span class="p">,</span> <span class="n">io</span><span class="p">,</span> <span class="n">models</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">cellpose.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">MODEL_DIR</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">tqdm</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span>
 </pre></div>
@@ -338,17 +336,17 @@ cellpose version: 	4.2.1.1
 platform:       	linux 
 python version: 	3.12.3 
 torch version:  	2.12.1+cu130
-2026-07-03 15:35:10,192 [io INFO] WRITING LOG OUTPUT TO /home/runner/.cellpose/run.log
+2026-07-03 18:08:30,553 [io INFO] WRITING LOG OUTPUT TO /home/runner/.cellpose/run.log
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2026-07-03 15:35:10,192 [io INFO] 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2026-07-03 18:08:30,554 [io INFO] 
 cellpose version: 	4.2.1.1 
 platform:       	linux 
 python version: 	3.12.3 
 torch version:  	2.12.1+cu130
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2026-07-03 15:35:10,194 [core INFO] Neither TORCH CUDA nor MPS version not installed/working.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2026-07-03 18:08:30,555 [core INFO] Neither TORCH CUDA nor MPS version not installed/working.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GPU available: False
@@ -368,6 +366,39 @@ torch version:  	2.12.1+cu130
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># OPTIONAL: what's the images shape?</span>
+<span class="n">img1</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">images_path</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Image shape: </span><span class="si">{</span><span class="n">img1</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">IndexError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># OPTIONAL: what's the images shape?</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">img1</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">images_path</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Image shape: </span><span class="si">{</span><span class="n">img1</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="ne">IndexError</span>: list index out of range
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#OPTIONAL: if you add to the dependencies list matplotlib, you can visualize the image</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">ch</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># choose the channel to visualize</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img1</span><span class="p">[</span><span class="n">ch</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">'gray'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p>Initialize the Model</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -377,199 +408,8 @@ torch version:  	2.12.1+cu130
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2026-07-03 15:35:10,202 [core INFO] &gt;&gt;&gt;&gt; using CPU
-</pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2026-07-03 15:35:10,203 [core INFO] &gt;&gt;&gt;&gt; using CPU
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2026-07-03 15:35:10,204 [models WARNING] pretrained model /home/runner/.cellpose/models/cpsam_v2 not found, using default model
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2026-07-03 15:35:10,204 [models INFO] Downloading: "https://huggingface.co/mouseland/cellpose-sam/resolve/main/cpsam_v2" to /home/runner/.cellpose/models/cpsam_v2
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0.00/1.15G [00:00&lt;?, ?B/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 8.00k/1.15G [00:00&lt;15:47:04, 21.7kB/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  2%|▏         | 18.6M/1.15G [00:00&lt;00:22, 53.5MB/s]   
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  3%|▎         | 40.0M/1.15G [00:00&lt;00:11, 102MB/s] 
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  5%|▌         | 59.0M/1.15G [00:00&lt;00:09, 130MB/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  7%|▋         | 76.8M/1.15G [00:00&lt;00:07, 146MB/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  8%|▊         | 95.9M/1.15G [00:00&lt;00:07, 162MB/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 10%|█         | 120M/1.15G [00:00&lt;00:05, 190MB/s] 
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 12%|█▏        | 143M/1.15G [00:01&lt;00:05, 204MB/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 14%|█▍        | 166M/1.15G [00:01&lt;00:04, 216MB/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 16%|█▌        | 188M/1.15G [00:01&lt;00:04, 219MB/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 18%|█▊        | 210M/1.15G [00:01&lt;00:04, 221MB/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 20%|█▉        | 231M/1.15G [00:01&lt;00:04, 223MB/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 22%|██▏       | 254M/1.15G [00:01&lt;00:04, 227MB/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 23%|██▎       | 276M/1.15G [00:01&lt;00:04, 229MB/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 25%|██▌       | 298M/1.15G [00:01&lt;00:04, 224MB/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 27%|██▋       | 320M/1.15G [00:01&lt;00:04, 219MB/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 29%|██▉       | 343M/1.15G [00:01&lt;00:03, 226MB/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 31%|███       | 364M/1.15G [00:02&lt;00:03, 226MB/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 33%|███▎      | 386M/1.15G [00:02&lt;00:03, 225MB/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 35%|███▍      | 408M/1.15G [00:02&lt;00:03, 220MB/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 36%|███▋      | 429M/1.15G [00:02&lt;00:03, 222MB/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 38%|███▊      | 451M/1.15G [00:02&lt;00:03, 225MB/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 40%|████      | 473M/1.15G [00:02&lt;00:03, 215MB/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 42%|████▏     | 494M/1.15G [00:02&lt;00:03, 216MB/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 44%|████▍     | 516M/1.15G [00:02&lt;00:03, 220MB/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 46%|████▌     | 537M/1.15G [00:02&lt;00:03, 218MB/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 47%|████▋     | 558M/1.15G [00:03&lt;00:02, 218MB/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 49%|████▉     | 579M/1.15G [00:03&lt;00:02, 219MB/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 51%|█████     | 600M/1.15G [00:03&lt;00:02, 210MB/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 53%|█████▎    | 620M/1.15G [00:03&lt;00:02, 205MB/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 54%|█████▍    | 640M/1.15G [00:03&lt;00:02, 203MB/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 56%|█████▌    | 659M/1.15G [00:03&lt;00:02, 202MB/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 58%|█████▊    | 679M/1.15G [00:03&lt;00:02, 204MB/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 59%|█████▉    | 699M/1.15G [00:03&lt;00:02, 206MB/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 61%|██████▏   | 721M/1.15G [00:03&lt;00:02, 212MB/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 63%|██████▎   | 744M/1.15G [00:03&lt;00:02, 221MB/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 65%|██████▌   | 765M/1.15G [00:04&lt;00:01, 218MB/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 67%|██████▋   | 786M/1.15G [00:04&lt;00:01, 219MB/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 69%|██████▊   | 807M/1.15G [00:04&lt;00:01, 217MB/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 70%|███████   | 829M/1.15G [00:04&lt;00:01, 219MB/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 72%|███████▏  | 850M/1.15G [00:04&lt;00:01, 220MB/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 74%|███████▍  | 871M/1.15G [00:04&lt;00:01, 215MB/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 76%|███████▌  | 891M/1.15G [00:04&lt;00:01, 211MB/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 78%|███████▊  | 915M/1.15G [00:04&lt;00:01, 222MB/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 80%|███████▉  | 939M/1.15G [00:04&lt;00:01, 230MB/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 82%|████████▏ | 961M/1.15G [00:04&lt;00:01, 224MB/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 84%|████████▎ | 982M/1.15G [00:05&lt;00:00, 222MB/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 85%|████████▌ | 0.98G/1.15G [00:05&lt;00:00, 227MB/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 87%|████████▋ | 1.00G/1.15G [00:05&lt;00:00, 222MB/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 89%|████████▉ | 1.02G/1.15G [00:05&lt;00:00, 223MB/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 91%|█████████ | 1.05G/1.15G [00:05&lt;00:00, 225MB/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 93%|█████████▎| 1.07G/1.15G [00:05&lt;00:00, 229MB/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 95%|█████████▍| 1.09G/1.15G [00:05&lt;00:00, 227MB/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 97%|█████████▋| 1.11G/1.15G [00:05&lt;00:00, 232MB/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 99%|█████████▊| 1.13G/1.15G [00:05&lt;00:00, 225MB/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 1.15G/1.15G [00:05&lt;00:00, 206MB/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2026-07-03 15:35:17,948 [models INFO] &gt;&gt;&gt;&gt; loading model /home/runner/.cellpose/models/cpsam_v2
-</pre></div>
-</div>
-</div>
-</div>
-<p>Cellpose Segmentation</p>
+<p>Cellpose Segmentation: nuclei</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run Cellpose on each image one by one</span>
@@ -578,32 +418,40 @@ torch version:  	2.12.1+cu130
     <span class="c1"># Load the image</span>
     <span class="n">image</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span>
     <span class="c1"># select the channels to segement from the multichannel image</span>
-    <span class="n">cp_image</span> <span class="o">=</span> <span class="n">image</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
+    <span class="n">nuc_image</span> <span class="o">=</span> <span class="n">image</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="c1"># Run Cellpose on the image</span>
-    <span class="n">masks</span><span class="p">,</span> <span class="n">flows</span><span class="p">,</span> <span class="n">styles</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">cp_image</span><span class="p">)</span>
+    <span class="n">masks</span><span class="p">,</span> <span class="n">flows</span><span class="p">,</span> <span class="n">styles</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">nuc_image</span><span class="p">)</span>
     <span class="c1"># Save the segmentation results as a TIFF file</span>
-    <span class="n">output_path</span> <span class="o">=</span> <span class="n">folder_path</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">image_path</span><span class="o">.</span><span class="n">stem</span><span class="si">}</span><span class="s2">_labels.tif"</span>
+    <span class="n">output_path</span> <span class="o">=</span> <span class="n">folder_path</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">image_path</span><span class="o">.</span><span class="n">stem</span><span class="si">}</span><span class="s2">_nuc_labels.tif"</span>
     <span class="n">io</span><span class="o">.</span><span class="n">imsave</span><span class="p">(</span><span class="n">output_path</span><span class="p">,</span> <span class="n">masks</span><span class="p">)</span>  <span class="c1"># or tifffile.imwrite(output_path, masks)</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing images: 0it [00:00, ?it/s]
-</pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing images: 0it [00:00, ?it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+<p>Cellpose Segmentation: cytoplasm</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run Cellpose on each image one by one</span>
+<span class="c1"># NOTE: tqdm is used to show a progress bar, but you can remove it if you don't want it</span>
+<span class="k">for</span> <span class="n">image_path</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">images_path</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s2">"Processing images"</span><span class="p">):</span>
+    <span class="c1"># Load the image</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span>
+    <span class="c1"># select the channels to segement from the multichannel image</span>
+    <span class="n">nuc_cell_image</span> <span class="o">=</span> <span class="n">image</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
+    <span class="c1"># Run Cellpose on the image</span>
+    <span class="n">masks</span><span class="p">,</span> <span class="n">flows</span><span class="p">,</span> <span class="n">styles</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">nuc_cell_image</span><span class="p">)</span>
+    <span class="c1"># Save the segmentation results as a TIFF file</span>
+    <span class="n">output_path</span> <span class="o">=</span> <span class="n">folder_path</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">image_path</span><span class="o">.</span><span class="n">stem</span><span class="si">}</span><span class="s2">_cell_labels.tif"</span>
+    <span class="n">io</span><span class="o">.</span><span class="n">imsave</span><span class="p">(</span><span class="n">output_path</span><span class="p">,</span> <span class="n">masks</span><span class="p">)</span>  <span class="c1"># or tifffile.imwrite(output_path, masks)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <hr class="docutils"/>
-<section id="exercise-4">
-<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Exercise 4<a class="headerlink" href="#exercise-4" title="Link to this heading">#</a></h2>
-<p><strong>Add code that uses Spotiflow to detect spots in the 3rd and 4th channels of the images and saves a .csv file of their coordinates.</strong></p>
+<section id="step-4">
+<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Step 4<a class="headerlink" href="#step-4" title="Link to this heading">#</a></h2>
+<p>In this step you need to add the code that <strong>detects spots in the 4th channels</strong> of all the images in the dataset using <strong>Spotiflow</strong> and <strong>saves a <code class="docutils literal notranslate"><span class="pre">.csv</span></code> file of their coordinates</strong>.</p>
 <ol class="arabic simple">
 <li><p>For each step, create a new <code class="docutils literal notranslate"><span class="pre">code</span></code> cell in the notebook (<code class="docutils literal notranslate"><span class="pre">+</span></code> button).</p></li>
 <li><p>Within the cell, add the necessary code.</p></li>
@@ -614,10 +462,10 @@ torch version:  	2.12.1+cu130
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">csv</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">tifffile</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">spotiflow.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">Spotiflow</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">tqdm</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 </pre></div>
 </div>
 </div>
@@ -632,7 +480,7 @@ torch version:  	2.12.1+cu130
 <span class="n">images_path</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">folder_path</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">"*.tif"</span><span class="p">))</span>
 
 <span class="c1"># specify the channels you want to process in predict_multichannel()</span>
-<span class="n">channels</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">channels</span> <span class="o">=</span> <span class="mi">3</span>  <span class="c1"># can be a tuple or an int</span>
 </pre></div>
 </div>
 </div>
@@ -642,25 +490,6 @@ torch version:  	2.12.1+cu130
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialize the model once before the loop</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">Spotiflow</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">"general"</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:spotiflow.model.spotiflow:Loading pretrained model: general
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading data from https://github.com/weigertlab/spotiflow-models/releases/download/0.6.0/general.zip to /home/runner/.spotiflow/models/general.zip
-
-       0/87885382 [..............................] - ETA: 0s
- 2162688/87885382 [..............................] - ETA: 1s
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-17743872/87885382 [=====&gt;........................] - ETA: 0s
-38330368/87885382 [============&gt;.................] - ETA: 0s
-59400192/87885382 [===================&gt;..........] - ETA: 0s
-80740352/87885382 [==========================&gt;...] - ETA: 0s
-87885382/87885382 [==============================] - 0s 0us/step
 </pre></div>
 </div>
 </div>
@@ -708,17 +537,6 @@ torch version:  	2.12.1+cu130
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing images: 0it [00:00, ?it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processing images: 0it [00:00, ?it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 </section>
@@ -754,8 +572,8 @@ torch version:  	2.12.1+cu130
   </div>
 <nav aria-labelledby="pst-page-navigation-heading-2" class="page-toc" id="pst-page-toc-nav">
 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3">Exercise 3</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4">Exercise 4</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3">Step 3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4">Step 4</a></li>
 </ul>
 </nav></div>
 </div></div>
