@@ -37,7 +37,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/custom.css?v=db811428" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/custom.css?v=b98cbe03" />
   
   <!-- So that users can add custom icons -->
   <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -247,7 +247,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../content/09_bobiac_exercises/juv.html">juv Exercise</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../content/09_bobiac_exercises/working_with_bioimages.html">Working with Bioimages</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../content/09_bobiac_exercises/classic_segmentation.html">Classic Segmentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../content/09_bobiac_exercises/group_work_1.html">Group Work 1: Building your Own Spot Detection Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../content/09_bobiac_exercises/group_work_1.html">Group Work 1: Building your Own Segmentation and Spot Detection Pipeline</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../content/09_bobiac_exercises/group_work_2_oscillations.html">Group Work 2: Analysing Oscillations in Time-Series Images</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../content/09_bobiac_exercises/group_work_3_membrane_enrichment.html">Group Work 3: Does a Protein Localize to a Cellular Compartment?</a></li>
 </ul>
@@ -402,54 +402,115 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="downloads">
 <h1><i class="fa-solid fa-folder"></i> Downloads<a class="headerlink" href="#downloads" title="Link to this heading">#</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Rows with an entry in the <strong>Results</strong> column mean that download contains the pre-computed segmentation labels and/or spot detection coordinates for that dataset.</p>
+</div>
 <section id="course-data">
 <h2>Course Data<a class="headerlink" href="#course-data" title="Link to this heading">#</a></h2>
 <p><strong> 03 - <i class="fas fa-table-cells"></i> Introduction to Digital Images</strong></p>
-<ul class="simple">
-<li><p>Working with Bioimages Dataset: <a href="https://github.com/bobiac/bobiac-book/releases/download/data-bobiac-2026/03_working_with_bioimages.zip" download> <i class="fas fa-download"></i> Working with Bioimages Dataset</a></p></li>
-</ul>
+<table class="download-table">
+<colgroup>
+<col style="width: 24%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 36%">
+</colgroup>
+<thead>
+<tr><th>Item</th><th>Dataset</th><th>Results</th><th>Notes</th></tr>
+</thead>
+<tbody>
+<tr><td>Working with Bioimages</td><td><a href="{{ data_path }}/03_working_with_bioimages.zip" download><i class="fas fa-download"></i> Working with Bioimages Dataset</a></td><td>–</td><td>–</td></tr>
+</tbody>
+</table>
 <p><strong> 04 - <i class="fa-solid fa-disease"></i> Image Segmentation</strong></p>
-<ul class="simple">
-<li><p>Classical Methods: <a href="https://github.com/bobiac/bobiac-book/releases/download/data-bobiac-2026/04_05_06_07_seg_and_spot.zip" download> <i class="fas fa-download"></i>Segmentation &amp; Spot Detection Dataset </a> (generated from <a href="https://www.cellimagelibrary.org/images/CCDB_6843" target="_blank">CCDB_6843</a>)</p></li>
-<li><p>Machine Learning Methods: <a href="https://github.com/bobiac/bobiac-book/releases/download/data-bobiac-2026/04_segmentation_ilastik.zip" download> <i class="fas fa-download"></i> Ilastik Pixel Classification Dataset </a> (from Ilastik Data Mitocheck 2D+t)</p></li>
-<li><p>Deep Learning Methods:</p>
-<ul>
-<li><p><a href="https://github.com/bobiac/bobiac-book/releases/download/data-bobiac-2026/04_05_06_07_seg_and_spot.zip" download> <i class="fas fa-download"></i>Segmentation &amp; Spot Detection Dataset </a> (same dataset as <code class="docutils literal notranslate"><span class="pre">Classical</span> <span class="pre">Methods</span></code>, generated from <a href="https://www.cellimagelibrary.org/images/CCDB_6843" target="_blank">CCDB_6843</a>)</p></li>
-<li><p><a href="https://github.com/bobiac/bobiac-book/releases/download/data-bobiac-2026/04_segmentation_cellpose_3d.zip" download> <i class="fas fa-download"></i>Cellpose 3D Dataset </a> (from <a href="https://bbbc.broadinstitute.org/BBBC033" target="_blank">BBBC033</a>)</p></li>
-<li><p><a href="https://github.com/bobiac/bobiac-book/releases/download/data-bobiac-2026/04_segmentation_cellpose_training.zip" download> <i class="fas fa-download"></i>Cellpose Training Dataset </a> (from Cellpose Github Repository)</p></li>
-</ul>
-</li>
-</ul>
+<table class="download-table">
+<colgroup>
+<col style="width: 24%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 36%">
+</colgroup>
+<thead>
+<tr><th>Item</th><th>Dataset</th><th>Results</th><th>Notes</th></tr>
+</thead>
+<tbody>
+<tr><td>Classical Methods</td><td><a href="{{ data_path }}/04_05_06_07_seg_and_spot.zip" download><i class="fas fa-download"></i> Segmentation and Spot Detection Dataset</a></td><td><a href="{{ data_path }}/04_05_06_07_seg_and_spot_labels.zip" download><i class="fas fa-download"></i> Segmentation and Spot Detection Results</a></td><td>Generated from <a href="https://www.cellimagelibrary.org/images/CCDB_6843" target="_blank">CCDB_6843</a></td></tr>
+<tr><td>Machine Learning Methods - Ilastik Pixel Classification</td><td><a href="{{ data_path }}/04_segmentation_ilastik.zip" download><i class="fas fa-download"></i> Ilastik Pixel Classification Dataset</a></td><td>–</td><td>From Ilastik Data Mitocheck 2D+t</td></tr>
+<tr><td>Deep Learning Methods - Cellpose</td><td><a href="{{ data_path }}/04_05_06_07_seg_and_spot.zip" download><i class="fas fa-download"></i> Segmentation and Spot Detection Dataset</a></td><td><a href="{{ data_path }}/04_05_06_07_seg_and_spot_labels.zip" download><i class="fas fa-download"></i> Segmentation and Spot Detection Results</a></td><td>Same dataset as `Classical Methods`, generated from <a href="https://www.cellimagelibrary.org/images/CCDB_6843" target="_blank">CCDB_6843</a></td></tr>
+<tr><td>Deep Learning Methods - Cellpose 3D</td><td><a href="{{ data_path }}/04_segmentation_cellpose_3d.zip" download><i class="fas fa-download"></i> Cellpose 3D Dataset</a></td><td>–</td><td>From <a href="https://bbbc.broadinstitute.org/BBBC033" target="_blank">BBBC033</a></td></tr>
+<tr><td>Deep Learning Methods - Cellpose Training Dataset</td><td><a href="{{ data_path }}/04_segmentation_cellpose_training.zip" download><i class="fas fa-download"></i> Cellpose Training Dataset</a></td><td>–</td><td>From Cellpose Github Repository</td></tr>
+</tbody>
+</table>
 <p><strong> 05 - <i class="fa-solid fa-crosshairs"></i> Spot Detection</strong></p>
-<ul class="simple">
-<li><p>Spotiflow Dataset: <a href="https://github.com/bobiac/bobiac-book/releases/download/data-bobiac-2026/04_05_06_07_seg_and_spot.zip" download> <i class="fas fa-download"></i>Segmentation &amp; Spot Detection Dataset </a> (same dataset as <code class="docutils literal notranslate"><span class="pre">Classical</span> <span class="pre">Methods</span></code>, generated from <a href="https://www.cellimagelibrary.org/images/CCDB_6843" target="_blank">CCDB_6843</a>)</p></li>
-<li><p>Spotiflow Finetuning Dataset: <a href="https://github.com/bobiac/bobiac-book/releases/download/data-bobiac-2026/05_spot_detection_spotiflow_finetuning.zip" download> <i class="fas fa-download"></i> Spotiflow Finetuning Dataset</a> (from Spotiflow example notebook, MERFISH dataset from <a href="https://doi.org/10.1038/s41586-021-03705-x" target="_blank">Zhang et al, 2021</a>)</p></li>
-</ul>
+<table class="download-table">
+<colgroup>
+<col style="width: 24%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 36%">
+</colgroup>
+<thead>
+<tr><th>Item</th><th>Dataset</th><th>Results</th><th>Notes</th></tr>
+</thead>
+<tbody>
+<tr><td>Spotiflow</td><td><a href="{{ data_path }}/04_05_06_07_seg_and_spot.zip" download><i class="fas fa-download"></i> Segmentation and Spot Detection Dataset</a></td><td><a href="{{ data_path }}/04_05_06_07_seg_and_spot_labels.zip" download><i class="fas fa-download"></i> Segmentation and Spot Detection Results</a></td><td>Same dataset as `Classical Methods` and `Cellpose`, generated from <a href="https://www.cellimagelibrary.org/images/CCDB_6843" target="_blank">CCDB_6843</a></td></tr>
+<tr><td>Spotiflow – Finetuning Dataset</td><td><a href="{{ data_path }}/05_spot_detection_spotiflow_finetuning.zip" download><i class="fas fa-download"></i> Spotiflow Finetuning Dataset</a></td><td>–</td><td>From Spotiflow example notebook, MERFISH dataset from <a href="https://doi.org/10.1038/s41586-021-03705-x" target="_blank">Zhang et al, 2021</a></td></tr>
+</tbody>
+</table>
 <p><strong> 06 - <i class="fa-solid fa-chart-simple"></i> Measurement &amp; Quantification</strong></p>
-<ul class="simple">
-<li><p>Measurement Pipeline:</p>
-<ul>
-<li><p>Data: <a href="https://github.com/bobiac/bobiac-book/releases/download/data-bobiac-2026/04_05_06_07_seg_and_spot.zip" download> <i class="fas fa-download"></i>Segmentation &amp; Spot Detection Dataset </a> (same dataset as <code class="docutils literal notranslate"><span class="pre">Classical</span> <span class="pre">Methods</span></code>, generated from <a href="https://www.cellimagelibrary.org/images/CCDB_6843" target="_blank">CCDB_6843</a>)</p></li>
-<li><p>Labels &amp; Spot Coords: …</p></li>
-</ul>
-</li>
-<li><p>Nested Measurements: <a href="https://github.com/bobiac/bobiac-book/releases/download/data-bobiac-2026/group-work-1.zip" download> <i class="fas fa-download"></i>Group Work Dataset </a> (also contains labels and spot coords)</p></li>
-<li><p>Background Correction Dataset: <a href="https://github.com/bobiac/bobiac-book/releases/download/data-bobiac-2026/06_background_correction.zip" download> <i class="fas fa-download"></i> Background Correction Dataset</a></p></li>
-</ul>
+<table class="download-table">
+<colgroup>
+<col style="width: 24%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 36%">
+</colgroup>
+<thead>
+<tr><th>Item</th><th>Dataset</th><th>Results</th><th>Notes</th></tr>
+</thead>
+<tbody>
+<tr><td>Measurement Pipeline</td><td><a href="{{ data_path }}/04_05_06_07_seg_and_spot.zip" download><i class="fas fa-download"></i> Segmentation and Spot Detection Dataset</a></td><td><a href="{{ data_path }}/04_05_06_07_seg_and_spot_labels.zip" download><i class="fas fa-download"></i> Segmentation and Spot Detection Results</a></td><td>Same dataset as `Classical Methods` and `Cellpose`, generated from <a href="https://www.cellimagelibrary.org/images/CCDB_6843" target="_blank">CCDB_6843</a></td></tr>
+<tr><td>Nested Measurements</td><td><a href="{{ data_path }}/group-work-1.zip" download><i class="fas fa-download"></i> Group Work Dataset</a></td><td><em>(included in dataset)</em></td><td>–</td></tr>
+<tr><td>Background Correction</td><td><a href="{{ data_path }}/06_background_correction.zip" download><i class="fas fa-download"></i> Background Correction Dataset</a></td><td>–</td><td>–</td></tr>
+</tbody>
+</table>
 <p><strong> 07 - <i class="fa-solid fa-location-crosshairs"></i> Colocalization</strong></p>
-<ul class="simple">
-<li><p>Notebook Max: …</p></li>
-<li><p>Pixel Intensity Based: <a href="https://github.com/bobiac/bobiac-book/releases/download/data-bobiac-2026/07_pixel_intensity_based_coloc.zip" download> <i class="fas fa-download"></i> Manders &amp; Pearson’s Colocalization Dataset</a></p></li>
-<li><p>Object Based: <a href="https://github.com/bobiac/bobiac-book/releases/download/data-bobiac-2026/07_object_based_colocalization.zip" download> <i class="fas fa-download"></i> Object Based Colocalization Dataset</a></p></li>
-</ul>
+<table class="download-table">
+<colgroup>
+<col style="width: 24%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 36%">
+</colgroup>
+<thead>
+<tr><th>Item</th><th>Dataset</th><th>Results</th><th>Notes</th></tr>
+</thead>
+<tbody>
+<tr><td>Pixel Intensity Based</td><td><a href="{{ data_path }}/07_pixel_intensity_based_coloc.zip" download><i class="fas fa-download"></i> Manders & Pearson's Colocalization Dataset</a></td><td>–</td><td>–</td></tr>
+<tr><td>Object Based</td><td><a href="{{ data_path }}/07_object_based_colocalization.zip" download><i class="fas fa-download"></i> Object Based Colocalization Dataset</a></td><td>–</td><td>–</td></tr>
+<tr><td>Spatial Statistics</td><td><a href="{{ data_path }}/04_05_06_07_seg_and_spot.zip" download><i class="fas fa-download"></i> Segmentation and Spot Detection Dataset</a></td><td><a href="{{ data_path }}/04_05_06_07_seg_and_spot_labels.zip" download><i class="fas fa-download"></i> Segmentation and Spot Detection Results</a></td><td>Same dataset as `Classical Methods`, `Cellpose` and `Spotiflow`, generated from <a href="https://www.cellimagelibrary.org/images/CCDB_6843" target="_blank">CCDB_6843</a></td></tr>
+</tbody>
+</table>
 </section>
 <section id="bobiac-exercises">
 <h2>BoBiac Exercises<a class="headerlink" href="#bobiac-exercises" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Classical Segmentation</p></li>
-<li><p>Exercise after Cellpose and Spotiflow - using the <code class="docutils literal notranslate"><span class="pre">Group</span> <span class="pre">Work</span> <span class="pre">Dataset</span></code> (we used it in Spotiflow notebook to get the spots but no segmentation). They need to run both cellpose and spotiflow on the dataset since it will be used by Max.</p></li>
-<li><p>Measurement &amp; Quantification (<code class="docutils literal notranslate"><span class="pre">bobiac_exercises_oscillations.zip</span></code> dataset)</p></li>
-</ul>
+<table class="download-table">
+<colgroup>
+<col style="width: 24%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 36%">
+</colgroup>
+<thead>
+<tr><th>Item</th><th>Dataset</th><th>Results</th><th>Notes</th></tr>
+</thead>
+<tbody>
+<tr><td>Group Work 1: Building your Own Segmentation and Spot Detection Pipeline</td><td><a href="{{ data_path }}/group-work-1.zip" download><i class="fas fa-download"></i> Group Work 1 Dataset</a></td><td><em>(included in dataset)</em></td><td>–</td></tr>
+<tr><td>Group Work 2: Analysing Oscillations in Time-Series Images</td><td><a href="{{ data_path }}/bobiac_exercises_oscillations.zip" download><i class="fas fa-download"></i> Group Work 2 Dataset</a></td><td><em>(included in dataset)</em></td><td>–</td></tr>
+<tr><td>Group Work 3: Colocalization Analysis</td><td><a href="{{ data_path }}/04_05_06_07_seg_and_spot.zip" download><i class="fas fa-download"></i> Segmentation and Spot Detection Dataset</a></td><td><a href="{{ data_path }}/04_05_06_07_seg_and_spot_labels.zip" download><i class="fas fa-download"></i> Segmentation and Spot Detection Results</a></td><td><strong>Use the results from `Classical Methods`, `Cellpose` and `Spotiflow` notebooks if you have them.</strong> Same dataset as `Classical Methods`, `Cellpose` and `Spotiflow`, generated from <a href="https://www.cellimagelibrary.org/images/CCDB_6843" target="_blank">CCDB_6843</a></td></tr>
+</tbody>
+</table>
 <!-- ## Download All Course Materials
 
 <div class="custom-button-row" style="text-align: center; margin: 20px 0;">
@@ -475,7 +536,7 @@
 
 <div class="custom-button-row" style="text-align: center; margin: 20px 0;">
     <a
-        class="custom-button custom-download-button" href="https://github.com/bobiac/bobiac-book/releases/download/data-bobiac-2026/bobiac_data_all.zip">
+        class="custom-button custom-download-button" href="{{ data_path }}/bobiac_data_all.zip">
         <i class="fas fa-download"></i> Download All Course Data
     </a>
 </div> -->

@@ -29,7 +29,7 @@
 <link href="../../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" rel="stylesheet" type="text/css"/>
 <link href="../../../_static/sphinx-thebe.css?v=4fa983c6" rel="stylesheet" type="text/css"/>
 <link href="../../../_static/sphinx-design.min.css?v=95c83b7e" rel="stylesheet" type="text/css"/>
-<link href="../../../_static/styles/custom.css?v=db811428" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/styles/custom.css?v=b98cbe03" rel="stylesheet" type="text/css"/>
 <!-- So that users can add custom icons -->
 <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
 <!-- Pre-loaded scripts that we'll load fully later -->
@@ -180,7 +180,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../09_bobiac_exercises/juv.html">juv Exercise</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../09_bobiac_exercises/working_with_bioimages.html">Working with Bioimages</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../09_bobiac_exercises/classic_segmentation.html">Classic Segmentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../09_bobiac_exercises/group_work_1.html">Group Work 1: Building your Own Spot Detection Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../09_bobiac_exercises/group_work_1.html">Group Work 1: Building your Own Segmentation and Spot Detection Pipeline</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../09_bobiac_exercises/group_work_2_oscillations.html">Group Work 2: Analysing Oscillations in Time-Series Images</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../09_bobiac_exercises/group_work_3_membrane_enrichment.html">Group Work 3: Does a Protein Localize to a Cellular Compartment?</a></li>
 </ul>
@@ -768,6 +768,10 @@
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Path to the folder containing the images to segment</span>
 <span class="n">folder_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"content/bobiac_data_cellpose/04_segmentation_cellpose"</span><span class="p">)</span>
 
+<span class="c1"># Create a subfolder to save the cell segmentation results</span>
+<span class="n">labels_folder</span> <span class="o">=</span> <span class="n">folder_path</span> <span class="o">/</span> <span class="s2">"cell_labels"</span>
+<span class="n">labels_folder</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
 <span class="c1"># Get the sorted list of all .tif images in the folder</span>
 <span class="n">images_path</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">folder_path</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">"*.tif"</span><span class="p">))</span>
 
@@ -783,7 +787,7 @@
     <span class="c1"># Run Cellpose on the image</span>
     <span class="n">masks</span><span class="p">,</span> <span class="n">flows</span><span class="p">,</span> <span class="n">styles</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
     <span class="c1"># Save the segmentation results as a TIFF file</span>
-    <span class="n">output_path</span> <span class="o">=</span> <span class="n">folder_path</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">image_path</span><span class="o">.</span><span class="n">stem</span><span class="si">}</span><span class="s2">_labels.tif"</span>
+    <span class="n">output_path</span> <span class="o">=</span> <span class="n">labels_folder</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">image_path</span><span class="o">.</span><span class="n">stem</span><span class="si">}</span><span class="s2">_labels.tif"</span>
     <span class="n">io</span><span class="o">.</span><span class="n">imsave</span><span class="p">(</span><span class="n">output_path</span><span class="p">,</span> <span class="n">masks</span><span class="p">)</span>  <span class="c1"># or tifffile.imwrite(output_path, masks)</span>
 </pre></div>
 </div>
@@ -980,6 +984,10 @@ Z step size = 0.5 µm</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Path to the folder containing the images to segment</span>
 <span class="n">folder_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"content/bobiac_data_cellpose/04_segmentation_cellpose"</span><span class="p">)</span>
 
+<span class="c1"># Create a subfolder to save the cell segmentation results</span>
+<span class="n">labels_folder</span> <span class="o">=</span> <span class="n">folder_path</span> <span class="o">/</span> <span class="s2">"cell_labels"</span>
+<span class="n">labels_folder</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
 <span class="c1"># Get the sorted list of all .tif images in the folder</span>
 <span class="n">images_path</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">folder_path</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">"*.tif"</span><span class="p">))</span>
 
@@ -988,7 +996,7 @@ Z step size = 0.5 µm</p>
 <span class="k">for</span> <span class="n">image_path</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">images_path</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s2">"Processing images"</span><span class="p">):</span>
     <span class="n">image</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span>
     <span class="n">masks</span><span class="p">,</span> <span class="n">flows</span><span class="p">,</span> <span class="n">styles</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">)</span>
-    <span class="n">output_path</span> <span class="o">=</span> <span class="n">folder_path</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">image_path</span><span class="o">.</span><span class="n">stem</span><span class="si">}</span><span class="s2">_labels.tif"</span>
+    <span class="n">output_path</span> <span class="o">=</span> <span class="n">labels_folder</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">image_path</span><span class="o">.</span><span class="n">stem</span><span class="si">}</span><span class="s2">_labels.tif"</span>
     <span class="n">io</span><span class="o">.</span><span class="n">imsave</span><span class="p">(</span><span class="n">output_path</span><span class="p">,</span> <span class="n">masks</span><span class="p">)</span>
 </pre></div>
 </div>

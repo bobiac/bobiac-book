@@ -5,7 +5,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
-<title>Group Work 1: Building your Own Spot Detection Pipeline — BoBiAC Book</title>
+<title>Group Work 1: Building your Own Segmentation and Spot Detection Pipeline — BoBiAC Book</title>
 <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
@@ -29,7 +29,7 @@
 <link href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" rel="stylesheet" type="text/css"/>
 <link href="../../_static/sphinx-thebe.css?v=4fa983c6" rel="stylesheet" type="text/css"/>
 <link href="../../_static/sphinx-design.min.css?v=95c83b7e" rel="stylesheet" type="text/css"/>
-<link href="../../_static/styles/custom.css?v=db811428" rel="stylesheet" type="text/css"/>
+<link href="../../_static/styles/custom.css?v=b98cbe03" rel="stylesheet" type="text/css"/>
 <!-- So that users can add custom icons -->
 <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
 <!-- Pre-loaded scripts that we'll load fully later -->
@@ -182,7 +182,7 @@
 <li class="toctree-l2"><a class="reference internal" href="juv.html">juv Exercise</a></li>
 <li class="toctree-l2"><a class="reference internal" href="working_with_bioimages.html">Working with Bioimages</a></li>
 <li class="toctree-l2"><a class="reference internal" href="classic_segmentation.html">Classic Segmentation</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Group Work 1: Building your Own Spot Detection Pipeline</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Group Work 1: Building your Own Segmentation and Spot Detection Pipeline</a></li>
 <li class="toctree-l2"><a class="reference internal" href="group_work_2_oscillations.html">Group Work 2: Analysing Oscillations in Time-Series Images</a></li>
 <li class="toctree-l2"><a class="reference internal" href="group_work_3_membrane_enrichment.html">Group Work 3: Does a Protein Localize to a Cellular Compartment?</a></li>
 </ul>
@@ -260,7 +260,7 @@
 </div>
 </div>
 <div class="onlyprint" id="jb-print-docs-body">
-<h1>Group Work 1: Building your Own Spot Detection Pipeline</h1>
+<h1>Group Work 1: Building your Own Segmentation and Spot Detection Pipeline</h1>
 <!-- Table of contents -->
 <div id="print-main-content">
 <div id="jb-print-toc">
@@ -280,10 +280,10 @@
 </div>
 <div id="searchbox"></div>
 <article class="bd-article">
-<section class="tex2jax_ignore mathjax_ignore" id="group-work-1-building-your-own-spot-detection-pipeline">
-<h1>Group Work 1: Building your Own Spot Detection Pipeline<a class="headerlink" href="#group-work-1-building-your-own-spot-detection-pipeline" title="Link to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="group-work-1-building-your-own-segmentation-and-spot-detection-pipeline">
+<h1>Group Work 1: Building your Own Segmentation and Spot Detection Pipeline<a class="headerlink" href="#group-work-1-building-your-own-segmentation-and-spot-detection-pipeline" title="Link to this heading">#</a></h1>
 <p>Let’s now consolidate what you have learned! These exercises will walk you through how to create your own Jupyter Notebook containing code that segments images with Cellpose and detects spots with Spotiflow.</p>
-<p>The images we will use for this exercise can be downloaded from the <a download="" href="https://github.com/bobiac/bobiac-book/releases/download/data-bobiac-2026/group-work-1.zip"> <i class="fas fa-download"></i> Group Work 1 Dataset</a>.</p>
+<p>The images we will use for this exercise can be downloaded from the <a download="" href="{{ data_path }}/group-work-1.zip"> <i class="fas fa-download"></i> Group Work 1 Dataset</a>.</p>
 <p>To go through these exercises, you need to create a new folder named <code class="docutils literal notranslate"><span class="pre">bobiac_group_work</span></code>. In the instruction below, we will assume this folder is on your <code class="docutils literal notranslate"><span class="pre">Desktop</span></code> but you can choose a different location if you prefer.</p>
 <section id="step-1">
 <h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Step 1<a class="headerlink" href="#step-1" title="Link to this heading">#</a></h2>

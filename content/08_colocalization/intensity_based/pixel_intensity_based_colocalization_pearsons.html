@@ -29,7 +29,7 @@
 <link href="../../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" rel="stylesheet" type="text/css"/>
 <link href="../../../_static/sphinx-thebe.css?v=4fa983c6" rel="stylesheet" type="text/css"/>
 <link href="../../../_static/sphinx-design.min.css?v=95c83b7e" rel="stylesheet" type="text/css"/>
-<link href="../../../_static/styles/custom.css?v=db811428" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/styles/custom.css?v=b98cbe03" rel="stylesheet" type="text/css"/>
 <!-- So that users can add custom icons -->
 <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
 <!-- Pre-loaded scripts that we'll load fully later -->
@@ -185,7 +185,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../09_bobiac_exercises/juv.html">juv Exercise</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../09_bobiac_exercises/working_with_bioimages.html">Working with Bioimages</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../09_bobiac_exercises/classic_segmentation.html">Classic Segmentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../09_bobiac_exercises/group_work_1.html">Group Work 1: Building your Own Spot Detection Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../09_bobiac_exercises/group_work_1.html">Group Work 1: Building your Own Segmentation and Spot Detection Pipeline</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../09_bobiac_exercises/group_work_2_oscillations.html">Group Work 2: Analysing Oscillations in Time-Series Images</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../09_bobiac_exercises/group_work_3_membrane_enrichment.html">Group Work 3: Does a Protein Localize to a Cellular Compartment?</a></li>
 </ul>
@@ -322,7 +322,7 @@
 <section id="description">
 <h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Description<a class="headerlink" href="#description" title="Link to this heading">#</a></h2>
 <p>In this section, we will explore how to implement in Python the <strong>Pearson’s Correlation Coefficient</strong>, which is a common method for quantifying colocalization based on pixel intensities.</p>
-<p>The images we will use for this section can be downloaded from the <a download="" href="https://github.com/bobiac/bobiac-book/releases/download/data-bobiac-2026/07_pixel_intensity_based_coloc.zip"> <i class="fas fa-download"></i> Manders &amp; Pearson’s Colocalization Dataset</a>.</p>
+<p>The images we will use for this section can be downloaded from the <a download="" href="{{ data_path }}/07_pixel_intensity_based_coloc.zip"> <i class="fas fa-download"></i> Manders &amp; Pearson’s Colocalization Dataset</a>.</p>
 <p class="alert alert-warning">
 <strong>Note:</strong> This notebook aims to show how to practically implement these methods but does not aim to describe when to use which method. For this exercise, we will use a single 2-channel image and without any preprocessing steps.
 </p>
@@ -364,7 +364,7 @@
 </section>
 <section id="load-and-visualize-the-image">
 <h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">Load and Visualize the Image<a class="headerlink" href="#load-and-visualize-the-image" title="Link to this heading">#</a></h3>
-<p>Open and visualize (with ndv) the image named <code class="docutils literal notranslate"><span class="pre">t_cell.tif</span></code> from the <a download="" href="https://github.com/bobiac/bobiac-book/releases/download/data-bobiac-2026/07_pixel_intensity_based_coloc.zip"><i class="fas fa-download"></i> Manders &amp; Pearson’s Colocalization Dataset</a>. This is a two-channel image of HEK293 cells where two distinct fluorescent proteins have been labeled with different fluorescent markers.</p>
+<p>Open and visualize (with ndv) the image named <code class="docutils literal notranslate"><span class="pre">t_cell.tif</span></code> from the <a download="" href="{{ data_path }}/07_pixel_intensity_based_coloc.zip"><i class="fas fa-download"></i> Manders &amp; Pearson’s Colocalization Dataset</a>. This is a two-channel image of HEK293 cells where two distinct fluorescent proteins have been labeled with different fluorescent markers.</p>
 <div class="cell tag_teacher docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># open the image</span>

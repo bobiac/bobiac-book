@@ -29,7 +29,7 @@
 <link href="../../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" rel="stylesheet" type="text/css"/>
 <link href="../../../_static/sphinx-thebe.css?v=4fa983c6" rel="stylesheet" type="text/css"/>
 <link href="../../../_static/sphinx-design.min.css?v=95c83b7e" rel="stylesheet" type="text/css"/>
-<link href="../../../_static/styles/custom.css?v=db811428" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/styles/custom.css?v=b98cbe03" rel="stylesheet" type="text/css"/>
 <!-- So that users can add custom icons -->
 <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
 <!-- Pre-loaded scripts that we'll load fully later -->
@@ -184,7 +184,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../09_bobiac_exercises/juv.html">juv Exercise</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../09_bobiac_exercises/working_with_bioimages.html">Working with Bioimages</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../09_bobiac_exercises/classic_segmentation.html">Classic Segmentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../09_bobiac_exercises/group_work_1.html">Group Work 1: Building your Own Spot Detection Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../09_bobiac_exercises/group_work_1.html">Group Work 1: Building your Own Segmentation and Spot Detection Pipeline</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../09_bobiac_exercises/group_work_2_oscillations.html">Group Work 2: Analysing Oscillations in Time-Series Images</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../09_bobiac_exercises/group_work_3_membrane_enrichment.html">Group Work 3: Does a Protein Localize to a Cellular Compartment?</a></li>
 </ul>
@@ -322,7 +322,7 @@
 <p>In this section, we will walk through how to <strong>retrain Cellpose on your own data</strong>. This is useful when the default models don’t perform well on your specific cell type, staining method, or imaging modality.</p>
 <p>Retraining allows Cellpose to learn directly from your examples, leading to better segmentation accuracy and more relevant masks for your experiments.</p>
 <p>To go through the training process, you need <strong>pairs of raw microscopy images and their corresponding label masks</strong>. The raw images are what you want to segment, and the label masks are the ground truth segmentations that the model will learn from.</p>
-<p>The images we will use for this section can be downloaded from the <a download="" href="https://github.com/bobiac/bobiac-book/releases/download/data-bobiac-2026/04_segmentation_cellpose_training.zip"> <i class="fas fa-download"></i> Cellpose Training Dataset</a>.</p>
+<p>The images we will use for this section can be downloaded from the <a download="" href="{{ data_path }}/04_segmentation_cellpose_training.zip"> <i class="fas fa-download"></i> Cellpose Training Dataset</a>.</p>
 <p class="alert alert-warning">
 <strong>⚠️ Tip:</strong> Cellpose runs significantly faster on a GPU. It supports both NVIDIA GPUs (CUDA) and Apple Silicon (MPS). If you don't have either, we recommend running this notebook on <a href="https://colab.research.google.com/github/bobiac/bobiac-book/blob/gh-pages/colab_notebooks/04_segmentation/deep_learning/cellpose_retraining_colab.ipynb" target="_blank"> Google Colab</a> for faster performance.
 </p>
@@ -367,7 +367,7 @@
 <section id="data">
 <h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Data<a class="headerlink" href="#data" title="Link to this heading">#</a></h2>
 <p>For this tutorial, we will use the sample dataset provided by Cellpose, which includes both training and test images pairs. You can download the dataset here:
-<a download="" href="https://github.com/bobiac/bobiac-book/releases/download/data-bobiac-2026/04_segmentation_cellpose_training.zip">
+<a download="" href="{{ data_path }}/04_segmentation_cellpose_training.zip">
 <i class="fas fa-download"></i> Cellpose Training Dataset</a>.</p>
 <p class="alert alert-info">
 <strong>🚧 Note:</strong> We will use only the sample dataset provided by Cellpose to demonstrate the retraining pipeline. If you want to retrain Cellpose on your own data, you will probably need more image pairs for training and for testing, as well as some validation data.

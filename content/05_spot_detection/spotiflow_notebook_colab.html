@@ -29,7 +29,7 @@
 <link href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" rel="stylesheet" type="text/css"/>
 <link href="../../_static/sphinx-thebe.css?v=4fa983c6" rel="stylesheet" type="text/css"/>
 <link href="../../_static/sphinx-design.min.css?v=95c83b7e" rel="stylesheet" type="text/css"/>
-<link href="../../_static/styles/custom.css?v=db811428" rel="stylesheet" type="text/css"/>
+<link href="../../_static/styles/custom.css?v=b98cbe03" rel="stylesheet" type="text/css"/>
 <!-- So that users can add custom icons -->
 <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
 <!-- Pre-loaded scripts that we'll load fully later -->
@@ -180,7 +180,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../09_bobiac_exercises/juv.html">juv Exercise</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../09_bobiac_exercises/working_with_bioimages.html">Working with Bioimages</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../09_bobiac_exercises/classic_segmentation.html">Classic Segmentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../09_bobiac_exercises/group_work_1.html">Group Work 1: Building your Own Spot Detection Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../09_bobiac_exercises/group_work_1.html">Group Work 1: Building your Own Segmentation and Spot Detection Pipeline</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../09_bobiac_exercises/group_work_2_oscillations.html">Group Work 2: Analysing Oscillations in Time-Series Images</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../09_bobiac_exercises/group_work_3_membrane_enrichment.html">Group Work 3: Does a Protein Localize to a Cellular Compartment?</a></li>
 </ul>
@@ -310,7 +310,7 @@
 <h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
 <p><a class="reference external" href="https://github.com/weigertlab/spotiflow">GitHub</a> | <a class="reference external" href="https://www.nature.com/articles/s41592-025-02662-x">Paper</a> | <a class="reference external" href="https://weigertlab.org/spotiflow/index.html">Spotiflow Documentation</a> | <a class="reference external" href="https://weigertlab.org/spotiflow/api.html#">Spotiflow API</a></p>
 <p>In this notebook, we’ll see how to run <code class="docutils literal notranslate"><span class="pre">Spotiflow</span></code> to detect spots on single images or on a folder of images, and how to visualize and save the results.</p>
-<p>The images we will use for this section can be downloaded from the <a download="" href="https://github.com/bobiac/bobiac-book/releases/download/data-bobiac-2026/04_05_06_07_seg_and_spot.zip"> <i class="fas fa-download"></i> Segmentation &amp; Spot Detection Dataset</a>.</p>
+<p>The images we will use for this section can be downloaded from the <a download="" href="https://github.com/bobiac/bobiac-book/releases/download/data-bobiac-2026/04_05_06_07_seg_and_spot.zip"> <i class="fas fa-download"></i> Segmentation and Spot Detection Dataset</a>.</p>
 </section>
 <section id="make-sure-you-have-gpu-access">
 <h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Make sure you have GPU access<a class="headerlink" href="#make-sure-you-have-gpu-access" title="Link to this heading">#</a></h2>
@@ -790,6 +790,10 @@
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Path to the folder containing the images</span>
 <span class="n">folder_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"content/bobiac_data_spotiflow/05_spot_detection_spotiflow"</span><span class="p">)</span>  <span class="c1"># change this to your folder path</span>
 
+<span class="c1"># Create a subfolder to save the spot detection results</span>
+<span class="n">spots_folder</span> <span class="o">=</span> <span class="n">folder_path</span> <span class="o">/</span> <span class="s2">"spots_coords"</span>
+<span class="n">spots_folder</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
 <span class="c1"># Get the sorted list of all .tif images in the folder</span>
 <span class="n">images_path</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">folder_path</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">"*.tif"</span><span class="p">))</span>
 
@@ -808,7 +812,7 @@
     <span class="c1"># Run Spotiflow on the image</span>
     <span class="n">points</span><span class="p">,</span> <span class="n">details</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_multichannel</span><span class="p">(</span><span class="n">tr_image</span><span class="p">,</span> <span class="n">channels</span><span class="o">=</span><span class="n">channels</span><span class="p">)</span>
     <span class="c1"># Save the points as a CSV file</span>
-    <span class="n">output_path</span> <span class="o">=</span> <span class="n">folder_path</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">image_path</span><span class="o">.</span><span class="n">stem</span><span class="si">}</span><span class="s2">_points.csv"</span>
+    <span class="n">output_path</span> <span class="o">=</span> <span class="n">spots_folder</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">image_path</span><span class="o">.</span><span class="n">stem</span><span class="si">}</span><span class="s2">_points.csv"</span>
     <span class="n">save_points_as_csv</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">output_path</span><span class="p">),</span> <span class="n">channel_last</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
