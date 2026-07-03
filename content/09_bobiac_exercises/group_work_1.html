@@ -322,6 +322,11 @@
 <li><p>Import the libraries in the first cell.</p></li>
 <li><p>Run the cell to confirm that they are installed and can be imported without errors.</p></li>
 </ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you would rather work in <code class="docutils literal notranslate"><span class="pre">Google</span> <span class="pre">Colab</span></code> instead of running the notebook locally, you can copy the <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> file you created to your <code class="docutils literal notranslate"><span class="pre">Google</span> <span class="pre">Drive</span></code> and open it from the <a class="reference external" href="https://colab.research.google.com/">Colab website</a>.</p>
+<p>Keep in mind that <code class="docutils literal notranslate"><span class="pre">Colab</span></code> does not support the <code class="docutils literal notranslate"><span class="pre">PEP</span> <span class="pre">723</span></code> inline script metadata that <code class="docutils literal notranslate"><span class="pre">juv</span></code> uses to manage dependencies. This means you will need to add a <code class="docutils literal notranslate"><span class="pre">!pip</span> <span class="pre">install</span> <span class="pre">&lt;package_name&gt;</span></code> cell for each dependency, and run it before the cell that imports the libraries.</p>
+</div>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg aria-hidden="true" class="sd-octicon sd-octicon-chevron-right" height="1.5em" version="1.1" viewbox="0 0 24 24" width="1.5em"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
