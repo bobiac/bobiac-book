@@ -1,8 +1,8 @@
-# juv Exercises
+# juv Exercise
 
 To go through these exercises, you need to create a new folder on your `Desktop` called `bobiac_juv`.
 
-## Exercise 1
+## Step 1
 
 **Create a new `Jupyter Notebook` with `uv`'s `juv` tool**
 
@@ -22,11 +22,11 @@ To go through these exercises, you need to create a new folder on your `Desktop`
 
 :::
 
-## Exercise 2
+## Step 2
 
 **Add dependencies to a `Jupyter Notebook` with `juv`**
 
-1. In the `bobiac_nb.ipynb` notebook created in [Exercise 1](#exercise-1), add `matplotlib`, `numpy`, and `pandas` as dependencies using `juv`.
+1. In the `bobiac_nb.ipynb` notebook created in [Step 1](#step-1), add `matplotlib`, `numpy`, and `pandas` as dependencies using `juv`.
 2. Run the notebook with `juv` and import the three libraries in the first cell to confirm that they are installed and can be imported without errors.
 
     :::{note}

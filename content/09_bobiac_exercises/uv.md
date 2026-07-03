@@ -4,6 +4,8 @@ To go through these exercises, you need to create a new folder on your `Desktop`
 
 ## Exercise 1
 
+### Step 1
+
 **Create a Python Environment with `uv` and Install `numpy` & `matplotlib`**
 
 1. Open the Terminal or PowerShell and navigate to the `bobiac_uv` folder.
@@ -25,12 +27,12 @@ To go through these exercises, you need to create a new folder on your `Desktop`
 
 :::
 
-## Exercise 2
+### Step 2
 
-**Add to the environment created in [Exercise 1](#exercise-1) the `scikit-image` package**
+**Add to the environment created in [Step 1](#step-1) the `scikit-image` package**
 
 1. Open the Terminal or PowerShell and navigate to the `bobiac_uv` folder.
-2. Activate the `.venv` virtual environment created in [Exercise 1](#exercise-1).
+2. Activate the `.venv` virtual environment created in [Step 1](#step-1).
 3. Add the `scikit-image` package to the `.venv` virtual environment.
 4. List the installed packages in the `.venv` virtual environment to confirm that `scikit-image` is installed.
 5. Deactivate the `.venv` virtual environment.
@@ -46,7 +48,7 @@ To go through these exercises, you need to create a new folder on your `Desktop`
 
 :::
 
-## Exercise 3
+## Exercise 2
 
 **Create a `.py` file with the PEP723 `///script` header using `uv`**
 
