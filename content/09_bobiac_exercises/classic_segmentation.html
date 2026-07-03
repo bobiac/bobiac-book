@@ -55,7 +55,7 @@
 <script src="../../_static/scripts/custom.js?v=c465b8ac"></script>
 <link href="../../genindex.html" rel="index" title="Index"/>
 <link href="../../search.html" rel="search" title="Search"/>
-<link href="group_work_1.html" rel="next" title="Group Work 1"/>
+<link href="group_work_1.html" rel="next" title="Group Work 1: Building your Own Spot Detection Pipeline"/>
 <link href="working_with_bioimages.html" rel="prev" title="Working with Bioimages"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="en" name="docsearch:language"/>
@@ -183,7 +183,7 @@
 <li class="toctree-l2"><a class="reference internal" href="juv.html">juv Exercises</a></li>
 <li class="toctree-l2"><a class="reference internal" href="working_with_bioimages.html">Working with Bioimages</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Classic Segmentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="group_work_1.html">Group Work 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="group_work_1.html">Group Work 1: Building your Own Spot Detection Pipeline</a></li>
 </ul>
 </details></li>
 </ul>
@@ -295,7 +295,7 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">skimage.feature</span><span class="w"> </span><span class="kn">import</span> <span class="n">peak_local_max</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">skimage.filters</span><span class="w"> </span><span class="kn">import</span> <span class="n">gaussian</span><span class="p">,</span> <span class="n">threshold_otsu</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">skimage.measure</span><span class="w"> </span><span class="kn">import</span> <span class="n">label</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">skimage.morphology</span><span class="w"> </span><span class="kn">import</span> <span class="n">binary_closing</span><span class="p">,</span> <span class="n">remove_small_objects</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">skimage.morphology</span><span class="w"> </span><span class="kn">import</span> <span class="n">closing</span><span class="p">,</span> <span class="n">remove_small_objects</span><span class="p">,</span> <span class="n">disk</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">skimage.segmentation</span><span class="w"> </span><span class="kn">import</span> <span class="n">watershed</span>
 
 <span class="n">input_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"../../../_static/images/classic_seg/"</span><span class="p">)</span>
@@ -311,10 +311,10 @@
     <span class="n">binary_mask</span> <span class="o">=</span> <span class="n">filtered_image</span> <span class="o">&gt;</span> <span class="n">threshold_otsu</span><span class="p">(</span><span class="n">filtered_image</span><span class="p">)</span>
 
     <span class="c1"># Remove small objects</span>
-    <span class="n">binary_mask_sized</span> <span class="o">=</span> <span class="n">remove_small_objects</span><span class="p">(</span><span class="n">binary_mask</span><span class="p">,</span> <span class="n">min_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">binary_mask_sized</span> <span class="o">=</span> <span class="n">remove_small_objects</span><span class="p">(</span><span class="n">binary_mask</span><span class="p">,</span> <span class="n">min_size</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
 
     <span class="c1"># Fill small holes by performing morphological closing</span>
-    <span class="n">binary_mask_filled</span> <span class="o">=</span> <span class="n">binary_closing</span><span class="p">(</span><span class="n">binary_mask_sized</span><span class="p">)</span>
+    <span class="n">binary_mask_filled</span> <span class="o">=</span> <span class="n">closing</span><span class="p">(</span><span class="n">binary_mask_sized</span><span class="p">,</span> <span class="n">disk</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
 
     <span class="c1"># apply watershed to separate nuclei and label mask</span>
     <span class="c1"># compute the distance transform</span>
@@ -462,7 +462,7 @@
 <a class="right-next" href="group_work_1.html" title="next page">
 <div class="prev-next-info">
 <p class="prev-next-subtitle">next</p>
-<p class="prev-next-title">Group Work 1</p>
+<p class="prev-next-title">Group Work 1: Building your Own Spot Detection Pipeline</p>
 </div>
 <i class="fa-solid fa-angle-right"></i>
 </a>

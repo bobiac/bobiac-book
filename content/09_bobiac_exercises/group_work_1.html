@@ -5,7 +5,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
-<title>Group Work 1 — BoBiAC Book</title>
+<title>Group Work 1: Building your Own Spot Detection Pipeline — BoBiAC Book</title>
 <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
@@ -183,7 +183,7 @@
 <li class="toctree-l2"><a class="reference internal" href="juv.html">juv Exercises</a></li>
 <li class="toctree-l2"><a class="reference internal" href="working_with_bioimages.html">Working with Bioimages</a></li>
 <li class="toctree-l2"><a class="reference internal" href="classic_segmentation.html">Classic Segmentation</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Group Work 1</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Group Work 1: Building your Own Spot Detection Pipeline</a></li>
 </ul>
 </details></li>
 </ul>
@@ -259,7 +259,7 @@
 </div>
 </div>
 <div class="onlyprint" id="jb-print-docs-body">
-<h1>Group Work 1</h1>
+<h1>Group Work 1: Building your Own Spot Detection Pipeline</h1>
 <!-- Table of contents -->
 <div id="print-main-content">
 <div id="jb-print-toc">
@@ -279,42 +279,17 @@
 </div>
 <div id="searchbox"></div>
 <article class="bd-article">
-<section class="tex2jax_ignore mathjax_ignore" id="group-work-1">
-<h1>Group Work 1<a class="headerlink" href="#group-work-1" title="Link to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="group-work-1-building-your-own-spot-detection-pipeline">
+<h1>Group Work 1: Building your Own Spot Detection Pipeline<a class="headerlink" href="#group-work-1-building-your-own-spot-detection-pipeline" title="Link to this heading">#</a></h1>
 <p>Let’s now consolidate what you have learned! These exercises will walk you through how to create your own Jupyter Notebook containing code that segments images with Cellpose!</p>
 <p>To go through these exercises, you need to create a new folder on your <code class="docutils literal notranslate"><span class="pre">Desktop</span></code> called <code class="docutils literal notranslate"><span class="pre">bobiac_uv_env</span></code>.</p>
 <section id="exercise-1">
 <h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Exercise 1<a class="headerlink" href="#exercise-1" title="Link to this heading">#</a></h2>
-<p><strong>Create a Python Environment with <code class="docutils literal notranslate"><span class="pre">uv</span></code> and Install Dependencies</strong></p>
-<ol class="arabic simple">
-<li><p>Open the Terminal or PowerShell and navigate to the <code class="docutils literal notranslate"><span class="pre">bobiac_uv_env</span></code> folder.</p></li>
-<li><p>Create a new virtual environment with <code class="docutils literal notranslate"><span class="pre">uv</span></code> in the <code class="docutils literal notranslate"><span class="pre">bobiac_uv_env</span></code> folder named <code class="docutils literal notranslate"><span class="pre">group-work-1</span></code>.</p></li>
-<li><p>Activate the newly created <code class="docutils literal notranslate"><span class="pre">group-work-1</span></code> virtual environment.</p></li>
-<li><p>Install the necessary dependencies for Cellpose and Spotiflow segmentation in the <code class="docutils literal notranslate"><span class="pre">group-work-1</span></code> virtual environment.</p></li>
-<li><p>List the installed packages in the <code class="docutils literal notranslate"><span class="pre">group-work-1</span></code> virtual environment to confirm that everything is installed.</p></li>
-<li><p>Deactivate the <code class="docutils literal notranslate"><span class="pre">group-work-1</span></code> virtual environment.</p></li>
-</ol>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg aria-hidden="true" class="sd-octicon sd-octicon-chevron-right" height="1.5em" version="1.1" viewbox="0 0 24 24" width="1.5em"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<ol class="arabic simple">
-<li><p class="sd-card-text">open the Terminal or PowerShell.</p></li>
-<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">.../Desktop/bobiac_uv_env</span></code></p></li>
-<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">venv</span> <span class="pre">group-work-1</span></code></p></li>
-<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">group-work-1/bin/activate</span></code> (Linux/macOS) or <code class="docutils literal notranslate"><span class="pre">group-work-1\Scripts\activate</span></code> (Windows)</p></li>
-<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">cellpose</span> <span class="pre">tqdm</span></code></p></li>
-<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">pip</span> <span class="pre">list</span></code></p></li>
-<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">deactivate</span></code></p></li>
-</ol>
-</div>
-</details></section>
-<section id="exercise-2">
-<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Exercise 2<a class="headerlink" href="#exercise-2" title="Link to this heading">#</a></h2>
 <p><strong>Create a new <code class="docutils literal notranslate"><span class="pre">Jupyter</span> <span class="pre">Notebook</span></code> with <code class="docutils literal notranslate"><span class="pre">uv</span></code>’s <code class="docutils literal notranslate"><span class="pre">juv</span></code> tool</strong></p>
 <ol class="arabic simple">
 <li><p>Open the Terminal or PowerShell and navigate to the <code class="docutils literal notranslate"><span class="pre">bobiac_uv_env</span></code> folder.</p></li>
 <li><p>Inside the <code class="docutils literal notranslate"><span class="pre">bobiac_uv_env</span></code> folder, create a new folder named <code class="docutils literal notranslate"><span class="pre">nb_folder</span></code> and navigate into it.</p></li>
-<li><p>Inside the <code class="docutils literal notranslate"><span class="pre">nb_folder</span></code>, create a new Jupyter Notebook named <code class="docutils literal notranslate"><span class="pre">cellpose-segmentation.ipynb</span></code> using <code class="docutils literal notranslate"><span class="pre">uv</span></code>’s <code class="docutils literal notranslate"><span class="pre">juv</span></code> tool.</p></li>
+<li><p>Inside the <code class="docutils literal notranslate"><span class="pre">nb_folder</span></code>, create a new Jupyter Notebook named <code class="docutils literal notranslate"><span class="pre">group_work_1.ipynb</span></code> using <code class="docutils literal notranslate"><span class="pre">uv</span></code>’s <code class="docutils literal notranslate"><span class="pre">juv</span></code> tool.</p></li>
 <li><p>Run the notebook in your browser using <code class="docutils literal notranslate"><span class="pre">juv</span></code>.</p></li>
 </ol>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
@@ -325,16 +300,16 @@
 <li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">.../Desktop/bobiac_uv_env</span></code></p></li>
 <li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">nb_folder</span></code></p></li>
 <li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">.../Desktop/nb_folder</span></code></p></li>
-<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">uvx</span> <span class="pre">juv</span> <span class="pre">init</span> <span class="pre">cellpose-segmentation.ipynb</span></code></p></li>
-<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">uvx</span> <span class="pre">juv</span> <span class="pre">run</span> <span class="pre">cellpose-segmentation.ipynb</span></code></p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">uvx</span> <span class="pre">juv</span> <span class="pre">init</span> <span class="pre">group_work_1.ipynb</span></code></p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">uvx</span> <span class="pre">juv</span> <span class="pre">run</span> <span class="pre">group_work_1.ipynb</span></code></p></li>
 </ol>
 </div>
 </details></section>
-<section id="exercise-3">
-<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Exercise 3<a class="headerlink" href="#exercise-3" title="Link to this heading">#</a></h2>
+<section id="exercise-2">
+<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Exercise 2<a class="headerlink" href="#exercise-2" title="Link to this heading">#</a></h2>
 <p><strong>Add dependencies to the <code class="docutils literal notranslate"><span class="pre">Jupyter</span> <span class="pre">Notebook</span></code> with <code class="docutils literal notranslate"><span class="pre">juv</span></code></strong></p>
 <ol class="arabic">
-<li><p>In your notebook created in <a class="reference internal" href="#exercise-2"><span class="xref myst">Exercise 2</span></a>, add your dependencies using <code class="docutils literal notranslate"><span class="pre">juv</span></code>.</p></li>
+<li><p>In your notebook created in <a class="reference internal" href="#exercise-1"><span class="xref myst">Exercise 1</span></a>, add your dependencies using <code class="docutils literal notranslate"><span class="pre">juv</span></code>.</p></li>
 <li><p>Run the notebook with <code class="docutils literal notranslate"><span class="pre">juv</span></code> and import the libraries in the first cell to confirm that they are installed and can be imported without errors.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -346,15 +321,22 @@
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg aria-hidden="true" class="sd-octicon sd-octicon-chevron-right" height="1.5em" version="1.1" viewbox="0 0 24 24" width="1.5em"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <ol class="arabic">
-<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">.../Desktop/nb_folder</span></code> (the folder created in <a class="reference internal" href="#exercise-2"><span class="xref myst">Exercise 2</span></a>)</p></li>
-<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">uvx</span> <span class="pre">juv</span> <span class="pre">add</span> <span class="pre">cellpose-segmentation.ipynb</span> <span class="pre">cellpose</span> <span class="pre">tqdm</span></code></p></li>
-<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">uvx</span> <span class="pre">juv</span> <span class="pre">run</span> <span class="pre">my-first-nb.ipynb</span></code></p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">.../Desktop/nb_folder</span></code> (the folder created in <a class="reference internal" href="#exercise-1"><span class="xref myst">Exercise 1</span></a>)</p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">uvx</span> <span class="pre">juv</span> <span class="pre">add</span> <span class="pre">group_work_1.ipynb</span> <span class="pre">cellpose</span> <span class="pre">tqdm</span> <span class="pre">tifffile</span> <span class="pre">spotiflow</span> <span class="pre">numpy</span></code></p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">uvx</span> <span class="pre">juv</span> <span class="pre">run</span> <span class="pre">group_work_1.ipynb</span></code></p></li>
 <li><p class="sd-card-text">Add a new <code class="docutils literal notranslate"><span class="pre">code</span></code> cell in the notebook (<code class="docutils literal notranslate"><span class="pre">+</span></code> button)</p></li>
 <li><p class="sd-card-text">Within this cell, import the necessary libraries:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">cellpose</span><span class="w"> </span><span class="kn">import</span> <span class="n">core</span><span class="p">,</span> <span class="n">io</span><span class="p">,</span> <span class="n">models</span><span class="p">,</span> <span class="n">plot</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cellpose.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">MODEL_DIR</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">tqdm</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">csv</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">tifffile</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">spotiflow.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">Spotiflow</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 </pre></div>
 </div>
 </li>
@@ -362,8 +344,8 @@
 </ol>
 </div>
 </details></section>
-<section id="exercise-4">
-<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Exercise 4<a class="headerlink" href="#exercise-4" title="Link to this heading">#</a></h2>
+<section id="exercise-3">
+<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Exercise 3<a class="headerlink" href="#exercise-3" title="Link to this heading">#</a></h2>
 <p><strong>Add code that segments the first two channels of many image files using Cellpose and saves the segmentation result as a tif file</strong></p>
 <ol class="arabic simple">
 <li><p>For each step, create a new <code class="docutils literal notranslate"><span class="pre">code</span></code> cell in the notebook (<code class="docutils literal notranslate"><span class="pre">+</span></code> button).</p></li>
@@ -372,36 +354,20 @@
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg aria-hidden="true" class="sd-octicon sd-octicon-chevron-right" height="1.5em" version="1.1" viewbox="0 0 24 24" width="1.5em"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#setup</span>
-<span class="n">io</span><span class="o">.</span><span class="n">logger_setup</span><span class="p">()</span>  <span class="c1"># to get printing of progress</span>
-<span class="n">use_gpu</span> <span class="o">=</span> <span class="n">core</span><span class="o">.</span><span class="n">use_gpu</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"GPU available:"</span><span class="p">,</span> <span class="n">use_gpu</span><span class="p">)</span>
-
-<span class="c1"># Path to the folder containing the images to segment</span>
-<span class="n">folder_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"data/04_segmentation_cellpose"</span><span class="p">)</span>
-
-<span class="c1"># Get the sorted list of all .tif images in the folder</span>
-<span class="n">images_path</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">folder_path</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">"*.tif"</span><span class="p">))</span>
-
-<span class="c1"># Initialize the model once before the loop</span>
-<span class="n">model_path</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">MODEL_DIR</span> <span class="o">/</span> <span class="s2">"cpsam_v2"</span><span class="p">)</span>  <span class="c1"># or "cpdino" / "cpdino-vitb" or "cpsam"</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CellposeModel</span><span class="p">(</span><span class="n">pretrained_model</span><span class="o">=</span><span class="n">model_path</span><span class="p">,</span> <span class="n">gpu</span><span class="o">=</span><span class="n">use_gpu</span><span class="p">)</span>
-
-<span class="c1"># Run Cellpose on each image one by one</span>
-<span class="c1"># NOTE: tqdm is used to show a progress bar, but you can remove it if you don't want it</span>
-<span class="k">for</span> <span class="n">image_path</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">images_path</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s2">"Processing images"</span><span class="p">):</span>
-    <span class="c1"># Load the image</span>
-    <span class="n">image</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span>
-    <span class="c1"># select the channels to segement from the multichannel image</span>
-    <span class="n">cp_image</span> <span class="o">=</span> <span class="n">image</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
-    <span class="c1"># Run Cellpose on the image</span>
-    <span class="n">masks</span><span class="p">,</span> <span class="n">flows</span><span class="p">,</span> <span class="n">styles</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">cp_image</span><span class="p">)</span>
-    <span class="c1"># Save the segmentation results as a TIFF file</span>
-    <span class="n">output_path</span> <span class="o">=</span> <span class="n">folder_path</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">image_path</span><span class="o">.</span><span class="n">stem</span><span class="si">}</span><span class="s2">_labels.tif"</span>
-    <span class="n">io</span><span class="o">.</span><span class="n">imsave</span><span class="p">(</span><span class="n">output_path</span><span class="p">,</span> <span class="n">masks</span><span class="p">)</span>  <span class="c1"># or tifffile.imwrite(output_path, masks)</span>
-
-</pre></div>
+<p class="sd-card-text">See <a class="reference internal" href="group_work_1_solution.html"><span class="std std-doc">Solution Notebook</span></a></p>
 </div>
+</details></section>
+<section id="exercise-4">
+<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Exercise 4<a class="headerlink" href="#exercise-4" title="Link to this heading">#</a></h2>
+<p><strong>Add code that uses Spotiflow to detect spots in the 3rd and 4th channels of the images and saves a .csv file of their coordinates.</strong></p>
+<ol class="arabic simple">
+<li><p>For each step, create a new <code class="docutils literal notranslate"><span class="pre">code</span></code> cell in the notebook (<code class="docutils literal notranslate"><span class="pre">+</span></code> button).</p></li>
+<li><p>Within the cell, add the necessary code.</p></li>
+</ol>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg aria-hidden="true" class="sd-octicon sd-octicon-chevron-right" height="1.5em" version="1.1" viewbox="0 0 24 24" width="1.5em"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">See <a class="reference internal" href="group_work_1_solution.html"><span class="std std-doc">Solution Notebook</span></a></p>
 </div>
 </details></section>
 </section>
