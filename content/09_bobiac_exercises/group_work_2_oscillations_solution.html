@@ -278,7 +278,15 @@
 <article class="bd-article">
 <section class="tex2jax_ignore mathjax_ignore" id="time-series-analysis">
 <h1>Time series analysis<a class="headerlink" href="#time-series-analysis" title="Link to this heading">#</a></h1>
-<div class="cell docutils container">
+<div class="custom-button-row">
+<a class="custom-button custom-download-button" download="" href="../../notebooks/09_bobiac_exercises/group_work_2_oscillations_solution.ipynb">
+<i class="fas fa-download"></i> Download this Notebook
+    </a>
+<a class="custom-button custom-download-button" href="https://colab.research.google.com/github/bobiac/bobiac-book/blob/gh-pages/colab_notebooks/09_bobiac_exercises/group_work_2_oscillations_solution.ipynb" target="_blank">
+<img alt="Open in Colab" class="button-icon" src="../../_static/logo/icon-google-colab.svg"/>
+        Open in Colab
+    </a>
+</div><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># /// script</span>
 <span class="c1"># requires-python = "&gt;=3.10"</span>
@@ -316,39 +324,92 @@
 <h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
 <p>In this notebook, we analyse time resolved data.</p>
 <p>We have data of cells where the location of our gene of interes oscillates between the nucleus and the cytoplasm. Our question is <strong>What is the frequency of the oscillations?</strong></p>
-<p>We have a total of 16 time points with a temporal spacing of 30 min.
+<p>We have a total of 16 time points with a temporal spacing of 30 min (🤔).
 The background of the images was measured to be 4700.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">image_folder</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"../../_static/images/quant/03_time_series/images/"</span><span class="p">)</span>
-<span class="n">image_paths</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">image_folder</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">"*.tif"</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">image_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"../../_static/images/quant/03_time_series/images/F01_1615_tcyx.tif"</span><span class="p">)</span>
 
-<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">time_stack</span> <span class="o">=</span> <span class="n">tifffile</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Time stack shape: </span><span class="si">{</span><span class="n">time_stack</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>  <span class="c1"># (16, 3, 1040, 1392)</span>
 
-<span class="k">for</span> <span class="n">ax</span><span class="p">,</span> <span class="n">path</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axes</span><span class="o">.</span><span class="n">flat</span><span class="p">,</span> <span class="n">image_paths</span><span class="p">[:</span><span class="mi">8</span><span class="p">]):</span>
-    <span class="n">image</span> <span class="o">=</span> <span class="n">tifffile</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">path</span><span class="p">)[</span><span class="mi">2</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span>
-    <span class="n">tp</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">stem</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"_t"</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"_"</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">"gray"</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">"t=</span><span class="si">{</span><span class="n">tp</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">"off"</span><span class="p">)</span>
 
+<span class="n">t_max</span> <span class="o">=</span> <span class="n">time_stack</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">ch</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># channel index for the oscillating gene of interest</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">t_max</span><span class="p">):</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">time_stack</span><span class="p">[</span><span class="n">t</span><span class="p">,</span> <span class="n">ch</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">t</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">"gray"</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">"t=</span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">"off"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/5de6bafd4b7a9a8938e5dba51e79c6a1d984704357b9b3195fc0113184c02dfb.png" src="../../_images/5de6bafd4b7a9a8938e5dba51e79c6a1d984704357b9b3195fc0113184c02dfb.png"/>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">image_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"../../_static/images/quant/03_time_series/images/F01_1615_tcyx.tif"</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> 
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">time_stack</span> <span class="o">=</span> <span class="n">tifffile</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Time stack shape: </span><span class="si">{</span><span class="n">time_stack</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>  <span class="c1"># (16, 3, 1040, 1392)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> 
+<span class="g g-Whitespace">      </span><span class="mi">6</span> 
+
+<span class="nn">File ~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/tifffile/tifffile.py:1256,</span> in <span class="ni">imread</span><span class="nt">(files, selection, return_as, aszarr, key, series, kind, level, squeeze, maxworkers, buffersize, mode, name, offset, size, pattern, axesorder, categories, imread, imreadargs, sort, container, chunkshape, chunkdtype, axestiled, ioworkers, chunkmode, fillvalue, zattrs, multiscales, omexml, superres, out, out_inplace, _multifile, _useframes, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1252</span>         <span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1253</span>             <span class="n">files</span> <span class="o">=</span> <span class="n">files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1254</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1255</span>         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">files</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">files</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">1256</span>             <span class="k">with</span> <span class="n">TiffFile</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1257</span>                 <span class="n">files</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1258</span>                 <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1259</span>                 <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
+
+<span class="nn">File ~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/tifffile/tifffile.py:4554,</span> in <span class="ni">TiffFile.__init__</span><span class="nt">(self, file, mode, name, offset, size, omexml, superres, _multifile, _useframes, _root, **is_flags)</span>
+<span class="g g-Whitespace">   </span><span class="mi">4550</span>                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">4551</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_omexml</span> <span class="o">=</span> <span class="n">omexml</span>
+<span class="g g-Whitespace">   </span><span class="mi">4552</span>             <span class="bp">self</span><span class="o">.</span><span class="n">is_ome</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="g g-Whitespace">   </span><span class="mi">4553</span> 
+<span class="ne">-&gt; </span><span class="mi">4554</span>         <span class="n">fh</span> <span class="o">=</span> <span class="n">FileHandle</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="n">offset</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">4555</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_fh</span> <span class="o">=</span> <span class="n">fh</span>
+<span class="g g-Whitespace">   </span><span class="mi">4556</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_multifile</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="n">_multifile</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="nb">bool</span><span class="p">(</span><span class="n">_multifile</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">4557</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_files</span> <span class="o">=</span> <span class="p">{</span><span class="n">fh</span><span class="o">.</span><span class="n">name</span><span class="p">:</span> <span class="bp">self</span><span class="p">}</span>
+
+<span class="nn">File ~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/tifffile/tifffile.py:12751,</span> in <span class="ni">FileHandle.__init__</span><span class="nt">(self, file, mode, name, offset, size)</span>
+<span class="g g-Whitespace">  </span><span class="mi">12747</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_offset</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="k">if</span> <span class="n">offset</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">offset</span>
+<span class="g g-Whitespace">  </span><span class="mi">12748</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_size</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="k">if</span> <span class="n">size</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">size</span>
+<span class="g g-Whitespace">  </span><span class="mi">12749</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_close</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="g g-Whitespace">  </span><span class="mi">12750</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_lock</span> <span class="o">=</span> <span class="n">contextlib</span><span class="o">.</span><span class="n">nullcontext</span><span class="p">()</span>
+<span class="ne">&gt; </span><span class="mi">12751</span>         <span class="bp">self</span><span class="o">.</span><span class="n">open</span><span class="p">()</span>
+<span class="g g-Whitespace">  </span><span class="mi">12752</span>         <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fh</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+
+<span class="nn">File ~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/tifffile/tifffile.py:12771,</span> in <span class="ni">FileHandle.open</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">  </span><span class="mi">12767</span>                 <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'invalid mode </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_mode</span><span class="si">}</span><span class="s1">'</span>
+<span class="g g-Whitespace">  </span><span class="mi">12768</span>                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+<span class="g g-Whitespace">  </span><span class="mi">12769</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_file</span><span class="p">)</span>
+<span class="g g-Whitespace">  </span><span class="mi">12770</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_dir</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_file</span><span class="p">)</span>
+<span class="ne">&gt; </span><span class="mi">12771</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_fh</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span>  <span class="c1"># noqa: SIM115</span>
+<span class="g g-Whitespace">  </span><span class="mi">12772</span>                 <span class="bp">self</span><span class="o">.</span><span class="n">_file</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="kc">None</span>
+<span class="g g-Whitespace">  </span><span class="mi">12773</span>             <span class="p">)</span>
+<span class="g g-Whitespace">  </span><span class="mi">12774</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_close</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: '/home/runner/work/bobiac-book/bobiac-book/_static/images/quant/03_time_series/images/F01_1615_tcyx.tif'
+</pre></div>
+</div>
 </div>
 </div>
 <p>These are the first eight time points.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask_cells</span> <span class="o">=</span> <span class="n">tifffile</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span>
-    <span class="s2">"../../_static/images/quant/03_time_series/masks/F01_1615_cells.TIF"</span>
+    <span class="s2">"../../_static/images/quant/03_time_series/masks/F01_1615_tcyx_cell_labels.tif"</span>
 <span class="p">)</span>
 <span class="n">mask_nuclei</span> <span class="o">=</span> <span class="n">tifffile</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span>
-    <span class="s2">"../../_static/images/quant/03_time_series/masks/F01_1615_nuc.TIF"</span>
+    <span class="s2">"../../_static/images/quant/03_time_series/masks/F01_1615_tcyx_nuclei_labels.tif"</span>
 <span class="p">)</span>
 
 <span class="n">overlay_labels</span><span class="p">(</span><span class="n">label_mask</span><span class="o">=</span><span class="p">[</span><span class="n">mask_cells</span><span class="p">,</span> <span class="n">mask_nuclei</span><span class="p">])</span>
@@ -356,7 +417,7 @@ The background of the images was measured to be 4700.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/4453fb337c32d47e16fe7b113f43bbe723454439b4626bfdf5b7f97080dfa545.png" src="../../_images/4453fb337c32d47e16fe7b113f43bbe723454439b4626bfdf5b7f97080dfa545.png"/>
+<img alt="../../_images/02eabe24257b0efa74c29c55e0f17c7153ca7d299034f7987d9eef3aca220b99.png" src="../../_images/02eabe24257b0efa74c29c55e0f17c7153ca7d299034f7987d9eef3aca220b99.png"/>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 800x800 with 1 Axes&gt;, &lt;Axes: &gt;)
 </pre></div>
 </div>
@@ -382,15 +443,14 @@ The background of the images was measured to be 4700.</p>
 <p>Load the first time point.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">image_path</span> <span class="o">=</span> <span class="n">image_paths</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-
-<span class="n">image_t0</span> <span class="o">=</span> <span class="n">tifffile</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">image_path</span><span class="p">)[</span><span class="mi">2</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ch</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># channel index for the oscillating gene of interest</span>
+<span class="n">image_t0</span> <span class="o">=</span> <span class="n">time_stack</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">ch</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span>
 <span class="n">overlay_labels</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">image_t0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/0d91d814910ecf64f3d59536d12c33e4bcb18f1a61c1983ac222622020129de2.png" src="../../_images/0d91d814910ecf64f3d59536d12c33e4bcb18f1a61c1983ac222622020129de2.png"/>
+<img alt="../../_images/ec9a129028c80713a794ed1cafc7389fde70e509c162ee4fe158a0c28d8077fe.png" src="../../_images/ec9a129028c80713a794ed1cafc7389fde70e509c162ee4fe158a0c28d8077fe.png"/>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 800x800 with 1 Axes&gt;, &lt;Axes: &gt;)
 </pre></div>
 </div>
@@ -405,7 +465,7 @@ The background of the images was measured to be 4700.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fe5a54dc09967c3f0364aa406303487162deb9690839432c8f83f9d9ebd91198.png" src="../../_images/fe5a54dc09967c3f0364aa406303487162deb9690839432c8f83f9d9ebd91198.png"/>
+<img alt="../../_images/d03cb379d371480e9a45b112edf3eb56311973dc75b373736e989e98995a9cce.png" src="../../_images/d03cb379d371480e9a45b112edf3eb56311973dc75b373736e989e98995a9cce.png"/>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 800x800 with 1 Axes&gt;,
  &lt;Axes: title={'center': 'Segmentation overlay'}&gt;)
 </pre></div>
@@ -426,68 +486,67 @@ The background of the images was measured to be 4700.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      area  intensity_mean  label
-0   1867.0     1219.606856      2
-1   1429.0      949.058782      3
-2   1679.0      891.475878      4
-3   1355.0     1117.744649      5
-4   1232.0     1028.202110      6
-5   2112.0     1059.398674      7
-6   1954.0     1140.899693      8
-7   1572.0     1025.725191      9
-8   1862.0     1176.601504     10
-9   1554.0     1249.428571     11
-10  1945.0     1325.883290     12
-11  1947.0     1274.606574     13
-12  2306.0     1073.635299     14
-13  1597.0      931.844083     15
-14  1647.0     1237.388585     16
-15  3382.0     1080.040509     17
-16  1439.0     1091.980542     18
-17  1881.0     1090.993620     19
-18  2693.0      977.158188     20
-19  1028.0     1240.612840     21
-20  1715.0     1213.583673     22
-21  1697.0     1083.809075     23
-22  1540.0     1165.322727     24
-23  1087.0     1456.276909     25
-24   619.0     1488.179321     27
-25  1846.0      998.769772     28
-26  1330.0      888.450376     29
-27   438.0      806.287671     30
-28  1824.0      950.386513     31
-29  1913.0     1320.894929     33
-30  1123.0     1105.219056     34
-31  1663.0     1351.182802     35
-32  1547.0     1082.393019     36
-33  2083.0     1272.636102     38
-34  1504.0     1207.064495     39
-35  1280.0     1002.854687     40
-36  3760.0     1127.800266     42
-37  2041.0     1029.632043     43
-38   830.0      865.732530     44
-39   969.0     1430.062951     45
-40  1640.0     1242.039634     46
-41  3800.0      937.206579     47
-42  1646.0     1066.495140     48
-43  2024.0     1016.829545     49
-44  1891.0     1198.019038     50
-45  1673.0     1253.115959     51
-46  1641.0     1135.880561     52
-47  1272.0     1197.489780     53
-48  1361.0     1169.415136     54
-49    45.0     1192.955556     55
-50  1095.0      942.926027     56
-51  1056.0      944.766098     57
-52   961.0     1143.874089     58
-53  2025.0      850.746173     59
-54   786.0     1107.946565     60
-55  1542.0      999.247082     61
-56   878.0     1070.775626     62
-57   776.0      998.304124     63
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">      area  intensity_mean  label
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">0</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1869.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1219.043339</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">2</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1430.0</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">948.851748</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">3</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">2</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1681.0</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">891.096371</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">4</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">3</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1356.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1117.834071</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">5</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">4</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1232.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1028.202110</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">6</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">5</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">2114.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1058.964049</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">7</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">6</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1954.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1140.899693</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">8</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">7</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1576.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1024.806472</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">9</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">8</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1862.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1176.601504</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">10</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">9</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1555.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1250.140836</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">11</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">10</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1945.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1325.883290</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">12</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">11</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1948.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1274.267967</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">13</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">12</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">2307.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1073.438231</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">14</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">13</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1599.0</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">931.551595</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">15</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">14</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1646.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1237.678007</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">16</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">15</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">3380.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1080.149112</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">17</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">16</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1440.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1092.085417</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">18</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">17</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1880.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1091.045213</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">19</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">18</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">2691.0</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">976.980676</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">20</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">19</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1030.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1240.002913</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">21</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">20</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1716.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1213.378205</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">22</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">21</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1696.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1083.852005</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">23</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">22</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1540.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1165.322727</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">24</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">23</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1086.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1456.955801</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">25</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">24</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">618.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1489.451456</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">27</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">25</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1847.0</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">998.479697</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">28</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">26</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1329.0</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">888.212190</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">29</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">27</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">438.0</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">806.287671</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">30</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">28</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1825.0</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">950.421370</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">31</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">29</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1913.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1320.894929</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">33</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">30</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1123.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1105.219056</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">34</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">31</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1664.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1350.731971</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">35</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">32</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1547.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1082.393019</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">36</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">33</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">2081.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1273.842864</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">38</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">34</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1499.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1207.787859</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">39</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">35</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1279.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1003.185301</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">40</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">36</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">3761.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1127.747939</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">42</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">37</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">2040.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1029.764216</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">43</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">38</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">829.0</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">864.540410</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">44</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">39</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">968.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1430.487603</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">45</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">40</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1639.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1242.480171</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">46</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">41</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">3799.0</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">937.245591</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">47</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">42</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1645.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1066.477204</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">48</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">43</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">2022.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1017.343225</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">49</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">44</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1892.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1197.726216</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">50</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">45</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1673.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1253.115959</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">51</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">46</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1644.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1135.153893</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">52</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">47</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1275.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1196.524706</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">53</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">48</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1362.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1168.959618</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">54</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">49</span>    <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">44.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1205.840909</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">55</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">50</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1095.0</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">942.811872</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">56</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">51</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1056.0</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">944.766098</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">57</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">52</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">961.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1143.874089</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">58</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">53</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">2026.0</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">850.837611</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">59</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">54</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">785.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1107.979618</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">60</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">55</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1543.0</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">998.966948</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">61</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">56</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">878.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1070.775626</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">62</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">57</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">776.0</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">998.304124</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">63</span>
+</pre>
+</div></div>
 </div>
 <p>Subtract background intensity from measurements. Background was measured to 460.</p>
 <div class="cell docutils container">
@@ -503,32 +562,31 @@ The background of the images was measured to be 4700.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    759.606856
-1    489.058782
-2    431.475878
-3    657.744649
-4    568.202110
+<div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #008080; text-decoration-color: #008080; font-weight: bold">0</span>    <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">759.043339</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1</span>    <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">488.851748</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">2</span>    <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">431.096371</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">3</span>    <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">657.834071</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">4</span>    <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">568.202110</span>
 Name: intensity_bg_cor, dtype: float64
-
-Are there any negative values after background subtraction? False
-</pre></div>
-</div>
-</div>
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">
+Are there any negative values after background subtraction? <span style="color: #ff0000; text-decoration-color: #ff0000; font-style: italic">False</span>
+</pre>
+</div></div>
 </div>
 <p>Add <code class="docutils literal notranslate"><span class="pre">time</span></code> column.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">time_point</span> <span class="o">=</span> <span class="n">image_path</span><span class="o">.</span><span class="n">stem</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"_"</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span>
-<span class="n">time</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">time_point</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="o">*</span> <span class="mf">0.5</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># index of the first time point in the stack</span>
+<span class="n">time</span> <span class="o">=</span> <span class="n">t</span> <span class="o">*</span> <span class="mf">0.5</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #008080; text-decoration-color: #008080; font-weight: bold">0.0</span>
+</pre>
+</div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -554,7 +612,7 @@ Are there any negative values after background subtraction? False
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel='intensity_bg_cor', ylabel='Count'&gt;
 </pre></div>
 </div>
-<img alt="../../_images/3e0a869d7d3dd86c4f90954bf5b44c777d5b65301f63959d1f69661123786287.png" src="../../_images/3e0a869d7d3dd86c4f90954bf5b44c777d5b65301f63959d1f69661123786287.png"/>
+<img alt="../../_images/c5d327c9d3b2e9fc4f87b85ec2b3b63d95bbcfee8aed5a288502b5786a3e1ed1.png" src="../../_images/c5d327c9d3b2e9fc4f87b85ec2b3b63d95bbcfee8aed5a288502b5786a3e1ed1.png"/>
 </div>
 </div>
 <p>Seems unsuspicious.</p>
@@ -571,7 +629,7 @@ Are there any negative values after background subtraction? False
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/ce2d169adc12008db1bc57697ac6e1d8b18eca151786431ee3baad5816008037.png" src="../../_images/ce2d169adc12008db1bc57697ac6e1d8b18eca151786431ee3baad5816008037.png"/>
+<img alt="../../_images/45bc09fa67f45e3d0997b2b9bc04ea0af7298fb8cf8dc34ab69c0ceb066a0edf.png" src="../../_images/45bc09fa67f45e3d0997b2b9bc04ea0af7298fb8cf8dc34ab69c0ceb066a0edf.png"/>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 800x800 with 2 Axes&gt;,
  &lt;Axes: title={'center': 'intensity_bg_cor'}&gt;)
 </pre></div>
@@ -586,16 +644,14 @@ Are there any negative values after background subtraction? False
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">list_df</span> <span class="o">=</span> <span class="p">[]</span>
 
-<span class="k">for</span> <span class="n">image_path</span> <span class="ow">in</span> <span class="n">image_paths</span><span class="p">:</span>
-    <span class="n">image</span> <span class="o">=</span> <span class="n">tifffile</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">t_max</span><span class="p">):</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">time_stack</span><span class="p">[</span><span class="n">t</span><span class="p">,</span> <span class="n">ch</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span>
     <span class="n">props</span> <span class="o">=</span> <span class="n">skimage</span><span class="o">.</span><span class="n">measure</span><span class="o">.</span><span class="n">regionprops_table</span><span class="p">(</span>
         <span class="n">mask_nuclei</span><span class="p">,</span> <span class="n">intensity_image</span><span class="o">=</span><span class="n">image</span><span class="p">,</span> <span class="n">properties</span><span class="o">=</span><span class="n">properties</span>
     <span class="p">)</span>
     <span class="n">sdf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">props</span><span class="p">)</span>
     <span class="n">sdf</span><span class="p">[</span><span class="s2">"intensity_bg_cor"</span><span class="p">]</span> <span class="o">=</span> <span class="n">sdf</span><span class="p">[</span><span class="s2">"intensity_mean"</span><span class="p">]</span> <span class="o">-</span> <span class="n">background_intensity</span>
-    <span class="n">time_point</span> <span class="o">=</span> <span class="n">image_path</span><span class="o">.</span><span class="n">stem</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"_"</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span>
-    <span class="n">time</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">time_point</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="o">*</span> <span class="mf">0.5</span>
-    <span class="n">sdf</span><span class="p">[</span><span class="s2">"time"</span><span class="p">]</span> <span class="o">=</span> <span class="n">time</span>
+    <span class="n">sdf</span><span class="p">[</span><span class="s2">"time"</span><span class="p">]</span> <span class="o">=</span> <span class="n">t</span> <span class="o">*</span> <span class="mf">0.5</span>
     <span class="n">list_df</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sdf</span><span class="p">)</span>
 
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">list_df</span><span class="p">)</span>
@@ -604,72 +660,22 @@ Are there any negative values after background subtraction? False
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">13</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">list_df</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> 
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="k">for</span> <span class="n">image_path</span> <span class="ow">in</span> <span class="n">image_paths</span><span class="p">:</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="n">image</span> <span class="o">=</span> <span class="n">tifffile</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span>
-<span class="ne">----&gt; </span><span class="mi">5</span>     <span class="n">props</span> <span class="o">=</span> <span class="n">skimage</span><span class="o">.</span><span class="n">measure</span><span class="o">.</span><span class="n">regionprops_table</span><span class="p">(</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span>         <span class="n">mask_nuclei</span><span class="p">,</span> <span class="n">intensity_image</span><span class="o">=</span><span class="n">image</span><span class="p">,</span> <span class="n">properties</span><span class="o">=</span><span class="n">properties</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span>     <span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span>     <span class="n">sdf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">props</span><span class="p">)</span>
+<div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">      area  intensity_mean  label  intensity_bg_cor  time
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">0</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1869.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1219.043339</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">2</span>        <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">759.043339</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">0.0</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1430.0</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">948.851748</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">3</span>        <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">488.851748</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">0.0</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">2</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1681.0</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">891.096371</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">4</span>        <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">431.096371</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">0.0</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">3</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1356.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1117.834071</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">5</span>        <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">657.834071</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">0.0</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">4</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1232.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1028.202110</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">6</span>        <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">568.202110</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">0.0</span>
+..     <span style="color: #808000; text-decoration-color: #808000">...</span>             <span style="color: #808000; text-decoration-color: #808000">...</span>    <span style="color: #808000; text-decoration-color: #808000">...</span>               <span style="color: #808000; text-decoration-color: #808000">...</span>   <span style="color: #808000; text-decoration-color: #808000">...</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">53</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">2026.0</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">592.803060</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">59</span>        <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">132.803060</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">7.5</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">54</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">785.0</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">681.891720</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">60</span>        <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">221.891720</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">7.5</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">55</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1543.0</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">659.832793</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">61</span>        <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">199.832793</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">7.5</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">56</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">878.0</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">750.211845</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">62</span>        <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">290.211845</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">7.5</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">57</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">776.0</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">684.514175</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">63</span>        <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">224.514175</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">7.5</span>
 
-<span class="nn">File ~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/skimage/measure/_regionprops.py:1131,</span> in <span class="ni">regionprops_table</span><span class="nt">(label_image, intensity_image, properties, cache, separator, extra_properties, spacing)</span>
-<span class="g g-Whitespace">    </span><span class="mi">973</span> <span class="k">def</span><span class="w"> </span><span class="nf">regionprops_table</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">974</span>     <span class="n">label_image</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">975</span>     <span class="n">intensity_image</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>    <span class="mi">981</span>     <span class="n">spacing</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">982</span> <span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">983</span><span class="w">     </span><span class="sd">"""Compute region properties and return them as a pandas-compatible table.</span>
-<span class="g g-Whitespace">    </span><span class="mi">984</span><span class="sd"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">985</span><span class="sd">     The return value is a dictionary mapping property names to value arrays.</span>
-<span class="sd">   (...)   1129 </span>
-<span class="g g-Whitespace">   </span><span class="mi">1130</span><span class="sd">     """</span>
-<span class="ne">-&gt; </span><span class="mi">1131</span>     <span class="n">regions</span> <span class="o">=</span> <span class="n">regionprops</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1132</span>         <span class="n">label_image</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1133</span>         <span class="n">intensity_image</span><span class="o">=</span><span class="n">intensity_image</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1134</span>         <span class="n">cache</span><span class="o">=</span><span class="n">cache</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1135</span>         <span class="n">extra_properties</span><span class="o">=</span><span class="n">extra_properties</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1136</span>         <span class="n">spacing</span><span class="o">=</span><span class="n">spacing</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1137</span>     <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1138</span>     <span class="k">if</span> <span class="n">extra_properties</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1139</span>         <span class="n">properties</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">properties</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="n">prop</span><span class="o">.</span><span class="vm">__name__</span> <span class="k">for</span> <span class="n">prop</span> <span class="ow">in</span> <span class="n">extra_properties</span><span class="p">]</span>
-
-<span class="nn">File ~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/skimage/measure/_regionprops.py:1459,</span> in <span class="ni">regionprops</span><span class="nt">(label_image, intensity_image, cache, extra_properties, spacing, offset)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1455</span>         <span class="k">continue</span>
-<span class="g g-Whitespace">   </span><span class="mi">1457</span>     <span class="n">label</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
-<span class="ne">-&gt; </span><span class="mi">1459</span>     <span class="n">props</span> <span class="o">=</span> <span class="n">RegionProperties</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1460</span>         <span class="n">sl</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1461</span>         <span class="n">label</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1462</span>         <span class="n">label_image</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1463</span>         <span class="n">intensity_image</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1464</span>         <span class="n">cache</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1465</span>         <span class="n">spacing</span><span class="o">=</span><span class="n">spacing</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1466</span>         <span class="n">extra_properties</span><span class="o">=</span><span class="n">extra_properties</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1467</span>         <span class="n">offset</span><span class="o">=</span><span class="n">offset_arr</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1468</span>     <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1469</span>     <span class="n">regions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">props</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1471</span> <span class="k">return</span> <span class="n">regions</span>
-
-<span class="nn">File ~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/skimage/measure/_regionprops.py:341,</span> in <span class="ni">RegionProperties.__init__</span><span class="nt">(self, slice, label, label_image, intensity_image, cache_active, extra_properties, spacing, offset)</span>
-<span class="g g-Whitespace">    </span><span class="mi">336</span>     <span class="n">ndim</span> <span class="o">=</span> <span class="n">label_image</span><span class="o">.</span><span class="n">ndim</span>
-<span class="g g-Whitespace">    </span><span class="mi">337</span>     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">338</span>         <span class="n">intensity_image</span><span class="o">.</span><span class="n">shape</span><span class="p">[:</span><span class="n">ndim</span><span class="p">]</span> <span class="o">==</span> <span class="n">label_image</span><span class="o">.</span><span class="n">shape</span>
-<span class="g g-Whitespace">    </span><span class="mi">339</span>         <span class="ow">and</span> <span class="n">intensity_image</span><span class="o">.</span><span class="n">ndim</span> <span class="ow">in</span> <span class="p">[</span><span class="n">ndim</span><span class="p">,</span> <span class="n">ndim</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
-<span class="g g-Whitespace">    </span><span class="mi">340</span>     <span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">341</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">342</span>             <span class="s1">'Label and intensity image shapes must match,'</span>
-<span class="g g-Whitespace">    </span><span class="mi">343</span>             <span class="s1">' except for channel (last) axis.'</span>
-<span class="g g-Whitespace">    </span><span class="mi">344</span>         <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">345</span>     <span class="n">multichannel</span> <span class="o">=</span> <span class="n">label_image</span><span class="o">.</span><span class="n">shape</span> <span class="o">&lt;</span> <span class="n">intensity_image</span><span class="o">.</span><span class="n">shape</span>
-<span class="g g-Whitespace">    </span><span class="mi">346</span> <span class="k">else</span><span class="p">:</span>
-
-<span class="ne">ValueError</span>: Label and intensity image shapes must match, except for channel (last) axis.
-</pre></div>
-</div>
-</div>
+<span style="font-weight: bold">[</span><span style="color: #008080; text-decoration-color: #008080; font-weight: bold">928</span> rows x <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">5</span> columns<span style="font-weight: bold">]</span>
+</pre>
+</div></div>
 </div>
 </section>
 <section id="plotting">
@@ -680,6 +686,101 @@ Are there any negative values after background subtraction? False
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>label</th>
+<th>time</th>
+<th>intensity_bg_cor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>2</td>
+<td>0.0</td>
+<td>759.043339</td>
+</tr>
+<tr>
+<th>1</th>
+<td>2</td>
+<td>0.5</td>
+<td>876.869984</td>
+</tr>
+<tr>
+<th>2</th>
+<td>2</td>
+<td>1.0</td>
+<td>658.683788</td>
+</tr>
+<tr>
+<th>3</th>
+<td>2</td>
+<td>1.5</td>
+<td>260.720171</td>
+</tr>
+<tr>
+<th>4</th>
+<td>2</td>
+<td>2.0</td>
+<td>283.440342</td>
+</tr>
+<tr>
+<th>...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<th>923</th>
+<td>63</td>
+<td>5.5</td>
+<td>562.300258</td>
+</tr>
+<tr>
+<th>924</th>
+<td>63</td>
+<td>6.0</td>
+<td>695.213918</td>
+</tr>
+<tr>
+<th>925</th>
+<td>63</td>
+<td>6.5</td>
+<td>501.601804</td>
+</tr>
+<tr>
+<th>926</th>
+<td>63</td>
+<td>7.0</td>
+<td>250.744845</td>
+</tr>
+<tr>
+<th>927</th>
+<td>63</td>
+<td>7.5</td>
+<td>224.514175</td>
+</tr>
+</tbody>
+</table>
+<p>928 rows × 3 columns</p>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -687,12 +788,24 @@ Are there any negative values after background subtraction? False
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel='time', ylabel='intensity_bg_cor'&gt;
+</pre></div>
+</div>
+<img alt="../../_images/52ef6ccd035d38570ab1bf3dc3b44cdc43bddc958a5d77bef363f5cadd95d187.png" src="../../_images/52ef6ccd035d38570ab1bf3dc3b44cdc43bddc958a5d77bef363f5cadd95d187.png"/>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">"time"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"intensity_bg_cor"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">"label"</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel='time', ylabel='intensity_bg_cor'&gt;
+</pre></div>
+</div>
+<img alt="../../_images/a247470e9696e414d3df671a91ccf2020bbb07a46601c89ad2a7d25bbfa43e7e.png" src="../../_images/a247470e9696e414d3df671a91ccf2020bbb07a46601c89ad2a7d25bbfa43e7e.png"/>
 </div>
 </div>
 </section>

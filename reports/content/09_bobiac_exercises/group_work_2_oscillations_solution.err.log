@@ -18,86 +18,74 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-list_df = []
+image_path = Path("../../_static/images/quant/03_time_series/images/F01_1615_tcyx.tif")
 
-for image_path in image_paths:
-    image = tifffile.imread(image_path)
-    props = skimage.measure.regionprops_table(
-        mask_nuclei, intensity_image=image, properties=properties
-    )
-    sdf = pd.DataFrame(props)
-    sdf["intensity_bg_cor"] = sdf["intensity_mean"] - background_intensity
-    time_point = image_path.stem.split("_")[2]
-    time = float(time_point[1:]) * 0.5
-    sdf["time"] = time
-    list_df.append(sdf)
+time_stack = tifffile.imread(image_path)
+print(f"Time stack shape: {time_stack.shape}")  # (16, 3, 1040, 1392)
 
-df = pd.concat(list_df)
-print(df)
+
+t_max = time_stack.shape[0]
+ch = 2  # channel index for the oscillating gene of interest
+fig = plt.figure(figsize=(10, 8))
+for t in range(t_max):
+    image = time_stack[t, ch, :, :]
+    plt.subplot(4, 4, t + 1)
+    plt.imshow(image, cmap="gray")
+    plt.title(f"t={t}", fontsize=20)
+    plt.axis("off")
+plt.tight_layout()
+plt.show()
+
 ------------------
 
 
 [31m---------------------------------------------------------------------------[39m
-[31mValueError[39m                                Traceback (most recent call last)
-[36mCell[39m[36m [39m[32mIn[13][39m[32m, line 5[39m
-[32m      1[39m list_df = []
+[31mFileNotFoundError[39m                         Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[3][39m[32m, line 3[39m
+[32m      1[39m image_path = Path([33m"../../_static/images/quant/03_time_series/images/F01_1615_tcyx.tif"[39m)
 [32m      2[39m 
-[32m      3[39m [38;5;28;01mfor[39;00m image_path [38;5;28;01min[39;00m image_paths:
-[32m      4[39m     image = tifffile.imread(image_path)
-[32m----> [39m[32m5[39m     props = skimage.measure.regionprops_table(
-[32m      6[39m         mask_nuclei, intensity_image=image, properties=properties
-[32m      7[39m     )
-[32m      8[39m     sdf = pd.DataFrame(props)
+[32m----> [39m[32m3[39m time_stack = tifffile.imread(image_path)
+[32m      4[39m print(f"Time stack shape: {time_stack.shape}")  [38;5;66;03m# (16, 3, 1040, 1392)[39;00m
+[32m      5[39m 
+[32m      6[39m 
 
-[36mFile [39m[32m~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/skimage/measure/_regionprops.py:1131[39m, in [36mregionprops_table[39m[34m(label_image, intensity_image, properties, cache, separator, extra_properties, spacing)[39m
-[32m    973[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34mregionprops_table[39m(
-[32m    974[39m     label_image,
-[32m    975[39m     intensity_image=[38;5;28;01mNone[39;00m,
-[32m   (...)[39m[32m    981[39m     spacing=[38;5;28;01mNone[39;00m,
-[32m    982[39m ):
-[32m    983[39m [38;5;250m    [39m[33;03m"""Compute region properties and return them as a pandas-compatible table.[39;00m
-[32m    984[39m 
-[32m    985[39m [33;03m    The return value is a dictionary mapping property names to value arrays.[39;00m
-[32m   (...)[39m[32m   1129[39m 
-[32m   1130[39m [33;03m    """[39;00m
-[32m-> [39m[32m1131[39m     regions = [30;43mregionprops[39;49m[30;43m([39;49m
-[32m   1132[39m [30;43m        [39;49m[30;43mlabel_image[39;49m[30;43m,[39;49m
-[32m   1133[39m [30;43m        [39;49m[30;43mintensity_image[39;49m[30;43m=[39;49m[30;43mintensity_image[39;49m[30;43m,[39;49m
-[32m   1134[39m [30;43m        [39;49m[30;43mcache[39;49m[30;43m=[39;49m[30;43mcache[39;49m[30;43m,[39;49m
-[32m   1135[39m [30;43m        [39;49m[30;43mextra_properties[39;49m[30;43m=[39;49m[30;43mextra_properties[39;49m[30;43m,[39;49m
-[32m   1136[39m [30;43m        [39;49m[30;43mspacing[39;49m[30;43m=[39;49m[30;43mspacing[39;49m[30;43m,[39;49m
-[32m   1137[39m [30;43m    [39;49m[30;43m)[39;49m
-[32m   1138[39m     [38;5;28;01mif[39;00m extra_properties [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m:
-[32m   1139[39m         properties = [38;5;28mlist[39m(properties) + [prop.[34m__name__[39m [38;5;28;01mfor[39;00m prop [38;5;129;01min[39;00m extra_properties]
+[36mFile [39m[32m~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/tifffile/tifffile.py:1256[39m, in [36mimread[39m[34m(files, selection, return_as, aszarr, key, series, kind, level, squeeze, maxworkers, buffersize, mode, name, offset, size, pattern, axesorder, categories, imread, imreadargs, sort, container, chunkshape, chunkdtype, axestiled, ioworkers, chunkmode, fillvalue, zattrs, multiscales, omexml, superres, out, out_inplace, _multifile, _useframes, **kwargs)[39m
+[32m   1252[39m         ):
+[32m   1253[39m             files = files[[32m0[39m]
+[32m   1254[39m 
+[32m   1255[39m         [38;5;28;01mif[39;00m isinstance(files, str) [38;5;28;01mor[39;00m [38;5;28;01mnot[39;00m isinstance(files, Sequence):
+[32m-> [39m[32m1256[39m             with TiffFile(
+[32m   1257[39m                 files,
+[32m   1258[39m                 mode=mode,
+[32m   1259[39m                 name=name,
 
-[36mFile [39m[32m~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/skimage/measure/_regionprops.py:1459[39m, in [36mregionprops[39m[34m(label_image, intensity_image, cache, extra_properties, spacing, offset)[39m
-[32m   1455[39m         [38;5;28;01mcontinue[39;00m
-[32m   1457[39m     label = i + [32m1[39m
-[32m-> [39m[32m1459[39m     props = [30;43mRegionProperties[39;49m[30;43m([39;49m
-[32m   1460[39m [30;43m        [39;49m[30;43msl[39;49m[30;43m,[39;49m
-[32m   1461[39m [30;43m        [39;49m[30;43mlabel[39;49m[30;43m,[39;49m
-[32m   1462[39m [30;43m        [39;49m[30;43mlabel_image[39;49m[30;43m,[39;49m
-[32m   1463[39m [30;43m        [39;49m[30;43mintensity_image[39;49m[30;43m,[39;49m
-[32m   1464[39m [30;43m        [39;49m[30;43mcache[39;49m[30;43m,[39;49m
-[32m   1465[39m [30;43m        [39;49m[30;43mspacing[39;49m[30;43m=[39;49m[30;43mspacing[39;49m[30;43m,[39;49m
-[32m   1466[39m [30;43m        [39;49m[30;43mextra_properties[39;49m[30;43m=[39;49m[30;43mextra_properties[39;49m[30;43m,[39;49m
-[32m   1467[39m [30;43m        [39;49m[30;43moffset[39;49m[30;43m=[39;49m[30;43moffset_arr[39;49m[30;43m,[39;49m
-[32m   1468[39m [30;43m    [39;49m[30;43m)[39;49m
-[32m   1469[39m     regions.append(props)
-[32m   1471[39m [38;5;28;01mreturn[39;00m regions
+[36mFile [39m[32m~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/tifffile/tifffile.py:4554[39m, in [36mTiffFile.__init__[39m[34m(self, file, mode, name, offset, size, omexml, superres, _multifile, _useframes, _root, **is_flags)[39m
+[32m   4550[39m                 [38;5;28;01mraise[39;00m ValueError(msg)
+[32m   4551[39m             self._omexml = omexml
+[32m   4552[39m             self.is_ome = [38;5;28;01mTrue[39;00m
+[32m   4553[39m 
+[32m-> [39m[32m4554[39m         fh = FileHandle(file, mode=mode, name=name, offset=offset, size=size)
+[32m   4555[39m         self._fh = fh
+[32m   4556[39m         self._multifile = [38;5;28;01mTrue[39;00m [38;5;28;01mif[39;00m _multifile [38;5;28;01mis[39;00m [38;5;28;01mNone[39;00m [38;5;28;01melse[39;00m bool(_multifile)
+[32m   4557[39m         self._files = {fh.name: self}
 
-[36mFile [39m[32m~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/skimage/measure/_regionprops.py:341[39m, in [36mRegionProperties.__init__[39m[34m(self, slice, label, label_image, intensity_image, cache_active, extra_properties, spacing, offset)[39m
-[32m    336[39m     ndim = label_image.ndim
-[32m    337[39m     [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m (
-[32m    338[39m         intensity_image.shape[:ndim] == label_image.shape
-[32m    339[39m         [38;5;129;01mand[39;00m intensity_image.ndim [38;5;129;01min[39;00m [ndim, ndim + [32m1[39m]
-[32m    340[39m     ):
-[32m--> [39m[32m341[39m         [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m(
-[32m    342[39m             [33m'[39m[33mLabel and intensity image shapes must match,[39m[33m'[39m
-[32m    343[39m             [33m'[39m[33m except for channel (last) axis.[39m[33m'[39m
-[32m    344[39m         )
-[32m    345[39m     multichannel = label_image.shape < intensity_image.shape
-[32m    346[39m [38;5;28;01melse[39;00m:
+[36mFile [39m[32m~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/tifffile/tifffile.py:12751[39m, in [36mFileHandle.__init__[39m[34m(self, file, mode, name, offset, size)[39m
+[32m  12747[39m         self._offset = -[32m1[39m [38;5;28;01mif[39;00m offset [38;5;28;01mis[39;00m [38;5;28;01mNone[39;00m [38;5;28;01melse[39;00m offset
+[32m  12748[39m         self._size = -[32m1[39m [38;5;28;01mif[39;00m size [38;5;28;01mis[39;00m [38;5;28;01mNone[39;00m [38;5;28;01melse[39;00m size
+[32m  12749[39m         self._close = [38;5;28;01mTrue[39;00m
+[32m  12750[39m         self._lock = contextlib.nullcontext()
+[32m> [39m[32m12751[39m         self.open()
+[32m  12752[39m         [38;5;28;01massert[39;00m self._fh [38;5;28;01mis[39;00m [38;5;28;01mnot[39;00m [38;5;28;01mNone[39;00m
 
-[31mValueError[39m: Label and intensity image shapes must match, except for channel (last) axis.
+[36mFile [39m[32m~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/tifffile/tifffile.py:12771[39m, in [36mFileHandle.open[39m[34m(self)[39m
+[32m  12767[39m                 msg = f'invalid mode {self._mode}'
+[32m  12768[39m                 [38;5;28;01mraise[39;00m ValueError(msg)
+[32m  12769[39m             self._file = os.path.realpath(self._file)
+[32m  12770[39m             self._dir, self._name = os.path.split(self._file)
+[32m> [39m[32m12771[39m             self._fh = open(  # noqa: SIM115
+[32m  12772[39m                 self._file, self._mode, encoding=[38;5;28;01mNone[39;00m
+[32m  12773[39m             )
+[32m  12774[39m             self._close = [38;5;28;01mTrue[39;00m
+
+[31mFileNotFoundError[39m: [Errno 2] No such file or directory: '/home/runner/work/bobiac-book/bobiac-book/_static/images/quant/03_time_series/images/F01_1615_tcyx.tif'
 

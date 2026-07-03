@@ -1,7 +1,7 @@
 # <i class="fa-solid fa-folder"></i> Downloads
 
 :::{note}
-Rows with an entry in the **Segmentation/Spot Coords** column mean that download contains the pre-computed segmentation labels and/or spot detection coordinates for that dataset.
+Rows with an entry in the **Segmentation/Spots** column mean that download contains the pre-computed segmentation labels and/or spot detection coordinates for that dataset.
 :::
 
 ## Course Data
@@ -10,13 +10,13 @@ Rows with an entry in the **Segmentation/Spot Coords** column mean that download
 
 <table class="download-table">
 <colgroup>
+<col style="width: 22%">
+<col style="width: 18%">
 <col style="width: 24%">
-<col style="width: 20%">
-<col style="width: 20%">
 <col style="width: 36%">
 </colgroup>
 <thead>
-<tr><th>Item</th><th>Dataset</th><th style="white-space: nowrap;">Segmentation/Spot Coords</th><th>Notes</th></tr>
+<tr><th>Item</th><th>Dataset</th><th style="white-space: nowrap;">Segmentation/Spots</th><th>Notes</th></tr>
 </thead>
 <tbody>
 <tr><td>Working with Bioimages</td><td><a href="{{ data_path }}/03_working_with_bioimages.zip" download><i class="fas fa-download"></i> Working with Bioimages Dataset</a></td><td>–</td><td>–</td></tr>
@@ -27,13 +27,13 @@ Rows with an entry in the **Segmentation/Spot Coords** column mean that download
 
 <table class="download-table">
 <colgroup>
+<col style="width: 22%">
+<col style="width: 18%">
 <col style="width: 24%">
-<col style="width: 20%">
-<col style="width: 20%">
 <col style="width: 36%">
 </colgroup>
 <thead>
-<tr><th>Item</th><th>Dataset</th><th style="white-space: nowrap;">Segmentation/Spot Coords</th><th>Notes</th></tr>
+<tr><th>Item</th><th>Dataset</th><th style="white-space: nowrap;">Segmentation/Spots</th><th>Notes</th></tr>
 </thead>
 <tbody>
 <tr><td>Classical Methods</td><td><a href="{{ data_path }}/04_05_06_07_seg_and_spot.zip" download><i class="fas fa-download"></i> Segmentation and Spot Detection Dataset</a></td><td><a href="{{ data_path }}/04_05_06_07_seg_and_spot_labels.zip" download><i class="fas fa-download"></i> Segmentation and Spot Detection Results</a></td><td>Generated from <a href="https://www.cellimagelibrary.org/images/CCDB_6843" target="_blank">CCDB_6843</a></td></tr>
@@ -48,13 +48,13 @@ Rows with an entry in the **Segmentation/Spot Coords** column mean that download
 
 <table class="download-table">
 <colgroup>
+<col style="width: 22%">
+<col style="width: 18%">
 <col style="width: 24%">
-<col style="width: 20%">
-<col style="width: 20%">
 <col style="width: 36%">
 </colgroup>
 <thead>
-<tr><th>Item</th><th>Dataset</th><th style="white-space: nowrap;">Segmentation/Spot Coords</th><th>Notes</th></tr>
+<tr><th>Item</th><th>Dataset</th><th style="white-space: nowrap;">Segmentation/Spots</th><th>Notes</th></tr>
 </thead>
 <tbody>
 <tr><td>Spotiflow</td><td><a href="{{ data_path }}/04_05_06_07_seg_and_spot.zip" download><i class="fas fa-download"></i> Segmentation and Spot Detection Dataset</a></td><td><a href="{{ data_path }}/04_05_06_07_seg_and_spot_labels.zip" download><i class="fas fa-download"></i> Segmentation and Spot Detection Results</a></td><td>Same dataset as `Classical Methods` and `Cellpose`, generated from <a href="https://www.cellimagelibrary.org/images/CCDB_6843" target="_blank">CCDB_6843</a></td></tr>
@@ -66,13 +66,13 @@ Rows with an entry in the **Segmentation/Spot Coords** column mean that download
 
 <table class="download-table">
 <colgroup>
+<col style="width: 22%">
+<col style="width: 18%">
 <col style="width: 24%">
-<col style="width: 20%">
-<col style="width: 20%">
 <col style="width: 36%">
 </colgroup>
 <thead>
-<tr><th>Item</th><th>Dataset</th><th style="white-space: nowrap;">Segmentation/Spot Coords</th><th>Notes</th></tr>
+<tr><th>Item</th><th>Dataset</th><th style="white-space: nowrap;">Segmentation/Spots</th><th>Notes</th></tr>
 </thead>
 <tbody>
 <tr><td>Measurement Pipeline</td><td><a href="{{ data_path }}/04_05_06_07_seg_and_spot.zip" download><i class="fas fa-download"></i> Segmentation and Spot Detection Dataset</a></td><td><a href="{{ data_path }}/04_05_06_07_seg_and_spot_labels.zip" download><i class="fas fa-download"></i> Segmentation and Spot Detection Results</a></td><td>Same dataset as `Classical Methods` and `Cellpose`, generated from <a href="https://www.cellimagelibrary.org/images/CCDB_6843" target="_blank">CCDB_6843</a></td></tr>
@@ -85,13 +85,13 @@ Rows with an entry in the **Segmentation/Spot Coords** column mean that download
 
 <table class="download-table">
 <colgroup>
+<col style="width: 22%">
+<col style="width: 18%">
 <col style="width: 24%">
-<col style="width: 20%">
-<col style="width: 20%">
 <col style="width: 36%">
 </colgroup>
 <thead>
-<tr><th>Item</th><th>Dataset</th><th style="white-space: nowrap;">Segmentation/Spot Coords</th><th>Notes</th></tr>
+<tr><th>Item</th><th>Dataset</th><th style="white-space: nowrap;">Segmentation/Spots</th><th>Notes</th></tr>
 </thead>
 <tbody>
 <tr><td>Pixel Intensity Based</td><td><a href="{{ data_path }}/07_pixel_intensity_based_coloc.zip" download><i class="fas fa-download"></i> Manders & Pearson's Colocalization Dataset</a></td><td>–</td><td>–</td></tr>
@@ -104,13 +104,13 @@ Rows with an entry in the **Segmentation/Spot Coords** column mean that download
 
 <table class="download-table">
 <colgroup>
+<col style="width: 22%">
+<col style="width: 18%">
 <col style="width: 24%">
-<col style="width: 20%">
-<col style="width: 20%">
 <col style="width: 36%">
 </colgroup>
 <thead>
-<tr><th>Item</th><th>Dataset</th><th style="white-space: nowrap;">Segmentation/Spot Coords</th><th>Notes</th></tr>
+<tr><th>Item</th><th>Dataset</th><th style="white-space: nowrap;">Segmentation/Spots</th><th>Notes</th></tr>
 </thead>
 <tbody>
 <tr><td>Group Work 1: Building your Own Segmentation and Spot Detection Pipeline</td><td><a href="{{ data_path }}/group-work-1.zip" download><i class="fas fa-download"></i> Group Work 1 Dataset</a></td><td><em>(included in dataset)</em></td><td>–</td></tr>
