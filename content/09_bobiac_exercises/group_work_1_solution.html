@@ -388,7 +388,7 @@
     <span class="c1"># Run Cellpose on the image</span>
     <span class="n">masks</span><span class="p">,</span> <span class="n">flows</span><span class="p">,</span> <span class="n">styles</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">nuc_image</span><span class="p">)</span>
     <span class="c1"># Save the segmentation results as a TIFF file</span>
-    <span class="n">output_path</span> <span class="o">=</span> <span class="n">folder_path</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">image_path</span><span class="o">.</span><span class="n">stem</span><span class="si">}</span><span class="s2">_nuc_labels.tif"</span>
+    <span class="n">output_path</span> <span class="o">=</span> <span class="n">folder_path</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">image_path</span><span class="o">.</span><span class="n">stem</span><span class="si">}</span><span class="s2">_nuclei_labels.tif"</span>
     <span class="n">io</span><span class="o">.</span><span class="n">imsave</span><span class="p">(</span><span class="n">output_path</span><span class="p">,</span> <span class="n">masks</span><span class="p">)</span>  <span class="c1"># or tifffile.imwrite(output_path, masks)</span>
 </pre></div>
 </div>
