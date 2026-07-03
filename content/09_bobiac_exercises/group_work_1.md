@@ -40,6 +40,12 @@ To go through these exercises, you need to create a new folder named `bobiac_gro
 3. Import the libraries in the first cell.
 4. Run the cell to confirm that they are installed and can be imported without errors.
 
+:::{note}
+If you would rather work in `Google Colab` instead of running the notebook locally, you can copy the `.ipynb` file you created to your `Google Drive` and open it from the [Colab website](https://colab.research.google.com/).
+
+Keep in mind that `Colab` does not support the `PEP 723` inline script metadata that `juv` uses to manage dependencies. This means you will need to add a `!pip install <package_name>` cell for each dependency, and run it before the cell that imports the libraries.
+:::
+
 :::{dropdown} Solution
 
 1. `cd .../Desktop/bobiac_group_work/group_work_1` (the folder created in [Step 1](#step-1))
