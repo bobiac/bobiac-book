@@ -18,7 +18,7 @@ from scipy.ndimage import distance_transform_edt
 from skimage.feature import peak_local_max
 from skimage.filters import gaussian, threshold_otsu
 from skimage.measure import label
-from skimage.morphology import binary_closing, remove_small_objects
+from skimage.morphology import closing, remove_small_objects, disk
 from skimage.segmentation import watershed
 
 input_dir = Path("../../../_static/images/classic_seg/")
@@ -34,10 +34,10 @@ for image_path in input_dir.glob("*.tif"):  # only loop through files ending in 
     binary_mask = filtered_image > threshold_otsu(filtered_image)
 
     # Remove small objects
-    binary_mask_sized = remove_small_objects(binary_mask, min_size=10)
+    binary_mask_sized = remove_small_objects(binary_mask, min_size=50)
 
     # Fill small holes by performing morphological closing
-    binary_mask_filled = binary_closing(binary_mask_sized)
+    binary_mask_filled = closing(binary_mask_sized, disk(5))
 
     # apply watershed to separate nuclei and label mask
     # compute the distance transform
