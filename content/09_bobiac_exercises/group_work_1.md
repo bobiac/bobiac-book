@@ -1,8 +1,8 @@
-# Group Work 1: Building your Own Spot Detection Pipeline
+# Group Work 1: Building your Own Segmentation and Spot Detection Pipeline
 
 Let's now consolidate what you have learned! These exercises will walk you through how to create your own Jupyter Notebook containing code that segments images with Cellpose and detects spots with Spotiflow.
 
-The images we will use for this exercise can be downloaded from the <a href="https://github.com/bobiac/bobiac-book/releases/download/data-bobiac-2026/group-work-1.zip" download> <i class="fas fa-download"></i> Group Work 1 Dataset</a>.
+The images we will use for this exercise can be downloaded from the <a href="{{ data_path }}/group-work-1.zip" download> <i class="fas fa-download"></i> Group Work 1 Dataset</a>.
 
 To go through these exercises, you need to create a new folder named `bobiac_group_work`. In the instruction below, we will assume this folder is on your `Desktop` but you can choose a different location if you prefer.
 

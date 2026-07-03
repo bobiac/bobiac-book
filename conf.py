@@ -111,4 +111,5 @@ exclude_patterns = [
 
 myst_substitutions = {
     "pizza": '<span class="pizza-icon"></span>',
+    "data_path": "https://github.com/bobiac/bobiac-book/releases/download/data-bobiac-2026",
 }
