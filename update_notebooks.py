@@ -16,7 +16,7 @@ EXCLUDE: list[str] = []
 # need to be updated when converting to a Jupyter Notebook or they will not work.
 # This is a mapping of the links in the book to the links that should be updated
 # in the notebook.
-map_03_python_basics_book_to_notebook = {
+map_02_python_basics_book_to_notebook = {
     "#commenting-printing": "#0.-Commenting-&-Printing",
     "#data-types": "#1.-Data-Types",
     "#variables": "#2.-Variables",
@@ -31,7 +31,7 @@ map_03_python_basics_book_to_notebook = {
     "#functions": "#11.-Functions",
 }
 
-map_04_working_with_bioimages_in_python_book_to_notebook = {
+map_03_working_with_bioimages_in_python_book_to_notebook = {
     "#reading-an-image": "#0.-Reading-an-Image",
     "#introduction-to-numpy-arrays": "#1.-Introduction-to-NumPy-Arrays",
     "#multidimensional-images": "#2.-Multidimensional-Images",
@@ -40,7 +40,7 @@ map_04_working_with_bioimages_in_python_book_to_notebook = {
     "#bonus-reading-proprietary-file-types": "#5.-BONUS:-Reading-Proprietary-File-Types",
 }
 
-map_05_classic_segmentation_book_to_notebook = {
+map_04_classic_segmentation_book_to_notebook = {
     "#setup": "#0.-Setup",
     "#loading-an-image": "#1.-Loading-an-Image",
     "#filtering": "#2.-Filtering",
@@ -102,7 +102,7 @@ def update_notebooks(
             # Sort by length (descending) to process longer patterns first
             # This prevents partial matches from breaking longer patterns
             sorted_mappings = sorted(
-                map_03_python_basics_book_to_notebook.items(),
+                map_02_python_basics_book_to_notebook.items(),
                 key=lambda x: len(x[0]),
                 reverse=True,
             )
@@ -115,7 +115,7 @@ def update_notebooks(
             and cell.cell_type == "markdown"
         ):
             sorted_mappings = sorted(
-                map_04_working_with_bioimages_in_python_book_to_notebook.items(),
+                map_03_working_with_bioimages_in_python_book_to_notebook.items(),
                 key=lambda x: len(x[0]),
                 reverse=True,
             )
@@ -128,7 +128,7 @@ def update_notebooks(
             and cell.cell_type == "markdown"
         ):
             sorted_mappings = sorted(
-                map_05_classic_segmentation_book_to_notebook.items(),
+                map_04_classic_segmentation_book_to_notebook.items(),
                 key=lambda x: len(x[0]),
                 reverse=True,
             )
