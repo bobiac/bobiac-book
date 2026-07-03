@@ -308,7 +308,7 @@
 <h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
 <p><a class="reference external" href="https://github.com/weigertlab/spotiflow">GitHub</a> | <a class="reference external" href="https://www.nature.com/articles/s41592-025-02662-x">Paper</a> | <a class="reference external" href="https://weigertlab.org/spotiflow/index.html">Spotiflow Documentation</a> | <a class="reference external" href="https://weigertlab.org/spotiflow/api.html#">Spotiflow API</a></p>
 <p>In this notebook, we’ll see how to run <code class="docutils literal notranslate"><span class="pre">Spotiflow</span></code> to detect spots on single images or on a folder of images, and how to visualize and save the results.</p>
-<p>The images we will use for this section can be downloaded from the <a download="" href=""> <i class="fas fa-download"></i> Spot Detection Dataset</a>.</p>
+<p>The images we will use for this section can be downloaded from the <a download="" href="https://github.com/bobiac/bobiac-book/releases/download/data-bobiac-2026/04_05_06_07_seg_and_spot.zip"> <i class="fas fa-download"></i> Segmentation &amp; Spot Detection Dataset</a>.</p>
 </section>
 <section id="make-sure-you-have-gpu-access">
 <h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Make sure you have GPU access<a class="headerlink" href="#make-sure-you-have-gpu-access" title="Link to this heading">#</a></h2>
@@ -354,9 +354,9 @@
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create directory</span>
 <span class="o">!</span>mkdir<span class="w"> </span>-p<span class="w"> </span>/content/bobiac_data_spotiflow
 <span class="c1"># Download the data</span>
-<span class="o">!</span>wget<span class="w"> </span>https://github.com/bobiac/bobiac-book/releases/download/data-bobiac-2026/05_spot_detection_spotiflow.zip<span class="w"> </span>-O<span class="w"> </span>/content/bobiac_data_spotiflow/05_spot_detection_spotiflow.zip
+<span class="o">!</span>wget<span class="w"> </span>https://github.com/bobiac/bobiac-book/releases/download/data-bobiac-2026/04_05_06_07_seg_and_spot.zip<span class="w"> </span>-O<span class="w"> </span>/content/bobiac_data_spotiflow/04_05_06_07_seg_and_spot.zip
 <span class="c1"># Unzip the data, remove zip file and macOS metadata files (if any)</span>
-<span class="o">!</span><span class="nb">cd</span><span class="w"> </span>/content/bobiac_data_spotiflow<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>unzip<span class="w"> </span>05_spot_detection_spotiflow.zip<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span>05_spot_detection_spotiflow.zip<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>__MACOSX
+<span class="o">!</span><span class="nb">cd</span><span class="w"> </span>/content/bobiac_data_spotiflow<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>unzip<span class="w"> </span>04_05_06_07_seg_and_spot.zip<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span>04_05_06_07_seg_and_spot.zip<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>__MACOSX
 </pre></div>
 </div>
 </div>
