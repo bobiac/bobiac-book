@@ -13,7 +13,13 @@ When people say `Python`, they can mean two things:
 {{pizza}} **Analogy**: Think of the **Programming Language rules** and **syntax** as the **grammar** and **vocabulary** we use to write **a pizza recipe**, and the **Interpreter** as the **cook** who **reads**, **understands**, and **executes** the instructions to make a wonderful pizza.
 :::
 
-## 2. Python Packages
+## 2. Python Versions
+
+`Python` itself evolves over time and comes in **different versions** (for example `Python 3.10`, `Python 3.11`, `Python 3.12`, ...): newer versions bring new features and improvements, while older ones gradually stop being supported.
+
+This means that not everything works with every version: some code may only run with a **specific** version of `Python`, while another project might need a **newer** one. It is therefore useful to be able to **choose which version of `Python`** to use for each project, and, as we will see, there are tools that make this very easy.
+
+## 3. Python Packages
 
 On its own, `Python` can already do a lot: it can do **calculations**, **work with text**, **read and write different file types**, **repeat tasks**, and much more.
 
@@ -42,7 +48,7 @@ Most of these installable packages are published on a central repository called 
 📦 **Other repositories**: `PyPI` is probably the most common place packages come from, but it is not the only one. In **scientific programming** you might also come across [conda-forge](https://conda-forge.org/), which is another place where packages can be stored for download and installation.
 :::
 
-## 3. Virtual Environments
+## 4. Virtual Environments
 
 Once we start installing packages, a new problem appears. Imagine you are working on **two different projects** at the same time:
 
@@ -53,7 +59,9 @@ If all packages were installed in **one single shared place** on your computer, 
 
 To avoid this, we use **virtual environments**.
 
-A **virtual environment** is an **isolated workspace** (imagine a folder on your computer) that contains its **own packages** (and, as we will see, its own `Python`), completely **separate** from everything else on your computer. Each project gets its **own environment**, so the packages of one project can **never interfere** with the packages of another.
+A **virtual environment** is an **isolated workspace** (imagine a folder on your computer) that contains its **own packages** and its **own `Python`**, completely **separate** from everything else on your computer. Each project gets its **own environment**, so the packages of one project can **never interfere** with the packages of another.
+
+Since each environment contains its **own `Python`**, virtual environments also solve the **version** problem we saw earlier: every project can use exactly the **version of `Python`** it needs (e.g. Project A can use `Python 3.10` while Project B uses `Python 3.12`), again **without any conflict**.
 
 :::{note}
 {{pizza}} **Analogy**: Imagine a kitchen that prepares **pizza** and **hot dogs** (Project A and Project B). Pizza needs **tomato sauce**, while hot dogs need **ketchup** (two different packages). If both recipes shared the same kitchen space, the sauces could get mixed up, and you might end up with ketchup on a pizza 😱! This does not work! By giving each recipe its **own dedicated space in the kitchen** (virtual environment), the ingredients of one **do not mix** with the ingredients of the other.
@@ -61,29 +69,21 @@ A **virtual environment** is an **isolated workspace** (imagine a folder on your
 
 A key idea is that virtual environments are **disposable**. An environment is **not precious**: if something goes wrong, or you no longer need a project, you can simply **delete the environment and recreate it from scratch**, without affecting `Python` itself or any of your other projects. This makes experimenting **safe**, you can always throw an environment away and start fresh.
 
-## 4. Python Versions
-
-Now that each project has its **own environment**, there is one more thing we may want to control: the **version of `Python`** itself.
-
-Just like packages, `Python` evolves over time and comes in **different versions** (for example `Python 3.10`, `Python 3.11`, `Python 3.12`, ...). Sometimes a package only works with a **specific** version of `Python`, while another project might need a **newer** one.
-
-For this reason, it is useful to be able to **install a specific version of `Python` inside each environment**. This way, Project A can use an older `Python` while Project B uses a newer one, again **without any conflict**.
-
 ## 5. Putting It All Together with `uv`
 
 So far we have introduced three things we need to manage:
 
-1. **Packages**, the libraries (or dependencies) our code depends on.
-2. **Virtual environments**, the isolated and disposable workspaces for each project.
-3. **Python versions**, the specific version of `Python` each environment uses.
+1. **Python versions**, the specific version of `Python` each project uses.
+2. **Packages**, the libraries (or dependencies) our code depends on.
+3. **Virtual environments**, the isolated and disposable workspaces that hold both, one per project.
 
 How do we handle **all of this** easily? With a single tool called [`uv`](https://docs.astral.sh/uv/)!
 
 `uv` is a **modern, extremely fast tool** that takes care of **everything** we just described. Instead of learning many different tools, you only have to learn **one**. With `uv` you can:
 
+- **download and install any version of `Python`** you need,
 - **install and manage packages** in your project,
-- **create and manage virtual environments** automatically,
-- **download and install any version of `Python`** you need.
+- **create and manage virtual environments** automatically.
 
 :::{note}
 🔧 **Other tools**: `uv` is not the only tool that can manage packages, virtual environments, and `Python` versions together. Other popular options include [conda](https://docs.conda.io/) and [pixi](https://pixi.sh/), which are also common in scientific computing. In this course we will use `uv`, but the concepts you learn here apply to these other tools as well.
