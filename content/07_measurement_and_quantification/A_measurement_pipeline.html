@@ -421,11 +421,10 @@ Here, we plotted each segmented object in a different color together with its in
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create an image that contains only the mask of the indexed object</span>
 <span class="n">index</span> <span class="o">=</span> <span class="mi">42</span>
 
-<span class="n">idx_object</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">labeled_mask</span> <span class="o">==</span> <span class="n">index</span>
-<span class="p">)</span>  <span class="c1"># note that == creates a boolean mask by comparing each pixel to the index value, resulting in True for pixels belonging to the object and False for all other pixels</span>
+<span class="c1"># note that == creates a boolean mask by comparing each pixel to the index value, resulting in True for pixels belonging to the object and False for all other pixels</span>
+<span class="n">idx_object</span> <span class="o">=</span> <span class="n">labeled_mask</span> <span class="o">==</span> <span class="n">index</span>
 
-<span class="c1"># Plot the extracted nucleus image</span>
+<span class="c1"># Plot the extracted cell image</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">idx_object</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">"gray"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Object </span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
@@ -466,9 +465,8 @@ Max value: True
 <p>To measure the area of the object we can make use of the fact that the boolean mask is <code class="docutils literal notranslate"><span class="pre">False</span></code> or <code class="docutils literal notranslate"><span class="pre">0</span></code> outside of the object and <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">1</span></code> inside it.</p>
 <div class="cell tag_teacher docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">object_area</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span>
-    <span class="n">idx_object</span>
-<span class="p">)</span>  <span class="c1"># counts the number of True pixels, which corresponds to the area of the object in pixels</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># counts the number of True pixels, which corresponds to the area of the object in pixels</span>
+<span class="n">object_area</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">idx_object</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Area of object </span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">object_area</span><span class="si">}</span><span class="s2"> pixels"</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -501,9 +499,8 @@ Max value: True
 <div class="cell tag_teacher docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extract the intensity values of the pixels that belong to this nucleus from the original image</span>
-<span class="n">object_intesities</span> <span class="o">=</span> <span class="n">image</span><span class="p">[</span>
-    <span class="n">idx_object</span>
-<span class="p">]</span>  <span class="c1"># this uses the boolean mask to index into the original image</span>
+<span class="c1"># This uses the boolean mask to index into the original image</span>
+<span class="n">object_intesities</span> <span class="o">=</span> <span class="n">image</span><span class="p">[</span><span class="n">idx_object</span><span class="p">]</span>
 
 <span class="c1"># Print the intensity values and its variable type and shape</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Type of object_intesities:"</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">object_intesities</span><span class="p">))</span>
@@ -1345,9 +1342,8 @@ Name: area, dtype: float64
 <div class="cell tag_teacher docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># calculate bg intensity</span>
-<span class="n">background_intensity</span> <span class="o">=</span> <span class="n">image</span><span class="p">[</span>
-    <span class="n">labeled_mask</span> <span class="o">==</span> <span class="mi">0</span>
-<span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>  <span class="c1"># this calculates the mean intensity of all pixels in the original image that belong to the background (where labeled_mask == 0)</span>
+<span class="c1"># this calculates the mean intensity of all pixels in the original image that belong to the background (where labeled_mask == 0)</span>
+<span class="n">background_intensity</span> <span class="o">=</span> <span class="n">image</span><span class="p">[</span><span class="n">labeled_mask</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Background intensity:"</span><span class="p">,</span> <span class="n">background_intensity</span><span class="p">,</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span>
     <span class="s2">"Mean intensity (background-subtracted):</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span>
@@ -1773,9 +1769,8 @@ Name: circularity, dtype: float64
 <span class="c1"># load the second image and label mask</span>
 <span class="n">image_2</span> <span class="o">=</span> <span class="n">tifffile</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">image_path_2</span><span class="p">)[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span>
 <span class="n">labeled_mask_2</span> <span class="o">=</span> <span class="n">tifffile</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">label_path_2</span><span class="p">)</span>
-<span class="n">labeled_mask_2</span> <span class="o">=</span> <span class="n">skimage</span><span class="o">.</span><span class="n">segmentation</span><span class="o">.</span><span class="n">clear_border</span><span class="p">(</span>
-    <span class="n">labeled_mask_2</span>
-<span class="p">)</span>  <span class="c1"># remove boundary objects</span>
+<span class="c1"># remove boundary objects</span>
+<span class="n">labeled_mask_2</span> <span class="o">=</span> <span class="n">skimage</span><span class="o">.</span><span class="n">segmentation</span><span class="o">.</span><span class="n">clear_border</span><span class="p">(</span><span class="n">labeled_mask_2</span><span class="p">)</span>
 
 <span class="c1"># compute region properties for the second image</span>
 <span class="n">props_2</span> <span class="o">=</span> <span class="n">skimage</span><span class="o">.</span><span class="n">measure</span><span class="o">.</span><span class="n">regionprops_table</span><span class="p">(</span>
@@ -1797,8 +1792,8 @@ Name: circularity, dtype: float64
 <span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="c1"># load the second image and label mask</span>
 <span class="ne">---&gt; </span><span class="mi">10</span> <span class="n">image_2</span> <span class="o">=</span> <span class="n">tifffile</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">image_path_2</span><span class="p">)[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span>
 <span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="n">labeled_mask_2</span> <span class="o">=</span> <span class="n">tifffile</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">label_path_2</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="n">labeled_mask_2</span> <span class="o">=</span> <span class="n">skimage</span><span class="o">.</span><span class="n">segmentation</span><span class="o">.</span><span class="n">clear_border</span><span class="p">(</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span>     <span class="n">labeled_mask_2</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="c1"># remove boundary objects</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="n">labeled_mask_2</span> <span class="o">=</span> <span class="n">skimage</span><span class="o">.</span><span class="n">segmentation</span><span class="o">.</span><span class="n">clear_border</span><span class="p">(</span><span class="n">labeled_mask_2</span><span class="p">)</span>
 
 <span class="nn">File ~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/tifffile/tifffile.py:1256,</span> in <span class="ni">imread</span><span class="nt">(files, selection, return_as, aszarr, key, series, kind, level, squeeze, maxworkers, buffersize, mode, name, offset, size, pattern, axesorder, categories, imread, imreadargs, sort, container, chunkshape, chunkdtype, axestiled, ioworkers, chunkmode, fillvalue, zattrs, multiscales, omexml, superres, out, out_inplace, _multifile, _useframes, **kwargs)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1252</span>         <span class="p">):</span>
@@ -1854,9 +1849,8 @@ Name: circularity, dtype: float64
 <div class="cell tag_teacher docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># First we add a new column that uniquely identifies each cell in the second dataframe.</span>
-<span class="n">df_2</span><span class="p">[</span><span class="s2">"cell_id"</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">df_2</span><span class="o">.</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span>
-<span class="p">)</span>  <span class="c1"># we add 1 to the index to get the correct cell ID corresponding to the label IDs in the labeled mask, which start at 1</span>
+<span class="c1"># we add 1 to the index to get the correct cell ID corresponding to the label IDs in the labeled mask, which start at 1</span>
+<span class="n">df_2</span><span class="p">[</span><span class="s2">"cell_id"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_2</span><span class="o">.</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span>
 </pre></div>
 </div>
 </div>

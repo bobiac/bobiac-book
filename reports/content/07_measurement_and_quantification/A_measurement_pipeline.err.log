@@ -29,9 +29,8 @@ label_path_2 = Path(
 # load the second image and label mask
 image_2 = tifffile.imread(image_path_2)[1, :, :]
 labeled_mask_2 = tifffile.imread(label_path_2)
-labeled_mask_2 = skimage.segmentation.clear_border(
-    labeled_mask_2
-)  # remove boundary objects
+# remove boundary objects
+labeled_mask_2 = skimage.segmentation.clear_border(labeled_mask_2)
 
 # compute region properties for the second image
 props_2 = skimage.measure.regionprops_table(
@@ -52,8 +51,8 @@ print(df_2.head())
 [32m      9[39m [38;5;66;03m# load the second image and label mask[39;00m
 [32m---> [39m[32m10[39m image_2 = tifffile.imread(image_path_2)[[32m1[39m, :, :]
 [32m     11[39m labeled_mask_2 = tifffile.imread(label_path_2)
-[32m     12[39m labeled_mask_2 = skimage.segmentation.clear_border(
-[32m     13[39m     labeled_mask_2
+[32m     12[39m [38;5;66;03m# remove boundary objects[39;00m
+[32m     13[39m labeled_mask_2 = skimage.segmentation.clear_border(labeled_mask_2)
 
 [36mFile [39m[32m~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/tifffile/tifffile.py:1256[39m, in [36mimread[39m[34m(files, selection, return_as, aszarr, key, series, kind, level, squeeze, maxworkers, buffersize, mode, name, offset, size, pattern, axesorder, categories, imread, imreadargs, sort, container, chunkshape, chunkdtype, axestiled, ioworkers, chunkmode, fillvalue, zattrs, multiscales, omexml, superres, out, out_inplace, _multifile, _useframes, **kwargs)[39m
 [32m   1252[39m         ):
