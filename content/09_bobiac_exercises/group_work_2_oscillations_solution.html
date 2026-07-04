@@ -306,7 +306,7 @@
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 
@@ -326,7 +326,7 @@
 <p>We have data of cells where the location of our gene of interes oscillates between the nucleus and the cytoplasm. Our question is <strong>What is the frequency of the oscillations?</strong></p>
 <p>We have a total of 16 time points with a temporal spacing of 30 min (🤔).
 The background of the images was measured to be 4700.</p>
-<div class="cell docutils container">
+<div class="cell tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">image_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"../../_static/images/quant/03_time_series/images/F01_1615_tcyx.tif"</span><span class="p">)</span>
 
@@ -349,61 +349,13 @@ The background of the images was measured to be 4700.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">image_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"../../_static/images/quant/03_time_series/images/F01_1615_tcyx.tif"</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> 
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">time_stack</span> <span class="o">=</span> <span class="n">tifffile</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Time stack shape: </span><span class="si">{</span><span class="n">time_stack</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>  <span class="c1"># (16, 3, 1040, 1392)</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> 
-<span class="g g-Whitespace">      </span><span class="mi">6</span> 
-
-<span class="nn">File ~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/tifffile/tifffile.py:1256,</span> in <span class="ni">imread</span><span class="nt">(files, selection, return_as, aszarr, key, series, kind, level, squeeze, maxworkers, buffersize, mode, name, offset, size, pattern, axesorder, categories, imread, imreadargs, sort, container, chunkshape, chunkdtype, axestiled, ioworkers, chunkmode, fillvalue, zattrs, multiscales, omexml, superres, out, out_inplace, _multifile, _useframes, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1252</span>         <span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1253</span>             <span class="n">files</span> <span class="o">=</span> <span class="n">files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="g g-Whitespace">   </span><span class="mi">1254</span> 
-<span class="g g-Whitespace">   </span><span class="mi">1255</span>         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">files</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">files</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">):</span>
-<span class="ne">-&gt; </span><span class="mi">1256</span>             <span class="k">with</span> <span class="n">TiffFile</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1257</span>                 <span class="n">files</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1258</span>                 <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1259</span>                 <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
-
-<span class="nn">File ~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/tifffile/tifffile.py:4554,</span> in <span class="ni">TiffFile.__init__</span><span class="nt">(self, file, mode, name, offset, size, omexml, superres, _multifile, _useframes, _root, **is_flags)</span>
-<span class="g g-Whitespace">   </span><span class="mi">4550</span>                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">4551</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_omexml</span> <span class="o">=</span> <span class="n">omexml</span>
-<span class="g g-Whitespace">   </span><span class="mi">4552</span>             <span class="bp">self</span><span class="o">.</span><span class="n">is_ome</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="g g-Whitespace">   </span><span class="mi">4553</span> 
-<span class="ne">-&gt; </span><span class="mi">4554</span>         <span class="n">fh</span> <span class="o">=</span> <span class="n">FileHandle</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="n">offset</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">4555</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_fh</span> <span class="o">=</span> <span class="n">fh</span>
-<span class="g g-Whitespace">   </span><span class="mi">4556</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_multifile</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="n">_multifile</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="nb">bool</span><span class="p">(</span><span class="n">_multifile</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">4557</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_files</span> <span class="o">=</span> <span class="p">{</span><span class="n">fh</span><span class="o">.</span><span class="n">name</span><span class="p">:</span> <span class="bp">self</span><span class="p">}</span>
-
-<span class="nn">File ~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/tifffile/tifffile.py:12751,</span> in <span class="ni">FileHandle.__init__</span><span class="nt">(self, file, mode, name, offset, size)</span>
-<span class="g g-Whitespace">  </span><span class="mi">12747</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_offset</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="k">if</span> <span class="n">offset</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">offset</span>
-<span class="g g-Whitespace">  </span><span class="mi">12748</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_size</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="k">if</span> <span class="n">size</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">size</span>
-<span class="g g-Whitespace">  </span><span class="mi">12749</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_close</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="g g-Whitespace">  </span><span class="mi">12750</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_lock</span> <span class="o">=</span> <span class="n">contextlib</span><span class="o">.</span><span class="n">nullcontext</span><span class="p">()</span>
-<span class="ne">&gt; </span><span class="mi">12751</span>         <span class="bp">self</span><span class="o">.</span><span class="n">open</span><span class="p">()</span>
-<span class="g g-Whitespace">  </span><span class="mi">12752</span>         <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fh</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-
-<span class="nn">File ~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/tifffile/tifffile.py:12771,</span> in <span class="ni">FileHandle.open</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">  </span><span class="mi">12767</span>                 <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'invalid mode </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_mode</span><span class="si">}</span><span class="s1">'</span>
-<span class="g g-Whitespace">  </span><span class="mi">12768</span>                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
-<span class="g g-Whitespace">  </span><span class="mi">12769</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_file</span><span class="p">)</span>
-<span class="g g-Whitespace">  </span><span class="mi">12770</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_dir</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_file</span><span class="p">)</span>
-<span class="ne">&gt; </span><span class="mi">12771</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_fh</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span>  <span class="c1"># noqa: SIM115</span>
-<span class="g g-Whitespace">  </span><span class="mi">12772</span>                 <span class="bp">self</span><span class="o">.</span><span class="n">_file</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="kc">None</span>
-<span class="g g-Whitespace">  </span><span class="mi">12773</span>             <span class="p">)</span>
-<span class="g g-Whitespace">  </span><span class="mi">12774</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_close</span> <span class="o">=</span> <span class="kc">True</span>
-
-<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: '/home/runner/work/bobiac-book/bobiac-book/_static/images/quant/03_time_series/images/F01_1615_tcyx.tif'
-</pre></div>
-</div>
+<div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Time stack shape: <span style="font-weight: bold">(</span><span style="color: #008080; text-decoration-color: #008080; font-weight: bold">16</span>, <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">3</span>, <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1040</span>, <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1392</span><span style="font-weight: bold">)</span>
+</pre>
+</div><img alt="../../_images/1969cb693bdda09e0a1828c493f00e9e9c6a3a068109d7cd94488d7724e17406.png" src="../../_images/1969cb693bdda09e0a1828c493f00e9e9c6a3a068109d7cd94488d7724e17406.png"/>
 </div>
 </div>
 <p>These are the first eight time points.</p>
-<div class="cell docutils container">
+<div class="cell tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask_cells</span> <span class="o">=</span> <span class="n">tifffile</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span>
     <span class="s2">"../../_static/images/quant/03_time_series/masks/F01_1615_tcyx_cell_labels.tif"</span>
@@ -441,7 +393,7 @@ The background of the images was measured to be 4700.</p>
 <h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">1. Measure nuclear intensity<a class="headerlink" href="#measure-nuclear-intensity" title="Link to this heading">#</a></h3>
 <p>First, we measure the intesities of all the nuclei in the image.</p>
 <p>Load the first time point.</p>
-<div class="cell docutils container">
+<div class="cell tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ch</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># channel index for the oscillating gene of interest</span>
 <span class="n">image_t0</span> <span class="o">=</span> <span class="n">time_stack</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">ch</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span>
@@ -457,7 +409,7 @@ The background of the images was measured to be 4700.</p>
 </div>
 </div>
 <p>Remove boundary objects.</p>
-<div class="cell docutils container">
+<div class="cell tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask_nuclei</span> <span class="o">=</span> <span class="n">skimage</span><span class="o">.</span><span class="n">segmentation</span><span class="o">.</span><span class="n">clear_border</span><span class="p">(</span><span class="n">mask_nuclei</span><span class="p">)</span>
 <span class="n">overlay_labels</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">image_t0</span><span class="p">,</span> <span class="n">label_mask</span><span class="o">=</span><span class="n">mask_nuclei</span><span class="p">)</span>
@@ -473,7 +425,7 @@ The background of the images was measured to be 4700.</p>
 </div>
 </div>
 <p>Measure intesities with <code class="docutils literal notranslate"><span class="pre">regionprops_table</span></code> ans save measurements as <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>.</p>
-<div class="cell docutils container">
+<div class="cell tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">properties</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"area"</span><span class="p">,</span> <span class="s2">"intensity_mean"</span><span class="p">,</span> <span class="s2">"label"</span><span class="p">]</span>
 <span class="n">props</span> <span class="o">=</span> <span class="n">skimage</span><span class="o">.</span><span class="n">measure</span><span class="o">.</span><span class="n">regionprops_table</span><span class="p">(</span>
@@ -549,7 +501,7 @@ The background of the images was measured to be 4700.</p>
 </div></div>
 </div>
 <p>Subtract background intensity from measurements. Background was measured to 460.</p>
-<div class="cell docutils container">
+<div class="cell tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">background_intensity</span> <span class="o">=</span> <span class="mi">460</span>
 <span class="n">df_nuc</span><span class="p">[</span><span class="s2">"intensity_bg_cor"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_nuc</span><span class="p">[</span><span class="s2">"intensity_mean"</span><span class="p">]</span> <span class="o">-</span> <span class="n">background_intensity</span>
@@ -575,7 +527,7 @@ Are there any negative values after background subtraction? <span style="color: 
 </div></div>
 </div>
 <p>Add <code class="docutils literal notranslate"><span class="pre">time</span></code> column.</p>
-<div class="cell docutils container">
+<div class="cell tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># index of the first time point in the stack</span>
 <span class="n">time</span> <span class="o">=</span> <span class="n">t</span> <span class="o">*</span> <span class="mf">0.5</span>
@@ -588,7 +540,7 @@ Are there any negative values after background subtraction? <span style="color: 
 </pre>
 </div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_nuc</span><span class="p">[</span><span class="s2">"time"</span><span class="p">]</span> <span class="o">=</span> <span class="n">time</span>
 </pre></div>
@@ -598,7 +550,7 @@ Are there any negative values after background subtraction? <span style="color: 
 </section>
 <section id="quality-control">
 <h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">2. Quality control<a class="headerlink" href="#quality-control" title="Link to this heading">#</a></h3>
-<div class="cell docutils container">
+<div class="cell tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span>
     <span class="n">data</span><span class="o">=</span><span class="n">df_nuc</span><span class="p">,</span>
@@ -616,7 +568,7 @@ Are there any negative values after background subtraction? <span style="color: 
 </div>
 </div>
 <p>Seems unsuspicious.</p>
-<div class="cell docutils container">
+<div class="cell tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">overlay_labels</span><span class="p">(</span>
     <span class="n">image</span><span class="o">=</span><span class="n">image_t0</span><span class="p">,</span>
@@ -640,7 +592,7 @@ Are there any negative values after background subtraction? <span style="color: 
 </section>
 <section id="batch-processing">
 <h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">Batch processing<a class="headerlink" href="#batch-processing" title="Link to this heading">#</a></h3>
-<div class="cell docutils container">
+<div class="cell tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">list_df</span> <span class="o">=</span> <span class="p">[]</span>
 
@@ -680,7 +632,7 @@ Are there any negative values after background subtraction? <span style="color: 
 </section>
 <section id="plotting">
 <h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">Plotting<a class="headerlink" href="#plotting" title="Link to this heading">#</a></h3>
-<div class="cell docutils container">
+<div class="cell tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">"label"</span><span class="p">,</span> <span class="s2">"time"</span><span class="p">])[</span><span class="s2">"intensity_bg_cor"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
 </pre></div>
@@ -782,7 +734,7 @@ Are there any negative values after background subtraction? <span style="color: 
 <p>928 rows × 3 columns</p>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">"time"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"intensity_bg_cor"</span><span class="p">,</span> <span class="n">errorbar</span><span class="o">=</span><span class="s2">"sd"</span><span class="p">)</span>
 </pre></div>
@@ -795,7 +747,7 @@ Are there any negative values after background subtraction? <span style="color: 
 <img alt="../../_images/52ef6ccd035d38570ab1bf3dc3b44cdc43bddc958a5d77bef363f5cadd95d187.png" src="../../_images/52ef6ccd035d38570ab1bf3dc3b44cdc43bddc958a5d77bef363f5cadd95d187.png"/>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">"time"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"intensity_bg_cor"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">"label"</span><span class="p">)</span>
 </pre></div>
