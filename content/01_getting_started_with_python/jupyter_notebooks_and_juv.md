@@ -211,7 +211,7 @@ Here, `np` is just a "nickname" for `numpy` — both refer to the exact same pac
 
 Here is a quick recap of all the **terminal** and `juv` commands we have seen in this section:
 
-| <span style="display: inline-block; width:320px;">Command</span> | Description |
+| <span style="display: inline-block; width:360px;">Command</span> | Description |
 | ------- | ----------- |
 | **`pwd`** | Print the path of the current working directory. |
 | **`ls`** | List the contents of the current directory. |
