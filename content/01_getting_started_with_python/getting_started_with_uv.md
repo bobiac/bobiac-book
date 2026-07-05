@@ -31,11 +31,15 @@ Here are a few basic commands that work on macOS, Linux, and the Windows PowerSh
 💡 **Relative paths**: when navigating with `cd`, you can use `.` to refer to the current directory and `..` to refer to the parent directory (for example, `cd ..` moves you up one level).
 
 For example, consider the following folder organization: 
+
+```text
 Desktop/
 ├── bobiac/
 │   ├── ...
 └── data/
     └── ...
+```
+
 If you are in `Desktop/bobiac` and want to move to a sibling folder `Desktop/data`, you don't need to type the full path, you can instead go up one level and then into `data`:
 
 ```bash
