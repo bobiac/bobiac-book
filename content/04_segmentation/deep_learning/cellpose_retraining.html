@@ -313,7 +313,7 @@
 <p>In this section, we will walk through how to <strong>retrain Cellpose on your own data</strong>. This is useful to do when the default models don’t perform well on your specific cell type, staining method, or imaging modality.</p>
 <p>Retraining allows Cellpose to learn directly from your examples, leading to better segmentation accuracy and more relevant masks for your experiments.</p>
 <p>To go through the training process, you need <strong>pairs of raw microscopy images and their corresponding label masks</strong>. The raw images are what you want to segment, and the label masks are the ground truth segmentations that the model will learn from.</p>
-<p>The images we will use for this section can be downloaded from the <a download="" href="{{ data_path }}/04_segmentation_cellpose_training.zip"> <i class="fas fa-download"></i> Cellpose Training Dataset</a>.</p>
+<p>The images we will use for this section can be downloaded from the <a download="" href="https://github.com/bobiac/bobiac-book/releases/download/data-bobiac-2026/04_segmentation_cellpose_training.zip"> <i class="fas fa-download"></i> Cellpose Training Dataset</a>.</p>
 <p class="alert alert-warning">
 <strong>⚠️ Tip:</strong> Cellpose runs significantly faster on a GPU. It supports both NVIDIA GPUs (CUDA) and Apple Silicon (MPS). If you don't have either, we recommend running this notebook on <a href="https://colab.research.google.com/github/bobiac/bobiac-book/blob/gh-pages/colab_notebooks/04_segmentation/deep_learning/cellpose_retraining_colab.ipynb" target="_blank"> Google Colab</a> for faster performance.
 </p>
@@ -358,7 +358,7 @@
 <section id="data">
 <h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Data<a class="headerlink" href="#data" title="Link to this heading">#</a></h2>
 <p>For this tutorial, we will use the sample dataset provided by Cellpose, which includes both training and test images pairs. You can download the dataset here:
-<a download="" href="{{ data_path }}/04_segmentation_cellpose_training.zip">
+<a download="" href="https://github.com/bobiac/bobiac-book/releases/download/data-bobiac-2026/04_segmentation_cellpose_training.zip">
 <i class="fas fa-download"></i> Cellpose Training Dataset</a>.</p>
 <p class="alert alert-info">
 <strong>🚧 Note:</strong> We will use only the sample dataset provided by Cellpose to demonstrate the retraining pipeline. If you want to retrain Cellpose on your own data, you will probably need more image pairs for training and for testing, as well as some validation data.
