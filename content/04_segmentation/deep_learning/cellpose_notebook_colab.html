@@ -286,8 +286,8 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-the-results">Save the results</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-2-timelapse-batch-processing">Bonus 2: Timelapse Batch Processing</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-3-gpu-optimization-with-batch-size">Bonus 3: GPU Optimization with <code class="docutils literal notranslate"><span class="pre">batch_size</span></code></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#info-1-timelapse-batch-processing">Info 1: Timelapse Batch Processing</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#info-2-gpu-optimization-with-batch-size">Info 2 : GPU Optimization with <code class="docutils literal notranslate"><span class="pre">batch_size</span></code></a></li>
 </ul>
 </nav>
 </div>
@@ -906,8 +906,8 @@ Z step size = 0.5 µm</p>
 </div>
 </section>
 </section>
-<section id="bonus-2-timelapse-batch-processing">
-<h1>Bonus 2: Timelapse Batch Processing<a class="headerlink" href="#bonus-2-timelapse-batch-processing" title="Link to this heading">#</a></h1>
+<section id="info-1-timelapse-batch-processing">
+<h1>Info 1: Timelapse Batch Processing<a class="headerlink" href="#info-1-timelapse-batch-processing" title="Link to this heading">#</a></h1>
 <p>When working with a timelapse, you cannot pass the raw stack array directly to <code class="docutils literal notranslate"><span class="pre">model.eval()</span></code>, <code class="docutils literal notranslate"><span class="pre">Cellpose</span></code> has no concept of timepoints and would misinterpret the time axis as channels or a z-stack.</p>
 <p>The solution is to convert the stack into a <strong>list of frames</strong> using <code class="docutils literal notranslate"><span class="pre">list(stack)</span></code>, which slices along axis 0. The result depends on your axis order:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># TCYX — axis 0 is time → list gives T frames of shape (C, Y, X)</span>
@@ -931,8 +931,8 @@ Z step size = 0.5 µm</p>
 </pre></div>
 </div>
 </section>
-<section id="bonus-3-gpu-optimization-with-batch-size">
-<h1>Bonus 3: GPU Optimization with <code class="docutils literal notranslate"><span class="pre">batch_size</span></code><a class="headerlink" href="#bonus-3-gpu-optimization-with-batch-size" title="Link to this heading">#</a></h1>
+<section id="info-2-gpu-optimization-with-batch-size">
+<h1>Info 2 : GPU Optimization with <code class="docutils literal notranslate"><span class="pre">batch_size</span></code><a class="headerlink" href="#info-2-gpu-optimization-with-batch-size" title="Link to this heading">#</a></h1>
 <p>The simple loop above uses the default <code class="docutils literal notranslate"><span class="pre">batch_size=8</span></code>. This controls how many <strong>256×256 tiles</strong> are sent to the GPU per forward pass.</p>
 <p>For each image, <code class="docutils literal notranslate"><span class="pre">Cellpose</span></code> splits it into overlapping tiles (10% overlap by default) and runs the network on them in groups of <code class="docutils literal notranslate"><span class="pre">batch_size</span></code>. Increasing <code class="docutils literal notranslate"><span class="pre">batch_size</span></code> reduces the number of GPU passes per image, which <em>can</em> be faster, at the cost of more GPU memory.</p>
 <p class="alert alert alert-info">
@@ -1054,8 +1054,8 @@ Z step size = 0.5 µm</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-the-results">Save the results</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-2-timelapse-batch-processing">Bonus 2: Timelapse Batch Processing</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-3-gpu-optimization-with-batch-size">Bonus 3: GPU Optimization with <code class="docutils literal notranslate"><span class="pre">batch_size</span></code></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#info-1-timelapse-batch-processing">Info 1: Timelapse Batch Processing</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#info-2-gpu-optimization-with-batch-size">Info 2 : GPU Optimization with <code class="docutils literal notranslate"><span class="pre">batch_size</span></code></a></li>
 </ul>
 </nav></div>
 </div></div>
