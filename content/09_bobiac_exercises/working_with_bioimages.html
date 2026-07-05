@@ -271,6 +271,7 @@
 <section class="tex2jax_ignore mathjax_ignore" id="working-with-bioimages">
 <h1>Working with Bioimages<a class="headerlink" href="#working-with-bioimages" title="Link to this heading">#</a></h1>
 <p><strong>Context:</strong> You are working with a colleague to image placental spheroids on a Zeiss point scanning confocal microscope. Your colleague collected a 2 channel z stack of a placental spheroid while you were sick. You are going to use what you have learned about Python to inspect the file and prepare a figure to show your PI.</p>
+<p>In the following exercises, we will use <a download="" href="https://github.com/bobiac/bobiac-book/releases/download/data-bobiac-2026/placenta_spheroids.czi"> <i class="fas fa-download"></i> this .CZI file</a>.</p>
 <section id="exercise-1">
 <h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Exercise 1<a class="headerlink" href="#exercise-1" title="Link to this heading">#</a></h2>
 <p><strong>Background:</strong> When imaging, it is important to be aware of your detector’s bit depth, as it specifies the range of possible intensity values in your acquired image. As you learned, the range is defined as 0 to 2^bit depth. Image <strong>saturation</strong> occurs when intensity values reach the maximum value. In practice, it is good to avoid saturation so that you can distinguish relative intensity differences.</p>
@@ -283,7 +284,7 @@
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="c1"># read the .czi image file with bffile</span>
-<span class="n">image_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">"../../_static/images/python4bia/final_challenge.czi"</span>
+<span class="n">image_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">"../../_static/images/python4bia/placenta_spheroids.czi"</span>
 <span class="n">image</span> <span class="o">=</span> <span class="n">bffile</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span>
 
 <span class="c1"># drop T axis since it is 1</span>

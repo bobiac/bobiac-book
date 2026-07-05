@@ -19,7 +19,7 @@ Rows with an entry in the **Segmentation/Spots** column mean that download conta
 <tr><th>Item</th><th>Dataset</th><th style="white-space: nowrap;">Segmentation/Spots</th><th>Notes</th></tr>
 </thead>
 <tbody>
-<tr><td>Working with Bioimages</td><td><a href="{{ data_path }}/03_working_with_bioimages.zip" download><i class="fas fa-download"></i> Working with Bioimages Dataset</a></td><td>–</td><td>–</td></tr>
+<tr><td>Working with Bioimages</td><td><a href="https://github.com/bobiac/bobiac-book/releases/download/data-bobiac-2026/03_working_with_bioimages.zip" download><i class="fas fa-download"></i> Working with Bioimages Dataset</a></td><td>–</td><td>–</td></tr>
 </tbody>
 </table>
 
