@@ -479,7 +479,7 @@ This notebook is written <strong>like a small interactive book</strong> to compl
 <span class="n">raw_image</span> <span class="o">=</span> <span class="n">tiff</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">tifffile.imread()</span></code> will use that <code class="docutils literal notranslate"><span class="pre">image_path</span></code> you inputted to find your file and read it. It will then return the read file. Since we will be wanting to work with this file, we assign it to the variable <code class="docutils literal notranslate"><span class="pre">raw_image</span></code> for easy reference.</p>
+<p><code class="docutils literal notranslate"><span class="pre">tiff.imread()</span></code> will use that <code class="docutils literal notranslate"><span class="pre">image_path</span></code> you inputted to find your file and read it. It will then return the read file. Since we will be wanting to work with this file, we assign it to the variable <code class="docutils literal notranslate"><span class="pre">raw_image</span></code> for easy reference.</p>
 </section>
 <section id="exercise-use-tifffile-to-read-the-2d-image-tif-image-and-assign-it-to-the-variable-raw-image">
 <h3 style="color: black; background-color: rgb(252,185,118); padding: 3px; border-radius: 5px;">✍️ Exercise: Use <code class="docutils literal notranslate"><span class="pre">tifffile</span></code> to read the “2D_image.tif” image and assign it to the variable <code class="docutils literal notranslate"><span class="pre">raw_image</span></code>.<a class="headerlink" href="#exercise-use-tifffile-to-read-the-2d-image-tif-image-and-assign-it-to-the-variable-raw-image" title="Link to this heading">#</a></h3>
@@ -609,9 +609,7 @@ This notebook is written <strong>like a small interactive book</strong> to compl
 <section id="viewing-an-image-s-type">
 <h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">Viewing an image’s type<a class="headerlink" href="#viewing-an-image-s-type" title="Link to this heading">#</a></h3>
 <p>In the last notebook, we learned about Python’s standard data types and structures. We used the built-in function <code class="docutils literal notranslate"><span class="pre">type()</span></code> to check what type of data an object is. We can again apply this <code class="docutils literal notranslate"><span class="pre">type()</span></code> function to our image to check its type.</p>
-<p class="alert alert-info">
-<strong>Note:</strong> Notice the syntax when accessing an image's shape dtype. The syntax is <b>.shape</b> and <b>.dtype</b> instead of <b>.shape()</b> and <b>.dtype()</b>. The parentheses are used when there are required or optional inputs. <b>.shape</b> and <b>.dtype</b> do not have any inputs so they do not have any parentheses. 
-</p></section>
+</section>
 <section id="exercise-print-your-image-s-shape-dtype-and-type">
 <h3 style="color: black; background-color: rgb(252,185,118); padding: 3px; border-radius: 5px;">✍️ Exercise: Print your image’s shape, dtype, and type<a class="headerlink" href="#exercise-print-your-image-s-shape-dtype-and-type" title="Link to this heading">#</a></h3>
 <div class="cell tag_teacher docutils container">
