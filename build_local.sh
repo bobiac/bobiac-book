@@ -47,6 +47,7 @@ echo "✅ HTML styles applied successfully."
 # prepare built colab notebook in _build/html/colab_notebooks/
 
 folders=("content")
+manifest=()
 echo "📁 Preparing notebooks for download and colab..."
 for folder in "${folders[@]}"; do
   for notebook in $(find "$folder" -name "*.ipynb"); do
@@ -58,6 +59,13 @@ for folder in "${folders[@]}"; do
     mkdir -p "$(dirname "$notebook_teacher_path")"
     mkdir -p "$(dirname "$notebook_path")"
     mkdir -p "$(dirname "$colab_path")"
+
+    # The colab-specific notebooks are only meant to be opened in Colab, so
+    # they are excluded from the "download all notebooks" manifest used by
+    # the student/teacher download buttons.
+    if [[ "$rel_path" != *_colab.ipynb && "$rel_path" != *.ipynb_checkpoints/* ]]; then
+      manifest+=("$rel_path")
+    fi
 
     echo "📓 Processing $folder/$rel_path..."
     (
@@ -72,6 +80,18 @@ wait
 echo "✅ Updated notebooks copied to _build/html/notebooks_teacher/"
 echo "✅ Updated notebooks copied to _build/html/notebooks/"
 echo "✅ Colab notebooks copied to _build/html/colab_notebooks/"
+
+# Generate a manifest of downloadable notebook paths (excluding *_colab.ipynb)
+# so the "Download All Course Jupyter Notebooks" buttons always reflect the
+# current set of notebooks instead of a hardcoded list in custom.js.
+echo "📝 Generating notebook manifest..."
+printf '%s\n' "${manifest[@]}" | sort | python -c "
+import json, sys
+files = [line.strip() for line in sys.stdin if line.strip()]
+with open('_build/html/notebooks_manifest.json', 'w') as f:
+    json.dump(files, f, indent=2)
+"
+echo "✅ Notebook manifest written to _build/html/notebooks_manifest.json"
 
 # Prepare PDF downloads in _build/html/pdfs/
 echo "📁 Copying PDF files to _build/html/pdfs/..."

@@ -119,14 +119,14 @@ Rows with an entry in the **Segmentation/Spots** column mean that download conta
 </tbody>
 </table>
 
-<!-- ## Download All Course Materials
+## Download All Course Materials
 
-<div class="custom-button-row" style="text-align: center; margin: 20px 0;">
+<!-- <div class="custom-button-row" style="text-align: center; margin: 20px 0;">
     <a
         class="custom-button custom-download-button" href="javascript:void(0)" onclick="downloadPdfs()">
         <i class="fas fa-download"></i> Download All Course Slides as PDFs
     </a>
-</div>
+</div> -->
 
 <div class="custom-button-row" style="text-align: center; margin: 20px 0;">
     <a
@@ -142,7 +142,7 @@ Rows with an entry in the **Segmentation/Spots** column mean that download conta
     </a>
 </div>
 
-<div class="custom-button-row" style="text-align: center; margin: 20px 0;">
+<!-- <div class="custom-button-row" style="text-align: center; margin: 20px 0;">
     <a
         class="custom-button custom-download-button" href="{{ data_path }}/bobiac_data_all.zip">
         <i class="fas fa-download"></i> Download All Course Data
