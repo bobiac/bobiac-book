@@ -66,7 +66,7 @@ In this course we will use `Jupyter Notebooks` and its particular file type with
 
 ## 3. JupyterLab
 
-**JupyterLab** is the browser-based application we'll use to open and work with `Jupyter Notebooks` files.
+[`JupyterLab`](https://jupyterlab.readthedocs.io) is the browser-based application we'll use to open and work with `Jupyter Notebooks` files.
 
 <div align="left"> <img src="../../_static/images/python_intro/jlab.png" alt="JupyterLab interface" width="1000"></div>
 
