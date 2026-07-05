@@ -17,6 +17,14 @@ When people say `Python`, they can mean two things:
 
 `Python` itself evolves over time and comes in **different versions** (for example `Python 3.10`, `Python 3.11`, `Python 3.12`, ...): newer versions bring new features and improvements, while older ones gradually stop being supported.
 
+:::{figure} ../../_static/images/python_intro/py-versions.png
+:align: left
+:width: 1000px
+:alt: Python Versions
+
+from python.org
+:::
+
 This means that not everything works with every version: some code may only run with a **specific** version of `Python`, while another project might need a **newer** one. It is therefore useful to be able to **choose which version of `Python`** to use for each project, and, as we will see, there are tools that make this very easy.
 
 ## 3. Python Packages
@@ -61,6 +69,12 @@ To avoid this, we use **virtual environments**.
 
 A **virtual environment** is an **isolated workspace** (imagine a folder on your computer) that contains its **own packages** and its **own `Python`**, completely **separate** from everything else on your computer. Each project gets its **own environment**, so the packages of one project can **never interfere** with the packages of another.
 
+:::{figure} ../../_static/images/python_intro/v-env.png
+:align: left
+:width: 1000px
+:alt: Virtual Environment
+:::
+
 Since each environment contains its **own `Python`**, virtual environments also solve the **version** problem we saw earlier: every project can use exactly the **version of `Python`** it needs (e.g. Project A can use `Python 3.10` while Project B uses `Python 3.12`), again **without any conflict**.
 
 :::{note}
@@ -78,6 +92,12 @@ So far we have introduced three things we need to manage:
 3. **Virtual environments**, the isolated and disposable workspaces that hold both, one per project.
 
 How do we handle **all of this** easily? With a single tool called [`uv`](https://docs.astral.sh/uv/)!
+
+:::{figure} ../../_static/images/python_intro/uv.png
+:align: center
+:width: 500px
+:alt: uv
+:::
 
 `uv` is a **modern, extremely fast tool** that takes care of **everything** we just described. Instead of learning many different tools, you only have to learn **one**. With `uv` you can:
 

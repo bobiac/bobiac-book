@@ -291,6 +291,13 @@
 <section id="python-versions">
 <h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">2. Python Versions<a class="headerlink" href="#python-versions" title="Link to this heading">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">Python</span></code> itself evolves over time and comes in <strong>different versions</strong> (for example <code class="docutils literal notranslate"><span class="pre">Python</span> <span class="pre">3.10</span></code>, <code class="docutils literal notranslate"><span class="pre">Python</span> <span class="pre">3.11</span></code>, <code class="docutils literal notranslate"><span class="pre">Python</span> <span class="pre">3.12</span></code>, …): newer versions bring new features and improvements, while older ones gradually stop being supported.</p>
+<figure class="align-left" id="id1">
+<a class="reference internal image-reference" href="../../_images/py-versions.png"><img alt="Python Versions" src="../../_images/py-versions.png" style="width: 1000px;"/>
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">from <a class="reference external" href="http://python.org">python.org</a></span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <p>This means that not everything works with every version: some code may only run with a <strong>specific</strong> version of <code class="docutils literal notranslate"><span class="pre">Python</span></code>, while another project might need a <strong>newer</strong> one. It is therefore useful to be able to <strong>choose which version of <code class="docutils literal notranslate"><span class="pre">Python</span></code></strong> to use for each project, and, as we will see, there are tools that make this very easy.</p>
 </section>
 <section id="python-packages">
@@ -327,6 +334,10 @@
 <p>If all packages were installed in <strong>one single shared place</strong> on your computer, these two requirements would <strong>conflict</strong> with each other: installing the version needed for Project B would <strong>break</strong> Project A.</p>
 <p>To avoid this, we use <strong>virtual environments</strong>.</p>
 <p>A <strong>virtual environment</strong> is an <strong>isolated workspace</strong> (imagine a folder on your computer) that contains its <strong>own packages</strong> and its <strong>own <code class="docutils literal notranslate"><span class="pre">Python</span></code></strong>, completely <strong>separate</strong> from everything else on your computer. Each project gets its <strong>own environment</strong>, so the packages of one project can <strong>never interfere</strong> with the packages of another.</p>
+<figure class="align-left">
+<a class="reference internal image-reference" href="../../_images/v-env.png"><img alt="Virtual Environment" src="../../_images/v-env.png" style="width: 1000px;"/>
+</a>
+</figure>
 <p>Since each environment contains its <strong>own <code class="docutils literal notranslate"><span class="pre">Python</span></code></strong>, virtual environments also solve the <strong>version</strong> problem we saw earlier: every project can use exactly the <strong>version of <code class="docutils literal notranslate"><span class="pre">Python</span></code></strong> it needs (e.g. Project A can use <code class="docutils literal notranslate"><span class="pre">Python</span> <span class="pre">3.10</span></code> while Project B uses <code class="docutils literal notranslate"><span class="pre">Python</span> <span class="pre">3.12</span></code>), again <strong>without any conflict</strong>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -343,6 +354,10 @@
 <li><p><strong>Virtual environments</strong>, the isolated and disposable workspaces that hold both, one per project.</p></li>
 </ol>
 <p>How do we handle <strong>all of this</strong> easily? With a single tool called <a class="reference external" href="https://docs.astral.sh/uv/"><code class="docutils literal notranslate"><span class="pre">uv</span></code></a>!</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../_images/uv.png"><img alt="uv" src="../../_images/uv.png" style="width: 500px;"/>
+</a>
+</figure>
 <p><code class="docutils literal notranslate"><span class="pre">uv</span></code> is a <strong>modern, extremely fast tool</strong> that takes care of <strong>everything</strong> we just described. Instead of learning many different tools, you only have to learn <strong>one</strong>. With <code class="docutils literal notranslate"><span class="pre">uv</span></code> you can:</p>
 <ul class="simple">
 <li><p><strong>download and install any version of <code class="docutils literal notranslate"><span class="pre">Python</span></code></strong> you need,</p></li>
