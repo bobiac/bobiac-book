@@ -1615,7 +1615,7 @@ code
 </section>
 <section id="removing-list-items-with-pop">
 <h4>Removing list items with pop()<a class="headerlink" href="#removing-list-items-with-pop" title="Link to this heading">#</a></h4>
-<p>Let’s say you know the <strong>index</strong> of a specific item that you want to remove from a list. You can use <code class="docutils literal notranslate"><span class="pre">pop()</span></code> to remove that an item at that <strong>specific index</strong> from the list. For example, consider the following list <code class="docutils literal notranslate"><span class="pre">mylist</span></code>:</p>
+<p>Let’s say you know the <strong>index</strong> of a specific item that you want to remove from a list. You can use <code class="docutils literal notranslate"><span class="pre">pop()</span></code> to remove that item at that <strong>specific index</strong> from the list. For example, consider the following list <code class="docutils literal notranslate"><span class="pre">mylist</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mylist</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'a'</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">,</span> <span class="s1">'c'</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -2316,11 +2316,11 @@ Once every item in the list has been used, the <code class="docutils literal not
 <p>Consider that hide and seek counting code again. We want to count normally, remind everyone to “Hurry up!” at the count of 7, and stop counting after 9, since everyone is hidden. Here is how we can do this:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">count_sequence</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
 <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">count_sequence</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">item</span><span class="o">==</span><span class="mi">7</span><span class="p">:</span> <span class="c1"># if we're on the count of 7,</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">"Hurry up!"</span><span class="p">)</span> <span class="c1"># then print "Hurry up!"</span>
     <span class="k">if</span> <span class="n">item</span><span class="o">==</span><span class="mi">10</span><span class="p">:</span>
         <span class="k">break</span> <span class="c1"># end the entire for loop</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
 
 </pre></div>
 </div>
