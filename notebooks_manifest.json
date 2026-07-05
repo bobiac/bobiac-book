@@ -1,0 +1,23 @@
+[
+  "02_python_basics/error_notebook.ipynb",
+  "02_python_basics/python_basics_notebook.ipynb",
+  "03_digital_images_intro/working_with_bioimages_in_python.ipynb",
+  "04_segmentation/classic/classic_segmentation.ipynb",
+  "04_segmentation/deep_learning/cellpose_notebook.ipynb",
+  "04_segmentation/deep_learning/cellpose_retraining.ipynb",
+  "04_segmentation/machine_learning/from_ilastik_masks_to_labels.ipynb",
+  "05_spot_detection/spotiflow_notebook.ipynb",
+  "05_spot_detection/spotiflow_retraining.ipynb",
+  "07_measurement_and_quantification/A_measurement_pipeline.ipynb",
+  "07_measurement_and_quantification/B_nested_objects.ipynb",
+  "07_measurement_and_quantification/background_correction_notebook.ipynb",
+  "07_measurement_and_quantification/measurement_and_quantification_notebook.ipynb",
+  "08_colocalization/intensity_based/pixel_intensity_based_colocalization_manders.ipynb",
+  "08_colocalization/intensity_based/pixel_intensity_based_colocalization_pearsons.ipynb",
+  "08_colocalization/object_based/object_based_colocalization.ipynb",
+  "08_colocalization/spatial_statistics/notebook_1.ipynb",
+  "08_colocalization/spatial_statistics/notebook_2.ipynb",
+  "09_bobiac_exercises/group_work_1_solution.ipynb",
+  "09_bobiac_exercises/group_work_2_oscillations_solution.ipynb",
+  "09_bobiac_exercises/group_work_3_membrane_enrichment_solution.ipynb"
+]

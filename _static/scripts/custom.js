@@ -115,30 +115,28 @@ async function downloadPdfs() {
 
 // Function to download all notebook files
 async function downloadNotebooks() {
-    // Hardcoded list of notebook files in the student notebooks directory
-    const notebookFiles = [
-        '02_python_basics/error_notebook.ipynb',
-        '02_python_basics/python_basics_notebook.ipynb',
-        '03_digital_images_intro/working_with_bioimages_in_python.ipynb',
-        '04_segmentation/classic/classic_segmentation.ipynb',
-        '04_segmentation/deep_learning/cellpose_notebook.ipynb',
-        '04_segmentation/machine_learning/from_ilastik_masks_to_labels.ipynb',
-        '07_measurement_and_quantification/background_correction_notebook.ipynb',
-        '07_measurement_and_quantification/measurement_and_quantification_notebook.ipynb',
-        '08_colocalization/object_based_colocalization.ipynb',
-        '08_colocalization/pixel_intensity_based_colocalization_manders.ipynb',
-        '08_colocalization/pixel_intensity_based_colocalization_pearsons.ipynb',
-        '09_student_group/student_work_group.ipynb'
-    ];
-    
     // GitHub raw base URL for student notebooks
     const githubRawBase = 'https://raw.githubusercontent.com/bobiac/bobiac-book/gh-pages/notebooks/';
-    
-    if (notebookFiles.length === 0) {
+
+    // The list of notebooks (excluding *_colab.ipynb) is generated at build
+    // time by build.sh into notebooks_manifest.json, so it always matches
+    // the notebooks actually published for the current version of the book.
+    let notebookFiles;
+    try {
+        const manifestResponse = await fetch('https://raw.githubusercontent.com/bobiac/bobiac-book/gh-pages/notebooks_manifest.json');
+        if (!manifestResponse.ok) throw new Error(`HTTP ${manifestResponse.status}`);
+        notebookFiles = await manifestResponse.json();
+    } catch (error) {
+        console.error('Failed to fetch notebook manifest:', error);
+        alert('Could not load the list of notebooks. Please try again later.');
+        return;
+    }
+
+    if (!notebookFiles || notebookFiles.length === 0) {
         alert('No notebook files found in the GitHub notebooks folder.');
         return;
     }
-    
+
     // Show loading indicator
     const indicator = document.createElement('div');
     indicator.id = 'download-indicator';
@@ -199,30 +197,28 @@ async function downloadNotebooks() {
 
 // Function to download all teacher notebook files
 async function downloadNotebooksTeacher() {
-    // Hardcoded list of notebook files in the teacher notebooks directory
-    const notebookFiles = [
-        '02_python_basics/error_notebook.ipynb',
-        '02_python_basics/python_basics_notebook.ipynb',
-        '03_digital_images_intro/working_with_bioimages_in_python.ipynb',
-        '04_segmentation/classic/classic_segmentation.ipynb',
-        '04_segmentation/deep_learning/cellpose_notebook.ipynb',
-        '04_segmentation/machine_learning/from_ilastik_masks_to_labels.ipynb',
-        '07_measurement_and_quantification/background_correction_notebook.ipynb',
-        '07_measurement_and_quantification/measurement_and_quantification_notebook.ipynb',
-        '08_colocalization/object_based_colocalization.ipynb',
-        '08_colocalization/pixel_intensity_based_colocalization_manders.ipynb',
-        '08_colocalization/pixel_intensity_based_colocalization_pearsons.ipynb',
-        '09_student_group/[solution]_student_work_group.ipynb'
-    ];
-    
     // GitHub raw base URL for teacher notebooks
     const githubRawBase = 'https://raw.githubusercontent.com/bobiac/bobiac-book/gh-pages/notebooks_teacher/';
-    
-    if (notebookFiles.length === 0) {
+
+    // The list of notebooks (excluding *_colab.ipynb) is generated at build
+    // time by build.sh into notebooks_manifest.json, so it always matches
+    // the notebooks actually published for the current version of the book.
+    let notebookFiles;
+    try {
+        const manifestResponse = await fetch('https://raw.githubusercontent.com/bobiac/bobiac-book/gh-pages/notebooks_manifest.json');
+        if (!manifestResponse.ok) throw new Error(`HTTP ${manifestResponse.status}`);
+        notebookFiles = await manifestResponse.json();
+    } catch (error) {
+        console.error('Failed to fetch notebook manifest:', error);
+        alert('Could not load the list of notebooks. Please try again later.');
+        return;
+    }
+
+    if (!notebookFiles || notebookFiles.length === 0) {
         alert('No notebook files found in the GitHub notebooks_teacher folder.');
         return;
     }
-    
+
     // Show loading indicator
     const indicator = document.createElement('div');
     indicator.id = 'download-indicator';
