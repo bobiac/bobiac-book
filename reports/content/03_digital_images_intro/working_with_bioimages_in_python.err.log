@@ -18,14 +18,54 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-viewer = ndv.imshow(raw_image)
+output_path = "path/to/output/directory/mip.tif"
+tiff.imwrite(output_path, data=mip)
 ------------------
 
 
 [31m---------------------------------------------------------------------------[39m
-[31mNameError[39m                                 Traceback (most recent call last)
-[36mCell[39m[36m [39m[32mIn[3][39m[32m, line 1[39m
-[32m----> [39m[32m1[39m viewer = ndv.imshow(raw_image)
+[31mFileNotFoundError[39m                         Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[25][39m[32m, line 2[39m
+[32m      1[39m output_path = [33m"path/to/output/directory/mip.tif"[39m
+[32m----> [39m[32m2[39m tiff.imwrite(output_path, data=mip)
 
-[31mNameError[39m: name 'ndv' is not defined
+[36mFile [39m[32m~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/tifffile/tifffile.py:1507[39m, in [36mimwrite[39m[34m(file, data, mode, bigtiff, byteorder, kind, imagej, ome, shaped, append, shape, dtype, photometric, planarconfig, extrasamples, volumetric, tile, rowsperstrip, bitspersample, compression, compressionargs, predictor, subsampling, jpegtables, iccprofile, colormap, description, datetime, resolution, resolutionunit, subfiletype, software, metadata, extratags, contiguous, truncate, align, maxworkers, buffersize, returnoffset)[39m
+[32m   1503[39m             [38;5;28;01mand[39;00m [38;5;28;01mnot[39;00m truncate
+[32m   1504[39m             [38;5;28;01mand[39;00m compression [38;5;28;01min[39;00m {[38;5;28;01mNone[39;00m, [32m0[39m, [32m1[39m, [33m'NONE'[39m, [33m'None'[39m, [33m'none'[39m}
+[32m   1505[39m         )
+[32m   1506[39m 
+[32m-> [39m[32m1507[39m     with TiffWriter(
+[32m   1508[39m         file,
+[32m   1509[39m         mode=mode,
+[32m   1510[39m         bigtiff=bigtiff,
+
+[36mFile [39m[32m~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/tifffile/tifffile.py:1888[39m, in [36mTiffWriter.__init__[39m[34m(self, file, mode, bigtiff, byteorder, append, kind, imagej, ome, shaped)[39m
+[32m   1884[39m         self._ifdindex = [32m0[39m
+[32m   1885[39m         self._omexml = [38;5;28;01mNone[39;00m
+[32m   1886[39m         self._storedshape = [38;5;28;01mNone[39;00m
+[32m   1887[39m 
+[32m-> [39m[32m1888[39m         self._fh = FileHandle(file, mode=mode, size=[32m0[39m)
+[32m   1889[39m         [38;5;28;01mif[39;00m append:
+[32m   1890[39m             self._fh.seek([32m0[39m, os.SEEK_END)
+[32m   1891[39m         [38;5;28;01melse[39;00m:
+
+[36mFile [39m[32m~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/tifffile/tifffile.py:12751[39m, in [36mFileHandle.__init__[39m[34m(self, file, mode, name, offset, size)[39m
+[32m  12747[39m         self._offset = -[32m1[39m [38;5;28;01mif[39;00m offset [38;5;28;01mis[39;00m [38;5;28;01mNone[39;00m [38;5;28;01melse[39;00m offset
+[32m  12748[39m         self._size = -[32m1[39m [38;5;28;01mif[39;00m size [38;5;28;01mis[39;00m [38;5;28;01mNone[39;00m [38;5;28;01melse[39;00m size
+[32m  12749[39m         self._close = [38;5;28;01mTrue[39;00m
+[32m  12750[39m         self._lock = contextlib.nullcontext()
+[32m> [39m[32m12751[39m         self.open()
+[32m  12752[39m         [38;5;28;01massert[39;00m self._fh [38;5;28;01mis[39;00m [38;5;28;01mnot[39;00m [38;5;28;01mNone[39;00m
+
+[36mFile [39m[32m~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/tifffile/tifffile.py:12771[39m, in [36mFileHandle.open[39m[34m(self)[39m
+[32m  12767[39m                 msg = f'invalid mode {self._mode}'
+[32m  12768[39m                 [38;5;28;01mraise[39;00m ValueError(msg)
+[32m  12769[39m             self._file = os.path.realpath(self._file)
+[32m  12770[39m             self._dir, self._name = os.path.split(self._file)
+[32m> [39m[32m12771[39m             self._fh = open(  # noqa: SIM115
+[32m  12772[39m                 self._file, self._mode, encoding=[38;5;28;01mNone[39;00m
+[32m  12773[39m             )
+[32m  12774[39m             self._close = [38;5;28;01mTrue[39;00m
+
+[31mFileNotFoundError[39m: [Errno 2] No such file or directory: '/home/runner/work/bobiac-book/bobiac-book/content/03_digital_images_intro/path/to/output/directory/mip.tif'
 
