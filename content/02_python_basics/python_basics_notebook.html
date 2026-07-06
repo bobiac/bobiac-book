@@ -1842,10 +1842,10 @@ code
 <h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">Creating a dict<a class="headerlink" href="#creating-a-dict" title="Link to this heading">#</a></h3>
 <p>We can create a dictionary using curly brackets {}, with colons : to map keys to values, and commas to separate each mapping:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mydict</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="mi">1</span><span class="p">:</span> <span class="s2">"Start"</span><span class="p">,</span> 
-        <span class="mi">2</span><span class="p">:</span> <span class="s2">"Middle"</span><span class="p">,</span> 
-        <span class="mi">3</span><span class="p">:</span> <span class="s2">"Finish"</span>
-        <span class="p">}</span>
+    <span class="mi">1</span><span class="p">:</span> <span class="s2">"Start"</span><span class="p">,</span> 
+    <span class="mi">2</span><span class="p">:</span> <span class="s2">"Middle"</span><span class="p">,</span> 
+    <span class="mi">3</span><span class="p">:</span> <span class="s2">"Finish"</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>In this example:</p>
@@ -1856,10 +1856,10 @@ code
 <p>Keys can be any <em>immutable</em> type, which includes <code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code>, <code class="docutils literal notranslate"><span class="pre">str</span></code>, <code class="docutils literal notranslate"><span class="pre">bool</span></code>, <code class="docutils literal notranslate"><span class="pre">None</span></code>, and <code class="docutils literal notranslate"><span class="pre">tuple</span></code>. Values can be any data type or data structure.</p>
 <p>Here’s an example where a dict contains keys mapped to values that are lists:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mydict</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="mi">1</span><span class="p">:</span> <span class="s2">"Start of course"</span><span class="p">,</span>
-        <span class="mi">2</span><span class="p">:</span> <span class="p">[</span><span class="s2">"Lectures"</span><span class="p">,</span> <span class="s2">"Labs"</span><span class="p">,</span> <span class="s2">"Office Hours"</span><span class="p">,</span> <span class="s2">"End"</span><span class="p">],</span>
-        <span class="mi">3</span><span class="p">:</span> <span class="p">[</span><span class="s2">"Course dinner"</span><span class="p">,</span> <span class="mi">2026</span><span class="p">,</span> <span class="s2">"End"</span><span class="p">],</span>
-        <span class="p">}</span>
+    <span class="mi">1</span><span class="p">:</span> <span class="s2">"Start of course"</span><span class="p">,</span>
+    <span class="mi">2</span><span class="p">:</span> <span class="p">[</span><span class="s2">"Lectures"</span><span class="p">,</span> <span class="s2">"Labs"</span><span class="p">,</span> <span class="s2">"Office Hours"</span><span class="p">,</span> <span class="s2">"End"</span><span class="p">],</span>
+    <span class="mi">3</span><span class="p">:</span> <span class="p">[</span><span class="s2">"Course dinner"</span><span class="p">,</span> <span class="mi">2026</span><span class="p">,</span> <span class="s2">"End"</span><span class="p">],</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>While we can have duplicate values, we <strong>cannot</strong> have duplicate keys.</p>
@@ -1868,10 +1868,10 @@ code
 <h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">Accessing a key’s values<a class="headerlink" href="#accessing-a-key-s-values" title="Link to this heading">#</a></h3>
 <p>To access the value associated with a specific key in a <code class="docutils literal notranslate"><span class="pre">dict</span></code>, we can use square brackets [] and the key:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mydict</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s1">'beginning'</span><span class="p">:</span> <span class="s2">"Start of course"</span><span class="p">,</span>
-        <span class="s1">'middle'</span><span class="p">:</span> <span class="p">[</span><span class="s2">"Lectures"</span><span class="p">,</span> <span class="s2">"Labs"</span><span class="p">,</span> <span class="s2">"Office Hours"</span><span class="p">],</span>
-        <span class="s1">'end'</span><span class="p">:</span> <span class="p">[</span><span class="s2">"Course dinner"</span><span class="p">,</span> <span class="mi">2026</span><span class="p">],</span>
-        <span class="p">}</span>
+    <span class="s1">'beginning'</span><span class="p">:</span> <span class="s2">"Start of course"</span><span class="p">,</span>
+    <span class="s1">'middle'</span><span class="p">:</span> <span class="p">[</span><span class="s2">"Lectures"</span><span class="p">,</span> <span class="s2">"Labs"</span><span class="p">,</span> <span class="s2">"Office Hours"</span><span class="p">],</span>
+    <span class="s1">'end'</span><span class="p">:</span> <span class="p">[</span><span class="s2">"Course dinner"</span><span class="p">,</span> <span class="mi">2026</span><span class="p">],</span>
+<span class="p">}</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">mydict</span><span class="p">[</span><span class="s1">'middle'</span><span class="p">])</span>
 <span class="o">&gt;</span> <span class="p">[</span><span class="s2">"Lectures"</span><span class="p">,</span> <span class="s2">"Labs"</span><span class="p">,</span> <span class="s2">"Office Hours"</span><span class="p">]</span>
 </pre></div>
@@ -2128,10 +2128,10 @@ Once every item in the list has been used, the <code class="docutils literal not
 <h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">Setting up a for loop with a dict<a class="headerlink" href="#setting-up-a-for-loop-with-a-dict" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">for</span></code> loops can iterate over dictionaries too. Here’s an example of using a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop to iterate over <code class="docutils literal notranslate"><span class="pre">mydict</span></code> dictionary’s keys:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mydict</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="mi">1</span><span class="p">:</span> <span class="s2">"Start"</span><span class="p">,</span> 
-        <span class="mi">2</span><span class="p">:</span> <span class="s2">"Middle"</span><span class="p">,</span> 
-        <span class="mi">3</span><span class="p">:</span> <span class="s2">"Finish"</span>
-        <span class="p">}</span>
+    <span class="mi">1</span><span class="p">:</span> <span class="s2">"Start"</span><span class="p">,</span> 
+    <span class="mi">2</span><span class="p">:</span> <span class="s2">"Middle"</span><span class="p">,</span> 
+    <span class="mi">3</span><span class="p">:</span> <span class="s2">"Finish"</span>
+<span class="p">}</span>
 <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">mydict</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
 <span class="o">&gt;</span> <span class="mi">1</span>
