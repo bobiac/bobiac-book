@@ -2,6 +2,8 @@
 
 **Context:** You are collaborating with a colleague to study circulating tumor cell nuclei in neuroblastoma patients. They are doing the sample prep and imaging, you are analyzing the images. Your colleague shared images from their first imaging attempt. 
 
+In the following exercises, we will use the <a href="https://github.com/bobiac/bobiac-book/releases/download/data-bobiac-2026/04_05_06_07_seg_and_spot.zip" download> <i class="fas fa-download"></i>Segmentation and Spot Detection Dataset </a> (generated from from <a href="https://www.cellimagelibrary.org/images/CCDB_6843" target="_blank">CCDB_6843</a>)</a> containing multi-channel images. We will only use the first channel (DAPI).
+
 ## Exercise 1
 
 **Background:** The first question you both have are how many cells survived the isolation, in vitro culture, and preparation for imaging. 

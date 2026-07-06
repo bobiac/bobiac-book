@@ -42,7 +42,3 @@ Although points are the simplest type of object, many of the learned concepts ar
 <a
     class="custom-button custom-download-button" href="../../pdfs/08_colocalization/practical_object_based_coloc.pdf" download> <i class="fas fa-download"></i> Download the Slides
 </a>
-
-<div align="center">
-  <iframe class="custom-pdf-frame-169" src="../../pdfs/08_colocalization/practical_object_based_coloc.pdf"> </iframe>
-</div>

@@ -136,7 +136,7 @@ uv pip install torch torchvision --index-url https://download.pytorch.org/whl/cu
 
 ### 3. Jupyter Notebook Integration
 
-To run for example the [Cellpose Notebook](cellpose_notebook.ipynb) locally in your browser, you can use the following command:
+To run, for example, the [Cellpose Notebook](cellpose_notebook.ipynb) locally in your browser, you can use the following command:
 
 ```bash
 # for the cellpose notebook

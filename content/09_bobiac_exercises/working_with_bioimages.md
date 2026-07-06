@@ -2,6 +2,8 @@
 
 **Context:** You are working with a colleague to image placental spheroids on a Zeiss point scanning confocal microscope. Your colleague collected a 2 channel z stack of a placental spheroid while you were sick. You are going to use what you have learned about Python to inspect the file and prepare a figure to show your PI.
 
+In the following exercises, we will use <a href="https://github.com/bobiac/bobiac-book/releases/download/data-bobiac-2026/placenta_spheroids.czi" download> <i class="fas fa-download"></i> this .CZI file</a>.
+
 ## Exercise 1
 
 **Background:** When imaging, it is important to be aware of your detector's bit depth, as it specifies the range of possible intensity values in your acquired image. As you learned, the range is defined as 0 to 2^bit depth. Image **saturation** occurs when intensity values reach the maximum value. In practice, it is good to avoid saturation so that you can distinguish relative intensity differences.
@@ -16,7 +18,7 @@ import bffile
 import numpy as np
 
 # read the .czi image file with bffile
-image_path = r"../../_static/images/python4bia/final_challenge.czi"
+image_path = r"../../_static/images/python4bia/placenta_spheroids.czi"
 image = bffile.imread(image_path)
 
 # drop T axis since it is 1

@@ -30,12 +30,16 @@ Here are a few basic commands that work on macOS, Linux, and the Windows PowerSh
 :::{note}
 💡 **Relative paths**: when navigating with `cd`, you can use `.` to refer to the current directory and `..` to refer to the parent directory (for example, `cd ..` moves you up one level).
 
-For example, consider the following folder organization: 
+For example, consider the following folder organization:
+
+```text
 Desktop/
 ├── bobiac/
 │   ├── ...
 └── data/
     └── ...
+```
+
 If you are in `Desktop/bobiac` and want to move to a sibling folder `Desktop/data`, you don't need to type the full path, you can instead go up one level and then into `data`:
 
 ```bash
@@ -62,7 +66,7 @@ In this course we will use `Jupyter Notebooks` and its particular file type with
 
 ## 3. JupyterLab
 
-**JupyterLab** is the browser-based application we'll use to open and work with `Jupyter Notebooks` files.
+[`JupyterLab`](https://jupyterlab.readthedocs.io) is the browser-based application we'll use to open and work with `Jupyter Notebooks` files.
 
 <div align="left"> <img src="../../_static/images/python_intro/jlab.png" alt="JupyterLab interface" width="1000"></div>
 
@@ -207,7 +211,7 @@ Here, `np` is just a "nickname" for `numpy` — both refer to the exact same pac
 
 Here is a quick recap of all the **terminal** and `juv` commands we have seen in this section:
 
-| <span style="display: inline-block; width:320px;">Command</span> | Description |
+| <span style="display: inline-block; width:360px;">Command</span> | Description |
 | ------- | ----------- |
 | **`pwd`** | Print the path of the current working directory. |
 | **`ls`** | List the contents of the current directory. |
