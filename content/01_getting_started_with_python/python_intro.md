@@ -115,9 +115,9 @@ How do we handle **all of this** easily? With a single tool called [`uv`](https:
 
 ## 6. What's Next?
 
-To learn how to use `uv` to manage your `Python` environments and packages, check out the [Getting Started with uv](getting_started_with_uv.md) section.
+To learn how to use the code provided in this course, you can look at the [Jupyter Notebooks and Juv](jupyter_notebooks_and_juv.md) section.
 
-Instead, to learn how to use the code provided in this course, you can look at the [Jupyter Notebooks and Juv](jupyter_notebooks_and_juv.md) section.
+To then learn how `uv` manages your `Python` environments and packages, check out the [Getting Started with uv](getting_started_with_uv.md) section.
 
 :::{note}
 💡 **NOTE**: For a more in-depth introduction to Python, check out the [BoBiAC 2025 intro by Talley Lambert](https://bobiac.github.io/bobiac-book/2025/content/02_getting_started_with_python/getting_started_with_python.html).

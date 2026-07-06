@@ -69,7 +69,7 @@ uv venv --help
 
 ## 3. Virtual Environments with uv
 
-As we saw in the [previous section](python_intro.md#virtual-environments), a **virtual environment** is an isolated workspace with its own `Python` and its own packages. With `uv`, creating one is a single command:
+As we saw in the [Python introduction](python_intro.md#virtual-environments), a **virtual environment** is an isolated workspace with its own `Python` and its own packages. With `uv`, creating one is a single command:
 
 ```bash
 uv venv
