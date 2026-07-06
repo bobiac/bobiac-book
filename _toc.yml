@@ -13,9 +13,8 @@ parts:
   - file: content/01_getting_started_with_python/python_landing_page.md
     sections:
       - file: content/01_getting_started_with_python/python_intro.md
-        sections:
-          - file: content/01_getting_started_with_python/getting_started_with_uv.md
       - file: content/01_getting_started_with_python/jupyter_notebooks_and_juv.md
+      - file: content/01_getting_started_with_python/getting_started_with_uv.md
       - file: content/01_getting_started_with_python/glossary.md
   
   - file: content/02_python_basics/python_basics.md
