@@ -325,6 +325,14 @@
 <p>In this section, we’ll learn how to use <code class="docutils literal notranslate"><span class="pre">Cellpose</span></code>, a powerful deep learning tool for cell segmentation, works on a wide variety of microscopy images and doesn’t require retraining for many common use cases.</p>
 <p>In this notebook, we’ll see how to run <code class="docutils literal notranslate"><span class="pre">Cellpose</span></code> on single images or on a folder of images, and how to visualize and save the results.</p>
 <p>The images we will use for this section can be downloaded from the <a download="" href="https://github.com/bobiac/bobiac-book/releases/download/data-bobiac-2026/04_05_06_07_seg_and_spot.zip"> <i class="fas fa-download"></i> Segmentation and Spot Detection Dataset</a>.</p>
+<div class="alert alert-warning">
+<strong>NOTE:</strong> Windows users, if you encounter an error in <code>ndv</code> similar to:
+    <pre><code>Failed to load model class 'VBoxModel' from module '@jupyter-widgets/controls' ChunkLoadError at Object.j...</code></pre>
+    this is usually caused by the default <code>uv</code> cache path being too long. Point uv's cache to a shorter location by running the following in your PowerShell terminal <em>before</em> launching Jupyter, then restart the notebook kernel:
+    <pre><code>$env:UV_CACHE_DIR = "C:\uvc"</code></pre>
+    This only affects the current terminal session. To make it permanent for all future sessions (so you don't have to set it every time), run the following once, then <strong>close and reopen PowerShell</strong> for the change to take effect:
+    <pre><code>setx UV_CACHE_DIR "C:\uvc"</code></pre>
+</div>
 <p class="alert alert-warning">
 <strong>💡 Tip:</strong> <code>Cellpose</code> runs significantly faster on a GPU. It supports both NVIDIA GPUs (CUDA) and Apple Silicon (MPS). If you don't have either, we recommend running this notebook on <a href="https://colab.research.google.com/github/bobiac/bobiac-book/blob/gh-pages/colab_notebooks/04_segmentation/deep_learning/cellpose_notebook_colab.ipynb" target="_blank"> Google Colab</a> for faster performance.
 </p>

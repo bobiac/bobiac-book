@@ -326,7 +326,15 @@
 </p>
 <p class="alert alert-info">
 <strong>Note:</strong> In this notebook, we will only use a single image pair for demonstration purposes. Often, Manders' coefficients should not be interpreted as absolute values in isolation. Instead, it's always recommended to consider them in the context of comparisons between different conditions, controls, treatments, or experimental groups. The relative changes and ratios between conditions are often more meaningful than the absolute coefficient values themselves.
-</p></section>
+</p>
+<div class="alert alert-warning">
+<strong>NOTE:</strong> Windows users, if you encounter an error in <code>ndv</code> similar to:
+    <pre><code>Failed to load model class 'VBoxModel' from module '@jupyter-widgets/controls' ChunkLoadError at Object.j...</code></pre>
+    this is usually caused by the default <code>uv</code> cache path being too long. Point uv's cache to a shorter location by running the following in your PowerShell terminal <em>before</em> launching Jupyter, then restart the notebook kernel:
+    <pre><code>$env:UV_CACHE_DIR = "C:\uvc"</code></pre>
+    This only affects the current terminal session. To make it permanent for all future sessions (so you don't have to set it every time), run the following once, then <strong>close and reopen PowerShell</strong> for the change to take effect:
+    <pre><code>setx UV_CACHE_DIR "C:\uvc"</code></pre>
+</div></section>
 <section id="id1">
 <h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Manders’ Colocalization Coefficients<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>Manders’ colocalization coefficients can be used to quantify the degree of colocalization between two channels (or images). These coefficients, M1 and M2, are calculated based on the pixel intensities of the two channels and for this reason, they are different from a simple area overlap.</p>
