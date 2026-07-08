@@ -417,7 +417,7 @@ Here, we plotted each segmented object in a different color together with its in
 <div class="cell tag_teacher docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create an image that contains only the mask of the indexed object</span>
-<span class="n">index</span> <span class="o">=</span> <span class="mi">42</span>
+<span class="n">index</span> <span class="o">=</span> <span class="mi">24</span>
 
 <span class="c1"># note that == creates a boolean mask by comparing each pixel to the index value, resulting in True for pixels belonging to the object and False for all other pixels</span>
 <span class="n">idx_object</span> <span class="o">=</span> <span class="n">labeled_mask</span> <span class="o">==</span> <span class="n">index</span>
@@ -432,7 +432,7 @@ Here, we plotted each segmented object in a different color together with its in
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/4e2c76ba8d505276a56c9a1f2f1e4a4ef95fab1c34a1983b39a4b07c568e0f21.png" src="../../_images/4e2c76ba8d505276a56c9a1f2f1e4a4ef95fab1c34a1983b39a4b07c568e0f21.png"/>
+<img alt="../../_images/617a8c202e99176e9da2e5d651598d1045945e52ae3d6068497cd976738761cd.png" src="../../_images/617a8c202e99176e9da2e5d651598d1045945e52ae3d6068497cd976738761cd.png"/>
 </div>
 </div>
 <p>This new image we obtained is a <strong>boolean mask</strong> with value <code class="docutils literal notranslate"><span class="pre">False</span></code> for background and <code class="docutils literal notranslate"><span class="pre">True</span></code> for the object with the index we specified.</p>
@@ -470,7 +470,7 @@ Max value: True
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Area of object 42: 7342 pixels
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Area of object 24: 8175 pixels
 </pre></div>
 </div>
 </div>
@@ -485,7 +485,7 @@ Max value: True
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Area of object 42: 775.4987500000001 um^2
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Area of object 24: 863.4843750000001 um^2
 </pre></div>
 </div>
 </div>
@@ -509,8 +509,8 @@ Max value: True
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Type of object_intesities: &lt;class 'numpy.ndarray'&gt;
-Shape of object_intesities: (7342,)
-Intensity values of object 42: [214 196 217 ... 206 224 197]
+Shape of object_intesities: (8175,)
+Intensity values of object 24: [208 212 234 ... 223 215 193]
 </pre></div>
 </div>
 </div>
@@ -524,7 +524,7 @@ Intensity values of object 42: [214 196 217 ... 206 224 197]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean intensity of object 42: 891.3057749931899
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean intensity of object 24: 509.3776146788991
 </pre></div>
 </div>
 </div>
@@ -748,7 +748,7 @@ All features for all objects:
   3683.  4577. 11277.  3652. 10223.  4022.  3982.  4145.  2898.  8190.
   4238.  6388.  9504.  2878.  1881.  4198.   441.]
 
-Area for object 42: 3487.0
+Area for object 24: 4781.0
 </pre></div>
 </div>
 </div>
@@ -923,13 +923,13 @@ Name: area, Length: 77, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>area              3487.000000
-intensity_mean     904.456840
-intensity_std      556.336598
-intensity_max     2871.000000
-intensity_min      144.000000
-perimeter          421.119841
-Name: 41, dtype: float64
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>area              4781.000000
+intensity_mean     533.829115
+intensity_std      308.510022
+intensity_max     2071.000000
+intensity_min      141.000000
+perimeter          355.155375
+Name: 23, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -1249,7 +1249,7 @@ Index: []
 <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s2">"area"</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">1500</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"intensity_min"</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.08</span><span class="p">)])</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span> <span class="o">+</span> <span class="s2">"="</span> <span class="o">*</span> <span class="mi">80</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
 
-<span class="c1"># 4. BONUS: Print the area of all rows where intensity_std is less than 0.5</span>
+<span class="c1"># 4. BONUS: Print the area of all rows where intensity_std is less than 100</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Area of rows where intensity_std &lt; 100:"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">"intensity_std"</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">][</span><span class="s2">"area"</span><span class="p">])</span>
 </pre></div>
@@ -1480,18 +1480,18 @@ Name: intensity_mean, Length: 77, dtype: float64
 </div>
 </div>
 <p>This might look redundant, but will be very important when analysing multiple images and a key part of keeping track of the source of data. With this notation, <code class="docutils literal notranslate"><span class="pre">cell_id</span></code> and <code class="docutils literal notranslate"><span class="pre">image_id</span></code> combined can identify every object across a whole dataset of however many images.</p>
-<p>Let’s classify area into three categories: small (&lt; 4000 pixels), medium (4000-8000 pixels), and large (&gt; 8000 pixels) and store this in a new column called <code class="docutils literal notranslate"><span class="pre">size_category</span></code></p>
+<p>Let’s classify area into three categories: small (&lt; 1000 pixels), medium (1000-2000 pixels), and large (&gt; 3000 pixels) and store this in a new column called <code class="docutils literal notranslate"><span class="pre">size_category</span></code></p>
 <div class="cell tag_teacher docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">"size_category"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span>
-    <span class="n">df</span><span class="p">[</span><span class="s2">"area"</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4000</span><span class="p">,</span> <span class="mi">8000</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">"small"</span><span class="p">,</span> <span class="s2">"medium"</span><span class="p">,</span> <span class="s2">"large"</span><span class="p">]</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">"area"</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">3000</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">"small"</span><span class="p">,</span> <span class="s2">"medium"</span><span class="p">,</span> <span class="s2">"large"</span><span class="p">]</span>
 <span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"size_category"</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>['medium', 'large', 'small']
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>['large', 'medium', 'small']
 Categories (3, str): ['small' &lt; 'medium' &lt; 'large']
 </pre></div>
 </div>
@@ -1703,9 +1703,9 @@ Name: area, dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>size_category
-small     733.524414
-medium    612.271005
-large     438.903251
+small     660.780045
+medium    879.192878
+large     574.105110
 Name: intensity_mean, dtype: float64
 </pre></div>
 </div>
@@ -1720,20 +1720,19 @@ Name: intensity_mean, dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>size_category  expression
-small          none          0.259625
-               low           0.466020
-               high          0.496180
-medium         none          0.420740
-               low           0.351234
-               high          0.266503
-large          none          0.456885
-               low           0.366256
+small          low           0.573694
+medium         none          0.259625
+               low           0.447664
+               high          0.641752
+large          none          0.444837
+               low           0.373404
+               high          0.260956
 Name: circularity, dtype: float64
 </pre></div>
 </div>
 </div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">NaN</span></code> above indicate that there exist no observation with that combination of categories.</p>
+<p>An <code class="docutils literal notranslate"><span class="pre">NaN</span></code> would indicate that there exists no observation with that combination of categories.</p>
 <p>Another very useful statistic to calculate is the correlation between two columns per observation. For this we can use the <code class="docutils literal notranslate"><span class="pre">.corr()</span></code> method.</p>
 <div class="cell tag_teacher docutils container">
 <div class="cell_input docutils container">
@@ -2106,8 +2105,8 @@ To avoid this, we can use the parameter <code class="docutils literal notranslat
 <span class="n">image_folder</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"../../_static/images/quant/01_measurement_quantification/images/"</span><span class="p">)</span>
 <span class="n">mask_folder</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"../../_static/images/quant/01_measurement_quantification/masks/"</span><span class="p">)</span>
 
-<span class="n">images</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">image_folder</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">"*.TIF"</span><span class="p">))</span>
-<span class="n">masks</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">image_folder</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">"*.TIF"</span><span class="p">))</span>
+<span class="n">images</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">image_folder</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">"*.tif"</span><span class="p">))</span>
+<span class="n">masks</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">mask_folder</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">"*.tif"</span><span class="p">))</span>
 
 <span class="n">list_df</span> <span class="o">=</span> <span class="p">[]</span>
 
