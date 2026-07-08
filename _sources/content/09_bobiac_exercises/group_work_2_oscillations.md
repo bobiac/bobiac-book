@@ -58,7 +58,7 @@ If you prefer to work in Google Colab instead of locally, copy the `.ipynb` file
 
    ```bash
    uvx juv add oscillations.ipynb matplotlib numpy pandas seaborn scikit-image scipy tifffile imagecodecs
-   uvx juv add "bobiac_tools @ git+https://github.com/bobiac/bobiac-tools.git"
+   uvx juv add oscillations.ipynb "bobiac_tools @ git+https://github.com/bobiac/bobiac-tools.git"
    ```
 
 3. `uvx juv run oscillations.ipynb`
