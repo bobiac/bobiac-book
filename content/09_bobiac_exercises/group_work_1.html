@@ -1,0 +1,453 @@
+
+<!DOCTYPE html>
+
+<html data-content_root="../../" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Group Work 1: Building your Own Segmentation and Spot Detection Pipeline — BoBiAC Book</title>
+<script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+<!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+<noscript>
+<style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+</noscript>
+<!-- Loaded before other Sphinx assets -->
+<link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet"/>
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet"/>
+<link href="../../_static/pygments.css?v=03e43079" rel="stylesheet" type="text/css"/>
+<link href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" rel="stylesheet" type="text/css"/>
+<link href="../../_static/togglebutton.css?v=9c3e77be" rel="stylesheet" type="text/css"/>
+<link href="../../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/sphinx-thebe.css?v=4fa983c6" rel="stylesheet" type="text/css"/>
+<link href="../../_static/sphinx-design.min.css?v=95c83b7e" rel="stylesheet" type="text/css"/>
+<link href="../../_static/styles/custom.css?v=b98cbe03" rel="stylesheet" type="text/css"/>
+<!-- So that users can add custom icons -->
+<script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+<!-- Pre-loaded scripts that we'll load fully later -->
+<link as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" rel="preload"/>
+<link as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" rel="preload"/>
+<script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+<script src="../../_static/doctools.js?v=9a2dae69"></script>
+<script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../../_static/copybutton.js?v=f281be69"></script>
+<script src="../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+<script>let toggleHintShow = 'Click to show';</script>
+<script>let toggleHintHide = 'Click to hide';</script>
+<script>let toggleOpenOnPrint = 'true';</script>
+<script src="../../_static/togglebutton.js?v=b8b12719"></script>
+<script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+<script src="../../_static/design-tabs.js?v=f930bc37"></script>
+<script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+<script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+<script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+<script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+<script>DOCUMENTATION_OPTIONS.pagename = 'content/09_bobiac_exercises/group_work_1';</script>
+<script src="../../_static/scripts/custom.js?v=e95d7443"></script>
+<link href="../../genindex.html" rel="index" title="Index"/>
+<link href="../../search.html" rel="search" title="Search"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+<meta content="" name="docsearch:version"/>
+</head>
+<body data-bs-root-margin="0px 0px -60%" data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-default-mode="" data-offset="180">
+<div class="skip-link d-print-none" id="pst-skip-link"><a href="#main-content">Skip to main content</a></div>
+<div id="pst-scroll-pixel-helper"></div>
+<button class="btn rounded-pill" id="pst-back-to-top" type="button">
+<i class="fa-solid fa-arrow-up"></i>Back to top</button>
+<dialog id="pst-search-dialog">
+<form action="../../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Search this book..." autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" name="q" placeholder="Search this book..." spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+</dialog>
+<div class="pst-async-banner-revealer d-none">
+<aside aria-label="Version warning" class="d-none d-print-none" id="bd-header-version-warning"></aside>
+</div>
+<header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+</header>
+<div class="bd-container">
+<div class="bd-container__inner bd-page-width">
+<dialog id="pst-primary-sidebar-modal"></dialog>
+<div class="bd-sidebar-primary bd-sidebar" id="pst-primary-sidebar">
+<div class="sidebar-header-items sidebar-primary__section">
+</div>
+<div class="sidebar-primary-items__start sidebar-primary__section">
+<div class="sidebar-primary-item">
+<a class="navbar-brand logo" href="../../landing-page.html">
+<img alt="BoBiAC Book - Home" class="logo__image only-light" src="../../_static/bobiac-landing-black.png"/>
+<img alt="BoBiAC Book - Home" class="logo__image only-dark pst-js-only" src="../../_static/bobiac-landing-white.png"/>
+</a></div>
+<div class="sidebar-primary-item">
+<button aria-label="Search" class="btn search-button-field search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Search">
+<i class="fa-solid fa-magnifying-glass"></i>
+<span class="search-button__default-text">Search</span>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+<div class="sidebar-primary-item"><nav aria-label="Main" class="bd-links bd-docs-nav">
+<div class="bd-toc-item navbar-nav active">
+<ul class="nav bd-sidenav bd-sidenav__home-link">
+<li class="toctree-l1">
+<a class="reference internal" href="../../landing-page.html">
+<i class="fas fa-home"></i> Home
+                </a>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Course Material</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../00_intro_to_bobiac/bobiac_intro.html">00 - <i class="fas fa-laptop-code"></i> Introduction to BoBiAC</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01_getting_started_with_python/python_landing_page.html">01 - <i class="fab fa-python"></i> Getting Started with Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01_getting_started_with_python/python_intro.html">Introduction to Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_getting_started_with_python/jupyter_notebooks_and_juv.html">Jupyter Notebooks and juv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_getting_started_with_python/getting_started_with_uv.html">Getting started with uv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_getting_started_with_python/glossary.html">Glossary</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../02_python_basics/python_basics.html">02 - <i class="fab fa-python"></i> Python Basics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02_python_basics/python_basics_notebook.html">The Python Basics Notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02_python_basics/error_notebook.html">Errors Everywhere</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../03_digital_images_intro/digital_images_intro.html">03 - <i class="fas fa-table-cells"></i> Introduction to Digital Images</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../03_digital_images_intro/working_with_bioimages_in_python.html">Working with Bioimages in Python</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../04_segmentation/segmentation_intro.html">04 - <i class="fa-solid fa-disease"></i> Image Segmentation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../04_segmentation/classic/classic.html">Classical Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../04_segmentation/classic/classic_segmentation.html">Classical Segmentation</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../04_segmentation/machine_learning/machine_learning.html">Machine Learning Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../04_segmentation/machine_learning/intro_to_ilastik.html">Introduction to Ilastik</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../04_segmentation/machine_learning/pixel_classification_with_ilastik.html">Ilastik for Pixel Classification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../04_segmentation/machine_learning/from_ilastik_masks_to_labels.html">From Ilastik Masks to Labels</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../04_segmentation/deep_learning/deep_learning.html">Deep Learning Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../04_segmentation/deep_learning/intro_to_cellpose.html">Introduction to Cellpose</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../04_segmentation/deep_learning/cellpose_notebook.html">Cellpose in Python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../04_segmentation/deep_learning/cellpose_retraining.html">Retraining Cellpose on Custom Data</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../05_spot_detection/spot_detection_intro.html">05 - <i class="fa-solid fa-crosshairs"></i> Spot Detection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../05_spot_detection/intro_to_spotiflow.html">Introduction to Spotiflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05_spot_detection/spotiflow_notebook.html">Spotiflow in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05_spot_detection/spotiflow_retraining.html">Finetuning or Training Spotiflow on Custom Data</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../06_object_classification/object_classification.html">06 - <i class="fa-solid fa-shapes"></i> Object Classification</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../06_object_classification/object_classification_with_ilastik.html">Ilastik for Object Classification</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../07_measurement_and_quantification/measurement_and_quantification_intro.html">07 - <i class="fa-solid fa-chart-simple"></i> Measurements &amp; Quantification</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../07_measurement_and_quantification/A_measurement_pipeline.html">Measurement Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07_measurement_and_quantification/B_nested_objects.html">Nested Measurements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07_measurement_and_quantification/background_correction_notebook.html">Background Correction</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../08_colocalization/colocalization_intro.html">08 - <i class="fa-solid fa-location-crosshairs"></i> Colocalization</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../08_colocalization/intensity_based/intensity_based_colocalization_intro.html">Intensity-based Colocalization</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../08_colocalization/intensity_based/pixel_intensity_based_colocalization_pearsons.html">Pearson’s correlation coefficient</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../08_colocalization/intensity_based/pixel_intensity_based_colocalization_manders.html">Manders’ Colocalization Coefficients</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../08_colocalization/spatial_statistics/spatial_stats_intro.html">Spatial Statistics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../08_colocalization/spatial_statistics/notebook_1.html">Notebook 1: Does a protein cluster?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../08_colocalization/spatial_statistics/notebook_2.html">Notebook 2: Do two different protein clusters co-localize?</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">BoBiAC Exercises</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="bobiac_exercises.html">BoBiAC Exercises</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Course Materials Downloads</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../data/course_downloads.html"><i class="fa-solid fa-folder"></i> Downloads</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://bobiac.github.io">BoBiAC</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.astral.sh/uv/">uv</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/manzt/juv">juv</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/fdrgsp/pyrunner">pyrunner</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://cite.hms.harvard.edu">Core for Imaging Technology &amp; Education (CITE)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Past Editions</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://bobiac.github.io/bobiac-book/2025/">2025 Edition</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Contributors</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://www.linkedin.com/in/federicogasparoli">Federico Gasparoli, PhD</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.linkedin.com/in/eva-de-la-serna-b1a69664">Eva de la Serna, PhD</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://orcid.org/0000-0001-6194-9568">Max Brambach, PhD</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.linkedin.com/in/amelie-andreas-542b93204">Amelie Andreas</a></li>
+</ul>
+</div>
+</nav></div>
+</div>
+<div class="sidebar-primary-items__end sidebar-primary__section">
+<div class="sidebar-primary-item">
+<div class="flat" data-ea-manual="true" data-ea-publisher="readthedocs" data-ea-type="readthedocs-sidebar" id="ethical-ad-placement">
+</div></div>
+</div>
+</div>
+<main class="bd-main" id="main-content" role="main">
+<div class="sbt-scroll-pixel-helper"></div>
+<div class="bd-content">
+<div class="bd-article-container">
+<div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Toggle primary sidebar">
+<span class="fa-solid fa-bars"></span>
+</button></div>
+</div>
+<div class="header-article-items__end">
+<div class="header-article-item">
+<div class="article-header-buttons">
+<a class="btn btn-sm btn-source-repository-button" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/bobiac/bobiac-book" target="_blank" title="Source repository">
+<span class="btn__icon-container">
+<i class="fab fa-github"></i>
+</span>
+</a>
+<button class="btn btn-sm btn-fullscreen-button pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" onclick="toggleFullScreen()" title="Fullscreen mode">
+<span class="btn__icon-container">
+<i class="fas fa-expand"></i>
+</span>
+</button>
+<button aria-label="Color mode" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Light"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Dark"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="System Settings"></i>
+</button>
+<button aria-label="Search" class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Search">
+<i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Toggle secondary sidebar">
+<span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+</div>
+</div>
+</div>
+<div class="onlyprint" id="jb-print-docs-body">
+<h1>Group Work 1: Building your Own Segmentation and Spot Detection Pipeline</h1>
+<!-- Table of contents -->
+<div id="print-main-content">
+<div id="jb-print-toc">
+<div>
+<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;"> Contents </h2>
+</div>
+<nav aria-label="Page">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1">Step 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2">Step 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3">Step 3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4">Step 4</a></li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article">
+<section class="tex2jax_ignore mathjax_ignore" id="group-work-1-building-your-own-segmentation-and-spot-detection-pipeline">
+<h1>Group Work 1: Building your Own Segmentation and Spot Detection Pipeline<a class="headerlink" href="#group-work-1-building-your-own-segmentation-and-spot-detection-pipeline" title="Link to this heading">#</a></h1>
+<p>Let’s now consolidate what you have learned! These exercises will walk you through how to create your own Jupyter Notebook containing code that segments images with Cellpose and detects spots with Spotiflow.</p>
+<p>The images we will use for this exercise can be downloaded from the <a download="" href="https://github.com/bobiac/bobiac-book/releases/download/data-bobiac-2026/group-work-1.zip"> <i class="fas fa-download"></i> Group Work 1 Dataset</a>.</p>
+<p>To go through these exercises, you need to create a new folder named <code class="docutils literal notranslate"><span class="pre">bobiac_group_work</span></code>. In the instruction below, we will assume this folder is on your <code class="docutils literal notranslate"><span class="pre">Desktop</span></code> but you can choose a different location if you prefer.</p>
+<section id="step-1">
+<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Step 1<a class="headerlink" href="#step-1" title="Link to this heading">#</a></h2>
+<p><strong>Create a new <code class="docutils literal notranslate"><span class="pre">Jupyter</span> <span class="pre">Notebook</span></code> with <code class="docutils literal notranslate"><span class="pre">uv</span></code>’s <code class="docutils literal notranslate"><span class="pre">juv</span></code> tool</strong></p>
+<ol class="arabic simple">
+<li><p>Open a new Terminal or PowerShell and navigate to the <code class="docutils literal notranslate"><span class="pre">bobiac_group_work</span></code> folder.</p></li>
+<li><p>Inside the <code class="docutils literal notranslate"><span class="pre">bobiac_group_work</span></code> folder, create a new folder named <code class="docutils literal notranslate"><span class="pre">group_work_1</span></code> and navigate into it.</p></li>
+<li><p>Inside the <code class="docutils literal notranslate"><span class="pre">group_work_1</span></code>, create a new Jupyter Notebook named <code class="docutils literal notranslate"><span class="pre">group_work_1.ipynb</span></code> using <code class="docutils literal notranslate"><span class="pre">uv</span></code>’s <code class="docutils literal notranslate"><span class="pre">juv</span></code> tool.</p></li>
+<li><p>Run the notebook in your browser using <code class="docutils literal notranslate"><span class="pre">juv</span></code>.\</p></li>
+<li><p>Close the notebook tab in your browser and stop the notebook from the terminal (<code class="docutils literal notranslate"><span class="pre">cmd</span> <span class="pre">+</span> <span class="pre">c</span></code> or <code class="docutils literal notranslate"><span class="pre">ctrl</span> <span class="pre">+</span> <span class="pre">c</span></code>) before proceeding to <a class="reference internal" href="#step-2"><span class="xref myst">Step 2</span></a>.</p></li>
+</ol>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg aria-hidden="true" class="sd-octicon sd-octicon-chevron-right" height="1.5em" version="1.1" viewbox="0 0 24 24" width="1.5em"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<ol class="arabic simple">
+<li><p class="sd-card-text">Open the Terminal or PowerShell.</p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">.../Desktop/bobiac_group_work</span></code></p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">group_work_1</span></code></p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">.../Desktop/bobiac_group_work/group_work_1</span></code></p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">uvx</span> <span class="pre">juv</span> <span class="pre">init</span> <span class="pre">group_work_1.ipynb</span></code></p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">uvx</span> <span class="pre">juv</span> <span class="pre">run</span> <span class="pre">group_work_1.ipynb</span></code></p></li>
+<li><p class="sd-card-text">Close the notebook tab in your browser and stop the notebook from the terminal (<code class="docutils literal notranslate"><span class="pre">cmd</span> <span class="pre">+</span> <span class="pre">c</span></code> or <code class="docutils literal notranslate"><span class="pre">ctrl</span> <span class="pre">+</span> <span class="pre">c</span></code>)</p></li>
+</ol>
+</div>
+</details></section>
+<section id="step-2">
+<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Step 2<a class="headerlink" href="#step-2" title="Link to this heading">#</a></h2>
+<p><strong>Add dependencies to the <code class="docutils literal notranslate"><span class="pre">Jupyter</span> <span class="pre">Notebook</span></code> with <code class="docutils literal notranslate"><span class="pre">juv</span></code></strong></p>
+<ol class="arabic">
+<li><p>In your notebook created in <a class="reference internal" href="#step-1"><span class="xref myst">Step 1</span></a>, add your dependencies using <code class="docutils literal notranslate"><span class="pre">juv</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is up to you which dependencies you want to add based on what we covered during the course. If you forget a dependency, you can always close the notebook in both the browser and the terminal, add the dependency, and re-run the notebook.</p>
+</div>
+</li>
+<li><p>Run the notebook with <code class="docutils literal notranslate"><span class="pre">juv</span></code>.</p></li>
+<li><p>Import the libraries in the first cell.</p></li>
+<li><p>Run the cell to confirm that they are installed and can be imported without errors.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you would rather work in <code class="docutils literal notranslate"><span class="pre">Google</span> <span class="pre">Colab</span></code> instead of running the notebook locally, you can copy the <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> file you created to your <code class="docutils literal notranslate"><span class="pre">Google</span> <span class="pre">Drive</span></code> and open it from the <a class="reference external" href="https://colab.research.google.com/">Colab website</a>.</p>
+<p>Keep in mind that <code class="docutils literal notranslate"><span class="pre">Colab</span></code> does not support the <code class="docutils literal notranslate"><span class="pre">PEP</span> <span class="pre">723</span></code> inline script metadata that <code class="docutils literal notranslate"><span class="pre">juv</span></code> uses to manage dependencies. This means you will need to add a <code class="docutils literal notranslate"><span class="pre">!pip</span> <span class="pre">install</span> <span class="pre">&lt;package_name&gt;</span></code> cell for each dependency, and run it before the cell that imports the libraries.</p>
+</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg aria-hidden="true" class="sd-octicon sd-octicon-chevron-right" height="1.5em" version="1.1" viewbox="0 0 24 24" width="1.5em"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<ol class="arabic">
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">.../Desktop/bobiac_group_work/group_work_1</span></code> (the folder created in <a class="reference internal" href="#step-1"><span class="xref myst">Step 1</span></a>)</p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">uvx</span> <span class="pre">juv</span> <span class="pre">add</span> <span class="pre">group_work_1.ipynb</span> <span class="pre">cellpose</span> <span class="pre">tqdm</span> <span class="pre">tifffile</span> <span class="pre">spotiflow</span></code></p></li>
+<li><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">uvx</span> <span class="pre">juv</span> <span class="pre">run</span> <span class="pre">group_work_1.ipynb</span></code></p></li>
+<li><p class="sd-card-text">Add a new <code class="docutils literal notranslate"><span class="pre">code</span></code> cell in the notebook (<code class="docutils literal notranslate"><span class="pre">+</span></code> button)</p></li>
+<li><p class="sd-card-text">Within this cell, import the necessary libraries:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">cellpose</span><span class="w"> </span><span class="kn">import</span> <span class="n">core</span><span class="p">,</span> <span class="n">io</span><span class="p">,</span> <span class="n">models</span><span class="p">,</span> <span class="n">plot</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cellpose.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">MODEL_DIR</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tqdm</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">csv</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">tifffile</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">spotiflow.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">Spotiflow</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</pre></div>
+</div>
+</li>
+<li><p class="sd-card-text">Run the cell to confirm that the libraries are imported without errors.</p></li>
+</ol>
+</div>
+</details></section>
+<section id="step-3">
+<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Step 3<a class="headerlink" href="#step-3" title="Link to this heading">#</a></h2>
+<p><strong>Run Cellpose on the full dataset</strong></p>
+<p>In this step you need to add the code that <strong>segments nuclei and cytoplasm</strong> of all the images in the dataset using <strong>Cellpose</strong> and <strong>saves the segmentation as a <code class="docutils literal notranslate"><span class="pre">.tif</span></code> file</strong>.</p>
+<p>You need to segment both the <em>nuclei</em> and <em>cytoplasm</em> of the images. The nuclei are in channel 0 and the cytoplasm is in channel 1.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>To get the nuclei segmentation, you can pass only the nuclei channel (channel 0) to the <code class="docutils literal notranslate"><span class="pre">Cellpose</span></code> <code class="docutils literal notranslate"><span class="pre">eval</span></code> method. To get the cytoplasm segmentation, you can pass both channels (0 and 1).</p>
+</div>
+<ol class="arabic simple">
+<li><p>For each step, create a new <code class="docutils literal notranslate"><span class="pre">code</span></code> cell in the notebook (<code class="docutils literal notranslate"><span class="pre">+</span></code> button).</p></li>
+<li><p>Within the cell, add the necessary code.</p></li>
+</ol>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg aria-hidden="true" class="sd-octicon sd-octicon-chevron-right" height="1.5em" version="1.1" viewbox="0 0 24 24" width="1.5em"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">See <a href="group_work_1_solution.html" target="_blank">Solution Notebook</a></p>
+</div>
+</details></section>
+<section id="step-4">
+<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Step 4<a class="headerlink" href="#step-4" title="Link to this heading">#</a></h2>
+<p><strong>Run Spotiflow on the full dataset</strong></p>
+<p>In this step you need to add the code that <strong>detects spots in the 4th channels</strong> of all the images in the dataset using <strong>Spotiflow</strong> and <strong>saves a <code class="docutils literal notranslate"><span class="pre">.csv</span></code> file of their coordinates</strong>.</p>
+<ol class="arabic simple">
+<li><p>For each step, create a new <code class="docutils literal notranslate"><span class="pre">code</span></code> cell in the notebook (<code class="docutils literal notranslate"><span class="pre">+</span></code> button).</p></li>
+<li><p>Within the cell, add the necessary code.</p></li>
+</ol>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Solution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg aria-hidden="true" class="sd-octicon sd-octicon-chevron-right" height="1.5em" version="1.1" viewbox="0 0 24 24" width="1.5em"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">See <a href="group_work_1_solution.html" target="_blank">Solution Notebook</a></p>
+</div>
+</details></section>
+</section>
+<script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content/09_bobiac_exercises"
+        },
+        predefinedOutput: true
+    }
+    </script>
+<script>kernelName = 'python3'</script>
+</article>
+<footer class="prev-next-footer d-print-none">
+<div class="prev-next-area">
+</div>
+</footer>
+</div>
+<dialog id="pst-secondary-sidebar-modal"></dialog>
+<div class="bd-sidebar-secondary bd-toc" id="pst-secondary-sidebar"><div class="sidebar-secondary-items sidebar-secondary__inner">
+<div class="sidebar-secondary-item"><div class="page-toc tocsection onthispage" id="pst-page-navigation-heading-2">
+<i class="fa-solid fa-list"></i> Contents
+  </div>
+<nav aria-labelledby="pst-page-navigation-heading-2" class="page-toc" id="pst-page-toc-nav">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1">Step 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2">Step 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3">Step 3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4">Step 4</a></li>
+</ul>
+</nav></div>
+</div></div>
+</div>
+<footer class="bd-footer-content">
+<div class="bd-footer-content__inner container">
+<div class="footer-item">
+<p class="component-author">
+By Federico Gasparoli, PhD - federico@hms.harvard.edu (federico.gasparoli@gmail.com)<br/>Materials:<br/>- Federico Gasparoli, PhD - federico@hms.harvard.edu (federico.gasparoli@gmail.com)<br/>- Eva de la Serna, PhD - eva_delaserna@hms.harvard.edu<br/>- Max Brambach, PhD - max_brambach@hms.harvard.edu
+</p>
+</div>
+<div class="footer-item">
+<p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+</p>
+</div>
+<div class="footer-item">
+</div>
+<div class="footer-item">
+<div class="extra_footer">
+<p>
+All content is licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC-BY 4.0</a>, except where noted otherwise.
+</p>
+</div>
+</div>
+</div>
+</footer>
+</main>
+</div>
+</div>
+<!-- Scripts loaded after <body> so the DOM is not blocked -->
+<script defer="" src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer="" src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+<footer class="bd-footer">
+</footer>
+</body>
+</html>

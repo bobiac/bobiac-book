@@ -1,0 +1,2007 @@
+
+<!DOCTYPE html>
+
+<html data-content_root="../../../" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Notebook 1: Does a protein cluster? — BoBiAC Book</title>
+<script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+<!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+<noscript>
+<style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+</noscript>
+<!-- Loaded before other Sphinx assets -->
+<link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet"/>
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet"/>
+<link href="../../../_static/pygments.css?v=03e43079" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/togglebutton.css?v=9c3e77be" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/sphinx-thebe.css?v=4fa983c6" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/sphinx-design.min.css?v=95c83b7e" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/styles/custom.css?v=b98cbe03" rel="stylesheet" type="text/css"/>
+<!-- So that users can add custom icons -->
+<script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+<!-- Pre-loaded scripts that we'll load fully later -->
+<link as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" rel="preload"/>
+<link as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" rel="preload"/>
+<script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+<script src="../../../_static/doctools.js?v=9a2dae69"></script>
+<script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../../../_static/copybutton.js?v=f281be69"></script>
+<script src="../../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+<script>let toggleHintShow = 'Click to show';</script>
+<script>let toggleHintHide = 'Click to hide';</script>
+<script>let toggleOpenOnPrint = 'true';</script>
+<script src="../../../_static/togglebutton.js?v=b8b12719"></script>
+<script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+<script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+<script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+<script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+<script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+<script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+<script>DOCUMENTATION_OPTIONS.pagename = 'content/08_colocalization/spatial_statistics/notebook_1';</script>
+<script src="../../../_static/scripts/custom.js?v=e95d7443"></script>
+<link href="../../../genindex.html" rel="index" title="Index"/>
+<link href="../../../search.html" rel="search" title="Search"/>
+<link href="notebook_2.html" rel="next" title="Notebook 2: Do two different protein clusters co-localize?"/>
+<link href="spatial_stats_intro.html" rel="prev" title="Spatial Statistics"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+<meta content="" name="docsearch:version"/>
+</head>
+<body data-bs-root-margin="0px 0px -60%" data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-default-mode="" data-offset="180">
+<div class="skip-link d-print-none" id="pst-skip-link"><a href="#main-content">Skip to main content</a></div>
+<div id="pst-scroll-pixel-helper"></div>
+<button class="btn rounded-pill" id="pst-back-to-top" type="button">
+<i class="fa-solid fa-arrow-up"></i>Back to top</button>
+<dialog id="pst-search-dialog">
+<form action="../../../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Search this book..." autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" name="q" placeholder="Search this book..." spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+</dialog>
+<div class="pst-async-banner-revealer d-none">
+<aside aria-label="Version warning" class="d-none d-print-none" id="bd-header-version-warning"></aside>
+</div>
+<header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+</header>
+<div class="bd-container">
+<div class="bd-container__inner bd-page-width">
+<dialog id="pst-primary-sidebar-modal"></dialog>
+<div class="bd-sidebar-primary bd-sidebar" id="pst-primary-sidebar">
+<div class="sidebar-header-items sidebar-primary__section">
+</div>
+<div class="sidebar-primary-items__start sidebar-primary__section">
+<div class="sidebar-primary-item">
+<a class="navbar-brand logo" href="../../../landing-page.html">
+<img alt="BoBiAC Book - Home" class="logo__image only-light" src="../../../_static/bobiac-landing-black.png"/>
+<img alt="BoBiAC Book - Home" class="logo__image only-dark pst-js-only" src="../../../_static/bobiac-landing-white.png"/>
+</a></div>
+<div class="sidebar-primary-item">
+<button aria-label="Search" class="btn search-button-field search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Search">
+<i class="fa-solid fa-magnifying-glass"></i>
+<span class="search-button__default-text">Search</span>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+<div class="sidebar-primary-item"><nav aria-label="Main" class="bd-links bd-docs-nav">
+<div class="bd-toc-item navbar-nav active">
+<ul class="nav bd-sidenav bd-sidenav__home-link">
+<li class="toctree-l1">
+<a class="reference internal" href="../../../landing-page.html">
+<i class="fas fa-home"></i> Home
+                </a>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Course Material</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../00_intro_to_bobiac/bobiac_intro.html">00 - <i class="fas fa-laptop-code"></i> Introduction to BoBiAC</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../01_getting_started_with_python/python_landing_page.html">01 - <i class="fab fa-python"></i> Getting Started with Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../01_getting_started_with_python/python_intro.html">Introduction to Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01_getting_started_with_python/jupyter_notebooks_and_juv.html">Jupyter Notebooks and juv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01_getting_started_with_python/getting_started_with_uv.html">Getting started with uv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01_getting_started_with_python/glossary.html">Glossary</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../02_python_basics/python_basics.html">02 - <i class="fab fa-python"></i> Python Basics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../02_python_basics/python_basics_notebook.html">The Python Basics Notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02_python_basics/error_notebook.html">Errors Everywhere</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../03_digital_images_intro/digital_images_intro.html">03 - <i class="fas fa-table-cells"></i> Introduction to Digital Images</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../03_digital_images_intro/working_with_bioimages_in_python.html">Working with Bioimages in Python</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../04_segmentation/segmentation_intro.html">04 - <i class="fa-solid fa-disease"></i> Image Segmentation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../04_segmentation/classic/classic.html">Classical Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../04_segmentation/classic/classic_segmentation.html">Classical Segmentation</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../04_segmentation/machine_learning/machine_learning.html">Machine Learning Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../04_segmentation/machine_learning/intro_to_ilastik.html">Introduction to Ilastik</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../04_segmentation/machine_learning/pixel_classification_with_ilastik.html">Ilastik for Pixel Classification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../04_segmentation/machine_learning/from_ilastik_masks_to_labels.html">From Ilastik Masks to Labels</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../04_segmentation/deep_learning/deep_learning.html">Deep Learning Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../04_segmentation/deep_learning/intro_to_cellpose.html">Introduction to Cellpose</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../04_segmentation/deep_learning/cellpose_notebook.html">Cellpose in Python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../04_segmentation/deep_learning/cellpose_retraining.html">Retraining Cellpose on Custom Data</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../05_spot_detection/spot_detection_intro.html">05 - <i class="fa-solid fa-crosshairs"></i> Spot Detection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../05_spot_detection/intro_to_spotiflow.html">Introduction to Spotiflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../05_spot_detection/spotiflow_notebook.html">Spotiflow in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../05_spot_detection/spotiflow_retraining.html">Finetuning or Training Spotiflow on Custom Data</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../06_object_classification/object_classification.html">06 - <i class="fa-solid fa-shapes"></i> Object Classification</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../06_object_classification/object_classification_with_ilastik.html">Ilastik for Object Classification</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../07_measurement_and_quantification/measurement_and_quantification_intro.html">07 - <i class="fa-solid fa-chart-simple"></i> Measurements &amp; Quantification</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../07_measurement_and_quantification/A_measurement_pipeline.html">Measurement Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../07_measurement_and_quantification/B_nested_objects.html">Nested Measurements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../07_measurement_and_quantification/background_correction_notebook.html">Background Correction</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../colocalization_intro.html">08 - <i class="fa-solid fa-location-crosshairs"></i> Colocalization</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="../intensity_based/intensity_based_colocalization_intro.html">Intensity-based Colocalization</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../intensity_based/pixel_intensity_based_colocalization_pearsons.html">Pearson’s correlation coefficient</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../intensity_based/pixel_intensity_based_colocalization_manders.html">Manders’ Colocalization Coefficients</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="spatial_stats_intro.html">Spatial Statistics</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Notebook 1: Does a protein cluster?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebook_2.html">Notebook 2: Do two different protein clusters co-localize?</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">BoBiAC Exercises</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../09_bobiac_exercises/bobiac_exercises.html">BoBiAC Exercises</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Course Materials Downloads</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../data/course_downloads.html"><i class="fa-solid fa-folder"></i> Downloads</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://bobiac.github.io">BoBiAC</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.astral.sh/uv/">uv</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/manzt/juv">juv</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/fdrgsp/pyrunner">pyrunner</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://cite.hms.harvard.edu">Core for Imaging Technology &amp; Education (CITE)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Past Editions</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://bobiac.github.io/bobiac-book/2025/">2025 Edition</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Contributors</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://www.linkedin.com/in/federicogasparoli">Federico Gasparoli, PhD</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.linkedin.com/in/eva-de-la-serna-b1a69664">Eva de la Serna, PhD</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://orcid.org/0000-0001-6194-9568">Max Brambach, PhD</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.linkedin.com/in/amelie-andreas-542b93204">Amelie Andreas</a></li>
+</ul>
+</div>
+</nav></div>
+</div>
+<div class="sidebar-primary-items__end sidebar-primary__section">
+<div class="sidebar-primary-item">
+<div class="flat" data-ea-manual="true" data-ea-publisher="readthedocs" data-ea-type="readthedocs-sidebar" id="ethical-ad-placement">
+</div></div>
+</div>
+</div>
+<main class="bd-main" id="main-content" role="main">
+<div class="sbt-scroll-pixel-helper"></div>
+<div class="bd-content">
+<div class="bd-article-container">
+<div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Toggle primary sidebar">
+<span class="fa-solid fa-bars"></span>
+</button></div>
+</div>
+<div class="header-article-items__end">
+<div class="header-article-item">
+<div class="article-header-buttons">
+<a class="btn btn-sm btn-source-repository-button" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/bobiac/bobiac-book" target="_blank" title="Source repository">
+<span class="btn__icon-container">
+<i class="fab fa-github"></i>
+</span>
+</a>
+<button class="btn btn-sm btn-fullscreen-button pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" onclick="toggleFullScreen()" title="Fullscreen mode">
+<span class="btn__icon-container">
+<i class="fas fa-expand"></i>
+</span>
+</button>
+<button aria-label="Color mode" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Light"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Dark"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="System Settings"></i>
+</button>
+<button aria-label="Search" class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Search">
+<i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" title="Toggle secondary sidebar">
+<span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+</div>
+</div>
+</div>
+<div class="onlyprint" id="jb-print-docs-body">
+<h1>Notebook 1: Does a protein cluster?</h1>
+<!-- Table of contents -->
+<div id="print-main-content">
+<div id="jb-print-toc">
+<div>
+<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;"> Contents </h2>
+</div>
+<nav aria-label="Page">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset">Dataset</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-libraries">0. Importing libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-image-mask-and-spot-table">2. Load image, mask and spot table</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visually-inspect-the-images-masks-and-spots">Visually inspect the images, masks and spots</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-an-analysis-plan">3. Make An Analysis Plan</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question">Question</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#approach">Approach</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metric-for-clustering">Metric for Clustering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow">Workflow</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-a-reference-for-comparison">1. Generate a reference for comparison</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#measure-the-nearest-neighbor-distance">2. Measure the nearest neighbor distance</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-average-nearest-neighbour-distance">3. Calculate the average nearest neighbour distance</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-clark-evans-index">4. Calculate the Clark-Evans Index</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-p-value-of-the-clark-evans-index">5. Calculate the p-value of the Clark-Evans Index</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assemble-the-protein-dataset-and-the-random-dataset">4. Assemble the Protein Dataset and the Random Dataset</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#protein-dataset-map-spots-to-cells-and-count-spots-per-cell">Protein Dataset: Map spots to cells and count spots per cell</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-dataset-generate-random-points">Random Dataset: Generate random points</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-nearest-neighbor-distances">5. Calculate Nearest Neighbor Distances</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identifying-neighbors-kd-trees">Identifying Neighbors: KD Trees</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-clark-evans-index-for-the-protein-and-random-datasets">6. Calculate the Clark-Evans Index for the protein and random datasets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repeat-steps-4-6-with-multiple-random-patterns">7. Repeat Steps 4-6 with Multiple Random Patterns</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#concept">Concept</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repeat-measurements-for-all-cells">8. Repeat Measurements for All Cells</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-summarise-the-per-cell-clustering-analysis-as-a-function">✍️ Exercise: Summarise the per-cell clustering analysis as a function</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perform-the-same-calculation-on-the-other-channels">9. Perform the Same Calculation on the Other Channels</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#measure-the-length-scale-of-clustering-ripleys-l-function">10. Measure the Length Scale of Clustering: Ripleys L Function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article">
+<section class="tex2jax_ignore mathjax_ignore" id="notebook-1-does-a-protein-cluster">
+<h1>Notebook 1: Does a protein cluster?<a class="headerlink" href="#notebook-1-does-a-protein-cluster" title="Link to this heading">#</a></h1>
+<div class="custom-button-row">
+<a class="custom-button custom-download-button" download="" href="../../notebooks/08_colocalization/spatial_statistics/notebook_1.ipynb">
+<i class="fas fa-download"></i> Download this Notebook
+    </a>
+<a class="custom-button custom-download-button" href="https://colab.research.google.com/github/bobiac/bobiac-book/blob/gh-pages/colab_notebooks/08_colocalization/spatial_statistics/notebook_1.ipynb" target="_blank">
+<img alt="Open in Colab" class="button-icon" src="../../../_static/logo/icon-google-colab.svg"/>
+        Open in Colab
+    </a>
+</div>
+<p>TODO: Update the links</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># /// script</span>
+<span class="c1"># requires-python = "&gt;=3.10"</span>
+<span class="c1"># dependencies = [</span>
+<span class="c1">#     "matplotlib",</span>
+<span class="c1">#     "numpy",</span>
+<span class="c1">#     "scikit-image",</span>
+<span class="c1">#     "scipy",</span>
+<span class="c1">#     "tifffile",</span>
+<span class="c1">#     "imagecodecs",</span>
+<span class="c1">#     "pandas",</span>
+<span class="c1">#     "seaborn",</span>
+<span class="c1">#     "bobiac_tools @ git+https://github.com/bobiac/bobiac-tools.git"</span>
+<span class="c1"># ]</span>
+<span class="c1"># ///</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="overview">
+<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<p>In this notebook, we will learn how to assess whether individual proteins are clustering.</p>
+<section id="dataset">
+<h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">Dataset<a class="headerlink" href="#dataset" title="Link to this heading">#</a></h3>
+<p>Our data consists of fluorescence images with five channels:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Channel</p></th>
+<th class="head"><p>Staining</p></th>
+<th class="head"><p>Staining Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Hoechst</p></td>
+<td><p>Nuclear stain</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Phalloidin</p></td>
+<td><p>F-actin stain; whole cell marker</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Protein A</p></td>
+<td><p>Spot pattern</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>Protein B</p></td>
+<td><p>Spot pattern</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>Protein C</p></td>
+<td><p>Spot pattern</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<hr class="docutils"/>
+<section id="importing-libraries">
+<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">0. Importing libraries<a class="headerlink" href="#importing-libraries" title="Link to this heading">#</a></h2>
+<div class="cell tag_teacher docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">skimage</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tifffile</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">bobiac_tools</span><span class="w"> </span><span class="kn">import</span> <span class="n">overlay_labels</span><span class="p">,</span> <span class="n">ripleys_l</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.spatial</span><span class="w"> </span><span class="kn">import</span> <span class="n">KDTree</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<hr class="docutils"/>
+<section id="load-image-mask-and-spot-table">
+<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">2. Load image, mask and spot table<a class="headerlink" href="#load-image-mask-and-spot-table" title="Link to this heading">#</a></h2>
+<p>First, we load all the data that we will need for this notebook.</p>
+<div class="cell tag_teacher docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">path_image</span> <span class="o">=</span> <span class="s2">"../../../_static/images/quant/05_spatial_stats/images/F01_202.tif"</span>
+<span class="n">path_mask</span> <span class="o">=</span> <span class="s2">"../../../_static/images/quant/05_spatial_stats/masks/F01_202w1.TIF"</span>
+<span class="n">path_spots</span> <span class="o">=</span> <span class="s2">"../../../_static/images/quant/05_spatial_stats/spots/F01_202_spots.csv"</span>
+
+<span class="n">image</span> <span class="o">=</span> <span class="n">tifffile</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">path_image</span><span class="p">)</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">tifffile</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">path_mask</span><span class="p">)</span>
+<span class="n">df_spots</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path_spots</span><span class="p">)</span>
+
+<span class="n">mask</span> <span class="o">=</span> <span class="n">skimage</span><span class="o">.</span><span class="n">segmentation</span><span class="o">.</span><span class="n">clear_border</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="visually-inspect-the-images-masks-and-spots">
+<h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">Visually inspect the images, masks and spots<a class="headerlink" href="#visually-inspect-the-images-masks-and-spots" title="Link to this heading">#</a></h3>
+<p>To be sure that the data we are working with is corrects, we visualise it here.</p>
+<div class="cell tag_teacher docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">overlay_labels</span><span class="p">(</span><span class="n">image</span><span class="p">[</span><span class="mi">2</span><span class="p">:,</span> <span class="p">:,</span> <span class="p">:])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/2c2017775eee90c835fa907abb2325ac819bd2def5e4ce6f34f8f079e9ca3d01.png" src="../../../_images/2c2017775eee90c835fa907abb2325ac819bd2def5e4ce6f34f8f079e9ca3d01.png"/>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 800x800 with 1 Axes&gt;, &lt;Axes: &gt;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_teacher docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">overlay_labels</span><span class="p">(</span><span class="n">label_mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">coordinates</span><span class="o">=</span><span class="n">df_spots</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/37df2bc4bc608b472375bd74f418d1a473b36c1cefb5d92636927644b2749e1e.png" src="../../../_images/37df2bc4bc608b472375bd74f418d1a473b36c1cefb5d92636927644b2749e1e.png"/>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 800x800 with 1 Axes&gt;,
+ &lt;Axes: title={'center': 'Segmentation overlay'}&gt;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Using the <code class="docutils literal notranslate"><span class="pre">focus</span></code> attribute in <code class="docutils literal notranslate"><span class="pre">overlay</span></code> we can zoom in to view single objects.</p>
+<div class="cell tag_teacher docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">overlay_labels</span><span class="p">(</span>
+    <span class="n">image</span><span class="o">=</span><span class="n">image</span><span class="p">[</span><span class="mi">2</span><span class="p">:,</span> <span class="p">:,</span> <span class="p">:],</span> <span class="n">label_mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">coordinates</span><span class="o">=</span><span class="n">df_spots</span><span class="p">,</span> <span class="n">focus_object</span><span class="o">=</span><span class="mi">63</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/aa97e3d75b8b7a32761ec3b5c018db89114fb552840f193a5ce6adfcd3b91367.png" src="../../../_images/aa97e3d75b8b7a32761ec3b5c018db89114fb552840f193a5ce6adfcd3b91367.png"/>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 800x800 with 1 Axes&gt;,
+ &lt;Axes: title={'center': 'Segmentation overlay'}&gt;)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<hr class="docutils"/>
+<section id="make-an-analysis-plan">
+<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">3. Make An Analysis Plan<a class="headerlink" href="#make-an-analysis-plan" title="Link to this heading">#</a></h2>
+<section id="question">
+<h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">Question<a class="headerlink" href="#question" title="Link to this heading">#</a></h3>
+<p>Are the spots clustered?</p>
+</section>
+<section id="approach">
+<h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">Approach<a class="headerlink" href="#approach" title="Link to this heading">#</a></h3>
+<p>To answer this question, we need to first define a reference for comparison. A common comparison is <strong>complete spatial randomness (CSR)</strong> (i.e., a fully random distribution of points). We can then define a metric that measures if a collection of points are clustered, and then use this metric to compare our dataset collection of points to a collection of random points.</p>
+</section>
+<section id="metric-for-clustering">
+<h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">Metric for Clustering<a class="headerlink" href="#metric-for-clustering" title="Link to this heading">#</a></h3>
+<p>Here, we use the <strong>average distance of each point to its nearest neighbour</strong> as the metric for clustering.</p>
+</section>
+<section id="workflow">
+<h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">Workflow<a class="headerlink" href="#workflow" title="Link to this heading">#</a></h3>
+<section id="generate-a-reference-for-comparison">
+<h4>1. Generate a reference for comparison<a class="headerlink" href="#generate-a-reference-for-comparison" title="Link to this heading">#</a></h4>
+<p>Randomly distributed set of points inside each cell’s cytoplasm. We will call this the <strong>random dataset</strong>, which we will compare to our <strong>protein dataset</strong>.</p>
+</section>
+<section id="measure-the-nearest-neighbor-distance">
+<h4>2. Measure the nearest neighbor distance<a class="headerlink" href="#measure-the-nearest-neighbor-distance" title="Link to this heading">#</a></h4>
+<p>For each spot, identify the closest spot within a cell and measure the distance.</p>
+</section>
+<section id="calculate-the-average-nearest-neighbour-distance">
+<h4>3. Calculate the average nearest neighbour distance<a class="headerlink" href="#calculate-the-average-nearest-neighbour-distance" title="Link to this heading">#</a></h4>
+<p>For each cell, calculate the average nearest neighbor distance for a spot.</p>
+</section>
+<section id="calculate-the-clark-evans-index">
+<h4>4. Calculate the Clark-Evans Index<a class="headerlink" href="#calculate-the-clark-evans-index" title="Link to this heading">#</a></h4>
+<p>The Clark-Evans Index is a ratio between the average nearest neighbour distances for the <strong>protein dataset</strong> and the <strong>random dataset</strong>. This index represents how random or clustered the dot protein distribution is.
+- <strong>Ratio = 1:</strong> The distribution is random
+- <strong>Ratio &gt; 1:</strong> The distribution is clusered</p>
+</section>
+<section id="calculate-the-p-value-of-the-clark-evans-index">
+<h4>5. Calculate the p-value of the Clark-Evans Index<a class="headerlink" href="#calculate-the-p-value-of-the-clark-evans-index" title="Link to this heading">#</a></h4>
+<p>Calculate the p-value using a comparison of multiple random patterns.</p>
+<p>To start, we focus on <strong>Protein A (Channel 2).</strong></p>
+</section>
+</section>
+</section>
+<hr class="docutils"/>
+<section id="assemble-the-protein-dataset-and-the-random-dataset">
+<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">4. Assemble the Protein Dataset and the Random Dataset<a class="headerlink" href="#assemble-the-protein-dataset-and-the-random-dataset" title="Link to this heading">#</a></h2>
+<section id="protein-dataset-map-spots-to-cells-and-count-spots-per-cell">
+<h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">Protein Dataset: Map spots to cells and count spots per cell<a class="headerlink" href="#protein-dataset-map-spots-to-cells-and-count-spots-per-cell" title="Link to this heading">#</a></h3>
+<p>We need to know how many points are within each cell to place the same number of random points in the next step. If we would generate more or less random points, we would artificially measure clustering or dispersion.</p>
+<p>First we generate a dataframe for the cells by using <code class="docutils literal notranslate"><span class="pre">regionprops_table</span></code>.</p>
+<div class="cell tag_teacher docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_cell</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="n">skimage</span><span class="o">.</span><span class="n">measure</span><span class="o">.</span><span class="n">regionprops_table</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="n">properties</span><span class="o">=</span><span class="p">[</span><span class="s2">"area"</span><span class="p">,</span> <span class="s2">"label"</span><span class="p">])</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_cell</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      area  label
+0   4669.0      2
+1   7866.0      3
+2   6945.0      4
+3   9735.0      5
+4   7749.0      6
+..     ...    ...
+72  9504.0     80
+73  2878.0     81
+74  1881.0     83
+75  4198.0     85
+76   441.0     90
+
+[77 rows x 2 columns]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Then we count the spots per cell (like in Exercise B: Nested Objects).</p>
+<div class="cell tag_teacher docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># map the cell label to the spots</span>
+<span class="n">df_spots</span><span class="p">[</span><span class="s2">"label_cell"</span><span class="p">]</span> <span class="o">=</span> <span class="n">mask</span><span class="p">[</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"y"</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">),</span> <span class="n">df_spots</span><span class="p">[</span><span class="s2">"x"</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)]</span>
+<span class="c1"># delete spots in the background</span>
+<span class="n">df_spots</span> <span class="o">=</span> <span class="n">df_spots</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"label_cell"</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
+<span class="c1"># count number of spots per cell label</span>
+<span class="n">mapping_spots</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_spots</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"channel"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">][</span><span class="s2">"label_cell"</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="p">)</span>
+<span class="c1"># add the cell count to the cell dataframe</span>
+<span class="n">df_cell</span> <span class="o">=</span> <span class="n">df_cell</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
+    <span class="n">mapping_spots</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s2">"label"</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s2">"label_cell"</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">"inner"</span>
+<span class="p">)</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s2">"label_cell"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_spots</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_cell</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       channel     y    x  label_cell
+28           0   119  984           2
+29           0    72  990           2
+30           0   122  950           2
+31           0   114  912           2
+32           0    92  960           2
+...        ...   ...  ...         ...
+12607        2  1029  764          85
+12670        2  1031  732          90
+12671        2  1038  755          90
+12672        2  1035  736          90
+12673        2  1038  768          90
+
+[10813 rows x 4 columns]
+      area  label  count
+0   4669.0      2     23
+1   7866.0      3     39
+2   6945.0      4     34
+3   9735.0      5     48
+4   7749.0      6     38
+..     ...    ...    ...
+72  9504.0     80     47
+73  2878.0     81     14
+74  1881.0     83      9
+75  4198.0     85     20
+76   441.0     90      2
+
+[77 rows x 3 columns]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_teacher docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">overlay_labels</span><span class="p">(</span><span class="n">label_mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="n">df_cell</span><span class="p">,</span> <span class="n">id_col</span><span class="o">=</span><span class="s2">"label"</span><span class="p">,</span> <span class="n">measurement_col</span><span class="o">=</span><span class="s2">"count"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/5380a8d94353620554183989fc00ac61edc3c9208713798664b52aded70f1004.png" src="../../../_images/5380a8d94353620554183989fc00ac61edc3c9208713798664b52aded70f1004.png"/>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 800x800 with 2 Axes&gt;, &lt;Axes: title={'center': 'count'}&gt;)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="random-dataset-generate-random-points">
+<h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">Random Dataset: Generate random points<a class="headerlink" href="#random-dataset-generate-random-points" title="Link to this heading">#</a></h3>
+<p>Let’s generate our first set of random points. To make it more transparent, let’s focus on a single cell first.</p>
+<div class="cell tag_teacher docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cell_id</span> <span class="o">=</span> <span class="mi">11</span>
+<span class="n">spots</span> <span class="o">=</span> <span class="n">df_spots</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"channel"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"label_cell"</span><span class="p">]</span> <span class="o">==</span> <span class="n">cell_id</span><span class="p">)][</span>
+    <span class="p">[</span><span class="s2">"y"</span><span class="p">,</span> <span class="s2">"x"</span><span class="p">]</span>
+<span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+
+<span class="n">overlay_labels</span><span class="p">(</span><span class="n">label_mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">coordinates</span><span class="o">=</span><span class="n">spots</span><span class="p">,</span> <span class="n">focus_object</span><span class="o">=</span><span class="n">cell_id</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/b32a9b14aa2e220678fe9afe982dbc0b36d3c6afaacb4d85a22743671dfae9b7.png" src="../../../_images/b32a9b14aa2e220678fe9afe982dbc0b36d3c6afaacb4d85a22743671dfae9b7.png"/>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 800x587.05 with 1 Axes&gt;,
+ &lt;Axes: title={'center': 'Segmentation overlay'}&gt;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can use a pre-written function to generate the random points. In short, what it does is:</p>
+<ul class="simple">
+<li><p>It calculates the bounding box of the cell (the box that touches the edge of the cell at every side).</p></li>
+<li><p>It draws random points inside that box and tests if they fall within the cell.</p>
+<ul>
+<li><p>If not, the point is discarded.</p></li>
+<li><p>If it is within the cell it is kept.
+This sequence is repeated until the cell contains the specified number of points.</p></li>
+</ul>
+</li>
+</ul>
+<p>This procedure is necessary since cells have irregular shapes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># or use:</span>
+<span class="c1"># from bobiac_tools import random_points_in_mask</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">random_points_in_mask</span><span class="p">(</span><span class="n">mask</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">cell_label</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Generate n random points uniformly distributed within a labeled cell region.</span>
+
+<span class="sd">    Points are placed continuously using rejection sampling:</span>
+<span class="sd">    candidate points are drawn uniformly from the bounding box of the cell and</span>
+<span class="sd">    accepted only if they fall within the cell mask. This correctly handles</span>
+<span class="sd">    irregular cell shapes and serves as a null model for Complete Spatial</span>
+<span class="sd">    Randomness (CSR).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    mask : 2D numpy array</span>
+<span class="sd">        Label mask where each cell is identified by a unique integer ID</span>
+<span class="sd">        and background is 0.</span>
+<span class="sd">    cell_label : int</span>
+<span class="sd">        ID of the cell to sample within.</span>
+<span class="sd">    n : int</span>
+<span class="sd">        Number of random points to generate.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    points : (n, 2) numpy array</span>
+<span class="sd">        Random point coordinates in (row, col) / (y, x) order.</span>
+<span class="sd">    """</span>
+    <span class="n">ys</span><span class="p">,</span> <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">mask</span> <span class="o">==</span> <span class="n">cell_label</span><span class="p">)</span>
+    <span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span> <span class="o">=</span> <span class="n">ys</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">ys</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+    <span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span> <span class="o">=</span> <span class="n">xs</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">xs</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+    <span class="n">points</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">mask</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">y</span><span class="p">)),</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">x</span><span class="p">))]</span> <span class="o">==</span> <span class="n">cell_label</span><span class="p">:</span>
+            <span class="n">points</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">points</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Look up how many points are in our cell of interest.</p>
+<div class="cell tag_teacher docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_points</span> <span class="o">=</span> <span class="n">df_cell</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_cell</span><span class="p">[</span><span class="s2">"label"</span><span class="p">]</span> <span class="o">==</span> <span class="n">cell_id</span><span class="p">][</span><span class="s2">"count"</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">n_points</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>89
+</pre></div>
+</div>
+</div>
+</div>
+<p>Create the same number of random points inside that cell.</p>
+<div class="cell tag_teacher docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rnd_points</span> <span class="o">=</span> <span class="n">random_points_in_mask</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="n">cell_label</span><span class="o">=</span><span class="n">cell_id</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="n">n_points</span><span class="p">)</span>
+<span class="n">rnd_points</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(89, 2)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_teacher docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">overlay_labels</span><span class="p">(</span><span class="n">label_mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">coordinates</span><span class="o">=</span><span class="p">[</span><span class="n">spots</span><span class="p">,</span> <span class="n">rnd_points</span><span class="p">],</span> <span class="n">focus_object</span><span class="o">=</span><span class="n">cell_id</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/7ebeeda82f4a6bddfe9c2c37a578eb674e4ebb872d0e024260c0755ae146e1bc.png" src="../../../_images/7ebeeda82f4a6bddfe9c2c37a578eb674e4ebb872d0e024260c0755ae146e1bc.png"/>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 800x587.05 with 1 Axes&gt;,
+ &lt;Axes: title={'center': 'Segmentation overlay'}&gt;)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<hr class="docutils"/>
+<section id="calculate-nearest-neighbor-distances">
+<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">5. Calculate Nearest Neighbor Distances<a class="headerlink" href="#calculate-nearest-neighbor-distances" title="Link to this heading">#</a></h2>
+<section id="identifying-neighbors-kd-trees">
+<h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">Identifying Neighbors: KD Trees<a class="headerlink" href="#identifying-neighbors-kd-trees" title="Link to this heading">#</a></h3>
+<p>Now that we have two sets of points, our protein dataset and the random dataset as a control, we can find the nearest neighbour of every point and calculate the distance. To find neighbors, we will use a <code class="docutils literal notranslate"><span class="pre">KD</span> <span class="pre">tree</span></code>, a spatial partitioning algorithm that identities neighbours very effectively.</p>
+<p>The syntax for the KD tree function is a bit strange at first:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">KDtree</span><span class="p">(</span><span class="n">points_A</span><span class="p">)</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">points_B</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">k</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">KDTree(points_A)</span></code> builds the KD tree data structure.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.query(points_B,</span> <span class="pre">k=k)</span></code> computes the distance to the nearest neighbors. It measures the distance from every point in <code class="docutils literal notranslate"><span class="pre">points_B</span></code> to the <code class="docutils literal notranslate"><span class="pre">k</span></code> nearest neighbours in <code class="docutils literal notranslate"><span class="pre">points_A</span></code>. If the two point sets are the same (like in our case), the first distance will be 0, since it is the distance from each point to itself.</p></li>
+</ul>
+<div class="cell tag_teacher docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># the query below returns an array of distances and an array of indices. We don't need the indicis so we assign it to the variable `_`.</span>
+<span class="n">dist_spots</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">KDTree</span><span class="p">(</span><span class="n">spots</span><span class="p">)</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">spots</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dist_spots</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 0.         11.40175425]
+ [ 0.          5.09901951]
+ [ 0.          8.24621125]
+ [ 0.          9.8488578 ]
+ [ 0.          6.        ]
+ [ 0.          8.06225775]
+ [ 0.          5.83095189]
+ [ 0.          6.32455532]
+ [ 0.          4.47213595]
+ [ 0.         13.41640786]
+ [ 0.          3.16227766]
+ [ 0.          9.89949494]
+ [ 0.         10.81665383]
+ [ 0.         14.86606875]
+ [ 0.          6.08276253]
+ [ 0.          7.        ]
+ [ 0.          8.60232527]
+ [ 0.          5.09901951]
+ [ 0.          2.82842712]
+ [ 0.          9.8488578 ]
+ [ 0.          8.94427191]
+ [ 0.          3.16227766]
+ [ 0.          9.48683298]
+ [ 0.         13.15294644]
+ [ 0.         10.19803903]
+ [ 0.         15.5241747 ]
+ [ 0.         11.18033989]
+ [ 0.          8.24621125]
+ [ 0.          9.8488578 ]
+ [ 0.         11.40175425]
+ [ 0.          7.28010989]
+ [ 0.          6.08276253]
+ [ 0.          8.24621125]
+ [ 0.         10.19803903]
+ [ 0.          4.47213595]
+ [ 0.          3.60555128]
+ [ 0.          3.16227766]
+ [ 0.          5.83095189]
+ [ 0.          6.08276253]
+ [ 0.          5.        ]
+ [ 0.          2.82842712]
+ [ 0.          4.47213595]
+ [ 0.          5.09901951]
+ [ 0.         10.81665383]
+ [ 0.          5.09901951]
+ [ 0.          8.54400375]
+ [ 0.          8.        ]
+ [ 0.          8.06225775]
+ [ 0.          3.60555128]
+ [ 0.         15.03329638]
+ [ 0.          8.48528137]
+ [ 0.         11.66190379]
+ [ 0.          4.12310563]
+ [ 0.          2.82842712]
+ [ 0.          3.16227766]
+ [ 0.          5.        ]
+ [ 0.          8.06225775]
+ [ 0.          4.47213595]
+ [ 0.          5.09901951]
+ [ 0.          5.        ]
+ [ 0.          2.82842712]
+ [ 0.         12.80624847]
+ [ 0.          2.82842712]
+ [ 0.         13.41640786]
+ [ 0.          8.06225775]
+ [ 0.         11.18033989]
+ [ 0.          4.12310563]
+ [ 0.          5.09901951]
+ [ 0.          3.        ]
+ [ 0.          9.21954446]
+ [ 0.          8.60232527]
+ [ 0.         13.60147051]
+ [ 0.          9.8488578 ]
+ [ 0.          5.        ]
+ [ 0.          5.        ]
+ [ 0.          3.16227766]
+ [ 0.          3.16227766]
+ [ 0.          4.47213595]
+ [ 0.          8.06225775]
+ [ 0.          6.32455532]
+ [ 0.         11.18033989]
+ [ 0.         10.63014581]
+ [ 0.          5.        ]
+ [ 0.          8.54400375]
+ [ 0.          9.48683298]
+ [ 0.          2.82842712]
+ [ 0.         15.5241747 ]
+ [ 0.          3.60555128]
+ [ 0.          3.        ]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>We do the same for the random spots.</p>
+<div class="cell tag_teacher docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># the query below returns an array of distances and an array of indices. We don't need the indicis so we assign it to the variable `_`.</span>
+<span class="n">dist_rnd</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">KDTree</span><span class="p">(</span><span class="n">rnd_points</span><span class="p">)</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">rnd_points</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dist_rnd</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 0.          7.58375007]
+ [ 0.          7.51444025]
+ [ 0.          5.46539317]
+ [ 0.          4.44426812]
+ [ 0.          3.95007682]
+ [ 0.          5.04051509]
+ [ 0.         12.85178584]
+ [ 0.          5.46539317]
+ [ 0.         38.2893459 ]
+ [ 0.          5.87427849]
+ [ 0.          7.68525218]
+ [ 0.          4.96584377]
+ [ 0.          5.58648416]
+ [ 0.          5.87427849]
+ [ 0.          7.07728298]
+ [ 0.          6.76721058]
+ [ 0.          5.57023495]
+ [ 0.          8.51824679]
+ [ 0.          1.48002027]
+ [ 0.          3.95007682]
+ [ 0.         10.02372439]
+ [ 0.          3.80861511]
+ [ 0.          4.65501927]
+ [ 0.          4.89411638]
+ [ 0.          1.3033204 ]
+ [ 0.          6.49144589]
+ [ 0.         14.15598874]
+ [ 0.          3.74282736]
+ [ 0.          5.57023495]
+ [ 0.          9.52156343]
+ [ 0.          1.59261741]
+ [ 0.          6.05428187]
+ [ 0.          4.14488423]
+ [ 0.          9.87484208]
+ [ 0.         21.48087996]
+ [ 0.          5.94908018]
+ [ 0.          3.74282736]
+ [ 0.          3.2141619 ]
+ [ 0.         10.02372439]
+ [ 0.          6.90931503]
+ [ 0.          2.67855554]
+ [ 0.          8.86517505]
+ [ 0.         13.10134246]
+ [ 0.         14.6808373 ]
+ [ 0.          7.07728298]
+ [ 0.          7.51444025]
+ [ 0.          4.89411638]
+ [ 0.          6.46675419]
+ [ 0.          3.80861511]
+ [ 0.          5.29282784]
+ [ 0.          2.67855554]
+ [ 0.          4.14488423]
+ [ 0.          5.65667389]
+ [ 0.         11.99135009]
+ [ 0.         12.89646542]
+ [ 0.          4.65501927]
+ [ 0.         21.18106701]
+ [ 0.         12.86099506]
+ [ 0.          6.60149762]
+ [ 0.          5.04051509]
+ [ 0.          6.90931503]
+ [ 0.          5.85688199]
+ [ 0.         10.90878051]
+ [ 0.         12.24650605]
+ [ 0.          6.01289271]
+ [ 0.          1.59261741]
+ [ 0.          7.61452659]
+ [ 0.          6.49144589]
+ [ 0.         14.38559426]
+ [ 0.          6.27306801]
+ [ 0.          6.27306801]
+ [ 0.          6.02663158]
+ [ 0.         12.7785579 ]
+ [ 0.          1.3033204 ]
+ [ 0.          6.01289271]
+ [ 0.          1.48002027]
+ [ 0.         14.9862159 ]
+ [ 0.          3.2141619 ]
+ [ 0.          7.06429705]
+ [ 0.          8.19868477]
+ [ 0.          7.80687806]
+ [ 0.          5.87734528]
+ [ 0.          4.00038941]
+ [ 0.          7.53736036]
+ [ 0.          4.00038941]
+ [ 0.          5.87734528]
+ [ 0.         13.94530164]
+ [ 0.          4.50765906]
+ [ 0.          5.94908018]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<hr class="docutils"/>
+<section id="calculate-the-clark-evans-index-for-the-protein-and-random-datasets">
+<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">6. Calculate the Clark-Evans Index for the protein and random datasets<a class="headerlink" href="#calculate-the-clark-evans-index-for-the-protein-and-random-datasets" title="Link to this heading">#</a></h2>
+<p>Now, let’s calculate the mean nearest neighbour distances for both spot patterns and compare them using the Clark-Evans Index.</p>
+<div class="cell tag_teacher docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spot_dist_avg</span> <span class="o">=</span> <span class="n">dist_spots</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">rnd_dist_avg</span> <span class="o">=</span> <span class="n">dist_rnd</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Mean NN distance spots:"</span><span class="p">,</span> <span class="n">spot_dist_avg</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Mean NN distance random:"</span><span class="p">,</span> <span class="n">rnd_dist_avg</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Clark-Evans index (ratio):"</span><span class="p">,</span> <span class="n">spot_dist_avg</span> <span class="o">/</span> <span class="n">rnd_dist_avg</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean NN distance spots: 7.382794742295512
+Mean NN distance random: 7.396919620418393
+Clark-Evans index (ratio): 0.9980904377973919
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<hr class="docutils"/>
+<section id="repeat-steps-4-6-with-multiple-random-patterns">
+<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">7. Repeat Steps 4-6 with Multiple Random Patterns<a class="headerlink" href="#repeat-steps-4-6-with-multiple-random-patterns" title="Link to this heading">#</a></h2>
+<section id="concept">
+<h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">Concept<a class="headerlink" href="#concept" title="Link to this heading">#</a></h3>
+<p>A single random pattern as a control dataset is not a reliable comparison because a random pattern could be clustered by chance. To account for this possibility, we repeat this procedure with additional random patterns.</p>
+<div class="cell tag_teacher docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_repeats</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="n">list_rnd_dist</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># this list holds the average NN distances of the random points for each run</span>
+
+<span class="k">for</span> <span class="n">_i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_repeats</span><span class="p">):</span>
+    <span class="n">rnd_points</span> <span class="o">=</span> <span class="n">random_points_in_mask</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="n">cell_label</span><span class="o">=</span><span class="n">cell_id</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="n">n_points</span><span class="p">)</span>
+    <span class="n">dist_rnd</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">KDTree</span><span class="p">(</span><span class="n">rnd_points</span><span class="p">)</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">rnd_points</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">rnd_dist_avg</span> <span class="o">=</span> <span class="n">dist_rnd</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">list_rnd_dist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">rnd_dist_avg</span><span class="p">)</span>
+
+<span class="n">rnd_dist_avg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">list_rnd_dist</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">clark_evans</span> <span class="o">=</span> <span class="n">spot_dist_avg</span> <span class="o">/</span> <span class="n">rnd_dist_avg</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Mean NN distance spots:"</span><span class="p">,</span> <span class="n">spot_dist_avg</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Mean NN distance random (</span><span class="si">{</span><span class="n">n_repeats</span><span class="si">}</span><span class="s2"> runs):"</span><span class="p">,</span> <span class="n">rnd_dist_avg</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Clark-Evans index (</span><span class="si">{</span><span class="n">n_repeats</span><span class="si">}</span><span class="s2"> runs):"</span><span class="p">,</span> <span class="n">clark_evans</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean NN distance spots: 7.382794742295512
+Mean NN distance random (10 runs): 7.551103415323377
+Clark-Evans index (10 runs): 0.9777107180539578
+</pre></div>
+</div>
+</div>
+</div>
+<p>Can we trust this metric now? A little more, but it would be great to have a p-value. We can calculate the p-value by asking ‘In what fraction of the runs was the observed NN distance smaller than random?’.</p>
+<div class="cell tag_teacher docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">runs_rnd_smaller</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">list_rnd_dist</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">spot_dist_avg</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">runs_rnd_smaller</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[False False False False False  True  True  True False False]
+</pre></div>
+</div>
+</div>
+</div>
+<p>The fraction of <code class="docutils literal notranslate"><span class="pre">True</span></code>s in this list is our p-value.</p>
+<ul class="simple">
+<li><p>Clustered spots → NND_observed is small → most simulations produce a larger NND → few simulations have NND_sim ≤ NND_obs → p close to 0</p></li>
+<li><p>Random spots → NND_observed is typical → roughly half the simulations fall below it → p ≈ 0.5</p></li>
+</ul>
+<div class="cell tag_teacher docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pval</span> <span class="o">=</span> <span class="n">runs_rnd_smaller</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"p-value for CE index:"</span><span class="p">,</span> <span class="n">pval</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>p-value for CE index: 0.3
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<hr class="docutils"/>
+<section id="repeat-measurements-for-all-cells">
+<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">8. Repeat Measurements for All Cells<a class="headerlink" href="#repeat-measurements-for-all-cells" title="Link to this heading">#</a></h2>
+<p>So far, we have focussed on one single cell. Of course, we need to analyse all cells.</p>
+<section id="exercise-summarise-the-per-cell-clustering-analysis-as-a-function">
+<h3 style="color: black; background-color: rgb(252,185,118); padding: 3px; border-radius: 5px;">✍️ Exercise: Summarise the per-cell clustering analysis as a function<a class="headerlink" href="#exercise-summarise-the-per-cell-clustering-analysis-as-a-function" title="Link to this heading">#</a></h3>
+<p>To make processing individual cells simpler, we can summarise our above analysis in a function called <code class="docutils literal notranslate"><span class="pre">nn_dist</span></code>.
+The function should have the following features:</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p>spots : (n, 2) numpy array
+Spot coordinates in (row, col) / (y, x) order.</p></li>
+<li><p>mask : 2D numpy array
+Label mask where each cell is identified by a unique integer ID.</p></li>
+<li><p>cell_id : int
+ID of the cell in mask that spots belong to.</p></li>
+<li><p>n_repeats : int
+Number of CSR simulations to run.</p></li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul class="simple">
+<li><p>spot_dist_avg : float
+Mean nearest-neighbor distance of the observed spots.</p></li>
+<li><p>rnd_dist_avg : float
+Mean of the per-simulation mean nearest-neighbor distances under CSR.</p></li>
+<li><p>clark_evans : float
+Clark-Evans index: spot_dist_avg / rnd_dist_avg.</p></li>
+<li><p>p_value : float
+Fraction of CSR simulations with mean NND &lt;= spot_dist_avg.</p></li>
+</ul>
+<div class="cell tag_teacher docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># or use:</span>
+<span class="c1"># from bobiac_tools import nn_dist</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">nn_dist</span><span class="p">(</span>
+    <span class="n">spots</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">mask</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">cell_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">n_repeats</span><span class="p">:</span> <span class="nb">int</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Test whether spots in a cell are randomly distributed using nearest-neighbor</span>
+<span class="sd">    distances and a Monte Carlo simulation of Complete Spatial Randomness (CSR).</span>
+
+<span class="sd">    For each simulation run, n_repeats random point patterns are generated inside</span>
+<span class="sd">    the cell mask and their mean nearest-neighbor distance is computed. The</span>
+<span class="sd">    Clark-Evans index (observed / random NND) and a Monte Carlo p-value are</span>
+<span class="sd">    derived from this null distribution.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    spots : (n, 2) numpy array</span>
+<span class="sd">        Spot coordinates in (row, col) / (y, x) order.</span>
+<span class="sd">    mask : 2D numpy array</span>
+<span class="sd">        Label mask where each cell is identified by a unique integer ID.</span>
+<span class="sd">    cell_id : int</span>
+<span class="sd">        ID of the cell in mask that spots belong to.</span>
+<span class="sd">    n_repeats : int</span>
+<span class="sd">        Number of CSR simulations to run.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    spot_dist_avg : float</span>
+<span class="sd">        Mean nearest-neighbor distance of the observed spots.</span>
+<span class="sd">    rnd_dist_avg : float</span>
+<span class="sd">        Mean of the per-simulation mean nearest-neighbor distances under CSR.</span>
+<span class="sd">    clark_evans : float</span>
+<span class="sd">        Clark-Evans index: spot_dist_avg / rnd_dist_avg.</span>
+<span class="sd">        &lt; 1 indicates clustering, &gt; 1 indicates dispersion.</span>
+<span class="sd">    p_value : float</span>
+<span class="sd">        Fraction of CSR simulations with mean NND &lt;= spot_dist_avg.</span>
+<span class="sd">        Small values (&lt; 0.05) indicate significant clustering.</span>
+<span class="sd">    """</span>
+    <span class="n">n_points</span> <span class="o">=</span> <span class="n">spots</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="n">dist_spots</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">KDTree</span><span class="p">(</span><span class="n">spots</span><span class="p">)</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">spots</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">spot_dist_avg</span> <span class="o">=</span> <span class="n">dist_spots</span><span class="p">[</span>
+        <span class="p">:,</span> <span class="mi">1</span>
+    <span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>  <span class="c1"># k=2: column 0 is self, column 1 is nearest neighbor</span>
+
+    <span class="n">list_rnd_dist</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">_i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_repeats</span><span class="p">):</span>
+        <span class="n">rnd_points</span> <span class="o">=</span> <span class="n">random_points_in_mask</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="n">cell_label</span><span class="o">=</span><span class="n">cell_id</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="n">n_points</span><span class="p">)</span>
+        <span class="n">dist_rnd</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">KDTree</span><span class="p">(</span><span class="n">rnd_points</span><span class="p">)</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">rnd_points</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">rnd_dist_avg</span> <span class="o">=</span> <span class="n">dist_rnd</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+        <span class="n">list_rnd_dist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">rnd_dist_avg</span><span class="p">)</span>
+
+    <span class="n">rnd_dist_avg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">list_rnd_dist</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">clark_evans</span> <span class="o">=</span> <span class="n">spot_dist_avg</span> <span class="o">/</span> <span class="n">rnd_dist_avg</span>
+    <span class="n">pval</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">list_rnd_dist</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">spot_dist_avg</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="n">spot_dist_avg</span><span class="p">,</span>
+        <span class="n">rnd_dist_avg</span><span class="p">,</span>
+        <span class="n">clark_evans</span><span class="p">,</span>
+        <span class="n">pval</span><span class="p">,</span>
+    <span class="p">)</span>
+
+
+<span class="n">nn_dist</span><span class="p">(</span><span class="n">spots</span><span class="p">,</span> <span class="n">mask</span><span class="p">,</span> <span class="n">cell_id</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(np.float64(7.382794742295512),
+ np.float64(7.50128551459793),
+ np.float64(0.9842039378354779),
+ np.float64(0.42))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_teacher docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">channel</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">n_repeats</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df_cell</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="c1"># get the spots for channel 0 and the current cell</span>
+    <span class="n">spots_in_cell</span> <span class="o">=</span> <span class="n">df_spots</span><span class="p">[</span>
+        <span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"label_cell"</span><span class="p">]</span> <span class="o">==</span> <span class="n">row</span><span class="p">[</span><span class="s2">"label"</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"channel"</span><span class="p">]</span> <span class="o">==</span> <span class="n">channel</span><span class="p">)</span>
+    <span class="p">][[</span><span class="s2">"y"</span><span class="p">,</span> <span class="s2">"x"</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span>
+    <span class="c1"># calculate the NN distance, Clark-Evans index and p-value for that cell</span>
+    <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn_dist</span><span class="p">(</span><span class="n">spots_in_cell</span><span class="p">,</span> <span class="n">mask</span><span class="p">,</span> <span class="n">row</span><span class="p">[</span><span class="s2">"label"</span><span class="p">],</span> <span class="n">n_repeats</span><span class="o">=</span><span class="n">n_repeats</span><span class="p">))</span>
+
+<span class="n">df_cell</span><span class="p">[[</span><span class="s2">"nnd_observed"</span><span class="p">,</span> <span class="s2">"nnd_random"</span><span class="p">,</span> <span class="s2">"clark_evans"</span><span class="p">,</span> <span class="s2">"p_value"</span><span class="p">]]</span> <span class="o">=</span> <span class="n">results</span>
+<span class="n">df_cell</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>area</th>
+<th>label</th>
+<th>count</th>
+<th>nnd_observed</th>
+<th>nnd_random</th>
+<th>clark_evans</th>
+<th>p_value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>4669.0</td>
+<td>2</td>
+<td>23</td>
+<td>7.542691</td>
+<td>8.424651</td>
+<td>0.895312</td>
+<td>0.3</td>
+</tr>
+<tr>
+<th>1</th>
+<td>7866.0</td>
+<td>3</td>
+<td>39</td>
+<td>7.040435</td>
+<td>7.905550</td>
+<td>0.890569</td>
+<td>0.1</td>
+</tr>
+<tr>
+<th>2</th>
+<td>6945.0</td>
+<td>4</td>
+<td>34</td>
+<td>7.250944</td>
+<td>7.570875</td>
+<td>0.957742</td>
+<td>0.2</td>
+</tr>
+<tr>
+<th>3</th>
+<td>9735.0</td>
+<td>5</td>
+<td>48</td>
+<td>7.201960</td>
+<td>7.660002</td>
+<td>0.940203</td>
+<td>0.2</td>
+</tr>
+<tr>
+<th>4</th>
+<td>7749.0</td>
+<td>6</td>
+<td>38</td>
+<td>7.557600</td>
+<td>7.768490</td>
+<td>0.972853</td>
+<td>0.2</td>
+</tr>
+<tr>
+<th>...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<th>72</th>
+<td>9504.0</td>
+<td>80</td>
+<td>47</td>
+<td>7.071116</td>
+<td>7.751189</td>
+<td>0.912262</td>
+<td>0.1</td>
+</tr>
+<tr>
+<th>73</th>
+<td>2878.0</td>
+<td>81</td>
+<td>14</td>
+<td>7.357530</td>
+<td>9.123912</td>
+<td>0.806401</td>
+<td>0.1</td>
+</tr>
+<tr>
+<th>74</th>
+<td>1881.0</td>
+<td>83</td>
+<td>9</td>
+<td>5.538022</td>
+<td>9.109394</td>
+<td>0.607946</td>
+<td>0.0</td>
+</tr>
+<tr>
+<th>75</th>
+<td>4198.0</td>
+<td>85</td>
+<td>20</td>
+<td>7.137660</td>
+<td>8.431323</td>
+<td>0.846565</td>
+<td>0.1</td>
+</tr>
+<tr>
+<th>76</th>
+<td>441.0</td>
+<td>90</td>
+<td>2</td>
+<td>21.377558</td>
+<td>14.779611</td>
+<td>1.446422</td>
+<td>0.8</td>
+</tr>
+</tbody>
+</table>
+<p>77 rows × 7 columns</p>
+</div></div></div>
+</div>
+<div class="cell tag_teacher docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_cell</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_cell</span><span class="p">[</span><span class="s2">"label"</span><span class="p">]</span> <span class="o">==</span> <span class="n">cell_id</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>area</th>
+<th>label</th>
+<th>count</th>
+<th>nnd_observed</th>
+<th>nnd_random</th>
+<th>clark_evans</th>
+<th>p_value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>8</th>
+<td>17915.0</td>
+<td>11</td>
+<td>89</td>
+<td>7.382795</td>
+<td>7.442827</td>
+<td>0.991934</td>
+<td>0.5</td>
+</tr>
+</tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell tag_teacher docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span>
+    <span class="n">df_cell</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">"clark_evans"</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">df_cell</span><span class="p">[</span><span class="s2">"clark_evans"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">c</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x7fa2679185c0&gt;
+</pre></div>
+</div>
+<img alt="../../../_images/f0e8f11359222a9b9c07a5dbad29e3b0714a6ad761b53b5e44dbf264892fb2fb.png" src="../../../_images/f0e8f11359222a9b9c07a5dbad29e3b0714a6ad761b53b5e44dbf264892fb2fb.png"/>
+</div>
+</div>
+<div class="cell tag_teacher docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">overlay_labels</span><span class="p">(</span>
+    <span class="n">image</span><span class="o">=</span><span class="n">image</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:],</span>
+    <span class="n">label_mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span>
+    <span class="n">df</span><span class="o">=</span><span class="n">df_cell</span><span class="p">,</span>
+    <span class="n">id_col</span><span class="o">=</span><span class="s2">"label"</span><span class="p">,</span>
+    <span class="n">measurement_col</span><span class="o">=</span><span class="s2">"clark_evans"</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/df737406bccaf23b27989a21c23047398442a6e49a1a6329e402c1fd3fde9392.png" src="../../../_images/df737406bccaf23b27989a21c23047398442a6e49a1a6329e402c1fd3fde9392.png"/>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 800x800 with 2 Axes&gt;, &lt;Axes: title={'center': 'clark_evans'}&gt;)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<hr class="docutils"/>
+<section id="perform-the-same-calculation-on-the-other-channels">
+<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">9. Perform the Same Calculation on the Other Channels<a class="headerlink" href="#perform-the-same-calculation-on-the-other-channels" title="Link to this heading">#</a></h2>
+<p>Let’s use the tools we developed above to see if the spots in the other channels.</p>
+<p><strong>Channel 1</strong></p>
+<div class="cell tag_teacher docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">channel</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">n_repeats</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df_cell</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="c1"># get the spots for channel 0 and the current cell</span>
+    <span class="n">spots_in_cell</span> <span class="o">=</span> <span class="n">df_spots</span><span class="p">[</span>
+        <span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"label_cell"</span><span class="p">]</span> <span class="o">==</span> <span class="n">row</span><span class="p">[</span><span class="s2">"label"</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"channel"</span><span class="p">]</span> <span class="o">==</span> <span class="n">channel</span><span class="p">)</span>
+    <span class="p">][[</span><span class="s2">"y"</span><span class="p">,</span> <span class="s2">"x"</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span>
+    <span class="c1"># calculate the NN distance, Clark-Evans index and p-value for that cell</span>
+    <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn_dist</span><span class="p">(</span><span class="n">spots_in_cell</span><span class="p">,</span> <span class="n">mask</span><span class="p">,</span> <span class="n">row</span><span class="p">[</span><span class="s2">"label"</span><span class="p">],</span> <span class="n">n_repeats</span><span class="o">=</span><span class="n">n_repeats</span><span class="p">))</span>
+
+<span class="n">df_cell</span><span class="p">[[</span><span class="s2">"nnd_observed"</span><span class="p">,</span> <span class="s2">"nnd_random"</span><span class="p">,</span> <span class="s2">"clark_evans"</span><span class="p">,</span> <span class="s2">"p_value"</span><span class="p">]]</span> <span class="o">=</span> <span class="n">results</span>
+<span class="n">df_cell</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>area</th>
+<th>label</th>
+<th>count</th>
+<th>nnd_observed</th>
+<th>nnd_random</th>
+<th>clark_evans</th>
+<th>p_value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>4669.0</td>
+<td>2</td>
+<td>23</td>
+<td>3.854920</td>
+<td>4.464964</td>
+<td>0.863371</td>
+<td>0.0</td>
+</tr>
+<tr>
+<th>1</th>
+<td>7866.0</td>
+<td>3</td>
+<td>39</td>
+<td>4.270026</td>
+<td>5.349347</td>
+<td>0.798233</td>
+<td>0.0</td>
+</tr>
+<tr>
+<th>2</th>
+<td>6945.0</td>
+<td>4</td>
+<td>34</td>
+<td>4.445110</td>
+<td>4.870329</td>
+<td>0.912692</td>
+<td>0.2</td>
+</tr>
+<tr>
+<th>3</th>
+<td>9735.0</td>
+<td>5</td>
+<td>48</td>
+<td>4.891864</td>
+<td>5.361681</td>
+<td>0.912375</td>
+<td>0.0</td>
+</tr>
+<tr>
+<th>4</th>
+<td>7749.0</td>
+<td>6</td>
+<td>38</td>
+<td>4.489295</td>
+<td>5.015529</td>
+<td>0.895079</td>
+<td>0.0</td>
+</tr>
+<tr>
+<th>...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<th>72</th>
+<td>9504.0</td>
+<td>80</td>
+<td>47</td>
+<td>4.367094</td>
+<td>5.158174</td>
+<td>0.846636</td>
+<td>0.0</td>
+</tr>
+<tr>
+<th>73</th>
+<td>2878.0</td>
+<td>81</td>
+<td>14</td>
+<td>3.344642</td>
+<td>3.484418</td>
+<td>0.959885</td>
+<td>0.3</td>
+</tr>
+<tr>
+<th>74</th>
+<td>1881.0</td>
+<td>83</td>
+<td>9</td>
+<td>2.414088</td>
+<td>3.136460</td>
+<td>0.769686</td>
+<td>0.0</td>
+</tr>
+<tr>
+<th>75</th>
+<td>4198.0</td>
+<td>85</td>
+<td>20</td>
+<td>3.384426</td>
+<td>4.322734</td>
+<td>0.782936</td>
+<td>0.0</td>
+</tr>
+<tr>
+<th>76</th>
+<td>441.0</td>
+<td>90</td>
+<td>2</td>
+<td>1.696659</td>
+<td>1.594354</td>
+<td>1.064167</td>
+<td>0.8</td>
+</tr>
+</tbody>
+</table>
+<p>77 rows × 7 columns</p>
+</div></div></div>
+</div>
+<div class="cell tag_teacher docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span>
+    <span class="n">df_cell</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">"clark_evans"</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">df_cell</span><span class="p">[</span><span class="s2">"clark_evans"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">c</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x7fa26791a690&gt;
+</pre></div>
+</div>
+<img alt="../../../_images/800100ac9d1676e698bf32870cd6ec3fa9655efb5cec8706c93e0e0e2e1c2a37.png" src="../../../_images/800100ac9d1676e698bf32870cd6ec3fa9655efb5cec8706c93e0e0e2e1c2a37.png"/>
+</div>
+</div>
+<div class="cell tag_teacher docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">overlay_labels</span><span class="p">(</span>
+    <span class="n">image</span><span class="o">=</span><span class="n">image</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:],</span>
+    <span class="n">label_mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span>
+    <span class="n">df</span><span class="o">=</span><span class="n">df_cell</span><span class="p">,</span>
+    <span class="n">id_col</span><span class="o">=</span><span class="s2">"label"</span><span class="p">,</span>
+    <span class="n">measurement_col</span><span class="o">=</span><span class="s2">"clark_evans"</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/9477a419b6f652db3f0b55a2b2fa4093267662017423ea2b3f57f2c88df9c142.png" src="../../../_images/9477a419b6f652db3f0b55a2b2fa4093267662017423ea2b3f57f2c88df9c142.png"/>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 800x800 with 2 Axes&gt;, &lt;Axes: title={'center': 'clark_evans'}&gt;)
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Channel 2</strong></p>
+<div class="cell tag_teacher docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">channel</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">n_repeats</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df_cell</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="c1"># get the spots for channel 0 and the current cell</span>
+    <span class="n">spots_in_cell</span> <span class="o">=</span> <span class="n">df_spots</span><span class="p">[</span>
+        <span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"label_cell"</span><span class="p">]</span> <span class="o">==</span> <span class="n">row</span><span class="p">[</span><span class="s2">"label"</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"channel"</span><span class="p">]</span> <span class="o">==</span> <span class="n">channel</span><span class="p">)</span>
+    <span class="p">][[</span><span class="s2">"y"</span><span class="p">,</span> <span class="s2">"x"</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span>
+    <span class="c1"># calculate the NN distance, Clark-Evans index and p-value for that cell</span>
+    <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn_dist</span><span class="p">(</span><span class="n">spots_in_cell</span><span class="p">,</span> <span class="n">mask</span><span class="p">,</span> <span class="n">row</span><span class="p">[</span><span class="s2">"label"</span><span class="p">],</span> <span class="n">n_repeats</span><span class="o">=</span><span class="n">n_repeats</span><span class="p">))</span>
+
+<span class="n">df_cell</span><span class="p">[[</span><span class="s2">"nnd_observed"</span><span class="p">,</span> <span class="s2">"nnd_random"</span><span class="p">,</span> <span class="s2">"clark_evans"</span><span class="p">,</span> <span class="s2">"p_value"</span><span class="p">]]</span> <span class="o">=</span> <span class="n">results</span>
+<span class="n">df_cell</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>area</th>
+<th>label</th>
+<th>count</th>
+<th>nnd_observed</th>
+<th>nnd_random</th>
+<th>clark_evans</th>
+<th>p_value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>4669.0</td>
+<td>2</td>
+<td>23</td>
+<td>6.870816</td>
+<td>7.040617</td>
+<td>0.975883</td>
+<td>0.4</td>
+</tr>
+<tr>
+<th>1</th>
+<td>7866.0</td>
+<td>3</td>
+<td>39</td>
+<td>7.355929</td>
+<td>7.574855</td>
+<td>0.971098</td>
+<td>0.5</td>
+</tr>
+<tr>
+<th>2</th>
+<td>6945.0</td>
+<td>4</td>
+<td>34</td>
+<td>6.231751</td>
+<td>7.103239</td>
+<td>0.877311</td>
+<td>0.1</td>
+</tr>
+<tr>
+<th>3</th>
+<td>9735.0</td>
+<td>5</td>
+<td>48</td>
+<td>6.240532</td>
+<td>7.007292</td>
+<td>0.890577</td>
+<td>0.1</td>
+</tr>
+<tr>
+<th>4</th>
+<td>7749.0</td>
+<td>6</td>
+<td>38</td>
+<td>6.343255</td>
+<td>6.749658</td>
+<td>0.939789</td>
+<td>0.4</td>
+</tr>
+<tr>
+<th>...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<th>72</th>
+<td>9504.0</td>
+<td>80</td>
+<td>47</td>
+<td>6.363679</td>
+<td>7.807400</td>
+<td>0.815083</td>
+<td>0.0</td>
+</tr>
+<tr>
+<th>73</th>
+<td>2878.0</td>
+<td>81</td>
+<td>14</td>
+<td>6.751128</td>
+<td>6.358954</td>
+<td>1.061673</td>
+<td>0.7</td>
+</tr>
+<tr>
+<th>74</th>
+<td>1881.0</td>
+<td>83</td>
+<td>9</td>
+<td>7.651594</td>
+<td>6.130065</td>
+<td>1.248208</td>
+<td>0.9</td>
+</tr>
+<tr>
+<th>75</th>
+<td>4198.0</td>
+<td>85</td>
+<td>20</td>
+<td>6.427021</td>
+<td>6.672263</td>
+<td>0.963245</td>
+<td>0.5</td>
+</tr>
+<tr>
+<th>76</th>
+<td>441.0</td>
+<td>90</td>
+<td>2</td>
+<td>9.328427</td>
+<td>6.780361</td>
+<td>1.375801</td>
+<td>0.9</td>
+</tr>
+</tbody>
+</table>
+<p>77 rows × 7 columns</p>
+</div></div></div>
+</div>
+<div class="cell tag_teacher docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span>
+    <span class="n">df_cell</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">"clark_evans"</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">df_cell</span><span class="p">[</span><span class="s2">"clark_evans"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">c</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x7fa267705550&gt;
+</pre></div>
+</div>
+<img alt="../../../_images/47320724e48bd8c913c3f37ca8bea48ca17687257d4631c7afc690da94115447.png" src="../../../_images/47320724e48bd8c913c3f37ca8bea48ca17687257d4631c7afc690da94115447.png"/>
+</div>
+</div>
+<div class="cell tag_teacher docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">overlay_labels</span><span class="p">(</span>
+    <span class="n">image</span><span class="o">=</span><span class="n">image</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:],</span>
+    <span class="n">label_mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span>
+    <span class="n">df</span><span class="o">=</span><span class="n">df_cell</span><span class="p">,</span>
+    <span class="n">id_col</span><span class="o">=</span><span class="s2">"label"</span><span class="p">,</span>
+    <span class="n">measurement_col</span><span class="o">=</span><span class="s2">"clark_evans"</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/7cd34553cba5777a7a823f5d22f0fbfc505cd91e115e5af0d22594dcee0316b0.png" src="../../../_images/7cd34553cba5777a7a823f5d22f0fbfc505cd91e115e5af0d22594dcee0316b0.png"/>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 800x800 with 2 Axes&gt;, &lt;Axes: title={'center': 'clark_evans'}&gt;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>It seems like <strong>protein A is not clustered</strong>, <strong>protein B is clustering</strong> and protein C is a little ambiguous.</p>
+</section>
+<hr class="docutils"/>
+<section id="measure-the-length-scale-of-clustering-ripleys-l-function">
+<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">10. Measure the Length Scale of Clustering: Ripleys L Function<a class="headerlink" href="#measure-the-length-scale-of-clustering-ripleys-l-function" title="Link to this heading">#</a></h2>
+<p>We know that Protein B is clustered compared to random. However, we don’t know what scale the clustering is occurring on.</p>
+<p>A common method to investigate the length scales of spatial patterns is <strong>Ripley’s L function</strong>. The idea is to calculate the density of spots around each spot for different radii and compare that to a random point pattern. The density of a random pattern is independent of the radius, while clustered points will exhibit higher density at shorter radii than longer ones. This way we can infer the average cluster size and distance between clusters.</p>
+<p>Here, we only demonstrate the concept on the spot pattern of protein B in one cell.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spots</span> <span class="o">=</span> <span class="n">df_spots</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"channel"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"label_cell"</span><span class="p">]</span> <span class="o">==</span> <span class="n">cell_id</span><span class="p">)][</span>
+    <span class="p">[</span><span class="s2">"y"</span><span class="p">,</span> <span class="s2">"x"</span><span class="p">]</span>
+<span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">overlay_labels</span><span class="p">(</span><span class="n">label_mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">coordinates</span><span class="o">=</span><span class="n">spots</span><span class="p">,</span> <span class="n">focus_object</span><span class="o">=</span><span class="n">cell_id</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/8aab3b8261085d81ae006ce4b0d0af4dc666b621798a8dcb706fc5d602c4fe75.png" src="../../../_images/8aab3b8261085d81ae006ce4b0d0af4dc666b621798a8dcb706fc5d602c4fe75.png"/>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 800x587.05 with 1 Axes&gt;,
+ &lt;Axes: title={'center': 'Segmentation overlay'}&gt;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r_values</span><span class="p">,</span> <span class="n">L_obs</span><span class="p">,</span> <span class="n">L_sims</span> <span class="o">=</span> <span class="n">ripleys_l</span><span class="p">(</span><span class="n">spots</span><span class="p">,</span> <span class="n">mask</span><span class="p">,</span> <span class="n">cell_id</span><span class="o">=</span><span class="n">cell_id</span><span class="p">,</span> <span class="n">n_repeats</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r_values</span><span class="p">,</span> <span class="n">L_obs</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"black"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"observed"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span>
+    <span class="n">r_values</span><span class="p">,</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">L_sims</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">L_sims</span><span class="p">,</span> <span class="mf">97.5</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">"95% CSR envelope"</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"grey"</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">"--"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"r (pixels)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"L(r) - r"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fa2679352b0&gt;
+</pre></div>
+</div>
+<img alt="../../../_images/0cd4a2a0421fbf0e239c61f28bbfe4da6f4d82cc31ed01e50014ba20cc344ced.png" src="../../../_images/0cd4a2a0421fbf0e239c61f28bbfe4da6f4d82cc31ed01e50014ba20cc344ced.png"/>
+</div>
+</div>
+<p>We observe clustering with scale 2-10 pixels, where the observed curve is above the 95% CSR envelope. Moreover, we see a corresponding dispersion from 15 pixels onward. This is because our random null distribution has the same number of points as the observed distribution.</p>
+</section>
+<section id="conclusion">
+<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<p>Here we have learned how to assess whether a spot pattern is clustered compared to random. Note the following:</p>
+<ul class="simple">
+<li><p>The metric we used to measure clustering (nearest neighbor distance) was a choice. Other metrics, such as number of spots in a certain radius, distance to k nearest neighbors, and many others, are valid. Can you think of a spot pattern where the nearest neighbor distance is not an appropriate metric?</p></li>
+<li><p>We chose a completely random spatial pattern as a null distribution. This was a choice. An equally valid option would have been to translate, rotate, etc., the spot pattern.</p></li>
+<li><p>The formalism with which we defined spatial relationships (KDTree / Euclidean distance nearest neighbor search) was a choice. An equally valid approach would have been to divide space using a Voronoi diagram, or to use the distance between cell membranes.</p></li>
+</ul>
+<p>All these choices need to be made with your scientific question in mind.</p>
+</section>
+</section>
+<script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content/08_colocalization/spatial_statistics"
+        },
+        predefinedOutput: true
+    }
+    </script>
+<script>kernelName = 'python3'</script>
+</article>
+<footer class="prev-next-footer d-print-none">
+<div class="prev-next-area">
+<a class="left-prev" href="spatial_stats_intro.html" title="previous page">
+<i class="fa-solid fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">previous</p>
+<p class="prev-next-title">Spatial Statistics</p>
+</div>
+</a>
+<a class="right-next" href="notebook_2.html" title="next page">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">next</p>
+<p class="prev-next-title">Notebook 2: Do two different protein clusters co-localize?</p>
+</div>
+<i class="fa-solid fa-angle-right"></i>
+</a>
+</div>
+</footer>
+</div>
+<dialog id="pst-secondary-sidebar-modal"></dialog>
+<div class="bd-sidebar-secondary bd-toc" id="pst-secondary-sidebar"><div class="sidebar-secondary-items sidebar-secondary__inner">
+<div class="sidebar-secondary-item"><div class="page-toc tocsection onthispage" id="pst-page-navigation-heading-2">
+<i class="fa-solid fa-list"></i> Contents
+  </div>
+<nav aria-labelledby="pst-page-navigation-heading-2" class="page-toc" id="pst-page-toc-nav">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset">Dataset</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-libraries">0. Importing libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-image-mask-and-spot-table">2. Load image, mask and spot table</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visually-inspect-the-images-masks-and-spots">Visually inspect the images, masks and spots</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-an-analysis-plan">3. Make An Analysis Plan</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question">Question</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#approach">Approach</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metric-for-clustering">Metric for Clustering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow">Workflow</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-a-reference-for-comparison">1. Generate a reference for comparison</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#measure-the-nearest-neighbor-distance">2. Measure the nearest neighbor distance</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-average-nearest-neighbour-distance">3. Calculate the average nearest neighbour distance</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-clark-evans-index">4. Calculate the Clark-Evans Index</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-p-value-of-the-clark-evans-index">5. Calculate the p-value of the Clark-Evans Index</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assemble-the-protein-dataset-and-the-random-dataset">4. Assemble the Protein Dataset and the Random Dataset</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#protein-dataset-map-spots-to-cells-and-count-spots-per-cell">Protein Dataset: Map spots to cells and count spots per cell</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-dataset-generate-random-points">Random Dataset: Generate random points</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-nearest-neighbor-distances">5. Calculate Nearest Neighbor Distances</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identifying-neighbors-kd-trees">Identifying Neighbors: KD Trees</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-clark-evans-index-for-the-protein-and-random-datasets">6. Calculate the Clark-Evans Index for the protein and random datasets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repeat-steps-4-6-with-multiple-random-patterns">7. Repeat Steps 4-6 with Multiple Random Patterns</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#concept">Concept</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repeat-measurements-for-all-cells">8. Repeat Measurements for All Cells</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-summarise-the-per-cell-clustering-analysis-as-a-function">✍️ Exercise: Summarise the per-cell clustering analysis as a function</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perform-the-same-calculation-on-the-other-channels">9. Perform the Same Calculation on the Other Channels</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#measure-the-length-scale-of-clustering-ripleys-l-function">10. Measure the Length Scale of Clustering: Ripleys L Function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+</nav></div>
+</div></div>
+</div>
+<footer class="bd-footer-content">
+<div class="bd-footer-content__inner container">
+<div class="footer-item">
+<p class="component-author">
+By Federico Gasparoli, PhD - federico@hms.harvard.edu (federico.gasparoli@gmail.com)<br/>Materials:<br/>- Federico Gasparoli, PhD - federico@hms.harvard.edu (federico.gasparoli@gmail.com)<br/>- Eva de la Serna, PhD - eva_delaserna@hms.harvard.edu<br/>- Max Brambach, PhD - max_brambach@hms.harvard.edu
+</p>
+</div>
+<div class="footer-item">
+<p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+</p>
+</div>
+<div class="footer-item">
+</div>
+<div class="footer-item">
+<div class="extra_footer">
+<p>
+All content is licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC-BY 4.0</a>, except where noted otherwise.
+</p>
+</div>
+</div>
+</div>
+</footer>
+</main>
+</div>
+</div>
+<!-- Scripts loaded after <body> so the DOM is not blocked -->
+<script defer="" src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer="" src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+<footer class="bd-footer">
+</footer>
+</body>
+</html>

@@ -1,0 +1,96 @@
+Traceback (most recent call last):
+  File "/home/runner/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/home/runner/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/nbclient/client.py", line 1323, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/home/runner/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "/home/runner/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/runner/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# define the paths to the second image and its corresponding label mask
+image_path_2 = Path(
+    "../../_static/images/quant/01_measurement_quantification/images/F02_92.TIF"
+)
+label_path_2 = Path(
+    "../../_static/images/quant/01_measurement_quantification/masks/F02_92w1.TIF"
+)
+
+# load the second image and label mask
+image_2 = tifffile.imread(image_path_2)[1, :, :]
+labeled_mask_2 = tifffile.imread(label_path_2)
+# remove boundary objects
+labeled_mask_2 = skimage.segmentation.clear_border(labeled_mask_2)
+
+# compute region properties for the second image
+props_2 = skimage.measure.regionprops_table(
+    labeled_mask_2, intensity_image=image_2, properties=properties
+)
+df_2 = pd.DataFrame(props_2)
+
+print(df_2.head())
+------------------
+
+
+[31m---------------------------------------------------------------------------[39m
+[31mFileNotFoundError[39m                         Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[43][39m[32m, line 10[39m
+[32m      6[39m     [33m"../../_static/images/quant/01_measurement_quantification/masks/F02_92w1.TIF"[39m
+[32m      7[39m )
+[32m      8[39m 
+[32m      9[39m [38;5;66;03m# load the second image and label mask[39;00m
+[32m---> [39m[32m10[39m image_2 = tifffile.imread(image_path_2)[[32m1[39m, :, :]
+[32m     11[39m labeled_mask_2 = tifffile.imread(label_path_2)
+[32m     12[39m [38;5;66;03m# remove boundary objects[39;00m
+[32m     13[39m labeled_mask_2 = skimage.segmentation.clear_border(labeled_mask_2)
+
+[36mFile [39m[32m~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/tifffile/tifffile.py:1256[39m, in [36mimread[39m[34m(files, selection, return_as, aszarr, key, series, kind, level, squeeze, maxworkers, buffersize, mode, name, offset, size, pattern, axesorder, categories, imread, imreadargs, sort, container, chunkshape, chunkdtype, axestiled, ioworkers, chunkmode, fillvalue, zattrs, multiscales, omexml, superres, out, out_inplace, _multifile, _useframes, **kwargs)[39m
+[32m   1252[39m         ):
+[32m   1253[39m             files = files[[32m0[39m]
+[32m   1254[39m 
+[32m   1255[39m         [38;5;28;01mif[39;00m isinstance(files, str) [38;5;28;01mor[39;00m [38;5;28;01mnot[39;00m isinstance(files, Sequence):
+[32m-> [39m[32m1256[39m             with TiffFile(
+[32m   1257[39m                 files,
+[32m   1258[39m                 mode=mode,
+[32m   1259[39m                 name=name,
+
+[36mFile [39m[32m~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/tifffile/tifffile.py:4554[39m, in [36mTiffFile.__init__[39m[34m(self, file, mode, name, offset, size, omexml, superres, _multifile, _useframes, _root, **is_flags)[39m
+[32m   4550[39m                 [38;5;28;01mraise[39;00m ValueError(msg)
+[32m   4551[39m             self._omexml = omexml
+[32m   4552[39m             self.is_ome = [38;5;28;01mTrue[39;00m
+[32m   4553[39m 
+[32m-> [39m[32m4554[39m         fh = FileHandle(file, mode=mode, name=name, offset=offset, size=size)
+[32m   4555[39m         self._fh = fh
+[32m   4556[39m         self._multifile = [38;5;28;01mTrue[39;00m [38;5;28;01mif[39;00m _multifile [38;5;28;01mis[39;00m [38;5;28;01mNone[39;00m [38;5;28;01melse[39;00m bool(_multifile)
+[32m   4557[39m         self._files = {fh.name: self}
+
+[36mFile [39m[32m~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/tifffile/tifffile.py:12751[39m, in [36mFileHandle.__init__[39m[34m(self, file, mode, name, offset, size)[39m
+[32m  12747[39m         self._offset = -[32m1[39m [38;5;28;01mif[39;00m offset [38;5;28;01mis[39;00m [38;5;28;01mNone[39;00m [38;5;28;01melse[39;00m offset
+[32m  12748[39m         self._size = -[32m1[39m [38;5;28;01mif[39;00m size [38;5;28;01mis[39;00m [38;5;28;01mNone[39;00m [38;5;28;01melse[39;00m size
+[32m  12749[39m         self._close = [38;5;28;01mTrue[39;00m
+[32m  12750[39m         self._lock = contextlib.nullcontext()
+[32m> [39m[32m12751[39m         self.open()
+[32m  12752[39m         [38;5;28;01massert[39;00m self._fh [38;5;28;01mis[39;00m [38;5;28;01mnot[39;00m [38;5;28;01mNone[39;00m
+
+[36mFile [39m[32m~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/tifffile/tifffile.py:12771[39m, in [36mFileHandle.open[39m[34m(self)[39m
+[32m  12767[39m                 msg = f'invalid mode {self._mode}'
+[32m  12768[39m                 [38;5;28;01mraise[39;00m ValueError(msg)
+[32m  12769[39m             self._file = os.path.realpath(self._file)
+[32m  12770[39m             self._dir, self._name = os.path.split(self._file)
+[32m> [39m[32m12771[39m             self._fh = open(  # noqa: SIM115
+[32m  12772[39m                 self._file, self._mode, encoding=[38;5;28;01mNone[39;00m
+[32m  12773[39m             )
+[32m  12774[39m             self._close = [38;5;28;01mTrue[39;00m
+
+[31mFileNotFoundError[39m: [Errno 2] No such file or directory: '/home/runner/work/bobiac-book/bobiac-book/_static/images/quant/01_measurement_quantification/images/F02_92.TIF'
+
