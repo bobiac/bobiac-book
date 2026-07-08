@@ -90,6 +90,12 @@ use_multitoc_numbering = True
 exclude_patterns = [
     ".DS_Store",
     ".venv",
+    # Sphinx's source dir is "." so, without these, the Jupyter execution cache
+    # and the build output get discovered as source pages. On CI (where the
+    # cache is restored) this ingests the cached notebooks as phantom documents
+    # and breaks the build.
+    ".jupyter_cache",
+    "_build",
     "_internal/**",
     "README.md",
     "update_notebooks.py",

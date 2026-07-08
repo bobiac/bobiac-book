@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Fail fast: abort (and thus fail the deploy) if any command errors, an unset
+# variable is used, or a piped command fails. Without this, a Sphinx build
+# crash was silently ignored and a broken, half-built site got deployed.
+set -euo pipefail
+
 # Check if OpenGL is available
 echo "🔍 Verifying OpenGL setup..."
 if ! glxinfo | grep -q "OpenGL version"; then
