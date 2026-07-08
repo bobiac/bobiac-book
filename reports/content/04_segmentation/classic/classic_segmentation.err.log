@@ -75,7 +75,7 @@ labeled_ws_image = watershed(-distance_transform, seeds, mask=binary_mask_filled
 ------------------
 
 ----- stderr -----
-/tmp/ipykernel_3217/2382838730.py:26: FutureWarning: Parameter `min_size` is deprecated since version 0.26.0 and will be removed in 2.0.0 (or later). To avoid this warning, please use the parameter `max_size` instead. For more details, see the documentation of `remove_small_objects`. Note that the new threshold removes objects smaller than **or equal to** its value, while the previous parameter only removed smaller ones.
+/tmp/ipykernel_3223/2382838730.py:26: FutureWarning: Parameter `min_size` is deprecated since version 0.26.0 and will be removed in 2.0.0 (or later). To avoid this warning, please use the parameter `max_size` instead. For more details, see the documentation of `remove_small_objects`. Note that the new threshold removes objects smaller than **or equal to** its value, while the previous parameter only removed smaller ones.
   binary_mask_sized = remove_small_objects(binary_mask, min_size=50)
 ------------------
 
