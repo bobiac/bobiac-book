@@ -809,9 +809,7 @@ normalize = {"tile_norm_blocksize": 100, "percentile": [2, 98]}</code></pre>
 <h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Run Cellpose on a Folder of Images<a class="headerlink" href="#run-cellpose-on-a-folder-of-images" title="Link to this heading">#</a></h2>
 <p>Now that we’ve seen how to run <code class="docutils literal notranslate"><span class="pre">Cellpose</span></code> on a single image, let’s scale up and apply it to a <strong>folder of images</strong>. This is useful when you have an entire experiment or dataset that you want to segment automatically.</p>
 <p>The simplest way to do this is to just <strong>loop through the images in the folder</strong> and run <code class="docutils literal notranslate"><span class="pre">model.eval()</span></code> on each one. During each iteration, we can save the predicted masks to an output folder using the <code class="docutils literal notranslate"><span class="pre">imsave</span></code> method from the <code class="docutils literal notranslate"><span class="pre">Cellpose</span></code> <code class="docutils literal notranslate"><span class="pre">io</span></code> module (or the <code class="docutils literal notranslate"><span class="pre">tifffile</span></code> library if you add it to the dependencies).</p>
-<p class="alert alert alert-info">
-<strong>Note:</strong> If you work with small size images, you can also load them all at once (or in batches) into RAM and pass them as a list to <code>model.eval()</code>.
-</p><div class="cell tag_skip-execution tag_teacher docutils container">
+<div class="cell tag_skip-execution tag_teacher docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Path to the folder containing the images to segment</span>
 <span class="n">folder_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"data/04_segmentation_cellpose"</span><span class="p">)</span>
