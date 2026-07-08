@@ -1249,7 +1249,7 @@ Index: []
 <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s2">"area"</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">1500</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"intensity_min"</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.08</span><span class="p">)])</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span> <span class="o">+</span> <span class="s2">"="</span> <span class="o">*</span> <span class="mi">80</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
 
-<span class="c1"># 4. BONUS: Print the area of all rows where intensity_std is less than 0.5</span>
+<span class="c1"># 4. BONUS: Print the area of all rows where intensity_std is less than 100</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Area of rows where intensity_std &lt; 100:"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">"intensity_std"</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">][</span><span class="s2">"area"</span><span class="p">])</span>
 </pre></div>
@@ -2106,8 +2106,8 @@ To avoid this, we can use the parameter <code class="docutils literal notranslat
 <span class="n">image_folder</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"../../_static/images/quant/01_measurement_quantification/images/"</span><span class="p">)</span>
 <span class="n">mask_folder</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"../../_static/images/quant/01_measurement_quantification/masks/"</span><span class="p">)</span>
 
-<span class="n">images</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">image_folder</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">"*.TIF"</span><span class="p">))</span>
-<span class="n">masks</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">image_folder</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">"*.TIF"</span><span class="p">))</span>
+<span class="n">images</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">image_folder</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">"*.tif"</span><span class="p">))</span>
+<span class="n">masks</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">mask_folder</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">"*.tif"</span><span class="p">))</span>
 
 <span class="n">list_df</span> <span class="o">=</span> <span class="p">[]</span>
 
