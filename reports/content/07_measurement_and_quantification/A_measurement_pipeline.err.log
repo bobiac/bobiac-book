@@ -23,7 +23,7 @@ image_path_2 = Path(
     "../../_static/images/quant/01_measurement_quantification/images/F02_92.TIF"
 )
 label_path_2 = Path(
-    "../../_static/images/quant/01_measurement_quantification/masks/F02_92w1.TIF"
+    "../../_static/images/quant/01_measurement_quantification/masks/F02_92_cell_labels.tif"
 )
 
 # load the second image and label mask
@@ -45,7 +45,7 @@ print(df_2.head())
 [31m---------------------------------------------------------------------------[39m
 [31mFileNotFoundError[39m                         Traceback (most recent call last)
 [36mCell[39m[36m [39m[32mIn[43][39m[32m, line 10[39m
-[32m      6[39m     [33m"../../_static/images/quant/01_measurement_quantification/masks/F02_92w1.TIF"[39m
+[32m      6[39m     [33m"../../_static/images/quant/01_measurement_quantification/masks/F02_92_cell_labels.tif"[39m
 [32m      7[39m )
 [32m      8[39m 
 [32m      9[39m [38;5;66;03m# load the second image and label mask[39;00m
