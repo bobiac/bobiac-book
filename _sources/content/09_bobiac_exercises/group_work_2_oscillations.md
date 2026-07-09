@@ -88,9 +88,9 @@ If you prefer to work in Google Colab instead of locally, copy the `.ipynb` file
 In this step, you will load the image files and the segmentation masks and inspect the data visually.
 
 1. Create a new code cell in the notebook.
-2. Find the folder that contains the time-point images and list the `.tif` files.
-3. Display the first eight time points as a grid of images.
-4. Load the cell and nucleus masks and visualise them.
+2. Download the dataset folder that contains the time-lapse file `F01_1615_tcyx.tif`.
+3. For the `F01_1615_tcyx.tif` file, display the first eight time points of the last channel in the as a grid of images.
+4. In the same dataset folder, there is a `F01_1615_tcyx_cell_labels.tif` file (labeled mask of the cells) and a `F01_1615_tcyx_nuclei_labels.tif` file (labeled mask of the nuclei). Visualize these masks as an overlay
 
 The example notebook uses the data in the course repository under the `images/` and `masks/` folders for the time-series example.
 
@@ -106,7 +106,7 @@ See <a href="group_work_2_oscillations_solution.html" target="_blank">Solution N
 
 In this step, you will analyse the first image and quantify the intensity of each nucleus.
 
-1. Load the first time point.
+1. Load the first time point of the last channel in the `F01_1615_tcyx.tif` file.
 2. Remove objects touching the border of the image.
 3. Measure the intensity of each nucleus with `skimage.measure.regionprops_table`.
 4. Subtract the background intensity from the measurements and inspect the resulting values.
@@ -127,7 +127,7 @@ See <a href="group_work_2_oscillations_solution.html" target="_blank">Solution N
 
 Now you will turn the workflow into a batch analysis over all 16 images.
 
-1. Check the measurements for artefacts, for example by plotting the distribution of background-corrected intensities.
+1. Check the measurements for artifacts, for example by plotting the distribution of background-corrected intensities.
 2. Overlay the measured values on the image and inspect whether any nuclei look suspicious.
 3. Loop through all time points, measure the intensity of each nucleus, and add a `time` column.
 4. Combine all measurements into a single `DataFrame`.

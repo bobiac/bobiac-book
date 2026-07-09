@@ -256,14 +256,18 @@
 </div>
 <nav aria-label="Page">
 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-perform-this-analysis">✍️ Exercise: Perform this analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3">Step 3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4">Step 4</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#measure-nuclear-intensity-for-the-first-time-point">1. Measure nuclear intensity for the first time point</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#measure-nuclear-intensity">1. Measure nuclear intensity</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quality-control">2. Quality control</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5">Step 5</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quality-control-on-background-corrected-intensities">Quality control on background-corrected intensities</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#batch-processing">Batch processing</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6">Step 6</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting">Plotting</a></li>
 </ul>
 </li>
@@ -325,6 +329,15 @@
 <p>We have a total of 16 time points with a temporal spacing of 30 min (🤔).
 The background of the images was measured to be 4700.</p>
 <p>You can find the data <a class="reference external" href="https://github.com/bobiac/bobiac-book/releases/download/data-bobiac-2026/bobiac_exercises_oscillations.zip">here</a>.</p>
+</section>
+<section id="step-3">
+<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Step 3<a class="headerlink" href="#step-3" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Create a new code cell in the notebook.</p></li>
+<li><p>Download the dataset folder that contains the time-lapse file <code class="docutils literal notranslate"><span class="pre">F01_1615_tcyx.tif</span></code>.</p></li>
+<li><p>For the <code class="docutils literal notranslate"><span class="pre">F01_1615_tcyx.tif</span></code> file, display the first eight time points of the last channel in the as a grid of images.</p></li>
+<li><p>In the same dataset folder, there is a <code class="docutils literal notranslate"><span class="pre">F01_1615_tcyx_cell_labels.tif</span></code> file (labeled mask of the cells) and a <code class="docutils literal notranslate"><span class="pre">F01_1615_tcyx_nuclei_labels.tif</span></code> file (labeled mask of the nuclei). Visualize these masks as an overlay</p></li>
+</ol>
 <div class="cell tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">image_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"../../_static/images/quant/03_time_series/images/F01_1615_tcyx.tif"</span><span class="p">)</span>
@@ -335,14 +348,13 @@ The background of the images was measured to be 4700.</p>
 
 <span class="n">t_max</span> <span class="o">=</span> <span class="n">time_stack</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">ch</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># channel index for the oscillating gene of interest</span>
-<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">layout</span><span class="o">=</span><span class="s2">"constrained"</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">t_max</span><span class="p">):</span>
     <span class="n">image</span> <span class="o">=</span> <span class="n">time_stack</span><span class="p">[</span><span class="n">t</span><span class="p">,</span> <span class="n">ch</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">t</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">"gray"</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">"t=</span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">"off"</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -375,22 +387,20 @@ The background of the images was measured to be 4700.</p>
 </div>
 </div>
 <p>This are the two label masks for the nuclei and the cells.</p>
-<section id="exercise-perform-this-analysis">
-<h3 style="color: black; background-color: rgb(252,185,118); padding: 3px; border-radius: 5px;">✍️ Exercise: Perform this analysis<a class="headerlink" href="#exercise-perform-this-analysis" title="Link to this heading">#</a></h3>
+</section>
+<section id="step-4">
+<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Step 4<a class="headerlink" href="#step-4" title="Link to this heading">#</a></h2>
+<p><strong>Measure nuclear intensity for the first time point</strong></p>
+<p>In this step, you will analyse the first image and quantify the intensity of each nucleus.</p>
 <ol class="arabic simple">
-<li><p>For the first time point (image) use <code class="docutils literal notranslate"><span class="pre">regionprops_table</span></code> to measure the expression level of each nucleus. Follow the steps of the previous notebooks.</p></li>
-<li><p>Perform proper quality control and check that the measurements do not contain artefacts.</p></li>
-<li><p>Set up batch processing to analyse all 16 images. Remember to keep track of where the data came from. Add a column <code class="docutils literal notranslate"><span class="pre">time</span></code> that contains the time at which the image was taken (e.g. 0, 0.5, 1, 1.5) (the unit is hours).</p></li>
-<li><p>Use <code class="docutils literal notranslate"><span class="pre">sns.lineplot</span></code> to visualise the oscillations of individual cell as well as the average oscillations, and estimate the frequency.</p></li>
-<li><p>BONUS: Instead of nuclear intensity, calculate the ratio of nuclear/cytoplasmic intensity.</p></li>
+<li><p>Load the first time point of the last channel in the <code class="docutils literal notranslate"><span class="pre">F01_1615_tcyx.tif</span></code> file.</p></li>
+<li><p>Remove objects touching the border of the image.</p></li>
+<li><p>Measure the intensity of each nucleus with <code class="docutils literal notranslate"><span class="pre">skimage.measure.regionprops_table</span></code>.</p></li>
+<li><p>Subtract the background intensity from the measurements and inspect the resulting values.</p></li>
 </ol>
-</section>
-</section>
-<section id="solution">
-<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Solution<a class="headerlink" href="#solution" title="Link to this heading">#</a></h2>
-<section id="measure-nuclear-intensity">
-<h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">1. Measure nuclear intensity<a class="headerlink" href="#measure-nuclear-intensity" title="Link to this heading">#</a></h3>
-<p>First, we measure the intesities of all the nuclei in the image.</p>
+<section id="measure-nuclear-intensity-for-the-first-time-point">
+<h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">1. Measure nuclear intensity for the first time point<a class="headerlink" href="#measure-nuclear-intensity-for-the-first-time-point" title="Link to this heading">#</a></h3>
+<p>First, we measure the intensities of all the nuclei in the image.</p>
 <p>Load the first time point.</p>
 <div class="cell tag_skip-execution docutils container">
 <div class="cell_input docutils container">
@@ -423,7 +433,7 @@ The background of the images was measured to be 4700.</p>
 </div>
 </div>
 </div>
-<p>Measure intesities with <code class="docutils literal notranslate"><span class="pre">regionprops_table</span></code> ans save measurements as <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>.</p>
+<p>Measure intensities with <code class="docutils literal notranslate"><span class="pre">regionprops_table</span></code> ans save measurements as <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>.</p>
 <div class="cell tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">properties</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"area"</span><span class="p">,</span> <span class="s2">"intensity_mean"</span><span class="p">,</span> <span class="s2">"label"</span><span class="p">]</span>
@@ -525,30 +535,20 @@ Are there any negative values after background subtraction? <span style="color: 
 </pre>
 </div></div>
 </div>
-<p>Add <code class="docutils literal notranslate"><span class="pre">time</span></code> column.</p>
-<div class="cell tag_skip-execution docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># index of the first time point in the stack</span>
-<span class="n">time</span> <span class="o">=</span> <span class="n">t</span> <span class="o">*</span> <span class="mf">0.5</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #008080; text-decoration-color: #008080; font-weight: bold">0.0</span>
-</pre>
-</div></div>
-</div>
-<div class="cell tag_skip-execution docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_nuc</span><span class="p">[</span><span class="s2">"time"</span><span class="p">]</span> <span class="o">=</span> <span class="n">time</span>
-</pre></div>
-</div>
-</div>
-</div>
 </section>
-<section id="quality-control">
-<h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">2. Quality control<a class="headerlink" href="#quality-control" title="Link to this heading">#</a></h3>
+</section>
+<section id="step-5">
+<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Step 5<a class="headerlink" href="#step-5" title="Link to this heading">#</a></h2>
+<p><strong>Perform quality control and analyse all time points</strong></p>
+<p>Now you will turn the workflow into a batch analysis over all 16 images.</p>
+<ol class="arabic simple">
+<li><p>Check the measurements for artifacts, for example by plotting the distribution of background-corrected intensities.</p></li>
+<li><p>Overlay the measured values on the image and inspect whether any nuclei look suspicious.</p></li>
+<li><p>Loop through all time points, measure the intensity of each nucleus, and add a <code class="docutils literal notranslate"><span class="pre">time</span></code> column.</p></li>
+<li><p>Combine all measurements into a single <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>.</p></li>
+</ol>
+<section id="quality-control-on-background-corrected-intensities">
+<h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">Quality control on background-corrected intensities<a class="headerlink" href="#quality-control-on-background-corrected-intensities" title="Link to this heading">#</a></h3>
 <div class="cell tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span>
@@ -591,6 +591,27 @@ Are there any negative values after background subtraction? <span style="color: 
 </section>
 <section id="batch-processing">
 <h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">Batch processing<a class="headerlink" href="#batch-processing" title="Link to this heading">#</a></h3>
+<p>Add <code class="docutils literal notranslate"><span class="pre">time</span></code> column.</p>
+<div class="cell tag_skip-execution docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># index of the first time point in the stack</span>
+<span class="n">time</span> <span class="o">=</span> <span class="n">t</span> <span class="o">*</span> <span class="mf">0.5</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #008080; text-decoration-color: #008080; font-weight: bold">0.0</span>
+</pre>
+</div></div>
+</div>
+<div class="cell tag_skip-execution docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_nuc</span><span class="p">[</span><span class="s2">"time"</span><span class="p">]</span> <span class="o">=</span> <span class="n">time</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">list_df</span> <span class="o">=</span> <span class="p">[]</span>
@@ -629,6 +650,17 @@ Are there any negative values after background subtraction? <span style="color: 
 </div></div>
 </div>
 </section>
+</section>
+<section id="step-6">
+<h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">Step 6<a class="headerlink" href="#step-6" title="Link to this heading">#</a></h2>
+<p><strong>Visualise the oscillations and estimate the frequency</strong></p>
+<p>In this final step, you will answer the main question: what is the frequency of the oscillations?</p>
+<ol class="arabic simple">
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">sns.lineplot</span></code> to visualise the intensity of each nucleus over time.</p></li>
+<li><p>Add a second plot showing the average signal across cells.</p></li>
+<li><p>Estimate the oscillation frequency from the pattern you observe.</p></li>
+<li><p>Write a short conclusion in a markdown cell.</p></li>
+</ol>
 <section id="plotting">
 <h3 style="color: black; background-color: rgb(190,223,185); padding: 3px; border-radius: 5px;">Plotting<a class="headerlink" href="#plotting" title="Link to this heading">#</a></h3>
 <div class="cell tag_skip-execution docutils container">
@@ -794,14 +826,18 @@ Are there any negative values after background subtraction? <span style="color: 
   </div>
 <nav aria-labelledby="pst-page-navigation-heading-2" class="page-toc" id="pst-page-toc-nav">
 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-perform-this-analysis">✍️ Exercise: Perform this analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3">Step 3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4">Step 4</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#measure-nuclear-intensity-for-the-first-time-point">1. Measure nuclear intensity for the first time point</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#measure-nuclear-intensity">1. Measure nuclear intensity</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quality-control">2. Quality control</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5">Step 5</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quality-control-on-background-corrected-intensities">Quality control on background-corrected intensities</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#batch-processing">Batch processing</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6">Step 6</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting">Plotting</a></li>
 </ul>
 </li>

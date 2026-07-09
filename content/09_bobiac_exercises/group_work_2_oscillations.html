@@ -358,9 +358,9 @@ uvx<span class="w"> </span>juv<span class="w"> </span>add<span class="w"> </span
 <p>In this step, you will load the image files and the segmentation masks and inspect the data visually.</p>
 <ol class="arabic simple">
 <li><p>Create a new code cell in the notebook.</p></li>
-<li><p>Find the folder that contains the time-point images and list the <code class="docutils literal notranslate"><span class="pre">.tif</span></code> files.</p></li>
-<li><p>Display the first eight time points as a grid of images.</p></li>
-<li><p>Load the cell and nucleus masks and visualise them.</p></li>
+<li><p>Download the dataset folder that contains the time-lapse file <code class="docutils literal notranslate"><span class="pre">F01_1615_tcyx.tif</span></code>.</p></li>
+<li><p>For the <code class="docutils literal notranslate"><span class="pre">F01_1615_tcyx.tif</span></code> file, display the first eight time points of the last channel in the as a grid of images.</p></li>
+<li><p>In the same dataset folder, there is a <code class="docutils literal notranslate"><span class="pre">F01_1615_tcyx_cell_labels.tif</span></code> file (labeled mask of the cells) and a <code class="docutils literal notranslate"><span class="pre">F01_1615_tcyx_nuclei_labels.tif</span></code> file (labeled mask of the nuclei). Visualize these masks as an overlay</p></li>
 </ol>
 <p>The example notebook uses the data in the course repository under the <code class="docutils literal notranslate"><span class="pre">images/</span></code> and <code class="docutils literal notranslate"><span class="pre">masks/</span></code> folders for the time-series example.</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
@@ -374,7 +374,7 @@ uvx<span class="w"> </span>juv<span class="w"> </span>add<span class="w"> </span
 <p><strong>Measure nuclear intensity for the first time point</strong></p>
 <p>In this step, you will analyse the first image and quantify the intensity of each nucleus.</p>
 <ol class="arabic simple">
-<li><p>Load the first time point.</p></li>
+<li><p>Load the first time point of the last channel in the <code class="docutils literal notranslate"><span class="pre">F01_1615_tcyx.tif</span></code> file.</p></li>
 <li><p>Remove objects touching the border of the image.</p></li>
 <li><p>Measure the intensity of each nucleus with <code class="docutils literal notranslate"><span class="pre">skimage.measure.regionprops_table</span></code>.</p></li>
 <li><p>Subtract the background intensity from the measurements and inspect the resulting values.</p></li>
@@ -394,7 +394,7 @@ uvx<span class="w"> </span>juv<span class="w"> </span>add<span class="w"> </span
 <p><strong>Perform quality control and analyse all time points</strong></p>
 <p>Now you will turn the workflow into a batch analysis over all 16 images.</p>
 <ol class="arabic simple">
-<li><p>Check the measurements for artefacts, for example by plotting the distribution of background-corrected intensities.</p></li>
+<li><p>Check the measurements for artifacts, for example by plotting the distribution of background-corrected intensities.</p></li>
 <li><p>Overlay the measured values on the image and inspect whether any nuclei look suspicious.</p></li>
 <li><p>Loop through all time points, measure the intensity of each nucleus, and add a <code class="docutils literal notranslate"><span class="pre">time</span></code> column.</p></li>
 <li><p>Combine all measurements into a single <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>.</p></li>
