@@ -1,4 +1,4 @@
-# From Images to Data
+# 07 - <i class="fa-solid fa-ruler-combined"></i> From Images to Data
 
 An image may look like a result, but it is not data. What we actually have is an **array of intensity values**, and what we need to answer a biological question is a **table of measurements**. Measurement and quantification is the process of turning one into the other — going from images, to numbers, to plots.
 
@@ -10,3 +10,12 @@ The outcome of these choices is a **table**: one row per object, one column per 
 
 Finally, it is important to treat these numbers with healthy suspicion. Both the segmentation that defines the objects and the measurements taken from them can be wrong, so they should be validated — for instance by checking histograms for implausible outliers and by overlaying measured values back onto the image. The analysis built on the data deserves the same care: cells within a single well are not independent replicates, and treating them as such will artificially inflate statistical significance. It also helps to remember what imaging is and is not good for. It is uniquely powerful for **spatial** and **temporal** questions, but for questions of absolute concentration or molecular identity, methods such as flow cytometry, qPCR, or sequencing are often better suited.
 
+## Slides
+
+<a
+    class="custom-button custom-download-button" href="../../pdfs/07_measurement_and_quantification/bobiac26_intro_to_measurements.pdf" download> <i class="fas fa-download"></i> Download the Slides
+</a>
+
+<div align="center">
+  <iframe class="custom-pdf-frame-169" src="../../pdfs/07_measurement_and_quantification/bobiac26_intro_to_measurements.pdf"> </iframe>
+</div>
