@@ -14,4 +14,12 @@ Three ideas underpin most spatial analyses.
 
 Finally, it is worth being clear about what spatial analysis *cannot* do. It can show that objects are close, but not that they interact; it can reveal that a pattern exists, but not what caused it; and its answers usually depend on the scale you choose to look at. Turning spatial correlation into mechanism is the job of experimental design, not of the analysis alone.
 
+## Slides
 
+<a
+    class="custom-button custom-download-button" href="../../pdfs/08_colocalization/bobiac26_spatial_analysis.pdf" download> <i class="fas fa-download"></i> Download the Slides
+</a>
+
+<div align="center">
+  <iframe class="custom-pdf-frame-169" src="../../pdfs/08_colocalization/bobiac26_spatial_analysis.pdf"> </iframe>
+</div>
