@@ -1,4 +1,4 @@
-# Introduction to Spatial Analysis
+# 08 - <i class="fa-solid fa-circle-nodes"></i> Introduction to Spatial Analysis
 
 Spatial analysis is about questions that can only be answered by knowing **where** things are: whether objects are organized or random, which objects are near which, how crowded a region is, and whether two kinds of object tend to coincide. Our eyes are good at spotting these patterns, but intuition is not a measurement. The goal of spatial analysis is to turn "that looks clustered" into a number we can compare, test, and trust.
 
