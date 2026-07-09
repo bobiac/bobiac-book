@@ -1,0 +1,127 @@
+Traceback (most recent call last):
+  File "/home/runner/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/home/runner/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/nbclient/client.py", line 1323, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/home/runner/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "/home/runner/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/runner/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+image_folder = Path("/Users/max/Desktop/bobiac_data/group-work-1/")
+cell_mask_folder = Path("/Users/max/Desktop/bobiac_data/group-work-1/solution/cell_labels/")
+nuc_mask_folder = Path("/Users/max/Desktop/bobiac_data/group-work-1/solution/nuclei_labels/")
+spot_folder = Path("/Users/max/Desktop/bobiac_data/group-work-1/solution/spotiflow_points/")
+
+image_paths = sorted(image_folder.glob("*.tif"))
+
+list_df = []
+
+for image_path in image_paths:
+    image_id = image_path.stem  # e.g. F01_837
+
+    # load multi-channel image and extract nuclear channel
+    image = tifffile.imread(image_path)
+    image_nuclear = image[0]
+
+    # load masks and spot coordinates
+    mask_cell = tifffile.imread(cell_mask_folder / f"{image_id}_cell_labels.tif")
+    mask_nucleus = tifffile.imread(nuc_mask_folder / f"{image_id}_nuclei_labels.tif")
+    df_spots = pd.read_csv(spot_folder / f"{image_id}_points.csv")
+    df_spots = df_spots.rename({'axis-0':'channel', 'axis-1':'y','axis-2':'x'},axis=1)
+
+    # remove objects touching the border
+    mask_cell = skimage.segmentation.clear_border(mask_cell)
+    mask_nucleus = skimage.segmentation.clear_border(mask_nucleus)
+
+    # --- cell dataframe ---
+    df_cell = pd.DataFrame(
+        skimage.measure.regionprops_table(mask_cell, properties=["area", "label"])
+    )
+
+    # --- nucleus dataframe: measure and classify expression ---
+    df_nuc = pd.DataFrame(
+        skimage.measure.regionprops_table(
+            mask_nucleus,
+            intensity_image=image_nuclear,
+            properties=["area", "intensity_mean", "label"],
+        )
+    )
+    df_nuc["image_id"] = image_id
+    df_nuc["expression"] = pd.cut(
+        df_nuc["intensity_mean"], bins=[0, 1000, np.inf], labels=["off", "on"]
+    )
+
+    # --- map each nucleus to the cell it sits in ---
+    df_merge = pd.DataFrame(
+        skimage.measure.regionprops_table(
+            mask_nucleus,
+            intensity_image=mask_cell,
+            properties=["intensity_mean", "label"],
+        )
+    ).rename(columns={"intensity_mean": "label_cell"})
+
+    df_nuc = df_nuc.merge(df_merge, on="label", how="left")
+
+    mapping_expr = df_nuc[df_nuc["label_cell"] != 0].drop_duplicates(
+        "label_cell", keep=False
+    )[["label_cell", "expression"]]
+    df_cell = df_cell.merge(
+        mapping_expr, left_on="label", right_on="label_cell", how="inner"
+    ).drop(columns="label_cell")
+
+    # --- count spots per cell ---
+    df_spots["label_cell"] = mask_cell[
+        df_spots["y"].astype(int), df_spots["x"].astype(int)
+    ]
+    df_spots = df_spots.loc[df_spots["label_cell"] != 0]
+    mapping_spots = df_spots["label_cell"].value_counts().reset_index()
+    df_cell = df_cell.merge(
+        mapping_spots, left_on="label", right_on="label_cell", how="inner"
+    ).drop(columns="label_cell")
+    df_cell["spot_count_norm"] = df_cell["count"] / df_cell["area"]
+
+    df_cell["image_id"] = image_id
+    list_df.append(df_cell)
+
+df_full = pd.concat(list_df, ignore_index=True)
+------------------
+
+
+[31m---------------------------------------------------------------------------[39m
+[31mValueError[39m                                Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[34][39m[32m, line 77[39m
+[32m     73[39m 
+[32m     74[39m     df_cell[[33m"image_id"[39m] = image_id
+[32m     75[39m     list_df.append(df_cell)
+[32m     76[39m 
+[32m---> [39m[32m77[39m df_full = pd.concat(list_df, ignore_index=[38;5;28;01mTrue[39;00m)
+
+[36mFile [39m[32m~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/pandas/core/reshape/concat.py:407[39m, in [36mconcat[39m[34m(objs, axis, join, ignore_index, keys, levels, names, verify_integrity, sort, copy)[39m
+[32m    402[39m [38;5;28;01melse[39;00m:  [38;5;66;03m# pragma: no cover[39;00m
+[32m    403[39m     [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m(
+[32m    404[39m         [33m"[39m[33mOnly can inner (intersect) or outer (union) join the other axis[39m[33m"[39m
+[32m    405[39m     )
+[32m--> [39m[32m407[39m objs, keys, ndims = [30;43m_clean_keys_and_objs[39;49m[30;43m([39;49m[30;43mobjs[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mkeys[39;49m[30;43m)[39;49m
+[32m    409[39m [38;5;28;01mif[39;00m sort [38;5;129;01mis[39;00m lib.no_default:
+[32m    410[39m     [38;5;28;01mif[39;00m axis == [32m0[39m:
+
+[36mFile [39m[32m~/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/pandas/core/reshape/concat.py:808[39m, in [36m_clean_keys_and_objs[39m[34m(objs, keys)[39m
+[32m    805[39m     objs = [38;5;28mlist[39m(objs)
+[32m    807[39m [38;5;28;01mif[39;00m [38;5;28mlen[39m(objs) == [32m0[39m:
+[32m--> [39m[32m808[39m     [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m([33m"[39m[33mNo objects to concatenate[39m[33m"[39m)
+[32m    810[39m [38;5;28;01mif[39;00m keys [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m:
+[32m    811[39m     [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m [38;5;28misinstance[39m(keys, Index):
+
+[31mValueError[39m: No objects to concatenate
+
