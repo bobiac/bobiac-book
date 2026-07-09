@@ -67,7 +67,7 @@ def apply_param_table_styles(html_content):
 
     # widths (in %) for the first N-1 columns, keyed by total column count.
     # the last column takes the remainder.
-    widths_by_ncols = {2: [20], 3: [20, 13]}
+    widths_by_ncols = {2: [20], 3: [16, 24]}
 
     for table in soup.find_all("table"):
         if not isinstance(table, Tag):
