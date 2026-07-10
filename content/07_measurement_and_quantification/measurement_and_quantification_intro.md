@@ -4,7 +4,7 @@
 
 In this lesson, we will begin by introducing the limitations of optical microscopy in image analysis. Then, we will explore how to practically measure and quantify data from images using Python.
 
-## Limitations of Optical Microscopy on Image Analysis
+## How to Acquire Analyzable Images: Introduction to Quantitative Fluorescence Microscopy
 
 ### Slides
 
