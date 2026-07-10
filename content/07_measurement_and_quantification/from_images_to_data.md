@@ -19,3 +19,15 @@ Finally, it is important to treat these numbers with healthy suspicion. Both the
 <div align="center">
   <iframe class="custom-pdf-frame-169" src="../../pdfs/07_measurement_and_quantification/bobiac26_intro_to_measurements.pdf"> </iframe>
 </div>
+
+## How to Acquire Analyzable Images: Introduction to Quantitative Fluorescence Microscopy
+
+### Slides
+
+<a
+    class="custom-button custom-download-button" href="../../pdfs/07_measurement_and_quantification/introtoquantitativefluorescencemicroscopy.pdf" download> <i class="fas fa-download"></i> Download the Slides
+</a>
+
+<div align="center">
+  <iframe class="custom-pdf-frame-169" src="../../pdfs/07_measurement_and_quantification/introtoquantitativefluorescencemicroscopy.pdf"> </iframe>
+</div>
