@@ -395,13 +395,14 @@
 <p>First, we load all the data that we will need for this notebook.</p>
 <div class="cell tag_teacher docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">path_image</span> <span class="o">=</span> <span class="s2">"../../../_static/images/quant/05_spatial_stats/images/F01_202.tif"</span>
-<span class="n">path_mask</span> <span class="o">=</span> <span class="s2">"../../../_static/images/quant/05_spatial_stats/masks/F01_202w1.TIF"</span>
-<span class="n">path_spots</span> <span class="o">=</span> <span class="s2">"../../../_static/images/quant/05_spatial_stats/spots/F01_202_spots.csv"</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">path_image</span> <span class="o">=</span> <span class="s2">"../../../_static/images/quant/05_spatial_stats/images/F01_202_5ch.tif"</span>
+<span class="n">path_mask</span> <span class="o">=</span> <span class="s2">"../../../_static/images/quant/05_spatial_stats/masks/F01_202_cell_labels.tif"</span>
+<span class="n">path_spots</span> <span class="o">=</span> <span class="s2">"../../../_static/images/quant/05_spatial_stats/spots/F01_202_5ch_points.csv"</span>
 
 <span class="n">image</span> <span class="o">=</span> <span class="n">tifffile</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">path_image</span><span class="p">)</span>
 <span class="n">mask</span> <span class="o">=</span> <span class="n">tifffile</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">path_mask</span><span class="p">)</span>
 <span class="n">df_spots</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path_spots</span><span class="p">)</span>
+<span class="n">df_spots</span> <span class="o">=</span> <span class="n">df_spots</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="s1">'axis-0'</span><span class="p">:</span><span class="s1">'channel'</span><span class="p">,</span> <span class="s1">'axis-1'</span><span class="p">:</span><span class="s1">'y'</span><span class="p">,</span><span class="s1">'axis-2'</span><span class="p">:</span><span class="s1">'x'</span><span class="p">},</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="n">mask</span> <span class="o">=</span> <span class="n">skimage</span><span class="o">.</span><span class="n">segmentation</span><span class="o">.</span><span class="n">clear_border</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
 </pre></div>
@@ -418,10 +419,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/2c2017775eee90c835fa907abb2325ac819bd2def5e4ce6f34f8f079e9ca3d01.png" src="../../../_images/2c2017775eee90c835fa907abb2325ac819bd2def5e4ce6f34f8f079e9ca3d01.png"/>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 800x800 with 1 Axes&gt;, &lt;Axes: &gt;)
-</pre></div>
-</div>
+<img alt="../../../_images/a12b4eeb65cff56164a01d2153d9b530c08392d2cabc5368c739aa2511c868c3.png" src="../../../_images/a12b4eeb65cff56164a01d2153d9b530c08392d2cabc5368c739aa2511c868c3.png"/>
 </div>
 </div>
 <div class="cell tag_teacher docutils container">
@@ -431,11 +429,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/37df2bc4bc608b472375bd74f418d1a473b36c1cefb5d92636927644b2749e1e.png" src="../../../_images/37df2bc4bc608b472375bd74f418d1a473b36c1cefb5d92636927644b2749e1e.png"/>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 800x800 with 1 Axes&gt;,
- &lt;Axes: title={'center': 'Segmentation overlay'}&gt;)
-</pre></div>
-</div>
+<img alt="../../../_images/d7b1e6b05c063b7a1d68ee413a70d5d15b18e14201327506f081c480b9d4aba0.png" src="../../../_images/d7b1e6b05c063b7a1d68ee413a70d5d15b18e14201327506f081c480b9d4aba0.png"/>
 </div>
 </div>
 <p>Using the <code class="docutils literal notranslate"><span class="pre">focus</span></code> attribute in <code class="docutils literal notranslate"><span class="pre">overlay</span></code> we can zoom in to view single objects.</p>
@@ -448,11 +442,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/8f12cf01001467f2b6c15f79633c5f1bf2106990117178250dff59e89bb018e1.png" src="../../../_images/8f12cf01001467f2b6c15f79633c5f1bf2106990117178250dff59e89bb018e1.png"/>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 800x587.05 with 1 Axes&gt;,
- &lt;Axes: title={'center': 'Segmentation overlay'}&gt;)
-</pre></div>
-</div>
+<img alt="../../../_images/ab29df5b1dd6fdbeee6c1bbf0ba01a80eaf7eb1074a735880545a41786e25a6f.png" src="../../../_images/ab29df5b1dd6fdbeee6c1bbf0ba01a80eaf7eb1074a735880545a41786e25a6f.png"/>
 </div>
 </div>
 </section>
@@ -515,7 +505,7 @@
 <span class="n">df_spots</span> <span class="o">=</span> <span class="n">df_spots</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"label_cell"</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
 <span class="c1"># count number of spots per cell label</span>
 <span class="n">mapping_spots</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">df_spots</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"channel"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">][</span><span class="s2">"label_cell"</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+    <span class="n">df_spots</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"channel"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">][</span><span class="s2">"label_cell"</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
 <span class="p">)</span>
 <span class="c1"># add the cell count to the cell dataframe</span>
 <span class="n">df_cell</span> <span class="o">=</span> <span class="n">df_cell</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
@@ -526,10 +516,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/5380a8d94353620554183989fc00ac61edc3c9208713798664b52aded70f1004.png" src="../../../_images/5380a8d94353620554183989fc00ac61edc3c9208713798664b52aded70f1004.png"/>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 800x800 with 2 Axes&gt;, &lt;Axes: title={'center': 'count'}&gt;)
-</pre></div>
-</div>
+<img alt="../../../_images/99bb6bce52757d99e20addf76b01742e5904f1585c1853a45e66e27c82f6c5a5.png" src="../../../_images/99bb6bce52757d99e20addf76b01742e5904f1585c1853a45e66e27c82f6c5a5.png"/>
 </div>
 </div>
 <section id="generate-random-point-distribution">
@@ -547,11 +534,11 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/f94a5b39f6c7e721f9968e0b450477c5ad8e019a09b5c57f7262da8d13a46dec.png" src="../../../_images/f94a5b39f6c7e721f9968e0b450477c5ad8e019a09b5c57f7262da8d13a46dec.png"/>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 800x587.05 with 1 Axes&gt;,
- &lt;Axes: title={'center': 'Segmentation overlay'}&gt;)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/bobiac_tools/_overlay_labels.py:125: UserWarning: No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+  ax.legend(bbox_to_anchor=(1.01, 0), loc="lower left", title="channel")
 </pre></div>
 </div>
+<img alt="../../../_images/cd5a183bce8ca022da78937d87d1e63c7a64bc721650baace4d590d6445b4a0d.png" src="../../../_images/cd5a183bce8ca022da78937d87d1e63c7a64bc721650baace4d590d6445b4a0d.png"/>
 </div>
 </div>
 <div class="cell docutils container">
@@ -602,10 +589,10 @@
 <div class="cell tag_teacher docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spots_A</span> <span class="o">=</span> <span class="n">df_spots</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
-    <span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"channel"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"label_cell"</span><span class="p">]</span> <span class="o">==</span> <span class="n">cell_id</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"channel"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"label_cell"</span><span class="p">]</span> <span class="o">==</span> <span class="n">cell_id</span><span class="p">)</span>
 <span class="p">][[</span><span class="s2">"y"</span><span class="p">,</span> <span class="s2">"x"</span><span class="p">]]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
 <span class="n">spots_B</span> <span class="o">=</span> <span class="n">df_spots</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
-    <span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"channel"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"label_cell"</span><span class="p">]</span> <span class="o">==</span> <span class="n">cell_id</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"channel"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"label_cell"</span><span class="p">]</span> <span class="o">==</span> <span class="n">cell_id</span><span class="p">)</span>
 <span class="p">][[</span><span class="s2">"y"</span><span class="p">,</span> <span class="s2">"x"</span><span class="p">]]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
 
 <span class="n">n_A</span><span class="p">,</span> <span class="n">n_B</span> <span class="o">=</span> <span class="n">spots_A</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">spots_B</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -620,11 +607,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/3442d77f771bb9aef80f90eb09e0d62c029faf25979bdac543602240b7178f3a.png" src="../../../_images/3442d77f771bb9aef80f90eb09e0d62c029faf25979bdac543602240b7178f3a.png"/>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 800x587.05 with 1 Axes&gt;,
- &lt;Axes: title={'center': 'Segmentation overlay'}&gt;)
-</pre></div>
-</div>
+<img alt="../../../_images/642bfc4b30e419d4c013a9eafa19e5b773f7f6c0e5b13ebb4ab86fae06befcab.png" src="../../../_images/642bfc4b30e419d4c013a9eafa19e5b773f7f6c0e5b13ebb4ab86fae06befcab.png"/>
 </div>
 </div>
 <p>Note that channel 2, 3 in this overlay are the newly generated random distributions.</p>
@@ -656,10 +639,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean NN dist. A-&gt;B: 1.9655708446943665
-Mean NN dist. B-&gt;A: 3.207888882211614
-Mean NN dist. A-&gt;random(B): 6.533843237525505
-Mean NN dist. B-&gt;random(A): 7.5547308542865945
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean NN dist. A-&gt;B: 11.124879196905919
+Mean NN dist. B-&gt;A: 4.680665413094298
+Mean NN dist. A-&gt;random(B): 10.721533346835596
+Mean NN dist. B-&gt;random(A): 12.822945411793132
 </pre></div>
 </div>
 </div>
@@ -680,8 +663,8 @@ Mean NN dist. B-&gt;random(A): 7.5547308542865945
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Clark-Evans index A-&gt;B: 0.30082920162601984
-Clark-Evans index B-&gt;A: 0.4246198764832821
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Clark-Evans index A-&gt;B: 1.0376201646744276
+Clark-Evans index B-&gt;A: 0.3650226420514539
 </pre></div>
 </div>
 </div>
@@ -717,13 +700,13 @@ Clark-Evans index B-&gt;A: 0.4246198764832821
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nn_AtoB 1.9655708446943665
-nn_BtoA 3.207888882211614
-nn_random_AtoB 5.96855103488785
-nn_random_BtoA 7.628145474213061
-ce_AtoB 0.32932127633743186
-ce_BtoA 0.4205332597622685
-pval_AtoB 0.0
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nn_AtoB 11.124879196905919
+nn_BtoA 4.680665413094298
+nn_random_AtoB 11.662236536678849
+nn_random_BtoA 11.640731382400972
+ce_AtoB 0.95392330295455
+ce_BtoA 0.40209375676950654
+pval_AtoB 0.32
 pval_BtoA 0.0
 </pre></div>
 </div>
@@ -844,10 +827,10 @@ Small values indicate significant co-localization.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spots_A</span> <span class="o">=</span> <span class="n">df_spots</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
-    <span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"channel"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"label_cell"</span><span class="p">]</span> <span class="o">==</span> <span class="n">cell_id</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"channel"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"label_cell"</span><span class="p">]</span> <span class="o">==</span> <span class="n">cell_id</span><span class="p">)</span>
 <span class="p">][[</span><span class="s2">"y"</span><span class="p">,</span> <span class="s2">"x"</span><span class="p">]]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
 <span class="n">spots_B</span> <span class="o">=</span> <span class="n">df_spots</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
-    <span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"channel"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"label_cell"</span><span class="p">]</span> <span class="o">==</span> <span class="n">cell_id</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"channel"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"label_cell"</span><span class="p">]</span> <span class="o">==</span> <span class="n">cell_id</span><span class="p">)</span>
 <span class="p">][[</span><span class="s2">"y"</span><span class="p">,</span> <span class="s2">"x"</span><span class="p">]]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span>
     <span class="n">cross_nn</span><span class="p">(</span><span class="n">spots_A</span><span class="o">=</span><span class="n">spots_A</span><span class="p">,</span> <span class="n">spots_B</span><span class="o">=</span><span class="n">spots_B</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">cell_id</span><span class="o">=</span><span class="n">cell_id</span><span class="p">,</span> <span class="n">n_repeats</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
@@ -856,7 +839,7 @@ Small values indicate significant co-localization.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{'nn_AtoB': np.float64(1.9655708446943665), 'nn_BtoA': np.float64(3.207888882211614), 'nn_random_AtoB': np.float64(5.969043240707505), 'nn_random_BtoA': np.float64(7.704319012241365), 'ce_AtoB': np.float64(0.32929412058696855), 'ce_BtoA': np.float64(0.41637539633478454), 'pval_AtoB': np.float64(0.0), 'pval_BtoA': np.float64(0.0)}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{'nn_AtoB': np.float64(11.124879196905919), 'nn_BtoA': np.float64(4.680665413094298), 'nn_random_AtoB': np.float64(12.578257760833157), 'nn_random_BtoA': np.float64(11.016166858755584), 'ce_AtoB': np.float64(0.8844531101554585), 'ce_BtoA': np.float64(0.42489056975150413), 'pval_AtoB': np.float64(0.3), 'pval_BtoA': np.float64(0.0)}
 </pre></div>
 </div>
 </div>
@@ -872,10 +855,10 @@ Small values indicate significant co-localization.</p>
 <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">cell_id</span> <span class="ow">in</span> <span class="n">df_cell</span><span class="p">[</span><span class="s2">"label"</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">():</span>
     <span class="n">spots_A</span> <span class="o">=</span> <span class="n">df_spots</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
-        <span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"channel"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"label_cell"</span><span class="p">]</span> <span class="o">==</span> <span class="n">cell_id</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"channel"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"label_cell"</span><span class="p">]</span> <span class="o">==</span> <span class="n">cell_id</span><span class="p">)</span>
     <span class="p">][[</span><span class="s2">"y"</span><span class="p">,</span> <span class="s2">"x"</span><span class="p">]]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
     <span class="n">spots_B</span> <span class="o">=</span> <span class="n">df_spots</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
-        <span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"channel"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"label_cell"</span><span class="p">]</span> <span class="o">==</span> <span class="n">cell_id</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"channel"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"label_cell"</span><span class="p">]</span> <span class="o">==</span> <span class="n">cell_id</span><span class="p">)</span>
     <span class="p">][[</span><span class="s2">"y"</span><span class="p">,</span> <span class="s2">"x"</span><span class="p">]]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
 
     <span class="c1"># calculate the NN distance, Clark-Evans index and p-value for that cell</span>
@@ -929,72 +912,72 @@ Small values indicate significant co-localization.</p>
 <tbody>
 <tr>
 <th>0</th>
-<td>4669.0</td>
-<td>2</td>
-<td>23</td>
-<td>1.742602</td>
-<td>5.578599</td>
-<td>4.691437</td>
-<td>8.431806</td>
-<td>0.371443</td>
-<td>0.661614</td>
-<td>0.0</td>
+<td>5634.0</td>
+<td>1</td>
+<td>13</td>
+<td>9.987703</td>
+<td>4.587394</td>
+<td>10.998310</td>
+<td>9.741913</td>
+<td>0.908113</td>
+<td>0.470893</td>
+<td>0.3</td>
 <td>0.0</td>
 </tr>
 <tr>
 <th>1</th>
-<td>7866.0</td>
-<td>3</td>
-<td>39</td>
-<td>1.776632</td>
-<td>3.954749</td>
-<td>4.759385</td>
-<td>7.483377</td>
-<td>0.373290</td>
-<td>0.528471</td>
-<td>0.0</td>
+<td>4728.0</td>
+<td>2</td>
+<td>12</td>
+<td>11.315666</td>
+<td>4.536695</td>
+<td>11.752927</td>
+<td>11.457934</td>
+<td>0.962796</td>
+<td>0.395944</td>
+<td>0.5</td>
 <td>0.0</td>
 </tr>
 <tr>
 <th>2</th>
-<td>6945.0</td>
-<td>4</td>
-<td>34</td>
-<td>1.764162</td>
-<td>5.842747</td>
-<td>4.767084</td>
-<td>7.394651</td>
-<td>0.370072</td>
-<td>0.790131</td>
-<td>0.0</td>
+<td>7677.0</td>
+<td>3</td>
+<td>16</td>
+<td>10.701428</td>
+<td>6.574501</td>
+<td>12.133744</td>
+<td>11.837484</td>
+<td>0.881956</td>
+<td>0.555397</td>
+<td>0.2</td>
 <td>0.0</td>
 </tr>
 <tr>
 <th>3</th>
-<td>9735.0</td>
-<td>5</td>
-<td>48</td>
-<td>1.777044</td>
-<td>4.682295</td>
-<td>5.495804</td>
-<td>7.076684</td>
-<td>0.323346</td>
-<td>0.661651</td>
-<td>0.0</td>
+<td>6824.0</td>
+<td>4</td>
+<td>12</td>
+<td>14.550151</td>
+<td>5.751568</td>
+<td>13.234779</td>
+<td>14.127564</td>
+<td>1.099388</td>
+<td>0.407117</td>
+<td>0.8</td>
 <td>0.0</td>
 </tr>
 <tr>
 <th>4</th>
-<td>7749.0</td>
-<td>6</td>
-<td>38</td>
-<td>1.730490</td>
-<td>6.242496</td>
-<td>5.106933</td>
-<td>8.331586</td>
-<td>0.338851</td>
-<td>0.749257</td>
-<td>0.0</td>
+<td>9638.0</td>
+<td>5</td>
+<td>21</td>
+<td>10.418040</td>
+<td>5.249208</td>
+<td>12.332873</td>
+<td>11.735422</td>
+<td>0.844737</td>
+<td>0.447296</td>
+<td>0.2</td>
 <td>0.0</td>
 </tr>
 <tr>
@@ -1012,78 +995,78 @@ Small values indicate significant co-localization.</p>
 <td>...</td>
 </tr>
 <tr>
-<th>72</th>
-<td>9504.0</td>
+<th>71</th>
+<td>6577.0</td>
 <td>80</td>
-<td>47</td>
-<td>1.715710</td>
-<td>3.593778</td>
-<td>5.206823</td>
-<td>7.209218</td>
-<td>0.329512</td>
-<td>0.498498</td>
+<td>13</td>
+<td>23.113667</td>
+<td>4.380897</td>
+<td>14.031244</td>
+<td>14.469588</td>
+<td>1.647300</td>
+<td>0.302766</td>
+<td>1.0</td>
 <td>0.0</td>
+</tr>
+<tr>
+<th>72</th>
+<td>8947.0</td>
+<td>81</td>
+<td>18</td>
+<td>12.037741</td>
+<td>5.864325</td>
+<td>11.626512</td>
+<td>12.104993</td>
+<td>1.035370</td>
+<td>0.484455</td>
+<td>0.6</td>
 <td>0.0</td>
 </tr>
 <tr>
 <th>73</th>
-<td>2878.0</td>
-<td>81</td>
-<td>14</td>
-<td>1.504764</td>
-<td>7.685147</td>
-<td>3.496796</td>
-<td>7.448302</td>
-<td>0.430326</td>
-<td>1.031798</td>
+<td>2622.0</td>
+<td>82</td>
+<td>6</td>
+<td>11.609512</td>
+<td>4.225312</td>
+<td>12.186160</td>
+<td>11.056920</td>
+<td>0.952680</td>
+<td>0.382142</td>
+<td>0.3</td>
 <td>0.0</td>
-<td>0.5</td>
 </tr>
 <tr>
 <th>74</th>
-<td>1881.0</td>
-<td>83</td>
-<td>9</td>
-<td>2.093022</td>
-<td>10.883218</td>
-<td>3.069716</td>
-<td>8.071630</td>
-<td>0.681829</td>
-<td>1.348330</td>
-<td>0.0</td>
+<td>1669.0</td>
+<td>84</td>
+<td>5</td>
+<td>23.604008</td>
+<td>2.325054</td>
+<td>17.177756</td>
+<td>21.689268</td>
+<td>1.374103</td>
+<td>0.107198</td>
 <td>1.0</td>
+<td>0.0</td>
 </tr>
 <tr>
 <th>75</th>
-<td>4198.0</td>
-<td>85</td>
-<td>20</td>
-<td>1.648309</td>
-<td>6.056318</td>
-<td>4.342187</td>
-<td>8.007327</td>
-<td>0.379603</td>
-<td>0.756347</td>
+<td>4207.0</td>
+<td>86</td>
+<td>7</td>
+<td>9.356042</td>
+<td>4.356451</td>
+<td>15.293694</td>
+<td>15.137889</td>
+<td>0.611758</td>
+<td>0.287785</td>
+<td>0.1</td>
 <td>0.0</td>
-<td>0.0</td>
-</tr>
-<tr>
-<th>76</th>
-<td>441.0</td>
-<td>90</td>
-<td>2</td>
-<td>1.414214</td>
-<td>7.920230</td>
-<td>1.547311</td>
-<td>8.323545</td>
-<td>0.913982</td>
-<td>0.951545</td>
-<td>0.3</td>
-<td>0.6</td>
 </tr>
 </tbody>
 </table>
-<p>77 rows × 11 columns</p>
+<p>76 rows × 11 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
@@ -1099,10 +1082,10 @@ Small values indicate significant co-localization.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f22ba144fb0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7faf26a321b0&gt;
 </pre></div>
 </div>
-<img alt="../../../_images/87da6c2adc68fea4917c7ae55b9990bfa5f80b3a5e4e96d7dc6966c11eae417c.png" src="../../../_images/87da6c2adc68fea4917c7ae55b9990bfa5f80b3a5e4e96d7dc6966c11eae417c.png"/>
+<img alt="../../../_images/ed146c493ea6fa8e3676ebe881d61e38e04046e1798de361865f63b249d7d1d9.png" src="../../../_images/ed146c493ea6fa8e3676ebe881d61e38e04046e1798de361865f63b249d7d1d9.png"/>
 </div>
 </div>
 <div class="cell docutils container">
@@ -1118,10 +1101,10 @@ Small values indicate significant co-localization.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f22ba0126f0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7faf24934fb0&gt;
 </pre></div>
 </div>
-<img alt="../../../_images/fd85789d786b8797a9ae55f8f6d005aa716a79a923fd5c3f360e6d18137435ad.png" src="../../../_images/fd85789d786b8797a9ae55f8f6d005aa716a79a923fd5c3f360e6d18137435ad.png"/>
+<img alt="../../../_images/6913b7e6fd6bc9069fbdd748fcaa4e568aeb7e747367b9bcc2a20b3a9be9ad72.png" src="../../../_images/6913b7e6fd6bc9069fbdd748fcaa4e568aeb7e747367b9bcc2a20b3a9be9ad72.png"/>
 </div>
 </div>
 <div class="cell docutils container">
@@ -1135,10 +1118,10 @@ Small values indicate significant co-localization.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x7f22ba35ec60&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x7faf246ff560&gt;
 </pre></div>
 </div>
-<img alt="../../../_images/0d83614dc169c22aa33c6e681f846c06fa7198e542f2721cb1e7d3f2a1377384.png" src="../../../_images/0d83614dc169c22aa33c6e681f846c06fa7198e542f2721cb1e7d3f2a1377384.png"/>
+<img alt="../../../_images/510296fb5d2d5a361d60fa01dfb1fad1b279e2caba82e3fcca44dcd04be7074c.png" src="../../../_images/510296fb5d2d5a361d60fa01dfb1fad1b279e2caba82e3fcca44dcd04be7074c.png"/>
 </div>
 </div>
 <div class="cell docutils container">
@@ -1152,13 +1135,13 @@ Small values indicate significant co-localization.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x7f22ba394080&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x7faf269c3cb0&gt;
 </pre></div>
 </div>
-<img alt="../../../_images/b4b23c1ce069493adb5eec276fbb0827a169e8f363a788cd65e02ea478801bc7.png" src="../../../_images/b4b23c1ce069493adb5eec276fbb0827a169e8f363a788cd65e02ea478801bc7.png"/>
+<img alt="../../../_images/8bb9f1d6375266b20c65c69d49842c6f040a1da6ed7dcfcf6c84360440bda67b.png" src="../../../_images/8bb9f1d6375266b20c65c69d49842c6f040a1da6ed7dcfcf6c84360440bda67b.png"/>
 </div>
 </div>
-<p><strong>Interpretation:</strong> Almost all of protein A associates with protein B but not vice versa.</p>
+<p><strong>Interpretation:</strong> Protein B assocciates with A but not vice versa.</p>
 </section>
 </section>
 <section id="conclusion">
