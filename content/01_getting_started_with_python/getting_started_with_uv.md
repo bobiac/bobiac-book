@@ -331,7 +331,7 @@ uv add --script script.py numpy matplotlib
 
 Here is a quick recap of all the **terminal** and `uv` commands we have seen in this section:
 
-| <span style="display: inline-block; width:300px;">Command</span> | Description |
+| <span style="display: inline-block; width:350px;">Command</span> | Description |
 | ------- | ----------- |
 | **`pwd`** | Print the path of the current working directory. |
 | **`ls`** | List the contents of the current directory. |
