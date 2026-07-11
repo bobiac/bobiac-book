@@ -491,7 +491,7 @@
 <span class="n">df_spots</span> <span class="o">=</span> <span class="n">df_spots</span><span class="p">[</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"label_cell"</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
 <span class="c1"># count number of spots per cell label</span>
 <span class="n">mapping_spots</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">df_spots</span><span class="p">[</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"channel"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">][</span><span class="s2">"label_cell"</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+    <span class="n">df_spots</span><span class="p">[</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"channel"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">4</span><span class="p">][</span><span class="s2">"label_cell"</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
 <span class="p">)</span>
 <span class="c1"># add the cell count to the cell dataframe</span>
 <span class="n">df_cell</span> <span class="o">=</span> <span class="n">df_cell</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
@@ -502,7 +502,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/99bb6bce52757d99e20addf76b01742e5904f1585c1853a45e66e27c82f6c5a5.png" src="../../_images/99bb6bce52757d99e20addf76b01742e5904f1585c1853a45e66e27c82f6c5a5.png"/>
+<img alt="../../_images/421fc7b02c1cab74bd764af0402ef43e0b2824e3c2b3791d89afb89f25f57994.png" src="../../_images/421fc7b02c1cab74bd764af0402ef43e0b2824e3c2b3791d89afb89f25f57994.png"/>
 </div>
 </div>
 </section>
@@ -682,36 +682,36 @@
 <tr>
 <th>0</th>
 <td>4.616463</td>
-<td>8.475551</td>
-<td>0.544680</td>
+<td>8.612811</td>
+<td>0.536000</td>
 <td>0.0</td>
 </tr>
 <tr>
 <th>1</th>
 <td>4.464615</td>
-<td>7.010632</td>
-<td>0.636835</td>
+<td>7.294225</td>
+<td>0.612075</td>
 <td>0.0</td>
 </tr>
 <tr>
 <th>2</th>
 <td>5.115974</td>
-<td>10.370709</td>
-<td>0.493310</td>
+<td>10.093450</td>
+<td>0.506861</td>
 <td>0.0</td>
 </tr>
 <tr>
 <th>3</th>
 <td>6.400134</td>
-<td>8.902951</td>
-<td>0.718878</td>
+<td>9.364006</td>
+<td>0.683483</td>
 <td>0.0</td>
 </tr>
 <tr>
 <th>4</th>
 <td>5.372813</td>
-<td>11.446593</td>
-<td>0.469381</td>
+<td>11.430805</td>
+<td>0.470029</td>
 <td>0.0</td>
 </tr>
 <tr>
@@ -724,36 +724,36 @@
 <tr>
 <th>71</th>
 <td>4.952006</td>
-<td>9.734201</td>
-<td>0.508722</td>
+<td>10.192096</td>
+<td>0.485867</td>
 <td>0.0</td>
 </tr>
 <tr>
 <th>72</th>
 <td>6.330961</td>
-<td>14.790352</td>
-<td>0.428047</td>
+<td>14.284262</td>
+<td>0.443212</td>
 <td>0.0</td>
 </tr>
 <tr>
 <th>73</th>
 <td>4.810180</td>
-<td>7.635441</td>
-<td>0.629981</td>
+<td>7.089440</td>
+<td>0.678499</td>
 <td>0.0</td>
 </tr>
 <tr>
 <th>74</th>
 <td>3.591596</td>
-<td>5.123031</td>
-<td>0.701069</td>
-<td>0.1</td>
+<td>5.322584</td>
+<td>0.674784</td>
+<td>0.0</td>
 </tr>
 <tr>
 <th>75</th>
 <td>3.603285</td>
-<td>7.375252</td>
-<td>0.488564</td>
+<td>7.535693</td>
+<td>0.478162</td>
 <td>0.0</td>
 </tr>
 </tbody>
@@ -775,10 +775,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f39739e9be0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fdb3b351df0&gt;
 </pre></div>
 </div>
-<img alt="../../_images/aa12f98be10f904082ed40ffec87743663c1331e5ac3e7d8934c599cc93478e8.png" src="../../_images/aa12f98be10f904082ed40ffec87743663c1331e5ac3e7d8934c599cc93478e8.png"/>
+<img alt="../../_images/df59463c68080421e3340b105543a64ace5b61e388b83e03e47ac43d1127e839.png" src="../../_images/df59463c68080421e3340b105543a64ace5b61e388b83e03e47ac43d1127e839.png"/>
 </div>
 </div>
 <div class="cell docutils container">
@@ -792,10 +792,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x7f3973b46060&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x7fdb3b327b00&gt;
 </pre></div>
 </div>
-<img alt="../../_images/99ab3d388f7c8d113c0937bfed836f57b9350e8ffbc0f1309f831ce946a7087b.png" src="../../_images/99ab3d388f7c8d113c0937bfed836f57b9350e8ffbc0f1309f831ce946a7087b.png"/>
+<img alt="../../_images/30845368869b554328d531978728e53c90ec85a58e916dcde64fff03f50db539.png" src="../../_images/30845368869b554328d531978728e53c90ec85a58e916dcde64fff03f50db539.png"/>
 </div>
 </div>
 <p>So, definitely, Protein C localises close to the cell membrane with an average distance of ~4.5 pixels.</p>
