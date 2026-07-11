@@ -488,10 +488,10 @@
 <span class="c1"># map the cell label to the spots</span>
 <span class="n">df_spots</span><span class="p">[</span><span class="s2">"label_cell"</span><span class="p">]</span> <span class="o">=</span> <span class="n">mask</span><span class="p">[</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"y"</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">),</span> <span class="n">df_spots</span><span class="p">[</span><span class="s2">"x"</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)]</span>
 <span class="c1"># delete spots in the background</span>
-<span class="n">df_spots</span> <span class="o">=</span> <span class="n">df_spots</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"label_cell"</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">df_spots</span> <span class="o">=</span> <span class="n">df_spots</span><span class="p">[</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"label_cell"</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
 <span class="c1"># count number of spots per cell label</span>
 <span class="n">mapping_spots</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">df_spots</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"channel"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">][</span><span class="s2">"label_cell"</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+    <span class="n">df_spots</span><span class="p">[</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"channel"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">][</span><span class="s2">"label_cell"</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
 <span class="p">)</span>
 <span class="c1"># add the cell count to the cell dataframe</span>
 <span class="n">df_cell</span> <span class="o">=</span> <span class="n">df_cell</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
@@ -510,7 +510,7 @@
 <h2 style="color: black; background-color: rgb(127,196,125); padding: 3px; border-radius: 5px;">5. Perform the Colocalization Analysis<a class="headerlink" href="#perform-the-colocalization-analysis" title="Link to this heading">#</a></h2>
 <section id="exercise-perform-the-analysis">
 <h3 style="color: black; background-color: rgb(252,185,118); padding: 3px; border-radius: 5px;">✍️ Exercise: Perform the analysis<a class="headerlink" href="#exercise-perform-the-analysis" title="Link to this heading">#</a></h3>
-<p>Use the cross nearest neighbour analysis we developed above to find out if protein C localises preferentially to the cell membrane.</p>
+<p>Use the cross nearest neighbour analysis to find out if protein C localises preferentially to the cell membrane.</p>
 <p>Hints:</p>
 <ul class="simple">
 <li><p>The code snippet below illustrates how a boolean mask of a whole single cell can be turned into its boundary and subsequently into a list of boundary coordinates (points).</p></li>
@@ -523,17 +523,15 @@
 <span class="n">cell_id</span> <span class="o">=</span> <span class="mi">11</span>
 
 <span class="c1"># identify the spots that belong to cell with index 11</span>
-<span class="n">spots_C</span> <span class="o">=</span> <span class="n">df_spots</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+<span class="n">spots_C</span> <span class="o">=</span> <span class="n">df_spots</span><span class="p">[</span>
     <span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"channel"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">4</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"label_cell"</span><span class="p">]</span> <span class="o">==</span> <span class="n">cell_id</span><span class="p">)</span>
 <span class="p">][[</span><span class="s2">"y"</span><span class="p">,</span> <span class="s2">"x"</span><span class="p">]]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
 
 <span class="c1"># Identify the boundary of cell 11 and turn it into a list of coordinates (spots)</span>
-<span class="n">boundary</span> <span class="o">=</span> <span class="n">find_boundaries</span><span class="p">(</span>
-    <span class="n">mask</span> <span class="o">==</span> <span class="n">cell_id</span>
-<span class="p">)</span>  <span class="c1"># create a binary mask of just the cell boundary</span>
-<span class="n">coords</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argwhere</span><span class="p">(</span>
-    <span class="n">boundary</span>
-<span class="p">)</span>  <span class="c1"># create a list of coordinates (y, x) for each boundary pixel</span>
+<span class="c1"># create a binary mask of just the cell boundary</span>
+<span class="n">boundary</span> <span class="o">=</span> <span class="n">find_boundaries</span><span class="p">(</span><span class="n">mask</span> <span class="o">==</span> <span class="n">cell_id</span><span class="p">)</span>
+<span class="c1"># create a list of coordinates (y, x) for each boundary pixel</span>
+<span class="n">coords</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argwhere</span><span class="p">(</span><span class="n">boundary</span><span class="p">)</span>
 
 <span class="n">overlay_labels</span><span class="p">(</span><span class="n">label_mask</span><span class="o">=</span><span class="n">boundary</span><span class="p">,</span> <span class="n">coordinates</span><span class="o">=</span><span class="p">[</span><span class="n">spots_C</span><span class="p">,</span> <span class="n">coords</span><span class="p">],</span> <span class="n">focus_object</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
@@ -548,7 +546,6 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># or use:</span>
 <span class="c1"># from bobiac_tools import random_points_in_mask</span>
-
 
 <span class="k">def</span><span class="w"> </span><span class="nf">random_points_in_mask</span><span class="p">(</span><span class="n">mask</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">cell_label</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">"""</span>
@@ -593,7 +590,6 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># or use:</span>
 <span class="c1"># from bobiac_tools import nn_dist_target</span>
-
 
 <span class="k">def</span><span class="w"> </span><span class="nf">nn_dist_target</span><span class="p">(</span>
     <span class="n">spots_from</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
@@ -686,36 +682,36 @@
 <tr>
 <th>0</th>
 <td>4.616463</td>
-<td>8.449452</td>
-<td>0.546362</td>
+<td>8.475551</td>
+<td>0.544680</td>
 <td>0.0</td>
 </tr>
 <tr>
 <th>1</th>
 <td>4.464615</td>
-<td>6.764827</td>
-<td>0.659975</td>
+<td>7.010632</td>
+<td>0.636835</td>
 <td>0.0</td>
 </tr>
 <tr>
 <th>2</th>
 <td>5.115974</td>
-<td>9.441472</td>
-<td>0.541862</td>
+<td>10.370709</td>
+<td>0.493310</td>
 <td>0.0</td>
 </tr>
 <tr>
 <th>3</th>
 <td>6.400134</td>
-<td>8.676919</td>
-<td>0.737605</td>
+<td>8.902951</td>
+<td>0.718878</td>
 <td>0.0</td>
 </tr>
 <tr>
 <th>4</th>
 <td>5.372813</td>
-<td>11.066974</td>
-<td>0.485482</td>
+<td>11.446593</td>
+<td>0.469381</td>
 <td>0.0</td>
 </tr>
 <tr>
@@ -728,36 +724,36 @@
 <tr>
 <th>71</th>
 <td>4.952006</td>
-<td>9.232713</td>
-<td>0.536354</td>
+<td>9.734201</td>
+<td>0.508722</td>
 <td>0.0</td>
 </tr>
 <tr>
 <th>72</th>
 <td>6.330961</td>
-<td>15.458667</td>
-<td>0.409541</td>
+<td>14.790352</td>
+<td>0.428047</td>
 <td>0.0</td>
 </tr>
 <tr>
 <th>73</th>
 <td>4.810180</td>
-<td>7.787917</td>
-<td>0.617647</td>
+<td>7.635441</td>
+<td>0.629981</td>
 <td>0.0</td>
 </tr>
 <tr>
 <th>74</th>
 <td>3.591596</td>
-<td>5.008700</td>
-<td>0.717072</td>
+<td>5.123031</td>
+<td>0.701069</td>
 <td>0.1</td>
 </tr>
 <tr>
 <th>75</th>
 <td>3.603285</td>
-<td>7.300024</td>
-<td>0.493599</td>
+<td>7.375252</td>
+<td>0.488564</td>
 <td>0.0</td>
 </tr>
 </tbody>
@@ -779,10 +775,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fafc5de9160&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f39739e9be0&gt;
 </pre></div>
 </div>
-<img alt="../../_images/72f48249038ebc0c070432264b0e278fcce10f6aff20465f0bf250a13c884bb2.png" src="../../_images/72f48249038ebc0c070432264b0e278fcce10f6aff20465f0bf250a13c884bb2.png"/>
+<img alt="../../_images/aa12f98be10f904082ed40ffec87743663c1331e5ac3e7d8934c599cc93478e8.png" src="../../_images/aa12f98be10f904082ed40ffec87743663c1331e5ac3e7d8934c599cc93478e8.png"/>
 </div>
 </div>
 <div class="cell docutils container">
@@ -792,15 +788,14 @@
     <span class="n">x</span><span class="o">=</span><span class="s2">"ce"</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">df_boundary</span><span class="p">[</span><span class="s2">"ce"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">c</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-<span class="c1"># plt.xlim(0,0.2)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x7fb000ff0620&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x7f3973b46060&gt;
 </pre></div>
 </div>
-<img alt="../../_images/e64e755de237675651840bf938fa3d0bc74e8920d0f61bb516186b778baa9ada.png" src="../../_images/e64e755de237675651840bf938fa3d0bc74e8920d0f61bb516186b778baa9ada.png"/>
+<img alt="../../_images/99ab3d388f7c8d113c0937bfed836f57b9350e8ffbc0f1309f831ce946a7087b.png" src="../../_images/99ab3d388f7c8d113c0937bfed836f57b9350e8ffbc0f1309f831ce946a7087b.png"/>
 </div>
 </div>
 <p>So, definitely, Protein C localises close to the cell membrane with an average distance of ~4.5 pixels.</p>
