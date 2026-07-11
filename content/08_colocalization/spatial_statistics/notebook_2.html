@@ -527,18 +527,14 @@
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cell_id</span> <span class="o">=</span> <span class="mi">11</span>
 <span class="n">overlay_labels</span><span class="p">(</span>
     <span class="n">label_mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span>
-    <span class="n">coordinates</span><span class="o">=</span><span class="n">df_spots</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"channel"</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])],</span>
+    <span class="n">coordinates</span><span class="o">=</span><span class="n">df_spots</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_spots</span><span class="p">[</span><span class="s2">"channel"</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])],</span>
     <span class="n">focus_object</span><span class="o">=</span><span class="n">cell_id</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/work/bobiac-book/bobiac-book/.venv/lib/python3.12/site-packages/bobiac_tools/_overlay_labels.py:125: UserWarning: No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
-  ax.legend(bbox_to_anchor=(1.01, 0), loc="lower left", title="channel")
-</pre></div>
-</div>
-<img alt="../../../_images/cd5a183bce8ca022da78937d87d1e63c7a64bc721650baace4d590d6445b4a0d.png" src="../../../_images/cd5a183bce8ca022da78937d87d1e63c7a64bc721650baace4d590d6445b4a0d.png"/>
+<img alt="../../../_images/1984c277db69bbccc21c3a67c13659d2ae403b0ea4a8ade319b16a539c445c58.png" src="../../../_images/1984c277db69bbccc21c3a67c13659d2ae403b0ea4a8ade319b16a539c445c58.png"/>
 </div>
 </div>
 <div class="cell docutils container">
@@ -607,7 +603,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/642bfc4b30e419d4c013a9eafa19e5b773f7f6c0e5b13ebb4ab86fae06befcab.png" src="../../../_images/642bfc4b30e419d4c013a9eafa19e5b773f7f6c0e5b13ebb4ab86fae06befcab.png"/>
+<img alt="../../../_images/665d574c5622694c3d6510d775595aa619eaa758c47de06cd92d4dced2728c89.png" src="../../../_images/665d574c5622694c3d6510d775595aa619eaa758c47de06cd92d4dced2728c89.png"/>
 </div>
 </div>
 <p>Note that channel 2, 3 in this overlay are the newly generated random distributions.</p>
@@ -641,8 +637,8 @@
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean NN dist. A-&gt;B: 11.124879196905919
 Mean NN dist. B-&gt;A: 4.680665413094298
-Mean NN dist. A-&gt;random(B): 10.721533346835596
-Mean NN dist. B-&gt;random(A): 12.822945411793132
+Mean NN dist. A-&gt;random(B): 11.021512976896108
+Mean NN dist. B-&gt;random(A): 11.33727030725769
 </pre></div>
 </div>
 </div>
@@ -663,8 +659,8 @@ Mean NN dist. B-&gt;random(A): 12.822945411793132
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Clark-Evans index A-&gt;B: 1.0376201646744276
-Clark-Evans index B-&gt;A: 0.3650226420514539
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Clark-Evans index A-&gt;B: 1.009378587152825
+Clark-Evans index B-&gt;A: 0.4128564712881472
 </pre></div>
 </div>
 </div>
@@ -702,11 +698,11 @@ Clark-Evans index B-&gt;A: 0.3650226420514539
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nn_AtoB 11.124879196905919
 nn_BtoA 4.680665413094298
-nn_random_AtoB 11.662236536678849
-nn_random_BtoA 11.640731382400972
-ce_AtoB 0.95392330295455
-ce_BtoA 0.40209375676950654
-pval_AtoB 0.32
+nn_random_AtoB 11.39527830095772
+nn_random_BtoA 11.680813538142614
+ce_AtoB 0.976270952151377
+ce_BtoA 0.4007139911796399
+pval_AtoB 0.5
 pval_BtoA 0.0
 </pre></div>
 </div>
@@ -839,7 +835,7 @@ Small values indicate significant co-localization.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{'nn_AtoB': np.float64(11.124879196905919), 'nn_BtoA': np.float64(4.680665413094298), 'nn_random_AtoB': np.float64(12.578257760833157), 'nn_random_BtoA': np.float64(11.016166858755584), 'ce_AtoB': np.float64(0.8844531101554585), 'ce_BtoA': np.float64(0.42489056975150413), 'pval_AtoB': np.float64(0.3), 'pval_BtoA': np.float64(0.0)}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{'nn_AtoB': np.float64(11.124879196905919), 'nn_BtoA': np.float64(4.680665413094298), 'nn_random_AtoB': np.float64(12.242638511003836), 'nn_random_BtoA': np.float64(11.41418856888893), 'ce_AtoB': np.float64(0.9086994757630669), 'ce_BtoA': np.float64(0.41007430224625413), 'pval_AtoB': np.float64(0.3), 'pval_BtoA': np.float64(0.0)}
 </pre></div>
 </div>
 </div>
@@ -917,10 +913,10 @@ Small values indicate significant co-localization.</p>
 <td>13</td>
 <td>9.987703</td>
 <td>4.587394</td>
-<td>10.998310</td>
-<td>9.741913</td>
-<td>0.908113</td>
-<td>0.470893</td>
+<td>11.360257</td>
+<td>9.543084</td>
+<td>0.879179</td>
+<td>0.480703</td>
 <td>0.3</td>
 <td>0.0</td>
 </tr>
@@ -931,11 +927,11 @@ Small values indicate significant co-localization.</p>
 <td>12</td>
 <td>11.315666</td>
 <td>4.536695</td>
-<td>11.752927</td>
-<td>11.457934</td>
-<td>0.962796</td>
-<td>0.395944</td>
-<td>0.5</td>
+<td>12.367970</td>
+<td>10.709498</td>
+<td>0.914917</td>
+<td>0.423614</td>
+<td>0.4</td>
 <td>0.0</td>
 </tr>
 <tr>
@@ -945,11 +941,11 @@ Small values indicate significant co-localization.</p>
 <td>16</td>
 <td>10.701428</td>
 <td>6.574501</td>
-<td>12.133744</td>
-<td>11.837484</td>
-<td>0.881956</td>
-<td>0.555397</td>
-<td>0.2</td>
+<td>12.506719</td>
+<td>12.000180</td>
+<td>0.855654</td>
+<td>0.547867</td>
+<td>0.1</td>
 <td>0.0</td>
 </tr>
 <tr>
@@ -959,11 +955,11 @@ Small values indicate significant co-localization.</p>
 <td>12</td>
 <td>14.550151</td>
 <td>5.751568</td>
-<td>13.234779</td>
-<td>14.127564</td>
-<td>1.099388</td>
-<td>0.407117</td>
-<td>0.8</td>
+<td>14.335494</td>
+<td>11.510089</td>
+<td>1.014974</td>
+<td>0.499698</td>
+<td>0.7</td>
 <td>0.0</td>
 </tr>
 <tr>
@@ -973,11 +969,11 @@ Small values indicate significant co-localization.</p>
 <td>21</td>
 <td>10.418040</td>
 <td>5.249208</td>
-<td>12.332873</td>
-<td>11.735422</td>
-<td>0.844737</td>
-<td>0.447296</td>
-<td>0.2</td>
+<td>11.791828</td>
+<td>9.663195</td>
+<td>0.883497</td>
+<td>0.543217</td>
+<td>0.1</td>
 <td>0.0</td>
 </tr>
 <tr>
@@ -1001,10 +997,10 @@ Small values indicate significant co-localization.</p>
 <td>13</td>
 <td>23.113667</td>
 <td>4.380897</td>
-<td>14.031244</td>
-<td>14.469588</td>
-<td>1.647300</td>
-<td>0.302766</td>
+<td>13.791257</td>
+<td>14.134125</td>
+<td>1.675965</td>
+<td>0.309952</td>
 <td>1.0</td>
 <td>0.0</td>
 </tr>
@@ -1015,11 +1011,11 @@ Small values indicate significant co-localization.</p>
 <td>18</td>
 <td>12.037741</td>
 <td>5.864325</td>
-<td>11.626512</td>
-<td>12.104993</td>
-<td>1.035370</td>
-<td>0.484455</td>
-<td>0.6</td>
+<td>11.910823</td>
+<td>12.768697</td>
+<td>1.010656</td>
+<td>0.459274</td>
+<td>0.7</td>
 <td>0.0</td>
 </tr>
 <tr>
@@ -1029,11 +1025,11 @@ Small values indicate significant co-localization.</p>
 <td>6</td>
 <td>11.609512</td>
 <td>4.225312</td>
-<td>12.186160</td>
-<td>11.056920</td>
-<td>0.952680</td>
-<td>0.382142</td>
-<td>0.3</td>
+<td>11.252028</td>
+<td>11.649269</td>
+<td>1.031771</td>
+<td>0.362711</td>
+<td>0.6</td>
 <td>0.0</td>
 </tr>
 <tr>
@@ -1043,11 +1039,11 @@ Small values indicate significant co-localization.</p>
 <td>5</td>
 <td>23.604008</td>
 <td>2.325054</td>
-<td>17.177756</td>
-<td>21.689268</td>
-<td>1.374103</td>
-<td>0.107198</td>
-<td>1.0</td>
+<td>16.313280</td>
+<td>16.811700</td>
+<td>1.446920</td>
+<td>0.138300</td>
+<td>0.9</td>
 <td>0.0</td>
 </tr>
 <tr>
@@ -1057,11 +1053,11 @@ Small values indicate significant co-localization.</p>
 <td>7</td>
 <td>9.356042</td>
 <td>4.356451</td>
-<td>15.293694</td>
-<td>15.137889</td>
-<td>0.611758</td>
-<td>0.287785</td>
-<td>0.1</td>
+<td>13.212922</td>
+<td>15.975700</td>
+<td>0.708098</td>
+<td>0.272692</td>
+<td>0.0</td>
 <td>0.0</td>
 </tr>
 </tbody>
@@ -1082,10 +1078,10 @@ Small values indicate significant co-localization.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7faf26a321b0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f761a60cfb0&gt;
 </pre></div>
 </div>
-<img alt="../../../_images/ed146c493ea6fa8e3676ebe881d61e38e04046e1798de361865f63b249d7d1d9.png" src="../../../_images/ed146c493ea6fa8e3676ebe881d61e38e04046e1798de361865f63b249d7d1d9.png"/>
+<img alt="../../../_images/1da97942babbfb5a8f1de614cffc7958b7975a0ff4f5538370c66af5677de92b.png" src="../../../_images/1da97942babbfb5a8f1de614cffc7958b7975a0ff4f5538370c66af5677de92b.png"/>
 </div>
 </div>
 <div class="cell docutils container">
@@ -1101,10 +1097,10 @@ Small values indicate significant co-localization.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7faf24934fb0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f761a850d40&gt;
 </pre></div>
 </div>
-<img alt="../../../_images/6913b7e6fd6bc9069fbdd748fcaa4e568aeb7e747367b9bcc2a20b3a9be9ad72.png" src="../../../_images/6913b7e6fd6bc9069fbdd748fcaa4e568aeb7e747367b9bcc2a20b3a9be9ad72.png"/>
+<img alt="../../../_images/6d153a32e7b5d8432c6925e48d1af348547712373a844728d6a6b51a863477f2.png" src="../../../_images/6d153a32e7b5d8432c6925e48d1af348547712373a844728d6a6b51a863477f2.png"/>
 </div>
 </div>
 <div class="cell docutils container">
@@ -1118,10 +1114,10 @@ Small values indicate significant co-localization.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x7faf246ff560&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x7f761a647620&gt;
 </pre></div>
 </div>
-<img alt="../../../_images/510296fb5d2d5a361d60fa01dfb1fad1b279e2caba82e3fcca44dcd04be7074c.png" src="../../../_images/510296fb5d2d5a361d60fa01dfb1fad1b279e2caba82e3fcca44dcd04be7074c.png"/>
+<img alt="../../../_images/5a8f5811c303dfc25b0a169496dc7ad51a2da568b817d3aa06d284a8e7c3a242.png" src="../../../_images/5a8f5811c303dfc25b0a169496dc7ad51a2da568b817d3aa06d284a8e7c3a242.png"/>
 </div>
 </div>
 <div class="cell docutils container">
@@ -1135,10 +1131,10 @@ Small values indicate significant co-localization.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x7faf269c3cb0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x7f7618537e90&gt;
 </pre></div>
 </div>
-<img alt="../../../_images/8bb9f1d6375266b20c65c69d49842c6f040a1da6ed7dcfcf6c84360440bda67b.png" src="../../../_images/8bb9f1d6375266b20c65c69d49842c6f040a1da6ed7dcfcf6c84360440bda67b.png"/>
+<img alt="../../../_images/c49aa1948032296a8cc5e62e48adf878ab4cb99e5684c09103dc2559bc7f723a.png" src="../../../_images/c49aa1948032296a8cc5e62e48adf878ab4cb99e5684c09103dc2559bc7f723a.png"/>
 </div>
 </div>
 <p><strong>Interpretation:</strong> Protein B assocciates with A but not vice versa.</p>
