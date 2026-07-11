@@ -335,7 +335,7 @@ The background of the images was measured to be 4700.</p>
 <ol class="arabic simple">
 <li><p>Create a new code cell in the notebook.</p></li>
 <li><p>Download the dataset folder that contains the time-lapse file <code class="docutils literal notranslate"><span class="pre">F01_1615_tcyx.tif</span></code>.</p></li>
-<li><p>For the <code class="docutils literal notranslate"><span class="pre">F01_1615_tcyx.tif</span></code> file, display the first eight time points of the last channel in the as a grid of images.</p></li>
+<li><p>For the <code class="docutils literal notranslate"><span class="pre">F01_1615_tcyx.tif</span></code> file, display the time points of the last channel as a grid of images (or use <code class="docutils literal notranslate"><span class="pre">ndv</span></code> if you have it in the dependencies).</p></li>
 <li><p>In the same dataset folder, there is a <code class="docutils literal notranslate"><span class="pre">F01_1615_tcyx_cell_labels.tif</span></code> file (labeled mask of the cells) and a <code class="docutils literal notranslate"><span class="pre">F01_1615_tcyx_nuclei_labels.tif</span></code> file (labeled mask of the nuclei). Visualize these masks as an overlay</p></li>
 </ol>
 <div class="cell tag_skip-execution docutils container">
@@ -344,7 +344,6 @@ The background of the images was measured to be 4700.</p>
 
 <span class="n">time_stack</span> <span class="o">=</span> <span class="n">tifffile</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Time stack shape: </span><span class="si">{</span><span class="n">time_stack</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>  <span class="c1"># (16, 3, 1040, 1392)</span>
-
 
 <span class="n">t_max</span> <span class="o">=</span> <span class="n">time_stack</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">ch</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># channel index for the oscillating gene of interest</span>
@@ -358,11 +357,6 @@ The background of the images was measured to be 4700.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Time stack shape: <span style="font-weight: bold">(</span><span style="color: #008080; text-decoration-color: #008080; font-weight: bold">16</span>, <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">3</span>, <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1040</span>, <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1392</span><span style="font-weight: bold">)</span>
-</pre>
-</div><img alt="../../_images/1969cb693bdda09e0a1828c493f00e9e9c6a3a068109d7cd94488d7724e17406.png" src="../../_images/1969cb693bdda09e0a1828c493f00e9e9c6a3a068109d7cd94488d7724e17406.png"/>
 </div>
 </div>
 <p>These are the first eight time points.</p>
@@ -379,12 +373,6 @@ The background of the images was measured to be 4700.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../_images/02eabe24257b0efa74c29c55e0f17c7153ca7d299034f7987d9eef3aca220b99.png" src="../../_images/02eabe24257b0efa74c29c55e0f17c7153ca7d299034f7987d9eef3aca220b99.png"/>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 800x800 with 1 Axes&gt;, &lt;Axes: &gt;)
-</pre></div>
-</div>
-</div>
 </div>
 <p>This are the two label masks for the nuclei and the cells.</p>
 </section>
@@ -393,7 +381,7 @@ The background of the images was measured to be 4700.</p>
 <p><strong>Measure nuclear intensity for the first time point</strong></p>
 <p>In this step, you will analyse the first image and quantify the intensity of each nucleus.</p>
 <ol class="arabic simple">
-<li><p>Load the first time point of the last channel in the <code class="docutils literal notranslate"><span class="pre">F01_1615_tcyx.tif</span></code> file.</p></li>
+<li><p>Load the first time point of the last channel (index 2) in the <code class="docutils literal notranslate"><span class="pre">F01_1615_tcyx.tif</span></code> file.</p></li>
 <li><p>Remove objects touching the border of the image.</p></li>
 <li><p>Measure the intensity of each nucleus with <code class="docutils literal notranslate"><span class="pre">skimage.measure.regionprops_table</span></code>.</p></li>
 <li><p>Subtract the background intensity from the measurements and inspect the resulting values.</p></li>
@@ -410,25 +398,12 @@ The background of the images was measured to be 4700.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../_images/ec9a129028c80713a794ed1cafc7389fde70e509c162ee4fe158a0c28d8077fe.png" src="../../_images/ec9a129028c80713a794ed1cafc7389fde70e509c162ee4fe158a0c28d8077fe.png"/>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 800x800 with 1 Axes&gt;, &lt;Axes: &gt;)
-</pre></div>
-</div>
-</div>
 </div>
 <p>Remove boundary objects.</p>
 <div class="cell tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask_nuclei</span> <span class="o">=</span> <span class="n">skimage</span><span class="o">.</span><span class="n">segmentation</span><span class="o">.</span><span class="n">clear_border</span><span class="p">(</span><span class="n">mask_nuclei</span><span class="p">)</span>
 <span class="n">overlay_labels</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">image_t0</span><span class="p">,</span> <span class="n">label_mask</span><span class="o">=</span><span class="n">mask_nuclei</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/d03cb379d371480e9a45b112edf3eb56311973dc75b373736e989e98995a9cce.png" src="../../_images/d03cb379d371480e9a45b112edf3eb56311973dc75b373736e989e98995a9cce.png"/>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 800x800 with 1 Axes&gt;,
- &lt;Axes: title={'center': 'Segmentation overlay'}&gt;)
 </pre></div>
 </div>
 </div>
@@ -446,68 +421,6 @@ The background of the images was measured to be 4700.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">      area  intensity_mean  label
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">0</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1869.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1219.043339</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">2</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1430.0</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">948.851748</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">3</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">2</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1681.0</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">891.096371</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">4</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">3</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1356.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1117.834071</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">5</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">4</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1232.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1028.202110</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">6</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">5</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">2114.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1058.964049</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">7</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">6</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1954.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1140.899693</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">8</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">7</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1576.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1024.806472</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">9</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">8</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1862.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1176.601504</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">10</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">9</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1555.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1250.140836</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">11</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">10</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1945.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1325.883290</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">12</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">11</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1948.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1274.267967</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">13</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">12</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">2307.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1073.438231</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">14</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">13</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1599.0</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">931.551595</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">15</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">14</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1646.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1237.678007</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">16</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">15</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">3380.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1080.149112</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">17</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">16</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1440.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1092.085417</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">18</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">17</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1880.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1091.045213</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">19</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">18</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">2691.0</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">976.980676</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">20</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">19</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1030.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1240.002913</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">21</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">20</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1716.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1213.378205</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">22</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">21</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1696.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1083.852005</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">23</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">22</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1540.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1165.322727</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">24</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">23</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1086.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1456.955801</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">25</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">24</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">618.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1489.451456</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">27</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">25</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1847.0</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">998.479697</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">28</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">26</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1329.0</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">888.212190</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">29</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">27</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">438.0</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">806.287671</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">30</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">28</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1825.0</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">950.421370</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">31</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">29</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1913.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1320.894929</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">33</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">30</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1123.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1105.219056</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">34</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">31</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1664.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1350.731971</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">35</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">32</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1547.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1082.393019</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">36</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">33</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">2081.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1273.842864</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">38</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">34</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1499.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1207.787859</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">39</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">35</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1279.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1003.185301</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">40</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">36</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">3761.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1127.747939</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">42</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">37</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">2040.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1029.764216</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">43</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">38</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">829.0</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">864.540410</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">44</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">39</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">968.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1430.487603</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">45</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">40</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1639.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1242.480171</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">46</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">41</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">3799.0</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">937.245591</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">47</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">42</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1645.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1066.477204</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">48</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">43</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">2022.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1017.343225</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">49</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">44</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1892.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1197.726216</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">50</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">45</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1673.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1253.115959</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">51</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">46</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1644.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1135.153893</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">52</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">47</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1275.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1196.524706</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">53</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">48</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1362.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1168.959618</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">54</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">49</span>    <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">44.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1205.840909</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">55</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">50</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1095.0</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">942.811872</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">56</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">51</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1056.0</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">944.766098</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">57</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">52</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">961.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1143.874089</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">58</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">53</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">2026.0</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">850.837611</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">59</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">54</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">785.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1107.979618</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">60</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">55</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1543.0</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">998.966948</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">61</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">56</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">878.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1070.775626</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">62</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">57</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">776.0</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">998.304124</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">63</span>
-</pre>
-</div></div>
 </div>
 <p>Subtract background intensity from measurements. Background was measured to 460.</p>
 <div class="cell tag_skip-execution docutils container">
@@ -522,18 +435,6 @@ The background of the images was measured to be 4700.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #008080; text-decoration-color: #008080; font-weight: bold">0</span>    <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">759.043339</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1</span>    <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">488.851748</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">2</span>    <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">431.096371</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">3</span>    <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">657.834071</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">4</span>    <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">568.202110</span>
-Name: intensity_bg_cor, dtype: float64
-</pre>
-</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">
-Are there any negative values after background subtraction? <span style="color: #ff0000; text-decoration-color: #ff0000; font-style: italic">False</span>
-</pre>
-</div></div>
 </div>
 </section>
 </section>
@@ -559,12 +460,6 @@ Are there any negative values after background subtraction? <span style="color: 
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel='intensity_bg_cor', ylabel='Count'&gt;
-</pre></div>
-</div>
-<img alt="../../_images/c5d327c9d3b2e9fc4f87b85ec2b3b63d95bbcfee8aed5a288502b5786a3e1ed1.png" src="../../_images/c5d327c9d3b2e9fc4f87b85ec2b3b63d95bbcfee8aed5a288502b5786a3e1ed1.png"/>
-</div>
 </div>
 <p>Seems unsuspicious.</p>
 <div class="cell tag_skip-execution docutils container">
@@ -576,13 +471,6 @@ Are there any negative values after background subtraction? <span style="color: 
     <span class="n">id_col</span><span class="o">=</span><span class="s2">"label"</span><span class="p">,</span>
     <span class="n">measurement_col</span><span class="o">=</span><span class="s2">"intensity_bg_cor"</span><span class="p">,</span>
 <span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/45bc09fa67f45e3d0997b2b9bc04ea0af7298fb8cf8dc34ab69c0ceb066a0edf.png" src="../../_images/45bc09fa67f45e3d0997b2b9bc04ea0af7298fb8cf8dc34ab69c0ceb066a0edf.png"/>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 800x800 with 2 Axes&gt;,
- &lt;Axes: title={'center': 'intensity_bg_cor'}&gt;)
 </pre></div>
 </div>
 </div>
@@ -600,10 +488,6 @@ Are there any negative values after background subtraction? <span style="color: 
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #008080; text-decoration-color: #008080; font-weight: bold">0.0</span>
-</pre>
-</div></div>
 </div>
 <div class="cell tag_skip-execution docutils container">
 <div class="cell_input docutils container">
@@ -631,23 +515,6 @@ Are there any negative values after background subtraction? <span style="color: 
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">      area  intensity_mean  label  intensity_bg_cor  time
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">0</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1869.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1219.043339</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">2</span>        <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">759.043339</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">0.0</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1430.0</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">948.851748</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">3</span>        <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">488.851748</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">0.0</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">2</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1681.0</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">891.096371</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">4</span>        <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">431.096371</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">0.0</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">3</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1356.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1117.834071</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">5</span>        <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">657.834071</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">0.0</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">4</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1232.0</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1028.202110</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">6</span>        <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">568.202110</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">0.0</span>
-..     <span style="color: #808000; text-decoration-color: #808000">...</span>             <span style="color: #808000; text-decoration-color: #808000">...</span>    <span style="color: #808000; text-decoration-color: #808000">...</span>               <span style="color: #808000; text-decoration-color: #808000">...</span>   <span style="color: #808000; text-decoration-color: #808000">...</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">53</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">2026.0</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">592.803060</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">59</span>        <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">132.803060</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">7.5</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">54</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">785.0</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">681.891720</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">60</span>        <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">221.891720</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">7.5</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">55</span>  <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1543.0</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">659.832793</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">61</span>        <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">199.832793</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">7.5</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">56</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">878.0</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">750.211845</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">62</span>        <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">290.211845</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">7.5</span>
-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">57</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">776.0</span>      <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">684.514175</span>     <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">63</span>        <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">224.514175</span>   <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">7.5</span>
-
-<span style="font-weight: bold">[</span><span style="color: #008080; text-decoration-color: #008080; font-weight: bold">928</span> rows x <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">5</span> columns<span style="font-weight: bold">]</span>
-</pre>
-</div></div>
 </div>
 </section>
 </section>
@@ -669,101 +536,6 @@ Are there any negative values after background subtraction? <span style="color: 
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th></th>
-<th>label</th>
-<th>time</th>
-<th>intensity_bg_cor</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>0</th>
-<td>2</td>
-<td>0.0</td>
-<td>759.043339</td>
-</tr>
-<tr>
-<th>1</th>
-<td>2</td>
-<td>0.5</td>
-<td>876.869984</td>
-</tr>
-<tr>
-<th>2</th>
-<td>2</td>
-<td>1.0</td>
-<td>658.683788</td>
-</tr>
-<tr>
-<th>3</th>
-<td>2</td>
-<td>1.5</td>
-<td>260.720171</td>
-</tr>
-<tr>
-<th>4</th>
-<td>2</td>
-<td>2.0</td>
-<td>283.440342</td>
-</tr>
-<tr>
-<th>...</th>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-</tr>
-<tr>
-<th>923</th>
-<td>63</td>
-<td>5.5</td>
-<td>562.300258</td>
-</tr>
-<tr>
-<th>924</th>
-<td>63</td>
-<td>6.0</td>
-<td>695.213918</td>
-</tr>
-<tr>
-<th>925</th>
-<td>63</td>
-<td>6.5</td>
-<td>501.601804</td>
-</tr>
-<tr>
-<th>926</th>
-<td>63</td>
-<td>7.0</td>
-<td>250.744845</td>
-</tr>
-<tr>
-<th>927</th>
-<td>63</td>
-<td>7.5</td>
-<td>224.514175</td>
-</tr>
-</tbody>
-</table>
-<p>928 rows × 3 columns</p>
-</div></div></div>
 </div>
 <div class="cell tag_skip-execution docutils container">
 <div class="cell_input docutils container">
@@ -771,24 +543,12 @@ Are there any negative values after background subtraction? <span style="color: 
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel='time', ylabel='intensity_bg_cor'&gt;
-</pre></div>
-</div>
-<img alt="../../_images/52ef6ccd035d38570ab1bf3dc3b44cdc43bddc958a5d77bef363f5cadd95d187.png" src="../../_images/52ef6ccd035d38570ab1bf3dc3b44cdc43bddc958a5d77bef363f5cadd95d187.png"/>
-</div>
 </div>
 <div class="cell tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">"time"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"intensity_bg_cor"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">"label"</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel='time', ylabel='intensity_bg_cor'&gt;
-</pre></div>
-</div>
-<img alt="../../_images/a247470e9696e414d3df671a91ccf2020bbb07a46601c89ad2a7d25bbfa43e7e.png" src="../../_images/a247470e9696e414d3df671a91ccf2020bbb07a46601c89ad2a7d25bbfa43e7e.png"/>
 </div>
 </div>
 </section>
